@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Typography } from '@material-ui/core';
 import useStyles from './index.styles';
 
-const App = () => {
+const Home = () => {
   const classes = useStyles();
   const { t } = useTranslation();
 
@@ -16,4 +16,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Home;
