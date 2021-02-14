@@ -4,7 +4,7 @@ import {
 } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import Home from './pages/home/index';
-import Sidebar from './common/sidebar/sidebar';
+import NavBar from './common/navbar/navbar';
 import useStyles from './App.styles';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -13,7 +13,7 @@ const App = () => {
 
   return (
     <Router classes={classes.root}>
-      <Sidebar />
+      <NavBar />
       <Switch>
         <Route path="/">
           <Home />

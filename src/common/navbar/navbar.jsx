@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import useStyles from './sidebar.styles';
+import useStyles from './navbar.styles';
 
-const SideBar = () => {
+const NavBar = () => {
   const classes = useStyles();
 
   return (
@@ -14,4 +14,4 @@ const SideBar = () => {
   );
 };
 
-export default SideBar;
+export default NavBar;
