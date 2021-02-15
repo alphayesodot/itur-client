@@ -5,7 +5,16 @@ const theme = createMuiTheme({
     // TODO: Add font
   },
   palette: {
-    // TODO: Add colors
+    primary: {
+      main: 'rgb(26,102,191)',
+    },
+    secondary: {
+      main: 'rgb(228,115,91)',
+    },
+    section: {
+      main: 'rgb(71,159,251)',
+      primary: 'rgb(238,246,255)',
+    },
   },
 });
 
