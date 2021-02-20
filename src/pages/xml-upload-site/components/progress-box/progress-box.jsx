@@ -6,20 +6,16 @@ import Box from '@material-ui/core/Box';
 import useStyles from './progress-box.styles';
 
 const LinearProgressWithLabel = (props) => {
+  const classes = useStyles();
   const { fileName, value } = props;
   return (
     <Box display="flex" flexDirection="column" p={1} m={1}>
       <Box align=" right" p={0.2}>
         {fileName}
       </Box>
-      <Box p={0.5}>
-        <LinearProgress variant="determinate" {...props} />
-      </Box>
+        <LinearProgress className={classes.progressBar} variant="determinate" {...props} />
       <Box display="flex" flexDirection="row" alignItems="center" p={0.2}>
-        <Typography
-          variant="body2"
-          color="textSecondary"
-        >{`${value}% uploaded`}</Typography>
+        <Typography className={classes.typography}>{`${value}% uploaded`}</Typography>
       </Box>
     </Box>
   );

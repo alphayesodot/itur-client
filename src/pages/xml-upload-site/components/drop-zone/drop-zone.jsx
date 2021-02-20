@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 import { DropzoneArea } from 'material-ui-dropzone';
+import Button from '@material-ui/core/Button';
 import useStyles from './drop-zone.styles';
 import Dropzone from 'react-dropzone';
-import axios from 'axios';
+import { useTranslation } from 'react-i18next';
+
+// import axios from 'axios';
 
 const DropZone = () => {
   const classes = useStyles();
+  const { t } = useTranslation();
   const acceptedFileTypes =
     'image/x-png, image/png, image/jpg, image/jpeg, image/gif';
   const acceptedFileTypesArray = acceptedFileTypes
@@ -62,9 +66,9 @@ const DropZone = () => {
     }
   };
 
-  const sendFile = (file: string) => {
+  // const sendFile = (file: string) => {
     
-  };
+  // };
   return (
     <Dropzone
       onDrop={handleOnDrop}
@@ -73,9 +77,12 @@ const DropZone = () => {
       maxSize={imageMaxSize}
     >
       {({ getRootProps, getInputProps }) => (
-        <div {...getRootProps({ className: classes.dropZone })}>
+        <div {...getRootProps({ className: classes.root })}>
           <input {...getInputProps()} />
-          <p>Drag'n'drop files, or click to select files</p>
+          <p>Drag and Drop to pload files</p>
+          <Button className={classes.uploadButton}>{t('xmlPage.upload_button')}</Button>
+          <p>{t('xmlPage.size_limitation')}</p>
+          <p className={classes.remark}>XML XL EXCEL XEL are supported</p>
         </div>
       )}
     </Dropzone>

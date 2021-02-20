@@ -1,17 +1,26 @@
 import { makeStyles } from '@material-ui/core/styles';
+import theme from '../../../../theme';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
-    color: '#33A5FF',
-    borderColor: '#33A5FF',
-  },
-  dropZone: {
     textAlign: 'center',
     padding: '2em',
-    border: '3px dashed red',
-    backgroundColor: '#fafafa',
-    color: '#bdbdbd',
+    border: '0.07em dashed',
+    borderColor: theme.palette.section.main, 
+    backgroundColor: theme.palette.section.primary,
+    color: theme.palette.section.main,
+    fontSize: '40%'
+  },
+  uploadButton: {
+    backgroundColor: theme.palette.section.main,
+    color: 'white',
+    padding: ' 0.5em 2em',
+    fontSize: '80%'
+  },
+  remark: {
+    color: 'grey',
+    fontSize: '40%'
   }
-});
+}));
 
 export default useStyles;

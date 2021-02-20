@@ -9,6 +9,11 @@ const resources = {
         example: 'מערכת איתור',
       },
       button: {},
+
+      xmlPage: {
+        upload_button: 'העלאת קבצים',
+        size_limitation: '(עד...)'
+      },
     },
   },
 };

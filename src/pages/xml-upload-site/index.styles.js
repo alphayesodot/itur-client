@@ -6,7 +6,6 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     alignItems: 'center',
     padding: '3vw',
-    backgroundColor: '#E8EBEF',
   },
   uploadArea: {
     backgroundColor: 'white',
