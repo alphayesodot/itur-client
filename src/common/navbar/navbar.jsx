@@ -10,6 +10,9 @@ const NavBar = () => {
       <li>
         <Link to="/">Home</Link>
       </li>
+      <li>
+        <Link to="/">Upload xml file</Link>
+      </li>
     </ul>
   );
 };
