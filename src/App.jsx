@@ -14,7 +14,7 @@ const App = () => {
     <Router classes={classes.root}>
       <NavBar />
       <Switch>
-        <Route path="/xmlUpload/">
+        <Route path="/xml-upload">
           <UploadXmlPage></UploadXmlPage>
         </Route>
         <Route path="/">

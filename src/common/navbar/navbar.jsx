@@ -11,7 +11,7 @@ const NavBar = () => {
         <Link to="/">Home</Link>
       </li>
       <li>
-        <Link to="/">Upload xml file</Link>
+        <Link to="/xml-upload">Upload xml file</Link>
       </li>
     </ul>
   );
