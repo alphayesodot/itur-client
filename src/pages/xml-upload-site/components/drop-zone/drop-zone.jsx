@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { DropzoneArea } from 'material-ui-dropzone';
 import Button from '@material-ui/core/Button';
 import useStyles from './drop-zone.styles';
 import Dropzone from 'react-dropzone';
@@ -8,61 +7,19 @@ import { useTranslation } from 'react-i18next';
 import Image from 'material-ui-image';
 import cloudImg from '../../images/cloud.png';
 
-const SimpleDropZone = () => {
-  // Payload data and url to upload files
-  const getUploadParams = ({ meta }) => {
-    return { url: 'https://httpbin.org/post' };
-  };
 
-  // Return the current status of files being uploaded
-  const handleChangeStatus = ({ meta, file }, status) => {
-    console.log(status, meta, file);
-  };
-
-  // Return array of uploaded files after submit button is clicked
-  const handleSubmit = (files, allFiles) => {
-    console.log(files.map((f) => f.meta));
-    allFiles.forEach((f) => f.remove());
-  };
-
-  // return (
-  //   // <Dropzone
-  //   //   getUploadParams={getUploadParams}
-  //   //   onChangeStatus={handleChangeStatus}
-  //   //   onSubmit={handleSubmit}
-  //   //   accept="image/*,audio/*,video/*"
-  //   // />
-  // );
-  return (
-    <Dropzone
-      onDrop={() => {
-        console.log('on drop');
-      }}
-      getUploadParams={getUploadParams}
-      onChangeStatus={() => {
-        console.log('on CHANGE');
-        handleChangeStatus();
-      }}
-    >
-      {({ getRootProps, getInputProps }) => (
-        <div {...getRootProps({})}>
-          <input {...getInputProps()} />
-          <p>drophere</p>
-        </div>
-      )}
-    </Dropzone>
-  );
-};
-
-const DropZone = () => {
+const DropZone = (props) => {
+  const {setProgress, setUploadFlag} = props;
   const classes = useStyles();
   const { t } = useTranslation();
   const apiUrl = 'api/uploadfile';
   const acceptedFileTypes = 'image/x-png, image/png, image/jpg, image/jpeg, image/gif';
   const acceptedFileTypesArray = acceptedFileTypes.split(',').map((item) => item.trim());
   const imageMaxSize = 1000000000; // bytes
-  const [file, setFile] = useState(null);
 
+  const axiosInstance = axios.create({
+    baseURL: "http://localhost:8081/",
+  })
   const verifyFile = (files) => {
     if (files && files.length > 0) {
       const currentFile = files[0];
@@ -107,34 +64,45 @@ const DropZone = () => {
     if (files && files.length > 0) {
       const isVerified = verifyFile(files);
       if (isVerified) {
+        setProgress(0);
+        setUploadFlag(true);
+
         // imageBase64Data
         const currentFile = files[0];
-        const myFileItemReader = new FileReader();
-        myFileItemReader.addEventListener(
-          'load',
-          () => {
-            const myResult = myFileItemReader.result;
-            // typeof myFileItemReader.result === 'string'
-            //   ? myFileItemReader.result
-            //   : Buffer.from(myFileItemReader.result).toString();
-            setFile(myResult);
+        console.log(currentFile.type);
+
+
+        let formData = new FormData()
+        formData.append("file", files[0])
+        axiosInstance.post("/upload_file", formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
           },
-          false
-        );
-        myFileItemReader.readAsDataURL(currentFile);
+          onUploadProgress: data => {
+            //Set the progress value to show the progress bar
+            setProgress(Math.round((100 * data.loaded) / data.total))
+          },
+        });
+
+        // const myFileItemReader = new FileReader();
+        // myFileItemReader.addEventListener(
+        //   'load',
+        //   () => {
+        //     // console.log(myFileItemReader.result);
+        //     const myResult =
+        //       typeof myFileItemReader.result === 'string'
+        //         ? myFileItemReader.result
+        //         : Buffer.from(myFileItemReader.result).toString();
+        //     setFile(myResult);
+        //   },
+        //   false
+        // );
+        // myFileItemReader.readAsDataURL(currentFile);
       }
     }
   };
 
-  // const sendFile = () => {
-  //   const formData = new FormData();
-  //   formData.append('myFile', file, file.name);
-  //   axios.post(apiUrl, formData);
-  // };
-
-  const handleChangeStatus = ({ meta, file }, status) => {
-    console.log(status, meta, file);
-  };
+  
   return (
     <Dropzone
       onDrop={handleOnDrop}

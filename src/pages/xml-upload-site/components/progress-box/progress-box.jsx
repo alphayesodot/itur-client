@@ -5,25 +5,21 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import useStyles from './progress-box.styles';
 import DescriptionOutlinedIcon from '@material-ui/icons/DescriptionOutlined';
+import { useTranslation } from 'react-i18next';
 
 const LinearProgressWithLabel = (props) => {
   const classes = useStyles();
   const { fileName, value } = props;
+  const { t } = useTranslation();
   return (
     <Box display="flex" flexDirection="column" p={1} m={1}>
       <Box className={classes.horizonBox} align="right" p={0.2}>
         {fileName}
         <DescriptionOutlinedIcon fontSize="small" />
       </Box>
-      <LinearProgress
-        className={classes.progressBar}
-        variant="determinate"
-        {...props}
-      />
+      <LinearProgress className={classes.progressBar} variant="determinate" {...props} />
       <Box display="flex" flexDirection="row" alignItems="center" p={0.2}>
-        <Typography
-          className={classes.typography}
-        >{`${value}% uploaded`}</Typography>
+        <Typography className={classes.typography}>{`${value}% uploaded`}</Typography>
       </Box>
     </Box>
   );
@@ -37,21 +33,9 @@ LinearProgressWithLabel.propTypes = {
   value: PropTypes.number.isRequired,
 };
 
-const ProgressBox = () => {
+const ProgressBox = (props) => {
   const classes = useStyles();
-  const [progress, setProgress] = React.useState(0);
-
-  React.useEffect(() => {
-    const timer = setInterval(() => {
-      setProgress((prevProgress) =>
-        prevProgress >= 100 ? 0 : prevProgress + 2
-      );
-    }, 800);
-    return () => {
-      clearInterval(timer);
-    };
-  }, []);
-
+  const { progress } = props;
   return (
     <div className={classes.root}>
       <LinearProgressWithLabel value={progress} fileName={'filename.xml'} />

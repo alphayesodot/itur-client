@@ -18,8 +18,14 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '0.7rem',
     color: theme.palette.section.main,
   },
-  progressBar: {
-    // color: theme.palette.section.main,
+  progressBar:{
+    // color: {
+      // primary: theme.palette.section.main,
+      // secondary: theme.palette.section.primar
+    // },
+    // backgroundColor: theme.palette.section.main,
+    backgroundColor: theme.palette.section.primary,
+    // backgroundColor: theme.palette.section.primary,
   }
 
 }));

@@ -12,7 +12,8 @@ const resources = {
 
       xmlPage: {
         upload_button: 'העלאת קבצים',
-        size_limitation: '(עד...)'
+        size_limitation: '(עד...)',
+        cancel: 'ביטול'
       },
     },
   },
