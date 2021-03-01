@@ -7,13 +7,12 @@ import useStyles from './index.styles';
 const UploadXmlPage = () => {
   const classes = useStyles();
   const [progress, setProgress] = React.useState(0);
-  const [uploadFlag, setUploadFlag] = React.useState(true);
-  const progressBox = <ProgressBox progress={progress}></ProgressBox>;
-  console.log(uploadFlag);
+  const [showProgressBox, setShowProgressBox] = React.useState(true);
+  const progressBox = <ProgressBox fileName={'filename.txt'} progress={progress}></ProgressBox>;
   return (
     <div className={classes.root}>
-      <DropZone setProgress={setProgress} setUploadFlag={setUploadFlag}></DropZone>
-      {uploadFlag ? progressBox : null}
+      <DropZone setProgress={setProgress} setShowProgressBox={setShowProgressBox}></DropZone>
+      {showProgressBox ? progressBox : null}
     </div>
   );
 };
