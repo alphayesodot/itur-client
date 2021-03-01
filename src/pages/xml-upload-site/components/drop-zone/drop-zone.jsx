@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import { DropzoneArea } from 'material-ui-dropzone';
+import axios from 'axios';
 import Button from '@material-ui/core/Button';
 import useStyles from './drop-zone.styles';
 import Dropzone from 'react-dropzone';
 import { useTranslation } from 'react-i18next';
 
-// import axios from 'axios';
 
-const DropZone = () => {
+const DropZone = (props) => {
+  const {setProgress, setUploadFlag} = props;
   const classes = useStyles();
   const { t } = useTranslation();
   const acceptedFileTypes =
@@ -16,8 +16,10 @@ const DropZone = () => {
     .split(',')
     .map((item) => item.trim());
   const imageMaxSize = 1000000000; // bytes
-  const [file, setFile] = useState(null);
 
+  const axiosInstance = axios.create({
+    baseURL: "http://localhost:8081/",
+  })
   const verifyFile = (files) => {
     if (files && files.length > 0) {
       const currentFile = files[0];
@@ -45,30 +47,45 @@ const DropZone = () => {
     if (files && files.length > 0) {
       const isVerified = verifyFile(files);
       if (isVerified) {
+        setProgress(0);
+        setUploadFlag(true);
+
         // imageBase64Data
         const currentFile = files[0];
         console.log(currentFile.type);
-        const myFileItemReader = new FileReader();
-        myFileItemReader.addEventListener(
-          'load',
-          () => {
-            // console.log(myFileItemReader.result);
-            const myResult =
-              typeof myFileItemReader.result === 'string'
-                ? myFileItemReader.result
-                : Buffer.from(myFileItemReader.result).toString();
-            setFile(myResult);
+
+
+        let formData = new FormData()
+        formData.append("file", files[0])
+        axiosInstance.post("/upload_file", formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
           },
-          false
-        );
-        myFileItemReader.readAsDataURL(currentFile);
+          onUploadProgress: data => {
+            //Set the progress value to show the progress bar
+            setProgress(Math.round((100 * data.loaded) / data.total))
+          },
+        });
+
+        // const myFileItemReader = new FileReader();
+        // myFileItemReader.addEventListener(
+        //   'load',
+        //   () => {
+        //     // console.log(myFileItemReader.result);
+        //     const myResult =
+        //       typeof myFileItemReader.result === 'string'
+        //         ? myFileItemReader.result
+        //         : Buffer.from(myFileItemReader.result).toString();
+        //     setFile(myResult);
+        //   },
+        //   false
+        // );
+        // myFileItemReader.readAsDataURL(currentFile);
       }
     }
   };
 
-  // const sendFile = (file: string) => {
-    
-  // };
+  
   return (
     <Dropzone
       onDrop={handleOnDrop}
@@ -86,20 +103,6 @@ const DropZone = () => {
         </div>
       )}
     </Dropzone>
-
-    // <DropzoneArea
-    //   dropzoneClass={classes.root}
-    //   //   onChange={this.onChangeHandler.bind(this)}
-    //   filesLimit="1"
-    //   dropzoneText="Drang and Drop to upload files"
-    //   acceptedFiles={[
-    //     'text/csv',
-    //     'application/vnd.ms-excel',
-    //     'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-    //   ]} // check
-    // >
-    //   <button>heloo</button>
-    // </DropzoneArea>
   );
 };
 

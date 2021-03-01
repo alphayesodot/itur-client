@@ -12,7 +12,13 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.section.main,
   },
   progressBar:{
-    // color: theme.palette.section.main,
+    // color: {
+      // primary: theme.palette.section.main,
+      // secondary: theme.palette.section.primar
+    // },
+    // backgroundColor: theme.palette.section.main,
+    backgroundColor: theme.palette.section.primary,
+    // backgroundColor: theme.palette.section.primary,
   }
 
 }));
