@@ -8,6 +8,12 @@ const resources = {
       title: {
         example: 'מערכת איתור',
       },
+      headerTitles: {
+        interviewsSchedule: 'לו"ז ראיונות',
+        virtualInterview: 'ראיון וירטואלי',
+        malshabData: 'נתוני מלש"ב',
+        guidePreperationKit: 'ערכת הכנה למדריך',
+      },
       button: {},
     },
   },
