@@ -24,7 +24,7 @@ const InterviewDashboard = () => {
       <InterviewerHeader />
       <div className={classes.root}>
         <Grid container spacing={4}>
-          <Grid item lg={3} xs={12}>
+          <Grid item lg={3} xs={0}>
             <DashboardCard
               backgroundColor={appTheme.palette.primary.main}
               height='32rem'
@@ -35,10 +35,10 @@ const InterviewDashboard = () => {
               mt='2rem'
             />
           </Grid>
-          <Grid item xs={7}>
+          <Grid item lg={7} xs={11}>
             <DashboardCard />
           </Grid>
-          <Grid item xs={2}>
+          <Grid item lg={2} xs={0}>
             <DashboardCard
               height='25rem'
             />
