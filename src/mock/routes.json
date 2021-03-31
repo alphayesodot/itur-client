@@ -1,6 +1,16 @@
 {
     "/api/*": "/$1",
-    "/:resource/:id/show": "/:resource/:id",
-    "/posts/:category": "/posts?category=:category",
-    "/articles\\?id=:id": "/posts/:id"
+    "/malshab/:id/": "",
+    "/user/": "",
+    "/user/:id/": "",
+    "/unit/": "",
+    "/unit/:id/": "",
+    "/user/me/unit": "",
+    "/nodesGroup/": "",
+    "/nodesGroup/:id/": "",
+    "/nodesGroup/:id/user/": "",
+    "/node/": "",
+    "/node/:id/": "",
+    "/event/": "",
+    "/event/:id/": ""
 }
