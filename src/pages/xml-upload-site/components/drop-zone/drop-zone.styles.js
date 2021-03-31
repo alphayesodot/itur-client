@@ -4,29 +4,35 @@ import theme from '../../../../theme';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    margin: 'auto',
-    width: '30%',
+    width: '20rem',
     textAlign: 'center',
     padding: '5%',
-    border: '0.07rem dashed',
-    borderColor: theme.palette.section.main,
-    backgroundColor: theme.palette.section.primary,
-    color: theme.palette.section.main,
+    border: '0.12rem dashed',
+    borderColor: theme.palette.section.primary,
+    backgroundColor: theme.palette.section.main,
+    color: theme.palette.section.primary,
     fontSize: '0.8rem'
   },
   uploadButton: {
-    backgroundColor: theme.palette.section.main,
-    color: 'white',
-    padding: ' 0.5em 2em',
-    fontSize: '1rem'
+    backgroundColor: theme.palette.section.secondary,
+    color: 'black',
+    padding: '1.5% 4%',
+    fontSize: '0.7rem',
+    borderRadius: '25rem'
   },
-  remark: {
-    color: 'grey',
-    fontSize: '0.8rem'
+  limitation: {
+    fontSize: '0.7rem',
+    fontWeight: 'bold',
+    marginTop: '1%',
+  },
+  explanation: {
+    color: 'black',
+    fontSize: '0.9rem',
   },
   cloudImg: {
     width: '10rem',
     height: '8rem',
+    marginBottom: '5%',
   },
 }));
 

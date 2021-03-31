@@ -73,10 +73,9 @@ const DropZone = (props) => {
         <div {...getRootProps({ className: classes.root })}>
           <input {...getInputProps()} />
           <img src={cloudImg} className={classes.cloudImg}></img>
-          <p>Drag and Drop to pload files</p>
+          <p className={classes.explanation}>Drag and Drop to pload files</p>
           <Button className={classes.uploadButton}>{t('xmlPage.upload_button')}</Button>
-          <p>{t('xmlPage.size_limitation')}</p>
-          <p className={classes.remark}>XML XL EXCEL XEL are supported</p>
+          <p className={classes.limitation}>{t('xmlPage.size_limitation')}</p>
         </div>
       )}
     </Dropzone>

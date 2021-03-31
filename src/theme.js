@@ -6,14 +6,17 @@ const theme = createMuiTheme({
   },
   palette: {
     primary: {
-      main: 'rgb(26,102,191)',
+      main: 'rgb(225,245,246)',
+      primary: '',
+      secondary: 'rgb(16,171,196)',
     },
     secondary: {
-      main: 'rgb(228,115,91)',
+      main: 'rgb(251,179,53)',
     },
     section: {
-      main: 'rgb(71,159,251)',
-      primary: 'rgb(238,246,255)',
+      main: 'rgb(247,251,252)',
+      primary: 'rgb(16,171,196)',
+      secondary: 'rgb(251,179,53)',
     },
   },
 });

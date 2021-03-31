@@ -4,9 +4,11 @@ import LinearProgress from '@material-ui/core/LinearProgress';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
-import DescriptionOutlinedIcon from '@material-ui/icons/DescriptionOutlined';
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
 import { useTranslation } from 'react-i18next';
 import useStyles from './progress-box.styles';
+import xmlImg from '../../images/xmlFile.png';
 
 const LinearProgressWithLabel = (props) => {
   const classes = useStyles();
@@ -14,14 +16,17 @@ const LinearProgressWithLabel = (props) => {
   const { t } = useTranslation();
   return (
     <Box className={classes.root}>
-      <Box className={classes.infoBox}>
-        <Box className={classes.fileName}>
-          {fileName} <DescriptionOutlinedIcon fontSize="small" />
+      <img src={xmlImg}></img>
+      <Box className={classes.upload}>
+        <Box className={classes.infoBox}>
+          <span class={classes.fileName}>{fileName}</span>
+          <IconButton className={classes.cancelButton} aria-label="cancel upload" component="span">
+            <CloseIcon style={{ fontSize: 17 }} />
+          </IconButton>
         </Box>
-        <Button>{t('xmlPage.cancel')}</Button>
+        <Typography className={classes.typography}>{`${value} KB`}</Typography>
+        <LinearProgress className={classes.progressBar} variant="determinate" {...props} />
       </Box>
-      <LinearProgress className={classes.progressBar} variant="determinate" {...props} />
-      <Typography className={classes.typography}>{`${value}% uploaded`}</Typography>
     </Box>
   );
 };
@@ -35,7 +40,6 @@ LinearProgressWithLabel.propTypes = {
 };
 
 const ProgressBox = (props) => {
-  const classes = useStyles();
   const { progress } = props;
   return <LinearProgressWithLabel value={progress} fileName={'filename.xml'} />;
 };
