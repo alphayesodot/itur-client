@@ -12,7 +12,7 @@ const useStyles = makeStyles(() => ({
     justifyContent: 'space-between',
   },
   notForMobile: {
-    '@media (max-width:500px)': {
+    '@media (max-width:600px)': {
       display: 'none',
     },
   },
@@ -29,7 +29,7 @@ const useStyles = makeStyles(() => ({
     backgroundColor: apptheme.palette.primary.secondary,
     borderRadius: '20px',
     width: '7rem',
-    height: '2.6rem',
+    height: '2.4rem',
     fontWeight: 'bold',
     marginRight: '2rem',
     '&:hover': {

@@ -2,13 +2,11 @@ import React from 'react';
 import MenuIcon from '@material-ui/icons/Menu';
 import NotificationsNoneIcon from '@material-ui/icons/NotificationsNone';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import {
-  Toolbar, AppBar, IconButton, Button,
-} from '@material-ui/core';
+import { Toolbar, AppBar, IconButton, Button } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
-import useStyles from './Header.styles';
+import useStyles from './InterviewerHeader.styles';
 
-const Header = () => {
+const InterviewerHeader = () => {
   const classes = useStyles();
   const { t } = useTranslation();
 
@@ -19,11 +17,11 @@ const Header = () => {
   ];
 
   return (
-    <AppBar position="static" className={classes.root}>
+    <AppBar position='static' className={classes.root}>
       <Toolbar className={classes.toolbar}>
         <div>
           <Button>
-            <img src="radar-logo.png" alt="" />
+            <img src='radar-logo.png' alt='' />
           </Button>
         </div>
         <div>
@@ -54,16 +52,16 @@ const Header = () => {
           ].map((icon) => (
             <IconButton
               className={`${classes.menuButton} ${classes.notForMobile}`}
-              color="inherit"
-              aria-label="menu"
+              color='inherit'
+              aria-label='menu'
             >
               {icon}
             </IconButton>
           ))}
           <IconButton
             className={classes.menuButton}
-            color="inherit"
-            aria-label="menu"
+            color='inherit'
+            aria-label='menu'
           >
             <MenuIcon />
           </IconButton>
@@ -73,4 +71,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default InterviewerHeader;
