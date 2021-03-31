@@ -1,20 +1,49 @@
 {
-    "malshabs": [
-      { "id": 1, "title": "json-server", "author": "typicode" }
+    "malshab": [
+      { 
+          "id": "111111111111" 
+        }
     ],
-    "users": [
-      { "id": 1, "body": "some comment", "postId": 1 }
+    "user": [
+      { 
+          "id": "111111111111", 
+          "name": "user",
+          "role": "role",
+          "unit": "unit" 
+        }
     ],
-    "units": [
-        { "id": 1, "body": "some comment", "postId": 1 }
+    "unit": [
+        { 
+            "id": "1", 
+            "unit": "unit"
+        }
     ],
-    "nodesGroups": [
-        { "id": 1, "body": "some comment", "postId": 1 }
+    "nodesGroup": [
+        { 
+            "id": "111111111111", 
+            "name": "nodesgroup", 
+            "unitId":  "unitId", 
+            "usersIds": [],
+            "nodeIds": []
+        },
+        { 
+            "id": "2222222222222", 
+            "name": "nodesgroup2", 
+            "unitId":  "unitId", 
+            "usersIds": ["hi"],
+            "nodeIds": []
+        }
     ],
-    "nodes": [
-        { "id": 1, "body": "some comment", "postId": 1 }
+    "node": [
+        { 
+            "id": "111111111111", 
+            "name": "node", 
+            "type": "type",
+            "unit": "unit",
+            "nodesGroupId": "11111111"
+     }
     ],
-    "events": [
+    "event": [
         { 
             "node": {
                 "id": "111111111111",
@@ -25,10 +54,12 @@
                 "firstName": "firstName",
                 "lastName": "lastName"
             },
-            "time": "",
-            "id": 1, 
-            "body": "some comment", 
-            "postId": 1 
+            "time": "Wed Mar 31 2021 16:25:36 GMT+0300 (Israel Daylight Time)",
+            "location": "",
+            "interviewersIds": [""],
+            "url": "url",
+            "results": [],
+            "occured": false
         }
     ]
   }

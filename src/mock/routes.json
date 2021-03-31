@@ -1,16 +1,5 @@
 {
     "/api/*": "/$1",
-    "/malshab/:id/": "",
-    "/user/": "",
-    "/user/:id/": "",
-    "/unit/": "",
-    "/unit/:id/": "",
-    "/user/me/unit": "",
-    "/nodesGroup/": "",
-    "/nodesGroup/:id/": "",
-    "/nodesGroup/:id/user/": "",
-    "/node/": "",
-    "/node/:id/": "",
-    "/event/": "",
-    "/event/:id/": ""
+    "/user/me/unit": "/unit/1",
+    "/nodesGroup/:id/user/": "/nodesGroup/:id/nodesGroup.usersIds"
 }
