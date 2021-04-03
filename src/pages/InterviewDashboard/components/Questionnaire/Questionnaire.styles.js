@@ -1,0 +1,47 @@
+import { makeStyles } from '@material-ui/core/styles';
+import apptheme from '../../../../theme';
+
+const useStyles = makeStyles(() => ({
+  interviewScheduleBtn: {
+    backgroundColor: apptheme.palette.primary.secondary,
+    borderRadius: '20px',
+    width: '6rem',
+    height: '2.2rem',
+    '&:hover': {
+      backgroundColor: '#cc9432',
+      color: '#fff',
+    },
+    fontSize: '0.75rem',
+  },
+  label: {
+    transitionDuration: '0.3s',
+  },
+  toolbar: {
+    display: 'flex',
+    justifyContent: 'space-between',
+  },
+  questionsHeader: {
+    color: apptheme.palette.primary.secondary,
+    fontWeight: 500,
+  },
+  list: {
+    overflowY: 'scroll',
+    margin: 0,
+    padding: 0,
+    height: '26rem',
+    direction: 'rtl',
+    paddingLeft: '1rem',
+    '&::-webkit-scrollbar': {
+      width: '0.5rem',
+      backgroundColor: '#ffffff12',
+      borderRadius: '5px',
+    },
+    '&::-webkit-scrollbar-thumb': {
+      backgroundColor: apptheme.palette.primary.secondary,
+      borderRadius: '5px',
+      width: '0.5rem',
+    },
+  },
+}));
+
+export default useStyles;

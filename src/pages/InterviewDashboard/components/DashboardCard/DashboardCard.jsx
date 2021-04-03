@@ -1,6 +1,4 @@
-// import useStyles from './DashboardCard.styles';
-
-const DashboardCard = ({ backgroundColor, height, width, mt }) => (
+const DashboardCard = ({ backgroundColor, height, width, mt, children }) => (
   <div
     style={{
       backgroundColor: backgroundColor || '#fff',
@@ -9,7 +7,9 @@ const DashboardCard = ({ backgroundColor, height, width, mt }) => (
       borderRadius: '15px',
       marginTop: mt,
     }}
-  />
+  >
+    {children}
+  </div>
 );
 
 export default DashboardCard;

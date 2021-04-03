@@ -1,4 +1,3 @@
-import React from 'react';
 import MenuIcon from '@material-ui/icons/Menu';
 import NotificationsNoneIcon from '@material-ui/icons/NotificationsNone';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
@@ -11,9 +10,9 @@ const InterviewerHeader = () => {
   const { t } = useTranslation();
 
   const headerTitles = [
-    t('headerTitles.virtualInterview'),
-    t('headerTitles.malshabData'),
-    t('headerTitles.guidePreperationKit'),
+    t('interviewDashboard.headerTitles.virtualInterview'),
+    t('interviewDashboard.headerTitles.malshabData'),
+    t('interviewDashboard.headerTitles.guidePreperationKit'),
   ];
 
   return (
@@ -31,11 +30,12 @@ const InterviewerHeader = () => {
               label: classes.label,
             }}
           >
-            {t('headerTitles.interviewsSchedule')}
+            {t('interviewDashboard.headerTitles.interviewsSchedule')}
           </Button>
 
           {headerTitles.map((label) => (
             <Button
+              key={Math.random()}
               classes={{
                 root: `${classes.toolbarBtn} ${classes.notForMobile}`,
                 label: classes.label,
@@ -51,6 +51,7 @@ const InterviewerHeader = () => {
             <AccountCircleIcon className={classes.secondary} />,
           ].map((icon) => (
             <IconButton
+              key={Math.random()}
               className={`${classes.menuButton} ${classes.notForMobile}`}
               color='inherit'
               aria-label='menu'

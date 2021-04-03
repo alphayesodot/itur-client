@@ -5,3 +5,12 @@ body, html {
 @font-face {
   /* TODO: Add font */
 }
+
+* {
+  font-family: 'system-ui';
+  user-select: none;
+}
+
+p {
+  cursor: context-menu
+}
