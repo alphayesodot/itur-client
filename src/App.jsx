@@ -1,7 +1,5 @@
 import React from 'react';
-import {
-  BrowserRouter as Router, Switch, Route,
-} from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import Home from './pages/home/index';
 import Header from './common/interviewer-header/Header';
@@ -15,10 +13,10 @@ const App = () => {
     <Router classes={classes.root}>
       <Header />
       <Switch>
-        <Route path="/" exact>
+        <Route path='/' exact>
           <Home />
         </Route>
-        <Route path="/interview-dashboard">
+        <Route path='/interview-dashboard'>
           <h1>interview-dashboard</h1>
         </Route>
       </Switch>

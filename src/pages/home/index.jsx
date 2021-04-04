@@ -13,7 +13,7 @@ const Home = () => {
   return (
     <div className={classes.root}>
       <Typography className={classes.headline}>{t('title.example')}</Typography>
-      <button type="submit" onClick={notify}>
+      <button type='submit' onClick={notify}>
         Notify Example !
       </button>
     </div>

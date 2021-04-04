@@ -5,3 +5,7 @@ body, html {
 @font-face {
   /* TODO: Add font */
 }
+
+a {  
+  text-decoration: none;  
+}

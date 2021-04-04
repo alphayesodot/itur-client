@@ -20,6 +20,10 @@
     ],
     "rules": {
         "linebreak-style": 0,
-        "quotes": [2, "single", { "avoidEscape": true }]
+        "quotes": [2, "single", { "avoidEscape": true }],
+        "jsx-quotes": ["error", "prefer-single"],
+        "object-curly-newline": 0,
+        "react/react-in-jsx-scope": "off",
+        "react/prop-types": "off"
     }
 }

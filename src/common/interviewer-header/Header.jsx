@@ -2,9 +2,8 @@ import React from 'react';
 import MenuIcon from '@material-ui/icons/Menu';
 import NotificationsNoneIcon from '@material-ui/icons/NotificationsNone';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import {
-  Toolbar, AppBar, IconButton, Button,
-} from '@material-ui/core';
+import { Link } from 'react-router-dom';
+import { Toolbar, AppBar, IconButton, Button } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 import useStyles from './Header.styles';
 
@@ -13,38 +12,45 @@ const Header = () => {
   const { t } = useTranslation();
 
   const headerTitles = [
-    t('headerTitles.virtualInterview'),
-    t('headerTitles.malshabData'),
-    t('headerTitles.guidePreperationKit'),
+    { title: t('headerTitles.virtualInterview'), path: '/digital-interview' },
+    { title: t('headerTitles.malshabData'), path: '/malshab-data' },
+    {
+      title: t('headerTitles.appraiserPreperationKit'),
+      path: '/preperation-kit',
+    },
   ];
 
   return (
-    <AppBar position="static" className={classes.root}>
+    <AppBar position='static' className={classes.root}>
       <Toolbar className={classes.toolbar}>
         <div>
           <Button>
-            <img src="radar-logo.png" alt="" />
+            <img src='radar-logo.png' alt='' />
           </Button>
         </div>
         <div>
-          <Button
-            classes={{
-              root: classes.interviewScheduleBtn,
-              label: classes.label,
-            }}
-          >
-            {t('headerTitles.interviewsSchedule')}
-          </Button>
-
-          {headerTitles.map((label) => (
+          <Link to='/interviewsSchedule'>
             <Button
               classes={{
-                root: `${classes.toolbarBtn} ${classes.notForMobile}`,
+                root: classes.interviewScheduleBtn,
                 label: classes.label,
               }}
             >
-              {label}
+              {t('headerTitles.interviewsSchedule')}
             </Button>
+          </Link>
+
+          {headerTitles.map(({ title, path }) => (
+            <Link to={path}>
+              <Button
+                classes={{
+                  root: `${classes.toolbarBtn} ${classes.notForMobile}`,
+                  label: classes.label,
+                }}
+              >
+                {title}
+              </Button>
+            </Link>
           ))}
         </div>
         <div>
@@ -54,16 +60,16 @@ const Header = () => {
           ].map((icon) => (
             <IconButton
               className={`${classes.menuButton} ${classes.notForMobile}`}
-              color="inherit"
-              aria-label="menu"
+              color='inherit'
+              aria-label='menu'
             >
               {icon}
             </IconButton>
           ))}
           <IconButton
             className={classes.menuButton}
-            color="inherit"
-            aria-label="menu"
+            color='inherit'
+            aria-label='menu'
           >
             <MenuIcon />
           </IconButton>
