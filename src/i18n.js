@@ -13,7 +13,7 @@ const resources = {
           interviewsSchedule: 'לו"ז ראיונות',
           virtualInterview: 'ראיון וירטואלי',
           malshabData: 'נתוני מלש"ב',
-          guidePreperationKit: 'ערכת הכנה למדריך',
+          guidePreperationKit: 'ערכת הכנה למעריך',
         },
         questionnaire: {
           expandedQuestionnaire: 'שאלון מורחב',

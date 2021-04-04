@@ -51,7 +51,8 @@ const Questionnaire = () => {
           {questions.map((question) => (
             <Question
               question={question}
-              setAnswerFunction={() => setAnswers((current) => {})}
+              setAnswerFunction={() => setAnswers((current) => { })}
+              key={Math.random()}
             />
           ))}
         </List>
