@@ -12,11 +12,17 @@ const Header = () => {
   const { t } = useTranslation();
 
   const headerTitles = [
-    { title: t('headerTitles.virtualInterview'), path: '/digital-interview' },
-    { title: t('headerTitles.malshabData'), path: '/malshab-data' },
+    {
+      title: t('headerTitles.virtualInterview'),
+      path: '/interview-dashboard/digital-interview',
+    },
+    {
+      title: t('headerTitles.malshabData'),
+      path: '/interview-dashboard/malshab-data',
+    },
     {
       title: t('headerTitles.appraiserPreperationKit'),
-      path: '/preperation-kit',
+      path: '/interview-dashboard/preperation-kit',
     },
   ];
 
@@ -24,12 +30,14 @@ const Header = () => {
     <AppBar position='static' className={classes.root}>
       <Toolbar className={classes.toolbar}>
         <div>
-          <Button>
-            <img src='radar-logo.png' alt='' />
-          </Button>
+          <Link to='/interview-dashboard'>
+            <Button>
+              <img src='radar-logo.png' alt='' />
+            </Button>
+          </Link>
         </div>
         <div>
-          <Link to='/interviewsSchedule'>
+          <Link to='/interview-dashboard/interviewsSchedule'>
             <Button
               classes={{
                 root: classes.interviewScheduleBtn,
