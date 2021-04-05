@@ -10,9 +10,8 @@ const resources = {
       },
       headerTitles: {
         interviewsSchedule: 'לו"ז ראיונות',
-        virtualInterview: 'ראיון וירטואלי',
         malshabData: 'נתוני מלש"ב',
-        appraiserPreperationKit: 'ערכת הכנה למדריך',
+        appraiserPreperationKit: 'ערכת הכנה למעריך',
       },
       button: {},
     },

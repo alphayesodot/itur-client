@@ -13,10 +13,6 @@ const Header = () => {
 
   const headerTitles = [
     {
-      title: t('headerTitles.virtualInterview'),
-      path: '/interview-dashboard/digital-interview',
-    },
-    {
       title: t('headerTitles.malshabData'),
       path: '/interview-dashboard/malshab-data',
     },
@@ -30,14 +26,14 @@ const Header = () => {
     <AppBar position='static' className={classes.root}>
       <Toolbar className={classes.toolbar}>
         <div>
-          <Link to='/interview-dashboard'>
+          <Link to='/'>
             <Button>
               <img src='radar-logo.png' alt='' />
             </Button>
           </Link>
         </div>
         <div>
-          <Link to='/interview-dashboard/interviewsSchedule'>
+          <Link to='/interview-dashboard'>
             <Button
               classes={{
                 root: classes.interviewScheduleBtn,
