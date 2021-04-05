@@ -6,16 +6,10 @@ import AmericanAnswer from './AmericanAnswer/AmericanAnswer';
 const Question = ({ question, setAnswerFunction }) => {
   const classes = useStyles();
   return (
-    <ListItem button className={classes.li} style={{ textAlign: 'right' }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-        <div>
-          <p style={{ fontSize: '0.7rem', cursor: 'inherit' }}>
-            {question}
-          </p>
-        </div>
-        <div style={{ display: 'flex' }}>
-          <AmericanAnswer />
-        </div>
+    <ListItem button className={classes.li}>
+      <div className={classes.qaContainer}>
+        <p className={classes.question}>{question}</p>
+        <AmericanAnswer />
       </div>
     </ListItem>
   );

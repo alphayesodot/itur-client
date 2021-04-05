@@ -10,6 +10,14 @@ const useStyles = makeStyles(() => ({
       backgroundColor: 'rgb(255 255 255 / 20%)',
     },
   },
+  qaContainer: {
+    display: 'flex',
+    justifyContent: 'space-between',
+  },
+  question: {
+    fontSize: '0.7rem',
+    cursor: 'inherit',
+  },
 }));
 
 export default useStyles;
