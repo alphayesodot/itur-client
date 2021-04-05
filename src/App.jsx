@@ -1,10 +1,8 @@
 import React from 'react';
-import {
-  BrowserRouter as Router, Switch, Route,
-} from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import Home from './pages/home/index';
-import NavBar from './common/navbar/navbar';
+import Header from './common/interviewer-header/Header';
 import useStyles from './App.styles';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -13,10 +11,13 @@ const App = () => {
 
   return (
     <Router classes={classes.root}>
-      <NavBar />
+      <Header />
       <Switch>
-        <Route path="/">
+        <Route path='/' exact>
           <Home />
+        </Route>
+        <Route path='/interview-dashboard'>
+          <h1>interview-dashboard</h1>
         </Route>
       </Switch>
       <ToastContainer />
