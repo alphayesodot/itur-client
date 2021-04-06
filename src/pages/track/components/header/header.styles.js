@@ -29,6 +29,13 @@ const useStyles = makeStyles((theme) => ({
   nodeGroup: {
     direction: 'rtl',
   },
+  date: {
+    borderRadius: 30,
+    height: '2em',
+    padding: '0.25em',
+    paddingLeft: '6em',
+    background: 'white',
+  },
 }));
 
 export default useStyles;
