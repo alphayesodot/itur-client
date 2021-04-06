@@ -7,6 +7,7 @@ const resources = {
       // TODO: Add translations by subjects
       title: {
         example: 'מערכת איתור',
+        unit: 'יחידה',
       },
       button: {},
     },

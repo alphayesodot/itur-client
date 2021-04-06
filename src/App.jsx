@@ -4,6 +4,7 @@ import {
 } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import Home from './pages/home/index';
+import Track from './pages/track/index';
 import NavBar from './common/navbar/navbar';
 import useStyles from './App.styles';
 import 'react-toastify/dist/ReactToastify.css';
@@ -15,8 +16,11 @@ const App = () => {
     <Router classes={classes.root}>
       <NavBar />
       <Switch>
-        <Route path="/">
+        <Route path="/" exact>
           <Home />
+        </Route>
+        <Route path="/track">
+          <Track />
         </Route>
       </Switch>
       <ToastContainer />
