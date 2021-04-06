@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import Home from './pages/home/index';
-import Header from './common/interviewer-header/Header';
+import InterviewerHeader from './common/interviewer-header/interviewer-header';
 import useStyles from './App.styles';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -11,7 +11,7 @@ const App = () => {
 
   return (
     <Router classes={classes.root}>
-      <Header />
+      <InterviewerHeader />
       <Switch>
         <Route path='/' exact>
           <Home />
