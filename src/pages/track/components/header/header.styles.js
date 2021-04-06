@@ -41,11 +41,15 @@ const useStyles = makeStyles((theme) => ({
     padding: '0.25em',
     paddingLeft: '6em',
     background: 'white',
+    borderBottom: 'none',
   },
   button: {
     background: theme.palette.primary.secondary,
     borderRadius: 30,
     padding: '0.4em 2em',
+    '&:hover': {
+      background: 'white',
+    },
   },
 }));
 

@@ -19,11 +19,7 @@ const Header = ({ unit }) => {
         </Typography>
         <Select
           className={classes.select}
-          inputProps={{
-            classes: {
-              icon: classes.icon,
-            },
-          }}
+          inputProps={{ classes: { icon: classes.icon } }}
           disableUnderline
         >
           {['מסלול', 'מסלולללללל'].map((nodeGroup) => (
@@ -44,8 +40,8 @@ const Header = ({ unit }) => {
             month: '2-digit',
             day: '2-digit',
           })}
-          InputLabelProps={{
-            shrink: true,
+          InputProps={{
+            disableUnderline: true,
           }}
         />
       </div>
