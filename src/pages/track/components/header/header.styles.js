@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
   },
   unit: {
     color: 'white',
-    fontSize: '1em',
+    fontSize: '1.15em',
   },
   select: {
     width: '10em',
