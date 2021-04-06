@@ -1,4 +1,5 @@
 {
+    "root": true,
     "env": {
         "browser": true,
         "es2021": true
@@ -18,6 +19,11 @@
         "react"
     ],
     "rules": {
-        "linebreak-style": 0
+        "linebreak-style": 0,
+        "quotes": [2, "single", { "avoidEscape": true }],
+        "jsx-quotes": ["error", "prefer-single"],
+        "object-curly-newline": 0,
+        "react/react-in-jsx-scope": "off",
+        "react/prop-types": "off"
     }
 }

@@ -9,6 +9,11 @@ const resources = {
         example: 'מערכת איתור',
         unit: 'יחידה',
       },
+      headerTitles: {
+        interviewsSchedule: 'לו"ז ראיונות',
+        malshabData: 'נתוני מלש"ב',
+        appraiserPreperationKit: 'ערכת הכנה למעריך',
+      },
       button: {},
     },
   },

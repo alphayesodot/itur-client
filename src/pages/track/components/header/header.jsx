@@ -9,7 +9,7 @@ const Header = () => {
 
   return (
     <div className={classes.root}>
-      <Typography className={classes.unitTitle}>
+      <Typography className={classes.unit}>
         {t('title.unit')}
         :
       </Typography>
