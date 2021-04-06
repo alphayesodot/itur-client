@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import useStyles from './navbar.styles';
+import useStyles from './Navbar.styles';
 
 const NavBar = () => {
   const classes = useStyles();

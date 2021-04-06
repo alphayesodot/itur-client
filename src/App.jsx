@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
-import Home from './pages/home/index';
-import InterviewerHeader from './common/interviewer-header/interviewer-header';
+import Home from './pages/Home/index';
+import InterviewerHeader from './common/InterviewerHeader/InterviewerHeader';
 import useStyles from './App.styles';
 import 'react-toastify/dist/ReactToastify.css';
 
