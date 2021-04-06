@@ -14,7 +14,9 @@ const resources = {
         malshabData: 'נתוני מלש"ב',
         appraiserPreperationKit: 'ערכת הכנה למעריך',
       },
-      button: {},
+      button: {
+        newSchedule: 'לוז חדש',
+      },
     },
   },
 };

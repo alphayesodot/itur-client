@@ -5,12 +5,18 @@ const useStyles = makeStyles((theme) => ({
     background: theme.palette.primary.main,
     width: '95%',
     height: '3.5em',
-    padding: '1em',
+    padding: '1.25em',
     borderRadius: 15,
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'space-around',
+    justifyContent: 'space-between',
     direction: 'rtl',
+  },
+  main: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-around',
+    width: '35%',
   },
   unit: {
     color: 'white',
@@ -35,6 +41,11 @@ const useStyles = makeStyles((theme) => ({
     padding: '0.25em',
     paddingLeft: '6em',
     background: 'white',
+  },
+  button: {
+    background: theme.palette.primary.secondary,
+    borderRadius: 30,
+    padding: '0.4em 2em',
   },
 }));
 
