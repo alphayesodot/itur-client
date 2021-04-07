@@ -33,6 +33,13 @@ const Header = () => {
           </Link>
         </div>
         <div>
+          <Link to='/user-managing'>
+            <Button>
+              <h5>וזר טכני</h5>
+            </Button>
+          </Link>
+        </div>
+        <div>
           <Link to='/interview-dashboard'>
             <Button
               classes={{
