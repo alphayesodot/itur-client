@@ -1,5 +1,0 @@
-{
-    "/api/*": "/$1",
-    "/user/me/unit": "/unit/1",
-    "/nodesGroup/:id/user/": "/nodesGroup/:id/nodesGroup.usersIds"
-}

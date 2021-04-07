@@ -3,6 +3,7 @@
         "browser": true,
         "es2021": true
     },
+    "root": true,
     "extends": [
         "plugin:react/recommended",
         "airbnb"
@@ -18,6 +19,8 @@
         "react"
     ],
     "rules": {
-        "linebreak-style": 0
+        "linebreak-style": 0,
+        "import/no-extraneous-dependencies": 0,
+        "import/extensions": 0
     }
 }
