@@ -8,6 +8,11 @@ const resources = {
       title: {
         example: 'מערכת איתור',
       },
+      headerTitles: {
+        interviewsSchedule: 'לו"ז ראיונות',
+        malshabData: 'נתוני מלש"ב',
+        appraiserPreperationKit: 'ערכת הכנה למעריך',
+      },
       button: {},
 
       xmlPage: {

@@ -8,7 +8,7 @@ import useStyles from './drop-zone.styles';
 import config from '../../config';
 
 const DropZone = (props) => {
-  const { setProgress, setUploadFlag } = props;
+  const { files, setFiles } = props;
   const classes = useStyles();
   const { t } = useTranslation();
   const acceptedFileTypesArray = config.dropzone.acceptedFileTypes
@@ -19,46 +19,40 @@ const DropZone = (props) => {
     baseURL: config.dropzone.baseURL,
   });
 
-  const verifyFile = (files) => {
-    if (files && files.length > 0) {
-      const currentFile = files[0];
-      const currentFileType = currentFile.type;
-      const currentFileSize = currentFile.size;
-      if (currentFileSize > config.dropzone.maxSize) {
-        alert('This file is not allowed. ' + currentFileSize + ' bytes is too large');
-        return false;
-      }
-      if (!config.dropzone.acceptedFileTypesArray.includes(currentFileType)) {
-        alert('This file is not allowed.');
-        return false;
-      }
-      return true;
-    }
+  const createErrorMessege = (errorsArray) => {
+    let errorMessage = '';
+    errorsArray.forEach((e) => {
+      errorMessage = errorMessage.concat(`${e.code}: ${e.message}\n`);
+    });
+    return errorMessage;
   };
 
-  const handleOnDrop = (files, rejectedFiles) => {
-    if (rejectedFiles && rejectedFiles.length > 0) {
-      verifyFile(rejectedFiles);
-    }
+  const handleOnDrop = (acceptedFiles, rejectedFilesObjects) => {
+    rejectedFilesObjects.forEach((fileObject) => {
+      alert(createErrorMessege(fileObject.errors));
+    });
 
-    if (files && files.length > 0) {
-      const isVerified = verifyFile(files);
-      if (isVerified) {
-        setProgress(0);
-        setUploadFlag(true);
-
-        const currentFile = files[0];
+    if (acceptedFiles.length > 0) {
+      let updatedFiles = [...files];
+      acceptedFiles.forEach((f) => {
+        f.progress = 0;
+        updatedFiles = updatedFiles.concat(f);
+      });
+      setFiles(updatedFiles);
+      acceptedFiles.forEach((acceptedFile) => {
         let formData = new FormData();
-        formData.append('file', files[0]);
-        axiosInstance.post('/upload_file', formData, {
+        formData.append('file', acceptedFile);
+        const res = axiosInstance.post(config.server.baseURL, formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
           },
           onUploadProgress: (data) => {
-            setProgress(Math.round((100 * data.loaded) / data.total));
+            const fileIndex = updatedFiles.findIndex((f) => f.path === acceptedFile.path);
+            updatedFiles[fileIndex].progress = Math.round((100 * data.loaded) / data.total);
+            setFiles([...updatedFiles]);
           },
         });
-      }
+      });
     }
   };
 
@@ -66,7 +60,6 @@ const DropZone = (props) => {
     <Dropzone
       onDrop={handleOnDrop}
       accept={config.dropzone.acceptedFileTypes}
-      multiple={false}
       maxSize={config.dropzone.maxSize}
     >
       {({ getRootProps, getInputProps }) => (

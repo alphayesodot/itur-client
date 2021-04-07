@@ -1,18 +1,16 @@
-import React from 'react';
-import ProgressBox from './components/progress-box/progress-box';
+import React, { useState } from 'react';
+import ProgressBoxes from './components/progress-box/progress-boxes';
 import DropZone from './components/drop-zone/drop-zone';
-import { Container } from '@material-ui/core';
 import useStyles from './index.styles';
 
 const UploadXmlPage = () => {
   const classes = useStyles();
-  const [progress, setProgress] = React.useState(0);
-  const [showProgressBox, setShowProgressBox] = React.useState(true);
-  const progressBox = <ProgressBox fileName={'filename.txt'} progress={progress}></ProgressBox>;
+  const [files, setFiles] = useState([]);
+
   return (
     <div className={classes.root}>
-      <DropZone setProgress={setProgress} setShowProgressBox={setShowProgressBox}></DropZone>
-      {showProgressBox ? progressBox : null}
+      <DropZone files={files} setFiles={setFiles} />
+      <ProgressBoxes files={files} setFiles={setFiles} />
     </div>
   );
 };
