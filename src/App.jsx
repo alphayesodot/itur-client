@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
-import Home from './pages/home/index';
+import Home from './pages/Home/index';
 import Header from './common/interviewer-header/Header';
 import AuthService from './services/auth.service';
 import ConfigService from './services/config.service';
