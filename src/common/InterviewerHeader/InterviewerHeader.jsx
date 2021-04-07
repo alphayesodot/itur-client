@@ -11,7 +11,7 @@ const Header = () => {
   const classes = useStyles();
   const { t } = useTranslation();
 
-  const headerTitles = [
+  const headers = [
     {
       title: t('headerTitles.malshabData'),
       path: '/interview-dashboard/malshab-data',
@@ -21,6 +21,15 @@ const Header = () => {
       path: '/interview-dashboard/preperation-kit',
     },
   ];
+
+  const iconButtons = [{
+    icon: <NotificationsNoneIcon className={classes.secondary} />,
+    path: '/notifications',
+  },
+  {
+    icon: <AccountCircleIcon className={classes.secondary} />,
+    path: '/account',
+  }];
 
   return (
     <AppBar position='static' className={classes.root}>
@@ -44,8 +53,8 @@ const Header = () => {
             </Button>
           </Link>
 
-          {headerTitles.map(({ title, path }) => (
-            <Link to={path}>
+          {headers.map(({ title, path }) => (
+            <Link to={path} key={path}>
               <Button
                 classes={{
                   root: `${classes.toolbarBtn} ${classes.notForMobile}`,
@@ -58,14 +67,14 @@ const Header = () => {
           ))}
         </div>
         <div>
-          {[
-            <NotificationsNoneIcon className={classes.secondary} />,
-            <AccountCircleIcon className={classes.secondary} />,
-          ].map((icon) => (
+          {iconButtons.map(({ icon, path }) => (
             <IconButton
               className={`${classes.menuButton} ${classes.notForMobile}`}
               color='inherit'
               aria-label='menu'
+              key={path}
+              component={Link}
+              to={path}
             >
               {icon}
             </IconButton>
