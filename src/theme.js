@@ -2,11 +2,12 @@ import { createMuiTheme } from '@material-ui/core/styles';
 
 const theme = createMuiTheme({
   typography: {
-    // TODO: Add font
+    fontFamily: 'system-ui',
   },
   palette: {
     primary: {
-      main: 'rgb(26,102,191)',
+      main: '#0f2231',
+      secondary: '#fcb333',
     },
     secondary: {
       main: 'rgb(228,115,91)',
