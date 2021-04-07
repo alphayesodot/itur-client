@@ -10,6 +10,7 @@ class ConfigService {
     const { data } = await axios.get('/config', { ...headers });
     config.uri = { ...data.uri };
     config.token_name = data.token_name;
+    config.secret = data.secret;
   }
 }
 
