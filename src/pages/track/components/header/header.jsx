@@ -7,7 +7,6 @@ import useStyles from './Header.styles';
 const Header = ({ unit }) => {
   const classes = useStyles();
   const { t } = useTranslation();
-
   return (
     <div className={classes.root}>
       <div className={classes.main}>
