@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import { Typography, Select, MenuItem, TextField, Button } from '@material-ui/core';
-import useStyles from './header.styles';
+import useStyles from './Header.styles';
 
 const Header = ({ unit }) => {
   const classes = useStyles();
