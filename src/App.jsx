@@ -8,7 +8,6 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
   const classes = useStyles();
-
   return (
     <Router classes={classes.root}>
       <InterviewerHeader />

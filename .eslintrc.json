@@ -4,6 +4,7 @@
         "browser": true,
         "es2021": true
     },
+    "root": true,
     "extends": [
         "plugin:react/recommended",
         "airbnb"
@@ -21,6 +22,8 @@
     ],
     "rules": {
         "linebreak-style": 0,
+        "import/no-extraneous-dependencies": 0,
+        "import/extensions": 0,
         "quotes": [2, "single", { "avoidEscape": true }],
         "jsx-quotes": ["error", "prefer-single"],
         "comma-dangle": [2, "always-multiline"],
