@@ -6,22 +6,19 @@ import AuthService from './services/auth.service';
 import ConfigService from './services/config.service';
 import Header from './common/InterviewerHeader/InterviewerHeader';
 import useStyles from './App.styles';
+import UserStoreInstance from './stores/User.store';
 import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
   const classes = useStyles();
   const [isLoading, setIsLoading] = useState(true);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [currentUser, setCurrentUser] = useState(undefined);
-
-  // TODO: Modify current user in store
-  if (currentUser);
 
   const initAuthUser = useCallback(() => {
     AuthService.getAuthUser()
       .then((res) => {
         if (res) {
-          setCurrentUser(res);
+          UserStoreInstance.setUserProfile(res);
           setIsAuthenticated(true);
         } else {
           setIsAuthenticated(false);
