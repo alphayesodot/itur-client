@@ -5,6 +5,7 @@ import Home from './pages/Home/index';
 import Header from './common/interviewer-header/Header';
 import AuthService from './services/auth.service';
 import ConfigService from './services/config.service';
+import InterviewerHeader from './common/InterviewerHeader/InterviewerHeader';
 import useStyles from './App.styles';
 import 'react-toastify/dist/ReactToastify.css';
 

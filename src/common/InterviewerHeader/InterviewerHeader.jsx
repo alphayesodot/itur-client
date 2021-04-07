@@ -5,7 +5,7 @@ import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import { Link } from 'react-router-dom';
 import { Toolbar, AppBar, IconButton, Button } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
-import useStyles from './Header.styles';
+import useStyles from './InterviewerHeader.styles';
 
 const Header = () => {
   const classes = useStyles();
