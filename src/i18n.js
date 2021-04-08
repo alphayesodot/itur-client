@@ -12,8 +12,15 @@ const resources = {
         interviewsSchedule: 'לו"ז ראיונות',
         malshabData: 'נתוני מלש"ב',
         appraiserPreperationKit: 'ערכת הכנה למעריך',
+        addUsers: 'הוספת משתמשים',
       },
-      button: {},
+      button: {
+        addUnit: 'הוספת יחידה +',
+      },
+      text: {
+        users: 'משתמשים',
+        units: 'יחידות',
+      },
     },
   },
 };

@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import Home from './pages/home/index';
-import UserManaging from './pages/user-managing/index';
+import UserManaging from './pages/UserManaging/index';
 import InterviewerHeader from './common/InterviewerHeader/InterviewerHeader';
 import useStyles from './App.styles';
 import 'react-toastify/dist/ReactToastify.css';
@@ -21,7 +21,7 @@ const App = () => {
           <h1>interview-dash board</h1>
         </Route>
         <Route path='/user-managing'>
-          <UserManaging />
+          <UserManaging numberOfUnits={21} />
         </Route>
       </Switch>
       <ToastContainer />
