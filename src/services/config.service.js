@@ -7,7 +7,8 @@ const headers = {
 
 class ConfigService {
   static async setConfigVariables() {
-    const { data } = await axios.get('/config', { ...headers });
+    // TODO: Change to /config
+    const { data } = await axios.get(config.configServerUri, { ...headers });
     config.uri = { ...data.uri };
     config.token_name = data.token_name;
   }
