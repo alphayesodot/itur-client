@@ -3,7 +3,7 @@ import InterviewerHeader from '../../common/InterviewerHeader/InterviewerHeader'
 import DashboardCard from './components/DashboardCard/DashboardCard';
 import appTheme from '../../theme';
 import Questionnaire from './components/Questionnaire/Questionnaire';
-import useStyles from './InterviewDashboard.styles';
+import useStyles from './index.styles';
 
 const InterviewDashboard = () => {
   const classes = useStyles();
