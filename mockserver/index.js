@@ -1,9 +1,9 @@
-/* eslint-disable no-console */
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable import/extensions */
 import express from 'express';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
+import jwt from 'jsonwebtoken';
 import buildJwt from './authentication.js';
 import config from './config.js';
 import eventRouter from './event/event.router.js';
@@ -29,8 +29,18 @@ app.get('/config', (req, res) => {
       api: `http://localhost:${config.port}`,
     },
     token_name: config.jwtTokenName,
-    secret: config.secret,
   });
+});
+
+app.get('/currentUser', (req, res) => {
+  const cookie = req.headers.authorization.split(' ')[1];
+  if (jwt.verify(cookie, config.secret)) {
+    res.send(jwt.decode(cookie).user);
+  } else {
+    res.status(500).send({
+      message: 'Unverified user',
+    });
+  }
 });
 
 app.use('/api/event', eventRouter);

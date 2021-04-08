@@ -1,6 +1,3 @@
-/* eslint-disable no-param-reassign */
-/* eslint-disable consistent-return */
-import jwt from 'jsonwebtoken';
 import Cookies from 'js-cookie';
 import axios from 'axios';
 import config from '../appConf';
@@ -12,12 +9,18 @@ class AuthService {
       this.redirect();
     } else {
       this.setAuthHeaders();
-      return jwt.decode(cookie, config.secret).user;
+      let user = null;
+      await axios.get(`${config.uri.auth}/currentUser`)
+        .then((res) => {
+          user = res.data;
+        });
+      return user;
     }
   }
 
   static async setAuthHeaders() {
-    axios.interceptors.request.use((requestsConfig) => {
+    axios.interceptors.request.use((value) => {
+      const requestsConfig = value;
       const token = Cookies.get(config.token_name);
       if (!token) {
         this.redirect();
