@@ -4,7 +4,7 @@ import Dropzone from 'react-dropzone';
 import Button from '@material-ui/core/Button';
 import { useTranslation } from 'react-i18next';
 import cloudImg from '../../images/cloud.png';
-import useStyles from './drop-zone.styles';
+import useStyles from './DropZone.styles';
 import config from '../../config';
 
 const DropZone = (props) => {

@@ -3,15 +3,18 @@ import { Height } from '@material-ui/icons';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    display: 'inline-flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    width: '100%',
+    textAlign: 'center',
     alignItems: 'center',
-    alignContent: 'center',
+  },
+  content: {
+    display: 'inline-flex',
+    justifyContent: 'center',
+    alignItems: 'center',
     backgroundColor: 'white',
     width: '70%',
     padding: '7rem 3rem',
-    margin: 'auto',
+    margin: '3rem auto',
     borderRadius: '1em',
   }
 }));

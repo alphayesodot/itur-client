@@ -16,8 +16,16 @@ const useStyles = makeStyles((theme) => ({
   },
 
   root: {
+  },
 
+  xmlPage: {
+    width: '100%',
+    textAlign: 'center',
+    alignItems: 'center',
+    backgroundColor: 'blue'
   }
+
+
 }));
 
 export default useStyles;

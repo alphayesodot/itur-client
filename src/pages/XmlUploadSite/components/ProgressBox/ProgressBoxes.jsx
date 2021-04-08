@@ -5,7 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
-import useStyles from './progress-boxes.styles';
+import useStyles from './ProgressBoxes.styles';
 import xmlImg from '../../images/xmlFile.png';
 
 const ProgressBoxes = ({ files, setFiles }) => {
@@ -28,12 +28,12 @@ const ProgressBoxes = ({ files, setFiles }) => {
             aria-label="cancel upload"
             component="span"
           >
-            <CloseIcon style={{ fontSize: 13, fontWeight: 'bold', margin: '0.15rem' }} />
+            <CloseIcon className={classes.closeIcon} />
           </IconButton>
         </Box>
         <Typography className={classes.typography}>{`${file.progress} KB`}</Typography>
         <LinearProgress
-          className={classes.progressBar}
+          classes={{ root: classes.progressBar, barColorPrimary: classes.progressBarColor }}
           variant="determinate"
           value={file.progress}
         />

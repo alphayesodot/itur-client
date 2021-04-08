@@ -6,24 +6,26 @@ const useStyles = makeStyles((theme) => ({
   root: {
     width: '20rem',
     textAlign: 'center',
-    padding: '5%',
+    padding: '10%',
     border: '0.12rem dashed',
     borderColor: theme.palette.section.primary,
     backgroundColor: theme.palette.section.main,
     color: theme.palette.section.primary,
-    fontSize: '0.8rem'
+    fontSize: '0.8rem',
+    margin: 'auto',
   },
   uploadButton: {
     backgroundColor: theme.palette.section.secondary,
     color: 'black',
     padding: '1.5% 4%',
     fontSize: '0.7rem',
-    borderRadius: '25rem'
+    borderRadius: '25rem',
+    marginTop: '3%',
   },
   limitation: {
     fontSize: '0.7rem',
     fontWeight: 'bold',
-    marginTop: '1%',
+    marginTop: '2%',
   },
   explanation: {
     color: 'black',
