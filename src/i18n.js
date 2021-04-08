@@ -11,7 +11,6 @@ const resources = {
       interviewDashboard: {
         headerTitles: {
           interviewsSchedule: 'לו"ז ראיונות',
-          virtualInterview: 'ראיון וירטואלי',
           malshabData: 'נתוני מלש"ב',
           appraiserPreperationKit: 'ערכת הכנה למעריך',
         },

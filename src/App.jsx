@@ -59,7 +59,7 @@ const App = () => {
               <Home />
             </Route>
             <Route path='/interview-dashboard'>
-              <InterviewDashboard />
+              <InterviewDashboard eventId={0} />
             </Route>
           </Switch>
           <ToastContainer />

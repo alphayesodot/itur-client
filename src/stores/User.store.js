@@ -1,8 +1,8 @@
 import { makeAutoObservable } from 'mobx';
 
 class UserStore {
-  userProfile = { id: 4 };
-  eventsData;
+  userProfile;
+  events;
 
   constructor() {
     makeAutoObservable(this);
@@ -11,8 +11,8 @@ class UserStore {
   setUserProfile(value) {
     this.userProfile = value;
   }
-  setEventsData(value) {
-    this.eventsData = value;
+  setEvents(value) {
+    this.events = value;
   }
 }
 

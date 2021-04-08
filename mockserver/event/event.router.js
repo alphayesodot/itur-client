@@ -1,15 +1,10 @@
 import express from 'express';
+import EventManager from './event.manager.js';
 
 const eventRouter = express.Router();
 
-// eventRouter.get('/', ReportController.getAllUserReports);
+eventRouter.get('/', EventManager.getEvents);
 
-// eventRouter.get('/:id', ReportController.getReportById);
-
-// eventRouter.post('/', ReportController.createReport);
-
-// eventRouter.put('/', ReportController.updateReport);
-
-// eventRouter.delete('/:id', ReportController.deleteReport);
+eventRouter.get('/:id', EventManager.getEventById);
 
 export default eventRouter;

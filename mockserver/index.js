@@ -7,11 +7,15 @@ import cors from 'cors';
 import buildJwt from './authentication.js';
 import config from './config.js';
 import eventRouter from './event/event.router.js';
+import malshabRouter from './malshab/malshab.router.js';
 
 const app = express();
 app.use(cors({ origin: '*', credentials: true }));
 app.use(cookieParser());
-
+app.use((req, _res, next) => {
+  console.log(`Authorization Header = ${req.headers.authorization}`);
+  next();
+});
 // Auth server
 app.get('/auth/login/:userId', (req, res) => {
   const accessToken = buildJwt(req.params.userId);
@@ -34,5 +38,6 @@ app.get('/config', (req, res) => {
 });
 
 app.use('/api/event', eventRouter);
+app.use('/api/malshab', malshabRouter);
 
 app.listen(config.port, () => console.log(`Mock server listening on ${config.port}`));

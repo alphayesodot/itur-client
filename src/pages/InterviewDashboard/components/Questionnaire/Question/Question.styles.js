@@ -17,6 +17,7 @@ const useStyles = makeStyles(() => ({
   question: {
     fontSize: '0.7rem',
     cursor: 'inherit',
+    textAlign: 'start',
   },
 }));
 

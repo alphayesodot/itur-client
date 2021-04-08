@@ -10,9 +10,8 @@ const InterviewerHeader = () => {
   const { t } = useTranslation();
 
   const headerTitles = [
-    t('interviewDashboard.headerTitles.virtualInterview'),
     t('interviewDashboard.headerTitles.malshabData'),
-    t('interviewDashboard.headerTitles.guidePreperationKit'),
+    t('interviewDashboard.headerTitles.appraiserPreperationKit'),
   ];
 
   return (

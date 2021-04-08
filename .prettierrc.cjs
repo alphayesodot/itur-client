@@ -6,6 +6,7 @@ module.exports = {
     eslint: true,
     printWidth: 100,
     endOfLine: 'auto',
+    tabWidth: 2,
 
     overrides: [
         {

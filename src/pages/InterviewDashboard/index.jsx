@@ -1,16 +1,27 @@
 import Grid from '@material-ui/core/Grid';
-import InterviewerHeader from '../../common/InterviewerHeader/InterviewerHeader';
+import { useState, useEffect } from 'react';
 import DashboardCard from './components/DashboardCard/DashboardCard';
 import appTheme from '../../theme';
 import Questionnaire from './components/Questionnaire/Questionnaire';
 import useStyles from './index.styles';
+import EventService from '../../services/event.service';
+import MalshabService from '../../services/malshab.service';
 
-const InterviewDashboard = () => {
+const InterviewDashboard = ({ eventId }) => {
   const classes = useStyles();
+  const [event, setEvent] = useState();
+  const [malshab, setMalshab] = useState();
+
+  useEffect(async () => {
+    setEvent(await EventService.getEventById(eventId));
+  }, []);
+
+  useEffect(async () => {
+    if (event) setMalshab(await MalshabService.getMalshabByIdentityNumber(event.malshab.id));
+  }, [event]);
 
   return (
     <>
-      <InterviewerHeader />
       <div className={classes.root}>
         <Grid container spacing={4}>
           <Grid item lg={3}>
