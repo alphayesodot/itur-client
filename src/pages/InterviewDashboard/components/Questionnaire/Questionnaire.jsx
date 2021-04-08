@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import List from '@material-ui/core/List';
 import ZoomOutMapIcon from '@material-ui/icons/ZoomOutMap';
 import appTheme from '../../../../theme';
-import DashboardCard from '../DashboardCard/DashboardCard';
+import DashboardCard from '../../../../common/DashboardCard/DashboardCard';
 import useStyles from './Questionnaire.styles';
 import Question from './Question/Question';
 
@@ -18,7 +18,7 @@ const Questionnaire = () => {
 
   return (
     <DashboardCard
-      backgroundColor={appTheme.palette.primary.main}
+      backgroundColor='primary'
       height='32rem'
     >
       <Toolbar className={classes.toolbar}>

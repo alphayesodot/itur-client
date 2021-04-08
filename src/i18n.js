@@ -8,12 +8,12 @@ const resources = {
       title: {
         example: 'מערכת איתור',
       },
+      headerTitles: {
+        interviewsSchedule: 'לו"ז ראיונות',
+        malshabData: 'נתוני מלש"ב',
+        appraiserPreperationKit: 'ערכת הכנה למעריך',
+      },
       interviewDashboard: {
-        headerTitles: {
-          interviewsSchedule: 'לו"ז ראיונות',
-          malshabData: 'נתוני מלש"ב',
-          appraiserPreperationKit: 'ערכת הכנה למעריך',
-        },
         questionnaire: {
           expandedQuestionnaire: 'שאלון מורחב',
           questions: 'שאלות',

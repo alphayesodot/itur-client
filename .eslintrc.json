@@ -5,7 +5,6 @@
     "es2021": true
   },
   "extends": ["plugin:react/recommended", "airbnb"],
-  "code": 100,
   "parser": "babel-eslint",
   "parserOptions": {
     "ecmaFeatures": {

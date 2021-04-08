@@ -11,7 +11,7 @@ const AmericanAnswer = () => {
   };
 
   return (
-    <div style={{ display: 'flex' }}>
+    <div style={{ display: 'flex', marginRight: '2rem' }}>
       <FormControlLabel
         value='start'
         control={(

@@ -1,11 +1,12 @@
 import Grid from '@material-ui/core/Grid';
 import { useState, useEffect } from 'react';
-import DashboardCard from './components/DashboardCard/DashboardCard';
+import DashboardCard from '../../common/DashboardCard/DashboardCard';
 import appTheme from '../../theme';
 import Questionnaire from './components/Questionnaire/Questionnaire';
 import useStyles from './index.styles';
 import EventService from '../../services/event.service';
 import MalshabService from '../../services/malshab.service';
+import Notesbox from './components/Notesbox/Notesbox';
 
 const InterviewDashboard = ({ eventId }) => {
   const classes = useStyles();
@@ -26,11 +27,7 @@ const InterviewDashboard = ({ eventId }) => {
         <Grid container spacing={4}>
           <Grid item lg={3}>
             <Questionnaire />
-            <DashboardCard
-              backgroundColor={appTheme.palette.primary.secondary}
-              height='14rem'
-              mt='2rem'
-            />
+            <Notesbox />
           </Grid>
           <Grid item lg={7}>
             <DashboardCard />
@@ -38,7 +35,7 @@ const InterviewDashboard = ({ eventId }) => {
           <Grid item lg={2}>
             <DashboardCard height='25rem' />
             <DashboardCard
-              backgroundColor={appTheme.palette.primary.main}
+              backgroundColor='primary'
               height='21rem'
               mt='2rem'
             />

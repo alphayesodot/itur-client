@@ -1,47 +1,62 @@
+import React from 'react';
 import MenuIcon from '@material-ui/icons/Menu';
 import NotificationsNoneIcon from '@material-ui/icons/NotificationsNone';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import { Link } from 'react-router-dom';
 import { Toolbar, AppBar, IconButton, Button } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 import useStyles from './InterviewerHeader.styles';
 
-const InterviewerHeader = () => {
+const Header = () => {
   const classes = useStyles();
   const { t } = useTranslation();
 
   const headerTitles = [
-    t('interviewDashboard.headerTitles.malshabData'),
-    t('interviewDashboard.headerTitles.appraiserPreperationKit'),
+    {
+      id: 0,
+      title: t('headerTitles.malshabData'),
+      path: '/interview-dashboard/malshab-data',
+    },
+    {
+      id: 1,
+      title: t('headerTitles.appraiserPreperationKit'),
+      path: '/interview-dashboard/preperation-kit',
+    },
   ];
 
   return (
     <AppBar position='static' className={classes.root}>
       <Toolbar className={classes.toolbar}>
         <div>
-          <Button>
-            <img src='radar-logo.png' alt='' />
-          </Button>
+          <Link to='/'>
+            <Button>
+              <img src='radar-logo.png' alt='' />
+            </Button>
+          </Link>
         </div>
         <div>
-          <Button
-            classes={{
-              root: classes.interviewScheduleBtn,
-              label: classes.label,
-            }}
-          >
-            {t('interviewDashboard.headerTitles.interviewsSchedule')}
-          </Button>
-
-          {headerTitles.map((label) => (
+          <Link to='/interview-dashboard'>
             <Button
-              key={Math.random()}
               classes={{
-                root: `${classes.toolbarBtn} ${classes.notForMobile}`,
+                root: classes.interviewScheduleBtn,
                 label: classes.label,
               }}
             >
-              {label}
+              {t('headerTitles.interviewsSchedule')}
             </Button>
+          </Link>
+
+          {headerTitles.map(({ id, title, path }) => (
+            <Link key={id} to={path}>
+              <Button
+                classes={{
+                  root: `${classes.toolbarBtn} ${classes.notForMobile}`,
+                  label: classes.label,
+                }}
+              >
+                {title}
+              </Button>
+            </Link>
           ))}
         </div>
         <div>
@@ -50,7 +65,6 @@ const InterviewerHeader = () => {
             <AccountCircleIcon className={classes.secondary} />,
           ].map((icon) => (
             <IconButton
-              key={Math.random()}
               className={`${classes.menuButton} ${classes.notForMobile}`}
               color='inherit'
               aria-label='menu'
@@ -58,11 +72,7 @@ const InterviewerHeader = () => {
               {icon}
             </IconButton>
           ))}
-          <IconButton
-            className={classes.menuButton}
-            color='inherit'
-            aria-label='menu'
-          >
+          <IconButton className={classes.menuButton} color='inherit' aria-label='menu'>
             <MenuIcon />
           </IconButton>
         </div>
@@ -71,4 +81,4 @@ const InterviewerHeader = () => {
   );
 };
 
-export default InterviewerHeader;
+export default Header;

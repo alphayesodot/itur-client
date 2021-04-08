@@ -1,14 +1,17 @@
+@font-face {
+    font-family: 'Assistant';
+    src: local('Assistant-Regular.ttf')
+}
+@font-face {
+    font-family: 'Assistant-Semibold';
+    src: local('Assistant-Semibold.ttf')
+}
 body, html {
   background-color: rgb(242,244,247);
   margin: 0;
+  font-family: Assistant;
 }
-
-@font-face {
-  /* TODO: Add font */
-}
-
 * {
-  font-family: 'system-ui';
   user-select: none;
 }
 p {
