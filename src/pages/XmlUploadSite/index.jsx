@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ProgressBoxes from './components/ProgressBox/ProgressBoxes';
+import ProgressBoxes from './components/ProgressBoxes/ProgressBoxes';
 import DropZone from './components/DropZone/DropZone';
 import useStyles from './index.styles';
 
