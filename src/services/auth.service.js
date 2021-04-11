@@ -1,3 +1,5 @@
+/* eslint-disable consistent-return */
+import jwt from 'jsonwebtoken';
 import Cookies from 'js-cookie';
 import axios from 'axios';
 import config from '../appConf';
@@ -9,12 +11,9 @@ class AuthService {
       this.redirect();
     } else {
       this.setAuthHeaders();
-      let user = null;
-      await axios.get(`${config.uri.auth}/currentUser`)
-        .then((res) => {
-          user = res.data;
-        });
-      return user;
+      if (jwt.verify(cookie, config.secret)) {
+        return jwt.decode(cookie).user;
+      }
     }
   }
 
