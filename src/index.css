@@ -20,3 +20,9 @@ p {
 a {  
   text-decoration: none;  
 }
+.MuiOutlinedInput-notchedOutline{
+  border: none;
+}
+.MuiInputBase-inputMultiline{
+  padding: 0.5rem!important;
+}

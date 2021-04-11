@@ -17,10 +17,7 @@ const Questionnaire = () => {
   const [answers, setAnswers] = useState([]);
 
   return (
-    <DashboardCard
-      backgroundColor='primary'
-      height='32rem'
-    >
+    <DashboardCard backgroundColor='primary' height='26rem'>
       <Toolbar className={classes.toolbar}>
         <div>
           <Button
@@ -45,13 +42,13 @@ const Questionnaire = () => {
         <List
           component='nav'
           aria-label='main mailbox folders'
-          style={{ color: '#fff' }}
+          style={{ color: '#fff', height: '20rem' }}
           className={classes.list}
         >
           {questions.map((question) => (
             <Question
               question={question}
-              setAnswerFunction={() => setAnswers((current) => { })}
+              setAnswerFunction={() => setAnswers((current) => {})}
               key={Math.random()}
             />
           ))}

@@ -10,8 +10,8 @@ const Question = ({ question, setAnswerFunction }) => {
   return (
     <ListItem button className={classes.li}>
       <div className={classes.qaContainer}>
-        <p className={classes.question}>{question}</p>
         <AmericanAnswer />
+        <p className={classes.question}>{question}</p>
       </div>
     </ListItem>
   );

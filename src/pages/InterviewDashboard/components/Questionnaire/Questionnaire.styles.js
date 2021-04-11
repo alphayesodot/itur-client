@@ -27,9 +27,8 @@ const useStyles = makeStyles(() => ({
   list: {
     overflowY: 'scroll',
     margin: 0,
-    padding: 0,
+    padding: '0 1rem 0 1rem',
     height: '26rem',
-    direction: 'rtl',
     paddingLeft: '1rem',
     '&::-webkit-scrollbar': {
       width: '0.5rem',

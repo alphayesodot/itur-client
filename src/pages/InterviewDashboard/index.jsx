@@ -7,6 +7,7 @@ import useStyles from './index.styles';
 import EventService from '../../services/event.service';
 import MalshabService from '../../services/malshab.service';
 import Notesbox from './components/Notesbox/Notesbox';
+import Linear from '../Linear';
 
 const InterviewDashboard = ({ eventId }) => {
   const classes = useStyles();
@@ -28,17 +29,13 @@ const InterviewDashboard = ({ eventId }) => {
           <Grid item lg={3}>
             <Questionnaire />
             <Notesbox />
+            <DashboardCard height='5rem' mt='2rem' backgroundColor='primary'>
+              <Linear />
+            </DashboardCard>
           </Grid>
-          <Grid item lg={7}>
-            <DashboardCard />
-          </Grid>
-          <Grid item lg={2}>
-            <DashboardCard height='25rem' />
-            <DashboardCard
-              backgroundColor='primary'
-              height='21rem'
-              mt='2rem'
-            />
+          <Grid item lg={9}>
+            <DashboardCard height='41rem' />
+            <DashboardCard height='5rem' mt='2rem' backgroundColor='primary' />
           </Grid>
         </Grid>
       </div>

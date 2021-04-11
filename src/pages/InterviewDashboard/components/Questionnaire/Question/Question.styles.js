@@ -15,9 +15,10 @@ const useStyles = makeStyles(() => ({
     justifyContent: 'space-between',
   },
   question: {
-    fontSize: '0.7rem',
+    fontSize: '0.8rem',
     cursor: 'inherit',
-    textAlign: 'start',
+    textAlign: 'right',
+    direction: 'rtl',
   },
 }));
 

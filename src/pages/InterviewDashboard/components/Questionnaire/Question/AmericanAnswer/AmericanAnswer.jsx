@@ -11,7 +11,7 @@ const AmericanAnswer = () => {
   };
 
   return (
-    <div style={{ display: 'flex', marginRight: '2rem' }}>
+    <div style={{ display: 'flex', marginRight: '2rem', direction: 'rtl' }}>
       <FormControlLabel
         value='start'
         control={(
@@ -25,6 +25,7 @@ const AmericanAnswer = () => {
           />
         )}
         label={<span style={{ fontSize: '0.7rem' }}>כן</span>}
+        labelPlacement='start'
       />
       <FormControlLabel
         value='start'
@@ -39,6 +40,8 @@ const AmericanAnswer = () => {
           />
         )}
         label={<span style={{ fontSize: '0.7rem' }}>לא</span>}
+        labelPlacement='start'
+
       />
     </div>
   );

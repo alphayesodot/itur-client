@@ -3,7 +3,7 @@ import events from './events.js';
 class EventManager {
   static async getEvents(req, res) {
     if (req.query.malshabId) {
-      const [event] = events.filter((event) => event.malshab.id === req.query.malshabId);
+      const [event] = events.filter((eventObj) => eventObj.malshab.id === req.query.malshabId);
       return res.send(event || 404);
     }
     return res.send(events);
