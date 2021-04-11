@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from './components/Header/Header';
+import TrackBoard from './components/TrackBoard/TrackBoard';
 import useStyles from './index.styles';
 
 const Track = () => {
@@ -9,6 +10,7 @@ const Track = () => {
   return (
     <div className={classes.root}>
       <Header unit='ספיר' />
+      <TrackBoard />
     </div>
   );
 };
