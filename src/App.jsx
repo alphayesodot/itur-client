@@ -6,7 +6,6 @@ import Track from './pages/Track/index';
 import InterviewerHeader from './common/InterviewerHeader/InterviewerHeader';
 import AuthService from './services/auth.service';
 import ConfigService from './services/config.service';
-import Header from './common/InterviewerHeader/InterviewerHeader';
 import useStyles from './App.styles';
 import UserStoreInstance from './stores/User.store';
 import 'react-toastify/dist/ReactToastify.css';
@@ -54,13 +53,13 @@ const App = () => {
     isAuthenticated
       ? (
         <Router classes={classes.root}>
-          <Header />
+          <InterviewerHeader />
           <Switch>
             <Route path='/' exact>
               <Home />
             </Route>
             <Route path='/track'>
-            <Track />
+              <Track />
             </Route>
             <Route path='/interview-dashboard'>
               <h1>interview-dashboard</h1>
