@@ -1,29 +1,36 @@
 {
-    "root": true,
-    "env": {
-        "browser": true,
-        "es2021": true
+  "root": true,
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": ["plugin:react/recommended", "airbnb"],
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
     },
-    "extends": [
-        "plugin:react/recommended",
-        "airbnb"
-    ],
-    "parserOptions": {
-        "ecmaFeatures": {
-            "jsx": true
-        },
-        "ecmaVersion": 12,
-        "sourceType": "module"
-    },
-    "plugins": [
-        "react"
-    ],
-    "rules": {
-        "linebreak-style": 0,
-        "quotes": [2, "single", { "avoidEscape": true }],
-        "jsx-quotes": ["error", "prefer-single"],
-        "object-curly-newline": 0,
-        "react/react-in-jsx-scope": "off",
-        "react/prop-types": "off"
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "plugins": ["react"],
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
     }
+  },
+  "rules": {
+    "linebreak-style": 0,
+    "import/no-extraneous-dependencies": 0,
+    "import/extensions": 0,
+    "quotes": [2, "single", { "avoidEscape": true }],
+    "jsx-quotes": ["error", "prefer-single"],
+    "comma-dangle": [2, "always-multiline"],
+    "object-curly-newline": 0,
+    "react/react-in-jsx-scope": "off",
+    "react/prop-types": "off",
+    "lines-between-class-members": "off"
+  }
 }
