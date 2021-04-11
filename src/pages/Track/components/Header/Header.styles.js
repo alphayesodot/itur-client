@@ -7,26 +7,44 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     justifyContent: 'space-between',
     direction: 'rtl',
+    [theme.breakpoints.down('sm')]: {
+      flexDirection: 'column',
+      alignItems: 'stretch',
+    },
   },
   main: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-around',
     width: '35%',
+    [theme.breakpoints.down('sm')]: {
+      flexDirection: 'column',
+      width: '100%',
+    },
+  },
+  item: {
+    [theme.breakpoints.down('sm')]: {
+      margin: '0.5em 0',
+      alignSelf: 'stretch',
+    },
   },
   unit: {
     color: 'white',
     fontSize: '1.15em',
+    wordBreak: 'none',
   },
   select: {
     width: '10em',
     height: '2.5em',
     background: 'white',
     borderRadius: 30,
+    [theme.breakpoints.down('sm')]: {
+      width: '100%',
+    },
   },
   icon: {
     fill: '#9aa3aa',
-    width: '180%',
+    width: '185%',
   },
   nodeGroup: {
     direction: 'rtl',
@@ -42,6 +60,7 @@ const useStyles = makeStyles((theme) => ({
   button: {
     background: theme.palette.primary.secondary,
     borderRadius: 30,
+    margin: '0.5em 0',
     padding: '0.4em 2em',
     '&:hover': {
       background: 'white',

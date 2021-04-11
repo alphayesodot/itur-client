@@ -15,14 +15,14 @@ const Header = ({ unit }) => {
     >
       <div className={classes.content}>
         <div className={classes.main}>
-          <Typography className={classes.unit}>
+          <Typography className={`${classes.unit} ${classes.item}`}>
             {t('title.unit')}
             :
             {' '}
             <strong>{unit}</strong>
           </Typography>
           <Select
-            className={classes.select}
+            className={`${classes.select} ${classes.item}`}
             inputProps={{ classes: { icon: classes.icon } }}
             disableUnderline
           >
@@ -37,7 +37,7 @@ const Header = ({ unit }) => {
             ))}
           </Select>
           <TextField
-            className={classes.date}
+            className={`${classes.date} ${classes.item}`}
             type='date'
             defaultValue={new Date().toLocaleDateString('fr-CA', {
               year: 'numeric',
