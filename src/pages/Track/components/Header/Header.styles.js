@@ -1,12 +1,8 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    background: theme.palette.primary.main,
-    width: '95%',
-    height: '3.5em',
+  content: {
     padding: '1.25em',
-    borderRadius: 15,
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
