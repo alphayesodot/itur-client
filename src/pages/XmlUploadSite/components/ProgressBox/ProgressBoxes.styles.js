@@ -2,7 +2,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: '40%',
+    width: '30rem',
     maxHeight: '22rem',
     overflowY: 'auto',
     margin: 'auto',
@@ -12,16 +12,18 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'flex-end',
-    margin: '1rem 0',
-    width: '100%',
+    justifyContent: 'space-between',
+    margin: '1rem auto',
+    width: '90%',
     padding: '0'
   },
   upload: {
     margin: '0',
     padding: ' 0.5%  0 0.5% 3%',
     background: 'white',
-    fontSize: '0.9rem',
+    fontSize: '0.8rem',
+    fontFamily: theme.typography.fontFamily,
+    fontWeight: 'bold',
     borderRadius: '0.5em',
     width: '80%',
   },
@@ -39,10 +41,12 @@ const useStyles = makeStyles((theme) => ({
   closeIcon: {
     fontSize: 13,
     fontWeight: 'bold',
+    fontFamily: theme.typography.fontFamily,
     margin: '0.15rem'
   },
   typography: {
     fontSize: '0.7rem',
+    fontFamily: theme.typography.fontFamily,
     color: 'gray',
     marginBottom: '0.4rem',
     textAlign: 'left'

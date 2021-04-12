@@ -31,7 +31,9 @@ const ProgressBoxes = ({ files, setFiles }) => {
             <CloseIcon className={classes.closeIcon} />
           </IconButton>
         </Box>
-        <Typography className={classes.typography}>{`${file.progress} KB`}</Typography>
+        <Typography className={classes.typography}>{`${Math.round(
+          file.size / 1000
+        )} KB`}</Typography>
         <LinearProgress
           classes={{ root: classes.progressBar, barColorPrimary: classes.progressBarColor }}
           variant="determinate"

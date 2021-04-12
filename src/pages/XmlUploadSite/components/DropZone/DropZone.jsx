@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 import Dropzone from 'react-dropzone';
 import Button from '@material-ui/core/Button';
 import { useTranslation } from 'react-i18next';
@@ -19,17 +20,17 @@ const DropZone = (props) => {
     baseURL: config.dropzone.baseURL,
   });
 
-  const createErrorMessege = (errorsArray) => {
-    let errorMessage = '';
+  const notify = (messege) => toast(messege);
+
+  const createErrorNorifications = (fileName, errorsArray) => {
     errorsArray.forEach((e) => {
-      errorMessage = errorMessage.concat(`${e.code}: ${e.message}\n`);
+      notify(`${fileName}: ${e.code}`);
     });
-    return errorMessage;
   };
 
   const handleOnDrop = (acceptedFiles, rejectedFilesObjects) => {
     rejectedFilesObjects.forEach((fileObject) => {
-      alert(createErrorMessege(fileObject.errors));
+      createErrorNorifications(fileObject.file.name, fileObject.errors);
     });
 
     if (acceptedFiles.length > 0) {

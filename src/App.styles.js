@@ -14,18 +14,12 @@ const useStyles = makeStyles((theme) => ({
       'border-radius': '10em',
     },
   },
+  toastContainer: {
+    top: '6rem',
 
+  },
   root: {
   },
-
-  xmlPage: {
-    width: '100%',
-    textAlign: 'center',
-    alignItems: 'center',
-    backgroundColor: 'blue'
-  }
-
-
 }));
 
 export default useStyles;

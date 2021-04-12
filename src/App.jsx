@@ -24,7 +24,7 @@ const App = () => {
           <h1>interview-dashboard</h1>
         </Route>
       </Switch>
-      <ToastContainer />
+      <ToastContainer className={classes.toastContainer} />
     </Router>
   );
 };

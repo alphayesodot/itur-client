@@ -1,9 +1,9 @@
 import { makeStyles } from '@material-ui/core/styles';
 import apptheme from '../../theme';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   root: {
-    backgroundColor: apptheme.palette.primary.main,
+    backgroundColor: theme.palette.primary.main,
     height: '6rem',
   },
   toolbar: {
@@ -26,11 +26,12 @@ const useStyles = makeStyles(() => ({
     },
   },
   interviewScheduleBtn: {
-    backgroundColor: apptheme.palette.primary.secondary,
+    backgroundColor: theme.palette.primary.secondary,
     borderRadius: '20px',
     width: '7rem',
     height: '2.6rem',
     fontWeight: 'bold',
+    fontFamily: theme.typography.fontFamily,
     marginRight: '2rem',
     '&:hover': {
       backgroundColor: '#cc9432',
@@ -41,11 +42,11 @@ const useStyles = makeStyles(() => ({
     color: '#fff',
     margin: '0 1rem',
     '&:hover': {
-      color: apptheme.palette.primary.secondary,
+      color: theme.palette.primary.secondary,
     },
   },
   secondary: {
-    color: apptheme.palette.primary.secondary,
+    color: theme.palette.primary.secondary,
   },
   label: {
     transitionDuration: '0.3s',

@@ -12,6 +12,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.section.main,
     color: theme.palette.section.primary,
     fontSize: '0.8rem',
+    fontFamily: theme.typography.fontFamily,
     margin: 'auto',
   },
   uploadButton: {
@@ -24,12 +25,14 @@ const useStyles = makeStyles((theme) => ({
   },
   limitation: {
     fontSize: '0.7rem',
+    fontFamily: theme.typography.fontFamily,
     fontWeight: 'bold',
     marginTop: '2%',
   },
   explanation: {
     color: 'black',
     fontSize: '0.9rem',
+    fontFamily: theme.typography.fontFamily,
   },
   cloudImg: {
     width: '10rem',
