@@ -9,7 +9,7 @@ const events = [
       firstName: "ג'ק",
       lastName: 'דניאלס',
     },
-    time: new Date(new Date().getTime() - 600000),
+    time: new Date(),
     location: 'מיקום סודי ביותר',
     interviewersIds: ['12345', '11111'],
     url: 'xxxxxx',
