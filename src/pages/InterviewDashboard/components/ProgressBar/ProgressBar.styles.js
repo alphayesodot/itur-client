@@ -1,8 +1,9 @@
+import { makeStyles } from '@material-ui/core/styles';
 import { StepLabel } from '@material-ui/core';
 import { styled } from '@material-ui/styles';
 import theme from '../../../../theme';
 
-const StyledStepLabel = styled(StepLabel)({
+export const StyledStepLabel = styled(StepLabel)({
   '& .MuiStepLabel-label': {
     fontSize: '0.8rem',
     color: '#ffffffa6',
@@ -18,4 +19,11 @@ const StyledStepLabel = styled(StepLabel)({
   },
 });
 
-export default StyledStepLabel;
+const useStyles = makeStyles(() => ({
+  noData: {
+    color: '#fff3',
+    textAlign: 'center',
+  },
+}));
+
+export default useStyles;

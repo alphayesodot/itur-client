@@ -27,6 +27,7 @@ const resources = {
           stepOne: '10 דק',
           stepTwo: '20 דק\n מילוי שאלון',
           interviewEnd: '30 דק\n סיום ראיון',
+          noDataAboutCurrentInterviewTimes: 'אין מידע אודות זמני הראיון הנוכחי',
         },
       },
     },

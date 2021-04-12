@@ -12,10 +12,7 @@ import malshabRouter from './malshab/malshab.router.js';
 const app = express();
 app.use(cors({ origin: '*', credentials: true }));
 app.use(cookieParser());
-app.use((req, _res, next) => {
-  console.log(`Authorization Header = ${req.headers.authorization}`);
-  next();
-});
+
 // Auth server
 app.get('/auth/login/:userId', (req, res) => {
   const accessToken = buildJwt(req.params.userId);

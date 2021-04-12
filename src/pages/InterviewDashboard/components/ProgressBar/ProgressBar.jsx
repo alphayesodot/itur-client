@@ -1,14 +1,16 @@
 import { Step, Stepper } from '@material-ui/core';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import useStyles, { StyledStepLabel } from './ProgressBar.styles';
+import getStepByMinutesPassed from './ProgressBar.utils';
 import { QontoConnector, useQontoStepIconStyles } from './Qonto/Qonto.styles';
-import StyledStepLabel from './ProgressBar.styles';
 import QontoStepIcon from './Qonto/QontoStepIcon';
 
-const ProgressBar = ({ date }) => {
-  const [activeStep, setActiveStep] = useState(0);
-  const classes = useQontoStepIconStyles();
+const ProgressBar = ({ date, eventLoaded }) => {
   const { t } = useTranslation();
+  const [activeStep, setActiveStep] = useState();
+  const qontoClasses = useQontoStepIconStyles();
+  const classes = useStyles();
   const steps = [
     t('interviewDashboard.progressBar.interviewStart'),
     t('interviewDashboard.progressBar.stepOne'),
@@ -16,13 +18,13 @@ const ProgressBar = ({ date }) => {
     t('interviewDashboard.progressBar.interviewEnd'),
   ];
 
-  return (
-    <Stepper
-      alternativeLabel
-      activeStep={activeStep}
-      connector={<QontoConnector />}
-      className={classes.stepper}
-    >
+  useEffect(() => {
+    setActiveStep(getStepByMinutesPassed(date));
+  }, [date]);
+
+  if (!eventLoaded) return <></>;
+  return date ? (
+    <Stepper alternativeLabel activeStep={activeStep} connector={<QontoConnector />} className={qontoClasses.stepper}>
       {steps.map((label) => (
         <Step key={label}>
           <StyledStepLabel StepIconComponent={QontoStepIcon} style={{ whiteSpace: 'pre-line' }}>
@@ -31,6 +33,8 @@ const ProgressBar = ({ date }) => {
         </Step>
       ))}
     </Stepper>
+  ) : (
+    <p className={classes.noData}>{t('interviewDashboard.progressBar.noDataAboutCurrentInterviewTimes')}</p>
   );
 };
 

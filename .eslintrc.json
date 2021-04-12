@@ -32,6 +32,6 @@
     "react/react-in-jsx-scope": "off",
     "react/prop-types": "off",
     "lines-between-class-members": "off",
-    "no-unused-vars": "warn"
+    "no-unused-vars": "warn",
   }
 }

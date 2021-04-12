@@ -1,17 +1,7 @@
-/* eslint-disable arrow-body-style */
 import theme from '../../theme';
 
-const DashboardCard = ({
-  backgroundColor,
-  height,
-  width,
-  mt,
-  justifyContent,
-  padding,
-  children,
-}) => (
+const DashboardCard = ({ backgroundColor, height, width, mt, justifyContent, padding, alignItems, children }) => (
   <div
-    classes={{}}
     style={{
       backgroundColor: (() => {
         if (backgroundColor === 'primary') return theme.palette.primary.main;
@@ -25,6 +15,7 @@ const DashboardCard = ({
       display: 'grid',
       padding,
       justifyContent,
+      alignItems,
     }}
   >
     {children}
