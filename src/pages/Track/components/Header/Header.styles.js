@@ -16,13 +16,14 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-around',
-    width: '35%',
+    minWidth: '35%',
     [theme.breakpoints.down('sm')]: {
       flexDirection: 'column',
       width: '100%',
     },
   },
   item: {
+    margin: '0 0.2em',
     [theme.breakpoints.down('sm')]: {
       margin: '0.5em 0',
       alignSelf: 'stretch',
@@ -31,10 +32,10 @@ const useStyles = makeStyles((theme) => ({
   unit: {
     color: 'white',
     fontSize: '1.15em',
-    wordBreak: 'none',
+    whiteSpace: 'nowrap',
   },
   select: {
-    width: '10em',
+    width: '12rem',
     height: '2.5em',
     background: 'white',
     borderRadius: 30,

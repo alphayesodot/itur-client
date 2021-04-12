@@ -26,7 +26,7 @@ const Header = ({ unit }) => {
             inputProps={{ classes: { icon: classes.icon } }}
             disableUnderline
           >
-            {['מסלול', 'מסלולללללל'].map((nodeGroup) => (
+            {['מסלול', 'מסלוללללללמסלוללללללמסלוללללללמסלוללללללמסלוללללללמסלוללללללמסלוללללללמסלוללללללמסלולללללל'].map((nodeGroup) => (
               <MenuItem
                 className={classes.nodeGroup}
                 key={nodeGroup}
