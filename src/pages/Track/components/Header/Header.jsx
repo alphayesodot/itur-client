@@ -8,6 +8,7 @@ import useStyles from './Header.styles';
 const Header = ({ unit }) => {
   const classes = useStyles();
   const { t } = useTranslation();
+
   return (
     <DashboardCard
       backgroundColor='primary'
@@ -26,7 +27,7 @@ const Header = ({ unit }) => {
             inputProps={{ classes: { icon: classes.icon } }}
             disableUnderline
           >
-            {['מסלול', 'מסלוללללללמסלוללללללמסלוללללללמסלוללללללמסלוללללללמסלוללללללמסלוללללללמסלוללללללמסלולללללל'].map((nodeGroup) => (
+            {['מסלול', 'עוד מסלול'].map((nodeGroup) => (
               <MenuItem
                 className={classes.nodeGroup}
                 key={nodeGroup}

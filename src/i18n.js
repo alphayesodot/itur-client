@@ -8,6 +8,7 @@ const resources = {
       title: {
         example: 'מערכת איתור',
         unit: 'יחידה',
+        day: 'יום',
       },
       headerTitles: {
         interviewsSchedule: 'לו"ז ראיונות',
@@ -16,6 +17,15 @@ const resources = {
       },
       button: {
         newSchedule: 'לוז חדש',
+      },
+      day: {
+        1: 'ראשון',
+        2: 'שני',
+        3: 'שלישי',
+        4: 'רביעי',
+        5: 'חמישי',
+        6: 'שישי',
+        7: 'שבת',
       },
     },
   },
