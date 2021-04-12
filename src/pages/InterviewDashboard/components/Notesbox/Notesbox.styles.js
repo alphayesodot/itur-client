@@ -1,4 +1,5 @@
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, styled } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,6 +23,20 @@ const useStyles = makeStyles((theme) => ({
       borderBottom: 'none',
     },
   },
+  toolbar: {
+    display: 'flex',
+    direction: 'rtl',
+    padding: 0,
+  },
+  rtl: {
+    direction: 'rtl',
+  },
 }));
+
+export const StyledTextField = styled(TextField)({
+  '& .MuiInputBase-inputMultiline': {
+    fontSize: '0.8rem',
+  },
+});
 
 export default useStyles;

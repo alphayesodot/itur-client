@@ -1,9 +1,8 @@
 import { makeStyles } from '@material-ui/core/styles';
-import apptheme from '../../../../theme';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   interviewScheduleBtn: {
-    backgroundColor: apptheme.palette.primary.secondary,
+    backgroundColor: theme.palette.primary.secondary,
     borderRadius: '20px',
     width: '6rem',
     height: '2.2rem',
@@ -21,7 +20,7 @@ const useStyles = makeStyles(() => ({
     justifyContent: 'space-between',
   },
   questionsHeader: {
-    color: apptheme.palette.primary.secondary,
+    color: theme.palette.primary.secondary,
     fontWeight: 500,
   },
   list: {
@@ -36,7 +35,7 @@ const useStyles = makeStyles(() => ({
       borderRadius: '5px',
     },
     '&::-webkit-scrollbar-thumb': {
-      backgroundColor: apptheme.palette.primary.secondary,
+      backgroundColor: theme.palette.primary.secondary,
       borderRadius: '5px',
       width: '0.5rem',
     },

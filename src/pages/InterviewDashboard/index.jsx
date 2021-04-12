@@ -1,13 +1,12 @@
 import Grid from '@material-ui/core/Grid';
 import { useState, useEffect } from 'react';
 import DashboardCard from '../../common/DashboardCard/DashboardCard';
-import appTheme from '../../theme';
 import Questionnaire from './components/Questionnaire/Questionnaire';
 import useStyles from './index.styles';
 import EventService from '../../services/event.service';
 import MalshabService from '../../services/malshab.service';
 import Notesbox from './components/Notesbox/Notesbox';
-import Linear from '../Linear';
+import ProgressBar from './components/ProgressBar/ProgressBar';
 
 const InterviewDashboard = ({ eventId }) => {
   const classes = useStyles();
@@ -30,7 +29,7 @@ const InterviewDashboard = ({ eventId }) => {
             <Questionnaire />
             <Notesbox />
             <DashboardCard height='5rem' mt='2rem' backgroundColor='primary'>
-              <Linear />
+              <ProgressBar />
             </DashboardCard>
           </Grid>
           <Grid item lg={9}>

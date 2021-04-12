@@ -5,7 +5,6 @@ import { Button, Toolbar, IconButton, Container } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 import List from '@material-ui/core/List';
 import ZoomOutMapIcon from '@material-ui/icons/ZoomOutMap';
-import appTheme from '../../../../theme';
 import DashboardCard from '../../../../common/DashboardCard/DashboardCard';
 import useStyles from './Questionnaire.styles';
 import Question from './Question/Question';

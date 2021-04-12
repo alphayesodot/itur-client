@@ -9,6 +9,7 @@ const useStyles = makeStyles(() => ({
     '&:hover': {
       backgroundColor: 'rgb(255 255 255 / 20%)',
     },
+    justifyContent: 'space-around',
   },
   qaContainer: {
     display: 'flex',

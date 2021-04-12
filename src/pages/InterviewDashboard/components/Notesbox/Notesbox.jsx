@@ -1,17 +1,11 @@
 import { Toolbar } from '@material-ui/core';
-import { styled } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
+import { useTranslation } from 'react-i18next';
 import DashboardCard from '../../../../common/DashboardCard/DashboardCard';
-import useStyles from './Notesbox.styles';
-
-const StyledTextField = styled(TextField)({
-  '& .MuiInputBase-inputMultiline': {
-    fontSize: '0.8rem',
-  },
-});
+import useStyles, { StyledTextField } from './Notesbox.styles';
 
 const Notesbox = () => {
   const classes = useStyles();
+  const { t } = useTranslation();
   return (
     <DashboardCard
       backgroundColor='secondary'
@@ -19,27 +13,19 @@ const Notesbox = () => {
       mt='2rem'
       padding='0px 1rem 1rem 1rem'
     >
-      <Toolbar
-        style={{
-          display: 'flex',
-          direction: 'rtl',
-          padding: 0,
-        }}
-      >
+      <Toolbar className={classes.toolbar}>
         <div>
-          <p>לא לשכוח // הערות לעצמי בזמן הראיון</p>
+          <p>{t('interviewDashboard.notesBox.dontForgetNotesForMyself')}</p>
         </div>
       </Toolbar>
-      <DashboardCard style={{ padding: '1rem' }}>
+      <DashboardCard>
         <StyledTextField
           InputProps={{ disableUnderline: true }}
           multiline
           rows={5}
           fullWidth
-          placeholder='פה אפשר לכתוב כל מיני הערות...'
-          style={{
-            direction: 'rtl',
-          }}
+          placeholder={t('interviewDashboard.notesBox.hereYouCanWriteSomeNotes')}
+          className={classes.rtl}
         />
       </DashboardCard>
     </DashboardCard>
