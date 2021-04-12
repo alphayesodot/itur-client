@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import LinearProgress from '@material-ui/core/LinearProgress';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import IconButton from '@material-ui/core/IconButton';
@@ -19,17 +20,21 @@ const ProgressBoxes = ({ files, setFiles }) => {
       <img className={classes.xmlImg} src={xmlImg} />
       <Box className={classes.upload}>
         <Box className={classes.infoBox}>
-          <span class={classes.fileName}>{file.name}</span>
-          <IconButton
-            onClick={() => {
-              deleteFromList(file);
-            }}
-            className={classes.cancelButton}
-            aria-label="cancel upload"
-            component="span"
-          >
-            <CloseIcon className={classes.closeIcon} />
-          </IconButton>
+          <span className={classes.fileName}>{file.name}</span>
+          {!file.progress ? (
+            <CircularProgress size={17} className={classes.loder} />
+          ) : (
+            <IconButton
+              onClick={() => {
+                deleteFromList(file);
+              }}
+              className={classes.cancelButton}
+              aria-label="cancel upload"
+              component="span"
+            >
+              <CloseIcon className={classes.closeIcon} />
+            </IconButton>
+          )}
         </Box>
         <Typography className={classes.typography}>{`${Math.round(
           file.size / 1000

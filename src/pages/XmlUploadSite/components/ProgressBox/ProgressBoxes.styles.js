@@ -62,6 +62,10 @@ const useStyles = makeStyles((theme) => ({
   },
   noneLi: {
     listStyleType: 'none'
+  },
+  loder: {
+    color: theme.palette.section.primary,
+    size: 100,
   }
 }));
 

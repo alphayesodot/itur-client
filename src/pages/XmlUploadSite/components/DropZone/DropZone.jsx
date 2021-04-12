@@ -20,11 +20,13 @@ const DropZone = (props) => {
     baseURL: config.dropzone.baseURL,
   });
 
-  const notify = (messege) => toast(messege);
+  const deleteFileFromList = (fileToDelete) => {
+    setFiles([...files.filter((f) => f.path !== fileToDelete.path)]);
+  };
 
   const createErrorNorifications = (fileName, errorsArray) => {
     errorsArray.forEach((e) => {
-      notify(`${fileName}: ${e.code}`);
+      toast(`${fileName}: ${e.code}`);
     });
   };
 
@@ -40,19 +42,25 @@ const DropZone = (props) => {
         updatedFiles = updatedFiles.concat(f);
       });
       setFiles(updatedFiles);
+
       acceptedFiles.forEach((acceptedFile) => {
         let formData = new FormData();
         formData.append('file', acceptedFile);
-        const res = axiosInstance.post(config.server.baseURL, formData, {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-          },
-          onUploadProgress: (data) => {
-            const fileIndex = updatedFiles.findIndex((f) => f.path === acceptedFile.path);
-            updatedFiles[fileIndex].progress = Math.round((100 * data.loaded) / data.total);
-            setFiles([...updatedFiles]);
-          },
-        });
+        axiosInstance
+          .post(config.server.baseURL, formData, {
+            headers: {
+              'Content-Type': 'multipart/form-data',
+            },
+            onUploadProgress: (data) => {
+              const fileIndex = updatedFiles.findIndex((f) => f.path === acceptedFile.path);
+              updatedFiles[fileIndex].progress = Math.round((100 * data.loaded) / data.total);
+              setFiles([...updatedFiles]);
+            },
+          })
+          .catch((error) => {
+            setFiles([...updatedFiles.filter((f) => f.path !== acceptedFile.path)]);
+            toast(`${error}`);
+          });
       });
     }
   };
