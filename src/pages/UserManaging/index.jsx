@@ -1,39 +1,29 @@
 import { useTranslation } from 'react-i18next';
-import { Button } from '@material-ui/core';
+import { Button, Dialog } from '@material-ui/core';
+import { useState } from 'react';
+import AddUnit from './AddUnit/AddUnit';
 import useStyles from './index.styles';
-import DashboardCard from '../../common/DashboardCard/DashboardCard';
-import theme from '../../theme';
-import UnitCard from './UnitCard/UnitCard';
-import SearchBar from './SearchBar/SearchBar';
+import UnitDetails from './UnitDetails/UnitDetails';
+import Units from './units/units';
 
-const UserManaging = ({ numberOfUnits }) => {
+const UserManaging = () => {
   const classes = useStyles();
   const { t } = useTranslation();
+  const [openAddUnit, setOpenAddUnit] = useState(false);
 
   return (
     <>
       <p className={classes.addUsersTitle}>{t('headerTitles.addUsers')}</p>
       <div className={classes.root}>
-        <DashboardCard height='45rem' width='70rem' className={classes.unitDetails}>
-          <h1>unit details</h1>
-        </DashboardCard>
-        <DashboardCard
-          className={classes.units}
-          backgroundColor={theme.palette.primary.main}
-          height='45rem'
-          width='17rem'
-          ml='3.5rem'
-        >
-          <SearchBar />
-          <p className={classes.unitsTitle}>{`${t('text.units')} (${numberOfUnits})`}</p>
-          <UnitCard unitName='ספיר' numberOfUnitUsers={12} />
-          <UnitCard unitName='שטל 121' numberOfUnitUsers={12} />
-
-        </DashboardCard>
+        <UnitDetails />
+        <Units numberOfUnits={38} />
       </div>
-      <Button variant='contained' className={classes.addUnitButton}>
+      <Button variant='contained' className={classes.addUnitButton} onClick={() => setOpenAddUnit(true)}>
         {t('button.addUnit')}
       </Button>
+      <Dialog onClose={() => setOpenAddUnit(false)} aria-labelledby='simple-dialog-title' open={openAddUnit}>
+        <AddUnit />
+      </Dialog>
     </>
   );
 };

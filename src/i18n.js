@@ -13,14 +13,20 @@ const resources = {
         malshabData: 'נתוני מלש"ב',
         appraiserPreperationKit: 'ערכת הכנה למעריך',
         addUsers: 'הוספת משתמשים',
+        addUnit: 'הוספת יחידה',
       },
       button: {
-        addUnit: 'הוספת יחידה +',
+        addUnit: '+ הוספת יחידה',
       },
       text: {
         users: 'משתמשים',
         units: 'יחידות',
+        role: 'תפקיד',
+        amount: 'כמות',
+        permissions: 'הגדרות כניסה',
+        add: 'הוספה',
       },
+
     },
   },
 };

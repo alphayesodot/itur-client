@@ -18,7 +18,7 @@ const useStyles = makeStyles(() => ({
     direction: 'rtl',
     fontSize: '0.9rem',
     fontWeight: 'normal',
-    color: 'white',
+    color: 'rgb(125, 131, 137)',
     marginTop: '-0.5rem',
     fontFamily: 'Rubik, sans-serif',
     marginRight: '2rem',

@@ -7,12 +7,15 @@ const useStyles = makeStyles((theme) => ({
     overflow: 'hidden',
   },
   addUsersTitle: {
-    fontSize: '1.5rem',
+    fontSize: '1.3rem',
+    fontFamily: 'Rubik, sans-serif',
+    fontWeight: 'bold',
     fontColor: theme.palette.section.main,
     direction: 'rtl',
     width: '11rem',
-    marginLeft: '95rem',
-    margin: '2rem',
+    marginLeft: '94rem',
+    marginTop: '2.5rem',
+    marginBottom: '1.5rem',
   },
   addUnitButton: {
     backgroundColor: theme.palette.primary.secondary,
@@ -22,15 +25,9 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '1rem',
     marginLeft: '88.5rem',
     marginTop: '1.2rem',
+    direction: 'rtl',
   },
-  unitsTitle: {
-    color: 'white',
-    fontSize: '1.2rem',
-    fontFamily: 'Rubik, sans-serif',
-    fontWeight: 'bold',
-    marginTop: '3rem',
-    marginLeft: '9rem',
-  },
+
 }));
 
 export default useStyles;
