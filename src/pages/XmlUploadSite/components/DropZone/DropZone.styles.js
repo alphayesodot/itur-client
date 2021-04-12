@@ -1,6 +1,4 @@
 import { makeStyles } from '@material-ui/core/styles';
-import { Height } from '@material-ui/icons';
-import theme from '../../../../theme';
 
 const useStyles = makeStyles((theme) => ({
   root: {

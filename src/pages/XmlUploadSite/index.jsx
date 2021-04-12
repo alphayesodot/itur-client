@@ -6,7 +6,6 @@ import useStyles from './index.styles';
 const UploadXmlPage = () => {
   const classes = useStyles();
   const [files, setFiles] = useState([]);
-
   return (
     <div className={classes.root}>
       <div className={classes.content}>

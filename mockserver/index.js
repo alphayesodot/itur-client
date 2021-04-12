@@ -33,6 +33,13 @@ app.get('/config', (req, res) => {
   });
 });
 
+// xml server
+app.post('/upload_file', (req, res) => {
+  res.statusCode = 200;
+  res.send({ code: 'success' });
+});
+
 app.use('/api/event', eventRouter);
+app.use('/api/xml-upload', eventRouter);
 
 app.listen(config.port, () => console.log(`Mock server listening on ${config.port}`));

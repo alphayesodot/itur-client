@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'space-between',
     margin: '1rem auto',
     width: '90%',
-    padding: '0'
+    padding: '0',
   },
   upload: {
     margin: '0',
@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
     width: '80%',
   },
   infoBox: {
-    display: "flex",
+    display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
     flexDirection: 'row',
@@ -42,14 +42,14 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 13,
     fontWeight: 'bold',
     fontFamily: theme.typography.fontFamily,
-    margin: '0.15rem'
+    margin: '0.15rem',
   },
   typography: {
     fontSize: '0.7rem',
     fontFamily: theme.typography.fontFamily,
     color: 'gray',
     marginBottom: '0.4rem',
-    textAlign: 'left'
+    textAlign: 'left',
   },
   progressBar: {
     backgroundColor: 'rgb(234,243,246)',
@@ -61,12 +61,12 @@ const useStyles = makeStyles((theme) => ({
     marginRight: '0.5rem',
   },
   noneLi: {
-    listStyleType: 'none'
+    listStyleType: 'none',
   },
   loder: {
     color: theme.palette.section.primary,
     size: 100,
-  }
+  },
 }));
 
 export default useStyles;

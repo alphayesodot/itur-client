@@ -1,7 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
-import { Height } from '@material-ui/icons';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
     width: '100%',
     textAlign: 'center',
@@ -17,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
     padding: '7rem 3rem',
     margin: '3rem auto',
     borderRadius: '1em',
-  }
+  },
 }));
 
 export default useStyles;
