@@ -1,8 +1,8 @@
 import React from 'react';
-import { Typography } from '@material-ui/core';
+import { Grid, Typography } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
-import DashboardCard from '../../../../common/DashboardCard/DashboardCard';
 import useStyles from './TrackBoard.styles';
+import ScheduleCard from '../ScheduleCard/ScheduleCard';
 
 const TrackBoard = () => {
   const classes = useStyles();
@@ -27,16 +27,25 @@ const TrackBoard = () => {
   );
 
   return (
-    <DashboardCard
-      className={classes.root}
-      width='95%'
-      height='65vh'
-      mt='1em'
-    >
+    <div className={classes.root}>
       <Typography className={classes.date}>
         {getDatePreview(new Date())}
       </Typography>
-    </DashboardCard>
+      <Grid
+        container
+        spacing={5}
+        justify='flex-end'
+        alignItems='stretch'
+        wrap='nowrap'
+        className={classes.grid}
+      >
+        {[1, 2, 3, 4, 5, 5, 5, 5].map(() => (
+          <Grid item xs={6} lg={3} xl={2}>
+            <ScheduleCard />
+          </Grid>
+        ))}
+      </Grid>
+    </div>
   );
 };
 
