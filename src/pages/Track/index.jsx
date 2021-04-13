@@ -9,7 +9,7 @@ const Track = () => {
   // TODO: Get unit from current user
   return (
     <div className={classes.root}>
-      <Header unit='ספיר' />
+      <Header unitName='ספיר' />
       <TrackBoard />
     </div>
   );
