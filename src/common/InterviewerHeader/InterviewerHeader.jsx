@@ -11,26 +11,49 @@ const Header = () => {
   const classes = useStyles();
   const { t } = useTranslation();
 
-  const headerTitles = [
-    {
-      title: t('headerTitles.malshabData'),
-      path: '/interview-dashboard/malshab-data',
-    },
+  const headers = [
     {
       title: t('headerTitles.appraiserPreperationKit'),
       path: '/interview-dashboard/preperation-kit',
     },
+    {
+      title: t('headerTitles.malshabData'),
+      path: '/interview-dashboard/malshab-data',
+    },
   ];
+
+  const iconButtons = [{
+    icon: <AccountCircleIcon className={classes.secondary} />,
+    path: '/account',
+  },
+  {
+    icon: <NotificationsNoneIcon className={classes.secondary} />,
+    path: '/notifications',
+  }];
 
   return (
     <AppBar position='static' className={classes.root}>
       <Toolbar className={classes.toolbar}>
         <div>
-          <Link to='/'>
-            <Button>
-              <img src='radar-logo.png' alt='' />
-            </Button>
-          </Link>
+          <IconButton
+            className={classes.menuButton}
+            color='inherit'
+            aria-label='menu'
+          >
+            <MenuIcon />
+          </IconButton>
+          {iconButtons.map(({ icon, path }) => (
+            <IconButton
+              className={`${classes.menuButton} ${classes.notForMobile}`}
+              color='inherit'
+              aria-label='menu'
+              key={path}
+              component={Link}
+              to={path}
+            >
+              {icon}
+            </IconButton>
+          ))}
         </div>
         <div>
           <Link to='/interview-dashboard'>
@@ -44,8 +67,8 @@ const Header = () => {
             </Button>
           </Link>
 
-          {headerTitles.map(({ title, path }) => (
-            <Link to={path}>
+          {headers.map(({ title, path }) => (
+            <Link to={path} key={path}>
               <Button
                 classes={{
                   root: `${classes.toolbarBtn} ${classes.notForMobile}`,
@@ -58,25 +81,11 @@ const Header = () => {
           ))}
         </div>
         <div>
-          {[
-            <NotificationsNoneIcon className={classes.secondary} />,
-            <AccountCircleIcon className={classes.secondary} />,
-          ].map((icon) => (
-            <IconButton
-              className={`${classes.menuButton} ${classes.notForMobile}`}
-              color='inherit'
-              aria-label='menu'
-            >
-              {icon}
-            </IconButton>
-          ))}
-          <IconButton
-            className={classes.menuButton}
-            color='inherit'
-            aria-label='menu'
-          >
-            <MenuIcon />
-          </IconButton>
+          <Link to='/'>
+            <Button>
+              <img src='radar-logo.png' alt='' />
+            </Button>
+          </Link>
         </div>
       </Toolbar>
     </AppBar>
