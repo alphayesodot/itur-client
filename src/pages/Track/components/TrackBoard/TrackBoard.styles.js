@@ -6,9 +6,10 @@ const useStyles = makeStyles(() => ({
     width: '95%',
     height: '70vh',
     marginTop: '1em',
+    paddingBottom: '0.5em',
   },
   date: {
-    padding: '2.5em 3em',
+    padding: '2em 3em',
     height: '1em',
     fontWeight: '700',
   },
