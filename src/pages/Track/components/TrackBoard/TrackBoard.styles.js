@@ -22,6 +22,7 @@ const useStyles = makeStyles(() => ({
   },
   item: {
     minWidth: '19em',
+    width: '19em',
     height: '100%',
     '&:first-child': {
       paddingRight: '0',

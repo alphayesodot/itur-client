@@ -33,7 +33,7 @@ const TrackBoard = () => {
         {getDatePreview(new Date())}
       </Typography>
       <List className={classes.list}>
-        {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map(() => (
+        {[0, 1, 2].map(() => (
           <ListItem className={classes.item}>
             <ScheduleCard />
           </ListItem>
