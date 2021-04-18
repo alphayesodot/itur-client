@@ -1,14 +1,13 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
     background: 'white',
     width: '95%',
-    height: '65vh',
+    height: '70vh',
     marginTop: '1em',
   },
   date: {
-    direction: theme.direction,
     padding: '2.5em 3em',
     height: '1em',
     fontWeight: '700',
@@ -17,10 +16,20 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     overflowX: 'scroll',
     height: 'calc(100% - 7em)',
+    marginRight: '1.3em',
+    marginLeft: '1.3em',
   },
   item: {
-    minWidth: '16.5%',
+    minWidth: '19em',
     height: '100%',
+    '&:first-child': {
+      paddingRight: '0',
+      minWidth: '18em',
+    },
+    '&:last-child': {
+      paddingLeft: '0',
+      minWidth: '18em',
+    },
   },
 }));
 

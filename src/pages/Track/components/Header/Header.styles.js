@@ -10,7 +10,6 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
-    direction: theme.direction,
     [theme.breakpoints.down('sm')]: {
       flexDirection: 'column',
       alignItems: 'stretch',
@@ -50,9 +49,6 @@ const useStyles = makeStyles((theme) => ({
   icon: {
     fill: '#9aa3aa',
     width: '185%',
-  },
-  nodeGroup: {
-    direction: theme.direction,
   },
   date: {
     borderRadius: 30,
