@@ -6,11 +6,7 @@ const ScheduleCard = () => {
   const classes = useStyles();
 
   return (
-    <DashboardCard
-      className={classes.root}
-      backgroundColor='primary'
-      height='100%'
-    />
+    <DashboardCard className={classes.root} />
   );
 };
 

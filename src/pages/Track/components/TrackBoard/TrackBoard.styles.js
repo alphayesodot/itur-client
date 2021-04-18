@@ -3,7 +3,6 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles(() => ({
   root: {
     background: 'white',
-    borderRadius: '15px',
     width: '95%',
     height: '65vh',
     marginTop: '1em',

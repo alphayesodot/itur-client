@@ -10,10 +10,7 @@ const Header = ({ unitName }) => {
   const { t } = useTranslation();
 
   return (
-    <DashboardCard
-      backgroundColor='primary'
-      width='95%'
-    >
+    <DashboardCard className={classes.root}>
       <div className={classes.content}>
         <div className={classes.main}>
           <Typography className={`${classes.unit} ${classes.item}`}>

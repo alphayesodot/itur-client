@@ -2,6 +2,7 @@ import React from 'react';
 import { Grid, Typography } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 import useStyles from './TrackBoard.styles';
+import DashboardCard from '../../../../common/DashboardCard/DashboardCard';
 import ScheduleCard from '../ScheduleCard/ScheduleCard';
 
 const TrackBoard = () => {
@@ -27,7 +28,7 @@ const TrackBoard = () => {
   );
 
   return (
-    <div className={classes.root}>
+    <DashboardCard className={classes.root}>
       <Typography className={classes.date}>
         {getDatePreview(new Date())}
       </Typography>
@@ -45,7 +46,7 @@ const TrackBoard = () => {
           </Grid>
         ))}
       </Grid>
-    </div>
+    </DashboardCard>
   );
 };
 
