@@ -15,7 +15,7 @@ const useStyles = makeStyles(() => ({
   },
   list: {
     display: 'flex',
-    overflowX: 'scroll',
+    overflowX: 'auto',
     height: 'calc(100% - 7em)',
     marginRight: '1.3em',
     marginLeft: '1.3em',
