@@ -44,7 +44,7 @@ const TrackBoard = () => {
       </Typography>
       <List className={classes.list}>
         {users.map((user) => (
-          <ListItem className={classes.item}>
+          <ListItem key={user.name} className={classes.item}>
             <ScheduleCard user={user} interviews={[]} />
           </ListItem>
         ))}

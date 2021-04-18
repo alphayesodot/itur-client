@@ -18,7 +18,7 @@ const ScheduleCard = ({ user, interviews }) => {
           {user.name}
         </Typography>
       </div>
-      <div style={{ height: '80%' }} />
+      <div style={{ height: '80%', overflow: 'scroll' }} />
       <div className={classes.interviewsCount}>
         <Typography>
           {interviews.length

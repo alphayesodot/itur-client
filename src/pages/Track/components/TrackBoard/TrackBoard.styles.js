@@ -26,11 +26,11 @@ const useStyles = makeStyles(() => ({
     height: '100%',
     '&:first-child': {
       paddingRight: '0',
-      minWidth: '18em',
+      minWidth: '17.5em',
     },
     '&:last-child': {
       paddingLeft: '0',
-      minWidth: '18em',
+      minWidth: '17.5em',
     },
   },
 }));
