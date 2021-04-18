@@ -9,6 +9,8 @@ const resources = {
         example: 'מערכת איתור',
         unit: 'יחידה',
         day: 'יום',
+        interviewsCount: 'סה"כ ראיונות',
+        noInterviews: 'אין ראיונות',
       },
       headerTitles: {
         interviewsSchedule: 'לו"ז ראיונות',

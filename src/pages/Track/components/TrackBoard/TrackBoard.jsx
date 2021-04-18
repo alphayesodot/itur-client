@@ -27,15 +27,25 @@ const TrackBoard = () => {
     </>
   );
 
+  const users = [
+    { name: 'יוזר #1' },
+    { name: 'יוזר #2' },
+    { name: 'יוזר #3' },
+    { name: 'יוזר #4' },
+    { name: 'יוזר #5' },
+    { name: 'יוזר #6' },
+    { name: 'יוזר #7' },
+  ];
+
   return (
     <DashboardCard className={classes.root}>
       <Typography className={classes.date}>
         {getDatePreview(new Date())}
       </Typography>
       <List className={classes.list}>
-        {[0, 1, 2].map(() => (
+        {users.map((user) => (
           <ListItem className={classes.item}>
-            <ScheduleCard />
+            <ScheduleCard user={user} interviews={[]} />
           </ListItem>
         ))}
       </List>
