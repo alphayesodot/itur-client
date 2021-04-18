@@ -13,11 +13,14 @@ const useStyles = makeStyles((theme) => ({
     height: '1em',
     fontWeight: '700',
   },
-  grid: {
-    width: '100%',
-    height: 'calc(100% - 6em)',
-    margin: 'auto',
+  list: {
+    display: 'flex',
     overflowX: 'scroll',
+    height: 'calc(100% - 7em)',
+  },
+  item: {
+    minWidth: '16.5%',
+    height: '100%',
   },
 }));
 
