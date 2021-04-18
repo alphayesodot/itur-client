@@ -25,7 +25,7 @@ const Header = ({ unitName }) => {
             disableUnderline
           >
             {['מסלול', 'עוד מסלול'].map((nodeGroup) => (
-              <MenuItem key={nodeGroup} value={nodeGroup}>
+              <MenuItem className={classes.nodeGroup} key={nodeGroup} value={nodeGroup}>
                 {nodeGroup}
               </MenuItem>
             ))}

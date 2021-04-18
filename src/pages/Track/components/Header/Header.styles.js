@@ -37,6 +37,9 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '1.15em',
     whiteSpace: 'nowrap',
   },
+  nodeGroup: {
+    direction: theme.direction,
+  },
   select: {
     width: '12rem',
     height: '2.5em',
