@@ -45,7 +45,7 @@ const TrackBoard = () => {
       <List className={classes.list}>
         {users.map((user) => (
           <ListItem key={user.name} className={classes.item}>
-            <ScheduleCard user={user} interviews={[]} />
+            <ScheduleCard user={user} interviews={[{ time: '09:00', name: 'ברי צקלה', isOccured: true }, { time: '18:00', name: 'ברי צקלה', isOccured: true }]} />
           </ListItem>
         ))}
       </List>

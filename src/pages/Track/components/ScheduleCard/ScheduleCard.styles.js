@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
   interviewsCount: {
     backgroundColor: 'white',
     borderRadius: 15,
-    padding: '0.2em',
+    padding: '0.3em',
   },
 }));
 

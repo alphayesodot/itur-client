@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import DashboardCard from '../../../../common/DashboardCard/DashboardCard';
 import avatar from '../../../../utils/images/userpic-blue.svg';
 import useStyles from './ScheduleCard.styles';
+import InterviewsList from '../InterviewsList/InterviewsList';
 
 const ScheduleCard = ({ user, interviews }) => {
   const classes = useStyles();
@@ -18,7 +19,7 @@ const ScheduleCard = ({ user, interviews }) => {
           {user.name}
         </Typography>
       </div>
-      <div style={{ height: '80%', overflow: 'scroll' }} />
+      <InterviewsList interviews={interviews} />
       <div className={classes.interviewsCount}>
         <Typography>
           {interviews.length
