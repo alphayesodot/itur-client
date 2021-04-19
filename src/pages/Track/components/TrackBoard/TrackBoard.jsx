@@ -37,6 +37,8 @@ const TrackBoard = () => {
     { name: 'יוזר #7' },
   ];
 
+  const interviews = [{ time: '09:00', name: 'ברי צקלה', isOccured: true }, { time: '19:00', name: 'ברי צקלה', isOccured: false }, { time: '14:00', name: 'ברי צקלה', isOccured: false }, { time: '17:30', name: 'ברי צקלה', isOccured: false }, { time: '18:00', name: 'ברי צקלה', isOccured: true }, { time: '18:00', name: 'ברי צקלה', isOccured: true }, { time: '18:00', name: 'ברי צקלה', isOccured: true }, { time: '18:00', name: 'ברי צקלה', isOccured: true }, { time: '18:00', name: 'ברי צקלה', isOccured: true }, { time: '18:00', name: 'ברי צקלה', isOccured: true }, { time: '18:00', name: 'ברי צקלה', isOccured: true }, { time: '18:00', name: 'ברי צקלה', isOccured: true }, { time: '18:00', name: 'ברי צקלה', isOccured: true }, { time: '18:00', name: 'ברי צקלה', isOccured: true }, { time: '18:00', name: 'ברי צקלה', isOccured: true }];
+
   return (
     <DashboardCard className={classes.root}>
       <Typography className={classes.date}>
@@ -45,7 +47,7 @@ const TrackBoard = () => {
       <List className={classes.list}>
         {users.map((user) => (
           <ListItem key={user.name} className={classes.item}>
-            <ScheduleCard user={user} interviews={[{ time: '09:00', name: 'ברי צקלה', isOccured: true }, { time: '18:00', name: 'ברי צקלה', isOccured: true }]} />
+            <ScheduleCard user={user} interviews={interviews} />
           </ListItem>
         ))}
       </List>

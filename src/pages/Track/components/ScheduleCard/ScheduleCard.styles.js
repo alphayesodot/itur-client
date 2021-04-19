@@ -8,10 +8,10 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    padding: '1em 1.5em',
+    paddingBottom: '0',
   },
   title: {
-    paddingTop: '1em',
-    paddingRight: '1.5em',
     alignSelf: 'start',
     display: 'flex',
     alignItems: 'center',
