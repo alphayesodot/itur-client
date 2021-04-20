@@ -14,7 +14,7 @@ const InterviewsList = ({ interviews }) => {
   const { t } = useTranslation();
 
   // const hasPassed = (time) => new Date().getTime() < time.getTime();
-  const getTimeStatus = (time) => 'PAST';
+  const getTimeStatus = (time) => 'PRESENT';
 
   const getInterviewStatus = (interview) => {
     if (interview) {
@@ -58,10 +58,10 @@ const InterviewsList = ({ interviews }) => {
 
   return (
     <div className={classes.root}>
-      <List>
+      <List className={classes.list}>
         {expandedInterviews.map(({ name, time, status }) => (
-          <>
-            <ListItem>
+          <div key={`${name}-${time}`}>
+            <ListItem className={classes[`item${status}`]}>
               <Typography className={`${classes.time} ${classes[`time${status}`]}`}>
                 {time}
               </Typography>
@@ -77,7 +77,7 @@ const InterviewsList = ({ interviews }) => {
               )}
             </ListItem>
             <Divider />
-          </>
+          </div>
         ))}
       </List>
     </div>

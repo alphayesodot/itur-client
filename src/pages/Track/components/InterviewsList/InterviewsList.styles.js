@@ -2,9 +2,14 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    height: '83%',
+    height: '80%',
     width: '100%',
-    overflow: 'scroll',
+    overflowY: 'scroll',
+    overflowX: 'hidden',
+    margin: '0.5em',
+  },
+  list: {
+    padding: 0,
   },
   time: {
     width: '20%',
@@ -39,6 +44,19 @@ const useStyles = makeStyles((theme) => ({
   nameCANCELED: {
     color: theme.palette.font.secondary,
     textDecoration: 'line-through',
+  },
+  itemDURING: {
+    background: theme.palette.primary.main,
+  },
+  timeDURING: {
+    color: 'white',
+  },
+  nameDURING: {
+    color: 'white',
+    fontWeight: '600',
+  },
+  itemBREAK: {
+    background: '#D9EDF0',
   },
 }));
 
