@@ -1,15 +1,13 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     height: '83%',
     width: '100%',
     overflow: 'scroll',
   },
-  list: {
-  },
   time: {
-    width: '30%',
+    width: '20%',
     textAlign: 'right',
     fontWeight: '600',
     marginLeft: '1em',
@@ -25,6 +23,22 @@ const useStyles = makeStyles(() => ({
   avatar: {
     width: '1em',
     height: '1em',
+  },
+  timeDONE: {
+    color: theme.palette.font.secondary,
+    fontWeight: '400',
+  },
+  nameDONE: {
+    color: theme.palette.font.secondary,
+    textDecoration: 'line-through',
+  },
+  timeCANCELED: {
+    color: theme.palette.font.secondary,
+    fontWeight: '400',
+  },
+  nameCANCELED: {
+    color: theme.palette.font.secondary,
+    textDecoration: 'line-through',
   },
 }));
 

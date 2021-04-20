@@ -51,11 +51,11 @@ const InterviewsList = ({ interviews }) => {
         {interviews.map((interview) => (
           <>
             <ListItem>
-              <Typography className={classes.time}>
+              <Typography className={`${classes.time} ${classes[`time${getInterviewStatus(interview)}`]}`}>
                 {interview.time}
               </Typography>
               {interview.name && (
-              <Typography className={classes.name}>
+              <Typography className={`${classes.name} ${classes[`name${getInterviewStatus(interview)}`]}`}>
                 {interview.name}
               </Typography>
               )}
