@@ -37,7 +37,7 @@ const TrackBoard = () => {
     { name: 'יוזר #7' },
   ];
 
-  const interviews = [{ time: '09:00', name: 'ברי צקלה', isOccured: true }, { time: '11:00', name: 'ברי צקלה', isOccured: false }, { time: '14:00', name: 'ברי צקלה', isOccured: false }, { time: '17:30', name: 'ברי צקלה', isOccured: false }, { time: '18:00', name: 'ברי צקלה', isOccured: true }, { time: '18:00', name: 'ברי צקלה', isOccured: true }, { time: '18:00', name: 'ברי צקלה', isOccured: true }, { time: '18:00', name: 'ברי צקלה', isOccured: true }, { time: '18:00', name: 'ברי צקלה', isOccured: true }, { time: '18:00', name: 'ברי צקלה', isOccured: true }, { time: '18:00', name: 'ברי צקלה', isOccured: true }, { time: '18:00', name: 'ברי צקלה', isOccured: true }, { time: '18:00', name: 'ברי צקלה', isOccured: true }, { time: '18:00', name: 'ברי צקלה', isOccured: true }, { time: '18:00', name: 'ברי צקלה', isOccured: true }];
+  const interviews = [{ time: '2021-04-20T14:00:07.996+00:00', name: 'חיים כהן', isOccured: false }, { time: '2021-04-20T09:30:07.996+00:00', name: 'ברי צקלה', isOccured: true }, { time: '2021-04-20T09:00:07.996+00:00', name: 'נועה קירל', isOccured: false }, { time: '2021-04-20T17:30:07.996+00:00', name: 'כרמל צדוק', isOccured: false }, { time: '2021-04-20T15:00:07.996+00:00', name: 'עידן עופר', isOccured: false }];
 
   return (
     <DashboardCard className={classes.root}>
