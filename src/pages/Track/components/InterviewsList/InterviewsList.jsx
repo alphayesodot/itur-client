@@ -1,14 +1,16 @@
 /* eslint-disable no-unused-vars */
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { List, ListItem, Divider, Typography, Avatar, Tooltip } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 import DONE from '../../../../utils/images/passed-positive.svg';
 import CANCELED from '../../../../utils/images/passed-negative.svg';
 import BREAK from '../../../../utils/images/break.svg';
+import DURING from '../../../../utils/images/during.svg';
 import useStyles from './InterviewsList.styles';
 
 const InterviewsList = ({ interviews }) => {
   const classes = useStyles();
+  const [expandedInterviews, setExpandedInterviews] = useState(interviews);
   const { t } = useTranslation();
 
   // const hasPassed = (time) => new Date().getTime() < time.getTime();
@@ -21,7 +23,7 @@ const InterviewsList = ({ interviews }) => {
         case 'PAST':
           return interview.isOccured ? 'DONE' : 'CANCELED';
         case 'PRESENT':
-          return 'CURRENT';
+          return 'DURING';
         case 'FUTURE':
           return 'FUTURE';
         default:
@@ -29,6 +31,15 @@ const InterviewsList = ({ interviews }) => {
     }
     return 'BREAK';
   };
+
+  useEffect(() => {
+    setExpandedInterviews((prevInterviews) => (
+      prevInterviews.map((prevInterview) => ({
+        ...prevInterview,
+        status: getInterviewStatus(prevInterview),
+      }))
+    ));
+  }, []);
 
   const getIcon = (interviewStatus) => {
     switch (interviewStatus) {
@@ -38,8 +49,8 @@ const InterviewsList = ({ interviews }) => {
         return CANCELED;
       case 'BREAK':
         return BREAK;
-      // case 'CURRENT':
-      //   return CURRENT;
+      case 'DURING':
+        return DURING;
       default:
         return undefined;
     }
@@ -48,20 +59,20 @@ const InterviewsList = ({ interviews }) => {
   return (
     <div className={classes.root}>
       <List>
-        {interviews.map((interview) => (
+        {expandedInterviews.map(({ name, time, status }) => (
           <>
             <ListItem>
-              <Typography className={`${classes.time} ${classes[`time${getInterviewStatus(interview)}`]}`}>
-                {interview.time}
+              <Typography className={`${classes.time} ${classes[`time${status}`]}`}>
+                {time}
               </Typography>
-              {interview.name && (
-              <Typography className={`${classes.name} ${classes[`name${getInterviewStatus(interview)}`]}`}>
-                {interview.name}
+              {name && (
+              <Typography className={`${classes.name} ${classes[`name${status}`]}`}>
+                {name}
               </Typography>
               )}
-              { getIcon(getInterviewStatus(interview)) && (
-              <Tooltip arrow placement='right-end' title={t(`interviewStatus.${getInterviewStatus(interview)}`)}>
-                <Avatar alt='avatar' src={getIcon(getInterviewStatus(interview))} className={classes.avatar} />
+              { getIcon(status) && (
+              <Tooltip arrow placement='right-end' title={t(`interviewStatus.${status}`)}>
+                <Avatar alt='avatar' src={getIcon(status)} className={classes.avatar} />
               </Tooltip>
               )}
             </ListItem>

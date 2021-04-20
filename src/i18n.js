@@ -30,7 +30,7 @@ const resources = {
         7: 'שבת',
       },
       interviewStatus: {
-        CURRENT: 'פגישה מתקיימת',
+        DURING: 'פגישה מתקיימת',
         DONE: 'פגישה התקיימה',
         CANCELED: 'פגישה בוטלה',
         BREAK: 'הפסקה',
