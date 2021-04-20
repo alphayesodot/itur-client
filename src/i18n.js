@@ -29,6 +29,12 @@ const resources = {
         6: 'שישי',
         7: 'שבת',
       },
+      interviewStatus: {
+        CURRENT: 'פגישה מתקיימת',
+        DONE: 'פגישה התקיימה',
+        CANCELED: 'פגישה בוטלה',
+        BREAK: 'הפסקה',
+      },
     },
   },
 };
