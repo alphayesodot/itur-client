@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import { List, ListItem, Divider, Typography, Avatar, Tooltip } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
@@ -15,26 +14,28 @@ const InterviewsList = ({ interviews }) => {
   const [expandedInterviews, setExpandedInterviews] = useState(interviews);
   const { t } = useTranslation();
 
-  // eslint-disable-next-line arrow-body-style
   const getTimeStatus = (time) => {
-    // new Date().getTime() < new Date(time).getTime();
+    if (new Date().getTime() < new Date(time).getTime()) {
+      return 'FUTURE';
+    }
+    if (new Date().getTime() < (new Date(time).getTime() + timeDifference)) {
+      return 'PRESENT';
+    }
     return 'PAST';
   };
 
   const getInterviewStatus = (interview) => {
-    if (interview) {
-      const timeStatus = getTimeStatus(interview.time);
-      switch (timeStatus) {
-        case 'PAST':
-          return interview.isOccured ? 'DONE' : 'CANCELED';
-        case 'PRESENT':
-          return 'DURING';
-        case 'FUTURE':
-          return 'FUTURE';
-        default:
-      }
+    const timeStatus = getTimeStatus(interview.time);
+    switch (timeStatus) {
+      case 'PAST':
+        return interview.isOccured ? 'DONE' : 'CANCELED';
+      case 'PRESENT':
+        return 'DURING';
+      case 'FUTURE':
+        return 'FUTURE';
+      default:
+        return undefined;
     }
-    return 'BREAK';
   };
 
   const getExpandedInterviews = (prevInterviews) => {
