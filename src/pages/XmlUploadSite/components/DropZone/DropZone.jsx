@@ -12,7 +12,6 @@ const DropZone = (props) => {
   const { files, setFiles } = props;
   const classes = useStyles();
   const { t } = useTranslation();
-
   const axiosInstance = axios.create({
     baseURL: `${configApp.uri.api}/upload_file`,
   });
@@ -42,6 +41,9 @@ const DropZone = (props) => {
         formData.append('file', acceptedFile);
         axiosInstance
           .post(`${configApp.uri.api}/upload_file`, formData, {
+            params: {
+              filename: acceptedFile.name,
+            },
             headers: {
               'Content-Type': 'multipart/form-data',
             },
@@ -62,22 +64,19 @@ const DropZone = (props) => {
   return (
     <Dropzone
       onDrop={handleOnDrop}
-      acceptedFiles={configPage.dropzone.acceptedFileTypes}
+      accept={configPage.dropzone.acceptedFileTypes}
       maxSize={configPage.dropzone.maxSize}
     >
-      {({ getRootProps, getInputProps }) => {
-        const rootProps = getRootProps({ className: classes.root });
-        const inputProps = getInputProps();
-        return (
-          <div {...{ rootProps }}>
-            <input {...{ inputProps }} />
-            <img alt='drop files' src={cloudImg} className={classes.cloudImg} />
-            <p className={classes.explanation}>Drag and Drop to pload files</p>
-            <Button className={classes.uploadButton}>{t('xmlPage.upload_button')}</Button>
-            <p className={classes.limitation}>{t('xmlPage.size_limitation')}</p>
-          </div>
-        );
-      }}
+      {({ getRootProps, getInputProps }) => (
+        /* eslint-disable react/jsx-props-no-spreading */
+        <div {...getRootProps({ className: classes.root })}>
+          <input {...getInputProps()} />
+          <img alt='drop files' src={cloudImg} className={classes.cloudImg} />
+          <p className={classes.explanation}>Drag and Drop to pload files</p>
+          <Button className={classes.uploadButton}>{t('xmlPage.upload_button')}</Button>
+          <p className={classes.limitation}>{t('xmlPage.size_limitation')}</p>
+        </div>
+      ) }
     </Dropzone>
   );
 };

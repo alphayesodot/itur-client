@@ -15,7 +15,6 @@ const useStyles = makeStyles(() => ({
     width: '70%',
     padding: '7rem 3rem',
     margin: '3rem auto',
-    borderRadius: '1em',
   },
 }));
 
