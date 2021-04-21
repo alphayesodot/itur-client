@@ -38,34 +38,34 @@ const InterviewsList = ({ interviews }) => {
     }
   };
 
-  const getExpandedInterviews = (prevInterviews) => {
-    const minTime = Math.min(
-      ...prevInterviews.map((prevInterview) => new Date(prevInterview.time).getTime()),
-    );
-    const maxTime = Math.max(
-      ...prevInterviews.map((prevInterview) => new Date(prevInterview.time).getTime()),
-    );
-    const timeSegments = [];
-    for (let time = minTime; time <= maxTime; time += timeDifference) {
-      timeSegments.push(time);
-    }
-
-    const res = timeSegments.map((timeSegment) => {
-      const interview = prevInterviews.find(
-        (prevInterview) => new Date(prevInterview.time).getTime() === timeSegment,
-      );
-      return interview ? { ...interview, status: getInterviewStatus(interview) } : { time: timeSegment, status: 'BREAK' };
-    });
-
-    return res.sort(
-      (firstInterview, secondInterview) => new Date(firstInterview.time).getTime()
-          - new Date(secondInterview.time).getTime(),
-    );
-  };
-
   useEffect(() => {
-    setExpandedInterviews((prevInterviews) => getExpandedInterviews(prevInterviews));
-  }, []);
+    setExpandedInterviews((prevInterviews) => {
+      const minTime = Math.min(
+        ...prevInterviews.map((prevInterview) => new Date(prevInterview.time).getTime()),
+      );
+      const maxTime = Math.max(
+        ...prevInterviews.map((prevInterview) => new Date(prevInterview.time).getTime()),
+      );
+      const timeSegments = [];
+      for (let time = minTime; time <= maxTime; time += timeDifference) {
+        timeSegments.push(time);
+      }
+
+      const res = timeSegments.map((timeSegment) => {
+        const interview = prevInterviews.find(
+          (prevInterview) => new Date(prevInterview.time).getTime() === timeSegment,
+        );
+        return interview
+          ? { ...interview, status: getInterviewStatus(interview) }
+          : { time: timeSegment, status: 'BREAK' };
+      });
+
+      return res.sort(
+        (firstInterview, secondInterview) => new Date(firstInterview.time).getTime()
+          - new Date(secondInterview.time).getTime(),
+      );
+    });
+  }, [interviews]);
 
   const getIcon = (interviewStatus) => {
     switch (interviewStatus) {
@@ -92,9 +92,11 @@ const InterviewsList = ({ interviews }) => {
                 {new Date(time).toTimeString().split(' ')[0].slice(0, 5)}
               </Typography>
               {name && (
+              <Tooltip title={name}>
                 <Typography className={`${classes.name} ${classes[`name${status}`]}`}>
                   {name}
                 </Typography>
+              </Tooltip>
               )}
               { getIcon(status) && (
                 <Tooltip arrow placement='right-end' title={t(`interviewStatus.${status}`)}>
