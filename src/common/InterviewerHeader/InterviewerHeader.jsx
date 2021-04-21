@@ -1,26 +1,28 @@
 import React from 'react';
-import MenuIcon from '@material-ui/icons/Menu';
+// import MenuIcon from '@material-ui/icons/Menu';
 import NotificationsNoneIcon from '@material-ui/icons/NotificationsNone';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import { Link } from 'react-router-dom';
 import { Toolbar, AppBar, IconButton, Button } from '@material-ui/core';
-import { useTranslation } from 'react-i18next';
+// import { useTranslation } from 'react-i18next';
 import useStyles from './InterviewerHeader.styles';
 
 const Header = () => {
   const classes = useStyles();
-  const { t } = useTranslation();
+  // const { t } = useTranslation();
+  const date = Date();
+  console.log(date);
 
-  const headerTitles = [
-    {
-      title: t('headerTitles.malshabData'),
-      path: '/interview-dashboard/malshab-data',
-    },
-    {
-      title: t('headerTitles.appraiserPreperationKit'),
-      path: '/interview-dashboard/preperation-kit',
-    },
-  ];
+  // const headerTitles = [
+  //   {
+  //     title: t('headerTitles.malshabData'),
+  //     path: '/interview-dashboard/malshab-data',
+  //   },
+  //   {
+  //     title: t('headerTitles.appraiserPreperationKit'),
+  //     path: '/interview-dashboard/preperation-kit',
+  //   },
+  // ];
 
   return (
     <AppBar position='static' className={classes.root}>
@@ -32,7 +34,7 @@ const Header = () => {
             </Button>
           </Link>
         </div>
-        <div>
+        {/* <div>
           <Link to='/interview-dashboard'>
             <Button
               classes={{
@@ -56,9 +58,26 @@ const Header = () => {
               </Button>
             </Link>
           ))}
-        </div>
+        </div> */}
         <div>
-          {[
+          <IconButton
+            className={`${classes.menuButton} ${classes.notForMobile}`}
+            color='inherit'
+            aria-label='menu'
+          >
+            <NotificationsNoneIcon className={classes.secondary} />
+          </IconButton>
+          <span>
+            בוקר טוב
+          </span>
+          <IconButton
+            className={`${classes.menuButton} ${classes.notForMobile}`}
+            color='inherit'
+            aria-label='menu'
+          >
+            <AccountCircleIcon className={classes.secondary} />
+          </IconButton>
+          {/* {[
             <NotificationsNoneIcon className={classes.secondary} />,
             <AccountCircleIcon className={classes.secondary} />,
           ].map((icon) => (
@@ -69,14 +88,14 @@ const Header = () => {
             >
               {icon}
             </IconButton>
-          ))}
-          <IconButton
+          ))} */}
+          {/* <IconButton
             className={classes.menuButton}
             color='inherit'
             aria-label='menu'
           >
             <MenuIcon />
-          </IconButton>
+          </IconButton> */}
         </div>
       </Toolbar>
     </AppBar>
