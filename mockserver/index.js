@@ -7,6 +7,7 @@ import cors from 'cors';
 import buildJwt from './authentication.js';
 import config from './config.js';
 import eventRouter from './event/event.router.js';
+import xmlRouter from './xmlUpload/xml.router.js';
 
 const app = express();
 app.use(cors({ origin: '*', credentials: true }));
@@ -33,13 +34,7 @@ app.get('/config', (req, res) => {
   });
 });
 
-// xml server
-app.post('/upload_file', (req, res) => {
-  res.statusCode = 200;
-  res.send({ code: 'success' });
-});
-
 app.use('/api/event', eventRouter);
-app.use('/api/xml-upload', eventRouter);
+app.use('/api/upload-xml-file', xmlRouter);
 
 app.listen(config.port, () => console.log(`Mock server listening on ${config.port}`));

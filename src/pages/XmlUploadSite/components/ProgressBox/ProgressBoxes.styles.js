@@ -10,7 +10,6 @@ const useStyles = makeStyles((theme) => ({
   },
   progressBox: {
     display: 'flex',
-    flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
     margin: '1rem auto',
@@ -31,7 +30,6 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
-    flexDirection: 'row',
   },
   cancelButton: {
     backgroundColor: 'rgb(234,243,246)',
@@ -63,7 +61,7 @@ const useStyles = makeStyles((theme) => ({
   noneLi: {
     listStyleType: 'none',
   },
-  loder: {
+  loader: {
     color: theme.palette.section.primary,
     size: 100,
   },

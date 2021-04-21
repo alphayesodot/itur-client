@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 import Dropzone from 'react-dropzone';
 import Button from '@material-ui/core/Button';
 import { useTranslation } from 'react-i18next';
-import cloudImg from '../../images/cloud.png';
+import cloudImg from '../../utils/images/cloud.png';
 import useStyles from './DropZone.styles';
 import configPage from '../../config';
 import configApp from '../../../../appConf';
@@ -32,7 +32,13 @@ const DropZone = (props) => {
       acceptedFiles.forEach((f) => {
         // eslint-disable-next-line no-param-reassign
         f.progress = 0;
-        updatedFiles = updatedFiles.concat(f);
+        console.log(updatedFiles);
+        const repetitionsArray = updatedFiles.filter((updatedFile) => updatedFile.path === f.path);
+        if (repetitionsArray.length > 0) {
+          toast('This file path already uploaded, please change name or remove file from list');
+        } else {
+          updatedFiles = updatedFiles.concat(f);
+        }
       });
       setFiles(updatedFiles);
 
@@ -40,7 +46,7 @@ const DropZone = (props) => {
         const formData = new FormData();
         formData.append('file', acceptedFile);
         axiosInstance
-          .post(`${configApp.uri.api}/upload_file`, formData, {
+          .post(`${configApp.uri.api}/api/upload-xml-file`, formData, {
             params: {
               filename: acceptedFile.name,
             },

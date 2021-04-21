@@ -6,7 +6,7 @@ import Box from '@material-ui/core/Box';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import useStyles from './ProgressBoxes.styles';
-import xmlImg from '../../images/xmlFile.png';
+import xmlImg from '../../utils/images/xmlFile.png';
 
 const ProgressBoxes = ({ files, setFiles }) => {
   const classes = useStyles();
@@ -21,7 +21,7 @@ const ProgressBoxes = ({ files, setFiles }) => {
         <Box className={classes.infoBox}>
           <span className={classes.fileName}>{file.name}</span>
           {!file.progress ? (
-            <CircularProgress size={17} className={classes.loder} />
+            <CircularProgress size={17} className={classes.loader} />
           ) : (
             <IconButton
               onClick={() => {
