@@ -42,7 +42,7 @@ ScheduleCard.propTypes = {
   user: PropTypes.shape({
     name: PropTypes.string,
   }).isRequired,
-  interviews: PropTypes.arrayOf(PropTypes.string).isRequired,
+  interviews: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default ScheduleCard;

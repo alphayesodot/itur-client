@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import { List } from '@material-ui/core';
 import InterviewItem from '../InterviewItem/InterviewItem';
 import useStyles from './InterviewsList.styles';
@@ -66,13 +67,17 @@ const InterviewsList = ({ interviews }) => {
     <div className={classes.root}>
       <List className={classes.list}>
         {expandedInterviews.map(({ name, time, status }) => (
-          <div key={`${name}-${time}`}>
-            <InterviewItem status={status} time={time} name={name} />
+          <div key={`${name}-${JSON.stringify(time)}`}>
+            <InterviewItem status={status} time={new Date(time)} name={name} />
           </div>
         ))}
       </List>
     </div>
   );
+};
+
+InterviewsList.propTypes = {
+  interviews: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default InterviewsList;

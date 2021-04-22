@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { ListItem, Divider, Typography, Avatar, Tooltip } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 import DONE from '../../../../utils/images/passed-positive.svg';
@@ -30,7 +31,7 @@ const InterviewItem = ({ status, time, name }) => {
     <>
       <ListItem className={classes[`item${status}`]}>
         <Typography className={`${classes.time} ${classes[`time${status}`]}`}>
-          {new Date(time).toTimeString().split(' ')[0].slice(0, 5)}
+          {time.toTimeString().split(' ')[0].slice(0, 5)}
         </Typography>
         {name && (
         <Tooltip title={name}>
@@ -48,6 +49,17 @@ const InterviewItem = ({ status, time, name }) => {
       <Divider />
     </>
   );
+};
+
+InterviewItem.propTypes = {
+  status: PropTypes.string,
+  time: PropTypes.instanceOf(Date).isRequired,
+  name: PropTypes.string,
+};
+
+InterviewItem.defaultProps = {
+  status: '',
+  name: '',
 };
 
 export default InterviewItem;
