@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Generator: Adobe Illustrator 23.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 92 92" style="enable-background:new 0 0 92 92;" xml:space="preserve">
+	 viewBox="0 0 92 92" style="enable-background:new 0 0 92 92;-webkit-animation: rotation 2s infinite linear;" xml:space="preserve">
 <style type="text/css">
-	.g0{-webkit-animation: rotation 2s infinite linear;}
 	.st0{opacity:0.6;fill:#24E2DD;enable-background:new    ;}
 	.st1{opacity:0.1;fill:#24E2DD;enable-background:new    ;}
 	.st2{opacity:0.7;fill:#24E2DD;enable-background:new    ;}
@@ -16,9 +15,17 @@
 	.st9{opacity:0.5;fill:#24E2DD;enable-background:new    ;}
 	.st10{fill:#24E2DD;}
 	.st11{opacity:0.55;fill:#24E2DD;enable-background:new    ;}
+	@-webkit-keyframes rotation {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(359deg);
+  }
+}
 </style>
 <g>
-	<g id="Layer_1-2" class="g0">
+	<g id="Layer_1-2">
 		<path class="st0" d="M20.8,77.6c1.7-2.9,5.3-3.9,8.2-2.2s3.9,5.3,2.2,8.2c-1.7,2.9-5.3,3.9-8.2,2.2C20.1,84.2,19.1,80.5,20.8,77.6
 			C20.8,77.6,20.8,77.6,20.8,77.6z"/>
 		<path class="st1" d="M60.8,8.4c-1.7,2.9-0.7,6.5,2.2,8.2c2.9,1.7,6.5,0.7,8.2-2.2c1.7-2.9,0.7-6.5-2.2-8.2
