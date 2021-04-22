@@ -3,7 +3,7 @@ import { createMuiTheme } from '@material-ui/core/styles';
 const theme = createMuiTheme({
   direction: 'rtl',
   typography: {
-    fontFamily: 'system-ui',
+    fontFamily: 'Assistant',
   },
   palette: {
     primary: {

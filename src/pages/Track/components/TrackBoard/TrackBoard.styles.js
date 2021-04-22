@@ -11,7 +11,7 @@ const useStyles = makeStyles(() => ({
   date: {
     padding: '2em 3em',
     height: '1em',
-    fontWeight: '700',
+    fontWeight: '800',
   },
   list: {
     display: 'flex',
