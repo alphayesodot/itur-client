@@ -37,7 +37,7 @@ const TrackBoard = () => {
     { name: 'יוזר #7' },
   ];
 
-  const interviews = [{ time: '2021-04-21T14:00:07.996+00:00', name: 'חיים כהן', isOccured: false }, { time: '2021-04-21T08:00:07.996+00:00', name: 'ברי צקלה', isOccured: true }, { time: '2021-04-21T06:00:07.996+00:00', name: 'נועה קירל', isOccured: false }, { time: '2021-04-21T17:30:07.996+00:00', name: 'כרמל צדוק', isOccured: false }, { time: '2021-04-21T15:00:07.996+00:00', name: 'עידן עופר', isOccured: false }];
+  const interviews = [{ time: '2021-04-22T06:00:07.996+00:00', name: 'חיים כהן', isOccured: false }, { time: '2021-04-22T10:30:07.996+00:00', name: 'מלכה כהן', isOccured: false }, { time: '2021-04-22T12:30:07.996+00:00', name: 'אסי עזר', isOccured: false }];
 
   return (
     <DashboardCard className={classes.root}>

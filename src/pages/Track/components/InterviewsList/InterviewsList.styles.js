@@ -29,6 +29,12 @@ const useStyles = makeStyles((theme) => ({
     width: '1em',
     height: '1em',
   },
+  itemFUTURE: {
+    background: theme.palette.scrollbar.secondary,
+  },
+  itemDONE: {
+    background: theme.palette.scrollbar.secondary,
+  },
   timeDONE: {
     color: theme.palette.font.secondary,
     fontWeight: '400',
@@ -36,6 +42,9 @@ const useStyles = makeStyles((theme) => ({
   nameDONE: {
     color: theme.palette.font.secondary,
     textDecoration: 'line-through',
+  },
+  itemCANCELED: {
+    background: theme.palette.scrollbar.secondary,
   },
   timeCANCELED: {
     color: theme.palette.font.secondary,

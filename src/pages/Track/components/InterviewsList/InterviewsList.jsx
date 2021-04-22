@@ -92,11 +92,11 @@ const InterviewsList = ({ interviews }) => {
                 {new Date(time).toTimeString().split(' ')[0].slice(0, 5)}
               </Typography>
               {name && (
-              <Tooltip title={name}>
-                <Typography className={`${classes.name} ${classes[`name${status}`]}`}>
-                  {name}
-                </Typography>
-              </Tooltip>
+                <Tooltip title={name}>
+                  <Typography className={`${classes.name} ${classes[`name${status}`]}`}>
+                    {name}
+                  </Typography>
+                </Tooltip>
               )}
               { getIcon(status) && (
                 <Tooltip arrow placement='right-end' title={t(`interviewStatus.${status}`)}>
