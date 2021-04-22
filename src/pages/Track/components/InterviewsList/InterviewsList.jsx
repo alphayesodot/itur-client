@@ -1,10 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { List, ListItem, Divider, Typography, Avatar, Tooltip } from '@material-ui/core';
-import { useTranslation } from 'react-i18next';
-import DONE from '../../../../utils/images/passed-positive.svg';
-import CANCELED from '../../../../utils/images/passed-negative.svg';
-import BREAK from '../../../../utils/images/break.svg';
-import DURING from '../../../../utils/images/during.svg';
+import { List } from '@material-ui/core';
+import InterviewItem from '../InterviewItem/InterviewItem';
 import useStyles from './InterviewsList.styles';
 
 const timeDifference = 1800000; // 30 minutes
@@ -12,7 +8,6 @@ const timeDifference = 1800000; // 30 minutes
 const InterviewsList = ({ interviews }) => {
   const classes = useStyles();
   const [expandedInterviews, setExpandedInterviews] = useState(interviews);
-  const { t } = useTranslation();
 
   const getTimeStatus = (time) => {
     if (new Date().getTime() < new Date(time).getTime()) {
@@ -51,7 +46,7 @@ const InterviewsList = ({ interviews }) => {
         timeSegments.push(time);
       }
 
-      const res = timeSegments.map((timeSegment) => {
+      const sections = timeSegments.map((timeSegment) => {
         const interview = prevInterviews.find(
           (prevInterview) => new Date(prevInterview.time).getTime() === timeSegment,
         );
@@ -60,51 +55,19 @@ const InterviewsList = ({ interviews }) => {
           : { time: timeSegment, status: 'BREAK' };
       });
 
-      return res.sort(
+      return sections.sort(
         (firstInterview, secondInterview) => new Date(firstInterview.time).getTime()
           - new Date(secondInterview.time).getTime(),
       );
     });
   }, [interviews]);
 
-  const getIcon = (interviewStatus) => {
-    switch (interviewStatus) {
-      case 'DONE':
-        return DONE;
-      case 'CANCELED':
-        return CANCELED;
-      case 'BREAK':
-        return BREAK;
-      case 'DURING':
-        return DURING;
-      default:
-        return undefined;
-    }
-  };
-
   return (
     <div className={classes.root}>
       <List className={classes.list}>
         {expandedInterviews.map(({ name, time, status }) => (
           <div key={`${name}-${time}`}>
-            <ListItem className={classes[`item${status}`]}>
-              <Typography className={`${classes.time} ${classes[`time${status}`]}`}>
-                {new Date(time).toTimeString().split(' ')[0].slice(0, 5)}
-              </Typography>
-              {name && (
-                <Tooltip title={name}>
-                  <Typography className={`${classes.name} ${classes[`name${status}`]}`}>
-                    {name}
-                  </Typography>
-                </Tooltip>
-              )}
-              { getIcon(status) && (
-                <Tooltip arrow placement='right-end' title={t(`interviewStatus.${status}`)}>
-                  <Avatar alt='avatar' src={getIcon(status)} className={classes.avatar} />
-                </Tooltip>
-              )}
-            </ListItem>
-            <Divider />
+            <InterviewItem status={status} time={time} name={name} />
           </div>
         ))}
       </List>
