@@ -31,6 +31,7 @@
     "object-curly-newline": 0,
     "react/react-in-jsx-scope": "off",
     "react/prop-types": "off",
-    "lines-between-class-members": "off"
+    "lines-between-class-members": "off",
+    "consistent-return": "off"
   }
 }
