@@ -1,6 +1,7 @@
 FROM node:14-alpine as build
 WORKDIR /usr/src/app
 COPY ["package.json", "package-lock.json", "./"]
+ENV NODE_ENV=production
 RUN npm install --silent
 COPY . .
 RUN npm run build --prod
