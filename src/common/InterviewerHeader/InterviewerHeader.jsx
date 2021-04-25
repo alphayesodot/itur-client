@@ -4,61 +4,34 @@ import NotificationsNoneIcon from '@material-ui/icons/NotificationsNone';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import { Link } from 'react-router-dom';
 import { Toolbar, AppBar, IconButton, Button } from '@material-ui/core';
-// import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import useStyles from './InterviewerHeader.styles';
 
 const Header = () => {
   const classes = useStyles();
-  // const { t } = useTranslation();
-  const date = Date();
-  console.log(date);
-
-  // const headerTitles = [
-  //   {
-  //     title: t('headerTitles.malshabData'),
-  //     path: '/interview-dashboard/malshab-data',
-  //   },
-  //   {
-  //     title: t('headerTitles.appraiserPreperationKit'),
-  //     path: '/interview-dashboard/preperation-kit',
-  //   },
-  // ];
-
+  const date = new Date();
+  const { t } = useTranslation();
+  const getBlessing = (hour) => {
+    const morningHours = { morning: 5, afternoon: 12, evning: 17, night: 21 };
+    if (hour >= morningHours.morning && hour < morningHours.afternoon) {
+      return t('headerBlessings.morning');
+    }
+    if (hour >= morningHours.afternoon && hour < morningHours.evning) {
+      return t('headerBlessings.afternoon');
+    }
+    if (hour >= morningHours.evning && hour < morningHours.night) {
+      return t('headerBlessings.evning');
+    }
+    return t('headerBlessings.night');
+  };
   return (
     <AppBar position='static' className={classes.root}>
       <Toolbar className={classes.toolbar}>
-        <div>
-          <Link to='/'>
-            <Button>
-              <img src='radar-logo.png' alt='' />
-            </Button>
-          </Link>
-        </div>
-        {/* <div>
-          <Link to='/interview-dashboard'>
-            <Button
-              classes={{
-                root: classes.interviewScheduleBtn,
-                label: classes.label,
-              }}
-            >
-              {t('headerTitles.interviewsSchedule')}
-            </Button>
-          </Link>
-
-          {headerTitles.map(({ title, path }) => (
-            <Link to={path}>
-              <Button
-                classes={{
-                  root: `${classes.toolbarBtn} ${classes.notForMobile}`,
-                  label: classes.label,
-                }}
-              >
-                {title}
-              </Button>
-            </Link>
-          ))}
-        </div> */}
+        <Link to='/'>
+          <Button>
+            <img src='radar-logo.png' alt='' />
+          </Button>
+        </Link>
         <div>
           <IconButton
             className={`${classes.menuButton} ${classes.notForMobile}`}
@@ -67,8 +40,8 @@ const Header = () => {
           >
             <NotificationsNoneIcon className={classes.secondary} />
           </IconButton>
-          <span>
-            בוקר טוב
+          <span className={`${classes.blessing} ${classes.notForMobile}`}>
+            {getBlessing(date.getHours())}
           </span>
           <IconButton
             className={`${classes.menuButton} ${classes.notForMobile}`}
@@ -77,25 +50,6 @@ const Header = () => {
           >
             <AccountCircleIcon className={classes.secondary} />
           </IconButton>
-          {/* {[
-            <NotificationsNoneIcon className={classes.secondary} />,
-            <AccountCircleIcon className={classes.secondary} />,
-          ].map((icon) => (
-            <IconButton
-              className={`${classes.menuButton} ${classes.notForMobile}`}
-              color='inherit'
-              aria-label='menu'
-            >
-              {icon}
-            </IconButton>
-          ))} */}
-          {/* <IconButton
-            className={classes.menuButton}
-            color='inherit'
-            aria-label='menu'
-          >
-            <MenuIcon />
-          </IconButton> */}
         </div>
       </Toolbar>
     </AppBar>

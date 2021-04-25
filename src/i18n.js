@@ -8,10 +8,11 @@ const resources = {
       title: {
         example: 'מערכת איתור',
       },
-      headerTitles: {
-        interviewsSchedule: 'לו"ז ראיונות',
-        malshabData: 'נתוני מלש"ב',
-        appraiserPreperationKit: 'ערכת הכנה למעריך',
+      headerBlessings: {
+        morning: 'בוקר טוב',
+        afternoon: 'צהריים טובים',
+        evning: 'ערב טוב',
+        night: 'לילה טוב',
       },
       button: {},
     },

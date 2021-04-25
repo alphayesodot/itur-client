@@ -10,6 +10,12 @@ const useStyles = makeStyles(() => ({
     display: 'flex',
     height: '100%',
     justifyContent: 'space-between',
+    alignItems: 'center',
+    fontSize: '1.1rem',
+  },
+  blessing: {
+    marginRight: '0.5rem',
+    marginLeft: '0.8rem',
   },
   notForMobile: {
     '@media (max-width:500px)': {
@@ -17,38 +23,16 @@ const useStyles = makeStyles(() => ({
     },
   },
   menuButton: {
-    height: '2rem',
-    width: '2rem',
+    height: '2.3rem',
+    width: '2.3rem',
     margin: '0 0.5rem',
     '& .MuiSvgIcon-root': {
       width: '1.5em',
       height: '1.5em',
     },
   },
-  interviewScheduleBtn: {
-    backgroundColor: apptheme.palette.primary.secondary,
-    borderRadius: '20px',
-    width: '7rem',
-    height: '2.6rem',
-    fontWeight: 'bold',
-    marginRight: '2rem',
-    '&:hover': {
-      backgroundColor: '#cc9432',
-      color: '#fff',
-    },
-  },
-  toolbarBtn: {
-    color: '#fff',
-    margin: '0 1rem',
-    '&:hover': {
-      color: apptheme.palette.primary.secondary,
-    },
-  },
   secondary: {
     color: apptheme.palette.primary.secondary,
-  },
-  label: {
-    transitionDuration: '0.3s',
   },
 }));
 
