@@ -8,7 +8,7 @@ const UnitCard = ({ unitName, numberOfUnitUsers }) => {
 
   return (
     <div className={classes.root}>
-      <DashboardCard backgroundColor='#203141' height='5rem' width='14rem'>
+      <DashboardCard className={classes.card}>
         <h1 className={classes.unitName}>{unitName}</h1>
         <h4 className={classes.numberOfUsers}>{`${t('text.users')} ${numberOfUnitUsers}`}</h4>
       </DashboardCard>

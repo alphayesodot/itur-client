@@ -61,8 +61,8 @@ const UsersTable = ({ users }) => {
                     </IconButton>
                     <div>
                       <TextField inputProps={{ type: 'number' }} className={classes.numberOfRoleUsers} />
-                      <Button variant='contained' className={classes.addUnitButton}>
-                        {t('button.addUnit')}
+                      <Button variant='contained' className={classes.addUsersButton}>
+                        {t('button.addUsers')}
                       </Button>
                     </div>
                   </div>

@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: '2rem',
     boxShadow: 'none',
   },
-  addUnitButton: {
+  addUsersButton: {
     backgroundColor: theme.palette.primary.secondary,
     borderRadius: '1.5rem',
     direction: 'rtl',

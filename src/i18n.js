@@ -17,6 +17,7 @@ const resources = {
       },
       button: {
         addUnit: '+ הוספת יחידה',
+        addUsers: '+ הוספת משתמשים',
       },
       text: {
         users: 'משתמשים',

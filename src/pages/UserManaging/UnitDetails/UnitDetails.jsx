@@ -19,7 +19,7 @@ const UnitDetails = ({ selectedUnit }) => {
   ]);
   const classes = useStyles();
   return (
-    <DashboardCard height='45rem' width='70rem' className={classes.unitDetails}>
+    <DashboardCard className={classes.unitDetails}>
       <div className={classes.root}>
         <HeadLine unitName='ספיר' numberOfUnitUsers={38} />
       </div>

@@ -1,15 +1,21 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   root: {
-    color: 'white',
     direction: 'rtl',
     fontFamily: 'Rubik, sans-serif',
-    fontSize: '1.3rem',
+    fontSize: '1.1rem',
+  },
+  mainDiv: {
+    backgroundColor: theme.palette.primary.main,
+    width: '61rem',
+    height: '4rem',
+    marginTop: '2rem',
+    color: 'white',
   },
   homeLogo: {
     margin: '1rem',
-    marginTop: '1.3rem',
+    marginTop: '1.4rem',
   },
   main: {
     marginRight: '5rem',
@@ -17,8 +23,12 @@ const useStyles = makeStyles(() => ({
   },
   usersLogo: {
     margin: '1rem',
-    marginTop: '0.9rem',
+    marginTop: '1rem',
   },
+  mainDivText: {
+    marginTop: '1.5rem',
+  },
+
 }));
 
 export default useStyles;

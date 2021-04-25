@@ -5,6 +5,10 @@ const useStyles = makeStyles(() => ({
     display: 'flex',
     justifyContent: 'center',
   },
+  unitDetails: {
+    height: '45rem',
+    width: '70rem',
+  },
 }));
 
 export default useStyles;

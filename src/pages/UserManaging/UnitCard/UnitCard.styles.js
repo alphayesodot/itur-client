@@ -23,6 +23,11 @@ const useStyles = makeStyles(() => ({
     fontFamily: 'Rubik, sans-serif',
     marginRight: '2rem',
   },
+  card: {
+    backgroundColor: '#203141',
+    height: '5rem',
+    width: '14rem',
+  },
 
 }));
 
