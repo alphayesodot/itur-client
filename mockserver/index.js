@@ -35,6 +35,6 @@ app.get('/config', (req, res) => {
 });
 
 app.use('/api/event', eventRouter);
-app.use('/api/upload-xml-file', xmlRouter);
+app.use('/api/xml-upload', xmlRouter);
 
 app.listen(config.port, () => console.log(`Mock server listening on ${config.port}`));

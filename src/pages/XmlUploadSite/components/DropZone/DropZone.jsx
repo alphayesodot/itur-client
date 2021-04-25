@@ -32,10 +32,10 @@ const DropZone = (props) => {
       acceptedFiles.forEach((f) => {
         // eslint-disable-next-line no-param-reassign
         f.progress = 0;
-        console.log(updatedFiles);
         const repetitionsArray = updatedFiles.filter((updatedFile) => updatedFile.path === f.path);
+        // TODO: funciton that changes the name of the file if existed
         if (repetitionsArray.length > 0) {
-          toast('This file path already uploaded, please change name or remove file from list');
+          toast('This file name is already in list. Remove it from list or change the name');
         } else {
           updatedFiles = updatedFiles.concat(f);
         }
@@ -46,7 +46,7 @@ const DropZone = (props) => {
         const formData = new FormData();
         formData.append('file', acceptedFile);
         axiosInstance
-          .post(`${configApp.uri.api}/api/upload-xml-file`, formData, {
+          .post(`${configApp.uri.api}/api/xml-upload`, formData, {
             params: {
               filename: acceptedFile.name,
             },
