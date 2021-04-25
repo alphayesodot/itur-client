@@ -34,7 +34,7 @@ const InterviewItem = ({ status, time, name }) => {
           {time.toTimeString().split(' ')[0].slice(0, 5)}
         </Typography>
         {name && (
-        <Tooltip title={name}>
+        <Tooltip placement='bottom-start' title={name}>
           <Typography className={`${classes.name} ${classes[`name${status}`]}`}>
             {name}
           </Typography>
