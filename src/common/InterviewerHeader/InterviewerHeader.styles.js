@@ -1,9 +1,8 @@
 import { makeStyles } from '@material-ui/core/styles';
-import apptheme from '../../theme';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   root: {
-    backgroundColor: apptheme.palette.primary.main,
+    backgroundColor: theme.palette.primary.main,
     height: '6rem',
   },
   toolbar: {
@@ -32,7 +31,7 @@ const useStyles = makeStyles(() => ({
     },
   },
   secondary: {
-    color: apptheme.palette.primary.secondary,
+    color: theme.palette.primary.secondary,
   },
 }));
 

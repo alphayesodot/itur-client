@@ -4,6 +4,7 @@ import { ToastContainer } from 'react-toastify';
 import Home from './pages/Home/index';
 import Sidebar from './common/SideBarNav/SideBarNav';
 import AuthService from './services/auth.service';
+import UploadXmlPage from './pages/XmlUpload/index';
 import ConfigService from './services/config.service';
 import Header from './common/InterviewerHeader/InterviewerHeader';
 import useStyles from './App.styles';
@@ -43,35 +44,30 @@ const App = () => {
 
   const renderUnauthorized = () => <span>unauthorized</span>;
 
-  const renderLoading = () => (
-    <div className={classes.loading}>
-      loading
-    </div>
-  );
+  const renderLoading = () => <div className={classes.loading}>loading</div>;
 
-  const renderApp = () => (
-    isAuthenticated
-      ? (
-        <Router classes={classes.root}>
-          <Header />
-          <Sidebar />
-          <Switch>
-            <Route path='/' exact>
-              <Home />
-            </Route>
-            <Route path='/interview-dashboard'>
-              <h1>interview-dashboard</h1>
-            </Route>
-          </Switch>
-          <ToastContainer />
-        </Router>
-      )
-      : renderUnauthorized()
-  );
+  const renderApp = () => (isAuthenticated ? (
+    <Router classes={classes.root}>
+      <Header />
+      <Sidebar />
+      <Switch>
+        <Route path='/' exact>
+          <Home />
+        </Route>
+        <Route path='/interview-dashboard'>
+          <h1>interview-dashboard</h1>
+        </Route>
+        <Route path='/xml-upload'>
+          <UploadXmlPage />
+        </Route>
+      </Switch>
+      <ToastContainer />
+    </Router>
+  ) : (
+    renderUnauthorized()
+  ));
 
-  return isLoading
-    ? renderLoading()
-    : renderApp();
+  return isLoading ? renderLoading() : renderApp();
 };
 
 export default App;

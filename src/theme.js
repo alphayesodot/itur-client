@@ -1,7 +1,6 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 
 const theme = createMuiTheme({
-  direction: 'rtl',
   typography: {
     fontFamily: 'system-ui',
   },
@@ -11,11 +10,16 @@ const theme = createMuiTheme({
       secondary: '#fcb333',
     },
     secondary: {
-      main: 'rgb(228,115,91)',
+      main: 'rgb(251,179,53)',
     },
     section: {
-      main: 'rgb(71,159,251)',
-      primary: 'rgb(238,246,255)',
+      main: 'rgb(247,251,252)',
+      primary: 'rgb(16,171,196)',
+      secondary: 'rgb(251,179,53)',
+    },
+    scrollbar: {
+      main: '#c5cbd0',
+      secondary: '#EDF4F5',
     },
   },
 });
