@@ -1,17 +1,15 @@
-/* eslint-disable react/self-closing-comp */
-/* eslint-disable react/jsx-indent */
-/* eslint-disable indent */
-/* eslint-disable no-trailing-spaces */
-/* eslint-disable arrow-body-style */
+/* eslint-disable no-unused-vars */
 import { useTranslation } from 'react-i18next';
 import DashboardCard from '../../../common/DashboardCard/DashboardCard';
 import useStyles from './units.styles';
 import SearchBar from '../SearchBar/SearchBar';
 import UnitCard from '../UnitCard/UnitCard';
 
-const units = ({ numberOfUnits }) => {
-    const classes = useStyles();
-    const { t } = useTranslation();
+const units = ({ numberOfUnits, unitsArray, setUnitsArray }) => {
+  // TODO: delete numberOfUnits.
+  const classes = useStyles();
+  const { t } = useTranslation();
+  // const [displayedArray, setDisplayedArray] = [...unitsArray];
 
   return (
     <div>
@@ -20,8 +18,8 @@ const units = ({ numberOfUnits }) => {
       >
         <SearchBar />
         <p className={classes.unitsTitle}>{`${t('text.units')} (${numberOfUnits})`}</p>
-        <UnitCard unitName='ספיר' numberOfUnitUsers={12} />
-        <UnitCard unitName='שטל 121' numberOfUnitUsers={12} />
+        <UnitCard unitName='ספיר' numberOfUnitUsers={12} isUnitSelected />
+        <UnitCard unitName='שטל 121' numberOfUnitUsers={12} isUnitSelected={false} />
       </DashboardCard>
     </div>
   );

@@ -14,6 +14,9 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.primary.secondary,
     borderRadius: '1.5rem',
     direction: 'rtl',
+    '&:hover': {
+      backgroundColor: theme.palette.primary.secondary,
+    },
   },
   addButton: {
     backgroundColor: theme.palette.primary.main,
@@ -45,6 +48,11 @@ const useStyles = makeStyles((theme) => ({
     color: 'rgb(76,175, 204)',
     borderRadius: '10rem',
     width: '8rem',
+  },
+  tableRow: {
+    '&:hover': {
+      backgroundColor: 'rgb(244,245,247)',
+    },
   },
 
 }));

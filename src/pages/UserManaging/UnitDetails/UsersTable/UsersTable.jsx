@@ -46,7 +46,7 @@ const UsersTable = ({ users }) => {
           </TableHead>
           <TableBody>
             {rows.map((row) => (
-              <TableRow key={row.role}>
+              <TableRow key={row.role} className={classes.tableRow}>
                 <TableCell align='center'>{row.role}</TableCell>
                 <TableCell align='center'>{row.amount}</TableCell>
                 <TableCell align='center'>
