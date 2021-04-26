@@ -1,4 +1,3 @@
-/* eslint-disable no-param-reassign */
 /* eslint-disable consistent-return */
 import jwt from 'jsonwebtoken';
 import Cookies from 'js-cookie';
@@ -12,7 +11,9 @@ class AuthService {
       this.redirect();
     } else {
       this.setAuthHeaders();
-      return jwt.decode(cookie, config.secret).user;
+      if (jwt.verify(cookie, config.secret)) {
+        return jwt.decode(cookie).user;
+      }
     }
   }
 
