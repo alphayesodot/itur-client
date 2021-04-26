@@ -29,9 +29,9 @@ app.get('/config', (req, res) => {
       auth: `http://localhost:${config.port}`,
       api: `http://localhost:${config.port}`,
     },
-    token_name: config.jwtTokenName,
+    tokenName: config.jwtTokenName,
     secret: config.secret,
-    dropzone: config.dropzone,
+    xmlUpload: config.xmlUpload,
   });
 });
 

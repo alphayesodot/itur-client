@@ -7,7 +7,7 @@ import config from '../appConf';
 
 class AuthService {
   static async getAuthUser() {
-    const cookie = Cookies.get(config.token_name);
+    const cookie = Cookies.get(config.tokenName);
     if (!cookie) {
       this.redirect();
     } else {
@@ -18,7 +18,7 @@ class AuthService {
 
   static async setAuthHeaders() {
     axios.interceptors.request.use((requestsConfig) => {
-      const token = Cookies.get(config.token_name);
+      const token = Cookies.get(config.tokenName);
       if (!token) {
         this.redirect();
       } else {

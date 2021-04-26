@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import Home from './pages/Home/index';
 import AuthService from './services/auth.service';
-import UploadXmlPage from './pages/XmlUploadSite/index';
+import UploadXmlPage from './pages/XmlUpload/index';
 import ConfigService from './services/config.service';
 import Header from './common/InterviewerHeader/InterviewerHeader';
 import useStyles from './App.styles';

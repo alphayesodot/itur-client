@@ -64,8 +64,8 @@ const DropZone = ({ files, setFiles }) => {
   return (
     <Dropzone
       onDrop={handleOnDrop}
-      accept={configApp.dropzone.acceptedFileTypes}
-      maxSize={configApp.dropzone.sizeLimit}
+      accept={configApp.xmlUpload.acceptedFileTypes}
+      maxSize={configApp.xmlUpload.sizeLimit}
     >
       {({ getRootProps, getInputProps }) => (
         /* eslint-disable react/jsx-props-no-spreading */
@@ -74,7 +74,7 @@ const DropZone = ({ files, setFiles }) => {
           <img alt='drop files' src={cloudImg} className={classes.cloudImg} />
           <p className={classes.explanation}>Drag and Drop to upload files</p>
           <Button className={classes.uploadButton}>{t('xmlPage.uploadButton')}</Button>
-          <p className={classes.limitation}>{`(MB ${configApp.dropzone.sizeLimit / 1000000} ${t('xmlPage.sizeLimitation')})`}</p>
+          <p className={classes.limitation}>{`(MB ${configApp.xmlUpload.sizeLimit / 1000000} ${t('xmlPage.sizeLimitation')})`}</p>
         </div>
       ) }
     </Dropzone>

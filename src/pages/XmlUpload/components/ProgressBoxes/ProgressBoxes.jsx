@@ -48,6 +48,7 @@ const ProgressBoxes = ({ files, setFiles }) => {
       </Box>
     </Box>
   );
+
   return (
     <div className={classes.root}>
       {files
