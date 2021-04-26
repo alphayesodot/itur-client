@@ -28,6 +28,13 @@ const resources = {
         add: 'הוספה',
       },
 
+      xmlPage: {
+        uploadButton: 'העלאת קבצים',
+        sizeLimitation: '( MB {{sizeLimit}} עד)',
+        hideFromView: 'הסתר מהתצוגה',
+        fileInvalidType: 'סוג הקובץ לא תקין',
+        fileTooLarge: 'הקובץ גדול מדי',
+      },
     },
   },
 };

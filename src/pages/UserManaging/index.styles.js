@@ -26,6 +26,9 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: '88.5rem',
     marginTop: '1.2rem',
     direction: 'rtl',
+    '&:hover': {
+      backgroundColor: theme.palette.primary.secondary,
+    },
   },
 
 }));

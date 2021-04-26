@@ -9,12 +9,14 @@
 import { useTranslation } from 'react-i18next';
 import { Input } from '@material-ui/core';
 import { useState } from 'react';
+import useStyles from './AddUnit.styles';
 
-const AddUnit = ({ units }) => {
+const AddUnit = () => {
     const { t } = useTranslation();
+    const classes = useStyles();
     const [unitName, setUnitName] = useState('');
     return (
-        <div>
+        <div className={classes.root}>
             <h3 dir='rtl'>{t('headerTitles.addUnit')}</h3>
             <Input type='text' />
         </div>

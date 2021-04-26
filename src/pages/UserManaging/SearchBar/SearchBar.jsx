@@ -1,10 +1,11 @@
 /* eslint-disable no-unused-vars */
-/* eslint-disable arrow-body-style */
-import React from 'react';
+import { useTranslation } from 'react-i18next';
 import useStyles from './SearchBar.styles';
 
 const SearchBar = ({ setDisplayedArray }) => {
   const classes = useStyles();
+  const { t } = useTranslation();
+
   const handleChange = (value) => {
     console.log(value);
   };
