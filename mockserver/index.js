@@ -31,6 +31,7 @@ app.get('/config', (req, res) => {
     },
     token_name: config.jwtTokenName,
     secret: config.secret,
+    dropzone: config.dropzone,
   });
 });
 

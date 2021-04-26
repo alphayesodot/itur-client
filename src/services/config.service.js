@@ -11,6 +11,7 @@ class ConfigService {
     config.uri = { ...data.uri };
     config.token_name = data.token_name;
     config.secret = data.secret;
+    config.dropzone = data.dropzone;
   }
 }
 

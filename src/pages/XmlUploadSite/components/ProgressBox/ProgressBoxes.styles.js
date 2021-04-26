@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
     padding: '0.03rem',
   },
   closeIcon: {
-    fontSize: 13,
+    fontSize: '0.8rem',
     fontWeight: 'bold',
     fontFamily: theme.typography.fontFamily,
     margin: '0.15rem',

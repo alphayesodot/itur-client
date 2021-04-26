@@ -5,17 +5,11 @@ import Button from '@material-ui/core/Button';
 import { useTranslation } from 'react-i18next';
 import cloudImg from '../../utils/images/cloud.png';
 import useStyles from './DropZone.styles';
-import configPage from '../../config';
 import configApp from '../../../../appConf';
 
-const DropZone = (props) => {
-  const { files, setFiles } = props;
+const DropZone = ({ files, setFiles }) => {
   const classes = useStyles();
   const { t } = useTranslation();
-  const axiosInstance = axios.create({
-    baseURL: `${configApp.uri.api}/upload_file`,
-  });
-
   const createErrorNorifications = (fileName, errorsArray) => {
     errorsArray.forEach((e) => {
       toast(`${fileName}: ${e.code}`);
@@ -45,7 +39,7 @@ const DropZone = (props) => {
       acceptedFiles.forEach((acceptedFile) => {
         const formData = new FormData();
         formData.append('file', acceptedFile);
-        axiosInstance
+        axios
           .post(`${configApp.uri.api}/api/xml-upload`, formData, {
             params: {
               filename: acceptedFile.name,
@@ -70,17 +64,17 @@ const DropZone = (props) => {
   return (
     <Dropzone
       onDrop={handleOnDrop}
-      accept={configPage.dropzone.acceptedFileTypes}
-      maxSize={configPage.dropzone.maxSize}
+      accept={configApp.dropzone.acceptedFileTypes}
+      maxSize={configApp.dropzone.sizeLimit}
     >
       {({ getRootProps, getInputProps }) => (
         /* eslint-disable react/jsx-props-no-spreading */
         <div {...getRootProps({ className: classes.root })}>
           <input {...getInputProps()} />
           <img alt='drop files' src={cloudImg} className={classes.cloudImg} />
-          <p className={classes.explanation}>Drag and Drop to pload files</p>
-          <Button className={classes.uploadButton}>{t('xmlPage.upload_button')}</Button>
-          <p className={classes.limitation}>{t('xmlPage.size_limitation')}</p>
+          <p className={classes.explanation}>Drag and Drop to upload files</p>
+          <Button className={classes.uploadButton}>{t('xmlPage.uploadButton')}</Button>
+          <p className={classes.limitation}>{`(MB ${configApp.dropzone.sizeLimit / 1000000} ${t('xmlPage.sizeLimitation')})`}</p>
         </div>
       ) }
     </Dropzone>
