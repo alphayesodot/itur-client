@@ -1,20 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Toolbar, AppBar, IconButton, Button } from '@material-ui/core';
+import { Button } from '@material-ui/core';
+// import { Toolbar, AppBar, IconButton, Button } from '@material-ui/core';
 import DashboardCard from '../DashboardCard/DashboardCard';
 import useStyles from './SideBarNav.styles';
 
-const Header = () => {
+const Sidebar = () => {
   const classes = useStyles();
+  const x = '24';
   return (
-    <DashboardCard>
+    <DashboardCard className={classes.root}>
       <Link to='/'>
         <Button>
-          <img src='radar-logo.png' alt='' />
+          {x}
         </Button>
       </Link>
     </DashboardCard>
   );
 };
 
-export default Header;
+export default Sidebar;

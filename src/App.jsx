@@ -2,6 +2,7 @@ import React, { useState, useCallback, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import Home from './pages/Home/index';
+import Sidebar from './common/SideBarNav/SideBarNav';
 import AuthService from './services/auth.service';
 import ConfigService from './services/config.service';
 import Header from './common/InterviewerHeader/InterviewerHeader';
@@ -53,6 +54,7 @@ const App = () => {
       ? (
         <Router classes={classes.root}>
           <Header />
+          <Sidebar />
           <Switch>
             <Route path='/' exact>
               <Home />
