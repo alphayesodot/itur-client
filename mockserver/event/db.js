@@ -1,4 +1,5 @@
 const events = [{
+  _id: '1',
   node: {
     id: '123',
     name: 'ראיון',
@@ -16,6 +17,7 @@ const events = [{
   isOccurred: true,
 },
 {
+  _id: '2',
   node: {
     id: '123',
     name: 'ראיון',
