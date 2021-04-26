@@ -49,18 +49,20 @@ const App = () => {
   const renderApp = () => (isAuthenticated ? (
     <Router classes={classes.root}>
       <Header />
-      <Sidebar />
-      <Switch>
-        <Route path='/' exact>
-          <Home />
-        </Route>
-        <Route path='/interview-dashboard'>
-          <h1>interview-dashboard</h1>
-        </Route>
-        <Route path='/xml-upload'>
-          <UploadXmlPage />
-        </Route>
-      </Switch>
+      <div className={classes.bodyContainer}>
+        <Switch>
+          <Route path='/' exact>
+            <Home />
+          </Route>
+          <Route path='/interview-dashboard'>
+            <h1>interview-dashboard</h1>
+          </Route>
+          <Route path='/xml-upload'>
+            <UploadXmlPage />
+          </Route>
+        </Switch>
+        <Sidebar />
+      </div>
       <ToastContainer />
     </Router>
   ) : (

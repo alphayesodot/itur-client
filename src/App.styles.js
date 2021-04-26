@@ -20,6 +20,13 @@ const useStyles = makeStyles((theme) => ({
   },
   root: {
   },
+  bodyContainer: {
+    display: 'flex',
+    alignItems: 'stretch',
+    paddingTop: '3rem',
+    justifyContent: 'center',
+    width: '100%',
+  },
 }));
 
 export default useStyles;
