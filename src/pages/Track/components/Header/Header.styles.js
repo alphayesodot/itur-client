@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
     whiteSpace: 'nowrap',
   },
   nodeGroup: {
-    direction: theme.direction,
+    direction: 'rtl',
   },
   select: {
     width: '12rem',

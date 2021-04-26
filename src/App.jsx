@@ -5,6 +5,7 @@ import Home from './pages/Home/index';
 import Track from './pages/Track/index';
 import InterviewerHeader from './common/InterviewerHeader/InterviewerHeader';
 import AuthService from './services/auth.service';
+import UploadXmlPage from './pages/XmlUpload/index';
 import ConfigService from './services/config.service';
 import useStyles from './App.styles';
 import UserStoreInstance from './stores/User.store';
@@ -43,11 +44,7 @@ const App = () => {
 
   const renderUnauthorized = () => <span>unauthorized</span>;
 
-  const renderLoading = () => (
-    <div className={classes.loading}>
-      loading
-    </div>
-  );
+  const renderLoading = () => <div className={classes.loading}>loading</div>;
 
   const renderApp = () => (
     isAuthenticated
@@ -61,6 +58,9 @@ const App = () => {
             <Route path='/track'>
               <Track />
             </Route>
+            <Route path='/xml-upload'>
+              <UploadXmlPage />
+            </Route>
             <Route path='/interview-dashboard'>
               <h1>interview-dashboard</h1>
             </Route>
@@ -71,9 +71,7 @@ const App = () => {
       : renderUnauthorized()
   );
 
-  return isLoading
-    ? renderLoading()
-    : renderApp();
+  return isLoading ? renderLoading() : renderApp();
 };
 
 export default App;

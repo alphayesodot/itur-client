@@ -15,7 +15,9 @@ const useStyles = makeStyles((theme) => ({
       'border-radius': '50em',
     },
   },
-  root: {},
+  toastContainer: {
+    top: '6rem',
+  },
 }));
 
 export default useStyles;

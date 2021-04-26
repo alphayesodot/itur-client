@@ -30,6 +30,7 @@ const useStyles = makeStyles((theme) => ({
     width: '7rem',
     height: '2.6rem',
     fontWeight: 'bold',
+    fontFamily: theme.typography.fontFamily,
     marginRight: '2rem',
     '&:hover': {
       backgroundColor: '#cc9432',
