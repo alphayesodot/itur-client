@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 import Dropzone from 'react-dropzone';
 import Button from '@material-ui/core/Button';
 import { useTranslation } from 'react-i18next';
-import cloudImg from '../../utils/images/cloud.png';
+import cloudImg from '../../../../utils/images/cloud.png';
 import useStyles from './DropZone.styles';
 import configApp from '../../../../appConf';
 
