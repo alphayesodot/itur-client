@@ -17,7 +17,10 @@ const resources = {
 
       xmlPage: {
         uploadButton: 'העלאת קבצים',
-        sizeLimitation: 'עד',
+        sizeLimitation: '( MB {{sizeLimit}} עד)',
+        hideFromView: 'הסתר מהתצוגה',
+        fileInvalidType: 'סוג הקובץ לא תקין',
+        fileTooLarge: 'הקובץ גדול מדי',
       },
     },
   },

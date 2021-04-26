@@ -7,7 +7,6 @@ const useStyles = makeStyles((theme) => ({
     overflowY: 'auto',
     margin: 'auto',
     padding: 'auto 0',
-    direction: 'ltr',
   },
   progressBox: {
     display: 'flex',
@@ -16,7 +15,6 @@ const useStyles = makeStyles((theme) => ({
     margin: '1rem auto',
     width: '90%',
     padding: '0',
-    direction: 'ltr',
   },
   upload: {
     margin: '0',
@@ -53,8 +51,6 @@ const useStyles = makeStyles((theme) => ({
   },
   progressBar: {
     backgroundColor: 'rgb(234,243,246)',
-    direction: 'ltr',
-
   },
   progressBarColor: {
     backgroundColor: theme.palette.section.primary,

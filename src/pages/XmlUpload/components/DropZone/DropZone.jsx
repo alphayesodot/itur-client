@@ -9,10 +9,14 @@ import configApp from '../../../../appConf';
 
 const DropZone = ({ files, setFiles }) => {
   const classes = useStyles();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const createErrorNorifications = (fileName, errorsArray) => {
     errorsArray.forEach((e) => {
-      toast(`${fileName}: ${e.code}`);
+      // cast error code to t('code')
+      const translationCasting = `xmlPage.${(e.code)?.replace(/-([a-z])/g, (g) => g[1].toUpperCase())}`;
+      if (i18n.exists(translationCasting)) {
+        toast(`${fileName}: ${t(translationCasting)}`);
+      } else toast(`${fileName}: ${e.code}`);
     });
   };
 
@@ -74,7 +78,7 @@ const DropZone = ({ files, setFiles }) => {
           <img alt='drop files' src={cloudImg} className={classes.cloudImg} />
           <p className={classes.explanation}>Drag and Drop to upload files</p>
           <Button className={classes.uploadButton}>{t('xmlPage.uploadButton')}</Button>
-          <p className={classes.limitation}>{`(MB ${configApp.xmlUpload.sizeLimit / 1000000} ${t('xmlPage.sizeLimitation')})`}</p>
+          <p className={classes.limitation}>{t('xmlPage.sizeLimitation', { sizeLimit: configApp.xmlUpload.sizeLimit / 1000000 })}</p>
         </div>
       ) }
     </Dropzone>
