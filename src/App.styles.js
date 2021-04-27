@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
     bottom: 0,
     opacity: 0,
     margin: 'auto',
-    animation: '$logoFade 0.5s ease-out alternate',
+    animation: '$logoFade 0.7s ease-out alternate',
   },
   '@keyframes backgroundFade': {
     '0%': {
