@@ -9,9 +9,9 @@ const events = [{
     firstName: 'נועה',
     lastName: 'קירל',
   },
-  time: '2021-04-22T06:00:07.996+00:00',
+  time: '2021-04-27T06:00:07.996+00:00',
   location: 'place',
-  interviewersIds: [],
+  interviewersIds: ['3', '6'],
   url: 'http://',
 },
 {
@@ -25,9 +25,9 @@ const events = [{
     firstName: 'חיים',
     lastName: 'כהן',
   },
-  time: '2021-04-22T09:00:07.996+00:00',
+  time: '2021-04-27T09:00:07.996+00:00',
   location: 'place',
-  interviewersIds: [],
+  interviewersIds: ['1', '2'],
   url: 'http://',
   results: { notes: [] },
 }];

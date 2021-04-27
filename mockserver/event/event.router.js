@@ -5,10 +5,12 @@ import events from './db.js';
 const eventRouter = express.Router();
 
 eventRouter.get('/', (req, res) => {
-  // const { date, malshabId, interviewerId, nodeId } = req.query;
-  const { date } = req.query;
+  const { date, interviewerId } = req.query;
   res.send(events.filter((event) => {
     if (date && new Date(event.date).getTime() >= new Date().getTime(date)) {
+      return false;
+    }
+    if (interviewerId && !event.interviewersIds.includes(interviewerId)) {
       return false;
     }
     return true;
