@@ -7,6 +7,7 @@ import UploadXmlPage from './pages/XmlUpload/index';
 import ConfigService from './services/config.service';
 import Header from './common/InterviewerHeader/InterviewerHeader';
 import useStyles from './App.styles';
+import logo from './utils/images/logo.svg';
 import UserStoreInstance from './stores/User.store';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -29,7 +30,7 @@ const App = () => {
       .then(() => {
         setTimeout(() => {
           setIsLoading(false);
-        }, 2000);
+        }, 1500);
       });
   }, []);
 
@@ -43,7 +44,7 @@ const App = () => {
 
   const renderUnauthorized = () => <span>unauthorized</span>;
 
-  const renderLoading = () => <div className={classes.loading}>loading</div>;
+  const renderLoading = () => <div className={classes.loading}><img className={classes.logo} src={logo} alt='' /></div>;
 
   const renderApp = () => (isAuthenticated ? (
     <Router classes={classes.root}>
