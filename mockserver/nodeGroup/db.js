@@ -1,4 +1,4 @@
-const events = [{
+const nodeGroups = [{
   _id: '1',
   name: 'מסלול1',
   unitId: '1',
@@ -11,4 +11,4 @@ const events = [{
   usersIds: [],
 }];
 
-export default events;
+export default nodeGroups;

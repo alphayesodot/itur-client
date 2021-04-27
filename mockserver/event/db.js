@@ -13,8 +13,6 @@ const events = [{
   location: 'place',
   interviewersIds: [],
   url: 'http://',
-  results: [],
-  isOccurred: true,
 },
 {
   _id: '2',
@@ -31,8 +29,7 @@ const events = [{
   location: 'place',
   interviewersIds: [],
   url: 'http://',
-  results: [],
-  isOccurred: true,
+  results: { notes: [] },
 }];
 
 export default events;

@@ -1,6 +1,7 @@
 import { makeAutoObservable } from 'mobx';
 
 class UserStore {
+  // TODO: Delete default value
   userProfile = { id: 4 };
   eventsData;
 
