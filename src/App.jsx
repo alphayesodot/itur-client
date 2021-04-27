@@ -44,7 +44,7 @@ const App = () => {
 
   const renderUnauthorized = () => <span>unauthorized</span>;
 
-  const renderLoading = () => <div className={classes.loading}><img className={classes.logo} src={logo} alt='' /></div>;
+  const renderLoading = () => <div className={classes.loading}><img className={classes.logo} src={logo} alt='radar logo' /></div>;
 
   const renderApp = () => (isAuthenticated ? (
     <Router classes={classes.root}>
