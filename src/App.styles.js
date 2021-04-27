@@ -25,7 +25,9 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'stretch',
     paddingTop: '3rem',
     justifyContent: 'center',
-    width: '100%',
+    width: '95%',
+    paddingLeft: '2.5%',
+    paddingRight: '2.5%',
   },
 }));
 
