@@ -5,6 +5,7 @@ import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import { Link } from 'react-router-dom';
 import { Toolbar, AppBar, IconButton, Button } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
+import logo from '../../utils/images/logo.svg';
 import useStyles from './InterviewerHeader.styles';
 
 const Header = () => {
@@ -28,7 +29,7 @@ const Header = () => {
         <div>
           <Link to='/'>
             <Button>
-              <img src='radar-logo.png' alt='' />
+              <img src={logo} alt='' />
             </Button>
           </Link>
         </div>
