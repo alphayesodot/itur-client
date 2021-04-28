@@ -1,5 +1,5 @@
 import React from 'react';
-// import MenuIcon from '@material-ui/icons/Menu';
+import logo from '../../utils/images/logo.svg';
 import NotificationsNoneIcon from '@material-ui/icons/NotificationsNone';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import { Link } from 'react-router-dom';
