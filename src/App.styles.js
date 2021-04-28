@@ -18,6 +18,42 @@ const useStyles = makeStyles((theme) => ({
   toastContainer: {
     top: '6rem',
   },
+  loading: {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: theme.palette.primary.main,
+    animation: '$backgroundFade 1.7s linear alternate',
+    animationDelay: '0.35s',
+  },
+  logo: {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    opacity: 0,
+    margin: 'auto',
+    animation: '$logoFade 0.7s ease-out alternate',
+  },
+  '@keyframes backgroundFade': {
+    '0%': {
+      opacity: 1,
+    },
+    '100%': {
+      opacity: 0,
+    },
+  },
+  '@keyframes logoFade': {
+    '0%': {
+      opacity: 1,
+    },
+    '100%': {
+      opacity: 0,
+    },
+  },
 }));
 
 export default useStyles;
