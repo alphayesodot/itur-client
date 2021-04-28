@@ -1,3 +1,6 @@
+/* eslint-disable no-multi-assign */
+/* eslint-disable no-param-reassign */
+
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import Dropzone from 'react-dropzone';
@@ -6,6 +9,8 @@ import { useTranslation } from 'react-i18next';
 import cloudImg from '../../utils/images/cloud.png';
 import useStyles from './DropZone.styles';
 import configApp from '../../../../appConf';
+
+const COPY_SUFFIX = ' - Copy';
 
 const DropZone = ({ files, setFiles }) => {
   const classes = useStyles();
@@ -20,6 +25,45 @@ const DropZone = ({ files, setFiles }) => {
     });
   };
 
+  function fixDuplicateFile(updatedFiles, file) {
+    if (!updatedFiles.some((updatedFile) => updatedFile.path === file.path)) return file;
+
+    const extensionIndex = file.name.lastIndexOf('.');
+    const extension = file.name.slice(extensionIndex);
+    const fileName = file.name.slice(0, extensionIndex);
+    const newFile = {};
+    let duplicates = [];
+
+    // eslint-disable-next-line no-restricted-syntax, guard-for-in
+    for (const key in file) newFile[key] = file[key];
+
+    if (
+      // eslint-disable-next-line no-cond-assign
+      (duplicates = updatedFiles.filter((updatedFile) => new RegExp(`^.+${COPY_SUFFIX} \\([2-9]([0-9]+)?\\)\\${extension}$`)
+        .test(updatedFile.name))).length
+    ) {
+      newFile.name = newFile.path = `${fileName}${COPY_SUFFIX} (${
+        duplicates.reduce(
+          (acc, current) => Math.max(
+            +current.name.slice(
+              current.name.lastIndexOf('(') + 1,
+              current.name.lastIndexOf(')'),
+            ),
+            acc,
+          ),
+          0,
+        ) + 1
+      })${extension}`;
+    } else if (
+      updatedFiles.some(
+        (updatedFile) => updatedFile.name
+          === fileName + COPY_SUFFIX + extension,
+      )
+    ) { newFile.name = newFile.path = `${fileName}${COPY_SUFFIX} (2)${extension}`; } else { newFile.name = newFile.path = fileName + COPY_SUFFIX + extension; }
+
+    return newFile;
+  }
+
   const handleOnDrop = (acceptedFiles, rejectedFilesObjects) => {
     rejectedFilesObjects.forEach((fileObject) => {
       createErrorNorifications(fileObject.file.name, fileObject.errors);
@@ -27,20 +71,15 @@ const DropZone = ({ files, setFiles }) => {
 
     if (acceptedFiles.length > 0) {
       let updatedFiles = [...files];
-      acceptedFiles.forEach((f) => {
-        // eslint-disable-next-line no-param-reassign
-        f.progress = 0;
-        const repetitionsArray = updatedFiles.filter((updatedFile) => updatedFile.path === f.path);
-        // TODO: funciton that changes the name of the file if existed
-        if (repetitionsArray.length > 0) {
-          toast('This file name is already in list. Remove it from list or change the name');
-        } else {
-          updatedFiles = updatedFiles.concat(f);
-        }
+      acceptedFiles.forEach((file) => {
+        file.progress = 0;
+
+        updatedFiles = updatedFiles.concat(fixDuplicateFile(updatedFiles, file));
       });
+
       setFiles(updatedFiles);
 
-      acceptedFiles.forEach((acceptedFile) => {
+      updatedFiles.slice(-acceptedFiles.length).forEach((acceptedFile) => {
         const formData = new FormData();
         formData.append('file', acceptedFile);
         axios
