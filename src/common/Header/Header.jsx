@@ -20,7 +20,7 @@ const Header = () => {
       return t('headerBlessings.afternoon');
     }
     if (hour >= morningHours.evening && hour < morningHours.night) {
-      return t('headerBlessings.evning');
+      return t('headerBlessings.evening');
     }
     return t('headerBlessings.night');
   };
