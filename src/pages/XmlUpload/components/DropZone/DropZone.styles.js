@@ -4,7 +4,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     width: '20rem',
     textAlign: 'center',
-    padding: '7% 12%',
+    padding: '5% 12%',
     border: '0.125rem dashed',
     borderRadius: '10px',
     borderColor: 'rgb(143,210,220)',
@@ -12,7 +12,10 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.section.primary,
     fontSize: '0.8rem',
     fontFamily: theme.typography.fontFamily,
-    margin: 'auto',
+    margin: 'auto 4rem',
+    [theme.breakpoints.down('sm')]: {
+      margin: '3rem auto',
+    },
   },
   uploadButton: {
     backgroundColor: theme.palette.section.secondary,

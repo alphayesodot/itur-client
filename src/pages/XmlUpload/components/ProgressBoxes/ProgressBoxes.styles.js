@@ -2,7 +2,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: '35rem',
+    width: '33rem',
     maxHeight: '22rem',
     overflowY: 'auto',
     margin: 'auto',

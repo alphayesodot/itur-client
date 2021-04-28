@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: '0.8rem',
   },
   notForMobile: {
-    '@media (max-width:500px)': {
+    [theme.breakpoints.down('sm')]: {
       display: 'none',
     },
   },

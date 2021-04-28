@@ -63,6 +63,12 @@ const useStyles = makeStyles((theme) => ({
     paddingLeft: '2.5%',
     paddingRight: '2.5%',
     height: 'calc(100vh - 9rem)',
+    [theme.breakpoints.down('sm')]: {
+      flexDirection: 'column-reverse',
+      alignItems: 'stretch',
+      justifyContent: 'flex-end',
+      height: 'calc(100vh - 3rem)',
+    },
   },
 }));
 

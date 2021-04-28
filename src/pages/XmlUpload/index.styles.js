@@ -8,7 +8,6 @@ const useStyles = makeStyles(() => ({
     alignItems: 'center',
     backgroundColor: 'white',
     width: '100%',
-    padding: '7rem 3rem',
   },
 }));
 
