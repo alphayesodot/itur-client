@@ -6,7 +6,7 @@ import Sidebar from './common/SideBarNav/SideBarNav';
 import AuthService from './services/auth.service';
 import UploadXmlPage from './pages/XmlUpload/index';
 import ConfigService from './services/config.service';
-import Header from './common/InterviewerHeader/InterviewerHeader';
+import Header from './common/Header/Header';
 import useStyles from './App.styles';
 import logo from './utils/images/logo.svg';
 import UserStoreInstance from './stores/User.store';
