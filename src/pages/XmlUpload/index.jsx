@@ -13,7 +13,6 @@ const UploadXmlPage = () => {
       <DropZone files={files} setFiles={setFiles} />
       <ProgressBoxes files={files} setFiles={setFiles} />
     </DashboardCard>
-  // </div>
   );
 };
 
