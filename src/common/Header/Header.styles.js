@@ -13,6 +13,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '1.1rem',
   },
   blessing: {
+    fontFamily: theme.typography.fontFamily,
     marginRight: '0.5rem',
     marginLeft: '0.8rem',
   },
