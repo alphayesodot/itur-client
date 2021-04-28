@@ -12,7 +12,7 @@ const Header = () => {
   const date = new Date();
   const { t } = useTranslation();
   const getBlessing = (hour) => {
-    const morningHours = { morning: 5, afternoon: 12, evening: 17, night: 21 };
+    const hoursRange = { morning: 5, afternoon: 12, evening: 17, night: 21 };
     if (hour >= morningHours.morning && hour < morningHours.afternoon) {
       return t('headerBlessings.morning');
     }
