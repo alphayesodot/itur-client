@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import { Typography, Select, MenuItem, TextField, Button } from '@material-ui/core';
 import DashboardCard from '../../../../common/DashboardCard/DashboardCard';
@@ -49,10 +48,6 @@ const Header = ({ unitName }) => {
       </div>
     </DashboardCard>
   );
-};
-
-Header.propTypes = {
-  unitName: PropTypes.string.isRequired,
 };
 
 export default Header;

@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Avatar, Typography } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 import DashboardCard from '../../../../common/DashboardCard/DashboardCard';
@@ -36,13 +35,6 @@ const ScheduleCard = ({ user, interviews }) => {
       </div>
     </DashboardCard>
   );
-};
-
-ScheduleCard.propTypes = {
-  user: PropTypes.shape({
-    name: PropTypes.string,
-  }).isRequired,
-  interviews: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default ScheduleCard;

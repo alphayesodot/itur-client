@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { ListItem, Divider, Typography, Avatar, Tooltip } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 import DONE from '../../../../utils/images/passed-positive.svg';
@@ -49,17 +48,6 @@ const InterviewItem = ({ status, time, name }) => {
       <Divider />
     </>
   );
-};
-
-InterviewItem.propTypes = {
-  status: PropTypes.string,
-  time: PropTypes.instanceOf(Date).isRequired,
-  name: PropTypes.string,
-};
-
-InterviewItem.defaultProps = {
-  status: '',
-  name: '',
 };
 
 export default InterviewItem;
