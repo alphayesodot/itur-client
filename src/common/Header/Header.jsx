@@ -29,7 +29,7 @@ const Header = () => {
       <Toolbar className={classes.toolbar}>
         <Link to='/'>
           <Button>
-            <img src='radar-logo.png' alt='' />
+            <img src={logo} alt='' />
           </Button>
         </Link>
         <div>
