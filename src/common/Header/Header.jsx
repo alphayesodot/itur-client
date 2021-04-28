@@ -5,18 +5,18 @@ import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import { Link } from 'react-router-dom';
 import { Toolbar, AppBar, IconButton, Button } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
-import useStyles from './Header';
+import useStyles from './Header.styles';
 
 const Header = () => {
   const classes = useStyles();
   const date = new Date();
   const { t } = useTranslation();
   const getBlessing = (hour) => {
-    const morningHours = { morning: 5, afternoon: 12, evning: 17, night: 21 };
+    const morningHours = { morning: 5, afternoon: 12, evening: 17, night: 21 };
     if (hour >= morningHours.morning && hour < morningHours.afternoon) {
       return t('headerBlessings.morning');
     }
-    if (hour >= morningHours.afternoon && hour < morningHours.evning) {
+    if (hour >= morningHours.afternoon && hour < morningHours.evening) {
       return t('headerBlessings.afternoon');
     }
     if (hour >= morningHours.evning && hour < morningHours.night) {

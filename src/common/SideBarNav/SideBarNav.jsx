@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 // import { Toolbar, AppBar, IconButton, Button } from '@material-ui/core';
 import DashboardCard from '../DashboardCard/DashboardCard';
-import useStyles from './SideBarNav';
+import useStyles from './SideBarNav.styles';
 import settingsIcon from '../../utils/images/aside/settings.svg';
 // import settingsIconActive from '../../utils/images/aside/settings-active.svg';
 import interviewIcon from '../../utils/images/aside/aside-interview-button.svg';
