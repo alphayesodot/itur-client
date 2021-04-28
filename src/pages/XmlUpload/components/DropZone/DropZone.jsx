@@ -39,8 +39,9 @@ const DropZone = ({ files, setFiles }) => {
 
     if (
       // eslint-disable-next-line no-cond-assign
-      (duplicates = updatedFiles.filter((updatedFile) => new RegExp(`^.+${COPY_SUFFIX} \\([2-9]([0-9]+)?\\)\\${extension}$`)
-        .test(updatedFile.name))).length
+      (duplicates = updatedFiles.filter((updatedFile) => new RegExp(
+        `^${fileName}${COPY_SUFFIX} \\([2-9]([0-9]+)?\\)\\${extension}$`,
+      ).test(updatedFile.name))).length
     ) {
       newFile.name = newFile.path = `${fileName}${COPY_SUFFIX} (${
         duplicates.reduce(
@@ -56,10 +57,13 @@ const DropZone = ({ files, setFiles }) => {
       })${extension}`;
     } else if (
       updatedFiles.some(
-        (updatedFile) => updatedFile.name
-          === fileName + COPY_SUFFIX + extension,
+        (updatedFile) => updatedFile.name === fileName + COPY_SUFFIX + extension,
       )
-    ) { newFile.name = newFile.path = `${fileName}${COPY_SUFFIX} (2)${extension}`; } else { newFile.name = newFile.path = fileName + COPY_SUFFIX + extension; }
+    ) {
+      newFile.name = newFile.path = `${fileName}${COPY_SUFFIX} (2)${extension}`;
+    } else {
+      newFile.name = newFile.path = fileName + COPY_SUFFIX + extension;
+    }
 
     return newFile;
   }
