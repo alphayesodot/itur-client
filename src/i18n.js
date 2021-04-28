@@ -11,11 +11,10 @@ const resources = {
       headerBlessings: {
         morning: 'בוקר טוב',
         afternoon: 'צהריים טובים',
-        evning: 'ערב טוב',
+        evening: 'ערב טוב',
         night: 'לילה טוב',
       },
       button: {},
-
       xmlPage: {
         uploadButton: 'העלאת קבצים',
         sizeLimitation: '( MB {{sizeLimit}} עד)',

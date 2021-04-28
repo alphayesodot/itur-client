@@ -4,9 +4,10 @@ const useStyles = makeStyles((theme) => ({
   root: {
     width: '20rem',
     textAlign: 'center',
-    padding: '10%',
-    border: '0.12rem dashed',
-    borderColor: theme.palette.section.primary,
+    padding: '7% 12%',
+    border: '0.125rem dashed',
+    borderRadius: '10px',
+    borderColor: 'rgb(143,210,220)',
     backgroundColor: theme.palette.section.main,
     color: theme.palette.section.primary,
     fontSize: '0.8rem',
@@ -16,25 +17,26 @@ const useStyles = makeStyles((theme) => ({
   uploadButton: {
     backgroundColor: theme.palette.section.secondary,
     color: 'black',
-    padding: '1.5% 4%',
-    fontSize: '0.7rem',
+    padding: '5% 6%',
     borderRadius: '25rem',
     marginTop: '3%',
   },
+  uploadIcon: {
+    marginLeft: '0.5rem',
+  },
   limitation: {
-    fontSize: '0.7rem',
+    fontSize: '0.8rem',
     fontFamily: theme.typography.fontFamily,
-    fontWeight: 'bold',
     marginTop: '2%',
   },
   explanation: {
     color: 'black',
-    fontSize: '0.9rem',
+    fontSize: '1.1rem',
     fontFamily: theme.typography.fontFamily,
   },
   cloudImg: {
-    width: '10rem',
-    height: '8rem',
+    width: '20rem',
+    height: '15rem',
     marginBottom: '5%',
   },
 }));

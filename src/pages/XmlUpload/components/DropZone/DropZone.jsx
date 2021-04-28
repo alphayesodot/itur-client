@@ -3,7 +3,8 @@ import { toast } from 'react-toastify';
 import Dropzone from 'react-dropzone';
 import Button from '@material-ui/core/Button';
 import { useTranslation } from 'react-i18next';
-import cloudImg from '../../../../utils/images/cloud.png';
+import cloudImg from '../../../../utils/images/xmlPage/upload-decoration.svg';
+import uploadIcon from '../../../../utils/images/xmlPage/uploading-icon.svg';
 import useStyles from './DropZone.styles';
 import configApp from '../../../../appConf';
 
@@ -77,7 +78,10 @@ const DropZone = ({ files, setFiles }) => {
           <input {...getInputProps()} />
           <img alt='drop files' src={cloudImg} className={classes.cloudImg} />
           <p className={classes.explanation}>Drag and Drop to upload files</p>
-          <Button className={classes.uploadButton}>{t('xmlPage.uploadButton')}</Button>
+          <Button className={classes.uploadButton}>
+            {t('xmlPage.uploadButton')}
+            <img className={classes.uploadIcon} src={uploadIcon} alt='upload' />
+          </Button>
           <p className={classes.limitation}>{t('xmlPage.sizeLimitation', { sizeLimit: configApp.xmlUpload.sizeLimit / 1000000 })}</p>
         </div>
       ) }

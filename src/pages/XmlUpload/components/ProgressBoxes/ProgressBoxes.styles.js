@@ -2,7 +2,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: '30rem',
+    width: '35rem',
     maxHeight: '22rem',
     overflowY: 'auto',
     margin: 'auto',
@@ -51,6 +51,7 @@ const useStyles = makeStyles((theme) => ({
   },
   progressBar: {
     backgroundColor: 'rgb(234,243,246)',
+    borderRadius: 35,
   },
   progressBarColor: {
     backgroundColor: theme.palette.section.primary,
