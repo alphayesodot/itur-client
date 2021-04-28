@@ -57,11 +57,12 @@ const useStyles = makeStyles((theme) => ({
   bodyContainer: {
     display: 'flex',
     alignItems: 'stretch',
-    paddingTop: '3rem',
+    paddingTop: '2rem',
     justifyContent: 'center',
     width: '95%',
     paddingLeft: '2.5%',
     paddingRight: '2.5%',
+    height: 'calc(100vh - 9rem)',
   },
 }));
 

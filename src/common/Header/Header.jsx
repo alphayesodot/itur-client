@@ -1,10 +1,10 @@
 import React from 'react';
-import logo from '../../utils/images/logo.svg';
+import { useTranslation } from 'react-i18next';
 import NotificationsNoneIcon from '@material-ui/icons/NotificationsNone';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import { Link } from 'react-router-dom';
 import { Toolbar, AppBar, IconButton, Button } from '@material-ui/core';
-import { useTranslation } from 'react-i18next';
+import logo from '../../utils/images/logo.svg';
 import useStyles from './Header.styles';
 
 const Header = () => {
@@ -13,13 +13,13 @@ const Header = () => {
   const { t } = useTranslation();
   const getBlessing = (hour) => {
     const hoursRange = { morning: 5, afternoon: 12, evening: 17, night: 21 };
-    if (hour >= morningHours.morning && hour < morningHours.afternoon) {
+    if (hour >= hoursRange.morning && hour < hoursRange.afternoon) {
       return t('headerBlessings.morning');
     }
-    if (hour >= morningHours.afternoon && hour < morningHours.evening) {
+    if (hour >= hoursRange.afternoon && hour < hoursRange.evening) {
       return t('headerBlessings.afternoon');
     }
-    if (hour >= morningHours.evening && hour < morningHours.night) {
+    if (hour >= hoursRange.evening && hour < hoursRange.night) {
       return t('headerBlessings.evening');
     }
     return t('headerBlessings.night');
