@@ -25,7 +25,7 @@ const DropZone = ({ files, setFiles }) => {
     });
   };
 
-  function fixDuplicateFile(updatedFiles, file) {
+  const fixDuplicateFile = (updatedFiles, file) => {
     if (!updatedFiles.some((updatedFile) => updatedFile.path === file.path)) return file;
 
     const extensionIndex = file.name.lastIndexOf('.');
