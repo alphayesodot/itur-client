@@ -6,7 +6,7 @@ import DashboardCard from '../../../../common/DashboardCard/DashboardCard';
 import nodeGroupService from '../../../../services/nodeGroup.service';
 import useStyles from './Header.styles';
 
-const Header = ({ unit }) => {
+const Header = ({ unit, selectedNodeGroupId, setSelectedNodeGroupId }) => {
   const classes = useStyles();
   const { t } = useTranslation();
   const [nodeGroups, setNodeGroups] = useState([]);
@@ -18,6 +18,10 @@ const Header = ({ unit }) => {
       toast(t('error.server'));
     });
   }, []);
+
+  const handleOnChange = (e) => {
+    setSelectedNodeGroupId(e.target.value);
+  };
 
   return (
     <DashboardCard className={classes.root}>
@@ -32,6 +36,8 @@ const Header = ({ unit }) => {
           <Select
             className={`${classes.select} ${classes.item}`}
             inputProps={{ classes: { icon: classes.icon } }}
+            onChange={handleOnChange}
+            value={selectedNodeGroupId}
             disableUnderline
           >
             {nodeGroups.map((nodeGroup) => (

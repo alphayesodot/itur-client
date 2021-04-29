@@ -13,6 +13,7 @@ const Track = observer(() => {
   const { t } = useTranslation();
   const currentUser = UserStoreInstance.userProfile;
   const [unit, setUnit] = useState();
+  const [selectedNodeGroupId, setSelectedNodeGroupId] = useState('');
 
   useEffect(() => {
     UnitService.getUnitById(currentUser.unit).then((res) => {
@@ -24,7 +25,11 @@ const Track = observer(() => {
 
   return (
     <div className={classes.root}>
-      <Header unit={unit} />
+      <Header
+        unit={unit}
+        selectedNodeGroupId={selectedNodeGroupId}
+        setSelectedNodeGroupId={setSelectedNodeGroupId}
+      />
       <TrackBoard />
     </div>
   );
