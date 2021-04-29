@@ -10,6 +10,11 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
     color: theme.palette.text.secondary,
   },
+  ccc: {
+    height: '5rem',
+    marginTop: '2rem',
+    backgroundColor: theme.palette.primary.main,
+  },
 }));
 
 export default useStyles;

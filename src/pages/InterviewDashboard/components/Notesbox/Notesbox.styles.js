@@ -4,6 +4,9 @@ import TextField from '@material-ui/core/TextField';
 const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.primary.secondary,
+    height: '12rem',
+    marginTop: '2rem',
+    padding: '0px 1rem 1rem 1rem',
   },
   '&::-webkit-scrollbar': {
     width: '0.5rem',

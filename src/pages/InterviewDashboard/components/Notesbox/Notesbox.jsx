@@ -7,12 +7,7 @@ const Notesbox = () => {
   const classes = useStyles();
   const { t } = useTranslation();
   return (
-    <DashboardCard
-      backgroundColor='secondary'
-      height='12rem'
-      mt='2rem'
-      padding='0px 1rem 1rem 1rem'
-    >
+    <DashboardCard className={classes.root}>
       <Toolbar className={classes.toolbar}>
         <div>
           <p>{t('interviewDashboard.notesBox.dontForgetNotesForMyself')}</p>

@@ -7,6 +7,7 @@ import EventService from '../../services/event.service';
 import MalshabService from '../../services/malshab.service';
 import Notesbox from './components/Notesbox/Notesbox';
 import ProgressBar from './components/ProgressBar/ProgressBar';
+import Highlights from './components/Highlights/Highlights';
 
 const InterviewDashboard = ({ eventId }) => {
   const classes = useStyles();
@@ -21,6 +22,10 @@ const InterviewDashboard = ({ eventId }) => {
     if (event) setMalshab(await MalshabService.getMalshabByIdentityNumber(event.malshab.id));
   }, [event]);
 
+  useEffect(async () => {
+    console.log(malshab);
+  }, [malshab]);
+
   return (
     <>
       <div className={classes.root}>
@@ -28,13 +33,11 @@ const InterviewDashboard = ({ eventId }) => {
           <Grid item lg={3}>
             <Questionnaire />
             <Notesbox />
-            <DashboardCard height='5rem' mt='2rem' backgroundColor='primary'>
-              <ProgressBar />
-            </DashboardCard>
+            <ProgressBar />
           </Grid>
           <Grid item lg={9}>
-            <DashboardCard height='41rem' />
-            <DashboardCard height='5rem' mt='2rem' backgroundColor='primary' />
+            <DashboardCard style={{ height: '41rem' }} />
+            <Highlights />
           </Grid>
         </Grid>
       </div>

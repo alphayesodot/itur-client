@@ -29,7 +29,7 @@ const App = () => {
       .then(() => {
         setTimeout(() => {
           setIsLoading(false);
-        }, 2000);
+        }, 10);
       });
   }, []);
 

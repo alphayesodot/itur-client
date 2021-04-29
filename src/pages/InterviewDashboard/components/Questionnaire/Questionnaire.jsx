@@ -16,7 +16,7 @@ const Questionnaire = () => {
   const [answers, setAnswers] = useState([]);
 
   return (
-    <DashboardCard backgroundColor='primary' height='26rem'>
+    <DashboardCard className={classes.mainContainer}>
       <Toolbar className={classes.toolbar}>
         <div>
           <Button
@@ -32,22 +32,15 @@ const Questionnaire = () => {
           </IconButton>
         </div>
         <div>
-          <p className={classes.questionsHeader}>
-            {t('interviewDashboard.questionnaire.questions')}
-          </p>
+          <p className={classes.questionsHeader}>{t('interviewDashboard.questionnaire.questions')}</p>
         </div>
       </Toolbar>
       <Container>
-        <List
-          component='nav'
-          aria-label='main mailbox folders'
-          style={{ color: '#fff', height: '20rem' }}
-          className={classes.list}
-        >
+        <List component='nav' aria-label='main mailbox folders' style={{ color: '#fff', height: '20rem' }} className={classes.list}>
           {questions.map((question) => (
             <Question
               question={question}
-              setAnswerFunction={() => setAnswers((current) => {})}
+              setAnswerFunction={() => setAnswers((current) => { })}
               key={Math.random()}
             />
           ))}

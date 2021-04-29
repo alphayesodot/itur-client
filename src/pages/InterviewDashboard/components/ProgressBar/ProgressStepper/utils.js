@@ -7,8 +7,4 @@ const getMinutesDiffFromDate = (date) => {
   return duration.asMinutes();
 };
 
-const getMinutesPassedStep = () => {
-  
-};
-
 export default getMinutesDiffFromDate;

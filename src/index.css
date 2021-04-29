@@ -14,7 +14,7 @@ body, html {
 * {
   user-select: none;
 }
-p {
+p, span {
   cursor: context-menu
 }
 a {  

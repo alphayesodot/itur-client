@@ -1,5 +1,5 @@
 import { makeStyles, StepConnector, withStyles } from '@material-ui/core';
-import theme from '../../../../../theme';
+import theme from '../../../../../../theme';
 
 export const useQontoStepIconStyles = makeStyles({
   root: {

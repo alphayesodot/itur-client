@@ -1,6 +1,10 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
+  mainContainer: {
+    backgroundColor: theme.palette.primary.main,
+    height: '26rem',
+  },
   interviewScheduleBtn: {
     backgroundColor: theme.palette.primary.secondary,
     borderRadius: '20px',
