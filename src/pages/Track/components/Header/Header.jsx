@@ -1,11 +1,13 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Typography, TextField, Button } from '@material-ui/core';
+import { observer } from 'mobx-react-lite';
 import DashboardCard from '../../../../common/DashboardCard/DashboardCard';
+import ScheduleStore from '../../../../stores/Schedule.store';
 import useStyles from './Header.styles';
 import NodeGroupSelect from '../NodeGroupSelect/NodeGroupSelect';
 
-const Header = ({
+const Header = observer(({
   unit,
   selectedNodeGroupId,
   setSelectedNodeGroupId,
@@ -17,6 +19,14 @@ const Header = ({
 
   const handleOnDateChange = (e) => {
     setSelectedDate(e.target.value);
+  };
+
+  const handleNewSchedule = () => {
+    if (selectedDate && selectedNodeGroupId
+      && !ScheduleStore.schedules.find((schedule) => schedule.date === selectedDate
+    && schedule.nodeGroupId === selectedNodeGroupId)) {
+      ScheduleStore.addNewSchedule(selectedDate, selectedNodeGroupId);
+    }
   };
 
   return (
@@ -32,7 +42,6 @@ const Header = ({
           <NodeGroupSelect
             selectedNodeGroupId={selectedNodeGroupId}
             setSelectedNodeGroupId={setSelectedNodeGroupId}
-            className={classes.item}
           />
           <TextField
             className={`${classes.date} ${classes.item}`}
@@ -44,12 +53,12 @@ const Header = ({
             }}
           />
         </div>
-        <Button className={classes.button}>
+        <Button className={classes.button} onClick={handleNewSchedule}>
           {t('button.newSchedule')}
         </Button>
       </div>
     </DashboardCard>
   );
-};
+});
 
 export default Header;

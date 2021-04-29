@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { observer } from 'mobx-react-lite';
 import { toast } from 'react-toastify';
-import UserStoreInstance from '../../stores/User.store';
+import UserStore from '../../stores/User.store';
 import UnitService from '../../services/unit.service';
 import Header from './components/Header/Header';
 import TrackBoard from './components/TrackBoard/TrackBoard';
@@ -11,7 +11,7 @@ import useStyles from './index.styles';
 const Track = observer(() => {
   const classes = useStyles();
   const { t } = useTranslation();
-  const currentUser = UserStoreInstance.userProfile;
+  const currentUser = UserStore.userProfile;
   const [unit, setUnit] = useState();
   const [selectedNodeGroupId, setSelectedNodeGroupId] = useState('');
   const [selectedDate, setSelectedDate] = useState(new Date().toLocaleDateString('fr-CA', {
