@@ -11,8 +11,8 @@ const InterviewItem = ({ status, time, name }) => {
   const classes = useStyles();
   const { t } = useTranslation();
 
-  const getIcon = (interviewStatus) => {
-    switch (interviewStatus) {
+  const getIcon = () => {
+    switch (status) {
       case 'DONE':
         return DONE;
       case 'CANCELED':
@@ -39,9 +39,9 @@ const InterviewItem = ({ status, time, name }) => {
           </Typography>
         </Tooltip>
         )}
-        { getIcon(status) && (
+        { getIcon() && (
         <Tooltip arrow placement='right-end' title={t(`interviewStatus.${status}`)}>
-          <Avatar alt='avatar' src={getIcon(status)} className={classes.avatar} />
+          <Avatar alt='avatar' src={getIcon()} className={classes.avatar} />
         </Tooltip>
         )}
       </ListItem>

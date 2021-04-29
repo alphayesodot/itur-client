@@ -7,7 +7,7 @@ const timeDifference = 1800000; // 30 minutes
 
 const InterviewsList = ({ interviews }) => {
   const classes = useStyles();
-  const [expandedInterviews, setExpandedInterviews] = useState(interviews);
+  const [expandedInterviews, setExpandedInterviews] = useState([]);
 
   const getTimeStatus = (time) => {
     if (new Date().getTime() < new Date(time).getTime()) {
@@ -34,12 +34,12 @@ const InterviewsList = ({ interviews }) => {
   };
 
   useEffect(() => {
-    setExpandedInterviews((prevInterviews) => {
+    setExpandedInterviews(() => {
       const minTime = Math.min(
-        ...prevInterviews.map((prevInterview) => new Date(prevInterview.time).getTime()),
+        ...interviews.map((prevInterview) => new Date(prevInterview.time).getTime()),
       );
       const maxTime = Math.max(
-        ...prevInterviews.map((prevInterview) => new Date(prevInterview.time).getTime()),
+        ...interviews.map((prevInterview) => new Date(prevInterview.time).getTime()),
       );
       const timeSegments = [];
       for (let time = minTime; time <= maxTime; time += timeDifference) {
@@ -47,7 +47,7 @@ const InterviewsList = ({ interviews }) => {
       }
 
       const sections = timeSegments.map((timeSegment) => {
-        const interview = prevInterviews.find(
+        const interview = interviews.find(
           (prevInterview) => new Date(prevInterview.time).getTime() === timeSegment,
         );
         return interview
