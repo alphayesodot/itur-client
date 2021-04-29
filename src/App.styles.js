@@ -54,6 +54,22 @@ const useStyles = makeStyles((theme) => ({
       opacity: 0,
     },
   },
+  bodyContainer: {
+    display: 'flex',
+    alignItems: 'stretch',
+    paddingTop: '2rem',
+    justifyContent: 'center',
+    width: '95%',
+    paddingLeft: '2.5%',
+    paddingRight: '2.5%',
+    height: 'calc(100vh - 9rem)',
+    [theme.breakpoints.down('sm')]: {
+      flexDirection: 'column-reverse',
+      alignItems: 'stretch',
+      justifyContent: 'flex-end',
+      height: 'calc(100vh - 3rem)',
+    },
+  },
 }));
 
 export default useStyles;

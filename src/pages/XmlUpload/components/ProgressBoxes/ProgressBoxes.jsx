@@ -8,7 +8,7 @@ import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import { useTranslation } from 'react-i18next';
 import useStyles from './ProgressBoxes.styles';
-import xmlImg from '../../../../utils/images/xmlFile.png';
+import xmlImg from '../../../../utils/images/xmlPage/upload-progress-xml.svg';
 
 const ProgressBoxes = ({ files, setFiles }) => {
   const classes = useStyles();

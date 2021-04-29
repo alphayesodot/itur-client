@@ -34,6 +34,8 @@ app.get('/config', (req, res) => {
     tokenName: config.jwtTokenName,
     secret: config.secret,
     xmlUpload: config.xmlUpload,
+    sitesPostfixes: config.sitesPostfixes,
+    allowedUrlPostfixesOfRole: config.allowedUrlPostfixesOfRole,
   });
 });
 

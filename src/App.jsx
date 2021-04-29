@@ -3,13 +3,15 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import Home from './pages/Home/index';
 import Track from './pages/Track/index';
-import InterviewerHeader from './common/InterviewerHeader/InterviewerHeader';
 import AuthService from './services/auth.service';
 import UploadXmlPage from './pages/XmlUpload/index';
 import ConfigService from './services/config.service';
+import Sidebar from './common/SideBarNav/SideBarNav';
+import Header from './common/Header/Header';
 import useStyles from './App.styles';
 import logo from './utils/images/logo.svg';
 import UserStoreInstance from './stores/User.store';
+import configApp from './appConf';
 import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
@@ -47,30 +49,31 @@ const App = () => {
 
   const renderLoading = () => <div className={classes.loading}><img className={classes.logo} src={logo} alt='radar logo' /></div>;
 
-  const renderApp = () => (
-    isAuthenticated
-      ? (
-        <Router classes={classes.root}>
-          <InterviewerHeader />
-          <Switch>
-            <Route path='/' exact>
-              <Home />
-            </Route>
-            <Route path='/track'>
-              <Track />
-            </Route>
-            <Route path='/xml-upload'>
-              <UploadXmlPage />
-            </Route>
-            <Route path='/interview-dashboard'>
-              <h1>interview-dashboard</h1>
-            </Route>
-          </Switch>
-          <ToastContainer />
-        </Router>
-      )
-      : renderUnauthorized()
-  );
+  const renderApp = () => (isAuthenticated ? (
+    <Router classes={classes.root}>
+      <Header />
+      <div className={classes.bodyContainer}>
+        <Switch>
+          <Route path='/' exact>
+            <Home />
+          </Route>
+          <Route path='/interview-dashboard'>
+            <h1>interview-dashboard</h1>
+          </Route>
+          <Route path='/xml-upload'>
+            <UploadXmlPage />
+          </Route>
+          <Route path={configApp.sitesPostfixes.track}>
+            <Track />
+          </Route>
+        </Switch>
+        <Sidebar />
+      </div>
+      <ToastContainer />
+    </Router>
+  ) : (
+    renderUnauthorized()
+  ));
 
   return isLoading ? renderLoading() : renderApp();
 };

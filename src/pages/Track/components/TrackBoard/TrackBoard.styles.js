@@ -3,8 +3,8 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles(() => ({
   root: {
     background: 'white',
-    width: '95%',
-    height: '70vh',
+    width: '100%',
+    height: '75vh',
     marginTop: '1em',
     paddingBottom: '0.5em',
   },
@@ -21,16 +21,16 @@ const useStyles = makeStyles(() => ({
     marginLeft: '1.3em',
   },
   item: {
-    minWidth: '19em',
-    width: '19em',
+    minWidth: '18em',
+    width: '18em',
     height: '100%',
     '&:first-child': {
       paddingRight: '0',
-      minWidth: '17.5em',
+      minWidth: '17em',
     },
     '&:last-child': {
       paddingLeft: '0',
-      minWidth: '17.5em',
+      minWidth: '17em',
     },
   },
 }));

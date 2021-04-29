@@ -14,10 +14,11 @@ const resources = {
         interviewsCount: 'סה"כ ראיונות',
         noInterviews: 'אין ראיונות',
       },
-      headerTitles: {
-        interviewsSchedule: 'לו"ז ראיונות',
-        malshabData: 'נתוני מלש"ב',
-        appraiserPreperationKit: 'ערכת הכנה למעריך',
+      headerBlessings: {
+        morning: 'בוקר טוב',
+        afternoon: 'צהריים טובים',
+        evening: 'ערב טוב',
+        night: 'לילה טוב',
       },
       button: {
         newSchedule: 'לוז חדש',
@@ -44,6 +45,7 @@ const resources = {
         fileInvalidType: 'סוג הקובץ לא תקין',
         fileTooLarge: 'הקובץ גדול מדי',
       },
+      sideBar: {},
     },
   },
 };

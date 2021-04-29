@@ -8,12 +8,10 @@ const UploadXmlPage = () => {
   const classes = useStyles();
   const [files, setFiles] = useState([]);
   return (
-    <div className={classes.root}>
-      <DashboardCard className={classes.content}>
-        <DropZone files={files} setFiles={setFiles} />
-        <ProgressBoxes files={files} setFiles={setFiles} />
-      </DashboardCard>
-    </div>
+    <DashboardCard className={classes.root}>
+      <DropZone files={files} setFiles={setFiles} />
+      <ProgressBoxes files={files} setFiles={setFiles} />
+    </DashboardCard>
   );
 };
 
