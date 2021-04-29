@@ -25,7 +25,7 @@ const DropZone = ({ files, setFiles }) => {
     });
   };
 
-  const escapeRegex = (string) => string.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+  const escapeRegex = (string) => string.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&');
 
   const fixDuplicateFile = (updatedFiles, file) => {
     if (!updatedFiles.some((updatedFile) => updatedFile.path === file.path)) return file;
@@ -34,7 +34,6 @@ const DropZone = ({ files, setFiles }) => {
     const extension = file.name.slice(extensionIndex);
     const fileName = file.name.slice(0, extensionIndex);
     const newFile = {};
-    let duplicates = [];
 
     // eslint-disable-next-line no-restricted-syntax, guard-for-in
     for (const key in file) newFile[key] = file[key];
