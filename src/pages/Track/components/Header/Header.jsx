@@ -1,12 +1,23 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { toast } from 'react-toastify';
 import { Typography, Select, MenuItem, TextField, Button } from '@material-ui/core';
 import DashboardCard from '../../../../common/DashboardCard/DashboardCard';
+import nodeGroupService from '../../../../services/nodeGroup.service';
 import useStyles from './Header.styles';
 
 const Header = ({ unit }) => {
   const classes = useStyles();
   const { t } = useTranslation();
+  const [nodeGroups, setNodeGroups] = useState([]);
+
+  useEffect(() => {
+    nodeGroupService.getNodeGroups().then((res) => {
+      setNodeGroups(res);
+    }).catch(() => {
+      toast(t('error.server'));
+    });
+  }, []);
 
   return (
     <DashboardCard className={classes.root}>
@@ -23,9 +34,9 @@ const Header = ({ unit }) => {
             inputProps={{ classes: { icon: classes.icon } }}
             disableUnderline
           >
-            {['מסלול', 'עוד מסלול'].map((nodeGroup) => (
-              <MenuItem className={classes.nodeGroup} key={nodeGroup} value={nodeGroup}>
-                {nodeGroup}
+            {nodeGroups.map((nodeGroup) => (
+              <MenuItem className={classes.nodeGroup} key={nodeGroup._id} value={nodeGroup._id}>
+                {nodeGroup.name}
               </MenuItem>
             ))}
           </Select>
