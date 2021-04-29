@@ -3,11 +3,11 @@ import config from '../appConf';
 
 class EventService {
   static async getEventById(eventId) {
-    const { data } = await axios({
+    const res = await axios({
       method: 'GET',
       url: `${await config.uri.api}/api/event/${eventId}`,
-    });
-    return data;
+    }).catch(() => {});
+    return res?.data;
   }
 }
 

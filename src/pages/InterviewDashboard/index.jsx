@@ -12,10 +12,12 @@ import Highlights from './components/Highlights/Highlights';
 const InterviewDashboard = ({ eventId }) => {
   const classes = useStyles();
   const [event, setEvent] = useState();
+  const [eventLoaded, setEventLoaded] = useState(false);
   const [malshab, setMalshab] = useState();
 
   useEffect(async () => {
     setEvent(await EventService.getEventById(eventId));
+    setEventLoaded(true);
   }, []);
 
   useEffect(async () => {
@@ -33,7 +35,9 @@ const InterviewDashboard = ({ eventId }) => {
           <Grid item lg={3}>
             <Questionnaire />
             <Notesbox />
-            <ProgressBar />
+            <DashboardCard height='5rem' mt='2rem' backgroundColor='primary' alignItems='center'>
+              <ProgressBar date={event?.time} eventLoaded={eventLoaded} />
+            </DashboardCard>
           </Grid>
           <Grid item lg={9}>
             <DashboardCard style={{ height: '41rem' }} />
