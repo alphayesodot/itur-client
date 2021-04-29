@@ -2,10 +2,11 @@ import React, { useState, useCallback, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import Home from './pages/Home/index';
+import Sidebar from './common/SideBarNav/SideBarNav';
 import AuthService from './services/auth.service';
 import UploadXmlPage from './pages/XmlUpload/index';
 import ConfigService from './services/config.service';
-import Header from './common/InterviewerHeader/InterviewerHeader';
+import Header from './common/Header/Header';
 import useStyles from './App.styles';
 import logo from './utils/images/logo.svg';
 import UserStoreInstance from './stores/User.store';
@@ -49,17 +50,20 @@ const App = () => {
   const renderApp = () => (isAuthenticated ? (
     <Router classes={classes.root}>
       <Header />
-      <Switch>
-        <Route path='/' exact>
-          <Home />
-        </Route>
-        <Route path='/interview-dashboard'>
-          <h1>interview-dashboard</h1>
-        </Route>
-        <Route path='/xml-upload'>
-          <UploadXmlPage />
-        </Route>
-      </Switch>
+      <div className={classes.bodyContainer}>
+        <Switch>
+          <Route path='/' exact>
+            <Home />
+          </Route>
+          <Route path='/interview-dashboard'>
+            <h1>interview-dashboard</h1>
+          </Route>
+          <Route path='/xml-upload'>
+            <UploadXmlPage />
+          </Route>
+        </Switch>
+        <Sidebar />
+      </div>
       <ToastContainer />
     </Router>
   ) : (

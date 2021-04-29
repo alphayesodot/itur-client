@@ -1,7 +1,7 @@
 import { makeAutoObservable } from 'mobx';
 
 class UserStore {
-  userProfile = { id: 4 };
+  userProfile;
   eventsData;
 
   constructor() {

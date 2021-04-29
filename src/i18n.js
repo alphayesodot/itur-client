@@ -8,13 +8,13 @@ const resources = {
       title: {
         example: 'מערכת איתור',
       },
-      headerTitles: {
-        interviewsSchedule: 'לו"ז ראיונות',
-        malshabData: 'נתוני מלש"ב',
-        appraiserPreperationKit: 'ערכת הכנה למעריך',
+      headerBlessings: {
+        morning: 'בוקר טוב',
+        afternoon: 'צהריים טובים',
+        evening: 'ערב טוב',
+        night: 'לילה טוב',
       },
       button: {},
-
       xmlPage: {
         uploadButton: 'העלאת קבצים',
         sizeLimitation: '( MB {{sizeLimit}} עד)',
@@ -22,6 +22,7 @@ const resources = {
         fileInvalidType: 'סוג הקובץ לא תקין',
         fileTooLarge: 'הקובץ גדול מדי',
       },
+      sideBar: {},
     },
   },
 };
