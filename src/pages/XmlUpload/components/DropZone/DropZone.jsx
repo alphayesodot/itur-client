@@ -1,6 +1,3 @@
-/* eslint-disable no-multi-assign */
-/* eslint-disable no-param-reassign */
-
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import Dropzone from 'react-dropzone';
@@ -9,8 +6,6 @@ import { useTranslation } from 'react-i18next';
 import cloudImg from '../../utils/images/cloud.png';
 import useStyles from './DropZone.styles';
 import configApp from '../../../../appConf';
-
-const COPY_SUFFIX = ' - Copy';
 
 const DropZone = ({ files, setFiles }) => {
   const classes = useStyles();
@@ -24,6 +19,8 @@ const DropZone = ({ files, setFiles }) => {
       } else toast(`${fileName}: ${e.code}`);
     });
   };
+
+  const MAX_SIZE = 1e6; // = 1,000,000
 
   const escapeRegex = (string) => string.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&');
 
@@ -39,11 +36,12 @@ const DropZone = ({ files, setFiles }) => {
     for (const key in file) newFile[key] = file[key];
 
     const duplicates = updatedFiles.filter((updatedFile) => new RegExp(
-      `^${escapeRegex(fileName)}${COPY_SUFFIX} \\([1-9]([0-9]+)?\\)\\${escapeRegex(extension)}$`,
+      `^${escapeRegex(fileName)} \\([1-9]([0-9]+)?\\)${escapeRegex(extension)}$`,
     ).test(updatedFile.name));
 
     if (duplicates.length) {
-      newFile.name = newFile.path = `${fileName}${COPY_SUFFIX} (${
+      // eslint-disable-next-line no-multi-assign
+      newFile.name = newFile.path = `${fileName} (${
         duplicates.reduce(
           (acc, current) => Math.max(
             +current.name.slice(
@@ -57,16 +55,18 @@ const DropZone = ({ files, setFiles }) => {
       })${extension}`;
     } else if (
       updatedFiles.some(
-        (updatedFile) => updatedFile.name === fileName + COPY_SUFFIX + extension,
+        (updatedFile) => updatedFile.name === file.name,
       )
     ) {
-      newFile.name = newFile.path = `${fileName}${COPY_SUFFIX} (2)${extension}`;
+      // eslint-disable-next-line no-multi-assign
+      newFile.name = newFile.path = `${fileName} (1)${extension}`;
     } else {
-      newFile.name = newFile.path = fileName + COPY_SUFFIX + extension;
+      // eslint-disable-next-line no-multi-assign
+      newFile.name = newFile.path = file.name;
     }
 
     return newFile;
-  }
+  };
 
   const handleOnDrop = (acceptedFiles, rejectedFilesObjects) => {
     rejectedFilesObjects.forEach((fileObject) => {
@@ -76,6 +76,7 @@ const DropZone = ({ files, setFiles }) => {
     if (acceptedFiles.length > 0) {
       let updatedFiles = [...files];
       acceptedFiles.forEach((file) => {
+        // eslint-disable-next-line no-param-reassign
         file.progress = 0;
 
         updatedFiles = updatedFiles.concat(fixDuplicateFile(updatedFiles, file));
@@ -121,7 +122,7 @@ const DropZone = ({ files, setFiles }) => {
           <img alt='drop files' src={cloudImg} className={classes.cloudImg} />
           <p className={classes.explanation}>Drag and Drop to upload files</p>
           <Button className={classes.uploadButton}>{t('xmlPage.uploadButton')}</Button>
-          <p className={classes.limitation}>{t('xmlPage.sizeLimitation', { sizeLimit: configApp.xmlUpload.sizeLimit / 1000000 })}</p>
+          <p className={classes.limitation}>{t('xmlPage.sizeLimitation', { sizeLimit: configApp.xmlUpload.sizeLimit / MAX_SIZE })}</p>
         </div>
       ) }
     </Dropzone>
