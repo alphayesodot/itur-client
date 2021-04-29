@@ -19,11 +19,14 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   icons: {
-    marginTop: '2rem',
+    // marginTop: '2rem',
     '&:hover,&:focus': {
       transform: 'rotate(-10deg)',
       transitionDuration: '0.2s',
     },
+  },
+  iconLink: {
+    marginTop: '2rem',
     [theme.breakpoints.down('sm')]: {
       margin: 'auto 1rem',
     },
