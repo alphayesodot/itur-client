@@ -37,22 +37,6 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '1.15em',
     whiteSpace: 'nowrap',
   },
-  nodeGroup: {
-    direction: 'rtl',
-  },
-  select: {
-    width: '12rem',
-    height: '2.5em',
-    background: 'white',
-    borderRadius: 30,
-    [theme.breakpoints.down('sm')]: {
-      width: '100%',
-    },
-  },
-  icon: {
-    fill: '#9aa3aa',
-    width: '185%',
-  },
   date: {
     borderRadius: 30,
     height: '2em',

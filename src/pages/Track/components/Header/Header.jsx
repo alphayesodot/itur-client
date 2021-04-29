@@ -1,26 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { toast } from 'react-toastify';
-import { Typography, Select, MenuItem, TextField, Button } from '@material-ui/core';
+import { Typography, TextField, Button } from '@material-ui/core';
 import DashboardCard from '../../../../common/DashboardCard/DashboardCard';
-import nodeGroupService from '../../../../services/nodeGroup.service';
 import useStyles from './Header.styles';
+import NodeGroupSelect from '../NodeGroupSelect/NodeGroupSelect';
 
-const Header = ({ unit, selectedNodeGroupId, setSelectedNodeGroupId }) => {
+const Header = ({
+  unit,
+  selectedNodeGroupId,
+  setSelectedNodeGroupId,
+  selectedDate,
+  setSelectedDate,
+}) => {
   const classes = useStyles();
   const { t } = useTranslation();
-  const [nodeGroups, setNodeGroups] = useState([]);
 
-  useEffect(() => {
-    nodeGroupService.getNodeGroups().then((res) => {
-      setNodeGroups(res);
-    }).catch(() => {
-      toast(t('error.server'));
-    });
-  }, []);
-
-  const handleOnChange = (e) => {
-    setSelectedNodeGroupId(e.target.value);
+  const handleOnDateChange = (e) => {
+    setSelectedDate(e.target.value);
   };
 
   return (
@@ -33,27 +29,16 @@ const Header = ({ unit, selectedNodeGroupId, setSelectedNodeGroupId }) => {
             {' '}
             <strong>{unit ? unit.name : ''}</strong>
           </Typography>
-          <Select
-            className={`${classes.select} ${classes.item}`}
-            inputProps={{ classes: { icon: classes.icon } }}
-            onChange={handleOnChange}
-            value={selectedNodeGroupId}
-            disableUnderline
-          >
-            {nodeGroups.map((nodeGroup) => (
-              <MenuItem className={classes.nodeGroup} key={nodeGroup._id} value={nodeGroup._id}>
-                {nodeGroup.name}
-              </MenuItem>
-            ))}
-          </Select>
+          <NodeGroupSelect
+            selectedNodeGroupId={selectedNodeGroupId}
+            setSelectedNodeGroupId={setSelectedNodeGroupId}
+            className={classes.item}
+          />
           <TextField
             className={`${classes.date} ${classes.item}`}
             type='date'
-            defaultValue={new Date().toLocaleDateString('fr-CA', {
-              year: 'numeric',
-              month: '2-digit',
-              day: '2-digit',
-            })}
+            onChange={handleOnDateChange}
+            value={selectedDate}
             InputProps={{
               disableUnderline: true,
             }}

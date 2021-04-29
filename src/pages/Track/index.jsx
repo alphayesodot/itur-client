@@ -14,6 +14,11 @@ const Track = observer(() => {
   const currentUser = UserStoreInstance.userProfile;
   const [unit, setUnit] = useState();
   const [selectedNodeGroupId, setSelectedNodeGroupId] = useState('');
+  const [selectedDate, setSelectedDate] = useState(new Date().toLocaleDateString('fr-CA', {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }));
 
   useEffect(() => {
     UnitService.getUnitById(currentUser.unit).then((res) => {
@@ -29,6 +34,8 @@ const Track = observer(() => {
         unit={unit}
         selectedNodeGroupId={selectedNodeGroupId}
         setSelectedNodeGroupId={setSelectedNodeGroupId}
+        selectedDate={selectedDate}
+        setSelectedDate={setSelectedDate}
       />
       <TrackBoard />
     </div>
