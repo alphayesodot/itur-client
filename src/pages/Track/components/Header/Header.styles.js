@@ -56,10 +56,14 @@ const useStyles = makeStyles((theme) => ({
   date: {
     borderRadius: 30,
     height: '2em',
+    width: '15em',
     padding: '0.25em',
-    paddingLeft: '6em',
+    paddingLeft: '0.5rem',
     background: 'white',
     borderBottom: 'none',
+    [theme.breakpoints.down('sm')]: {
+      width: 'auto',
+    },
   },
   button: {
     background: theme.palette.primary.secondary,
