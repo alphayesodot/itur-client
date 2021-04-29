@@ -2,7 +2,7 @@ const sitesPostfixes = {
   schedule: '/schedule',
   track: '/track',
   malshabSchedule: '/malshab-scheduling',
-  malshbSearch: '/search-malshab',
+  malshabSearch: '/search-malshab',
   reports: '/reports',
   posh: '/posh',
 };
@@ -24,24 +24,24 @@ const config = {
     RAMAD_ITUR_OF_UNIT: [
       sitesPostfixes.track,
       sitesPostfixes.malshabSchedule,
-      sitesPostfixes.malshbSearch,
+      sitesPostfixes.malshabSearch,
       sitesPostfixes.reports,
     ],
     PROFESSIONAL_RAMAD: [
       sitesPostfixes.track,
       sitesPostfixes.malshabSchedule,
-      sitesPostfixes.malshbSearch,
+      sitesPostfixes.malshabSearch,
       sitesPostfixes.reports,
     ],
     MADA: [
       sitesPostfixes.posh,
       sitesPostfixes.reports,
-      sitesPostfixes.searchMalshab,
+      sitesPostfixes.malshabSearch,
     ],
     ITUR: [
       sitesPostfixes.posh,
       sitesPostfixes.reports,
-      sitesPostfixes.searchMalshab,
+      sitesPostfixes.malshabSearch,
     ],
     PSYCHOLOGIST: [],
     DIAGNOSER: [],

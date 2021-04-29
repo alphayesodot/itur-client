@@ -10,21 +10,12 @@ import interviewIconActive from '../../utils/images/aside/aside-interview-button
 import luzIcon from '../../utils/images/aside/aside-luz-button.svg';
 import luzIconActive from '../../utils/images/aside/aside-luz-button-active.svg';
 import configApp from '../../appConf';
+import userStore from '../../stores/User.store';
 
 const Sidebar = () => {
   const classes = useStyles();
   const { t } = useTranslation();
-  const userRole = 'RAMAD_ITUR_OF_UNIT';
-  const createIcon = (iconDetails) => {
-    const src = iconDetails.urlPostfix === '/reports' ? iconDetails.imgActive : iconDetails.imgDef;
-    return (
-      <Link key={iconDetails.urlPostfix} className={classes.iconLink} to='/'>
-        <Tooltip placement='top' title={t(`xmlPage.${iconDetails.tooltip}`)}>
-          <img className={classes.icons} src={src} alt={iconDetails.tooltip} />
-        </Tooltip>
-      </Link>
-    );
-  };
+  const userRole = userStore.userProfile.role;
   const iconsDetails = {
     schedule: { urlPostfix: configApp.sitesPostfixes.schedule, imgDef: luzIcon, imgActive: luzIconActive, tooltip: 'schedule' },
     track: { urlPostfix: configApp.sitesPostfixes.track, imgDef: interviewIcon, imgActive: interviewIconActive, tooltip: 'track' },
@@ -32,6 +23,17 @@ const Sidebar = () => {
     searchMalshab: { urlPostfix: configApp.sitesPostfixes.malshbSearch, imgDef: luzIcon, imgActive: luzIconActive, tooltip: 'schedule' },
     reports: { urlPostfix: configApp.sitesPostfixes.reports, imgDef: luzIcon, imgActive: luzIconActive, tooltip: 'schedule' },
     posh: { urlPostfix: configApp.sitesPostfixes.posh, imgDef: luzIcon, imgActive: luzIconActive, tooltip: 'posh' },
+  };
+  const createIcon = (iconDetailsObject) => {
+    const src = iconDetailsObject.urlPostfix === '/reports' ? iconDetailsObject.imgActive : iconDetailsObject.imgDef;
+    const link = `${configApp.clientHost}${iconDetailsObject.urlPostfix}`;
+    return (
+      <Link key={iconDetailsObject.urlPostfix} className={classes.iconLink} to={link}>
+        <Tooltip placement='top' title={t(`sideBar.${iconDetailsObject.tooltip}`)}>
+          <img className={classes.icons} src={src} alt={iconDetailsObject.tooltip} />
+        </Tooltip>
+      </Link>
+    );
   };
   const iconsToShow = Object.values(iconsDetails).filter(
     (iconDetail) => configApp.allowedUrlPostfixesOfRole[userRole].includes(iconDetail.urlPostfix),

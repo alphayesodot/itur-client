@@ -22,6 +22,7 @@ const resources = {
         fileInvalidType: 'סוג הקובץ לא תקין',
         fileTooLarge: 'הקובץ גדול מדי',
       },
+      sideBar: {},
     },
   },
 };

@@ -19,7 +19,6 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   icons: {
-    // marginTop: '2rem',
     '&:hover,&:focus': {
       transform: 'rotate(-10deg)',
       transitionDuration: '0.2s',
