@@ -4,7 +4,9 @@ import { initReactI18next } from 'react-i18next';
 const resources = {
   he: {
     translation: {
-      // TODO: Add translations by subjects
+      error: {
+        server: 'קרתה תקלה. נסו שוב מאוחר יותר',
+      },
       title: {
         example: 'מערכת איתור',
         unit: 'יחידה',

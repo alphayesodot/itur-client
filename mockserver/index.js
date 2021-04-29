@@ -7,6 +7,9 @@ import buildJwt from './authentication.js';
 import config from './config.js';
 import eventRouter from './event/event.router.js';
 import xmlRouter from './xmlUpload/xml.router.js';
+import userRouter from './user/user.router.js';
+import nodeGroupRouter from './nodeGroup/nodeGroup.router.js';
+import unitRouter from './unit/unit.router.js';
 
 const app = express();
 app.use(cors({ origin: '*', credentials: true }));
@@ -35,6 +38,9 @@ app.get('/config', (req, res) => {
 });
 
 app.use('/api/event', eventRouter);
+app.use('/api/nodeGroup', nodeGroupRouter);
+app.use('/api/user', userRouter);
+app.use('/api/unit', unitRouter);
 app.use('/api/xml-upload', xmlRouter);
 
 app.listen(config.port, () => console.log(`Mock server listening on ${config.port}`));

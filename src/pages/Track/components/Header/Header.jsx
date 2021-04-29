@@ -4,7 +4,7 @@ import { Typography, Select, MenuItem, TextField, Button } from '@material-ui/co
 import DashboardCard from '../../../../common/DashboardCard/DashboardCard';
 import useStyles from './Header.styles';
 
-const Header = ({ unitName }) => {
+const Header = ({ unit }) => {
   const classes = useStyles();
   const { t } = useTranslation();
 
@@ -16,7 +16,7 @@ const Header = ({ unitName }) => {
             {t('title.unit')}
             :
             {' '}
-            <strong>{unitName}</strong>
+            <strong>{unit ? unit.name : ''}</strong>
           </Typography>
           <Select
             className={`${classes.select} ${classes.item}`}
