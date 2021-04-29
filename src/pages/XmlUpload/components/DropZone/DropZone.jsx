@@ -42,16 +42,13 @@ const DropZone = ({ files, setFiles }) => {
     if (duplicates.length) {
       // eslint-disable-next-line no-multi-assign
       newFile.name = newFile.path = `${fileName} (${
-        duplicates.reduce(
-          (acc, current) => Math.max(
-            +current.name.slice(
-              current.name.lastIndexOf('(') + 1,
-              current.name.lastIndexOf(')'),
-            ),
-            acc,
-          ),
-          0,
-        ) + 1
+        duplicates.reduce((acc, current) => {
+          const currentNumber = +current.name.slice(current.name.lastIndexOf('(') + 1, current.name.lastIndexOf(')'));
+
+          if (Math.abs(currentNumber - acc) > 1) return Math.min(currentNumber, acc);
+
+          return Math.max(currentNumber, acc);
+        }, 0) + 1
       })${extension}`;
     } else if (
       updatedFiles.some(
@@ -60,9 +57,6 @@ const DropZone = ({ files, setFiles }) => {
     ) {
       // eslint-disable-next-line no-multi-assign
       newFile.name = newFile.path = `${fileName} (1)${extension}`;
-    } else {
-      // eslint-disable-next-line no-multi-assign
-      newFile.name = newFile.path = file.name;
     }
 
     return newFile;
