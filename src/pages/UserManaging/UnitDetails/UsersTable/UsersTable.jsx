@@ -12,11 +12,21 @@ import {
   IconButton,
 } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import useStyles from './UsersTable.styles';
 
 const UsersTable = ({ users }) => {
+  const [unitUsers, setUnitUsers] = useState([]);
+  const [interviewers, setInterviewers] = useState([]);
+  const [unitRamadsItur, setUnitRamadsItur] = useState([]);
+  const [unitRamadIturAssistants, setUnitRamadIturAssistants] = useState([]);
+  const [professionalRamads, setProfessionalRamads] = useState([]);
+  const [madas, setMadas] = useState([]);
+  const [iturs, setIturs] = useState([]);
+  const [psychologists, setPsychologists] = useState([]);
+  const [diagnostics, setDiagnostics] = useState([]);
+  const [technicals, setTechnicals] = useState([]);
   const { t } = useTranslation();
   const createData = (role, amount, permissions, add) => ({
     role,
@@ -25,14 +35,57 @@ const UsersTable = ({ users }) => {
     add,
   });
   const [rows, setRows] = useState([
-    createData('מראיינ.ת', 16, 'צפייה ', true),
+    createData(t('roles.interviewer'), 16, 'צפייה ', true),
     createData('רמד איתור', 2, 'עריכה ', true),
     createData('טכני', 1, 'צפייה / עריכה ', true),
     createData('רמד מקצועי', 0, 'עריכה ', true),
     createData('פסיכולוגי.ת', 2, 'צפייה', true),
+    createData('פסיכולוגי.ת', 2, 'צפייה', true),
+    // createData('פסיכולוגי.ת', 2, 'צפייה', true),
+    // createData('פסיכולוגי.ת', 2, 'צפייה', true),
+    // createData('פסיכולוגי.ת', 2, 'צפייה', true),
   ]);
 
   const classes = useStyles();
+  const sortUsersByRole = () => {
+    unitUsers.forEach((user) => {
+      switch (user.role) {
+        case 'INTERVIWER':
+          setInterviewers([...interviewers, user]);
+          break;
+        case 'RAMAD_ITUR_OF_UNIT':
+          setUnitRamadsItur([...unitRamadsItur, user]);
+          break;
+        case 'RAMAD_ITUR_ASSISTANT':
+          setUnitRamadIturAssistants([...unitRamadIturAssistants, user]);
+          break;
+        case 'PROFESSIONAL_RAMAD':
+          setProfessionalRamads([...professionalRamads, user]);
+          break;
+        case 'MADA':
+          setMadas([...madas, user]);
+          break;
+        case 'ITUR':
+          setIturs([...iturs, user]);
+          break;
+        case 'PSYCHOLOGIST':
+          setPsychologists([...psychologists, user]);
+          break;
+        case 'DIAGNOSER':
+          setDiagnostics([...diagnostics, user]);
+          break;
+        case 'TECHNICAL':
+          setTechnicals([...technicals, user]);
+          break;
+        default:
+          console.log(user);
+      }
+    });
+  };
+
+  useEffect(async () => {
+    sortUsersByRole();
+  }, [users]);
 
   return (
     <div className={classes.root}>

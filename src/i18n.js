@@ -35,6 +35,18 @@ const resources = {
         fileInvalidType: 'סוג הקובץ לא תקין',
         fileTooLarge: 'הקובץ גדול מדי',
       },
+      roles: {
+        interviewer: 'מראיינ.ת',
+        ramadIturOfUnit: 'רמ"ד איתור',
+        ramadIturAssistant: 'עוזר רמ"ד איתור',
+        professionalRamad: 'רמ"ד מקצועי',
+        mada: 'מד"ה',
+        itur: 'איתור',
+        psychologist: 'פסיכולוג.ית',
+        diagnoser: 'מאבחנ.ת',
+        technical: 'טכני',
+
+      },
     },
   },
 };

@@ -1,8 +1,8 @@
 import express from 'express';
-import UnitManager from './unit.manager';
+import UnitManager from './unit.manager.js';
 
 const unitRouter = express.Router();
 
-unitRouter.get('/unit', UnitManager.getUnits);
+unitRouter.get('/', UnitManager.getUnits);
 
 export default unitRouter;

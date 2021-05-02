@@ -1,47 +1,47 @@
 const units = [
   {
     id: '507f191e810c19729de861ea',
-    name: 'unit1',
+    name: 'יחידה 1',
   },
   {
     id: '507f191e810c19729de862ea',
-    name: 'unit2',
+    name: 'יחידה 2',
   },
   {
     id: '507f191e810c19729de863ea',
-    name: 'unit3',
+    name: 'יחידה 3',
   },
   {
     id: '507f191e810c19729de864ea',
-    name: 'unit4',
+    name: 'יחידה 4',
   },
   {
     id: '507f191e810c19729de865ea',
-    name: 'unit5',
+    name: 'יחידה 5',
   },
   {
     id: '507f191e810c19729de866ea',
-    name: 'unit6',
+    name: 'יחידה 6',
   },
   {
     id: '507f191e810c19729de867ea',
-    name: 'unit7',
+    name: 'יחידה 7',
   },
   {
     id: '507f191e810c19729de868ea',
-    name: 'unit8',
+    name: 'יחידה 8',
   },
   {
     id: '507f191e810c19729de869ea',
-    name: 'unit9',
+    name: 'יחידה 9',
   },
   {
     id: '507f191e810c19729de870ea',
-    name: 'unit10',
+    name: 'יחידה 10',
   },
   {
     id: '507f191e810c19729de871ea',
-    name: 'unit11',
+    name: 'יחידה 11',
   },
 ];
 

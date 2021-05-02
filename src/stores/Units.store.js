@@ -1,17 +1,20 @@
 import { makeAutoObservable } from 'mobx';
 
 class UnitsStore {
-  units =[]; // TODO: initiate units
+  units =[
+    { unitName: 'name' },
+  ];
 
   constructor() {
     makeAutoObservable(this);
   }
 
-  setUserProfile(value) {
-    this.userProfile = value;
+  initiateUnits(unitsArray) {
+    this.units = [...this.units, unitsArray];
   }
-  setEvents(value) {
-    this.events = value;
+
+  addUnit(unit) {
+    this.units = [...this.units, unit];
   }
 }
 

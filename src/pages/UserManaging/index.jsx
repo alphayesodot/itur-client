@@ -13,6 +13,7 @@ const UserManaging = () => {
   const { t } = useTranslation();
   const [openAddUnit, setOpenAddUnit] = useState(false);
   const [units, setUnits] = useState([]);
+  const [selectedUnit, setSelectedUnit] = useState('');
 
   useEffect(async () => {
     setUnits(await UnitService.getUnits());
@@ -22,8 +23,8 @@ const UserManaging = () => {
     <>
       <p className={classes.addUsersTitle}>{t('headerTitles.addUsers')}</p>
       <div className={classes.root}>
-        <UnitDetails />
-        <Units numberOfUnits={38} />
+        <UnitDetails unit={{ id: '132', name: 'ספיר ' }} />
+        <Units unitsArray={units} setUnitsArray={setUnits} />
       </div>
       <Button variant='contained' className={classes.addUnitButton} onClick={() => setOpenAddUnit(true)}>
         {t('button.addUnit')}

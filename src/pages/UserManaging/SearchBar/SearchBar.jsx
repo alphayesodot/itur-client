@@ -1,10 +1,12 @@
 /* eslint-disable no-unused-vars */
 import { useTranslation } from 'react-i18next';
+import { useState } from 'react';
 import useStyles from './SearchBar.styles';
 
 const SearchBar = ({ setDisplayedArray }) => {
   const classes = useStyles();
   const { t } = useTranslation();
+  const [arrayToDisplay, setArrayToDisplay] = useState();
 
   const handleChange = (value) => {
     console.log(value);

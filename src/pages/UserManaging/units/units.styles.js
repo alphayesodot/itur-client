@@ -16,6 +16,11 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: '3.5rem',
     marginTop: '-1rem',
   },
+  unitsList: {
+    height: '35rem',
+    overflow: 'auto',
+    overflowColor: 'red',
+  },
 }));
 
 export default useStyles;

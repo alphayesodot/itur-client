@@ -1,4 +1,4 @@
-import units from './db';
+import units from './db.js';
 
 class UnitManager {
   static async getUnits(req, res) {
