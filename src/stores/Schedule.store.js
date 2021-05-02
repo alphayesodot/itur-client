@@ -1,31 +1,33 @@
 import { makeAutoObservable } from 'mobx';
+import EventService from '../services/event.service';
 
 class ScheduleStore {
-  schedules = [];
+  schedules;
 
   constructor() {
     makeAutoObservable(this);
   }
 
-  addNewSchedule(date, nodeGroupId) {
-    this.schedules.push({
-      date,
-      nodeGroupId,
-      schedule: [{
-        interviewer: {
-          _id: '',
-          name: '',
-        },
-        interviews: [{
-          time: '',
-          results: [],
-          malshabShort: {
-            firstName: '',
-            lastName: '',
-            identityNumber: 1,
-          },
-        }],
-      }],
+  getSchedule(date, nodeGroupId) {
+    return this.schedules && this.schedules.find(
+      (schedule) => schedule.date === date
+       && schedule.nodeGroupId === nodeGroupId,
+    );
+  }
+
+  async addNewSchedule(date, nodeGroup) {
+    if (!this.schedules) {
+      this.schedules = [];
+    }
+    await Promise.all(nodeGroup.usersIds.map((interviewerId) => ({
+      interviewerId,
+      interviews: EventService.getEvents({ interviewerId, date: new Date(date) }),
+    }))).then((schedule) => {
+      this.schedules.push({
+        date,
+        nodeGroupId: nodeGroup._id,
+        schedule,
+      });
     });
   }
 }

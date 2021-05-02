@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Typography, TextField, Button } from '@material-ui/core';
+import { toast } from 'react-toastify';
+import { Typography, TextField } from '@material-ui/core';
 import { observer } from 'mobx-react-lite';
 import DashboardCard from '../../../../common/DashboardCard/DashboardCard';
 import ScheduleStore from '../../../../stores/Schedule.store';
@@ -17,16 +18,17 @@ const Header = observer(({
   const classes = useStyles();
   const { t } = useTranslation();
 
+  useEffect(() => {
+    if (selectedDate && selectedNodeGroup
+      && !ScheduleStore.getSchedule(selectedDate, selectedNodeGroup._id)) {
+      ScheduleStore.addNewSchedule(selectedDate, selectedNodeGroup).catch(() => {
+        toast(t('error.server'));
+      });
+    }
+  }, [selectedDate, selectedNodeGroup]);
+
   const handleOnDateChange = (e) => {
     setSelectedDate(e.target.value);
-  };
-
-  const handleNewSchedule = () => {
-    if (selectedDate && selectedNodeGroup
-      && !ScheduleStore.schedules.find((schedule) => schedule.date === selectedDate
-    && schedule.nodeGroupId === selectedNodeGroup._id)) {
-      ScheduleStore.addNewSchedule(selectedDate, selectedNodeGroup._id);
-    }
   };
 
   return (
@@ -53,9 +55,6 @@ const Header = observer(({
             }}
           />
         </div>
-        <Button className={classes.button} onClick={handleNewSchedule}>
-          {t('button.newSchedule')}
-        </Button>
       </div>
     </DashboardCard>
   );

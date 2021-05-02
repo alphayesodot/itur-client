@@ -59,6 +59,7 @@ const TrackBoard = ({ nodeGroup }) => {
           )
           : interviewers.map((user) => (
             <ListItem key={user.name} className={classes.item}>
+              {/* TODO: Get interviews from store by interviewer id */}
               <ScheduleCard user={user} interviews={interviews} />
             </ListItem>
           ))}
