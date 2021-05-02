@@ -21,15 +21,15 @@ const ScheduleCard = ({ user, interviews }) => {
       <InterviewsList interviews={interviews} />
       <div className={classes.interviewsCount}>
         <Typography>
-          {interviews.length
-            ? (
-              <>
-                <strong>{t('title.interviewsCount')}</strong>
-                {' '}
-                {interviews.length}
-              </>
-            )
-            : <strong>{t('title.noInterviews')}</strong>}
+          {interviews.length === 0 && <strong>{t('title.noInterviews')}</strong>}
+          {interviews.length === 1 && <strong>{t('title.oneInterview')}</strong>}
+          {interviews.length > 1 && (
+          <>
+            <strong>{t('title.interviewsCount')}</strong>
+            {' '}
+            {interviews.length}
+          </>
+          )}
         </Typography>
 
       </div>

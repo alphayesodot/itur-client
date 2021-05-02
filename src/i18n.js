@@ -13,6 +13,7 @@ const resources = {
         day: 'יום',
         interviewsCount: 'סה"כ ראיונות',
         noInterviews: 'אין ראיונות',
+        oneInterview: 'ראיון אחד',
       },
       headerBlessings: {
         morning: 'בוקר טוב',
