@@ -61,16 +61,9 @@ const App = () => {
           <Route path='/' exact>
             <Home />
           </Route>
-          <Route path='/interview-dashboard'>
-            <h1>interview-dashboard</h1>
-          </Route>
-          <Route path='/xml-upload'>
+          <Route path={configApp.sitesPostfixes.fileUpload}>
             <UploadXmlPage />
-            <PermissionCheck route='/xml-upload' />
-          </Route>
-          <Route path={configApp.sitesPostfixes.track}>
-            <h1>track</h1>
-            <PermissionCheck route={configApp.sitesPostfixes.track} />
+            <PermissionCheck route={configApp.sitesPostfixes.fileUpload} />
           </Route>
         </Switch>
         <Sidebar />
