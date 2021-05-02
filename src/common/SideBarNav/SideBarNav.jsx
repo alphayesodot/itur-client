@@ -19,12 +19,17 @@ const Sidebar = () => {
   const [currentUrlPostfix, setCurrentUrlPostfix] = useState(window.location.pathname);
   const userRole = UserStoreInstance.userProfile.role;
   const iconDetails = {
-    schedule: { urlPostfix: configApp.sitesPostfixes.schedule, imgDef: luzIcon, imgActive: luzIconActive, tooltip: 'schedule' },
-    track: { urlPostfix: configApp.sitesPostfixes.track, imgDef: interviewIcon, imgActive: interviewIconActive, tooltip: 'track' },
-    malshabSchedule: { urlPostfix: configApp.sitesPostfixes.malshabSchedule, imgDef: luzIcon, imgActive: luzIconActive, tooltip: 'schedule' },
-    searchMalshab: { urlPostfix: configApp.sitesPostfixes.malshabSearch, imgDef: luzIcon, imgActive: luzIconActive, tooltip: 'schedule' },
-    reports: { urlPostfix: configApp.sitesPostfixes.reports, imgDef: luzIcon, imgActive: luzIconActive, tooltip: 'schedule' },
-    posh: { urlPostfix: configApp.sitesPostfixes.posh, imgDef: luzIcon, imgActive: luzIconActive, tooltip: 'posh' },
+    luz: { urlPostfix: configApp.sitesPostfixes.luz, imgDef: luzIcon, imgActive: luzIconActive, tooltip: t('sideBar.luz') },
+    track: { urlPostfix: configApp.sitesPostfixes.track, imgDef: interviewIcon, imgActive: interviewIconActive, tooltip: t('sideBar.track') },
+    malshabSchedule: { urlPostfix: configApp.sitesPostfixes.malshabSchedule, imgDef: luzIcon, imgActive: luzIconActive, tooltip: t('sideBar.malshabSchedule') },
+    malshabSearch: { urlPostfix: configApp.sitesPostfixes.malshabSearch, imgDef: luzIcon, imgActive: luzIconActive, tooltip: t('sideBar.malshabSearch') },
+    reports: { urlPostfix: configApp.sitesPostfixes.reports, imgDef: luzIcon, imgActive: luzIconActive, tooltip: t('sideBar.reports') },
+    posh: { urlPostfix: configApp.sitesPostfixes.posh, imgDef: luzIcon, imgActive: luzIconActive, tooltip: t('sideBar.posh') },
+    preparationKit: { urlPostfix: configApp.sitesPostfixes.preparationKit, imgDef: settingsIcon, imgActive: settingsIconActive, tooltip: t('sideBar.preparationKit') },
+    nodeGroupCreation: { urlPostfix: configApp.sitesPostfixes.nodeGroupCreation, imgDef: settingsIcon, imgActive: settingsIconActive, tooltip: t('sideBar.nodeGroupCreation') },
+    fileUpload: { urlPostfix: configApp.sitesPostfixes.fileUpload, imgDef: settingsIcon, imgActive: settingsIconActive, tooltip: t('sideBar.fileUpload') },
+    userManagement: { urlPostfix: configApp.sitesPostfixes.userManagement, imgDef: settingsIcon, imgActive: settingsIconActive, tooltip: t('sideBar.userManagement') },
+    editQuestionnaire: { urlPostfix: configApp.sitesPostfixes.editQuestionnaire, imgDef: settingsIcon, imgActive: settingsIconActive, tooltip: t('sideBar.editQuestionnaire') },
     settings: { urlPostfix: '/settings', imgDef: settingsIcon, imgActive: settingsIconActive, tooltip: 'settings' },
   };
   const createIcon = (iconDetailsObject) => {
@@ -37,7 +42,7 @@ const Sidebar = () => {
         to={iconDetailsObject.urlPostfix}
         onClick={() => { setCurrentUrlPostfix(iconDetailsObject.urlPostfix); }}
       >
-        <Tooltip placement='top' title={t(`sideBar.${iconDetailsObject.tooltip}`)}>
+        <Tooltip placement='top' title={`${iconDetailsObject.tooltip}`}>
           <img className={classes.icons} src={src} alt={iconDetailsObject.tooltip} />
         </Tooltip>
       </Link>

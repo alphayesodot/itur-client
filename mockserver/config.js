@@ -1,10 +1,17 @@
 const sitesPostfixes = {
-  schedule: '/schedule',
+  interview: '/interview',
+  luz: '/luz',
   track: '/track',
   malshabSchedule: '/malshab-scheduling',
   malshabSearch: '/search-malshab',
   reports: '/reports',
   posh: '/posh',
+  preparationKit: 'preparation-kit',
+  nodeGroupCreation: 'node-group-creation',
+  fileUpload: 'file-upload',
+  userManagement: 'user-management',
+  unitCreation: 'unit-creation',
+  editQuestionnaire: 'edit-questionnaire',
 };
 
 const config = {
@@ -20,8 +27,25 @@ const config = {
   sitesPostfixes,
   allowedUrlPostfixesOfRole:
   {
-    INTERVIEWER: [sitesPostfixes.schedule],
+    INTERVIEWER: [
+      {
+        route: sitesPostfixes.luz,
+        sideBar: true,
+      },
+      {
+        route: sitesPostfixes.interview,
+        sideBar: false,
+      },
+      {
+        route: sitesPostfixes.preparationKit,
+        sideBar: true,
+      },
+    ],
     RAMAD_ITUR_OF_UNIT: [
+      {
+        route: sitesPostfixes.nodeGroupCreation,
+        sideBar: true,
+      },
       {
         route: sitesPostfixes.track,
         sideBar: true,
@@ -63,15 +87,7 @@ const config = {
         sideBar: true,
       },
       {
-        route: sitesPostfixes.malshabSchedule,
-        sideBar: true,
-      },
-      {
         route: sitesPostfixes.malshabSearch,
-        sideBar: true,
-      },
-      {
-        route: sitesPostfixes.reports,
         sideBar: true,
       },
     ],
@@ -86,6 +102,14 @@ const config = {
       },
       {
         route: sitesPostfixes.reports,
+        sideBar: true,
+      },
+      {
+        route: sitesPostfixes.editQuestionnaire,
+        sideBar: true,
+      },
+      {
+        route: sitesPostfixes.preparationKit,
         sideBar: true,
       },
     ],
@@ -103,9 +127,30 @@ const config = {
         sideBar: true,
       },
     ],
+    TECHNICAL: [
+      {
+        route: sitesPostfixes.malshabSearch,
+        sideBar: true,
+      },
+      {
+        route: sitesPostfixes.reports,
+        sideBar: true,
+      },
+      {
+        route: sitesPostfixes.fileUpload,
+        sideBar: true,
+      },
+      {
+        route: sitesPostfixes.userManagement,
+        sideBar: true,
+      },
+      {
+        route: sitesPostfixes.unitCreation,
+        sideBar: false,
+      },
+    ],
     PSYCHOLOGIST: [],
     DIAGNOSER: [],
-    TECHNICAL: [],
   },
 };
 
