@@ -24,14 +24,6 @@ const useStyles = makeStyles(() => ({
     minWidth: '18em',
     width: '18em',
     height: '100%',
-    '&:first-child': {
-      paddingRight: '0',
-      minWidth: '17em',
-    },
-    '&:last-child': {
-      paddingLeft: '0',
-      minWidth: '17em',
-    },
   },
   message: {
     fontSize: '1.25em',
