@@ -22,26 +22,86 @@ const config = {
   {
     INTERVIEWER: [sitesPostfixes.schedule],
     RAMAD_ITUR_OF_UNIT: [
-      sitesPostfixes.track,
-      sitesPostfixes.malshabSchedule,
-      sitesPostfixes.malshabSearch,
-      sitesPostfixes.reports,
+      {
+        route: sitesPostfixes.track,
+        sideBar: true,
+      },
+      {
+        route: sitesPostfixes.malshabSchedule,
+        sideBar: true,
+      },
+      {
+        route: sitesPostfixes.malshabSearch,
+        sideBar: true,
+      },
+      {
+        route: sitesPostfixes.reports,
+        sideBar: true,
+      },
+    ],
+    RAMAD_ITUR_ASSISTANT: [
+      {
+        route: sitesPostfixes.track,
+        sideBar: true,
+      },
+      {
+        route: sitesPostfixes.malshabSchedule,
+        sideBar: true,
+      },
+      {
+        route: sitesPostfixes.malshabSearch,
+        sideBar: true,
+      },
+      {
+        route: sitesPostfixes.reports,
+        sideBar: true,
+      },
     ],
     PROFESSIONAL_RAMAD: [
-      sitesPostfixes.track,
-      sitesPostfixes.malshabSchedule,
-      sitesPostfixes.malshabSearch,
-      sitesPostfixes.reports,
+      {
+        route: sitesPostfixes.track,
+        sideBar: true,
+      },
+      {
+        route: sitesPostfixes.malshabSchedule,
+        sideBar: true,
+      },
+      {
+        route: sitesPostfixes.malshabSearch,
+        sideBar: true,
+      },
+      {
+        route: sitesPostfixes.reports,
+        sideBar: true,
+      },
     ],
     MADA: [
-      sitesPostfixes.posh,
-      sitesPostfixes.reports,
-      sitesPostfixes.malshabSearch,
+      {
+        route: sitesPostfixes.posh,
+        sideBar: true,
+      },
+      {
+        route: sitesPostfixes.malshabSearch,
+        sideBar: true,
+      },
+      {
+        route: sitesPostfixes.reports,
+        sideBar: true,
+      },
     ],
     ITUR: [
-      sitesPostfixes.posh,
-      sitesPostfixes.reports,
-      sitesPostfixes.malshabSearch,
+      {
+        route: sitesPostfixes.posh,
+        sideBar: true,
+      },
+      {
+        route: sitesPostfixes.malshabSearch,
+        sideBar: true,
+      },
+      {
+        route: sitesPostfixes.reports,
+        sideBar: true,
+      },
     ],
     PSYCHOLOGIST: [],
     DIAGNOSER: [],

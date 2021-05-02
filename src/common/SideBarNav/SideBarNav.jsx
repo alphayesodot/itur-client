@@ -21,8 +21,8 @@ const Sidebar = () => {
   const iconDetails = {
     schedule: { urlPostfix: configApp.sitesPostfixes.schedule, imgDef: luzIcon, imgActive: luzIconActive, tooltip: 'schedule' },
     track: { urlPostfix: configApp.sitesPostfixes.track, imgDef: interviewIcon, imgActive: interviewIconActive, tooltip: 'track' },
-    malshabScheduling: { urlPostfix: configApp.sitesPostfixes.malshabSchedule, imgDef: luzIcon, imgActive: luzIconActive, tooltip: 'schedule' },
-    searchMalshab: { urlPostfix: configApp.sitesPostfixes.malshbSearch, imgDef: luzIcon, imgActive: luzIconActive, tooltip: 'schedule' },
+    malshabSchedule: { urlPostfix: configApp.sitesPostfixes.malshabSchedule, imgDef: luzIcon, imgActive: luzIconActive, tooltip: 'schedule' },
+    searchMalshab: { urlPostfix: configApp.sitesPostfixes.malshabSearch, imgDef: luzIcon, imgActive: luzIconActive, tooltip: 'schedule' },
     reports: { urlPostfix: configApp.sitesPostfixes.reports, imgDef: luzIcon, imgActive: luzIconActive, tooltip: 'schedule' },
     posh: { urlPostfix: configApp.sitesPostfixes.posh, imgDef: luzIcon, imgActive: luzIconActive, tooltip: 'posh' },
     settings: { urlPostfix: '/settings', imgDef: settingsIcon, imgActive: settingsIconActive, tooltip: 'settings' },
@@ -43,9 +43,13 @@ const Sidebar = () => {
       </Link>
     );
   };
+
   const iconsToShow = Object.values(iconDetails).filter(
-    (iconDetail) => configApp.allowedUrlPostfixesOfRole[userRole].includes(iconDetail.urlPostfix),
+    (iconDetail) => configApp.allowedUrlPostfixesOfRole[userRole].some(
+      (allowedUrl) => allowedUrl.route === iconDetail.urlPostfix && allowedUrl.sideBar,
+    ),
   );
+
   return (
     <DashboardCard className={classes.root}>
       <div className={classes.iconGroup}>

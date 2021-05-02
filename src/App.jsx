@@ -10,7 +10,9 @@ import Header from './common/Header/Header';
 import useStyles from './App.styles';
 import logo from './utils/images/logo.svg';
 import UserStoreInstance from './stores/User.store';
+import configApp from './appConf';
 import 'react-toastify/dist/ReactToastify.css';
+import PermissionCheck from './common/PermissionCheck/PermissionCheck';
 
 const App = () => {
   const classes = useStyles();
@@ -45,7 +47,11 @@ const App = () => {
 
   const renderUnauthorized = () => <span>unauthorized</span>;
 
-  const renderLoading = () => <div className={classes.loading}><img className={classes.logo} src={logo} alt='radar logo' /></div>;
+  const renderLoading = () => (
+    <div className={classes.loading}>
+      <img className={classes.logo} src={logo} alt='radar logo' />
+    </div>
+  );
 
   const renderApp = () => (isAuthenticated ? (
     <Router classes={classes.root}>
@@ -60,6 +66,11 @@ const App = () => {
           </Route>
           <Route path='/xml-upload'>
             <UploadXmlPage />
+            <PermissionCheck route='/xml-upload' />
+          </Route>
+          <Route path={configApp.sitesPostfixes.track}>
+            <h1>track</h1>
+            <PermissionCheck route={configApp.sitesPostfixes.track} />
           </Route>
         </Switch>
         <Sidebar />
