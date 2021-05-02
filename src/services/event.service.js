@@ -8,7 +8,7 @@ const headers = {
 
 class EventService {
   static async getEvents(params) {
-    const { data } = await axios.get(`${config.uri.auth}/api/event`, { headers, params });
+    const { data } = await axios.get(`${config.uri.api}/api/event`, { headers, params });
     return data;
   }
 }

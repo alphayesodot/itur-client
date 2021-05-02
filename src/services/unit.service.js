@@ -8,7 +8,7 @@ const headers = {
 
 class UnitService {
   static async getUnitById(id) {
-    const { data } = await axios.get(`${config.uri.auth}/api/unit/${id}`, { headers });
+    const { data } = await axios.get(`${config.uri.api}/api/unit/${id}`, { headers });
     return data;
   }
 }

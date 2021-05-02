@@ -8,7 +8,7 @@ const headers = {
 
 class NodeGroupService {
   static async getNodeGroups() {
-    const { data } = await axios.get(`${config.uri.auth}/api/nodeGroup`, { headers });
+    const { data } = await axios.get(`${config.uri.api}/api/nodeGroup`, { headers });
     return data;
   }
 }

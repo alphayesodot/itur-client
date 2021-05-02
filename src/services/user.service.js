@@ -8,7 +8,7 @@ const headers = {
 
 class UserService {
   static async getUserById(id) {
-    const { data } = await axios.get(`${config.uri.auth}/api/user/${id}`, { headers });
+    const { data } = await axios.get(`${config.uri.api}/api/user/${id}`, { headers });
     return data;
   }
 }

@@ -1,14 +1,29 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { List, ListItem, Typography } from '@material-ui/core';
+import { toast } from 'react-toastify';
 import { useTranslation } from 'react-i18next';
 import useStyles from './TrackBoard.styles';
 import DashboardCard from '../../../../common/DashboardCard/DashboardCard';
+import UserService from '../../../../services/user.service';
 import ScheduleCard from '../ScheduleCard/ScheduleCard';
 
 const TrackBoard = ({ nodeGroup }) => {
   const classes = useStyles();
   const { t } = useTranslation();
-  console.log('nodeGroup', nodeGroup);
+  const [interviewers, setInterviewers] = useState([]);
+
+  // TODO: Add loader
+  useEffect(() => {
+    if (nodeGroup) {
+      Promise.all(
+        nodeGroup.usersIds.map((userId) => UserService.getUserById(userId)),
+      ).then((res) => {
+        setInterviewers(res);
+      }).catch(() => {
+        toast(t('error.server'));
+      });
+    }
+  }, [nodeGroup]);
 
   const getDatePreview = (date) => (
     <>
@@ -28,16 +43,6 @@ const TrackBoard = ({ nodeGroup }) => {
     </>
   );
 
-  const users = [
-    { name: 'יוזר #1' },
-    { name: 'יוזר #2' },
-    { name: 'יוזר #3' },
-    { name: 'יוזר #4' },
-    { name: 'יוזר #5' },
-    { name: 'יוזר #6' },
-    { name: 'יוזר #7' },
-  ];
-
   const interviews = [{ time: '2021-04-22T13:00:07.996+00:00', name: 'חיים כהן' }, { time: '2021-04-22T10:30:07.996+00:00', name: 'מלכה כהן' }, { time: '2021-04-22T12:30:07.996+00:00', name: 'אסי עזר', results: { notes: [] } }];
 
   return (
@@ -46,9 +51,13 @@ const TrackBoard = ({ nodeGroup }) => {
         {getDatePreview(new Date())}
       </Typography>
       <List className={classes.list}>
-        {users.length === 0
-          ? <Typography className={classes.message}>{t('message.noInterviewersInNodeGroup')}</Typography>
-          : users.map((user) => (
+        {interviewers.length === 0
+          ? (
+            <Typography className={classes.message}>
+              {t('message.noInterviewersInNodeGroup')}
+            </Typography>
+          )
+          : interviewers.map((user) => (
             <ListItem key={user.name} className={classes.item}>
               <ScheduleCard user={user} interviews={interviews} />
             </ListItem>
