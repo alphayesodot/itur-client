@@ -33,6 +33,11 @@ const useStyles = makeStyles(() => ({
       minWidth: '17em',
     },
   },
+  message: {
+    fontSize: '1.25em',
+    textAlign: 'center',
+    width: '100%',
+  },
 }));
 
 export default useStyles;

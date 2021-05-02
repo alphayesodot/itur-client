@@ -9,8 +9,8 @@ import NodeGroupSelect from '../NodeGroupSelect/NodeGroupSelect';
 
 const Header = observer(({
   unit,
-  selectedNodeGroupId,
-  setSelectedNodeGroupId,
+  selectedNodeGroup,
+  setSelectedNodeGroup,
   selectedDate,
   setSelectedDate,
 }) => {
@@ -22,10 +22,10 @@ const Header = observer(({
   };
 
   const handleNewSchedule = () => {
-    if (selectedDate && selectedNodeGroupId
+    if (selectedDate && selectedNodeGroup
       && !ScheduleStore.schedules.find((schedule) => schedule.date === selectedDate
-    && schedule.nodeGroupId === selectedNodeGroupId)) {
-      ScheduleStore.addNewSchedule(selectedDate, selectedNodeGroupId);
+    && schedule.nodeGroupId === selectedNodeGroup._id)) {
+      ScheduleStore.addNewSchedule(selectedDate, selectedNodeGroup._id);
     }
   };
 
@@ -40,8 +40,8 @@ const Header = observer(({
             <strong>{unit ? unit.name : ''}</strong>
           </Typography>
           <NodeGroupSelect
-            selectedNodeGroupId={selectedNodeGroupId}
-            setSelectedNodeGroupId={setSelectedNodeGroupId}
+            selectedNodeGroup={selectedNodeGroup}
+            setSelectedNodeGroup={setSelectedNodeGroup}
           />
           <TextField
             className={`${classes.date} ${classes.item}`}

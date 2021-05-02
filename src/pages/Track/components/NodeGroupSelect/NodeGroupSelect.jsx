@@ -5,7 +5,7 @@ import { Select, MenuItem } from '@material-ui/core';
 import nodeGroupService from '../../../../services/nodeGroup.service';
 import useStyles from './NodeGroupSelect.styles';
 
-const NodeGroupSelect = ({ selectedNodeGroupId, setSelectedNodeGroupId }) => {
+const NodeGroupSelect = ({ selectedNodeGroup, setSelectedNodeGroup }) => {
   const classes = useStyles();
   const { t } = useTranslation();
   const [nodeGroups, setNodeGroups] = useState([]);
@@ -19,7 +19,7 @@ const NodeGroupSelect = ({ selectedNodeGroupId, setSelectedNodeGroupId }) => {
   }, []);
 
   const handleOnChange = (e) => {
-    setSelectedNodeGroupId(e.target.value);
+    setSelectedNodeGroup(nodeGroups.find((nodeGroup) => nodeGroup._id === e.target.value));
   };
 
   return (
@@ -27,7 +27,7 @@ const NodeGroupSelect = ({ selectedNodeGroupId, setSelectedNodeGroupId }) => {
       className={classes.root}
       inputProps={{ classes: { icon: classes.icon } }}
       onChange={handleOnChange}
-      value={selectedNodeGroupId}
+      value={selectedNodeGroup ? selectedNodeGroup._id : ''}
       disableUnderline
     >
       {nodeGroups.map((nodeGroup) => (

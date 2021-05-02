@@ -5,10 +5,10 @@ import useStyles from './TrackBoard.styles';
 import DashboardCard from '../../../../common/DashboardCard/DashboardCard';
 import ScheduleCard from '../ScheduleCard/ScheduleCard';
 
-const TrackBoard = () => {
+const TrackBoard = ({ nodeGroup }) => {
   const classes = useStyles();
   const { t } = useTranslation();
-
+  console.log('nodeGroup', JSON.stringify(nodeGroup));
   const getDatePreview = (date) => (
     <>
       {t('title.day')}
@@ -45,11 +45,13 @@ const TrackBoard = () => {
         {getDatePreview(new Date())}
       </Typography>
       <List className={classes.list}>
-        {users.map((user) => (
-          <ListItem key={user.name} className={classes.item}>
-            <ScheduleCard user={user} interviews={interviews} />
-          </ListItem>
-        ))}
+        {users.length === 0
+          ? <Typography className={classes.message}>{t('message.noInterviewersInNodeGroup')}</Typography>
+          : users.map((user) => (
+            <ListItem key={user.name} className={classes.item}>
+              <ScheduleCard user={user} interviews={interviews} />
+            </ListItem>
+          ))}
       </List>
     </DashboardCard>
   );

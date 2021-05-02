@@ -13,7 +13,7 @@ const Track = observer(() => {
   const { t } = useTranslation();
   const currentUser = UserStore.userProfile;
   const [unit, setUnit] = useState();
-  const [selectedNodeGroupId, setSelectedNodeGroupId] = useState('');
+  const [selectedNodeGroup, setSelectedNodeGroup] = useState('');
   const [selectedDate, setSelectedDate] = useState(new Date().toLocaleDateString('fr-CA', {
     year: 'numeric',
     month: '2-digit',
@@ -32,12 +32,12 @@ const Track = observer(() => {
     <div className={classes.root}>
       <Header
         unit={unit}
-        selectedNodeGroupId={selectedNodeGroupId}
-        setSelectedNodeGroupId={setSelectedNodeGroupId}
+        selectedNodeGroup={selectedNodeGroup}
+        setSelectedNodeGroup={setSelectedNodeGroup}
         selectedDate={selectedDate}
         setSelectedDate={setSelectedDate}
       />
-      <TrackBoard />
+      <TrackBoard nodeGroup={selectedNodeGroup} />
     </div>
   );
 });

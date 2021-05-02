@@ -15,6 +15,10 @@ const resources = {
         noInterviews: 'אין ראיונות',
         oneInterview: 'ראיון אחד',
       },
+      message: {
+        noInterviewersInNodeGroup: 'אין מראיינים במסלול',
+        chooseNodeGroup: 'בחרו מסלול',
+      },
       headerBlessings: {
         morning: 'בוקר טוב',
         afternoon: 'צהריים טובים',
