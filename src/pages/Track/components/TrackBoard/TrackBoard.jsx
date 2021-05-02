@@ -8,7 +8,8 @@ import ScheduleCard from '../ScheduleCard/ScheduleCard';
 const TrackBoard = ({ nodeGroup }) => {
   const classes = useStyles();
   const { t } = useTranslation();
-  console.log('nodeGroup', JSON.stringify(nodeGroup));
+  console.log('nodeGroup', nodeGroup);
+
   const getDatePreview = (date) => (
     <>
       {t('title.day')}

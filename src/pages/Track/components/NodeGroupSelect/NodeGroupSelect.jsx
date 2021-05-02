@@ -30,15 +30,24 @@ const NodeGroupSelect = ({ selectedNodeGroup, setSelectedNodeGroup }) => {
       value={selectedNodeGroup ? selectedNodeGroup._id : ''}
       disableUnderline
     >
-      {nodeGroups.map((nodeGroup) => (
-        <MenuItem
-          className={classes.item}
-          key={nodeGroup._id}
-          value={nodeGroup._id}
-        >
-          {nodeGroup.name}
-        </MenuItem>
-      ))}
+      {nodeGroups.length === 0
+        ? (
+          <MenuItem
+            className={classes.item}
+            disabled
+          >
+            {t('title.noNodeGroups')}
+          </MenuItem>
+        )
+        : nodeGroups.map((nodeGroup) => (
+          <MenuItem
+            className={classes.item}
+            key={nodeGroup._id}
+            value={nodeGroup._id}
+          >
+            {nodeGroup.name}
+          </MenuItem>
+        ))}
     </Select>
   );
 };

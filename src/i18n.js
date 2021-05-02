@@ -14,6 +14,7 @@ const resources = {
         interviewsCount: 'סה"כ ראיונות',
         noInterviews: 'אין ראיונות',
         oneInterview: 'ראיון אחד',
+        noNodeGroups: 'אין מסלולים',
       },
       message: {
         noInterviewersInNodeGroup: 'אין מראיינים במסלול',

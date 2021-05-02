@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { observer } from 'mobx-react-lite';
 import { toast } from 'react-toastify';
+import { Typography } from '@material-ui/core';
 import UserStore from '../../stores/User.store';
 import UnitService from '../../services/unit.service';
 import Header from './components/Header/Header';
@@ -37,7 +38,9 @@ const Track = observer(() => {
         selectedDate={selectedDate}
         setSelectedDate={setSelectedDate}
       />
-      <TrackBoard nodeGroup={selectedNodeGroup} />
+      {selectedNodeGroup
+        ? <TrackBoard nodeGroup={selectedNodeGroup} />
+        : <Typography className={classes.message}>{t('message.chooseNodeGroup')}</Typography>}
     </div>
   );
 });
