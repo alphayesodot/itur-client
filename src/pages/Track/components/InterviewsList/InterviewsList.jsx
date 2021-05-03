@@ -70,7 +70,7 @@ const InterviewsList = ({ interviews }) => {
             <InterviewItem
               status={status}
               time={new Date(time)}
-              name={`${malshabShort.firstName} ${malshabShort.lastName}`}
+              name={malshabShort ? `${malshabShort.firstName} ${malshabShort.lastName}` : undefined}
             />
           </div>
         ))}

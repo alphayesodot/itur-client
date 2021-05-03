@@ -15,7 +15,7 @@ const events = [{
   url: 'http://',
 },
 {
-  _id: '2',
+  _id: '3',
   node: {
     id: '123',
     name: 'ראיון',
@@ -25,7 +25,7 @@ const events = [{
     firstName: 'דנה',
     lastName: 'זרמון',
   },
-  time: '2021-04-28T08:00:07.996+00:00',
+  time: '2021-04-28T07:00:07.996+00:00',
   location: 'place',
   interviewersIds: ['3', '6'],
   url: 'http://',

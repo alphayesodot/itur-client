@@ -13,6 +13,7 @@ const NodeGroupSelect = ({ selectedNodeGroup, setSelectedNodeGroup }) => {
   useEffect(() => {
     nodeGroupService.getNodeGroups().then((res) => {
       setNodeGroups(res);
+      setSelectedNodeGroup(res[0]);
     }).catch(() => {
       toast(t('error.server'));
     });
