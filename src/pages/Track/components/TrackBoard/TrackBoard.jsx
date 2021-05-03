@@ -5,7 +5,6 @@ import { useTranslation } from 'react-i18next';
 import useStyles from './TrackBoard.styles';
 import DashboardCard from '../../../../common/DashboardCard/DashboardCard';
 import UserService from '../../../../services/user.service';
-import ScheduleStore from '../../../../stores/Schedule.store';
 import ScheduleCard from '../ScheduleCard/ScheduleCard';
 
 const TrackBoard = ({ nodeGroup, date }) => {
@@ -60,9 +59,8 @@ const TrackBoard = ({ nodeGroup, date }) => {
             <ListItem key={interviewer.name} className={classes.item}>
               <ScheduleCard
                 interviewer={interviewer}
-                interviews={
-                  ScheduleStore.getScheduleOfInterviewer(date, nodeGroup._id, interviewer._id) || []
-                }
+                date={date}
+                nodeGroupId={nodeGroup._id}
               />
             </ListItem>
           ))}
