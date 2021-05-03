@@ -1,9 +1,10 @@
 import { Step, Stepper } from '@material-ui/core';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { QontoConnector, useQontoStepIconStyles } from './Qonto/Qonto.styles';
 import StyledStepLabel from './ProgressStepper.styles';
 import QontoStepIcon from './Qonto/QontoStepIcon';
+import getStepByMinutesPassed from './ProgressStepper.utils';
 
 const ProgressStepper = ({ date }) => {
   const [activeStep, setActiveStep] = useState(0);
@@ -15,6 +16,10 @@ const ProgressStepper = ({ date }) => {
     t('interviewDashboard.progressBar.stepTwo'),
     t('interviewDashboard.progressBar.interviewEnd'),
   ];
+
+  useEffect(() => {
+    setActiveStep(getStepByMinutesPassed(date));
+  }, [date]);
 
   return (
     <Stepper

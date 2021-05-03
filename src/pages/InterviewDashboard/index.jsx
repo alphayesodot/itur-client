@@ -1,13 +1,13 @@
 import Grid from '@material-ui/core/Grid';
 import { useState, useEffect } from 'react';
-import DashboardCard from '../../common/DashboardCard/DashboardCard';
-import Questionnaire from './components/Questionnaire/Questionnaire';
 import useStyles from './index.styles';
+import Questionnaire from './components/Questionnaire/Questionnaire';
 import EventService from '../../services/event.service';
 import MalshabService from '../../services/malshab.service';
 import Notesbox from './components/Notesbox/Notesbox';
 import ProgressBar from './components/ProgressBar/ProgressBar';
 import Highlights from './components/Highlights/Highlights';
+import Malshab from './components/Malshab/Malshab';
 
 const InterviewDashboard = ({ eventId }) => {
   const classes = useStyles();
@@ -35,12 +35,10 @@ const InterviewDashboard = ({ eventId }) => {
           <Grid item lg={3}>
             <Questionnaire />
             <Notesbox />
-            <DashboardCard height='5rem' mt='2rem' backgroundColor='primary' alignItems='center'>
-              <ProgressBar date={event?.time} eventLoaded={eventLoaded} />
-            </DashboardCard>
+            <ProgressBar date={event?.time} eventLoaded={eventLoaded} />
           </Grid>
           <Grid item lg={9}>
-            <DashboardCard style={{ height: '41rem' }} />
+            <Malshab />
             <Highlights />
           </Grid>
         </Grid>
