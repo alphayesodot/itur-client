@@ -34,12 +34,6 @@ const TrackBoard = ({ nodeGroup, date }) => {
       {'//'}
       {' '}
       {date.toLocaleDateString('en-GB').replaceAll('/', '.')}
-      {' '}
-      {'//'}
-      {' '}
-      {date.toLocaleTimeString('en-US', { hour12: false,
-        hour: 'numeric',
-        minute: 'numeric' })}
     </>
   );
 
