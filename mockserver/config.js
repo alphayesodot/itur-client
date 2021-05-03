@@ -6,12 +6,12 @@ const sitesPostfixes = {
   malshabSearch: '/search-malshab',
   reports: '/reports',
   posh: '/posh',
-  preparationKit: 'preparation-kit',
-  nodeGroupCreation: 'node-group-creation',
-  fileUpload: 'file-upload',
-  userManagement: 'user-management',
-  unitCreation: 'unit-creation',
-  editQuestionnaire: 'edit-questionnaire',
+  preparationKit: '/preparation-kit',
+  nodeGroupCreation: '/node-group-creation',
+  fileUpload: '/file-upload',
+  userManagement: '/user-management',
+  unitCreation: '/unit-creation',
+  editQuestionnaire: '/edit-questionnaire',
 };
 
 const config = {

@@ -30,7 +30,7 @@ const Sidebar = () => {
     fileUpload: { urlPostfix: configApp.sitesPostfixes.fileUpload, imgDef: settingsIcon, imgActive: settingsIconActive, tooltip: t('sideBar.fileUpload') },
     userManagement: { urlPostfix: configApp.sitesPostfixes.userManagement, imgDef: settingsIcon, imgActive: settingsIconActive, tooltip: t('sideBar.userManagement') },
     editQuestionnaire: { urlPostfix: configApp.sitesPostfixes.editQuestionnaire, imgDef: settingsIcon, imgActive: settingsIconActive, tooltip: t('sideBar.editQuestionnaire') },
-    settings: { urlPostfix: '/settings', imgDef: settingsIcon, imgActive: settingsIconActive, tooltip: 'settings' },
+    settings: { urlPostfix: '/settings', imgDef: settingsIcon, imgActive: settingsIconActive, tooltip: t('sideBar.settings') },
   };
   const createIcon = (iconDetailsObject) => {
     const src = iconDetailsObject.urlPostfix === currentUrlPostfix

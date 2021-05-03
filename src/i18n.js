@@ -34,6 +34,7 @@ const resources = {
         fileUpload: 'העלאת קבצים',
         userManagement: 'ניהול משתמשים',
         editQuestionnaire: 'עריכת שאלון',
+        settings: 'הגדרות',
       },
     },
   },

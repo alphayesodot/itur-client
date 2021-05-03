@@ -3,10 +3,11 @@ import { Redirect } from 'react-router-dom';
 import configApp from '../../appConf';
 import UserStoreInstance from '../../stores/User.store';
 
-const PermissionCheck = ({ route }) => {
+const PermissionCheck = ({ path }) => {
   const userRole = UserStoreInstance.userProfile.role;
+
   const isAuthorized = () => (
-    configApp.allowedUrlPostfixesOfRole[userRole].some((allowedUrl) => allowedUrl.route === route)
+    configApp.allowedUrlPostfixesOfRole[userRole].some((allowedUrl) => allowedUrl.route === path)
   );
 
   return (
