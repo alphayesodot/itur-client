@@ -39,7 +39,7 @@ const Track = observer(() => {
         setSelectedDate={setSelectedDate}
       />
       {selectedNodeGroup
-        ? <TrackBoard nodeGroup={selectedNodeGroup} />
+        ? <TrackBoard nodeGroup={selectedNodeGroup} date={new Date(selectedDate)} />
         : <Typography className={classes.message}>{t('message.chooseNodeGroup')}</Typography>}
     </div>
   );

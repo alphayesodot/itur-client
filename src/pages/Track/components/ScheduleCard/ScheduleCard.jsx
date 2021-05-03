@@ -6,7 +6,7 @@ import avatar from '../../../../utils/images/userpic-blue.svg';
 import useStyles from './ScheduleCard.styles';
 import InterviewsList from '../InterviewsList/InterviewsList';
 
-const ScheduleCard = ({ user, interviews }) => {
+const ScheduleCard = ({ interviewer, interviews }) => {
   const classes = useStyles();
   const { t } = useTranslation();
 
@@ -15,7 +15,7 @@ const ScheduleCard = ({ user, interviews }) => {
       <div className={classes.title}>
         <Avatar alt='avatar' src={avatar} className={classes.avatar} />
         <Typography className={classes.name}>
-          {user.name}
+          {interviewer.name}
         </Typography>
       </div>
       <InterviewsList interviews={interviews} />

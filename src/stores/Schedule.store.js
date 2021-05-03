@@ -8,26 +8,41 @@ class ScheduleStore {
     makeAutoObservable(this);
   }
 
-  getSchedule(date, nodeGroupId) {
-    return this.schedules && this.schedules.find(
-      (schedule) => schedule.date === date
-       && schedule.nodeGroupId === nodeGroupId,
-    );
+  getScheduleOfNodeGroup(date, nodeGroupId) {
+    return this.schedules ? this.schedules.find(
+      (schedule) => new Date(schedule.date).getTime() === new Date(date).getTime()
+        && schedule.nodeGroupId === nodeGroupId,
+    ) : undefined;
+  }
+
+  getScheduleOfInterviewer(date, nodeGroupId, interviewerId) {
+    if (this.schedules) {
+      const scheduleOfNodeGroup = this.getScheduleOfNodeGroup(date, nodeGroupId);
+      if (scheduleOfNodeGroup) {
+        const searchedInterviewerObject = scheduleOfNodeGroup.schedule.find(
+          (interviewerObject) => interviewerObject.interviewerId === interviewerId,
+        );
+        return searchedInterviewerObject ? searchedInterviewerObject.interviews : undefined;
+      }
+      return undefined;
+    }
+    return undefined;
   }
 
   async addNewSchedule(date, nodeGroup) {
     if (!this.schedules) {
       this.schedules = [];
     }
-    await Promise.all(nodeGroup.usersIds.map((interviewerId) => ({
-      interviewerId,
-      interviews: EventService.getEvents({ interviewerId, date: new Date(date) }),
-    }))).then((schedule) => {
-      this.schedules.push({
-        date,
-        nodeGroupId: nodeGroup._id,
-        schedule,
-      });
+    const schedule = await Promise.all(
+      nodeGroup.usersIds.map(async (interviewerId) => ({
+        interviewerId,
+        interviews: await EventService.getEvents({ interviewerId, date: new Date(date) }),
+      })),
+    );
+    this.schedules.push({
+      date: new Date(date),
+      nodeGroupId: nodeGroup._id,
+      schedule,
     });
   }
 }

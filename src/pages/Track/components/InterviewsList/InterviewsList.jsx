@@ -65,9 +65,13 @@ const InterviewsList = ({ interviews }) => {
   return (
     <div className={classes.root}>
       <List className={classes.list}>
-        {expandedInterviews.map(({ name, time, status }) => (
-          <div key={`${name}-${JSON.stringify(time)}`}>
-            <InterviewItem status={status} time={new Date(time)} name={name} />
+        {expandedInterviews.map(({ malshabShort, time, status }, i) => (
+          <div key={i}>
+            <InterviewItem
+              status={status}
+              time={new Date(time)}
+              name={`${malshabShort.firstName} ${malshabShort.lastName}`}
+            />
           </div>
         ))}
       </List>

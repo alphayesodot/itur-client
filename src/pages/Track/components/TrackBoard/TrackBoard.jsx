@@ -5,9 +5,10 @@ import { useTranslation } from 'react-i18next';
 import useStyles from './TrackBoard.styles';
 import DashboardCard from '../../../../common/DashboardCard/DashboardCard';
 import UserService from '../../../../services/user.service';
+import ScheduleStore from '../../../../stores/Schedule.store';
 import ScheduleCard from '../ScheduleCard/ScheduleCard';
 
-const TrackBoard = ({ nodeGroup }) => {
+const TrackBoard = ({ nodeGroup, date }) => {
   const classes = useStyles();
   const { t } = useTranslation();
   const [interviewers, setInterviewers] = useState([]);
@@ -25,7 +26,7 @@ const TrackBoard = ({ nodeGroup }) => {
     }
   }, [nodeGroup]);
 
-  const getDatePreview = (date) => (
+  const getDatePreview = () => (
     <>
       {t('title.day')}
       {' '}
@@ -43,12 +44,10 @@ const TrackBoard = ({ nodeGroup }) => {
     </>
   );
 
-  const interviews = [{ time: '2021-04-22T13:00:07.996+00:00', name: 'חיים כהן' }, { time: '2021-04-22T10:30:07.996+00:00', name: 'מלכה כהן' }, { time: '2021-04-22T12:30:07.996+00:00', name: 'אסי עזר', results: { notes: [] } }];
-
   return (
     <DashboardCard className={classes.root}>
       <Typography className={classes.date}>
-        {getDatePreview(new Date())}
+        {getDatePreview()}
       </Typography>
       <List className={classes.list}>
         {interviewers.length === 0
@@ -57,10 +56,14 @@ const TrackBoard = ({ nodeGroup }) => {
               {t('message.noInterviewersInNodeGroup')}
             </Typography>
           )
-          : interviewers.map((user) => (
-            <ListItem key={user.name} className={classes.item}>
-              {/* TODO: Get interviews from store by interviewer id */}
-              <ScheduleCard user={user} interviews={interviews} />
+          : interviewers.map((interviewer) => (
+            <ListItem key={interviewer.name} className={classes.item}>
+              <ScheduleCard
+                interviewer={interviewer}
+                interviews={
+                  ScheduleStore.getScheduleOfInterviewer(date, nodeGroup._id, interviewer._id) || []
+                }
+              />
             </ListItem>
           ))}
       </List>
