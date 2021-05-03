@@ -22,6 +22,22 @@ const events = [{
   },
   malshabShort: {
     identityNumber: '22222222',
+    firstName: 'דנה',
+    lastName: 'זרמון',
+  },
+  time: '2021-04-28T08:00:07.996+00:00',
+  location: 'place',
+  interviewersIds: ['3', '6'],
+  url: 'http://',
+},
+{
+  _id: '2',
+  node: {
+    id: '123',
+    name: 'ראיון',
+  },
+  malshabShort: {
+    identityNumber: '22222222',
     firstName: 'חיים',
     lastName: 'כהן',
   },

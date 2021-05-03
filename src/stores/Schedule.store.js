@@ -16,17 +16,17 @@ class ScheduleStore {
   }
 
   getScheduleOfInterviewer(date, nodeGroupId, interviewerId) {
+    let result;
     if (this.schedules) {
       const scheduleOfNodeGroup = this.getScheduleOfNodeGroup(date, nodeGroupId);
       if (scheduleOfNodeGroup) {
         const searchedInterviewerObject = scheduleOfNodeGroup.schedule.find(
           (interviewerObject) => interviewerObject.interviewerId === interviewerId,
         );
-        return searchedInterviewerObject ? searchedInterviewerObject.interviews : undefined;
+        result = searchedInterviewerObject ? searchedInterviewerObject.interviews : undefined;
       }
-      return undefined;
     }
-    return undefined;
+    return result;
   }
 
   async addNewSchedule(date, nodeGroup) {
