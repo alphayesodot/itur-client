@@ -11,10 +11,11 @@ const ScheduleCard = ({ interviewer, date, nodeGroupId }) => {
   const classes = useStyles();
   const { t } = useTranslation();
   const [interviews, setInterviews] = useState([]);
-
+  const [isLoading, setIsLoading] = useState(false);
+  if (setIsLoading);
   useEffect(() => {
     setInterviews(ScheduleStore.getScheduleOfInterviewer(date, nodeGroupId, interviewer._id));
-  }, [ScheduleStore.schedules]);
+  }, [ScheduleStore.schedules, nodeGroupId, date]);
 
   return (
     <DashboardCard className={classes.root}>
@@ -24,21 +25,25 @@ const ScheduleCard = ({ interviewer, date, nodeGroupId }) => {
           {interviewer.name}
         </Typography>
       </div>
-      <InterviewsList interviews={interviews} />
-      <div className={classes.interviewsCount}>
-        <Typography>
-          {interviews.length === 0 && <strong>{t('title.noInterviews')}</strong>}
-          {interviews.length === 1 && <strong>{t('title.oneInterview')}</strong>}
-          {interviews.length > 1 && (
+      {isLoading ? <pre>loading</pre>
+        : (
           <>
-            <strong>{t('title.interviewsCount')}</strong>
-            {' '}
-            {interviews.length}
+            <InterviewsList interviews={interviews} />
+            <div className={classes.interviewsCount}>
+              <Typography>
+                {interviews.length === 0 && <strong>{t('title.noInterviews')}</strong>}
+                {interviews.length === 1 && <strong>{t('title.oneInterview')}</strong>}
+                {interviews.length > 1 && (
+                <>
+                  <strong>{t('title.interviewsCount')}</strong>
+                  {' '}
+                  {interviews.length}
+                </>
+                )}
+              </Typography>
+            </div>
           </>
-          )}
-        </Typography>
-
-      </div>
+        )}
     </DashboardCard>
   );
 };

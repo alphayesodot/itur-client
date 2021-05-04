@@ -14,6 +14,7 @@ const Header = observer(({
   setSelectedNodeGroup,
   selectedDate,
   setSelectedDate,
+  setIsLoading,
 }) => {
   const classes = useStyles();
   const { t } = useTranslation();
@@ -21,8 +22,11 @@ const Header = observer(({
   useEffect(() => {
     if (selectedDate && selectedNodeGroup
       && !ScheduleStore.getScheduleOfNodeGroup(selectedDate, selectedNodeGroup._id)) {
+      setIsLoading(true);
       ScheduleStore.addNewSchedule(selectedDate, selectedNodeGroup).catch(() => {
         toast(t('error.server'));
+      }).finally(() => {
+        setIsLoading(false);
       });
     }
   }, [selectedDate, selectedNodeGroup]);

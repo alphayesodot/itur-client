@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { observer } from 'mobx-react-lite';
 import { toast } from 'react-toastify';
-import { Typography } from '@material-ui/core';
+import { Backdrop, CircularProgress, Typography } from '@material-ui/core';
 import UserStore from '../../stores/User.store';
 import UnitService from '../../services/unit.service';
 import Header from './components/Header/Header';
@@ -14,6 +14,7 @@ const Track = observer(() => {
   const { t } = useTranslation();
   const currentUser = UserStore.userProfile;
   const [unit, setUnit] = useState();
+  const [isLoading, setIsLoading] = useState(false);
   const [selectedNodeGroup, setSelectedNodeGroup] = useState('');
   const [selectedDate, setSelectedDate] = useState(new Date().toLocaleDateString('fr-CA', {
     year: 'numeric',
@@ -22,10 +23,13 @@ const Track = observer(() => {
   }));
 
   useEffect(() => {
+    setIsLoading(true);
     UnitService.getUnitById(currentUser.unit).then((res) => {
       setUnit(res);
     }).catch(() => {
       toast(t('error.server'));
+    }).finally(() => {
+      setIsLoading(false);
     });
   }, []);
 
@@ -37,10 +41,21 @@ const Track = observer(() => {
         setSelectedNodeGroup={setSelectedNodeGroup}
         selectedDate={selectedDate}
         setSelectedDate={setSelectedDate}
+        setIsLoading={setIsLoading}
       />
-      {selectedNodeGroup
-        ? <TrackBoard nodeGroup={selectedNodeGroup} date={new Date(selectedDate)} />
-        : <Typography className={classes.message}>{t('message.chooseNodeGroup')}</Typography>}
+      {isLoading
+        ? (
+          <Backdrop open className={classes.backdrop}>
+            <CircularProgress color='primary' />
+          </Backdrop>
+        )
+        : (
+          <>
+            {selectedNodeGroup
+              ? <TrackBoard nodeGroup={selectedNodeGroup} date={new Date(selectedDate)} />
+              : <Typography className={classes.message}>{t('message.chooseNodeGroup')}</Typography>}
+          </>
+        )}
     </div>
   );
 });

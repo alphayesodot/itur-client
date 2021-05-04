@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     background: 'white',
     width: '100%',
@@ -29,6 +29,10 @@ const useStyles = makeStyles(() => ({
     fontSize: '1.25em',
     textAlign: 'center',
     width: '100%',
+  },
+  backdrop: {
+    zIndex: theme.zIndex.drawer + 1,
+    color: '#fff',
   },
 }));
 
