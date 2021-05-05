@@ -4,7 +4,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     background: 'white',
     width: '100%',
-    height: '75vh',
+    height: '100%',
     marginTop: '1em',
     paddingBottom: '0.5em',
   },
@@ -16,6 +16,7 @@ const useStyles = makeStyles((theme) => ({
   list: {
     display: 'flex',
     overflowX: 'auto',
+    width: 'calc(100% - 2em)',
     height: 'calc(100% - 7em)',
     marginRight: '1.3em',
     marginLeft: '1.3em',
@@ -23,7 +24,8 @@ const useStyles = makeStyles((theme) => ({
   item: {
     minWidth: '18em',
     width: '18em',
-    height: '100%',
+    height: '35em',
+    minHeight: '35em',
   },
   message: {
     fontSize: '1.25em',

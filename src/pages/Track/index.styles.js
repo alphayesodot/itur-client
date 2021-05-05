@@ -6,7 +6,8 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     alignItems: 'center',
     direction: 'rtl',
-    width: '100%',
+    width: 'calc(100% - 3rem)',
+    minWidth: 'calc(100% - 3rem)',
   },
   message: {
     fontSize: '1.25em',

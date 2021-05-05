@@ -41,7 +41,7 @@ const InterviewItem = ({ status, time, name }) => {
         )}
         { getIcon() && (
         <Tooltip arrow placement='right-end' title={t(`interviewStatus.${status}`)}>
-          <Avatar alt='avatar' src={getIcon()} className={classes.avatar} />
+          <Avatar alt={status} src={getIcon()} className={classes.avatar} />
         </Tooltip>
         )}
       </ListItem>
