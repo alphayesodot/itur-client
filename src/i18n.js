@@ -26,8 +26,18 @@ const resources = {
         amount: 'כמות',
         permissions: 'הגדרות כניסה',
         add: 'הוספה',
+        view: 'הצג',
+        unitName: 'שם יחידה',
+        noSelectedUnit: 'לא נבחרה יחידה',
+        noUnits: 'אין יחידות',
       },
 
+      headerBlessings: {
+        morning: 'בוקר טוב',
+        afternoon: 'צהריים טובים',
+        evening: 'ערב טוב',
+        night: 'לילה טוב',
+      },
       xmlPage: {
         uploadButton: 'העלאת קבצים',
         sizeLimitation: '( MB {{sizeLimit}} עד)',
@@ -47,6 +57,7 @@ const resources = {
         technical: 'טכני',
 
       },
+      sideBar: {},
     },
   },
 };

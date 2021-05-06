@@ -2,11 +2,13 @@ import React, { useState, useCallback, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import Home from './pages/Home/index';
+import Sidebar from './common/SideBarNav/SideBarNav';
 import AuthService from './services/auth.service';
 import UploadXmlPage from './pages/XmlUpload/index';
 import ConfigService from './services/config.service';
-import Header from './common/InterviewerHeader/InterviewerHeader';
+import Header from './common/Header/Header';
 import useStyles from './App.styles';
+import logo from './utils/images/logo.svg';
 import UserStoreInstance from './stores/User.store';
 import 'react-toastify/dist/ReactToastify.css';
 import UserManaging from './pages/UserManaging/index';
@@ -30,7 +32,7 @@ const App = () => {
       .then(() => {
         setTimeout(() => {
           setIsLoading(false);
-        }, 2000);
+        }, 1500);
       });
   }, []);
 
@@ -44,25 +46,28 @@ const App = () => {
 
   const renderUnauthorized = () => <span>unauthorized</span>;
 
-  const renderLoading = () => <div className={classes.loading}>loading</div>;
+  const renderLoading = () => <div className={classes.loading}><img className={classes.logo} src={logo} alt='radar logo' /></div>;
 
   const renderApp = () => (isAuthenticated ? (
     <Router classes={classes.root}>
       <Header />
-      <Switch>
-        <Route path='/' exact>
-          <Home />
-        </Route>
-        <Route path='/interview-dashboard'>
-          <h1>interview-dashboard</h1>
-        </Route>
-        <Route path='/xml-upload'>
-          <UploadXmlPage />
-        </Route>
-        <Route path='/user-managing'>
-          <UserManaging />
-        </Route>
-      </Switch>
+      <div className={classes.bodyContainer}>
+        <Switch>
+          <Route path='/' exact>
+            <Home />
+          </Route>
+          <Route path='/interview-dashboard'>
+            <h1>interview-dashboard</h1>
+          </Route>
+          <Route path='/xml-upload'>
+            <UploadXmlPage />
+          </Route>
+          <Route path='/user-managing'>
+            <UserManaging />
+          </Route>
+        </Switch>
+        <Sidebar />
+      </div>
       <ToastContainer />
     </Router>
   ) : (

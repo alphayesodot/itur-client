@@ -8,9 +8,9 @@ const useStyles = makeStyles((theme) => ({
   },
   mainDiv: {
     backgroundColor: theme.palette.primary.main,
-    width: '61rem',
+    width: '80rem',
     height: '4rem',
-    marginTop: '2rem',
+    marginTop: '4rem',
     color: 'white',
   },
   homeLogo: {

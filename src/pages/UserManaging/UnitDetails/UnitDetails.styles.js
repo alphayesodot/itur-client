@@ -6,8 +6,8 @@ const useStyles = makeStyles(() => ({
     justifyContent: 'center',
   },
   unitDetails: {
-    height: '45rem',
-    width: '70rem',
+    height: '54rem',
+    width: '85rem',
   },
 }));
 

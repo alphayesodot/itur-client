@@ -1,15 +1,13 @@
-/* eslint-disable no-unused-vars */
-import { useTranslation } from 'react-i18next';
-import { useState } from 'react';
+/* eslint-disable no-unused-expressions */
+/* eslint-disable no-lone-blocks */
 import useStyles from './SearchBar.styles';
 
-const SearchBar = ({ setDisplayedArray }) => {
+const SearchBar = ({ setDisplayedArray, unitsArray }) => {
   const classes = useStyles();
-  const { t } = useTranslation();
-  const [arrayToDisplay, setArrayToDisplay] = useState();
 
   const handleChange = (value) => {
     console.log(value);
+    { value === '' ? setDisplayedArray(unitsArray) : setDisplayedArray(unitsArray.filter((unit) => unit.name.includes(value))); }
   };
   return (
     <div className={classes.root}>

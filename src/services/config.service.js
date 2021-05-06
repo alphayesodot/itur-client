@@ -13,6 +13,8 @@ class ConfigService {
     config.tokenName = data.tokenName;
     config.secret = data.secret;
     config.xmlUpload = data.xmlUpload;
+    config.sitesPostfixes = data.sitesPostfixes;
+    config.allowedUrlPostfixesOfRole = data.allowedUrlPostfixesOfRole;
   }
 }
 

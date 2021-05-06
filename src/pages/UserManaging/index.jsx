@@ -1,11 +1,13 @@
+/* eslint-disable react/jsx-indent */
+/* eslint-disable max-len */
 /* eslint-disable no-unused-vars */
 import { useTranslation } from 'react-i18next';
-import { Button, Dialog } from '@material-ui/core';
+import { Dialog } from '@material-ui/core';
 import { useState, useEffect } from 'react';
-import AddUnit from './AddUnit/AddUnit';
+import AddUnit from './AddUnit/AddUnit.jsx';
 import useStyles from './index.styles';
 import UnitDetails from './UnitDetails/UnitDetails';
-import Units from './units/units';
+import Units from './units/units.jsx';
 import UnitService from '../../services/unit.service';
 
 const UserManaging = () => {
@@ -20,19 +22,15 @@ const UserManaging = () => {
   }, []);
 
   return (
-    <>
-      <p className={classes.addUsersTitle}>{t('headerTitles.addUsers')}</p>
+    <div className={classes.mainDiv}>
       <div className={classes.root}>
-        <UnitDetails unit={{ id: '132', name: 'ספיר ' }} />
-        <Units unitsArray={units} setUnitsArray={setUnits} />
+        <UnitDetails unit={selectedUnit} />
+        <Units unitsArray={units} setUnitsArray={setUnits} setOpenAddUnit={setOpenAddUnit} selectedUnit={selectedUnit} setSelectedUnit={setSelectedUnit} />
       </div>
-      <Button variant='contained' className={classes.addUnitButton} onClick={() => setOpenAddUnit(true)}>
-        {t('button.addUnit')}
-      </Button>
       <Dialog onClose={() => setOpenAddUnit(false)} aria-labelledby='simple-dialog-title' open={openAddUnit}>
-        <AddUnit />
+        <AddUnit className={classes.addUnitDialog} openAddUnit={openAddUnit} setOpenAddUnit={setOpenAddUnit} />
       </Dialog>
-    </>
+    </div>
   );
 };
 

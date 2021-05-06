@@ -6,7 +6,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
   },
   table: {
-    width: '80rem',
+    width: '60rem',
     marginTop: '2rem',
     boxShadow: 'none',
   },
@@ -17,23 +17,40 @@ const useStyles = makeStyles((theme) => ({
     '&:hover': {
       backgroundColor: theme.palette.primary.secondary,
     },
+    margin: '0px 3rem 0px -2rem',
+    fontWeight: 'bold',
+    paddingRight: '2rem',
+    paddingLeft: '2rem',
   },
   addButton: {
     backgroundColor: theme.palette.primary.main,
     color: 'white',
     borderRadius: '20rem',
   },
-  iconButton: {
+  closeButton: {
     backgroundColor: theme.palette.primary.main,
     color: 'white',
     height: '2rem',
     width: '2rem',
+    '&:hover,&:focus': {
+      backgroundColor: theme.palette.primary.main,
+    },
+  },
+  openButton: {
+    backgroundColor: theme.palette.section.primary,
+    color: 'white',
+    height: '2rem',
+    width: '2rem',
+    transform: 'rotate(-45deg)',
+    '&:hover,&:focus': {
+      backgroundColor: theme.palette.section.primary,
+    },
   },
   numberOfRoleUsers: {
     width: '3rem',
-    marginLeft: '2rem',
     border: '0.2px solid lightgrey',
     borderRadius: '0.5rem',
+    marginRight: '-2rem',
   },
   addDiv: {
     display: 'flex',
@@ -54,6 +71,9 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: 'rgb(244,245,247)',
     },
     width: '0.5rem',
+  },
+  hiddenElements: {
+    display: 'none',
   },
 
 }));
