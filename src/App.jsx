@@ -13,6 +13,7 @@ import UserStoreInstance from './stores/User.store';
 import configApp from './appConf';
 import 'react-toastify/dist/ReactToastify.css';
 import PermissionCheck from './common/PermissionCheck/PermissionCheck';
+import MalshabSchedulePage from './pages/MalshabSchedule';
 
 const App = () => {
   const classes = useStyles();
@@ -72,7 +73,7 @@ const App = () => {
     },
     {
       path: configApp.sitesPostfixes.malshabSchedule,
-      component: <h1>malshabSchedule</h1>,
+      component: <MalshabSchedulePage />,
     },
     {
       path: configApp.sitesPostfixes.malshabSearch,
