@@ -1,8 +1,8 @@
 import express from 'express';
-import UserManager from './user.manager';
+import UserManager from './user.manager.js';
 
 const userRouter = express.Router();
 
-userRouter.get('/user/:id', UserManager.getUsersByUnitId);
+userRouter.get('/:id', UserManager.getUsersByUnitId);
 
 export default userRouter;

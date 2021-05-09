@@ -73,7 +73,7 @@ const useStyles = makeStyles((theme) => ({
     width: '0.5rem',
   },
   hiddenElements: {
-    display: 'none',
+    minWidth: '14rem',
   },
 
 }));

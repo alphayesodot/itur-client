@@ -6,7 +6,6 @@ const SearchBar = ({ setDisplayedArray, unitsArray }) => {
   const classes = useStyles();
 
   const handleChange = (value) => {
-    console.log(value);
     { value === '' ? setDisplayedArray(unitsArray) : setDisplayedArray(unitsArray.filter((unit) => unit.name.includes(value))); }
   };
   return (

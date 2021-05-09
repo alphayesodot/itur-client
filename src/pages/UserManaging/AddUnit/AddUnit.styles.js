@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles(() => ({
   root: {
     height: ' 12rem',
-    width: '35rem',
+    width: '33rem',
     direction: 'rtl',
   },
   addButton: {
@@ -36,12 +36,18 @@ const useStyles = makeStyles(() => ({
     margin: '0px',
     display: 'flexDirection',
     alignItems: 'center',
+    '&&&:before': {
+      borderBottom: 'none',
+    },
+    '&&:after': {
+      borderBottom: 'none',
+    },
   },
   titleDiv: {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding: '1.5rem',
+    padding: '1.3rem',
     paddingRight: '2rem',
   },
   addDiv: {

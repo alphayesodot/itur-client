@@ -60,24 +60,6 @@ const users = [
     unitId: '507f191e810c19729de861ea',
   },
   {
-    id: '507f1f77bcf86cd799439021',
-    name: 'user11',
-    role: 'MADA',
-    unitId: '507f191e810c19729de861ea',
-  },
-  {
-    id: '507f1f77bcf86cd799439022',
-    name: 'user12',
-    role: 'MADA',
-    unitId: '507f191e810c19729de861ea',
-  },
-  {
-    id: '507f1f77bcf86cd799439023',
-    name: 'user13',
-    role: 'ITUR',
-    unitId: '507f191e810c19729de861ea',
-  },
-  {
     id: '507f1f77bcf86cd799439024',
     name: 'user14',
     role: 'PSYCHOLOGIST',

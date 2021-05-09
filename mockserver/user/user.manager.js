@@ -1,4 +1,4 @@
-import users from './db';
+import users from './db.js';
 
 class UserManager {
   static async getUsersByUnitId(req, res) {

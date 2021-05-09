@@ -9,7 +9,9 @@ const useStyles = makeStyles(() => ({
     display: 'flex',
     alignItems: 'stretch',
   },
-
+  paper: {
+    borderRadius: 15,
+  },
 }));
 
 export default useStyles;

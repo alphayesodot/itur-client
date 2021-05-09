@@ -28,7 +28,7 @@ const resources = {
         add: 'הוספה',
         view: 'הצג',
         unitName: 'שם יחידה',
-        noSelectedUnit: 'לא נבחרה יחידה',
+        noSelectedUnit: 'אנא בחר יחידה',
         noUnits: 'אין יחידות',
       },
 

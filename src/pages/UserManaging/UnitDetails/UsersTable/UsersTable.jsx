@@ -11,78 +11,93 @@ import {
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import useStyles from './UsersTable.styles';
-import RowTable from './TableRow/TableRow';
+import RowTable from './TableRow/TableRow.jsx';
 
-const UsersTable = ({ users }) => {
-  const [unitUsers, setUnitUsers] = useState([]);
+const UsersTable = ({ users, setOpenUsersDialog, unit }) => {
+  const { t } = useTranslation();
   const [interviewers, setInterviewers] = useState([]);
   const [unitRamadsItur, setUnitRamadsItur] = useState([]);
   const [unitRamadIturAssistants, setUnitRamadIturAssistants] = useState([]);
   const [professionalRamads, setProfessionalRamads] = useState([]);
   const [psychologists, setPsychologists] = useState([]);
   const [diagnostics, setDiagnostics] = useState([]);
-  const { t } = useTranslation();
   const cells = [t('text.role'), t('text.amount'), t('text.permissions')];
   const rows = [
-    { role: t('roles.interviewer'), amount: interviewers.length },
-    { role: t('roles.ramadIturOfUnit'), amount: unitRamadsItur.length },
-    { role: t('roles.ramadIturAssistant'), amount: unitRamadIturAssistants.length },
-    { role: t('roles.professionalRamad'), amount: professionalRamads.length },
-    { role: t('roles.psychologist'), amount: psychologists.length },
-    { role: t('roles.diagnoser'), amount: interviewers.length },
+    { role: t('roles.interviewer'), list: interviewers },
+    { role: t('roles.ramadIturOfUnit'), list: unitRamadsItur },
+    { role: t('roles.ramadIturAssistant'), list: unitRamadIturAssistants },
+    { role: t('roles.professionalRamad'), list: professionalRamads },
+    { role: t('roles.psychologist'), list: psychologists },
+    { role: t('roles.diagnoser'), list: diagnostics },
   ];
 
   const classes = useStyles();
   const sortUsersByRole = () => {
-    unitUsers.forEach((user) => {
+    users.forEach((user) => {
       switch (user.role) {
-        case 'INTERVIWER':
-          setInterviewers([...interviewers, user]);
+        case 'INTERVIEWER':
+          setInterviewers((prevValue) => [...prevValue, user]);
           break;
         case 'RAMAD_ITUR_OF_UNIT':
-          setUnitRamadsItur([...unitRamadsItur, user]);
+          setUnitRamadsItur((prevValue) => [...prevValue, user]);
           break;
         case 'RAMAD_ITUR_ASSISTANT':
-          setUnitRamadIturAssistants([...unitRamadIturAssistants, user]);
+          setUnitRamadIturAssistants((prevValue) => [...prevValue, user]);
           break;
         case 'PROFESSIONAL_RAMAD':
-          setProfessionalRamads([...professionalRamads, user]);
+          setProfessionalRamads((prevValue) => [...prevValue, user]);
           break;
         case 'PSYCHOLOGIST':
-          setPsychologists([...psychologists, user]);
+          setPsychologists((prevValue) => [...prevValue, user]);
           break;
         case 'DIAGNOSER':
-          setDiagnostics([...diagnostics, user]);
+          setDiagnostics((prevValue) => [...prevValue, user]);
           break;
         default:
-          console.log(user);
       }
     });
   };
-  useEffect(async () => {
-    setUnitUsers(users);
-  }, [users]);
 
-  // useEffect(async () => { TODO: remove comments
-  //   sortUsersByRole();
-  // }, [unitUsers]);
+  useEffect(() => {
+    setInterviewers([]);
+    setUnitRamadsItur([]);
+    setUnitRamadIturAssistants([]);
+    setProfessionalRamads([]);
+    setPsychologists([]);
+    setDiagnostics([]);
+    sortUsersByRole();
+  }, [users]);
 
   return (
     <div className={classes.root}>
       <TableContainer component={Paper} className={classes.table}>
         <Table aria-label='simple table' dir='rtl'>
           <TableHead>
-            {cells.map((cell) => <TableCell align='center' className={classes.tableHeadLine}>{cell}</TableCell>)}
-
-            <TableCell align='right' className={classes.tableHeadLine}>{t('text.add')}</TableCell>
+            {cells.map((cell) => (
+              <TableCell align='center' className={classes.tableHeadLine}>
+                {cell}
+              </TableCell>
+            ))}
+            <TableCell align='right' className={classes.tableHeadLine}>
+              {t('text.add')}
+            </TableCell>
           </TableHead>
           <TableBody>
-            {rows.map((row) => <RowTable role={row.role} amount={row.amount} />) }
-
+            {rows.map(({ role, list }) => (
+              (
+                <RowTable
+                  role={role}
+                  amount={list.length}
+                  setOpenUsersDialog={setOpenUsersDialog}
+                  unit={unit}
+                />
+              )
+            ))}
           </TableBody>
         </Table>
       </TableContainer>
     </div>
+
   );
 };
 

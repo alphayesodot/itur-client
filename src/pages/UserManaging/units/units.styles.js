@@ -7,7 +7,6 @@ const useStyles = makeStyles((theme) => ({
   },
   units: {
     backgroundColor: theme.palette.primary.main,
-    height: '54rem',
     width: '18rem',
     marginLeft: '3.5rem',
     marginRight: '2rem',
@@ -58,6 +57,17 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: '1rem',
+  },
+  noUnitsDiv: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    color: 'rgb(141 148 155 / 0.31)',
+    fontWeight: '2rem',
+
+  },
+  noUnits: {
+    fontSize: 20,
   },
 }));
 
