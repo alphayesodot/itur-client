@@ -36,6 +36,13 @@ const resources = {
         editQuestionnaire: 'עריכת שאלון',
         settings: 'הגדרות',
       },
+      unitControlPage: {
+        malshabimText: 'מלש"בים',
+        nameOrIdText: 'שם / תז',
+        hour: 'שעה',
+        users: 'יוזרים',
+        isScheduled: 'עם שיבוץ',
+      },
     },
   },
 };
