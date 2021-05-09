@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
   },
   icon: {
     fill: '#9aa3aa',
-    width: '185%',
+    width: '180%',
   },
 }));
 
