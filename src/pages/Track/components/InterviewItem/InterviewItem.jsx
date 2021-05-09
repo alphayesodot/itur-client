@@ -28,7 +28,7 @@ const InterviewItem = ({ status, time, name }) => {
 
   return (
     <>
-      <ListItem className={classes[`item${status}`]}>
+      <ListItem className={`${classes.item} ${classes[`item${status}`]}`}>
         <Typography className={`${classes.time} ${classes[`time${status}`]}`}>
           {time.toTimeString().split(' ')[0].slice(0, 5)}
         </Typography>
