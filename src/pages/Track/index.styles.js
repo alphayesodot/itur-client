@@ -8,6 +8,10 @@ const useStyles = makeStyles((theme) => ({
     direction: 'rtl',
     width: 'calc(100% - 3rem)',
     minWidth: 'calc(100% - 3rem)',
+    [theme.breakpoints.down('sm')]: {
+      minWidth: '100%',
+      width: '100%',
+    },
   },
   message: {
     fontSize: '1.25em',

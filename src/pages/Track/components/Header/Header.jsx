@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
-import { Typography, TextField } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
 import { observer } from 'mobx-react-lite';
 import DashboardCard from '../../../../common/DashboardCard/DashboardCard';
 import ScheduleStore from '../../../../stores/Schedule.store';
 import useStyles from './Header.styles';
 import NodeGroupSelect from '../../../../common/NodeGroupSelect/NodeGroupSelect';
+import DateInput from '../../../../common/DateInput/DateInput';
 
 const Header = observer(({
   unit,
@@ -31,10 +32,6 @@ const Header = observer(({
     }
   }, [selectedDate, selectedNodeGroup]);
 
-  const handleOnDateChange = (e) => {
-    setSelectedDate(e.target.value);
-  };
-
   return (
     <DashboardCard className={classes.root}>
       <div className={classes.content}>
@@ -49,15 +46,7 @@ const Header = observer(({
             selectedNodeGroup={selectedNodeGroup}
             setSelectedNodeGroup={setSelectedNodeGroup}
           />
-          <TextField
-            className={`${classes.date} ${classes.item}`}
-            type='date'
-            onChange={handleOnDateChange}
-            value={selectedDate}
-            InputProps={{
-              disableUnderline: true,
-            }}
-          />
+          <DateInput selectedDate={selectedDate} setSelectedDate={setSelectedDate} />
         </div>
       </div>
     </DashboardCard>
