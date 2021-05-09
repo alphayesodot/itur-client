@@ -6,7 +6,7 @@ import { observer } from 'mobx-react-lite';
 import DashboardCard from '../../../../common/DashboardCard/DashboardCard';
 import ScheduleStore from '../../../../stores/Schedule.store';
 import useStyles from './Header.styles';
-import NodeGroupSelect from '../NodeGroupSelect/NodeGroupSelect';
+import NodeGroupSelect from '../../../../common/NodeGroupSelect/NodeGroupSelect';
 
 const Header = observer(({
   unit,

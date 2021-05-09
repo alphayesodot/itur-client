@@ -15,7 +15,10 @@ const useStyles = makeStyles((theme) => ({
   },
   icon: {
     fill: '#9aa3aa',
-    width: '180%',
+    width: '175%',
+    [theme.breakpoints.down('sm')]: {
+      width: '190%',
+    },
   },
 }));
 
