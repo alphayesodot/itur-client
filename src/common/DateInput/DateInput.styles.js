@@ -7,6 +7,9 @@ const useStyles = makeStyles((theme) => ({
       margin: '0.5em 0',
       alignSelf: 'stretch',
     },
+    '&:hover,&:focus': {
+      boxShadow: `inset 0 0 0 0.15em ${theme.palette.secondary.main}`,
+    },
   },
   date: {
     borderRadius: 30,

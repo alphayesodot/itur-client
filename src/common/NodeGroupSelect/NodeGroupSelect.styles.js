@@ -9,6 +9,9 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('sm')]: {
       width: '100%',
     },
+    '&:hover,&:focus': {
+      boxShadow: `inset 0 0 0 0.15em ${theme.palette.secondary.main}`,
+    },
   },
   item: {
     direction: 'rtl',
