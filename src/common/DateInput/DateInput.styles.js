@@ -16,7 +16,6 @@ const useStyles = makeStyles((theme) => ({
     height: '2em',
     width: '15em',
     padding: '0.25em 1.3em',
-    paddingLeft: '0.7rem',
     background: 'white',
     borderBottom: 'none',
     [theme.breakpoints.down('sm')]: {
