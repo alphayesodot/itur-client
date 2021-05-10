@@ -29,11 +29,7 @@ const DropZone = ({ files, setFiles }) => {
 
     const extensionIndex = file.name.lastIndexOf('.');
     const extension = file.name.slice(extensionIndex);
-    const fileName = file.name.slice(0, extensionIndex);
-    const newFile = {};
-
-    // eslint-disable-next-line no-restricted-syntax, guard-for-in
-    for (const key in file) newFile[key] = file[key];
+    let fileName = file.name.slice(0, extensionIndex);
 
     const duplicates = updatedFiles.filter((updatedFile) => new RegExp(
       `^${escapeRegex(fileName)} \\([1-9]([0-9]+)?\\)${escapeRegex(extension)}$`,
@@ -41,7 +37,7 @@ const DropZone = ({ files, setFiles }) => {
 
     if (duplicates.length) {
       // eslint-disable-next-line no-multi-assign
-      newFile.name = newFile.path = `${fileName} (${
+      fileName += ` (${
         duplicates.reduce((acc, current) => {
           const currentNumber = +current.name.slice(current.name.lastIndexOf('(') + 1, current.name.lastIndexOf(')'));
 
@@ -56,8 +52,18 @@ const DropZone = ({ files, setFiles }) => {
       )
     ) {
       // eslint-disable-next-line no-multi-assign
-      newFile.name = newFile.path = `${fileName} (1)${extension}`;
+      fileName += ` (1)${extension}`;
+    } else {
+      fileName = file.name;
     }
+
+    const newFile = new File([file.slice()], fileName, {
+      type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', // MIME type for .xlsx
+      lastModified: file.lastModified,
+    });
+
+    newFile.path = fileName;
+    newFile.progress = file.progress;
 
     return newFile;
   };
