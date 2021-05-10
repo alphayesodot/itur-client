@@ -6,8 +6,14 @@ const eventRouter = express.Router();
 eventRouter.get('/', (req, res) => {
   const { date, interviewerId } = req.query;
   res.send(events.filter((event) => {
-    if (date && new Date(event.time).getTime() >= new Date(date).getTime()) {
-      return false;
+    if (date) {
+      const eventDate = new Date(event.time);
+      const filterDate = new Date(date);
+      eventDate.setHours(0, 0, 0, 0);
+      filterDate.setHours(0, 0, 0, 0);
+      if (eventDate.getTime() !== filterDate.getTime()) {
+        return false;
+      }
     }
     if (interviewerId && !event.interviewersIds.includes(interviewerId)) {
       return false;

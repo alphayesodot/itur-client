@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
 import { Select, MenuItem } from '@material-ui/core';
-import nodeGroupService from '../../../../services/nodeGroup.service';
+import nodeGroupService from '../../services/nodeGroup.service';
 import useStyles from './NodeGroupSelect.styles';
 
 const NodeGroupSelect = ({ selectedNodeGroup, setSelectedNodeGroup }) => {

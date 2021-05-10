@@ -65,8 +65,8 @@ const InterviewsList = ({ interviews }) => {
   return (
     <div className={classes.root}>
       <List className={classes.list}>
-        {expandedInterviews.map(({ malshabShort, time, status }, i) => (
-          <div key={i}>
+        {expandedInterviews.map(({ malshabShort, time, status }) => (
+          <div key={`${time}~${status}`}>
             <InterviewItem
               status={status}
               time={new Date(time)}

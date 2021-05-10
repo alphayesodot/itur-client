@@ -1,5 +1,15 @@
 import { makeStyles } from '@material-ui/core/styles';
 
+const getTimePassed = (theme) => ({
+  color: theme.palette.font.secondary,
+  fontWeight: '400',
+});
+
+const getNamePassed = (theme) => ({
+  color: theme.palette.font.secondary,
+  textDecoration: 'line-through',
+});
+
 const useStyles = makeStyles((theme) => ({
   time: {
     width: '20%',
@@ -19,31 +29,13 @@ const useStyles = makeStyles((theme) => ({
     width: '1em',
     height: '1em',
   },
-  itemFUTURE: {
+  item: {
     background: theme.palette.scrollbar.secondary,
   },
-  itemDONE: {
-    background: theme.palette.scrollbar.secondary,
-  },
-  timeDONE: {
-    color: theme.palette.font.secondary,
-    fontWeight: '400',
-  },
-  nameDONE: {
-    color: theme.palette.font.secondary,
-    textDecoration: 'line-through',
-  },
-  itemCANCELED: {
-    background: theme.palette.scrollbar.secondary,
-  },
-  timeCANCELED: {
-    color: theme.palette.font.secondary,
-    fontWeight: '400',
-  },
-  nameCANCELED: {
-    color: theme.palette.font.secondary,
-    textDecoration: 'line-through',
-  },
+  timeDONE: getTimePassed(theme),
+  nameDONE: getNamePassed(theme),
+  timeCANCELED: getTimePassed(theme),
+  nameCANCELED: getNamePassed(theme),
   itemDURING: {
     background: theme.palette.primary.main,
   },
