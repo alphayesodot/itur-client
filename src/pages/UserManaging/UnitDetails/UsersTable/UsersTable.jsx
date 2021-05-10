@@ -1,5 +1,3 @@
-/* eslint-disable max-len */
-/* eslint-disable no-unused-vars */
 import {
   Table,
   TableCell,
@@ -13,7 +11,7 @@ import { useTranslation } from 'react-i18next';
 import useStyles from './UsersTable.styles';
 import RowTable from './TableRow/TableRow.jsx';
 
-const UsersTable = ({ users, setOpenUsersDialog, unit }) => {
+const UsersTable = ({ users, unit }) => {
   const { t } = useTranslation();
   const [interviewers, setInterviewers] = useState([]);
   const [unitRamadsItur, setUnitRamadsItur] = useState([]);
@@ -87,8 +85,7 @@ const UsersTable = ({ users, setOpenUsersDialog, unit }) => {
               (
                 <RowTable
                   role={role}
-                  amount={list.length}
-                  setOpenUsersDialog={setOpenUsersDialog}
+                  users={list}
                   unit={unit}
                 />
               )

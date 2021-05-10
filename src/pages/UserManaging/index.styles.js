@@ -7,7 +7,6 @@ const useStyles = makeStyles(() => ({
   },
   mainDiv: {
     display: 'flex',
-    alignItems: 'stretch',
   },
   paper: {
     borderRadius: 15,

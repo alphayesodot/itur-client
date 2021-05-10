@@ -8,13 +8,11 @@ import useStyles from './index.styles';
 import UnitDetails from './UnitDetails/UnitDetails';
 import Units from './units/units.jsx';
 import UnitService from '../../services/unit.service';
-import UsersDialog from './UnitDetails/UsersDialog/UsersDialog.jsx';
 
 const UserManaging = () => {
   const classes = useStyles();
   const { t } = useTranslation();
   const [openAddUnit, setOpenAddUnit] = useState(false);
-  const [openUsersDialog, setOpenUsersDialog] = useState(false);
   const [units, setUnits] = useState([]);
   const [selectedUnit, setSelectedUnit] = useState('');
 
@@ -25,7 +23,7 @@ const UserManaging = () => {
   return (
     <div className={classes.mainDiv}>
       <div className={classes.root}>
-        <UnitDetails unit={selectedUnit} openUsersDialog={openUsersDialog} setOpenUsersDialog={setOpenUsersDialog} />
+        <UnitDetails unit={selectedUnit} />
         <Units unitsArray={units} setUnitsArray={setUnits} setOpenAddUnit={setOpenAddUnit} selectedUnit={selectedUnit} setSelectedUnit={setSelectedUnit} />
       </div>
       <Dialog

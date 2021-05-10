@@ -30,6 +30,8 @@ const resources = {
         unitName: 'שם יחידה',
         noSelectedUnit: 'אנא בחר יחידה',
         noUnits: 'אין יחידות',
+        userName: 'שם משתמש',
+        unit: 'יחידה',
       },
 
       headerBlessings: {

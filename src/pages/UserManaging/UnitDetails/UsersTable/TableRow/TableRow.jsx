@@ -8,17 +8,20 @@ import {
   TextField,
   IconButton,
   Button,
+  Dialog,
 } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
 import { useState, useEffect } from 'react';
 import useStyles from './TableRow.styles.js';
 import UserService from '../../../../../services/user.service.js';
+import UsersDialog from '../../UsersDialog/UsersDialog.jsx';
 
-const RowTable = ({ role, amount, setOpenUsersDialog, unit }) => {
+const RowTable = ({ role, users, unit }) => {
   const { t } = useTranslation();
   const classes = useStyles();
   const [openAdd, setOpenAdd] = useState(false);
   const [numberOfUsers, setNumberOfUsers] = useState(0);
+  const [openDialog, setOpenDialog] = useState(false);
 
   const createUsers = async () => {
     await UserService.addUsers(unit.id, role);
@@ -27,11 +30,11 @@ const RowTable = ({ role, amount, setOpenUsersDialog, unit }) => {
   return (
     <TableRow key={role} className={classes.tableRow}>
       <TableCell align='center'>{role}</TableCell>
-      <TableCell align='center'>{amount}</TableCell>
+      <TableCell align='center'>{users.length}</TableCell>
       <TableCell align='center'>
         <Button
           className={classes.permissionsButton}
-          onClick={() => setOpenUsersDialog(true)}
+          onClick={() => setOpenDialog(true)}
         >
           {t('text.view')}
         </Button>
@@ -50,15 +53,7 @@ const RowTable = ({ role, amount, setOpenUsersDialog, unit }) => {
             {openAdd && (
               <>
                 <TextField
-                  InputProps={{ type: 'number',
-                    underline: {
-                      '&&&:before': {
-                        borderBottom: 'none',
-                      },
-                      '&&:after': {
-                        borderBottom: 'none',
-                      },
-                    } }}
+                  InputProps={{ type: 'number' }}
                   className={classes.numberOfRoleUsers}
                   value={numberOfUsers}
                   onChange={(event) => setNumberOfUsers(event.target.value)}
@@ -71,6 +66,20 @@ const RowTable = ({ role, amount, setOpenUsersDialog, unit }) => {
           </div>
         </div>
       </TableCell>
+      <Dialog
+        classes={{
+          paper: classes.paper,
+        }}
+        onClose={() => setOpenDialog(false)}
+        aria-labelledby='simple-dialog-title'
+        open={openDialog}
+      >
+        <UsersDialog
+          users={users}
+          role={role}
+          setOpenUsersDialog={setOpenDialog}
+        />
+      </Dialog>
     </TableRow>
   );
 };

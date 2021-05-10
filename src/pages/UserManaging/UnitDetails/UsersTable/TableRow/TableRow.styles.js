@@ -75,7 +75,15 @@ const useStyles = makeStyles((theme) => ({
   hiddenElements: {
     minWidth: '14rem',
   },
-
+  paper: {
+    display: 'flex',
+    alignItems: 'center',
+    overflowX: 'hidden',
+    overflowY: 'hidden',
+    width: '30%',
+    height: '52.5%',
+    borderRadius: 15,
+  },
 }));
 
 export default useStyles;
