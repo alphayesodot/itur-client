@@ -1,17 +1,17 @@
 import { Typography, Button } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
-import useStyles from './UsersDialog.styles.js';
-import RoleUsersTable from '../../RoleUsersTable/RoleUsersTable.jsx';
+import useStyles from './NewUsersDialog.styles.js';
+import NewUsersTable from './newUsersTable/NewUsersTable.jsx';
 
-const UsersDialog = ({ users, role, unit, setOpenUsersDialog }) => {
+const NewUsersDialog = ({ users, role, unit, setOpenNewUsersDialog }) => {
   const classes = useStyles();
   const { t } = useTranslation();
 
   return (
     <div className={classes.root}>
       <div className={classes.titleDiv}>
-        <Typography className={classes.usersTitle}>{t('text.users')}</Typography>
-        <Button className={classes.closeButton} onClick={() => { setOpenUsersDialog(false); }}>
+        <Typography className={classes.usersTitle}>{t('text.newUsers')}</Typography>
+        <Button className={classes.closeButton} onClick={() => { setOpenNewUsersDialog(false); }}>
           <img src='add-icon.svg' alt='close' className={classes.closeIcon} />
         </Button>
       </div>
@@ -34,10 +34,10 @@ const UsersDialog = ({ users, role, unit, setOpenUsersDialog }) => {
         </div>
 
       </div>
-      <RoleUsersTable users={users} />
+      <NewUsersTable users={users} />
 
     </div>
   );
 };
 
-export default UsersDialog;
+export default NewUsersDialog;

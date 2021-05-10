@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { useTranslation } from 'react-i18next';
 import { Input, Button } from '@material-ui/core';
 import { useState } from 'react';

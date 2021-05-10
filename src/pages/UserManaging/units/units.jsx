@@ -1,5 +1,4 @@
 /* eslint-disable max-len */
-/* eslint-disable no-unused-vars */
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button, Typography } from '@material-ui/core';
@@ -8,7 +7,7 @@ import useStyles from './units.styles';
 import SearchBar from '../SearchBar/SearchBar';
 import UnitCard from './UnitCard/UnitCard.jsx';
 
-const units = ({ unitsArray, setUnitsArray, setOpenAddUnit, selectedUnit, setSelectedUnit }) => {
+const units = ({ unitsArray, setOpenAddUnit, selectedUnit, setSelectedUnit }) => {
   const classes = useStyles();
   const { t } = useTranslation();
   const [displayedArray, setDisplayedArray] = useState(unitsArray);
@@ -27,7 +26,7 @@ const units = ({ unitsArray, setUnitsArray, setOpenAddUnit, selectedUnit, setSel
         <p className={classes.unitsTitle}>{`${t('text.units')} (${displayedArray.length})`}</p>
         { displayedArray.length > 0 ? (
           <div className={classes.unitsList}>
-            {displayedArray.map((unit) => <UnitCard unit={unit} numberOfUnitUsers={12} setSelectedUnit={setSelectedUnit} isSelected={unit.id === selectedUnit.id} />)}
+            {displayedArray.map((unit) => <UnitCard unit={unit} setSelectedUnit={setSelectedUnit} isSelected={unit.id === selectedUnit.id} />)}
           </div>
         ) : <div className={classes.noUnitsDiv}><Typography className={classes.noUnits}>{t('text.noUnits')}</Typography></div> }
         <div className={classes.addUnitDiv}>

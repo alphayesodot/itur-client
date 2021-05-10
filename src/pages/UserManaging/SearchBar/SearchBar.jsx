@@ -1,6 +1,6 @@
-/* eslint-disable no-unused-expressions */
 /* eslint-disable no-lone-blocks */
-import useStyles from './SearchBar.styles';
+/* eslint-disable no-unused-expressions */
+import useStyles from './SearchBar.styles.js';
 
 const SearchBar = ({ setDisplayedArray, unitsArray }) => {
   const classes = useStyles();

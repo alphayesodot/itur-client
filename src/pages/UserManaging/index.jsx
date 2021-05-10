@@ -1,6 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable max-len */
-import { useTranslation } from 'react-i18next';
 import { Dialog } from '@material-ui/core';
 import { useState, useEffect } from 'react';
 import AddUnit from './AddUnit/AddUnit.jsx';
@@ -11,7 +8,6 @@ import UnitService from '../../services/unit.service';
 
 const UserManaging = () => {
   const classes = useStyles();
-  const { t } = useTranslation();
   const [openAddUnit, setOpenAddUnit] = useState(false);
   const [units, setUnits] = useState([]);
   const [selectedUnit, setSelectedUnit] = useState('');
@@ -24,7 +20,12 @@ const UserManaging = () => {
     <div className={classes.mainDiv}>
       <div className={classes.root}>
         <UnitDetails unit={selectedUnit} />
-        <Units unitsArray={units} setUnitsArray={setUnits} setOpenAddUnit={setOpenAddUnit} selectedUnit={selectedUnit} setSelectedUnit={setSelectedUnit} />
+        <Units
+          unitsArray={units}
+          setOpenAddUnit={setOpenAddUnit}
+          selectedUnit={selectedUnit}
+          setSelectedUnit={setSelectedUnit}
+        />
       </div>
       <Dialog
         classes={{
@@ -34,7 +35,11 @@ const UserManaging = () => {
         aria-labelledby='simple-dialog-title'
         open={openAddUnit}
       >
-        <AddUnit className={classes.addUnitDialog} openAddUnit={openAddUnit} setOpenAddUnit={setOpenAddUnit} />
+        <AddUnit
+          className={classes.addUnitDialog}
+          openAddUnit={openAddUnit}
+          setOpenAddUnit={setOpenAddUnit}
+        />
       </Dialog>
     </div>
   );

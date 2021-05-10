@@ -21,6 +21,7 @@ const resources = {
       },
       text: {
         users: 'משתמשים',
+        newUsers: 'משתמשים חדשים',
         units: 'יחידות',
         role: 'תפקיד',
         amount: 'כמות',
@@ -31,6 +32,7 @@ const resources = {
         noSelectedUnit: 'אנא בחר יחידה',
         noUnits: 'אין יחידות',
         userName: 'שם משתמש',
+        password: 'סיסמה',
         unit: 'יחידה',
       },
 

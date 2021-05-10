@@ -1,6 +1,3 @@
-/* eslint-disable max-len */
-/* eslint-disable no-unused-vars */
-// import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import {
   TableCell,
@@ -11,20 +8,30 @@ import {
   Dialog,
 } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import useStyles from './TableRow.styles.js';
 import UserService from '../../../../../services/user.service.js';
 import UsersDialog from '../../UsersDialog/UsersDialog.jsx';
+import NewUsersDialog from '../../../newUsersDialog/NewUsersDialog.jsx';
 
 const RowTable = ({ role, users, unit }) => {
   const { t } = useTranslation();
   const classes = useStyles();
   const [openAdd, setOpenAdd] = useState(false);
-  const [numberOfUsers, setNumberOfUsers] = useState(0);
+  const [numberOfUsersToAdd, setNumberOfUsersToAdd] = useState(0);
   const [openDialog, setOpenDialog] = useState(false);
+  const [openNewUsersDialog, setOpenNewUsersDialog] = useState(false);
+  // const [usersToAdd, setUsersToAdd] = useState([]);
 
   const createUsers = async () => {
-    await UserService.addUsers(unit.id, role);
+    // const usersLength = numberOfUsersToAdd; //  TODO: send username name
+    const requests = [];
+    for (let i = 0; i < numberOfUsersToAdd; i += 1) {
+      requests.push(UserService.createUser(unit.id, role));
+    }
+    Promise.all(requests).then(() => {
+      setOpenNewUsersDialog(true);
+    });
   };
 
   return (
@@ -55,10 +62,15 @@ const RowTable = ({ role, users, unit }) => {
                 <TextField
                   InputProps={{ type: 'number' }}
                   className={classes.numberOfRoleUsers}
-                  value={numberOfUsers}
-                  onChange={(event) => setNumberOfUsers(event.target.value)}
+                  value={numberOfUsersToAdd}
+                  onChange={(event) => setNumberOfUsersToAdd(event.target.value)}
                 />
-                <Button variant='contained' className={classes.addUsersButton} disabled={numberOfUsers <= 0} onClick={() => createUsers()}>
+                <Button
+                  variant='contained'
+                  className={classes.addUsersButton}
+                  disabled={numberOfUsersToAdd <= 0}
+                  onClick={() => createUsers()}
+                >
                   {t('button.addUsers')}
                 </Button>
               </>
@@ -77,7 +89,24 @@ const RowTable = ({ role, users, unit }) => {
         <UsersDialog
           users={users}
           role={role}
+          unit={unit}
           setOpenUsersDialog={setOpenDialog}
+        />
+      </Dialog>
+
+      <Dialog
+        classes={{
+          paper: classes.paper,
+        }}
+        onClose={() => setOpenNewUsersDialog(false)}
+        aria-labelledby='simple-dialog-title'
+        open={openNewUsersDialog}
+      >
+        <NewUsersDialog
+          users={users} // TODO: change to new users
+          role={role}
+          unit={unit}
+          setOpenNewUsersDialog={setOpenNewUsersDialog}
         />
       </Dialog>
     </TableRow>
