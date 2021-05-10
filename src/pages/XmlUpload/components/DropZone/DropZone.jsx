@@ -20,7 +20,7 @@ const DropZone = ({ files, setFiles }) => {
     });
   };
 
-  const MAX_SIZE = 1e6; // = 1,000,000
+  const CONVERSION = 1e6; // = 1,000,000
 
   const escapeRegex = (string) => string.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&');
 
@@ -116,7 +116,7 @@ const DropZone = ({ files, setFiles }) => {
           <img alt='drop files' src={cloudImg} className={classes.cloudImg} />
           <p className={classes.explanation}>Drag and Drop to upload files</p>
           <Button className={classes.uploadButton}>{t('xmlPage.uploadButton')}</Button>
-          <p className={classes.limitation}>{t('xmlPage.sizeLimitation', { sizeLimit: configApp.xmlUpload.sizeLimit / MAX_SIZE })}</p>
+          <p className={classes.limitation}>{t('xmlPage.sizeLimitation', { sizeLimit: configApp.xmlUpload.sizeLimit / CONVERSION })}</p>
         </div>
       ) }
     </Dropzone>
