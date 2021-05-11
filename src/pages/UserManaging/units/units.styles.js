@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     alignItems: 'center',
     height: '34.5rem',
-    overflowY: 'hidden', // auto ?
+    overflowY: 'auto', // auto ?
   },
   addUsersTitle: {
     fontSize: '1.3rem',

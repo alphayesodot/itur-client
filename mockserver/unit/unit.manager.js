@@ -7,7 +7,7 @@ class UnitManager {
   }
 
   static addUnit(req, res) {
-    const newUnit = { id: '507f191e810c19729de869ea', name: req.body.unitName };
+    const newUnit = { id: '507f191e810c19729de369ea', name: req.body.unitName };
     units.push(newUnit);
     res.send(newUnit);
   }

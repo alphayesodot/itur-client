@@ -16,6 +16,10 @@ const UserManaging = () => {
     setUnits(await UnitService.getUnits());
   }, []);
 
+  // useEffect(async () => { /// //////////////////////////
+  //   setUnits(await UnitService.getUnits());
+  // }, []);
+
   return (
     <div className={classes.mainDiv}>
       <div className={classes.root}>

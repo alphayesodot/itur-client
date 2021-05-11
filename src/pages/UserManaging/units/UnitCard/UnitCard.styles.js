@@ -2,9 +2,6 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    // display: 'flex',
-    // justifyContent: 'space-beteen',
-    // alignItems: 'center',
     marginTop: '0.7rem',
   },
   mainDiv: {
@@ -21,6 +18,7 @@ const useStyles = makeStyles((theme) => ({
     color: 'white',
     marginTop: '1.3rem',
     marginRight: '2rem',
+    overflow: 'hidden',
   },
   numberOfUsers: {
     direction: 'rtl',

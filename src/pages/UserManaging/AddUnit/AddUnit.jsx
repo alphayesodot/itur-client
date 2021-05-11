@@ -10,6 +10,7 @@ const AddUnit = ({ openAddUnit, setOpenAddUnit }) => {
   const [unitName, setUnitName] = useState('');
   const createUnit = async () => {
     await UnitService.addUnit(unitName);
+    setOpenAddUnit(false);
   };
   return (
     <div className={classes.root}>
