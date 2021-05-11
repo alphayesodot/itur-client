@@ -1,9 +1,9 @@
-import { Dialog } from '@material-ui/core';
+/* eslint-disable react/jsx-indent */
 import { useState, useEffect } from 'react';
 import AddUnit from './AddUnit/AddUnit.jsx';
 import useStyles from './index.styles';
 import UnitDetails from './UnitDetails/UnitDetails';
-import Units from './units/units.jsx';
+import Units from './Units/Units';
 import UnitService from '../../services/unit.service';
 
 const UserManaging = () => {
@@ -31,20 +31,11 @@ const UserManaging = () => {
           setSelectedUnit={setSelectedUnit}
         />
       </div>
-      <Dialog
-        classes={{
-          paper: classes.paper,
-        }}
-        onClose={() => setOpenAddUnit(false)}
-        aria-labelledby='simple-dialog-title'
-        open={openAddUnit}
-      >
         <AddUnit
           className={classes.addUnitDialog}
           openAddUnit={openAddUnit}
           setOpenAddUnit={setOpenAddUnit}
         />
-      </Dialog>
     </div>
   );
 };

@@ -69,6 +69,9 @@ const useStyles = makeStyles(() => ({
     height: '1.1rem',
     width: '1.1rem',
   },
+  paper: {
+    borderRadius: 15,
+  },
 }));
 
 export default useStyles;

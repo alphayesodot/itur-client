@@ -43,19 +43,17 @@ const useStyles = makeStyles(() => ({
     display: 'flex',
     justifyContent: 'center',
   },
-  unitDiv: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    margin: '1rem',
-    width: '100%',
-
-  },
-  headLineTitles: {
-    fontWeight: 'bold',
-  },
   titles: {
     marginLeft: '0.5rem',
+  },
+  paper: {
+    display: 'flex',
+    alignItems: 'center',
+    overflowX: 'hidden',
+    overflowY: 'hidden',
+    width: '30%',
+    height: '52.5%',
+    borderRadius: 15,
   },
 }));
 

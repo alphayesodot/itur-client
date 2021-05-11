@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-indent */
 import { useTranslation } from 'react-i18next';
 import {
   TableCell,
@@ -5,14 +6,13 @@ import {
   TextField,
   IconButton,
   Button,
-  Dialog,
 } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
 import { useState } from 'react';
 import useStyles from './TableRow.styles.js';
-import UserService from '../../../../../services/user.service.js';
-import UsersDialog from '../../UsersDialog/UsersDialog.jsx';
-import NewUsersDialog from '../../../newUsersDialog/NewUsersDialog.jsx';
+import UserService from '../../../services/user.service';
+import UsersDialog from '../UsersDialog/UsersDialog';
+import NewUsersDialog from '../NewUsersDialog/NewUsersDialog';
 
 const RowTable = ({ role, users, unit }) => {
   const { t } = useTranslation();
@@ -60,7 +60,7 @@ const RowTable = ({ role, users, unit }) => {
             {openAdd && (
               <>
                 <TextField
-                  InputProps={{ type: 'number' }}
+                  InputProps={{ type: 'number', min: '0' }}
                   className={classes.numberOfRoleUsers}
                   value={numberOfUsersToAdd}
                   onChange={(event) => setNumberOfUsersToAdd(event.target.value)}
@@ -78,37 +78,22 @@ const RowTable = ({ role, users, unit }) => {
           </div>
         </div>
       </TableCell>
-      <Dialog
-        classes={{
-          paper: classes.paper,
-        }}
-        onClose={() => setOpenDialog(false)}
-        aria-labelledby='simple-dialog-title'
-        open={openDialog}
-      >
+
         <UsersDialog
           users={users}
           role={role}
           unit={unit}
+          openDialog={openDialog}
           setOpenUsersDialog={setOpenDialog}
         />
-      </Dialog>
 
-      <Dialog
-        classes={{
-          paper: classes.paper,
-        }}
-        onClose={() => setOpenNewUsersDialog(false)}
-        aria-labelledby='simple-dialog-title'
-        open={openNewUsersDialog}
-      >
         <NewUsersDialog
           users={users} // TODO: change to new users
           role={role}
           unit={unit}
+          openNewUsersDialog={openNewUsersDialog}
           setOpenNewUsersDialog={setOpenNewUsersDialog}
         />
-      </Dialog>
     </TableRow>
   );
 };

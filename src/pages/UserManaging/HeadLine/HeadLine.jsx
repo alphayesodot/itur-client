@@ -1,4 +1,4 @@
-import DashboardCard from '../../../../common/DashboardCard/DashboardCard';
+import DashboardCard from '../../../common/DashboardCard/DashboardCard.jsx';
 import useStyles from './HeadLine.styles';
 
 const HeadLine = ({ unitName, numberOfUnitUsers }) => {

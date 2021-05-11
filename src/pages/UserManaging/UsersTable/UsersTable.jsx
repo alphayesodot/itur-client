@@ -9,7 +9,7 @@ import {
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import useStyles from './UsersTable.styles';
-import RowTable from './TableRow/TableRow.jsx';
+import RowTable from '../TableRow/TableRow';
 
 const UsersTable = ({ users, unit }) => {
   const { t } = useTranslation();

@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import useStyles from './UnitDetails.styles';
-import DashboardCard from '../../../common/DashboardCard/DashboardCard';
-import HeadLine from './HeadLine/HeadLine';
-import UsersTable from './UsersTable/UsersTable.jsx';
+import DashboardCard from '../../../common/DashboardCard/DashboardCard.jsx';
+import HeadLine from '../HeadLine/HeadLine.jsx';
+import UsersTable from '../UsersTable/UsersTable.jsx';
 import UserService from '../../../services/user.service.js';
 
 const UnitDetails = ({ unit }) => {

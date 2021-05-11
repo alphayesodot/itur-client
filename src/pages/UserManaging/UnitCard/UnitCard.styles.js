@@ -18,7 +18,10 @@ const useStyles = makeStyles((theme) => ({
     color: 'white',
     marginTop: '1.3rem',
     marginRight: '2rem',
+    maxWidth: '8rem',
     overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    whiteSpace: 'nowrap',
   },
   numberOfUsers: {
     direction: 'rtl',
