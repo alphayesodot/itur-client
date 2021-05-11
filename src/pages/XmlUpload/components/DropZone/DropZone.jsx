@@ -58,7 +58,7 @@ const DropZone = ({ files, setFiles }) => {
     }
 
     const newFile = new File([file.slice()], fileName, {
-      type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', // MIME type for .xlsx
+      type: file.type,
       lastModified: file.lastModified,
     });
 
