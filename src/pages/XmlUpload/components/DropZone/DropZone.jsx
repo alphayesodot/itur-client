@@ -24,7 +24,7 @@ const DropZone = ({ files, setFiles }) => {
 
   const escapeRegex = (string) => string.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&');
 
-  const fixDuplicateFile = (updatedFiles, file) => {
+  const renameDuplicateFile = (updatedFiles, file) => {
     if (!updatedFiles.some((updatedFile) => updatedFile.path === file.path)) return file;
 
     const extensionIndex = file.name.lastIndexOf('.');
