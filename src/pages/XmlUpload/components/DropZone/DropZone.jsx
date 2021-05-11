@@ -79,7 +79,7 @@ const DropZone = ({ files, setFiles }) => {
         // eslint-disable-next-line no-param-reassign
         file.progress = 0;
 
-        updatedFiles = updatedFiles.concat(fixDuplicateFile(updatedFiles, file));
+        updatedFiles = updatedFiles.concat(renameDuplicateFile(updatedFiles, file));
       });
 
       setFiles(updatedFiles);
