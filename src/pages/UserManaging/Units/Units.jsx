@@ -26,7 +26,7 @@ const units = ({ unitsArray, setOpenAddUnit, selectedUnit, setSelectedUnit }) =>
         <p className={classes.unitsTitle}>{`${t('text.units')} (${displayedArray.length})`}</p>
         { displayedArray.length > 0 ? (
           <div className={classes.unitsList}>
-            {displayedArray.map((unit) => <UnitCard unit={unit} setSelectedUnit={setSelectedUnit} isSelected={unit.id === selectedUnit.id} />)}
+            {displayedArray.map((unit) => <UnitCard unit={unit} key={unit.id} setSelectedUnit={setSelectedUnit} isSelected={unit.id === selectedUnit.id} />)}
           </div>
         ) : <div className={classes.noUnitsDiv}><Typography className={classes.noUnits}>{t('text.noUnits')}</Typography></div> }
         <div className={classes.addUnitDiv}>

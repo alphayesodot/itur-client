@@ -34,6 +34,9 @@ const resources = {
         userName: 'שם משתמש',
         password: 'סיסמה',
         unit: 'יחידה',
+        noUsers: 'אין משתמשים',
+        unitNotAddWarning: 'יחידה לא נוספה',
+        userNotAddWarning: 'יוזר לא נוסף',
       },
 
       headerBlessings: {

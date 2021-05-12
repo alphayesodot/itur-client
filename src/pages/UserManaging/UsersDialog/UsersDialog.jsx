@@ -42,7 +42,12 @@ const UsersDialog = ({ users, role, unit, openDialog, setOpenUsersDialog }) => {
           </div>
 
         </div>
-        <RoleUsersTable users={users} />
+        {users.length > 0 ? <RoleUsersTable users={users} />
+          : (
+            <div className={classes.noUsersDiv}>
+              <Typography className={classes.noUsers}>{t('text.noUsers')}</Typography>
+            </div>
+          )}
 
       </div>
     </Dialog>

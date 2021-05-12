@@ -16,10 +16,6 @@ const UserManaging = () => {
     setUnits(await UnitService.getUnits());
   }, []);
 
-  // useEffect(async () => { /// //////////////////////////
-  //   setUnits(await UnitService.getUnits());
-  // }, []);
-
   return (
     <div className={classes.mainDiv}>
       <div className={classes.root}>
@@ -35,6 +31,7 @@ const UserManaging = () => {
           className={classes.addUnitDialog}
           openAddUnit={openAddUnit}
           setOpenAddUnit={setOpenAddUnit}
+          setUnits={setUnits}
         />
     </div>
   );

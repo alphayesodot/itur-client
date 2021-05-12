@@ -21,12 +21,32 @@ const UsersTable = ({ users, unit }) => {
   const [diagnostics, setDiagnostics] = useState([]);
   const cells = [t('text.role'), t('text.amount'), t('text.permissions')];
   const rows = [
-    { role: t('roles.interviewer'), list: interviewers },
-    { role: t('roles.ramadIturOfUnit'), list: unitRamadsItur },
-    { role: t('roles.ramadIturAssistant'), list: unitRamadIturAssistants },
-    { role: t('roles.professionalRamad'), list: professionalRamads },
-    { role: t('roles.psychologist'), list: psychologists },
-    { role: t('roles.diagnoser'), list: diagnostics },
+    {
+      role: t('roles.interviewer'),
+      list: interviewers,
+      setList: setInterviewers,
+    },
+    {
+      role: t('roles.ramadIturOfUnit'),
+      list: unitRamadsItur,
+      setList: setUnitRamadsItur,
+    },
+    {
+      role: t('roles.ramadIturAssistant'),
+      list: unitRamadIturAssistants,
+      setList: setUnitRamadIturAssistants,
+    },
+    {
+      role: t('roles.professionalRamad'),
+      list: professionalRamads,
+      setList: setProfessionalRamads,
+    },
+    {
+      role: t('roles.psychologist'),
+      list: psychologists,
+      setList: setPsychologists,
+    },
+    { role: t('roles.diagnoser'), list: diagnostics, setList: setDiagnostics },
   ];
 
   const classes = useStyles();
@@ -81,20 +101,18 @@ const UsersTable = ({ users, unit }) => {
             </TableCell>
           </TableHead>
           <TableBody>
-            {rows.map(({ role, list }) => (
-              (
-                <RowTable
-                  role={role}
-                  users={list}
-                  unit={unit}
-                />
-              )
+            {rows.map(({ role, list, setList }) => (
+              <RowTable
+                role={role}
+                users={list}
+                setUsers={setList}
+                unit={unit}
+              />
             ))}
           </TableBody>
         </Table>
       </TableContainer>
     </div>
-
   );
 };
 

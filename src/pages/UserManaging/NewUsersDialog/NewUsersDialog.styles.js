@@ -55,6 +55,7 @@ const useStyles = makeStyles(() => ({
     height: '52.5%',
     borderRadius: 15,
   },
+
 }));
 
 export default useStyles;

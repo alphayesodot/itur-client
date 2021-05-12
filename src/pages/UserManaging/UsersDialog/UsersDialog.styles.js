@@ -55,6 +55,17 @@ const useStyles = makeStyles(() => ({
     height: '52.5%',
     borderRadius: 15,
   },
+  noUsersDiv: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '100%',
+  },
+  noUsers: {
+    fontWeight: 'bold',
+    color: 'lightgrey',
+    fontSize: '1.3rem',
+  },
 }));
 
 export default useStyles;

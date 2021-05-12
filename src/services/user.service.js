@@ -7,8 +7,8 @@ class UserService {
     return res?.data;
   }
 
-  static async createUser(unitId, role) {
-    const res = await axios.post(`${await config.uri.api}/api/user/`, { unitId, role }).catch(() => {});
+  static async createUser(unitId, role, userName) {
+    const res = await axios.post(`${await config.uri.api}/api/user/`, { unitId, role, userName }).catch(() => {});
     return res?.data;
   }
 }

@@ -55,6 +55,11 @@ const useStyles = makeStyles((theme) => ({
     },
     width: '0.5rem',
   },
+  noUsersDiv: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 
 }));
 

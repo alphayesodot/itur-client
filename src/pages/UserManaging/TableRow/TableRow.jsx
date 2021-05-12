@@ -1,3 +1,8 @@
+/* eslint-disable eqeqeq */
+/* eslint-disable no-return-assign */
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-loop-func */
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-indent */
 import { useTranslation } from 'react-i18next';
 import {
@@ -7,31 +12,74 @@ import {
   IconButton,
   Button,
 } from '@material-ui/core';
+import { toast } from 'react-toastify';
+import { useState, useEffect } from 'react';
 import AddIcon from '@material-ui/icons/Add';
-import { useState } from 'react';
 import useStyles from './TableRow.styles.js';
 import UserService from '../../../services/user.service';
 import UsersDialog from '../UsersDialog/UsersDialog';
 import NewUsersDialog from '../NewUsersDialog/NewUsersDialog';
 
-const RowTable = ({ role, users, unit }) => {
+const RowTable = ({ role, users, setUsers, unit }) => {
   const { t } = useTranslation();
   const classes = useStyles();
   const [openAdd, setOpenAdd] = useState(false);
   const [numberOfUsersToAdd, setNumberOfUsersToAdd] = useState(0);
   const [openDialog, setOpenDialog] = useState(false);
   const [openNewUsersDialog, setOpenNewUsersDialog] = useState(false);
-  // const [usersToAdd, setUsersToAdd] = useState([]);
+  const [usersToAdd, setUsersToAdd] = useState([]);
+
+  const notify = () => toast(t('text.userNotAddWarning'));
+
+  const getRoleName = () => {
+    let roleName = '';
+
+    switch (role) {
+      case 'מראיינ.ת': // TODO: change to i18n
+        roleName = 'interviewer';
+        break;
+      case t('role.ramadIturOfUnit'):
+        roleName = 'ramadItur';
+        break;
+      case t('role.ramadIturAssistant'):
+        roleName = 'ramadIturAssistant';
+        break;
+      case t('role.professionalRamad'):
+        roleName = 'professionalRamad';
+        break;
+      case t('role.psychologist'):
+        roleName = 'psychologist';
+        break;
+      case t('role.diagnoser'):
+        roleName = 'diagnoser';
+        break;
+      default:
+    }
+    return roleName;
+  };
+
+  useEffect(async () => {
+    setUsersToAdd([]);
+    setOpenAdd(false);
+  }, [unit]);
 
   const createUsers = async () => {
-    // const usersLength = numberOfUsersToAdd; //  TODO: send username name
-    const requests = [];
+    let usersLength = users.length;
+    const unitShortId = unit.id.substring(unit.id.length - 3);
+
     for (let i = 0; i < numberOfUsersToAdd; i += 1) {
-      requests.push(UserService.createUser(unit.id, role));
+      const userName = `${getRoleName()}${unitShortId}${usersLength}`;
+      UserService.createUser(unit.id, role, userName).then((newUser) => {
+        setUsers((prevUsersList) => [...prevUsersList, newUser]);
+        setUsersToAdd((prevUsersRoleList) => [...prevUsersRoleList, newUser]);
+        usersLength += 1;
+        if (i + 1 == numberOfUsersToAdd) {
+          setOpenNewUsersDialog(true);
+        }
+      }).catch(() => {
+        notify();
+      });
     }
-    Promise.all(requests).then(() => {
-      setOpenNewUsersDialog(true);
-    });
   };
 
   return (
@@ -60,7 +108,7 @@ const RowTable = ({ role, users, unit }) => {
             {openAdd && (
               <>
                 <TextField
-                  InputProps={{ type: 'number', min: '0' }}
+                  InputProps={{ type: 'number' }}
                   className={classes.numberOfRoleUsers}
                   value={numberOfUsersToAdd}
                   onChange={(event) => setNumberOfUsersToAdd(event.target.value)}
@@ -88,11 +136,13 @@ const RowTable = ({ role, users, unit }) => {
         />
 
         <NewUsersDialog
-          users={users} // TODO: change to new users
+          users={usersToAdd}
           role={role}
           unit={unit}
           openNewUsersDialog={openNewUsersDialog}
           setOpenNewUsersDialog={setOpenNewUsersDialog}
+          setUsersToAdd={setUsersToAdd}
+          setNumberOfUsersToAdd={setNumberOfUsersToAdd}
         />
     </TableRow>
   );

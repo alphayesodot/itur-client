@@ -1,11 +1,18 @@
+/* eslint-disable max-len */
 import { Typography, Button, Dialog } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 import useStyles from './NewUsersDialog.styles.js';
 import NewUsersTable from '../NewUsersTable/NewUsersTable.jsx';
 
-const NewUsersDialog = ({ users, role, unit, openNewUsersDialog, setOpenNewUsersDialog }) => {
+const NewUsersDialog = ({ users, role, unit, openNewUsersDialog, setOpenNewUsersDialog, setUsersToAdd, setNumberOfUsersToAdd }) => {
   const classes = useStyles();
   const { t } = useTranslation();
+
+  const closeDialog = () => {
+    setUsersToAdd([]);
+    setOpenNewUsersDialog(false);
+    setNumberOfUsersToAdd(0);
+  };
 
   return (
     <Dialog
@@ -19,7 +26,7 @@ const NewUsersDialog = ({ users, role, unit, openNewUsersDialog, setOpenNewUsers
       <div className={classes.root}>
         <div className={classes.titleDiv}>
           <Typography className={classes.usersTitle}>{t('text.newUsers')}</Typography>
-          <Button className={classes.closeButton} onClick={() => { setOpenNewUsersDialog(false); }}>
+          <Button className={classes.closeButton} onClick={() => { closeDialog(); }}>
             <img src='add-icon.svg' alt='close' className={classes.closeIcon} />
           </Button>
         </div>
