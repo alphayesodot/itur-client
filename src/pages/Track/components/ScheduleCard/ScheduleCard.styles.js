@@ -26,6 +26,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: 'white',
     borderRadius: 15,
     padding: '0.2em 1.2em',
+    marginBottom: '0.5em',
   },
 }));
 
