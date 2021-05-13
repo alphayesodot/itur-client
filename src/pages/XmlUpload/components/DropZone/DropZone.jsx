@@ -122,7 +122,7 @@ const DropZone = ({ files, setFiles }) => {
           <img alt='drop files' src={cloudImg} className={classes.cloudImg} />
           <p className={classes.explanation}>Drag and Drop to upload files</p>
           <Button className={classes.uploadButton}>{t('xmlPage.uploadButton')}</Button>
-          <p className={classes.limitation}>{t('xmlPage.sizeLimitation', { sizeLimit: configApp.xmlUpload.sizeLimit / CONVERSION })}</p>
+          <p className={classes.limitation}>{t('xmlPage.sizeLimitation', { sizeLimit: configApp.xmlUpload.sizeLimit / conversion})}</p>
         </div>
       ) }
     </Dropzone>
