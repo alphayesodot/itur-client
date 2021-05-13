@@ -31,16 +31,14 @@ const InterviewItem = ({ status, time, name }) => {
       <ListItem className={`${classes.item} ${classes[`item${status}`]}`}>
         { getIcon() && (
         <Tooltip arrow placement='right-end' title={t(`interviewStatus.${status}`)}>
-          <Avatar alt={status} src={getIcon()} className={classes.avatar} />
+          <Avatar alt={status} src={getIcon()} className={classes.icon} />
         </Tooltip>
         )}
-        {name && (
-        <Tooltip placement='bottom-start' title={name}>
+        <Tooltip placement='bottom-start' title={name || ''}>
           <Typography className={`${classes.name} ${classes[`name${status}`]}`}>
-            {name}
+            {name || ''}
           </Typography>
         </Tooltip>
-        )}
         <Typography className={`${classes.time} ${classes[`time${status}`]}`}>
           {time.toTimeString().split(' ')[0].slice(0, 5)}
         </Typography>

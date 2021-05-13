@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     whiteSpace: 'nowrap',
     overflow: 'hidden',
   },
-  avatar: {
+  icon: {
     width: '1em',
     height: '1em',
   },
