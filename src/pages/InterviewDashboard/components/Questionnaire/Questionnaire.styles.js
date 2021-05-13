@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => ({
   mainContainer: {
     backgroundColor: theme.palette.primary.main,
-    height: '26rem',
+    height: '27.5rem',
   },
   interviewScheduleBtn: {
     backgroundColor: theme.palette.primary.secondary,
@@ -37,6 +37,9 @@ const useStyles = makeStyles((theme) => ({
       width: '0.5rem',
       backgroundColor: '#ffffff12',
       borderRadius: '5px',
+    },
+    '&::-webkit-scrollbar-track': {
+      backgroundColor: '#ffffff12',
     },
     '&::-webkit-scrollbar-thumb': {
       backgroundColor: theme.palette.primary.secondary,

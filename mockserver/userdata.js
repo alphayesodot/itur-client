@@ -31,6 +31,7 @@ const users = [
   {
     userID: 5,
     name: 'יוזר איתור',
+    unit: 0,
     role: 'ITUR',
   },
   {

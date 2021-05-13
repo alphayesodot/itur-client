@@ -1,8 +1,7 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
-    height: '41rem',
   },
   label: {
     transitionDuration: '0.3s',

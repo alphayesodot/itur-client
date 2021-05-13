@@ -2,13 +2,18 @@ import React, { useState, useCallback, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import Home from './pages/Home';
+import Sidebar from './common/SideBarNav/SideBarNav';
 import AuthService from './services/auth.service';
+import UploadXmlPage from './pages/XmlUpload/index';
 import ConfigService from './services/config.service';
-import Header from './common/InterviewerHeader/InterviewerHeader';
+import Header from './common/Header/Header';
 import useStyles from './App.styles';
+import logo from './utils/images/logo.svg';
 import UserStoreInstance from './stores/User.store';
 import InterviewDashboard from './pages/InterviewDashboard';
+import configApp from './appConf';
 import 'react-toastify/dist/ReactToastify.css';
+import PermissionCheck from './common/PermissionCheck/PermissionCheck';
 
 const App = () => {
   const classes = useStyles();
@@ -29,7 +34,7 @@ const App = () => {
       .then(() => {
         setTimeout(() => {
           setIsLoading(false);
-        }, 10);
+        }, 1500);
       });
   }, []);
 
@@ -45,32 +50,89 @@ const App = () => {
 
   const renderLoading = () => (
     <div className={classes.loading}>
-      loading
+      <img className={classes.logo} src={logo} alt='radar logo' />
     </div>
   );
 
-  const renderApp = () => (
-    isAuthenticated
-      ? (
-        <Router classes={classes.root}>
-          <Header />
-          <Switch>
-            <Route path='/' exact>
-              <Home />
-            </Route>
-            <Route path='/interview-dashboard'>
-              <InterviewDashboard eventId={0} />
-            </Route>
-          </Switch>
-          <ToastContainer />
-        </Router>
-      )
-      : renderUnauthorized()
-  );
+  const getRoutes = () => [
+    {
+      path: configApp.sitesPostfixes.fileUpload,
+      component: <UploadXmlPage />,
+    },
+    {
+      path: configApp.sitesPostfixes.interview,
+      component: <InterviewDashboard eventId={0} />,
+    },
+    {
+      path: configApp.sitesPostfixes.luz,
+      component: <h1>luz</h1>,
+    },
+    {
+      path: configApp.sitesPostfixes.track,
+      component: <h1>track</h1>,
+    },
+    {
+      path: configApp.sitesPostfixes.malshabSchedule,
+      component: <h1>malshabSchedule</h1>,
+    },
+    {
+      path: configApp.sitesPostfixes.malshabSearch,
+      component: <h1>malshabSearch</h1>,
+    },
+    {
+      path: configApp.sitesPostfixes.reports,
+      component: <h1>reports</h1>,
+    },
+    {
+      path: configApp.sitesPostfixes.posh,
+      component: <h1>posh</h1>,
+    },
+    {
+      path: configApp.sitesPostfixes.preparationKit,
+      component: <h1>preparationKit</h1>,
+    },
+    {
+      path: configApp.sitesPostfixes.nodeGroupCreation,
+      component: <h1>nodeGroupCreation</h1>,
+    },
+    {
+      path: configApp.sitesPostfixes.userManagement,
+      component: <h1>userManagement</h1>,
+    },
+    {
+      path: configApp.sitesPostfixes.unitCreation,
+      component: <h1>unitCreation</h1>,
+    },
+    {
+      path: configApp.sitesPostfixes.editQuestionnaire,
+      component: <h1>editQuestionnaire</h1>,
+    },
+  ];
 
-  return isLoading
-    ? renderLoading()
-    : renderApp();
+  const renderApp = () => (isAuthenticated ? (
+    <Router classes={classes.root}>
+      <Header />
+      <div className={classes.bodyContainer}>
+        <Switch>
+          <Route path='/' exact>
+            <Home />
+          </Route>
+          {getRoutes().map(({ path, component }) => (
+            <Route key={path} path={path}>
+              {component}
+              <PermissionCheck path={path} />
+            </Route>
+          ))}
+        </Switch>
+        <Sidebar />
+      </div>
+      <ToastContainer />
+    </Router>
+  ) : (
+    renderUnauthorized()
+  ));
+
+  return isLoading ? renderLoading() : renderApp();
 };
 
 export default App;

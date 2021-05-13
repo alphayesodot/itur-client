@@ -17,9 +17,12 @@ const useStyles = makeStyles(() => ({
   },
   question: {
     fontSize: '0.8rem',
+    marginLeft: '1rem',
     cursor: 'inherit',
     textAlign: 'right',
     direction: 'rtl',
+    textOverflow: 'ellipsis',
+    display: 'inline-block',
   },
 }));
 

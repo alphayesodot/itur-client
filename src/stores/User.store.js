@@ -2,7 +2,7 @@ import { makeAutoObservable } from 'mobx';
 
 class UserStore {
   userProfile;
-  events;
+  eventsData;
 
   constructor() {
     makeAutoObservable(this);

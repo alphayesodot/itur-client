@@ -11,11 +11,10 @@ body, html {
   margin: 0;
   font-family: Assistant;
 }
-* {
-  user-select: none;
-}
-p, span {
-  cursor: context-menu
+
+@font-face {
+  font-family: 'Assistant';
+  src: local('Assistant'), url(./utils/fonts/Assistant/Assistant-Regular.ttf) format('truetype');
 }
 a {  
   text-decoration: none;  

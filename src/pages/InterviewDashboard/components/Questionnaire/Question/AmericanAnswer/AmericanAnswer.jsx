@@ -11,37 +11,18 @@ const AmericanAnswer = () => {
   };
 
   return (
-    <div style={{ display: 'flex', marginRight: '2rem', direction: 'rtl' }}>
+    <div style={{ display: 'flex', flexFlow: 'space-between', textOverflow: 'ellipsis' }}>
       <FormControlLabel
         value='start'
-        control={(
-          <Radio
-            checked={selectedValue === 'a'}
-            onChange={handleChange}
-            value='a'
-            size='small'
-            name='a'
-            style={{ color: '#02aecd' }}
-          />
-        )}
+        control={<Radio checked={selectedValue === 'a'} onChange={handleChange} value='a' size='small' name='a' style={{ color: '#02aecd' }} />}
         label={<span style={{ fontSize: '0.7rem' }}>כן</span>}
         labelPlacement='start'
       />
       <FormControlLabel
         value='start'
-        control={(
-          <Radio
-            checked={selectedValue === 'b'}
-            onChange={handleChange}
-            value='b'
-            size='small'
-            name='b'
-            style={{ color: '#02aecd' }}
-          />
-        )}
+        control={<Radio checked={selectedValue === 'b'} onChange={handleChange} value='b' size='small' name='b' style={{ color: '#02aecd' }} />}
         label={<span style={{ fontSize: '0.7rem' }}>לא</span>}
         labelPlacement='start'
-
       />
     </div>
   );

@@ -36,7 +36,7 @@ const Questionnaire = () => {
         </div>
       </Toolbar>
       <Container>
-        <List component='nav' aria-label='main mailbox folders' style={{ color: '#fff', height: '20rem' }} className={classes.list}>
+        <List component='nav' aria-label='main mailbox folders' style={{ color: '#fff', height: '22.8rem' }} className={classes.list}>
           {questions.map((question) => (
             <Question
               question={question}

@@ -33,6 +33,7 @@
     "react/prop-types": "off",
     "lines-between-class-members": "off",
     "no-unused-vars": "warn",
-    "consistent-return": "off"
+    "consistent-return": "off",
+    "no-plusplus": "off"
   }
 }

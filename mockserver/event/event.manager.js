@@ -10,7 +10,6 @@ class EventManager {
   }
 
   static async getEventById(req, res) {
-    if (events[req.params.id]) events[req.params.id].time = new Date(new Date().getTime() - 1320000);
     res.send(events[req.params.id] || 404);
   }
 }
