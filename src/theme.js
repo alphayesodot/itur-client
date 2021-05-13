@@ -1,6 +1,7 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 
 const theme = createMuiTheme({
+  direction: 'rtl',
   typography: {
     fontFamily: 'Assistant',
   },
@@ -16,6 +17,7 @@ const theme = createMuiTheme({
       main: 'rgb(247,251,252)',
       primary: 'rgb(16,171,196)',
       secondary: 'rgb(251,179,53)',
+      secondaryLight: 'rgb(252,205,123)',
     },
     scrollbar: {
       main: '#c5cbd0',

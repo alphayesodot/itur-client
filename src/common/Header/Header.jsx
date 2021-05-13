@@ -27,11 +27,6 @@ const Header = () => {
   return (
     <AppBar position='static' className={classes.root}>
       <Toolbar className={classes.toolbar}>
-        <Link to='/'>
-          <Button>
-            <img src={logo} alt='' />
-          </Button>
-        </Link>
         <div>
           <IconButton
             className={`${classes.menuButton} ${classes.notForMobile}`}
@@ -51,6 +46,11 @@ const Header = () => {
             <AccountCircleIcon className={classes.secondary} />
           </IconButton>
         </div>
+        <Link to='/'>
+          <Button>
+            <img src={logo} alt='' />
+          </Button>
+        </Link>
       </Toolbar>
     </AppBar>
   );

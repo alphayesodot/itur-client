@@ -23,6 +23,9 @@ const useStyles = makeStyles((theme) => ({
     padding: '5% 6%',
     borderRadius: '25rem',
     marginTop: '3%',
+    '&:hover,&:focus': {
+      backgroundColor: theme.palette.section.secondaryLight,
+    },
   },
   uploadIcon: {
     marginLeft: '0.5rem',
