@@ -26,26 +26,19 @@ const NodeGroupSelect = ({ selectedNodeGroup, setSelectedNodeGroup }) => {
   return (
     <Select
       className={classes.root}
-      inputProps={{ classes: { icon: classes.icon } }}
+      inputProps={{ classes: { root: classes.select, icon: classes.icon } }}
       onChange={handleOnChange}
       value={selectedNodeGroup ? selectedNodeGroup._id : ''}
       disableUnderline
     >
       {nodeGroups.length === 0
         ? (
-          <MenuItem
-            className={classes.item}
-            disabled
-          >
+          <MenuItem disabled>
             {t('title.noNodeGroups')}
           </MenuItem>
         )
         : nodeGroups.map((nodeGroup) => (
-          <MenuItem
-            className={classes.item}
-            key={nodeGroup._id}
-            value={nodeGroup._id}
-          >
+          <MenuItem key={nodeGroup._id} value={nodeGroup._id}>
             {nodeGroup.name}
           </MenuItem>
         ))}

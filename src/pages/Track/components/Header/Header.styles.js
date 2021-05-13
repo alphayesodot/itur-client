@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) => ({
     padding: '1.25em',
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'space-between',
+    justifyContent: 'flex-end',
     [theme.breakpoints.down('sm')]: {
       flexDirection: 'column',
       alignItems: 'stretch',
@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'space-around',
     minWidth: '35%',
     [theme.breakpoints.down('sm')]: {
-      flexDirection: 'column',
+      flexDirection: 'column-reverse',
       width: '100%',
     },
   },
@@ -36,6 +36,7 @@ const useStyles = makeStyles((theme) => ({
     color: 'white',
     fontSize: '1.15em',
     whiteSpace: 'nowrap',
+    textAlign: 'left',
   },
 }));
 

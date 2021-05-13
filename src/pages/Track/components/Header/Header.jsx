@@ -36,17 +36,17 @@ const Header = observer(({
     <DashboardCard className={classes.root}>
       <div className={classes.content}>
         <div className={classes.main}>
+          <DateInput selectedDate={selectedDate} setSelectedDate={setSelectedDate} />
+          <NodeGroupSelect
+            selectedNodeGroup={selectedNodeGroup}
+            setSelectedNodeGroup={setSelectedNodeGroup}
+          />
           <Typography className={`${classes.unit} ${classes.item}`}>
             {t('title.unit')}
             :
             {' '}
             <strong>{unit ? unit.name : ''}</strong>
           </Typography>
-          <NodeGroupSelect
-            selectedNodeGroup={selectedNodeGroup}
-            setSelectedNodeGroup={setSelectedNodeGroup}
-          />
-          <DateInput selectedDate={selectedDate} setSelectedDate={setSelectedDate} />
         </div>
       </div>
     </DashboardCard>

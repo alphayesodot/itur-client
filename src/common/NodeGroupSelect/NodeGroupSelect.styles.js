@@ -13,14 +13,15 @@ const useStyles = makeStyles((theme) => ({
       boxShadow: `inset 0 0 0 0.15em ${theme.palette.secondary.main}`,
     },
   },
-  item: {
-    direction: 'rtl',
+  select: {
+    direction: 'ltr',
+    padding: '1em',
   },
   icon: {
     fill: '#9aa3aa',
-    width: '175%',
+    width: '20%',
     [theme.breakpoints.down('sm')]: {
-      width: '190%',
+      width: '10%',
     },
   },
 }));
