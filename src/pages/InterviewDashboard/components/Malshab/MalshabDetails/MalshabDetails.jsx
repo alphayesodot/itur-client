@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Button } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
+import shortid from 'shortid';
 import moment from 'moment';
 import useStyles from './MalshabDetails.styles';
 import AttachmentService from '../../../../../services/attachment.service';
@@ -20,17 +21,17 @@ const getDataParameterListItem = (malshab, parameterName, classes, translation) 
   if (Array.isArray(malshab[parameterName])) {
     if (malshab[parameterName].length > 1) {
       return (
-        <li className={classes.listItem}>
+        <li key={malshab[parameterName].length} className={classes.listItem}>
           {translation(`interviewDashboard.malshab.${parameterName}`)}
           {malshab[parameterName].map((parameter) => (
-            <span className={`${classes.dataParameter} ${classes.miniParameter}`}>{parameter}</span>
+            <span key={parameter} className={`${classes.dataParameter} ${classes.miniParameter}`}>{parameter}</span>
           ))}
         </li>
       );
     }
   }
   return (
-    <li className={classes.listItem}>
+    <li key={malshab[parameterName]} className={classes.listItem}>
       {translation(`interviewDashboard.malshab.${getSingle(parameterName)}`)}
       <span className={classes.dataParameter}>{malshab[parameterName]}</span>
     </li>
@@ -103,7 +104,7 @@ const MalshabDetails = ({ malshab }) => {
       <div className={`${classes.flex} ${classes.malshabDataContainer}`}>
         <div className={`${classes.flex} ${classes.flexOne}`}>
           {[...Array(Math.ceil(displayedMalshabParams.length / 3))].map(() => (
-            <div className={classes.detailsRowItem}>
+            <div key={shortid.generate()} className={classes.detailsRowItem}>
               <ul className={classes.ul}>
                 {
                   displayedMalshabParams
@@ -120,6 +121,7 @@ const MalshabDetails = ({ malshab }) => {
               {displayedMalshab.attachments.map((attachment) => (
                 <Button
                   disableRipple
+                  key={shortid.generate()}
                   disableFocusRipple
                   className={classes.relevantFiles}
                   onClick={
