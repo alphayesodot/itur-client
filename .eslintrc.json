@@ -33,6 +33,7 @@
     "react/react-in-jsx-scope": "off",
     "react/prop-types": "off",
     "lines-between-class-members": "off",
-    "consistent-return": "off"
+    "consistent-return": "off",
+    "no-plusplus": "off"
   }
 }

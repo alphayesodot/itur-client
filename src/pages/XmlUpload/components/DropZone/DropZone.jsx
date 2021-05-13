@@ -21,6 +21,54 @@ const DropZone = ({ files, setFiles }) => {
     });
   };
 
+  const conversion = 1e6; // = 1,000,000
+
+  const escapeRegex = (string) => string.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&');
+
+  const renameDuplicateFile = (updatedFiles, file) => {
+    if (!updatedFiles.some((updatedFile) => updatedFile.path === file.path)) return file;
+
+    const extensionIndex = file.name.lastIndexOf('.');
+    const extension = file.name.slice(extensionIndex);
+    let fileName = file.name.slice(0, extensionIndex);
+
+    const duplicates = updatedFiles.filter((updatedFile) => new RegExp(
+      `^${escapeRegex(fileName)} \\([1-9]([0-9]+)?\\)${escapeRegex(extension)}$`,
+    ).test(updatedFile.name));
+
+    if (duplicates.length) {
+      // eslint-disable-next-line no-multi-assign
+      fileName += ` (${
+        duplicates.reduce((acc, current) => {
+          const currentNumber = +current.name.slice(current.name.lastIndexOf('(') + 1, current.name.lastIndexOf(')'));
+
+          if (Math.abs(currentNumber - acc) > 1) return Math.min(currentNumber, acc);
+
+          return Math.max(currentNumber, acc);
+        }, 0) + 1
+      })${extension}`;
+    } else if (
+      updatedFiles.some(
+        (updatedFile) => updatedFile.name === file.name,
+      )
+    ) {
+      // eslint-disable-next-line no-multi-assign
+      fileName += ` (1)${extension}`;
+    } else {
+      fileName = file.name;
+    }
+
+    const newFile = new File([file.slice()], fileName, {
+      type: file.type,
+      lastModified: file.lastModified,
+    });
+
+    newFile.path = fileName;
+    newFile.progress = file.progress;
+
+    return newFile;
+  };
+
   const handleOnDrop = (acceptedFiles, rejectedFilesObjects) => {
     rejectedFilesObjects.forEach((fileObject) => {
       createErrorNorifications(fileObject.file.name, fileObject.errors);
@@ -28,20 +76,16 @@ const DropZone = ({ files, setFiles }) => {
 
     if (acceptedFiles.length > 0) {
       let updatedFiles = [...files];
-      acceptedFiles.forEach((f) => {
+      acceptedFiles.forEach((file) => {
         // eslint-disable-next-line no-param-reassign
-        f.progress = 0;
-        const repetitionsArray = updatedFiles.filter((updatedFile) => updatedFile.path === f.path);
-        // TODO: funciton that changes the name of the file if existed
-        if (repetitionsArray.length > 0) {
-          toast('This file name is already in list. Remove it from list or change the name');
-        } else {
-          updatedFiles = updatedFiles.concat(f);
-        }
+        file.progress = 0;
+
+        updatedFiles = updatedFiles.concat(renameDuplicateFile(updatedFiles, file));
       });
+
       setFiles(updatedFiles);
 
-      acceptedFiles.forEach((acceptedFile) => {
+      updatedFiles.slice(-acceptedFiles.length).forEach((acceptedFile) => {
         const formData = new FormData();
         formData.append('file', acceptedFile);
         axios
@@ -82,7 +126,7 @@ const DropZone = ({ files, setFiles }) => {
             {t('xmlPage.uploadButton')}
             <img className={classes.uploadIcon} src={uploadIcon} alt='upload' />
           </Button>
-          <p className={classes.limitation}>{t('xmlPage.sizeLimitation', { sizeLimit: configApp.xmlUpload.sizeLimit / 1000000 })}</p>
+          <p className={classes.limitation}>{t('xmlPage.sizeLimitation', { sizeLimit: configApp.xmlUpload.sizeLimit / conversion })}</p>
         </div>
       ) }
     </Dropzone>

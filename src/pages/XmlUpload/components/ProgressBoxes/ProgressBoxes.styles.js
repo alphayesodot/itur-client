@@ -42,12 +42,16 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: theme.typography.fontFamily,
     margin: '0.15rem',
   },
+  size: {
+    display: 'flex',
+    flexDirection: 'row-reverse',
+    textIndent: '0.3em',
+  },
   typography: {
     fontSize: '0.7rem',
-    fontFamily: theme.typography.fontFamily,
     color: 'gray',
     marginBottom: '0.4rem',
-    textAlign: 'left',
+    textAlign: 'right',
   },
   progressBar: {
     backgroundColor: 'rgb(234,243,246)',
