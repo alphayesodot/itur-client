@@ -18,7 +18,57 @@ const useStyles = makeStyles((theme) => ({
   toastContainer: {
     top: '6rem',
   },
-  root: {
+  loading: {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: theme.palette.primary.main,
+    animation: '$backgroundFade 1.7s linear alternate',
+    animationDelay: '0.35s',
+  },
+  logo: {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    opacity: 0,
+    margin: 'auto',
+    animation: '$logoFade 0.7s ease-out alternate',
+  },
+  '@keyframes backgroundFade': {
+    '0%': {
+      opacity: 1,
+    },
+    '100%': {
+      opacity: 0,
+    },
+  },
+  '@keyframes logoFade': {
+    '0%': {
+      opacity: 1,
+    },
+    '100%': {
+      opacity: 0,
+    },
+  },
+  bodyContainer: {
+    display: 'flex',
+    alignItems: 'stretch',
+    paddingTop: '2rem',
+    justifyContent: 'center',
+    width: '95%',
+    paddingLeft: '2.5%',
+    paddingRight: '2.5%',
+    height: 'calc(100vh - 9rem)',
+    [theme.breakpoints.down('sm')]: {
+      flexDirection: 'column-reverse',
+      alignItems: 'stretch',
+      justifyContent: 'flex-end',
+      height: 'calc(100vh - 3rem)',
+    },
   },
 }));
 

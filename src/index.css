@@ -4,7 +4,8 @@ body, html {
 }
 
 @font-face {
-  /* TODO: Add font */
+  font-family: 'Assistant';
+  src: local('Assistant'), url(./utils/fonts/Assistant/Assistant-Regular.ttf) format('truetype');
 }
 
 a {  
