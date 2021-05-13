@@ -64,9 +64,9 @@ const useStyles = makeStyles((theme) => ({
     paddingRight: '2.5%',
     height: 'calc(100vh - 9rem)',
     [theme.breakpoints.down('sm')]: {
-      flexDirection: 'column-reverse',
+      flexDirection: 'column',
       alignItems: 'stretch',
-      justifyContent: 'flex-end',
+      justifyContent: 'flex-start',
       height: 'calc(100vh - 3rem)',
     },
   },

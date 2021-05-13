@@ -112,6 +112,7 @@ const App = () => {
     <Router classes={classes.root}>
       <Header />
       <div className={classes.bodyContainer}>
+        <Sidebar />
         <Switch>
           <Route path='/' exact>
             <Home />
@@ -123,7 +124,6 @@ const App = () => {
             </Route>
           ))}
         </Switch>
-        <Sidebar />
       </div>
       <ToastContainer />
     </Router>

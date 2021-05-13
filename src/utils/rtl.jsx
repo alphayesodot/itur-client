@@ -3,7 +3,7 @@ import rtl from 'jss-rtl';
 import { StylesProvider, jssPreset } from '@material-ui/core/styles';
 
 // Configure JSS
-// disabled react/destructuring-assignment
+/* eslint-disable react/destructuring-assignment */
 const jss = create({ plugins: [...jssPreset().plugins, rtl()] });
 
 const RTL = (props) => (
