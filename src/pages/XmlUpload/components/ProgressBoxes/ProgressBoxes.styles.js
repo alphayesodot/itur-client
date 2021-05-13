@@ -51,7 +51,6 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '0.7rem',
     color: 'gray',
     marginBottom: '0.4rem',
-    direction: 'ltr !important',
     textAlign: 'right',
   },
   progressBar: {
