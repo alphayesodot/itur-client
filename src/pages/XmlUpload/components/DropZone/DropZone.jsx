@@ -20,7 +20,7 @@ const DropZone = ({ files, setFiles }) => {
     });
   };
 
-  const CONVERSION = 1e6; // = 1,000,000
+  const conversion= 1e6; // = 1,000,000
 
   const escapeRegex = (string) => string.replace(/[-/\\^$*+?.()|[\]{}]/g, '\\$&');
 
