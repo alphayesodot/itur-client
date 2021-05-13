@@ -29,21 +29,21 @@ const InterviewItem = ({ status, time, name }) => {
   return (
     <>
       <ListItem className={`${classes.item} ${classes[`item${status}`]}`}>
-        <Typography className={`${classes.time} ${classes[`time${status}`]}`}>
-          {time.toTimeString().split(' ')[0].slice(0, 5)}
-        </Typography>
-        {name && (
-        <Tooltip placement='bottom-end' title={name}>
-          <Typography className={`${classes.name} ${classes[`name${status}`]}`}>
-            {name}
-          </Typography>
-        </Tooltip>
-        )}
         { getIcon() && (
         <Tooltip arrow placement='right-end' title={t(`interviewStatus.${status}`)}>
           <Avatar alt={status} src={getIcon()} className={classes.avatar} />
         </Tooltip>
         )}
+        {name && (
+        <Tooltip placement='bottom-start' title={name}>
+          <Typography className={`${classes.name} ${classes[`name${status}`]}`}>
+            {name}
+          </Typography>
+        </Tooltip>
+        )}
+        <Typography className={`${classes.time} ${classes[`time${status}`]}`}>
+          {time.toTimeString().split(' ')[0].slice(0, 5)}
+        </Typography>
       </ListItem>
       <Divider />
     </>

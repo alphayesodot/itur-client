@@ -13,13 +13,10 @@ const getNamePassed = (theme) => ({
 const useStyles = makeStyles((theme) => ({
   time: {
     width: '20%',
-    textAlign: 'right',
     fontWeight: '600',
-    marginLeft: '1em',
   },
   name: {
     width: '70%',
-    textAlign: 'right',
     marginLeft: '0.5em',
     textOverflow: 'ellipsis',
     whiteSpace: 'nowrap',

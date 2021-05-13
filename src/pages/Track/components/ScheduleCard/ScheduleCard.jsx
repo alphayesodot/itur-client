@@ -23,10 +23,10 @@ const ScheduleCard = ({ interviewer, date, nodeGroupId }) => {
   return (
     <DashboardCard className={classes.root}>
       <div className={classes.title}>
-        <Avatar alt={interviewer.name} src={avatar} className={classes.avatar} />
         <Typography className={classes.name}>
           {interviewer.name}
         </Typography>
+        <Avatar alt={interviewer.name} src={avatar} className={classes.avatar} />
       </div>
       <InterviewsList interviews={interviews} />
       <div className={classes.interviewsCount}>

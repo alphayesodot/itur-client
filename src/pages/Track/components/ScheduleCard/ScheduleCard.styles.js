@@ -12,12 +12,12 @@ const useStyles = makeStyles((theme) => ({
     paddingBottom: '0',
   },
   title: {
-    alignSelf: 'start',
+    alignSelf: 'flex-end',
     display: 'flex',
     alignItems: 'center',
   },
   avatar: {
-    paddingLeft: '0.5em',
+    paddingRight: '0.5em',
   },
   name: {
     fontWeight: '700',
