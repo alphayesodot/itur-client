@@ -7,7 +7,7 @@ const useStyles = makeStyles(() => ({
   },
   unitDetails: {
     height: '100%',
-    width: '85rem',
+    width: '70vw', // 85rem ?
   },
   noUnitSelectedDiv: {
     display: 'flex',

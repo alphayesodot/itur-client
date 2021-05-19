@@ -13,11 +13,10 @@ const useStyles = makeStyles((theme) => ({
   addUsersButton: {
     backgroundColor: theme.palette.primary.secondary,
     borderRadius: '1.5rem',
-    direction: 'rtl',
     '&:hover': {
       backgroundColor: theme.palette.primary.secondary,
     },
-    margin: '0px 3rem 0px -2rem',
+    margin: '0px -2rem 0px 3rem',
     fontWeight: 'bold',
     paddingRight: '2rem',
     paddingLeft: '2rem',
@@ -50,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
     width: '3rem',
     border: '0.2px solid lightgrey',
     borderRadius: '0.5rem',
-    marginRight: '-2rem',
+    marginLeft: '-2rem',
   },
   addDiv: {
     display: 'flex',

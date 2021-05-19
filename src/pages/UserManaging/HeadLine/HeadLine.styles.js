@@ -2,13 +2,13 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    direction: 'rtl',
+    direction: 'ltr',
     fontFamily: 'Rubik, sans-serif',
     fontSize: '1.1rem',
   },
   mainDiv: {
     backgroundColor: theme.palette.primary.main,
-    width: '80rem',
+    width: '65vw', // 80rem ?
     height: '4rem',
     marginTop: '4rem',
     color: 'white',
@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: '1.4rem',
   },
   main: {
-    marginRight: '5rem',
+    marginLeft: '5rem',
     display: 'flex',
   },
   usersLogo: {

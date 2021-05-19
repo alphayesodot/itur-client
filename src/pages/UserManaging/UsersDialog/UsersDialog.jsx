@@ -12,7 +12,6 @@ const UsersDialog = ({ users, role, unit, openDialog, setOpenUsersDialog }) => {
       classes={{
         paper: classes.paper,
       }}
-      onClose={() => setOpenUsersDialog(false)}
       aria-labelledby='simple-dialog-title'
       open={openDialog}
     >

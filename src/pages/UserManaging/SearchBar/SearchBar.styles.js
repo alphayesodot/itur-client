@@ -6,6 +6,7 @@ const useStyles = makeStyles(() => ({
     display: 'flex',
     justifyContent: 'center',
     width: '100%',
+    direction: 'rtl',
   },
   input: {
     height: '1.5rem',
@@ -15,8 +16,8 @@ const useStyles = makeStyles(() => ({
       outline: 'none',
     },
     border: 'none',
-    direction: 'rtl',
     padding: '0.3rem',
+    direction: 'ltr',
   },
   searchDiv: {
     backgroundColor: 'white',

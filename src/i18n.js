@@ -64,7 +64,20 @@ const resources = {
         technical: 'טכני',
 
       },
-      sideBar: {},
+      sideBar: {
+        luz: 'לו"ז',
+        track: 'לו"ז שבועי',
+        malshabSchedule: 'שיבץ מלש"ב',
+        malshabSearch: 'חיפוש מלש"ב',
+        reports: 'דוחות',
+        posh: 'פו"ש',
+        preparationKit: 'ערכת הכנה',
+        nodeGroupCreation: 'יצירת מסלול',
+        fileUpload: 'העלאת קבצים',
+        userManagement: 'ניהול משתמשים',
+        editQuestionnaire: 'עריכת שאלון',
+        settings: 'הגדרות',
+      },
     },
   },
 };

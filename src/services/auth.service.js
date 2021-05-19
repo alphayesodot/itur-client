@@ -12,7 +12,7 @@ class AuthService {
     } else {
       this.setAuthHeaders();
       if (jwt.verify(cookie, config.secret)) {
-        return jwt.decode(cookie).user;
+        return jwt.decode(cookie);
       }
     }
   }
@@ -32,7 +32,7 @@ class AuthService {
 
   static async redirect() {
     // TODO: Remove user id
-    window.location.replace(`${config.uri.auth}/auth/login/1`);
+    window.location.replace(`${config.uri.auth}/auth/login/8`);
   }
 }
 

@@ -11,7 +11,6 @@ const useStyles = makeStyles(() => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
-    direction: 'rtl',
     padding: '2rem',
   },
   closeButton: {
@@ -33,9 +32,8 @@ const useStyles = makeStyles(() => ({
     display: 'flex',
     justifyContent: 'space-around',
     alignItems: 'center',
-    direction: 'rtl',
-    marginRight: '1.5rem',
     marginLeft: '1.5rem',
+    marginRight: '1.5rem',
     borderRadius: 30,
     width: '75%',
   },
@@ -44,7 +42,7 @@ const useStyles = makeStyles(() => ({
     justifyContent: 'center',
   },
   titles: {
-    marginLeft: '0.5rem',
+    marginRight: '0.5rem',
   },
   paper: {
     display: 'flex',

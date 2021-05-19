@@ -96,7 +96,7 @@ const UsersTable = ({ users, unit }) => {
                 {cell}
               </TableCell>
             ))}
-            <TableCell align='right' className={classes.tableHeadLine}>
+            <TableCell align='left' className={classes.tableHeadLine}>
               {t('text.add')}
             </TableCell>
           </TableHead>

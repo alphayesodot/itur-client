@@ -34,7 +34,7 @@ const AddUnit = ({ openAddUnit, setOpenAddUnit, setUnits }) => {
     >
       <div className={classes.root}>
         <div className={classes.titleDiv}>
-          <h2 dir='rtl' className={classes.title}>{t('headerTitles.addUnit')}</h2>
+          <h2 className={classes.title}>{t('headerTitles.addUnit')}</h2>
           <Button className={classes.closeButton} onClick={() => { setOpenAddUnit(!openAddUnit); }}>
             <img src='add-icon.svg' alt='close' className={classes.addIcon} />
           </Button>

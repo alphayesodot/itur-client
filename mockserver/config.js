@@ -1,10 +1,18 @@
 const sitesPostfixes = {
-  schedule: '/schedule',
+  interview: '/interview',
+  luz: '/luz',
   track: '/track',
   malshabSchedule: '/malshab-scheduling',
   malshabSearch: '/search-malshab',
   reports: '/reports',
   posh: '/posh',
+  preparationKit: '/preparation-kit',
+  nodeGroupCreation: '/node-group-creation',
+  fileUpload: '/file-upload',
+  userManagement: '/user-management',
+  unitCreation: '/unit-creation',
+  editQuestionnaire: '/edit-questionnaire',
+  userManaging: '/user-managing',
 };
 
 const config = {
@@ -20,32 +28,134 @@ const config = {
   sitesPostfixes,
   allowedUrlPostfixesOfRole:
   {
-    INTERVIEWER: [sitesPostfixes.schedule],
+    INTERVIEWER: [
+      {
+        route: sitesPostfixes.luz,
+        sideBar: true,
+      },
+      {
+        route: sitesPostfixes.interview,
+        sideBar: false,
+      },
+      {
+        route: sitesPostfixes.preparationKit,
+        sideBar: true,
+      },
+    ],
     RAMAD_ITUR_OF_UNIT: [
-      sitesPostfixes.track,
-      sitesPostfixes.malshabSchedule,
-      sitesPostfixes.malshabSearch,
-      sitesPostfixes.reports,
+      {
+        route: sitesPostfixes.nodeGroupCreation,
+        sideBar: true,
+      },
+      {
+        route: sitesPostfixes.track,
+        sideBar: true,
+      },
+      {
+        route: sitesPostfixes.malshabSchedule,
+        sideBar: true,
+      },
+      {
+        route: sitesPostfixes.malshabSearch,
+        sideBar: true,
+      },
+      {
+        route: sitesPostfixes.reports,
+        sideBar: true,
+      },
+    ],
+    RAMAD_ITUR_ASSISTANT: [
+      {
+        route: sitesPostfixes.track,
+        sideBar: true,
+      },
+      {
+        route: sitesPostfixes.malshabSchedule,
+        sideBar: true,
+      },
+      {
+        route: sitesPostfixes.malshabSearch,
+        sideBar: true,
+      },
+      {
+        route: sitesPostfixes.reports,
+        sideBar: true,
+      },
     ],
     PROFESSIONAL_RAMAD: [
-      sitesPostfixes.track,
-      sitesPostfixes.malshabSchedule,
-      sitesPostfixes.malshabSearch,
-      sitesPostfixes.reports,
+      {
+        route: sitesPostfixes.track,
+        sideBar: true,
+      },
+      {
+        route: sitesPostfixes.malshabSearch,
+        sideBar: true,
+      },
     ],
     MADA: [
-      sitesPostfixes.posh,
-      sitesPostfixes.reports,
-      sitesPostfixes.malshabSearch,
+      {
+        route: sitesPostfixes.posh,
+        sideBar: true,
+      },
+      {
+        route: sitesPostfixes.malshabSearch,
+        sideBar: true,
+      },
+      {
+        route: sitesPostfixes.reports,
+        sideBar: true,
+      },
+      {
+        route: sitesPostfixes.editQuestionnaire,
+        sideBar: true,
+      },
+      {
+        route: sitesPostfixes.preparationKit,
+        sideBar: true,
+      },
     ],
     ITUR: [
-      sitesPostfixes.posh,
-      sitesPostfixes.reports,
-      sitesPostfixes.malshabSearch,
+      {
+        route: sitesPostfixes.posh,
+        sideBar: true,
+      },
+      {
+        route: sitesPostfixes.malshabSearch,
+        sideBar: true,
+      },
+      {
+        route: sitesPostfixes.reports,
+        sideBar: true,
+      },
+    ],
+    TECHNICAL: [
+      {
+        route: sitesPostfixes.malshabSearch,
+        sideBar: true,
+      },
+      {
+        route: sitesPostfixes.reports,
+        sideBar: true,
+      },
+      {
+        route: sitesPostfixes.fileUpload,
+        sideBar: true,
+      },
+      {
+        route: sitesPostfixes.userManagement,
+        sideBar: true,
+      },
+      {
+        route: sitesPostfixes.unitCreation,
+        sideBar: false,
+      },
+      {
+        route: sitesPostfixes.userManaging,
+        sideBar: true,
+      },
     ],
     PSYCHOLOGIST: [],
     DIAGNOSER: [],
-    TECHNICAL: [],
   },
 };
 

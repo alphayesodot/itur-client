@@ -4,7 +4,6 @@ const useStyles = makeStyles(() => ({
   root: {
     height: ' 12rem',
     width: '33rem',
-    direction: 'rtl',
   },
   addButton: {
     fontSize: '1rem',
@@ -16,7 +15,7 @@ const useStyles = makeStyles(() => ({
     padding: '0px 25px',
     height: '40px',
     position: 'absolute',
-    marginRight: '-0.5rem',
+    marginLeft: '-0.5rem',
     '&:hover,&:focus': {
       backgroundColor: '#27b9d1',
     },
@@ -51,7 +50,7 @@ const useStyles = makeStyles(() => ({
     paddingRight: '2rem',
   },
   addDiv: {
-    marginRight: '2rem',
+    marginLeft: '2rem',
   },
   title: {
     direction: 'rtl',

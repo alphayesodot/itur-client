@@ -3,34 +3,32 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => ({
   root: {
     marginTop: '0.7rem',
+    direction: 'ltr',
   },
   mainDiv: {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    direction: 'rtl',
     width: '100%',
   },
   unitName: {
-    direction: 'rtl',
     fontSize: '1.1rem',
     fontFamily: 'Rubik, sans-serif',
     color: 'white',
     marginTop: '1.3rem',
-    marginRight: '2rem',
+    marginLeft: '2rem',
     maxWidth: '8rem',
     overflow: 'hidden',
     textOverflow: 'ellipsis',
     whiteSpace: 'nowrap',
   },
   numberOfUsers: {
-    direction: 'rtl',
     fontSize: '0.9rem',
     fontWeight: 'normal',
     color: 'rgb(125, 131, 137)',
     marginTop: '-0.5rem',
     fontFamily: 'Rubik, sans-serif',
-    marginRight: '2rem',
+    marginLeft: '2rem',
   },
   selectedCardText: {
     direction: 'rtl',
@@ -39,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
     color: 'white',
     marginTop: '-0.5rem',
     fontFamily: 'Rubik, sans-serif',
-    marginRight: '2rem',
+    marginLeft: '2rem',
   },
   card: {
     backgroundColor: '#203141',

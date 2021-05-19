@@ -19,13 +19,13 @@ const UserManaging = () => {
   return (
     <div className={classes.mainDiv}>
       <div className={classes.root}>
-        <UnitDetails unit={selectedUnit} />
         <Units
           unitsArray={units}
           setOpenAddUnit={setOpenAddUnit}
           selectedUnit={selectedUnit}
           setSelectedUnit={setSelectedUnit}
         />
+        <UnitDetails unit={selectedUnit} />
       </div>
         <AddUnit
           className={classes.addUnitDialog}

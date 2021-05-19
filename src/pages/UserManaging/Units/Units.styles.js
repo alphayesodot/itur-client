@@ -17,24 +17,25 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: 'Rubik, sans-serif',
     fontWeight: 'bold',
     marginTop: '3rem',
-    marginLeft: '11rem',
+    marginLeft: '3rem',
+    direction: 'ltr',
   },
   unitsList: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    height: '34.5rem',
+    height: '34.5rem', // 34.5rem ?
     overflowY: 'auto', // auto ?
+    direction: 'rtl',
   },
   addUsersTitle: {
     fontSize: '1.3rem',
     fontFamily: 'Rubik, sans-serif',
     fontWeight: 'bold',
     color: 'white',
-    direction: 'rtl',
     marginTop: '3rem',
     marginBottom: '-1rem',
-    marginLeft: '3rem',
+    marginRight: '3rem',
   },
   addUsersDiv: {
     display: 'flex',
@@ -47,7 +48,6 @@ const useStyles = makeStyles((theme) => ({
     height: '2.5rem',
     fontSize: '0.9rem',
     fontWeight: 'bold',
-    direction: 'rtl',
     '&:hover': {
       backgroundColor: theme.palette.primary.secondary,
     },
