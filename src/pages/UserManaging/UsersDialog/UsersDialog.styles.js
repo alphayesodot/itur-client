@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     height: '35rem',
     width: '100%',
@@ -52,6 +52,12 @@ const useStyles = makeStyles(() => ({
     width: '30%',
     height: '52.5%',
     borderRadius: 15,
+    [theme.breakpoints.down('md')]: {
+      width: '50%',
+    },
+    [theme.breakpoints.down('sm')]: {
+      width: '80%',
+    },
   },
   noUsersDiv: {
     display: 'flex',

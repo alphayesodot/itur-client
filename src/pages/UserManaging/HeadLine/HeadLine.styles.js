@@ -5,13 +5,19 @@ const useStyles = makeStyles((theme) => ({
     direction: 'ltr',
     fontFamily: 'Rubik, sans-serif',
     fontSize: '1.1rem',
+    display: 'flex',
+    justifyContent: 'center',
   },
   mainDiv: {
     backgroundColor: theme.palette.primary.main,
     width: '65vw', // 80rem ?
-    height: '4rem',
+    height: '4.2rem',
     marginTop: '4rem',
     color: 'white',
+    [theme.breakpoints.down('md')]: {
+      width: '95%',
+    },
+
   },
   homeLogo: {
     margin: '1rem',

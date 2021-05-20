@@ -4,12 +4,20 @@ const useStyles = makeStyles((theme) => ({
   root: {
     marginTop: '0.7rem',
     direction: 'ltr',
+    [theme.breakpoints.down('md')]: {
+      marginRight: '0.7rem',
+      marginTop: '0rem',
+    },
   },
   mainDiv: {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
     width: '100%',
+    [theme.breakpoints.down('sm')]: {
+      marginRight: '0rem',
+      marginTop: '0.5rem',
+    },
   },
   unitName: {
     fontSize: '1.1rem',

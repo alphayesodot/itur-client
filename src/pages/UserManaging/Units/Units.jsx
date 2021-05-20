@@ -17,25 +17,25 @@ const units = ({ unitsArray, setOpenAddUnit, selectedUnit, setSelectedUnit }) =>
   }, [unitsArray]);
 
   return (
-    <div className={classes.root}>
-      <DashboardCard className={classes.units}>
-        <div className={classes.addUsersDiv}>
-          <p className={classes.addUsersTitle}>{t('headerTitles.addUsers')}</p>
-        </div>
-        <SearchBar setDisplayedArray={setDisplayedArray} unitsArray={unitsArray} />
+    <DashboardCard className={classes.units}>
+      <div className={classes.addUsersDiv}>
+        <p className={classes.addUsersTitle}>{t('headerTitles.addUsers')}</p>
+      </div>
+      <SearchBar setDisplayedArray={setDisplayedArray} unitsArray={unitsArray} />
+      <div className={classes.unitsCountDiv}>
         <p className={classes.unitsTitle}>{`${t('text.units')} (${displayedArray.length})`}</p>
-        { displayedArray.length > 0 ? (
-          <div className={classes.unitsList}>
-            {displayedArray.map((unit) => <UnitCard unit={unit} key={unit.id} setSelectedUnit={setSelectedUnit} isSelected={unit.id === selectedUnit.id} />)}
-          </div>
-        ) : <div className={classes.noUnitsDiv}><Typography className={classes.noUnits}>{t('text.noUnits')}</Typography></div> }
-        <div className={classes.addUnitDiv}>
-          <Button variant='contained' className={classes.addUnitButton} onClick={() => setOpenAddUnit(true)}>
-            {t('button.addUnit')}
-          </Button>
+      </div>
+      { displayedArray.length > 0 ? (
+        <div className={classes.unitsList}>
+          {displayedArray.map((unit) => <UnitCard unit={unit} key={unit.id} setSelectedUnit={setSelectedUnit} isSelected={unit.id === selectedUnit.id} />)}
         </div>
-      </DashboardCard>
-    </div>
+      ) : <div className={classes.noUnitsDiv}><Typography className={classes.noUnits}>{t('text.noUnits')}</Typography></div> }
+      <div className={classes.addUnitDiv}>
+        <Button variant='contained' className={classes.addUnitButton} onClick={() => setOpenAddUnit(true)}>
+          {t('button.addUnit')}
+        </Button>
+      </div>
+    </DashboardCard>
   );
 };
 

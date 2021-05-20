@@ -55,6 +55,11 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     width: '70%',
     justifyContent: 'space-between',
+    [theme.breakpoints.down('md')]: {
+      display: 'flex',
+      justifyContent: 'space-between',
+      width: '90%',
+    },
   },
   tableHeadLine: {
     fontWeight: 'bold',

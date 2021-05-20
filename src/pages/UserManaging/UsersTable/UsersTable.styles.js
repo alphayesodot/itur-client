@@ -9,6 +9,9 @@ const useStyles = makeStyles((theme) => ({
     width: '65vw', // 80rem ?
     marginTop: '2rem',
     boxShadow: 'none',
+    [theme.breakpoints.down('md')]: {
+      width: '90%',
+    },
   },
   addUsersButton: {
     backgroundColor: theme.palette.primary.secondary,
