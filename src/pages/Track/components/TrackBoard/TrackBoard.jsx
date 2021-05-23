@@ -36,7 +36,7 @@ const TrackBoard = ({ nodeGroup, date }) => {
       {' '}
       {'//'}
       {' '}
-      {date.toLocaleDateString('en-GB').replaceAll('/', '.')}
+      {date.toLocaleDateString('en-GB').replace(/\//g, '.')}
     </>
   );
 

@@ -50,7 +50,7 @@ const Sidebar = () => {
   };
 
   const iconsToShow = Object.values(iconDetails).filter(
-    (iconDetail) => configApp.allowedUrlPostfixesOfRole[userRole].some(
+    (iconDetail) => configApp.allowedUrlPostfixesOfRole[userRole]?.some(
       (allowedUrl) => allowedUrl.route === iconDetail.urlPostfix && allowedUrl.sideBar,
     ),
   );
