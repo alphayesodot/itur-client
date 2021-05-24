@@ -9,9 +9,9 @@ import {
 import { toast } from 'react-toastify';
 import { useState, useEffect } from 'react';
 import AddIcon from '@material-ui/icons/Add';
-import useStyles from './TableRow.styles.js';
+import useStyles from './UnitDetailsTableRow.styles.js';
 import UserService from '../../../services/user.service';
-import UsersDialog from '../UsersDialog/UsersDialog';
+import RoleUsersDialog from '../RoleUsersDialog/RoleUsersDialog';
 import NewUsersDialog from '../NewUsersDialog/NewUsersDialog';
 
 const RowTable = ({ roleToDisplay, role, users, setRoleUsers, setUsers, unit }) => {
@@ -91,7 +91,7 @@ const RowTable = ({ roleToDisplay, role, users, setRoleUsers, setUsers, unit }) 
         </div>
       </TableCell>
 
-      <UsersDialog
+      <RoleUsersDialog
         users={users}
         role={roleToDisplay}
         unit={unit}

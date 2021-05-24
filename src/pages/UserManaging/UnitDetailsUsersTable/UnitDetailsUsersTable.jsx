@@ -8,10 +8,10 @@ import {
 } from '@material-ui/core';
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import useStyles from './UsersTable.styles';
-import RowTable from '../TableRow/TableRow';
+import useStyles from './UnitDetailsUsersTable.styles';
+import UnitDetailsTableRow from '../UnitDetailsTableRow/UnitDetailsTableRow';
 
-const UsersTable = ({ users, setUsers, unit }) => {
+const UnitDetailsUsersTable = ({ users, setUsers, unit }) => {
   const { t } = useTranslation();
   const [interviewers, setInterviewers] = useState([]);
   const [unitRamadsItur, setUnitRamadsItur] = useState([]);
@@ -112,7 +112,7 @@ const UsersTable = ({ users, setUsers, unit }) => {
           </TableHead>
           <TableBody>
             {roleObjects.map(({ roleToDisplay, role, list, setList }) => (
-              <RowTable
+              <UnitDetailsTableRow
                 roleToDisplay={roleToDisplay}
                 role={role}
                 users={list}
@@ -128,4 +128,4 @@ const UsersTable = ({ users, setUsers, unit }) => {
   );
 };
 
-export default UsersTable;
+export default UnitDetailsUsersTable;

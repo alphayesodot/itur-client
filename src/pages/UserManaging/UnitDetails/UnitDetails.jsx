@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import useStyles from './UnitDetails.styles';
 import DashboardCard from '../../../common/DashboardCard/DashboardCard.jsx';
-import HeadLine from '../HeadLine/HeadLine.jsx';
-import UsersTable from '../UsersTable/UsersTable.jsx';
+import UnitDetailsHeadLine from '../UnitDetailsHeadLine/UnitDetailsHeadLine.jsx';
+import UnitDetailsUsersTable from '../UnitDetailsUsersTable/UnitDetailsUsersTable';
 import UserService from '../../../services/user.service.js';
 
 const UnitDetails = ({ unit, users, setUsers }) => {
@@ -21,9 +21,9 @@ const UnitDetails = ({ unit, users, setUsers }) => {
           ? (
             <>
               <div className={classes.root}>
-                <HeadLine unitName={unit.name} numberOfUnitUsers={users.length} />
+                <UnitDetailsHeadLine unitName={unit.name} numberOfUnitUsers={users.length} />
               </div>
-              <UsersTable users={users} setUsers={setUsers} unit={unit} />
+              <UnitDetailsUsersTable users={users} setUsers={setUsers} unit={unit} />
             </>
           ) : <div className={classes.noUnitSelectedDiv}><h1 className={classes.noUnitSelected}>{ t('text.noSelectedUnit') }</h1></div> }
 

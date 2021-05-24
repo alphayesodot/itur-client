@@ -1,7 +1,7 @@
 import DashboardCard from '../../../common/DashboardCard/DashboardCard.jsx';
-import useStyles from './HeadLine.styles';
+import useStyles from './UnitDetailsHeadLine.styles';
 
-const HeadLine = ({ unitName, numberOfUnitUsers }) => {
+const UnitDetailsHeadLine = ({ unitName, numberOfUnitUsers }) => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
@@ -29,4 +29,4 @@ const HeadLine = ({ unitName, numberOfUnitUsers }) => {
   );
 };
 
-export default HeadLine;
+export default UnitDetailsHeadLine;

@@ -1,9 +1,9 @@
 import { Typography, Button, Dialog, IconButton, Tooltip } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
-import useStyles from './UsersDialog.styles.js';
+import useStyles from './RoleUsersDialog.styles.js';
 import RoleUsersTable from '../RoleUsersTable/RoleUsersTable';
 
-const UsersDialog = ({ users, role, unit, openDialog, setOpenUsersDialog }) => {
+const RoleUsersDialog = ({ users, role, unit, openDialog, setOpenUsersDialog }) => {
   const classes = useStyles();
   const { t } = useTranslation();
 
@@ -71,4 +71,4 @@ const UsersDialog = ({ users, role, unit, openDialog, setOpenUsersDialog }) => {
   );
 };
 
-export default UsersDialog;
+export default RoleUsersDialog;

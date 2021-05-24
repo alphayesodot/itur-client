@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { Input, Button, Dialog } from '@material-ui/core';
+import { Input, Button, Dialog, Typography } from '@material-ui/core';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 
@@ -8,7 +8,6 @@ import UnitService from '../../../services/unit.service.js';
 
 const AddUnit = ({ openAddUnit, setOpenAddUnit, setUnits }) => {
   const { t } = useTranslation();
-  const notify = () => toast(t('text.unitNotAddWarning'));
 
   const classes = useStyles();
   const [unitName, setUnitName] = useState('');
@@ -17,7 +16,7 @@ const AddUnit = ({ openAddUnit, setOpenAddUnit, setUnits }) => {
     UnitService.createUnit(unitName).then((newUnit) => {
       setUnits((units) => [...units, { id: newUnit.id, name: newUnit.name }]);
     }).catch(() => {
-      notify();
+      toast(t('text.unitNotAddWarning'));
     }).finally(() => {
       setOpenAddUnit(false);
     });
@@ -34,7 +33,7 @@ const AddUnit = ({ openAddUnit, setOpenAddUnit, setUnits }) => {
     >
       <div className={classes.root}>
         <div className={classes.titleDiv}>
-          <h2 className={classes.title}>{t('headerTitles.addUnit')}</h2>
+          <Typography className={classes.title}>{t('headerTitles.addUnit')}</Typography>
           <Button className={classes.closeButton} onClick={() => { setOpenAddUnit(!openAddUnit); }}>
             <img src='add-icon.svg' alt='close' className={classes.addIcon} />
           </Button>
