@@ -25,6 +25,7 @@ class AuthService {
         this.redirect();
       } else {
         requestsConfig.headers.Authorization = `Bearer ${token}`;
+        requestsConfig.headers.Type = 'User';
         return requestsConfig;
       }
     });
