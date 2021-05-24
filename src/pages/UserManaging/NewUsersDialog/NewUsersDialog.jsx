@@ -1,5 +1,6 @@
-import { Typography, Button, Dialog, IconButton, Tooltip } from '@material-ui/core';
+import { Typography, Button, Dialog, IconButton, Tooltip, Snackbar } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
+import { Alert } from '@material-ui/lab';
 import useStyles from './NewUsersDialog.styles.js';
 import NewUsersTable from '../NewUsersTable/NewUsersTable.jsx';
 
@@ -70,7 +71,15 @@ const NewUsersDialog = ({
               <img src='copy.svg' alt='copy' />
             </IconButton>
           </Tooltip>
-
+          <Snackbar
+            open
+          >
+            <Alert severity='error' variant='filled' style={{ marginBottom: '15%' }}>
+              <Typography style={{ fontSize: '1.1rem' }}>
+                {t('warnings.oneTimePassword')}
+              </Typography>
+            </Alert>
+          </Snackbar>
         </div>
 
       </div>
