@@ -1,7 +1,16 @@
 import axios from 'axios';
 import config from '../appConf';
 
+const headers = {
+  'Content-Type': 'application/json',
+  Accept: 'application/json',
+};
+
 class UserService {
+  static async getUserById(id) {
+    const { data } = await axios.get(`${config.uri.api}/api/user/${id}`, { headers });
+    return data;
+  }
   static async getUsersByUnitId(unitId) {
     const res = await axios.get(`${await config.uri.api}/api/user/${unitId}`).catch(() => {});
     return res?.data;
