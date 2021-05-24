@@ -25,6 +25,8 @@ class AuthService {
         this.redirect();
       } else {
         requestsConfig.headers.Authorization = `Bearer ${token}`;
+        // TODO: In case the malshab using this client,
+        // send a different header depends on the authorized user
         requestsConfig.headers.Type = 'User';
         return requestsConfig;
       }
