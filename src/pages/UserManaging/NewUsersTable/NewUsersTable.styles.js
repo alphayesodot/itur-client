@@ -2,11 +2,12 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(() => ({
   root: {
-    marginTop: '2rem',
     boxShadow: 'none',
     paddingRight: '2rem',
     width: '60%',
-    alignSelf: 'center',
+    direction: 'rtl',
+    height: '60%',
+
   },
   cell: {
     fontWeight: 'bold',

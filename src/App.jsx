@@ -122,9 +122,6 @@ const App = () => {
           <Route path='/' exact>
             <Home />
           </Route>
-          {/* <Route path='/user-managing'>
-            <UserManaging />
-          </Route> */}
           {getRoutes().map(({ path, component }) => (
             <Route key={path} path={path}>
               {component}

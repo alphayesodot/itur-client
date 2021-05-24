@@ -2,12 +2,11 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    height: '5rem',
+    height: '9%',
     display: 'flex',
     justifyContent: 'center',
     width: '100%',
     direction: 'rtl',
-
   },
   input: {
     height: '1.5rem',

@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-indent */
 import { useState, useEffect } from 'react';
 import AddUnit from './AddUnit/AddUnit.jsx';
 import useStyles from './index.styles';
@@ -11,6 +10,7 @@ const UserManaging = () => {
   const [openAddUnit, setOpenAddUnit] = useState(false);
   const [units, setUnits] = useState([]);
   const [selectedUnit, setSelectedUnit] = useState('');
+  const [users, setUsers] = useState([]);
 
   useEffect(async () => {
     setUnits(await UnitService.getUnits());
@@ -24,15 +24,21 @@ const UserManaging = () => {
           setOpenAddUnit={setOpenAddUnit}
           selectedUnit={selectedUnit}
           setSelectedUnit={setSelectedUnit}
+          users={users}
+          setUsers={setUsers}
         />
-        <UnitDetails unit={selectedUnit} />
+        <UnitDetails
+          unit={selectedUnit}
+          users={users}
+          setUsers={setUsers}
+        />
       </div>
-        <AddUnit
-          className={classes.addUnitDialog}
-          openAddUnit={openAddUnit}
-          setOpenAddUnit={setOpenAddUnit}
-          setUnits={setUnits}
-        />
+      <AddUnit
+        className={classes.addUnitDialog}
+        openAddUnit={openAddUnit}
+        setOpenAddUnit={setOpenAddUnit}
+        setUnits={setUnits}
+      />
     </div>
   );
 };

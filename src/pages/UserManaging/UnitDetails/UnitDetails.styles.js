@@ -3,7 +3,9 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => ({
   unitDetails: {
     height: '100%',
-    width: '70vw', // 85rem ?
+    width: '70vw',
+    overflowY: 'hidden',
+    position: 'relative',
     [theme.breakpoints.down('md')]: {
       width: '90vw',
       height: '100%',

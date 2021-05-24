@@ -4,7 +4,8 @@ const useStyles = makeStyles((theme) => ({
   units: {
     backgroundColor: theme.palette.primary.main,
     width: '18rem',
-    marginLeft: '3.5rem',
+    overflowY: 'hidden',
+    position: 'relative',
     marginRight: '2rem',
     [theme.breakpoints.down('md')]: {
       width: '100%',
@@ -34,15 +35,14 @@ const useStyles = makeStyles((theme) => ({
       fontSize: '1rem',
       fontWeight: 500,
       marginLeft: '0rem',
-
     },
   },
   unitsList: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    height: '34.5rem', // 34.5rem ?
-    overflowY: 'auto', // auto ?
+    height: '64%',
+    overflowY: 'auto',
     direction: 'rtl',
     [theme.breakpoints.down('md')]: {
       flexDirection: 'row-reverse',
@@ -63,7 +63,7 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: 'Rubik, sans-serif',
     fontWeight: 'bold',
     color: 'white',
-    marginTop: '3rem',
+    marginTop: '15%',
     marginBottom: '-1rem',
     marginRight: '3rem',
     [theme.breakpoints.down('md')]: {
@@ -84,7 +84,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.primary.secondary,
     borderRadius: '1.5rem',
     width: '12rem',
-    height: '2.5rem',
+    height: '3%',
     fontSize: '0.9rem',
     fontWeight: 'bold',
     '&:hover': {
@@ -93,7 +93,6 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('md')]: {
       width: '95%',
       height: '2.9rem',
-
     },
   },
   addUnitDiv: {
@@ -111,7 +110,6 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
     color: 'rgb(141 148 155 / 0.31)',
     fontWeight: '2rem',
-
   },
   noUnits: {
     fontSize: 20,

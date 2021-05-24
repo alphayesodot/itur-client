@@ -1,9 +1,3 @@
-/* eslint-disable eqeqeq */
-/* eslint-disable no-return-assign */
-/* eslint-disable no-param-reassign */
-/* eslint-disable no-loop-func */
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/jsx-indent */
 import { useTranslation } from 'react-i18next';
 import {
   TableCell,
@@ -20,7 +14,7 @@ import UserService from '../../../services/user.service';
 import UsersDialog from '../UsersDialog/UsersDialog';
 import NewUsersDialog from '../NewUsersDialog/NewUsersDialog';
 
-const RowTable = ({ role, users, setUsers, unit }) => {
+const RowTable = ({ roleToDisplay, role, users, setRoleUsers, setUsers, unit }) => {
   const { t } = useTranslation();
   const classes = useStyles();
   const [openAdd, setOpenAdd] = useState(false);
@@ -29,62 +23,32 @@ const RowTable = ({ role, users, setUsers, unit }) => {
   const [openNewUsersDialog, setOpenNewUsersDialog] = useState(false);
   const [usersToAdd, setUsersToAdd] = useState([]);
 
-  const notify = () => toast(t('text.userNotAddWarning'));
-
-  const getRoleName = () => {
-    let roleName = '';
-
-    switch (role) {
-      case 'מראיינ.ת': // TODO: change to i18n
-        roleName = 'interviewer';
-        break;
-      case t('role.ramadIturOfUnit'):
-        roleName = 'ramadItur';
-        break;
-      case t('role.ramadIturAssistant'):
-        roleName = 'ramadIturAssistant';
-        break;
-      case t('role.professionalRamad'):
-        roleName = 'professionalRamad';
-        break;
-      case t('role.psychologist'):
-        roleName = 'psychologist';
-        break;
-      case t('role.diagnoser'):
-        roleName = 'diagnoser';
-        break;
-      default:
-    }
-    return roleName;
-  };
-
   useEffect(async () => {
     setUsersToAdd([]);
     setOpenAdd(false);
   }, [unit]);
 
   const createUsers = async () => {
-    let usersLength = users.length;
     const unitShortId = unit.id.substring(unit.id.length - 3);
 
-    for (let i = 0; i < numberOfUsersToAdd; i += 1) {
-      const userName = `${getRoleName()}${unitShortId}${usersLength}`;
+    for (let userIndex = 1; userIndex <= numberOfUsersToAdd; userIndex += 1) {
+      const userName = `${role}${unitShortId}${users.length + userIndex}`;
       UserService.createUser(unit.id, role, userName).then((newUser) => {
+        setRoleUsers((prevUsersList) => [...prevUsersList, newUser]);
         setUsers((prevUsersList) => [...prevUsersList, newUser]);
         setUsersToAdd((prevUsersRoleList) => [...prevUsersRoleList, newUser]);
-        usersLength += 1;
-        if (i + 1 == numberOfUsersToAdd) {
+        if (userIndex === numberOfUsersToAdd) {
           setOpenNewUsersDialog(true);
         }
       }).catch(() => {
-        notify();
+        toast(t('text.userNotAddWarning'));
       });
     }
   };
 
   return (
-    <TableRow key={role} className={classes.tableRow}>
-      <TableCell align='center'>{role}</TableCell>
+    <TableRow key={roleToDisplay} className={classes.tableRow}>
+      <TableCell align='center'>{roleToDisplay}</TableCell>
       <TableCell align='center'>{users.length}</TableCell>
       <TableCell align='center'>
         <Button
@@ -111,7 +75,7 @@ const RowTable = ({ role, users, setUsers, unit }) => {
                   InputProps={{ type: 'number' }}
                   className={classes.numberOfRoleUsers}
                   value={numberOfUsersToAdd}
-                  onChange={(event) => setNumberOfUsersToAdd(event.target.value)}
+                  onChange={(event) => setNumberOfUsersToAdd(Number(event.target.value))}
                 />
                 <Button
                   variant='contained'
@@ -127,23 +91,22 @@ const RowTable = ({ role, users, setUsers, unit }) => {
         </div>
       </TableCell>
 
-        <UsersDialog
-          users={users}
-          role={role}
-          unit={unit}
-          openDialog={openDialog}
-          setOpenUsersDialog={setOpenDialog}
-        />
-
-        <NewUsersDialog
-          users={usersToAdd}
-          role={role}
-          unit={unit}
-          openNewUsersDialog={openNewUsersDialog}
-          setOpenNewUsersDialog={setOpenNewUsersDialog}
-          setUsersToAdd={setUsersToAdd}
-          setNumberOfUsersToAdd={setNumberOfUsersToAdd}
-        />
+      <UsersDialog
+        users={users}
+        role={roleToDisplay}
+        unit={unit}
+        openDialog={openDialog}
+        setOpenUsersDialog={setOpenDialog}
+      />
+      <NewUsersDialog
+        users={usersToAdd}
+        role={roleToDisplay}
+        unit={unit}
+        openNewUsersDialog={openNewUsersDialog}
+        setOpenNewUsersDialog={setOpenNewUsersDialog}
+        setUsersToAdd={setUsersToAdd}
+        setNumberOfUsersToAdd={setNumberOfUsersToAdd}
+      />
     </TableRow>
   );
 };

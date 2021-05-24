@@ -1,4 +1,4 @@
-import { Typography, Button, Dialog } from '@material-ui/core';
+import { Typography, Button, Dialog, IconButton, Tooltip } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 import useStyles from './UsersDialog.styles.js';
 import RoleUsersTable from '../RoleUsersTable/RoleUsersTable';
@@ -6,6 +6,14 @@ import RoleUsersTable from '../RoleUsersTable/RoleUsersTable';
 const UsersDialog = ({ users, role, unit, openDialog, setOpenUsersDialog }) => {
   const classes = useStyles();
   const { t } = useTranslation();
+
+  const copyUsers = () => {
+    const usernamesList = [];
+    users.forEach((user) => {
+      usernamesList.push(user.name);
+    });
+    navigator.clipboard.writeText(usernamesList);
+  };
 
   return (
     <Dialog
@@ -22,7 +30,7 @@ const UsersDialog = ({ users, role, unit, openDialog, setOpenUsersDialog }) => {
             <img src='add-icon.svg' alt='close' className={classes.closeIcon} />
           </Button>
         </div>
-        <div className={classes.mainDiv}>
+        <div className={classes.headLineMainDiv}>
           <div className={classes.headLine}>
             <Typography style={{ wordSpacing: '1rem' }}>
               <strong className={classes.titles}>{t('text.unit')}</strong>
@@ -41,7 +49,16 @@ const UsersDialog = ({ users, role, unit, openDialog, setOpenUsersDialog }) => {
           </div>
 
         </div>
-        {users.length > 0 ? <RoleUsersTable users={users} />
+        {users.length > 0 ? (
+          <div className={classes.mainDiv}>
+            <RoleUsersTable users={users} />
+            <Tooltip title={t('toolTip.copyUsers')}>
+              <IconButton onClick={() => { copyUsers(); }}>
+                <img src='copy.svg' alt='copy' />
+              </IconButton>
+            </Tooltip>
+          </div>
+        )
           : (
             <div className={classes.noUsersDiv}>
               <Typography className={classes.noUsers}>{t('text.noUsers')}</Typography>
@@ -49,6 +66,7 @@ const UsersDialog = ({ users, role, unit, openDialog, setOpenUsersDialog }) => {
           )}
 
       </div>
+
     </Dialog>
   );
 };

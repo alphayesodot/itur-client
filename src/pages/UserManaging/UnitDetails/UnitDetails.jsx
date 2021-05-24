@@ -6,8 +6,7 @@ import HeadLine from '../HeadLine/HeadLine.jsx';
 import UsersTable from '../UsersTable/UsersTable.jsx';
 import UserService from '../../../services/user.service.js';
 
-const UnitDetails = ({ unit }) => {
-  const [users, setUsers] = useState([]);
+const UnitDetails = ({ unit, users, setUsers }) => {
   const classes = useStyles();
   const { t } = useTranslation();
 
@@ -24,7 +23,7 @@ const UnitDetails = ({ unit }) => {
               <div className={classes.root}>
                 <HeadLine unitName={unit.name} numberOfUnitUsers={users.length} />
               </div>
-              <UsersTable users={users} unit={unit} />
+              <UsersTable users={users} setUsers={setUsers} unit={unit} />
             </>
           ) : <div className={classes.noUnitSelectedDiv}><h1 className={classes.noUnitSelected}>{ t('text.noSelectedUnit') }</h1></div> }
 

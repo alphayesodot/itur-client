@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button, Typography } from '@material-ui/core';
@@ -7,7 +6,7 @@ import useStyles from './Units.styles';
 import SearchBar from '../SearchBar/SearchBar';
 import UnitCard from '../UnitCard/UnitCard';
 
-const units = ({ unitsArray, setOpenAddUnit, selectedUnit, setSelectedUnit }) => {
+const units = ({ unitsArray, setOpenAddUnit, selectedUnit, setSelectedUnit, users }) => {
   const classes = useStyles();
   const { t } = useTranslation();
   const [displayedArray, setDisplayedArray] = useState(unitsArray);
@@ -27,7 +26,15 @@ const units = ({ unitsArray, setOpenAddUnit, selectedUnit, setSelectedUnit }) =>
       </div>
       { displayedArray.length > 0 ? (
         <div className={classes.unitsList}>
-          {displayedArray.map((unit) => <UnitCard unit={unit} key={unit.id} setSelectedUnit={setSelectedUnit} isSelected={unit.id === selectedUnit.id} />)}
+          {displayedArray.map((unit) => (
+            <UnitCard
+              unit={unit}
+              key={unit.id}
+              setSelectedUnit={setSelectedUnit}
+              isSelected={unit.id === selectedUnit.id}
+              users={users}
+            />
+          ))}
         </div>
       ) : <div className={classes.noUnitsDiv}><Typography className={classes.noUnits}>{t('text.noUnits')}</Typography></div> }
       <div className={classes.addUnitDiv}>

@@ -6,7 +6,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'center',
   },
   table: {
-    width: '65vw', // 80rem ?
+    width: '65vw',
     marginTop: '2rem',
     boxShadow: 'none',
     [theme.breakpoints.down('md')]: {

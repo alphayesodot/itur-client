@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 30,
     width: '75%',
   },
-  mainDiv: {
+  mainHeadLineDiv: {
     display: 'flex',
     justifyContent: 'center',
   },
@@ -58,6 +58,14 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('sm')]: {
       width: '80%',
     },
+  },
+  mainDiv: {
+    display: 'flex',
+    justifyContent: 'center',
+    flexDirection: 'row',
+    height: '100%',
+    alignItems: 'flex-start',
+    marginTop: '10%',
   },
 
 }));

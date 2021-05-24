@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '5rem',
+    minWidth: '5rem',
     marginRight: '1.5rem',
     display: 'flex',
     flexDirection: 'column',

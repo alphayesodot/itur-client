@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
   },
   mainDiv: {
     backgroundColor: theme.palette.primary.main,
-    width: '65vw', // 80rem ?
+    width: '65vw',
     height: '4.2rem',
     marginTop: '4rem',
     color: 'white',

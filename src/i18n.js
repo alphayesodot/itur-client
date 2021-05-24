@@ -78,6 +78,9 @@ const resources = {
         editQuestionnaire: 'עריכת שאלון',
         settings: 'הגדרות',
       },
+      toolTip: {
+        copyUsers: 'העתקת יוזרים',
+      },
     },
   },
 };

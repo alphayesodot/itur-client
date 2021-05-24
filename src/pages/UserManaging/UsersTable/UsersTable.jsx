@@ -11,7 +11,7 @@ import { useTranslation } from 'react-i18next';
 import useStyles from './UsersTable.styles';
 import RowTable from '../TableRow/TableRow';
 
-const UsersTable = ({ users, unit }) => {
+const UsersTable = ({ users, setUsers, unit }) => {
   const { t } = useTranslation();
   const [interviewers, setInterviewers] = useState([]);
   const [unitRamadsItur, setUnitRamadsItur] = useState([]);
@@ -19,34 +19,44 @@ const UsersTable = ({ users, unit }) => {
   const [professionalRamads, setProfessionalRamads] = useState([]);
   const [psychologists, setPsychologists] = useState([]);
   const [diagnostics, setDiagnostics] = useState([]);
-  const cells = [t('text.role'), t('text.amount'), t('text.permissions')];
-  const rows = [
+  const headlines = [t('text.role'), t('text.amount'), t('text.permissions')];
+  const roleObjects = [
     {
-      role: t('roles.interviewer'),
+      roleToDisplay: t('roles.interviewer'),
+      role: 'INTERVIEWER',
       list: interviewers,
       setList: setInterviewers,
     },
     {
-      role: t('roles.ramadIturOfUnit'),
+      roleToDisplay: t('roles.ramadIturOfUnit'),
+      role: 'RAMAD_ITUR_OF_UNIT',
       list: unitRamadsItur,
       setList: setUnitRamadsItur,
     },
     {
-      role: t('roles.ramadIturAssistant'),
+      roleToDisplay: t('roles.ramadIturAssistant'),
+      role: 'RAMAD_ITUR_ASSISTANT',
       list: unitRamadIturAssistants,
       setList: setUnitRamadIturAssistants,
     },
     {
-      role: t('roles.professionalRamad'),
+      roleToDisplay: t('roles.professionalRamad'),
+      role: 'PROFESSIONAL_RAMAD',
       list: professionalRamads,
       setList: setProfessionalRamads,
     },
     {
-      role: t('roles.psychologist'),
+      roleToDisplay: t('roles.psychologist'),
+      role: 'PSYCHOLOGIST',
       list: psychologists,
       setList: setPsychologists,
     },
-    { role: t('roles.diagnoser'), list: diagnostics, setList: setDiagnostics },
+    {
+      roleToDisplay: t('roles.diagnoser'),
+      role: 'DIAGNOSER',
+      list: diagnostics,
+      setList: setDiagnostics,
+    },
   ];
 
   const classes = useStyles();
@@ -91,9 +101,9 @@ const UsersTable = ({ users, unit }) => {
       <TableContainer component={Paper} className={classes.table}>
         <Table aria-label='simple table' dir='rtl'>
           <TableHead>
-            {cells.map((cell) => (
+            {headlines.map((headline) => (
               <TableCell align='center' className={classes.tableHeadLine}>
-                {cell}
+                {headline}
               </TableCell>
             ))}
             <TableCell align='left' className={classes.tableHeadLine}>
@@ -101,11 +111,13 @@ const UsersTable = ({ users, unit }) => {
             </TableCell>
           </TableHead>
           <TableBody>
-            {rows.map(({ role, list, setList }) => (
+            {roleObjects.map(({ roleToDisplay, role, list, setList }) => (
               <RowTable
+                roleToDisplay={roleToDisplay}
                 role={role}
                 users={list}
-                setUsers={setList}
+                setRoleUsers={setList}
+                setUsers={setUsers}
                 unit={unit}
               />
             ))}

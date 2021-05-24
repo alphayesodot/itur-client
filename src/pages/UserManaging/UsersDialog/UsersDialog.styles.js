@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 30,
     width: '75%',
   },
-  mainDiv: {
+  headLineMainDiv: {
     display: 'flex',
     justifyContent: 'center',
   },
@@ -69,6 +69,14 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 'bold',
     color: 'lightgrey',
     fontSize: '1.3rem',
+  },
+  mainDiv: {
+    display: 'flex',
+    justifyContent: 'center',
+    flexDirection: 'row',
+    height: '100%',
+    alignItems: 'flex-start',
+    marginTop: '10%',
   },
 }));
 

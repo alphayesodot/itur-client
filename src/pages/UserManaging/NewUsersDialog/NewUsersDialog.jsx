@@ -1,10 +1,16 @@
-/* eslint-disable max-len */
-import { Typography, Button, Dialog } from '@material-ui/core';
+import { Typography, Button, Dialog, IconButton, Tooltip } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 import useStyles from './NewUsersDialog.styles.js';
 import NewUsersTable from '../NewUsersTable/NewUsersTable.jsx';
 
-const NewUsersDialog = ({ users, role, unit, openNewUsersDialog, setOpenNewUsersDialog, setUsersToAdd, setNumberOfUsersToAdd }) => {
+const NewUsersDialog = ({
+  users,
+  role,
+  unit,
+  openNewUsersDialog,
+  setOpenNewUsersDialog,
+  setUsersToAdd,
+  setNumberOfUsersToAdd }) => {
   const classes = useStyles();
   const { t } = useTranslation();
 
@@ -12,6 +18,14 @@ const NewUsersDialog = ({ users, role, unit, openNewUsersDialog, setOpenNewUsers
     setUsersToAdd([]);
     setOpenNewUsersDialog(false);
     setNumberOfUsersToAdd(0);
+  };
+  const copyUsers = () => {
+    const usernamesList = [];
+    users.forEach((user) => {
+      usernamesList.push(user.name);
+      usernamesList.push('DFGJKL123456');
+    });
+    navigator.clipboard.writeText(usernamesList);
   };
 
   return (
@@ -30,7 +44,7 @@ const NewUsersDialog = ({ users, role, unit, openNewUsersDialog, setOpenNewUsers
             <img src='add-icon.svg' alt='close' className={classes.closeIcon} />
           </Button>
         </div>
-        <div className={classes.mainDiv}>
+        <div className={classes.mainHeadLineDiv}>
           <div className={classes.headLine}>
             <Typography style={{ wordSpacing: '1rem' }}>
               <strong className={classes.titles}>{t('text.unit')}</strong>
@@ -49,7 +63,15 @@ const NewUsersDialog = ({ users, role, unit, openNewUsersDialog, setOpenNewUsers
           </div>
 
         </div>
-        <NewUsersTable users={users} />
+        <div className={classes.mainDiv}>
+          <NewUsersTable users={users} />
+          <Tooltip title={t('toolTip.copyUsers')}>
+            <IconButton onClick={() => { copyUsers(); }}>
+              <img src='copy.svg' alt='copy' />
+            </IconButton>
+          </Tooltip>
+
+        </div>
 
       </div>
     </Dialog>
