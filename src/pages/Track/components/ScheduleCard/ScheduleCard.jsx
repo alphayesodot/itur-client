@@ -16,7 +16,7 @@ const ScheduleCard = ({ interviewer, date, nodeGroupId }) => {
     setInterviews(ScheduleStore.getScheduleOfInterviewer(
       date,
       nodeGroupId,
-      interviewer._id,
+      interviewer.id,
     ));
   }, [ScheduleStore.schedules, nodeGroupId, date]);
 

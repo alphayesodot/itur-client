@@ -98,7 +98,7 @@ const App = () => {
     },
     {
       path: configApp.sitesPostfixes.userManagement,
-      component: <h1>userManagement</h1>,
+      component: <UserManaging />,
     },
     {
       path: configApp.sitesPostfixes.unitCreation,

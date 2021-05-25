@@ -62,7 +62,7 @@ const TrackBoard = ({ nodeGroup, date }) => {
                 <ScheduleCard
                   interviewer={interviewer}
                   date={date}
-                  nodeGroupId={nodeGroup._id}
+                  nodeGroupId={nodeGroup.id}
                 />
               </ListItem>
             ))}

@@ -23,7 +23,7 @@ eventRouter.get('/', (req, res) => {
 });
 
 eventRouter.get('/:id', (req, res) => {
-  res.send(events.find((event) => event._id === req.params.id));
+  res.send(events.find((event) => event.id === req.params.id));
 });
 
 export default eventRouter;

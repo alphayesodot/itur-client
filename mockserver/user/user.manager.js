@@ -1,10 +1,15 @@
 import users from './db.js';
 
 class UserManager {
-  static async getUsersByUnitId(req, res) {
-    const unitUsers = users.filter((user) => user.unitId === req.params.id);
+  static async getUsers(req, res) {
+    const unitUsers = users.filter((user) => user.unitId === req.query.unitId);
     res.send(unitUsers || 404);
   }
+
+  static async getUserById(req, res) {
+    res.send(users.find((user) => user.id === req.params.id));
+  }
+
   static async createUser(req, res) {
     const { unitId, role, userName } = req.body;
     const newUser = {

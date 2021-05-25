@@ -22,7 +22,7 @@ const Header = observer(({
 
   useEffect(() => {
     if (selectedDate && selectedNodeGroup
-      && !ScheduleStore.getScheduleOfNodeGroup(selectedDate, selectedNodeGroup._id)) {
+      && !ScheduleStore.getScheduleOfNodeGroup(selectedDate, selectedNodeGroup.id)) {
       setIsLoading(true);
       ScheduleStore.addNewSchedule(selectedDate, selectedNodeGroup).catch(() => {
         toast(t('error.server'));

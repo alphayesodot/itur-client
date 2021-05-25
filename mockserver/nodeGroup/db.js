@@ -1,14 +1,8 @@
 const nodeGroups = [{
-  _id: '1',
+  id: '507f1f77bcf86cd7994390555',
   name: 'מסלול1',
-  unitId: '1',
-  usersIds: ['1', '2', '4', '7', '8'],
-},
-{
-  _id: '2',
-  name: 'מסלול2',
-  unitId: '1',
-  usersIds: ['3', '5', '6', '10', '11', '12', '9'],
+  unitId: '507f191e810c19729de861ea',
+  usersIds: ['507f1f77bcf86cd799439011'],
 }];
 
 export default nodeGroups;

@@ -9,7 +9,7 @@ const users = [
     userID: 1,
     name: 'רמד איתור ביחידה 0',
     role: 'RAMAD_ITUR_OF_UNIT',
-    unit: 0,
+    unit: '507f191e810c19729de861ea',
   },
   {
     userID: 2,

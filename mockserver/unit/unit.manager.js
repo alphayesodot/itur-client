@@ -11,6 +11,10 @@ class UnitManager {
     units.push(newUnit);
     res.send(newUnit || 404);
   }
+
+  static getUnitById(req, res) {
+    res.send(units.find((unit) => unit.id === req.params.id));
+  }
 }
 
 export default UnitManager;
