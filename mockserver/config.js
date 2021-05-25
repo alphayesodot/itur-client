@@ -12,7 +12,6 @@ const sitesPostfixes = {
   userManagement: '/user-management',
   unitCreation: '/unit-creation',
   editQuestionnaire: '/edit-questionnaire',
-  userManaging: '/user-managing',
 };
 
 const config = {
@@ -150,7 +149,7 @@ const config = {
         sideBar: false,
       },
       {
-        route: sitesPostfixes.userManaging,
+        route: sitesPostfixes.userManagement,
         sideBar: true,
       },
     ],

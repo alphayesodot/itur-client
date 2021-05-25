@@ -13,7 +13,7 @@ import logo from './utils/images/logo.svg';
 import UserStoreInstance from './stores/User.store';
 import configApp from './appConf';
 import 'react-toastify/dist/ReactToastify.css';
-import UserManaging from './pages/UserManaging/index';
+import UserManagement from './pages/UserManagement/index';
 import PermissionCheck from './common/PermissionCheck/PermissionCheck';
 
 const App = () => {
@@ -98,7 +98,7 @@ const App = () => {
     },
     {
       path: configApp.sitesPostfixes.userManagement,
-      component: <UserManaging />,
+      component: <UserManagement />,
     },
     {
       path: configApp.sitesPostfixes.unitCreation,
@@ -107,10 +107,6 @@ const App = () => {
     {
       path: configApp.sitesPostfixes.editQuestionnaire,
       component: <h1>editQuestionnaire</h1>,
-    },
-    {
-      path: configApp.sitesPostfixes.userManaging,
-      component: <UserManaging />,
     },
   ];
 

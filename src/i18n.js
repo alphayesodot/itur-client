@@ -21,13 +21,10 @@ const resources = {
         chooseNodeGroup: 'בחרו מסלול',
       },
       headerTitles: {
-        interviewsSchedule: 'לו"ז ראיונות',
-        malshabData: 'נתוני מלש"ב',
-        appraiserPreperationKit: 'ערכת הכנה למעריך',
         addUsers: 'הוספת משתמשים',
         addUnit: 'הוספת יחידה',
       },
-      text: {
+      userManagement: {
         users: 'משתמשים',
         newUsers: 'משתמשים חדשים',
         units: 'יחידות',
@@ -45,6 +42,7 @@ const resources = {
         noUsers: 'אין משתמשים',
         unitNotAddWarning: 'יחידה לא נוספה',
         userNotAddWarning: 'יוזר לא נוסף',
+        searchUnit: 'חיפוש יחידה',
       },
 
       headerBlessings: {

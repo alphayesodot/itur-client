@@ -2,7 +2,6 @@
 /* eslint-disable import/extensions */
 import express from 'express';
 import cookieParser from 'cookie-parser';
-import bodyParser from 'body-parser';
 import cors from 'cors';
 import buildJwt from './authentication.js';
 import config from './config.js';
@@ -14,7 +13,8 @@ import unitRouter from './unit/unit.router.js';
 
 const app = express();
 app.use(cors({ origin: '*', credentials: true }));
-app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 app.use(cookieParser());
 
 // Auth server
@@ -46,7 +46,5 @@ app.use('/api/nodeGroup', nodeGroupRouter);
 app.use('/api/user', userRouter);
 app.use('/api/unit', unitRouter);
 app.use('/api/xml-upload', xmlRouter);
-app.use('/api/unit', unitRouter);
-app.use('/api/user', userRouter);
 
 app.listen(config.port, () => console.log(`Mock server listening on ${config.port}`));

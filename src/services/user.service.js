@@ -12,12 +12,12 @@ class UserService {
     return data;
   }
   static async getUsersByUnitId(unitId) {
-    const res = await axios.get(`${await config.uri.api}/api/user/`, { headers, params: { unitId } }).catch(() => {});
+    const res = await axios.get(`${await config.uri.api}/api/user/`, { headers, params: { unitId } });
     return res?.data;
   }
 
   static async createUser(unitId, role, userName) {
-    const res = await axios.post(`${await config.uri.api}/api/user/`, { unitId, role, userName }, { headers }).catch(() => {});
+    const res = await axios.post(`${await config.uri.api}/api/user/`, { unitId, role, userName }, { headers });
     return res?.data;
   }
 }
