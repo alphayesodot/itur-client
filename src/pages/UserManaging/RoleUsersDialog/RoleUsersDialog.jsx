@@ -47,7 +47,6 @@ const RoleUsersDialog = ({ users, role, unit, openDialog, setOpenUsersDialog }) 
               {users.length}
             </Typography>
           </div>
-
         </div>
         {users.length > 0 ? (
           <div className={classes.mainDiv}>
@@ -58,15 +57,12 @@ const RoleUsersDialog = ({ users, role, unit, openDialog, setOpenUsersDialog }) 
               </IconButton>
             </Tooltip>
           </div>
-        )
-          : (
-            <div className={classes.noUsersDiv}>
-              <Typography className={classes.noUsers}>{t('text.noUsers')}</Typography>
-            </div>
-          )}
-
+        ) : (
+          <div className={classes.noUsersDiv}>
+            <Typography className={classes.noUsers}>{t('text.noUsers')}</Typography>
+          </div>
+        )}
       </div>
-
     </Dialog>
   );
 };

@@ -61,7 +61,6 @@ const useStyles = makeStyles((theme) => ({
     height: '5rem',
     width: '14rem',
   },
-
 }));
 
 export default useStyles;

@@ -90,7 +90,6 @@ const RowTable = ({ roleToDisplay, role, users, setRoleUsers, setUsers, unit }) 
           </div>
         </div>
       </TableCell>
-
       <RoleUsersDialog
         users={users}
         role={roleToDisplay}

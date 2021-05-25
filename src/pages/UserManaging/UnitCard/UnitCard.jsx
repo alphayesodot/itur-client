@@ -26,7 +26,6 @@ const UnitCard = ({ unit, isSelected, setSelectedUnit, users }) => {
             <img src='thin-arrow-icon.svg' alt='choose' className={classes.chooseIcon} />
           </Button>
         </div>
-
       </DashboardCard>
     </div>
   );

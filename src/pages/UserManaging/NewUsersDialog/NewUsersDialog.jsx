@@ -20,6 +20,7 @@ const NewUsersDialog = ({
     setOpenNewUsersDialog(false);
     setNumberOfUsersToAdd(0);
   };
+
   const copyUsers = () => {
     const usernamesList = [];
     users.forEach((user) => {
@@ -62,7 +63,6 @@ const NewUsersDialog = ({
               {users.length}
             </Typography>
           </div>
-
         </div>
         <div className={classes.mainDiv}>
           <NewUsersTable users={users} />
@@ -71,9 +71,7 @@ const NewUsersDialog = ({
               <img src='copy.svg' alt='copy' />
             </IconButton>
           </Tooltip>
-          <Snackbar
-            open
-          >
+          <Snackbar open>
             <Alert severity='error' variant='filled' style={{ marginBottom: '15%' }}>
               <Typography style={{ fontSize: '1.1rem' }}>
                 {t('warnings.oneTimePassword')}
@@ -81,7 +79,6 @@ const NewUsersDialog = ({
             </Alert>
           </Snackbar>
         </div>
-
       </div>
     </Dialog>
   );

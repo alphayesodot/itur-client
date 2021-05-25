@@ -17,7 +17,6 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('md')]: {
       width: '95%',
     },
-
   },
   homeLogo: {
     margin: '1rem',
@@ -34,7 +33,6 @@ const useStyles = makeStyles((theme) => ({
   mainDivText: {
     marginTop: '1.5rem',
   },
-
 }));
 
 export default useStyles;

@@ -7,7 +7,6 @@ const useStyles = makeStyles(() => ({
     width: '60%',
     direction: 'rtl',
     height: '60%',
-
   },
   cell: {
     fontWeight: 'bold',

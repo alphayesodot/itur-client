@@ -67,7 +67,6 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'flex-start',
     marginTop: '10%',
   },
-
 }));
 
 export default useStyles;

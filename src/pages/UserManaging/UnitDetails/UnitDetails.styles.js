@@ -25,7 +25,6 @@ const useStyles = makeStyles((theme) => ({
   },
   noUnitSelected: {
     fontWeight: 700,
-
   },
 }));
 

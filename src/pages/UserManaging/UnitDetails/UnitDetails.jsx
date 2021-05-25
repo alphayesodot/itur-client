@@ -17,16 +17,14 @@ const UnitDetails = ({ unit, users, setUsers }) => {
   return (
     <div>
       <DashboardCard className={classes.unitDetails}>
-        { unit
-          ? (
-            <>
-              <div className={classes.root}>
-                <UnitDetailsHeadLine unitName={unit.name} numberOfUnitUsers={users.length} />
-              </div>
-              <UnitDetailsUsersTable users={users} setUsers={setUsers} unit={unit} />
-            </>
-          ) : <div className={classes.noUnitSelectedDiv}><h1 className={classes.noUnitSelected}>{ t('text.noSelectedUnit') }</h1></div> }
-
+        { unit ? (
+          <>
+            <div className={classes.root}>
+              <UnitDetailsHeadLine unitName={unit.name} numberOfUnitUsers={users.length} />
+            </div>
+            <UnitDetailsUsersTable users={users} setUsers={setUsers} unit={unit} />
+          </>
+        ) : <div className={classes.noUnitSelectedDiv}><h1 className={classes.noUnitSelected}>{ t('text.noSelectedUnit') }</h1></div> }
       </DashboardCard>
     </div>
 
