@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import units from './db.js';
 
 class UnitManager {
