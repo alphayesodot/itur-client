@@ -4,7 +4,7 @@ import { ToastContainer } from 'react-toastify';
 import Home from './pages/Home/index';
 import Track from './pages/Track/index';
 import AuthService from './services/auth.service';
-import UploadXmlPage from './pages/XmlUpload/index';
+import UploadPage from './pages/FileUpload/index';
 import ConfigService from './services/config.service';
 import Sidebar from './common/SideBarNav/SideBarNav';
 import Header from './common/Header/Header';
@@ -58,7 +58,7 @@ const App = () => {
   const getRoutes = () => [
     {
       path: configApp.sitesPostfixes.fileUpload,
-      component: <UploadXmlPage />,
+      component: <UploadPage />,
     },
     {
       path: configApp.sitesPostfixes.interview,

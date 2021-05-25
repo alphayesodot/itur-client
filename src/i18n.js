@@ -71,9 +71,9 @@ const resources = {
         CANCELED: 'פגישה בוטלה',
         BREAK: 'הפסקה',
       },
-      xmlPage: {
+      uploadPage: {
         uploadButton: 'העלאת קבצים',
-        sizeLimitation: '( MB {{sizeLimit}} עד)',
+        sizeLimitation: '( עד {{sizeLimit}} MB )',
         hideFromView: 'הסתר מהתצוגה',
         fileInvalidType: 'סוג הקובץ לא תקין',
         fileTooLarge: 'הקובץ גדול מדי',
