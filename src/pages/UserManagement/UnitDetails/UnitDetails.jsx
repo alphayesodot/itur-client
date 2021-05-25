@@ -15,17 +15,14 @@ const UnitDetails = ({ unit, users, setUsers }) => {
   }, [unit]);
 
   return (
-    <div>
-      <DashboardCard className={classes.root}>
-        { unit ? (
-          <>
-            <UnitDetailsHeadLine unitName={unit.name} numberOfUnitUsers={users.length} />
-            <UnitDetailsUsersTable users={users} setUsers={setUsers} unit={unit} />
-          </>
-        ) : <div className={classes.noUnitSelectedDiv}><h1 className={classes.noUnitSelected}>{ t('userManagement.noSelectedUnit') }</h1></div> }
-      </DashboardCard>
-    </div>
-
+    <DashboardCard className={classes.root}>
+      { unit ? (
+        <>
+          <UnitDetailsHeadLine unitName={unit.name} numberOfUnitUsers={users.length} />
+          <UnitDetailsUsersTable users={users} setUsers={setUsers} unit={unit} />
+        </>
+      ) : <div className={classes.noUnitSelectedDiv}><h1 className={classes.noUnitSelected}>{ t('userManagement.noSelectedUnit') }</h1></div> }
+    </DashboardCard>
   );
 };
 

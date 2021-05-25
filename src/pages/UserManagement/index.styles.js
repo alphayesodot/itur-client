@@ -1,6 +1,10 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
+  root: {
+    display: 'flex',
+    width: '100%',
+  },
   mainDiv: {
     display: 'flex',
     justifyContent: 'center',
@@ -12,10 +16,6 @@ const useStyles = makeStyles((theme) => ({
       width: '90vw',
       alignItems: 'center',
     },
-  },
-  root: {
-    display: 'flex',
-    width: '100%',
   },
 }));
 

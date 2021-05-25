@@ -42,9 +42,9 @@ const Header = observer(({
             setSelectedNodeGroup={setSelectedNodeGroup}
           />
           <Typography className={`${classes.unit} ${classes.item}`}>
-            {' '}
             :
             {t('title.unit')}
+            {' '}
             <strong>{unit ? unit.name : ''}</strong>
           </Typography>
         </div>

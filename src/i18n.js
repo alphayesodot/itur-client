@@ -44,7 +44,6 @@ const resources = {
         userNotAddWarning: 'יוזר לא נוסף',
         searchUnit: 'חיפוש יחידה',
       },
-
       headerBlessings: {
         morning: 'בוקר טוב',
         afternoon: 'צהריים טובים',
@@ -88,7 +87,6 @@ const resources = {
         psychologist: 'פסיכולוג.ית',
         diagnoser: 'מאבחנ.ת',
         technical: 'טכני',
-
       },
       sideBar: {
         luz: 'לו"ז',

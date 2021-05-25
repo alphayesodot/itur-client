@@ -1,5 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
-/* eslint-disable import/extensions */
 import express from 'express';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
@@ -46,7 +44,5 @@ app.use('/api/nodeGroup', nodeGroupRouter);
 app.use('/api/user', userRouter);
 app.use('/api/unit', unitRouter);
 app.use('/api/upload', uploadRouter);
-app.use('/api/unit', unitRouter);
-app.use('/api/user', userRouter);
 
 app.listen(config.port, () => console.log(`Mock server listening on ${config.port}`));
