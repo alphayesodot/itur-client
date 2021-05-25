@@ -9,8 +9,8 @@ const UploadXmlPage = () => {
   const [files, setFiles] = useState([]);
   return (
     <DashboardCard className={classes.root}>
-      <DropZone files={files} setFiles={setFiles} />
       <ProgressBoxes files={files} setFiles={setFiles} />
+      <DropZone files={files} setFiles={setFiles} />
     </DashboardCard>
   );
 };

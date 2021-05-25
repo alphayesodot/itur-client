@@ -2,10 +2,11 @@ import React, { useState, useCallback, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import Home from './pages/Home/index';
-import Sidebar from './common/SideBarNav/SideBarNav';
+import Track from './pages/Track/index';
 import AuthService from './services/auth.service';
 import UploadXmlPage from './pages/XmlUpload/index';
 import ConfigService from './services/config.service';
+import Sidebar from './common/SideBarNav/SideBarNav';
 import Header from './common/Header/Header';
 import useStyles from './App.styles';
 import logo from './utils/images/logo.svg';
@@ -69,7 +70,7 @@ const App = () => {
     },
     {
       path: configApp.sitesPostfixes.track,
-      component: <h1>track</h1>,
+      component: <Track />,
     },
     {
       path: configApp.sitesPostfixes.malshabSchedule,
@@ -113,6 +114,7 @@ const App = () => {
     <Router classes={classes.root}>
       <Header />
       <div className={classes.bodyContainer}>
+        <Sidebar />
         <Switch>
           <Route path='/' exact>
             <Home />
@@ -124,7 +126,6 @@ const App = () => {
             </Route>
           ))}
         </Switch>
-        <Sidebar />
       </div>
       <ToastContainer />
     </Router>

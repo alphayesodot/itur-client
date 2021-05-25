@@ -12,7 +12,7 @@ class AuthService {
     } else {
       this.setAuthHeaders();
       if (jwt.verify(cookie, config.secret)) {
-        return jwt.decode(cookie).user;
+        return jwt.decode(cookie);
       }
     }
   }

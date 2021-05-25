@@ -3,7 +3,8 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '5rem',
-    marginLeft: '1.5rem',
+    minWidth: '5rem',
+    marginRight: '1.5rem',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
@@ -13,9 +14,12 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('sm')]: {
       flexDirection: 'row',
       width: '100%',
-      marginLeft: 'auto',
+      minHeight: '3em',
+      height: '3em',
+      marginRight: 'auto',
       marginBottom: '1rem',
       padding: '0.5rem 0',
+      overflowX: 'auto',
     },
   },
   icons: {

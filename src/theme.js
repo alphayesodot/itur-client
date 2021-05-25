@@ -17,10 +17,14 @@ const theme = createMuiTheme({
       main: 'rgb(247,251,252)',
       primary: 'rgb(16,171,196)',
       secondary: 'rgb(251,179,53)',
+      secondaryLight: 'rgb(252,205,123)',
     },
     scrollbar: {
       main: '#c5cbd0',
       secondary: '#EDF4F5',
+    },
+    font: {
+      secondary: '#8698ad',
     },
   },
 });
