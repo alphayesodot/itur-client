@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    height: '64%',
+    height: '34.5rem',
     overflowY: 'auto',
     direction: 'rtl',
     [theme.breakpoints.down('md')]: {
@@ -64,7 +64,7 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: 'Rubik, sans-serif',
     fontWeight: 'bold',
     color: 'white',
-    marginTop: '15%',
+    marginTop: '3rem',
     marginBottom: '-1rem',
     marginRight: '3rem',
     [theme.breakpoints.down('md')]: {
@@ -85,7 +85,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.primary.secondary,
     borderRadius: '1.5rem',
     width: '12rem',
-    height: '3%',
+    height: '3%', /// ///////////////////
     fontSize: '0.9rem',
     fontWeight: 'bold',
     '&:hover': {

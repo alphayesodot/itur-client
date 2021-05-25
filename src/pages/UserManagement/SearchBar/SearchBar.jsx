@@ -21,7 +21,6 @@ const SearchBar = ({ setDisplayedArray, unitsArray }) => {
             alt='search logo'
             height='15rem'
             width='15rem'
-            className={classes.searchLogo}
           />
         </div>
         <input type='text' className={classes.input} onChange={(event) => { handleChange(event.target.value); }} placeholder={t('userManagement.searchUnit')} />
