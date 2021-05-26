@@ -3,8 +3,8 @@ import { useTranslation } from 'react-i18next';
 import useStyles from './RoleUsersDialog.styles.js';
 import RoleUsersTable from '../RoleUsersTable/RoleUsersTable';
 import RolesDialogsHeadLine from '../RolesDialogsHeadLine/RolesDialogsHeadLine';
-import addImg from '../../../utils/images/userManagement/add-icon.svg';
-import copyImg from '../../../utils/images/userManagement/copy.svg';
+import addImg from '../../../../utils/images/userManagement/add-icon.svg';
+import copyImg from '../../../../utils/images/userManagement/copy.svg';
 
 const RoleUsersDialog = ({ users, role, unit, openDialog, setOpenUsersDialog }) => {
   const classes = useStyles();

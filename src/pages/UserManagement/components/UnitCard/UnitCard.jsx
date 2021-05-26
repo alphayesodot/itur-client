@@ -1,10 +1,10 @@
 import { useTranslation } from 'react-i18next';
 import { Button } from '@material-ui/core';
 import { useEffect, useState } from 'react';
-import UserService from '../../../services/user.service';
-import DashboardCard from '../../../common/DashboardCard/DashboardCard';
+import UserService from '../../../../services/user.service';
+import DashboardCard from '../../../../common/DashboardCard/DashboardCard';
 import useStyles from './UnitCard.styles';
-import arrowImg from '../../../utils/images/userManagement/thin-arrow-icon.svg';
+import arrowImg from '../../../../utils/images/userManagement/thin-arrow-icon.svg';
 
 const UnitCard = ({ unit, isSelected, setSelectedUnit, users }) => {
   const { t } = useTranslation();

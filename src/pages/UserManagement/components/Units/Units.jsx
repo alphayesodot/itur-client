@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button, Typography } from '@material-ui/core';
-import DashboardCard from '../../../common/DashboardCard/DashboardCard';
+import DashboardCard from '../../../../common/DashboardCard/DashboardCard';
 import useStyles from './Units.styles';
 import SearchBar from '../SearchBar/SearchBar';
 import UnitCard from '../UnitCard/UnitCard';

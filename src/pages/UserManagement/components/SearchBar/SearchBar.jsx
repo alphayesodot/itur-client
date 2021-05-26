@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import useStyles from './SearchBar.styles.js';
-import searchImg from '../../../utils/images/userManagement/search.png';
+import searchImg from '../../../../utils/images/userManagement/search.png';
 
 const SearchBar = ({ setDisplayedArray, unitsArray }) => {
   const classes = useStyles();

@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
-import AddUnit from './AddUnit/AddUnit.jsx';
+import AddUnit from './components/AddUnit/AddUnit';
 import useStyles from './index.styles';
-import UnitDetails from './UnitDetails/UnitDetails';
-import Units from './Units/Units';
+import UnitDetails from './components/UnitDetails/UnitDetails';
+import Units from './components/Units/Units';
 import UnitService from '../../services/unit.service';
 
 const UserManagement = () => {

@@ -3,8 +3,8 @@ import { Input, Button, Dialog, Typography } from '@material-ui/core';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 import useStyles from './AddUnit.styles.js';
-import UnitService from '../../../services/unit.service.js';
-import addImg from '../../../utils/images/userManagement/add-icon.svg';
+import UnitService from '../../../../services/unit.service.js';
+import addImg from '../../../../utils/images/userManagement/add-icon.svg';
 
 const AddUnit = ({ openAddUnit, setOpenAddUnit, setUnits }) => {
   const { t } = useTranslation();

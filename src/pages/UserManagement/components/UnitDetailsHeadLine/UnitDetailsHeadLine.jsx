@@ -1,7 +1,7 @@
-import DashboardCard from '../../../common/DashboardCard/DashboardCard.jsx';
+import DashboardCard from '../../../../common/DashboardCard/DashboardCard.jsx';
 import useStyles from './UnitDetailsHeadLine.styles';
-import homeImg from '../../../utils/images/userManagement/home.png';
-import usersImg from '../../../utils/images/userManagement/users.png';
+import homeImg from '../../../../utils/images/userManagement/home.png';
+import usersImg from '../../../../utils/images/userManagement/users.png';
 
 const UnitDetailsHeadLine = ({ unitName, numberOfUnitUsers }) => {
   const classes = useStyles();

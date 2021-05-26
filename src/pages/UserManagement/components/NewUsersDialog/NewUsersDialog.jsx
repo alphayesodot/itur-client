@@ -4,8 +4,8 @@ import { Alert } from '@material-ui/lab';
 import useStyles from './NewUsersDialog.styles.js';
 import NewUsersTable from '../NewUsersTable/NewUsersTable.jsx';
 import RolesDialogsHeadLine from '../RolesDialogsHeadLine/RolesDialogsHeadLine';
-import addImg from '../../../utils/images/userManagement/add-icon.svg';
-import copyImg from '../../../utils/images/userManagement/copy.svg';
+import addImg from '../../../../utils/images/userManagement/add-icon.svg';
+import copyImg from '../../../../utils/images/userManagement/copy.svg';
 
 const NewUsersDialog = ({
   users,
