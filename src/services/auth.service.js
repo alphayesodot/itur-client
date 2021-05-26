@@ -27,7 +27,7 @@ class AuthService {
         requestsConfig.headers.Authorization = `Bearer ${token}`;
         // TODO: In case the malshab using this client,
         // send a different header depends on the authorized user
-        requestsConfig.headers.Type = 'User';
+        requestsConfig.headers['Requester-Type'] = 'USER';
         return requestsConfig;
       }
     });

@@ -13,6 +13,7 @@ const events = [{
   location: 'place',
   interviewersIds: ['3', '6', '5'],
   url: 'http://',
+  results: { notes: [] },
 },
 {
   _id: '3',
@@ -29,6 +30,7 @@ const events = [{
   location: 'place',
   interviewersIds: ['3', '6'],
   url: 'http://',
+  results: { notes: [''] },
 },
 {
   _id: '3',
@@ -45,6 +47,7 @@ const events = [{
   location: 'place',
   interviewersIds: ['4', '7', '2'],
   url: 'http://',
+  results: { notes: [] },
 },
 {
   _id: '4',
@@ -61,6 +64,7 @@ const events = [{
   location: 'place',
   interviewersIds: ['5', '12', '9'],
   url: 'http://',
+  results: { notes: [] },
 },
 {
   _id: '4',
@@ -77,7 +81,7 @@ const events = [{
   location: 'place',
   interviewersIds: ['5', '12', '9'],
   url: 'http://',
-  results: { notes: [] },
+  results: { notes: [''] },
 },
 {
   _id: '2',
