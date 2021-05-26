@@ -2,7 +2,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    height: '9%',
+    height: '5rem',
     display: 'flex',
     justifyContent: 'center',
     width: '100%',
@@ -39,6 +39,10 @@ const useStyles = makeStyles((theme) => ({
   },
   searchLogoDiv: {
     margin: '0.8rem',
+  },
+  searchImg: {
+    height: '1rem',
+    width: '1rem',
   },
 }));
 

@@ -19,10 +19,10 @@ const NewUsersTable = ({ users }) => {
       <Table aria-label='simple table' dir='rtl'>
         <TableHead>
           <TableCell align='center' className={classes.cell}>
-            {t('userManagement.userName')}
+            {t('userManagement.titles.userName')}
           </TableCell>
           <TableCell align='center' className={classes.cell}>
-            {t('userManagement.password')}
+            {t('userManagement.titles.password')}
           </TableCell>
         </TableHead>
         <TableBody>

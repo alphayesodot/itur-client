@@ -19,11 +19,10 @@ const SearchBar = ({ setDisplayedArray, unitsArray }) => {
           <img
             src={searchImg}
             alt='search logo'
-            height='15rem'
-            width='15rem'
+            className={classes.searchImg}
           />
         </div>
-        <input type='text' className={classes.input} onChange={(event) => { handleChange(event.target.value); }} placeholder={t('userManagement.searchUnit')} />
+        <input type='text' className={classes.input} onChange={(event) => { handleChange(event.target.value); }} placeholder={t('userManagement.placeholders.searchUnit')} />
       </div>
     </div>
   );

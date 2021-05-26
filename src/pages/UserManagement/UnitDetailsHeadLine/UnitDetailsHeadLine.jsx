@@ -12,16 +12,12 @@ const UnitDetailsHeadLine = ({ unitName, numberOfUnitUsers }) => {
           <img
             src={homeImg}
             alt='home logo'
-            height='23rem'
-            width='23rem'
             className={classes.homeLogo}
           />
           <p className={classes.mainDivText}>{`${unitName} : `}</p>
           <img
             src={usersImg}
             alt='user logo'
-            height='36rem'
-            width='36rem'
             className={classes.usersLogo}
           />
           <p className={classes.mainDivText}>{numberOfUnitUsers}</p>

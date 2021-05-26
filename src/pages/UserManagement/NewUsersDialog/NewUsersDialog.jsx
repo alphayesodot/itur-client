@@ -27,8 +27,7 @@ const NewUsersDialog = ({
   const copyUsers = () => {
     const usernamesList = [];
     users.forEach((user) => {
-      usernamesList.push(user.name);
-      usernamesList.push(user.password);
+      usernamesList.push(JSON.stringify({ name: user.name, password: user.password }));
     });
     navigator.clipboard.writeText(usernamesList);
   };
@@ -44,7 +43,7 @@ const NewUsersDialog = ({
     >
       <div className={classes.root}>
         <div className={classes.titleDiv}>
-          <Typography className={classes.usersTitle}>{t('userManagement.newUsers')}</Typography>
+          <Typography className={classes.usersTitle}>{t('userManagement.titles.newUsers')}</Typography>
           <Button className={classes.closeButton} onClick={() => { closeDialog(); }}>
             <img src={addImg} alt='close' className={classes.closeIcon} />
           </Button>

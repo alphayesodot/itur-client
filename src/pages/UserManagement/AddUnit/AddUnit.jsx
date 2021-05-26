@@ -16,7 +16,7 @@ const AddUnit = ({ openAddUnit, setOpenAddUnit, setUnits }) => {
     UnitService.createUnit(unitName).then((newUnit) => {
       setUnits((units) => [...units, { id: newUnit.id, name: newUnit.name }]);
     }).catch(() => {
-      toast(t('userManagement.unitNotAddWarning'));
+      toast(t('userManagement.text.unitNotAddWarning'));
     }).finally(() => {
       setOpenAddUnit(false);
     });
@@ -34,13 +34,17 @@ const AddUnit = ({ openAddUnit, setOpenAddUnit, setUnits }) => {
       <div className={classes.root}>
         <div className={classes.titleDiv}>
           <Typography className={classes.title}>{t('headerTitles.addUnit')}</Typography>
-          <Button className={classes.closeButton} onClick={() => { setOpenAddUnit(!openAddUnit); }}>
+          <Button
+            className={classes.closeButton}
+            onClick={() => { setOpenAddUnit(!openAddUnit); }}
+            disableRipple
+          >
             <img src={addImg} alt='close' className={classes.addIcon} />
           </Button>
         </div>
         <div className={classes.addDiv}>
-          <Input type='text' placeholder={t('userManagement.unitName')} className={classes.input} onChange={(event) => setUnitName(event.target.value)} />
-          <Button className={classes.addButton} onClick={createUnit} disabled={unitName === ''}>{t('userManagement.add')}</Button>
+          <Input type='text' placeholder={t('userManagement.text.unitName')} className={classes.input} onChange={(event) => setUnitName(event.target.value)} />
+          <Button className={classes.addButton} onClick={createUnit} disabled={unitName === ''}>{t('userManagement.buttons.add')}</Button>
         </div>
       </div>
     </Dialog>

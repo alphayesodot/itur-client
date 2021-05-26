@@ -22,7 +22,7 @@ const UnitDetails = ({ unit, users, setUsers }) => {
             <UnitDetailsHeadLine unitName={unit.name} numberOfUnitUsers={users.length} />
             <UnitDetailsUsersTable users={users} setUsers={setUsers} unit={unit} />
           </>
-        ) : <div className={classes.noUnitSelectedDiv}><h1 className={classes.noUnitSelected}>{ t('userManagement.noSelectedUnit') }</h1></div> }
+        ) : <div className={classes.noUnitSelectedDiv}><h1 className={classes.noUnitSelected}>{ t('userManagement.titles.noSelectedUnit') }</h1></div> }
       </DashboardCard>
     </div>
 

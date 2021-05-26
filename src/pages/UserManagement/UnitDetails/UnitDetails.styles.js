@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    fontFamily: 'Rubik, sans-serif',
+    fontFamily: theme.typography.fontFamily,
     height: '100%',
     color: 'rgb(141 148 155 / 0.31)',
     [theme.breakpoints.down('md')]: {

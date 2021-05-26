@@ -15,6 +15,8 @@ const useStyles = makeStyles((theme) => ({
   },
   closeButton: {
     transform: 'rotate(45deg)',
+    backgroundColor: 'transparent',
+
     '&:hover,&:focus': {
       backgroundColor: 'white',
     },
@@ -25,21 +27,6 @@ const useStyles = makeStyles((theme) => ({
   },
   usersTitle: {
     fontWeight: 'bold',
-  },
-  headLine: {
-    backgroundColor: '#f3f5f7',
-    height: '2.5rem',
-    display: 'flex',
-    justifyContent: 'space-around',
-    alignItems: 'center',
-    marginLeft: '1.5rem',
-    marginRight: '1.5rem',
-    borderRadius: 30,
-    width: '75%',
-  },
-  headLineMainDiv: {
-    display: 'flex',
-    justifyContent: 'center',
   },
   titles: {
     marginRight: '0.5rem',
@@ -58,17 +45,6 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('sm')]: {
       width: '80%',
     },
-  },
-  noUsersDiv: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: '100%',
-  },
-  noUsers: {
-    fontWeight: 'bold',
-    color: 'lightgrey',
-    fontSize: '1.3rem',
   },
   mainDiv: {
     display: 'flex',

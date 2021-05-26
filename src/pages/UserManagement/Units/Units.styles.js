@@ -10,7 +10,8 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('md')]: {
       width: '100%',
       overflowX: 'hidden',
-      height: '25rem',
+      height: '100%',
+      minHeight: '22rem',
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
@@ -27,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
   unitsTitle: {
     color: 'white',
     fontSize: '0.98rem',
-    fontFamily: 'Rubik, sans-serif',
+    fontFamily: theme.typography.fontFamily,
     fontWeight: 'bold',
     marginTop: '3rem',
     marginLeft: '3rem',
@@ -61,7 +62,7 @@ const useStyles = makeStyles((theme) => ({
   },
   addUsersTitle: {
     fontSize: '1.3rem',
-    fontFamily: 'Rubik, sans-serif',
+    fontFamily: theme.typography.fontFamily,
     fontWeight: 'bold',
     color: 'white',
     marginTop: '3rem',
@@ -85,7 +86,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.primary.secondary,
     borderRadius: '1.5rem',
     width: '12rem',
-    height: '3%', /// ///////////////////
+    height: '3%',
     fontSize: '0.9rem',
     fontWeight: 'bold',
     '&:hover': {

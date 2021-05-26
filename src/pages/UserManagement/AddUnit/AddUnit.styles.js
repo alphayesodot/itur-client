@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     height: ' 12rem',
     width: '33rem',
@@ -17,7 +17,7 @@ const useStyles = makeStyles(() => ({
     position: 'absolute',
     marginLeft: '-0.5rem',
     '&:hover,&:focus': {
-      backgroundColor: '#27b9d1',
+      backgroundColor: theme.palette.section.primary,
     },
   },
   input: {
@@ -27,7 +27,7 @@ const useStyles = makeStyles(() => ({
     boxSizing: 'border-box',
     padding: '0px 10px',
     textAlign: 'right',
-    width: '192px',
+    width: '13.5rem',
     height: '40px',
     border: '1px solid #e7e8ea',
     borderRadius: '8px',
@@ -70,6 +70,9 @@ const useStyles = makeStyles(() => ({
   },
   paper: {
     borderRadius: 15,
+    [theme.breakpoints.up('lg')]: {
+      width: '28%',
+    },
   },
 }));
 

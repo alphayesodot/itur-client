@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
   },
   unitName: {
     fontSize: '1.1rem',
-    fontFamily: 'Rubik, sans-serif',
+    fontFamily: theme.typography.fontFamily,
     color: 'white',
     marginTop: '1.3rem',
     marginLeft: '2rem',
@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 'normal',
     color: 'rgb(125, 131, 137)',
     marginTop: '-0.5rem',
-    fontFamily: 'Rubik, sans-serif',
+    fontFamily: theme.typography.fontFamily,
     marginLeft: '2rem',
   },
   selectedCardText: {
@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 'normal',
     color: 'white',
     marginTop: '-0.5rem',
-    fontFamily: 'Rubik, sans-serif',
+    fontFamily: theme.typography.fontFamily,
     marginLeft: '2rem',
   },
   card: {
@@ -60,6 +60,11 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.section.primary,
     height: '5rem',
     width: '14rem',
+  },
+  chooseButton: {
+    '&:hover': {
+      backgroundColor: 'transparent',
+    },
   },
 }));
 

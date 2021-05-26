@@ -28,28 +28,27 @@ const RoleUsersDialog = ({ users, role, unit, openDialog, setOpenUsersDialog }) 
     >
       <div className={classes.root}>
         <div className={classes.titleDiv}>
-          <Typography className={classes.usersTitle}>{t('userManagement.users')}</Typography>
-          <Button className={classes.closeButton} onClick={() => { setOpenUsersDialog(false); }}>
+          <Typography className={classes.usersTitle}>{t('userManagement.titles.users')}</Typography>
+          <Button
+            className={classes.closeButton}
+            onClick={() => { setOpenUsersDialog(false); }}
+            disableRipple
+          >
             <img src={addImg} alt='close' className={classes.closeIcon} />
           </Button>
         </div>
 
         <RolesDialogsHeadLine users={users} role={role} unit={unit} />
 
-        {users.length > 0 ? (
-          <div className={classes.mainDiv}>
-            <RoleUsersTable users={users} />
-            <Tooltip title={t('toolTip.copyUsers')}>
-              <IconButton onClick={() => { copyUsers(); }}>
-                <img src={copyImg} alt='copy' />
-              </IconButton>
-            </Tooltip>
-          </div>
-        ) : (
-          <div className={classes.noUsersDiv}>
-            <Typography className={classes.noUsers}>{t('userManagement.noUsers')}</Typography>
-          </div>
-        )}
+        <div className={classes.mainDiv}>
+          <RoleUsersTable users={users} />
+          <Tooltip title={t('toolTip.copyUsers')}>
+            <IconButton onClick={() => { copyUsers(); }}>
+              <img src={copyImg} alt='copy' />
+            </IconButton>
+          </Tooltip>
+        </div>
+
       </div>
     </Dialog>
   );

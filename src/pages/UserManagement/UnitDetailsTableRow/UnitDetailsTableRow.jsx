@@ -41,7 +41,7 @@ const RowTable = ({ roleToDisplay, role, users, setRoleUsers, setUsers, unit }) 
           setOpenNewUsersDialog(true);
         }
       }).catch(() => {
-        toast(t('userManagement.userNotAddWarning'));
+        toast(t('userManagement.text.userNotAddWarning'));
       });
     }
   };
@@ -54,8 +54,9 @@ const RowTable = ({ roleToDisplay, role, users, setRoleUsers, setUsers, unit }) 
         <Button
           className={classes.permissionsButton}
           onClick={() => setOpenDialog(true)}
+          disabled={users.length === 0}
         >
-          {t('userManagement.view')}
+          {t('userManagement.buttons.view')}
         </Button>
       </TableCell>
       <TableCell align='right'>

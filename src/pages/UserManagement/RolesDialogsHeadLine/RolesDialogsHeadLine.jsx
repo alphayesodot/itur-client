@@ -11,17 +11,17 @@ const RolesDialogsHeadLine = ({ users, role, unit }) => {
     <div className={classes.root}>
       <div className={classes.headLine}>
         <Typography className={classes.unitTitle}>
-          <strong className={classes.titles}>{t('userManagement.unit')}</strong>
+          <strong className={classes.titles}>{t('userManagement.text.unit')}</strong>
           {unit.name}
         </Typography>
         <Typography>|</Typography>
         <Typography>
-          <strong className={classes.titles}>{t('userManagement.role')}</strong>
+          <strong className={classes.titles}>{t('userManagement.titles.role')}</strong>
           {role}
         </Typography>
         <Typography>|</Typography>
         <Typography>
-          <strong className={classes.titles}>{t('userManagement.amount')}</strong>
+          <strong className={classes.titles}>{t('userManagement.titles.amount')}</strong>
           {users.length}
         </Typography>
       </div>

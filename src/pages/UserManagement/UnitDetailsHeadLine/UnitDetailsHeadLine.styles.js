@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => ({
   root: {
     direction: 'ltr',
-    fontFamily: 'Rubik, sans-serif',
+    fontFamily: theme.typography.fontFamily,
     fontSize: '1.1rem',
     display: 'flex',
     justifyContent: 'center',
@@ -21,6 +21,8 @@ const useStyles = makeStyles((theme) => ({
   homeLogo: {
     margin: '1rem',
     marginTop: '1.4rem',
+    height: '1.54rem',
+    width: '1.54rem',
   },
   main: {
     marginLeft: '5rem',
@@ -29,6 +31,8 @@ const useStyles = makeStyles((theme) => ({
   usersLogo: {
     margin: '1rem',
     marginTop: '1rem',
+    height: '2.4rem',
+    width: '2.4rem',
   },
   mainDivText: {
     marginTop: '1.5rem',

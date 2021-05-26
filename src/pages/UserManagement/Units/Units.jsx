@@ -22,7 +22,7 @@ const units = ({ unitsArray, setOpenAddUnit, selectedUnit, setSelectedUnit, user
       </div>
       <SearchBar setDisplayedArray={setDisplayedArray} unitsArray={unitsArray} />
       <div className={classes.unitsCountDiv}>
-        <p className={classes.unitsTitle}>{`${t('userManagement.units')} (${displayedArray.length})`}</p>
+        <p className={classes.unitsTitle}>{`${t('userManagement.titles.units')} (${displayedArray.length})`}</p>
       </div>
       { displayedArray.length > 0 ? (
         <div className={classes.unitsList}>
@@ -36,7 +36,7 @@ const units = ({ unitsArray, setOpenAddUnit, selectedUnit, setSelectedUnit, user
             />
           ))}
         </div>
-      ) : <div className={classes.noUnitsDiv}><Typography className={classes.noUnits}>{t('userManagement.noUnits')}</Typography></div> }
+      ) : <div className={classes.noUnitsDiv}><Typography className={classes.noUnits}>{t('userManagement.text.noUnits')}</Typography></div> }
       <div className={classes.addUnitDiv}>
         <Button variant='contained' className={classes.addUnitButton} onClick={() => setOpenAddUnit(true)}>
           {t('button.addUnit')}

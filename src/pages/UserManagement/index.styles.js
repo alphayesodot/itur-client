@@ -12,6 +12,10 @@ const useStyles = makeStyles((theme) => ({
       width: '90vw',
       alignItems: 'center',
     },
+    [theme.breakpoints.down('sm')]: {
+      width: '100%',
+
+    },
   },
   root: {
     display: 'flex',
