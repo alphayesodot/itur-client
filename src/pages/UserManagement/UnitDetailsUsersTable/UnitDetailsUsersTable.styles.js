@@ -16,7 +16,6 @@ const useStyles = makeStyles((theme) => ({
   tableHeadLine: {
     fontWeight: 'bold',
   },
-
 }));
 
 export default useStyles;

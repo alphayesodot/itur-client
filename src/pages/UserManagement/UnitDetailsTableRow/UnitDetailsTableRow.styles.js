@@ -1,6 +1,17 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
+  root: {
+    '&:hover': {
+      backgroundColor: 'rgb(244,245,247)',
+    },
+    width: '0.5rem',
+  },
+  table: {
+    width: '60rem',
+    marginTop: '2rem',
+    boxShadow: 'none',
+  },
   addUsersButton: {
     backgroundColor: theme.palette.primary.secondary,
     borderRadius: '1.5rem',
@@ -53,12 +64,6 @@ const useStyles = makeStyles((theme) => ({
     color: 'rgb(76,175, 204)',
     borderRadius: '10rem',
     width: '8rem',
-  },
-  root: {
-    '&:hover': {
-      backgroundColor: 'rgb(244,245,247)',
-    },
-    width: '0.5rem',
   },
   hiddenElements: {
     minWidth: '14rem',
