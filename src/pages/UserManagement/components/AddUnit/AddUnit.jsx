@@ -15,6 +15,7 @@ const AddUnit = ({ openAddUnit, setOpenAddUnit, setUnits }) => {
   const createUnit = () => {
     UnitService.createUnit(unitName).then((newUnit) => {
       setUnits((units) => [...units, { id: newUnit.id, name: newUnit.name }]);
+      toast(t('userManagement.text.unitAdded'));
     }).catch(() => {
       toast(t('userManagement.text.unitNotAddWarning'));
     }).finally(() => {

@@ -14,6 +14,10 @@ class UnitManager {
   static getUnitById(req, res) {
     res.send(units.find((unit) => unit.id === req.params.id));
   }
+
+  // static generateId() {
+  //   return `_${Math.random().toString(36).substr(2, 9)}`;
+  // }
 }
 
 export default UnitManager;

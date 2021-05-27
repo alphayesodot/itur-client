@@ -2,7 +2,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    height: ' 12rem',
+    height: ' 11rem',
     width: '33rem',
   },
   addButton: {
@@ -70,6 +70,7 @@ const useStyles = makeStyles((theme) => ({
   },
   paper: {
     borderRadius: 15,
+    overflow: 'hidden',
     [theme.breakpoints.up('lg')]: {
       width: '28%',
     },

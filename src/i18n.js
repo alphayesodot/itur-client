@@ -31,6 +31,7 @@ const resources = {
           noUnits: 'אין יחידות',
           unit: 'יחידה',
           unitNotAddWarning: 'יחידה לא נוספה',
+          unitAdded: 'היחידה התווספה',
           userNotAddWarning: 'יוזר לא נוסף',
         },
         titles: {

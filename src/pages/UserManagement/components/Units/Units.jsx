@@ -22,7 +22,15 @@ const units = ({ unitsArray, setOpenAddUnit, selectedUnit, setSelectedUnit, user
       </div>
       <SearchBar setDisplayedArray={setDisplayedArray} unitsArray={unitsArray} />
       <div className={classes.unitsCountDiv}>
-        <p className={classes.unitsTitle}>{`${t('userManagement.titles.units')} (${displayedArray.length})`}</p>
+        <p className={classes.unitsTitle}>
+          <strong>
+            {t('userManagement.titles.units')}
+          </strong>
+          {' '}
+          (
+          {displayedArray.length}
+          )
+        </p>
       </div>
       { displayedArray.length > 0 ? (
         <div className={classes.unitsList}>
