@@ -7,7 +7,6 @@ const RolesDialogsHeadLine = ({ users, role, unit }) => {
   const { t } = useTranslation();
 
   return (
-
     <div className={classes.root}>
       <div className={classes.headLine}>
         <Typography className={classes.unitTitle}>

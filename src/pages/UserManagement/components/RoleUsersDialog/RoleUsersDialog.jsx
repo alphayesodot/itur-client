@@ -37,9 +37,7 @@ const RoleUsersDialog = ({ users, role, unit, openDialog, setOpenUsersDialog }) 
             <img src={addImg} alt='close' className={classes.closeIcon} />
           </Button>
         </div>
-
         <RolesDialogsHeadLine users={users} role={role} unit={unit} />
-
         <div className={classes.mainDiv}>
           <RoleUsersTable users={users} />
           <Tooltip title={t('toolTip.copyUsers')}>
@@ -48,7 +46,6 @@ const RoleUsersDialog = ({ users, role, unit, openDialog, setOpenUsersDialog }) 
             </IconButton>
           </Tooltip>
         </div>
-
       </div>
     </Dialog>
   );

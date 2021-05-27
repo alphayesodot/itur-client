@@ -16,7 +16,6 @@ const useStyles = makeStyles((theme) => ({
   closeButton: {
     transform: 'rotate(45deg)',
     backgroundColor: 'transparent',
-
     '&:hover,&:focus': {
       backgroundColor: 'white',
     },
