@@ -1,10 +1,10 @@
 import express from 'express';
-import users from './db.js';
+import UserManager from './user.manager.js';
 
 const userRouter = express.Router();
 
-userRouter.get('/:id', (req, res) => {
-  res.send(users.find((user) => user._id === req.params.id));
-});
+userRouter.get('/', UserManager.getUsers);
+userRouter.post('/', UserManager.createUser);
+userRouter.get('/:id', UserManager.getUserById);
 
 export default userRouter;

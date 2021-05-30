@@ -20,7 +20,7 @@ const NodeGroupSelect = ({ selectedNodeGroup, setSelectedNodeGroup }) => {
   }, []);
 
   const handleOnChange = (e) => {
-    setSelectedNodeGroup(nodeGroups.find((nodeGroup) => nodeGroup._id === e.target.value));
+    setSelectedNodeGroup(nodeGroups.find((nodeGroup) => nodeGroup.id === e.target.value));
   };
 
   return (
@@ -28,7 +28,7 @@ const NodeGroupSelect = ({ selectedNodeGroup, setSelectedNodeGroup }) => {
       className={classes.root}
       inputProps={{ classes: { root: classes.select, icon: classes.icon } }}
       onChange={handleOnChange}
-      value={selectedNodeGroup ? selectedNodeGroup._id : ''}
+      value={selectedNodeGroup ? selectedNodeGroup.id : ''}
       disableUnderline
     >
       {nodeGroups.length === 0
@@ -38,7 +38,7 @@ const NodeGroupSelect = ({ selectedNodeGroup, setSelectedNodeGroup }) => {
           </MenuItem>
         )
         : nodeGroups.map((nodeGroup) => (
-          <MenuItem key={nodeGroup._id} value={nodeGroup._id}>
+          <MenuItem key={nodeGroup.id} value={nodeGroup.id}>
             {nodeGroup.name}
           </MenuItem>
         ))}

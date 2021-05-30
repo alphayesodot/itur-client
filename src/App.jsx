@@ -4,7 +4,7 @@ import { ToastContainer } from 'react-toastify';
 import Home from './pages/Home/index';
 import Track from './pages/Track/index';
 import AuthService from './services/auth.service';
-import UploadXmlPage from './pages/XmlUpload/index';
+import UploadPage from './pages/FileUpload/index';
 import ConfigService from './services/config.service';
 import Sidebar from './common/SideBarNav/SideBarNav';
 import Header from './common/Header/Header';
@@ -13,6 +13,7 @@ import logo from './utils/images/logo.svg';
 import UserStoreInstance from './stores/User.store';
 import configApp from './appConf';
 import 'react-toastify/dist/ReactToastify.css';
+import UserManagement from './pages/UserManagement/index';
 import PermissionCheck from './common/PermissionCheck/PermissionCheck';
 
 const App = () => {
@@ -57,7 +58,7 @@ const App = () => {
   const getRoutes = () => [
     {
       path: configApp.sitesPostfixes.fileUpload,
-      component: <UploadXmlPage />,
+      component: <UploadPage />,
     },
     {
       path: configApp.sitesPostfixes.interview,
@@ -97,7 +98,7 @@ const App = () => {
     },
     {
       path: configApp.sitesPostfixes.userManagement,
-      component: <h1>userManagement</h1>,
+      component: <UserManagement />,
     },
     {
       path: configApp.sitesPostfixes.unitCreation,
