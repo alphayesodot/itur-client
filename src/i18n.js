@@ -90,7 +90,7 @@ const resources = {
       roles: {
         interviewer: 'מראיינ.ת',
         ramadIturOfUnit: 'רמ"ד איתור',
-        ramadIturAssistant: 'עוזר רמ"ד איתור',
+        ramadIturAssistant: 'עוזר.ת רמ"ד איתור',
         professionalRamad: 'רמ"ד מקצועי',
         mada: 'מד"ה',
         itur: 'איתור',
