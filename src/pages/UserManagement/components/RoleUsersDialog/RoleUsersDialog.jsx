@@ -25,6 +25,7 @@ const RoleUsersDialog = ({ users, role, unit, openDialog, setOpenUsersDialog }) 
       }}
       aria-labelledby='simple-dialog-title'
       open={openDialog}
+      onClose={() => setOpenUsersDialog(false)}
     >
       <div className={classes.root}>
         <div className={classes.titleDiv}>

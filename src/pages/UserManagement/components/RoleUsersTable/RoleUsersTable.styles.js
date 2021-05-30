@@ -5,8 +5,8 @@ const useStyles = makeStyles(() => ({
     boxShadow: 'none',
     paddingRight: '2rem',
     width: '60%',
+    height: '15rem',
     direction: 'rtl',
-    height: '60%',
   },
   cell: {
     fontWeight: 'bold',

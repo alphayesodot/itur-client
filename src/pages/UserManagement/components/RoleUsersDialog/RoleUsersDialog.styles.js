@@ -12,6 +12,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     justifyContent: 'space-between',
     padding: '2rem',
+    height: '5%',
   },
   closeButton: {
     transform: 'rotate(45deg)',
@@ -46,12 +47,11 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   mainDiv: {
+    height: '40%',
     display: 'flex',
     justifyContent: 'center',
-    flexDirection: 'row',
-    height: '100%',
     alignItems: 'flex-start',
-    marginTop: '10%',
+    marginTop: '8%',
   },
 }));
 

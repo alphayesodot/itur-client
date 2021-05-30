@@ -36,7 +36,8 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('md')]: {
       fontSize: '1rem',
       fontWeight: 500,
-      marginLeft: '0rem',
+      marginLeft: '0',
+      marginTop: '1rem',
     },
   },
   unitsList: {

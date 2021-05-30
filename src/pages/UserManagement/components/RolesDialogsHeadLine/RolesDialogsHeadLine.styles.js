@@ -4,6 +4,7 @@ const useStyles = makeStyles(() => ({
   root: {
     display: 'flex',
     justifyContent: 'center',
+    height: '5%',
   },
   headLine: {
     backgroundColor: '#f3f5f7',
