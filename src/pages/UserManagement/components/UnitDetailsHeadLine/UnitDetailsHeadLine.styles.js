@@ -27,6 +27,9 @@ const useStyles = makeStyles((theme) => ({
   main: {
     marginLeft: '5rem',
     display: 'flex',
+    [theme.breakpoints.down('md')]: {
+      marginLeft: '0',
+    },
   },
   usersLogo: {
     margin: '1rem',

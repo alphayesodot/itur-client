@@ -47,8 +47,6 @@ const useStyles = makeStyles((theme) => ({
     width: '3rem',
     border: '0.2px solid lightgrey',
     borderRadius: '0.5rem',
-    marginLeft: '-2rem',
-    marginRight: 'auto',
     fontWeight: 500,
   },
   underline: {
@@ -77,7 +75,7 @@ const useStyles = makeStyles((theme) => ({
     width: '8rem',
   },
   hiddenElements: {
-    minWidth: '14rem',
+    minWidth: '15rem',
   },
 }));
 
