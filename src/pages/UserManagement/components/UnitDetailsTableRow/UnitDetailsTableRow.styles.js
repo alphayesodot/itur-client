@@ -48,6 +48,17 @@ const useStyles = makeStyles((theme) => ({
     border: '0.2px solid lightgrey',
     borderRadius: '0.5rem',
     marginLeft: '-2rem',
+    marginRight: 'auto',
+    fontWeight: 500,
+  },
+  underline: {
+    '&&&:before': {
+      borderBottom: 'none',
+    },
+    '&&:after': {
+      borderBottom: 'none',
+    },
+    paddingLeft: '0.2rem',
   },
   addDiv: {
     display: 'flex',

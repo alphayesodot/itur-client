@@ -14,7 +14,7 @@ import UserService from '../../../../services/user.service';
 import RoleUsersDialog from '../RoleUsersDialog/RoleUsersDialog';
 import NewUsersDialog from '../NewUsersDialog/NewUsersDialog';
 
-const RowTable = ({ roleToDisplay, role, users, setRoleUsers, setUsers, unit }) => {
+const UnitDetailsTableRow = ({ roleToDisplay, role, users, setRoleUsers, setUsers, unit }) => {
   const { t } = useTranslation();
   const classes = useStyles();
   const [openAdd, setOpenAdd] = useState(false);
@@ -73,7 +73,8 @@ const RowTable = ({ roleToDisplay, role, users, setRoleUsers, setUsers, unit }) 
             {openAdd && (
               <>
                 <TextField
-                  InputProps={{ type: 'number' }}
+                  type='number'
+                  InputProps={{ inputProps: { min: 0 }, classes: { underline: classes.underline } }}
                   className={classes.numberOfRoleUsers}
                   value={numberOfUsersToAdd}
                   onChange={(event) => setNumberOfUsersToAdd(Number(event.target.value))}
@@ -111,4 +112,4 @@ const RowTable = ({ roleToDisplay, role, users, setRoleUsers, setUsers, unit }) 
   );
 };
 
-export default RowTable;
+export default UnitDetailsTableRow;
