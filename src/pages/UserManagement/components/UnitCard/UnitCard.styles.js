@@ -39,7 +39,6 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: '2rem',
   },
   selectedCardText: {
-    direction: 'rtl',
     fontSize: '0.9rem',
     fontWeight: 'normal',
     color: 'white',

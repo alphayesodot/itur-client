@@ -6,7 +6,7 @@ class UnitManager {
   }
 
   static createUnit(req, res) {
-    const newUnit = { id: '507f191e810c19729de369ea', name: req.body.unitName };
+    const newUnit = { id: UnitManager.generateId(), name: req.body.unitName };
     units.push(newUnit);
     res.send(newUnit || 404);
   }
@@ -15,9 +15,9 @@ class UnitManager {
     res.send(units.find((unit) => unit.id === req.params.id));
   }
 
-  // static generateId() {
-  //   return `_${Math.random().toString(36).substr(2, 9)}`;
-  // }
+  static generateId() {
+    return Math.random().toString(36).substr(2, 9);
+  }
 }
 
 export default UnitManager;
