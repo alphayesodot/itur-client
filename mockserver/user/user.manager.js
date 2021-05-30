@@ -1,4 +1,5 @@
 import users from './db.js';
+import { generateId } from '../utils.js';
 
 class UserManager {
   static async getUsers(req, res) {
@@ -13,7 +14,7 @@ class UserManager {
   static async createUser(req, res) {
     const { unitId, role, userName } = req.body;
     let newUser = {
-      id: UserManager.generateId(),
+      id: generateId(),
       name: userName,
       role,
       unitId,
@@ -21,10 +22,6 @@ class UserManager {
     users.push(newUser);
     newUser = { ...newUser, password: 'DFGJKL123456' };
     res.send(newUser || 404);
-  }
-
-  static generateId() {
-    return Math.random().toString(36).substr(2, 9);
   }
 }
 

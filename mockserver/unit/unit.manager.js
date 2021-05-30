@@ -1,4 +1,5 @@
 import units from './db.js';
+import { generateId } from '../utils.js';
 
 class UnitManager {
   static async getUnits(req, res) {
@@ -6,17 +7,13 @@ class UnitManager {
   }
 
   static createUnit(req, res) {
-    const newUnit = { id: UnitManager.generateId(), name: req.body.unitName };
+    const newUnit = { id: generateId(), name: req.body.unitName };
     units.push(newUnit);
     res.send(newUnit || 404);
   }
 
   static getUnitById(req, res) {
     res.send(units.find((unit) => unit.id === req.params.id));
-  }
-
-  static generateId() {
-    return Math.random().toString(36).substr(2, 9);
   }
 }
 
