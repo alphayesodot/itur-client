@@ -21,7 +21,7 @@ const UnitCard = ({ unit, isSelected, setSelectedUnit, users }) => {
         <div className={classes.mainDiv}>
           <div>
             <h1 className={classes.unitName}>{unit.name}</h1>
-            <h4 className={isSelected ? classes.selectedCardText : classes.numberOfUsers}>{`${t('userManagement.text.users')} ${unitUsers.length}`}</h4>
+            <h4 className={isSelected ? classes.selectedCardText : classes.numberOfUsers}>{`${t('userManagementText.users')} ${unitUsers.length}`}</h4>
           </div>
           <Button
             onClick={() => { setSelectedUnit(unit); }}

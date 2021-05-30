@@ -20,7 +20,7 @@ const SearchBar = ({ setDisplayedArray, unitsArray }) => {
             className={classes.searchImg}
           />
         </div>
-        <input type='text' className={classes.input} onChange={(event) => { handleChange(event.target.value); }} placeholder={t('userManagement.placeholders.searchUnit')} />
+        <input type='text' className={classes.input} onChange={(event) => { handleChange(event.target.value); }} placeholder={t('placeholders.searchUnit')} />
       </div>
     </div>
   );

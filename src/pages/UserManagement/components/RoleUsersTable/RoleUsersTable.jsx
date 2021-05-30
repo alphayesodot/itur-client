@@ -19,7 +19,7 @@ const RoleUsersTable = ({ users }) => {
       <Table aria-label='simple table' dir='rtl'>
         <TableHead>
           <TableCell align='center' className={classes.cell}>
-            {t('userManagement.titles.userName')}
+            {t('title.userName')}
           </TableCell>
         </TableHead>
         <TableBody>

@@ -19,7 +19,7 @@ const UnitDetailsUsersTable = ({ users, setUsers, unit }) => {
   const [professionalRamads, setProfessionalRamads] = useState([]);
   const [psychologists, setPsychologists] = useState([]);
   const [diagnostics, setDiagnostics] = useState([]);
-  const headlines = [t('userManagement.titles.role'), t('userManagement.titles.amount'), t('userManagement.titles.permissions')];
+  const headlines = [t('title.role'), t('title.amount'), t('title.permissions')];
   const roleObjects = [
     {
       roleToDisplay: t('roles.interviewer'),
@@ -107,7 +107,7 @@ const UnitDetailsUsersTable = ({ users, setUsers, unit }) => {
               </TableCell>
             ))}
             <TableCell align='left' className={classes.tableHeadLine}>
-              {t('userManagement.titles.add')}
+              {t('title.add')}
             </TableCell>
           </TableHead>
           <TableBody>

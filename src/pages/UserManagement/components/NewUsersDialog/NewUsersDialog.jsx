@@ -43,7 +43,7 @@ const NewUsersDialog = ({
     >
       <div className={classes.root}>
         <div className={classes.titleDiv}>
-          <Typography className={classes.usersTitle}>{t('userManagement.titles.newUsers')}</Typography>
+          <Typography className={classes.usersTitle}>{t('title.newUsers')}</Typography>
           <Button className={classes.closeButton} onClick={() => { closeDialog(); }}>
             <img src={addImg} alt='close' className={classes.closeIcon} />
           </Button>

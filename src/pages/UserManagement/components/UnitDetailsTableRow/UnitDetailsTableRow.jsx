@@ -30,6 +30,7 @@ const UnitDetailsTableRow = ({ roleToDisplay, role, users, setRoleUsers, setUser
 
   const createUsers = async () => {
     const unitShortId = unit.id.substring(unit.id.length - 3);
+    setUsersToAdd([]);
 
     for (let userIndex = 1; userIndex <= numberOfUsersToAdd; userIndex += 1) {
       const userName = `${role}${unitShortId}${users.length + userIndex}`;
@@ -41,7 +42,7 @@ const UnitDetailsTableRow = ({ roleToDisplay, role, users, setRoleUsers, setUser
           setOpenNewUsersDialog(true);
         }
       }).catch(() => {
-        toast(t('userManagement.text.userNotAddWarning'));
+        toast(t('userManagementText.userNotAddWarning'));
       });
     }
   };
@@ -56,7 +57,7 @@ const UnitDetailsTableRow = ({ roleToDisplay, role, users, setRoleUsers, setUser
           onClick={() => setOpenDialog(true)}
           disabled={users.length === 0}
         >
-          {t('userManagement.buttons.view')}
+          {t('button.view')}
         </Button>
       </TableCell>
       <TableCell align='right'>

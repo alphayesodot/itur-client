@@ -15,9 +15,9 @@ const AddUnit = ({ openAddUnit, setOpenAddUnit, setUnits }) => {
   const createUnit = () => {
     UnitService.createUnit(unitName).then((newUnit) => {
       setUnits((units) => [...units, { id: newUnit.id, name: newUnit.name }]);
-      toast(t('userManagement.text.unitAdded'));
+      toast(t('userManagementText.unitAdded'));
     }).catch(() => {
-      toast(t('userManagement.text.unitNotAddWarning'));
+      toast(t('userManagementText.unitNotAddWarning'));
     }).finally(() => {
       setOpenAddUnit(false);
     });
@@ -44,8 +44,8 @@ const AddUnit = ({ openAddUnit, setOpenAddUnit, setUnits }) => {
           </Button>
         </div>
         <div className={classes.addDiv}>
-          <Input type='text' placeholder={t('userManagement.text.unitName')} className={classes.input} onChange={(event) => setUnitName(event.target.value)} />
-          <Button className={classes.addButton} onClick={createUnit} disabled={unitName === ''}>{t('userManagement.buttons.add')}</Button>
+          <Input type='text' placeholder={t('userManagementText.unitName')} className={classes.input} onChange={(event) => setUnitName(event.target.value)} />
+          <Button className={classes.addButton} onClick={createUnit} disabled={unitName === ''}>{t('button.add')}</Button>
         </div>
       </div>
     </Dialog>

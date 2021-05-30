@@ -29,7 +29,7 @@ const RoleUsersDialog = ({ users, role, unit, openDialog, setOpenUsersDialog }) 
     >
       <div className={classes.root}>
         <div className={classes.titleDiv}>
-          <Typography className={classes.usersTitle}>{t('userManagement.titles.users')}</Typography>
+          <Typography className={classes.usersTitle}>{t('title.users')}</Typography>
           <Button
             className={classes.closeButton}
             onClick={() => { setOpenUsersDialog(false); }}

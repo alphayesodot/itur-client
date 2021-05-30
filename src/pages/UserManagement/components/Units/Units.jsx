@@ -24,7 +24,7 @@ const units = ({ unitsArray, setOpenAddUnit, selectedUnit, setSelectedUnit, user
       <div className={classes.unitsCountDiv}>
         <p className={classes.unitsTitle}>
           <strong>
-            {t('userManagement.titles.units')}
+            {t('title.units')}
           </strong>
           {' '}
           (
@@ -44,7 +44,7 @@ const units = ({ unitsArray, setOpenAddUnit, selectedUnit, setSelectedUnit, user
             />
           ))}
         </div>
-      ) : <div className={classes.noUnitsDiv}><Typography className={classes.noUnits}>{t('userManagement.text.noUnits')}</Typography></div> }
+      ) : <div className={classes.noUnitsDiv}><Typography className={classes.noUnits}>{t('userManagementText.noUnits')}</Typography></div> }
       <div className={classes.addUnitDiv}>
         <Button variant='contained' className={classes.addUnitButton} onClick={() => setOpenAddUnit(true)}>
           {t('button.addUnit')}
