@@ -5,6 +5,7 @@ import {
   Paper,
   TableContainer,
   TableBody,
+  TableRow,
 } from '@material-ui/core';
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -101,14 +102,16 @@ const UnitDetailsUsersTable = ({ users, setUsers, unit }) => {
       <TableContainer component={Paper} className={classes.table}>
         <Table aria-label='simple table' dir='rtl'>
           <TableHead>
-            {headlines.map((headline) => (
-              <TableCell align='center' className={classes.tableHeadLine}>
-                {headline}
+            <TableRow>
+              {headlines.map((headline) => (
+                <TableCell key={headline} align='center' className={classes.tableHeadLine}>
+                  {headline}
+                </TableCell>
+              ))}
+              <TableCell align='left' className={classes.tableHeadLine}>
+                {t('title.add')}
               </TableCell>
-            ))}
-            <TableCell align='left' className={classes.tableHeadLine}>
-              {t('title.add')}
-            </TableCell>
+            </TableRow>
           </TableHead>
           <TableBody>
             {roleObjects.map(({ roleToDisplay, role, list, setList }) => (
@@ -119,6 +122,7 @@ const UnitDetailsUsersTable = ({ users, setUsers, unit }) => {
                 setRoleUsers={setList}
                 setUsers={setUsers}
                 unit={unit}
+                key={role}
               />
             ))}
           </TableBody>

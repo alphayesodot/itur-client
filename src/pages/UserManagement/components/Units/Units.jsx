@@ -32,9 +32,9 @@ const units = ({ unitsArray, setOpenAddUnit, selectedUnit, setSelectedUnit, user
           )
         </p>
       </div>
-      { displayedArray.length > 0 ? (
-        <div className={classes.unitsList}>
-          {displayedArray.map((unit) => (
+      <div className={classes.unitsList}>
+        { displayedArray.length > 0 ? (
+          displayedArray.map((unit) => (
             <UnitCard
               unit={unit}
               key={unit.id}
@@ -42,9 +42,9 @@ const units = ({ unitsArray, setOpenAddUnit, selectedUnit, setSelectedUnit, user
               isSelected={unit.id === selectedUnit.id}
               users={users}
             />
-          ))}
-        </div>
-      ) : <div className={classes.noUnitsDiv}><Typography className={classes.noUnits}>{t('userManagementText.noUnits')}</Typography></div> }
+          ))
+        ) : <Typography className={classes.noUnits}>{t('userManagementText.noUnits')}</Typography> }
+      </div>
       <div className={classes.addUnitDiv}>
         <Button variant='contained' className={classes.addUnitButton} onClick={() => setOpenAddUnit(true)}>
           {t('button.addUnit')}

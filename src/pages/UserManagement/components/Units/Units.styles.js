@@ -47,6 +47,7 @@ const useStyles = makeStyles((theme) => ({
     height: '62.9%',
     overflowY: 'auto',
     direction: 'rtl',
+    color: 'rgb(141 148 155 / 0.31)',
     [theme.breakpoints.down('md')]: {
       flexDirection: 'row-reverse',
       overflowX: 'auto',
@@ -108,14 +109,9 @@ const useStyles = makeStyles((theme) => ({
       width: '100%',
     },
   },
-  noUnitsDiv: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    color: 'rgb(141 148 155 / 0.31)',
-    fontWeight: '2rem',
-  },
   noUnits: {
+    paddingTop: '3rem',
+    fontWeight: '2rem',
     fontSize: 20,
   },
   unitsCountDiv: {

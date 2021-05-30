@@ -18,9 +18,11 @@ const RoleUsersTable = ({ users }) => {
     <TableContainer component={Paper} className={classes.root}>
       <Table aria-label='simple table' dir='rtl'>
         <TableHead>
-          <TableCell align='center' className={classes.cell}>
-            {t('title.userName')}
-          </TableCell>
+          <TableRow>
+            <TableCell align='center' className={classes.cell}>
+              {t('title.userName')}
+            </TableCell>
+          </TableRow>
         </TableHead>
         <TableBody>
           {users.map((user) => (

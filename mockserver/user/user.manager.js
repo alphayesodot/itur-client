@@ -13,7 +13,7 @@ class UserManager {
   static async createUser(req, res) {
     const { unitId, role, userName } = req.body;
     let newUser = {
-      id: '507f1f77bcf86cd799439016',
+      id: UserManager.generateId(),
       name: userName,
       role,
       unitId,
@@ -21,6 +21,10 @@ class UserManager {
     users.push(newUser);
     newUser = { ...newUser, password: 'DFGJKL123456' };
     res.send(newUser || 404);
+  }
+
+  static generateId() {
+    return Math.random().toString(36).substr(2, 9);
   }
 }
 

@@ -1,11 +1,11 @@
 import {
   Table,
   TableCell,
+  TableRow,
   TableHead,
   Paper,
   TableContainer,
   TableBody,
-  TableRow,
 } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 import useStyles from './NewUsersTable.styles.js';
@@ -18,12 +18,14 @@ const NewUsersTable = ({ users }) => {
     <TableContainer component={Paper} className={classes.root}>
       <Table aria-label='simple table' dir='rtl'>
         <TableHead>
-          <TableCell align='center' className={classes.cell}>
-            {t('title.userName')}
-          </TableCell>
-          <TableCell align='center' className={classes.cell}>
-            {t('title.password')}
-          </TableCell>
+          <TableRow>
+            <TableCell align='center' className={classes.cell}>
+              {t('title.userName')}
+            </TableCell>
+            <TableCell align='center' className={classes.cell}>
+              {t('title.password')}
+            </TableCell>
+          </TableRow>
         </TableHead>
         <TableBody>
           {users.map((user) => (
