@@ -3,8 +3,8 @@ import { toast } from 'react-toastify';
 import Dropzone from 'react-dropzone';
 import Button from '@material-ui/core/Button';
 import { useTranslation } from 'react-i18next';
-import cloudImg from '../../../../utils/images/xmlPage/upload-decoration.svg';
-import uploadIcon from '../../../../utils/images/xmlPage/uploading-icon.svg';
+import cloudImg from '../../../../utils/images/uploadPage/upload-decoration.svg';
+import uploadIcon from '../../../../utils/images/uploadPage/uploading-icon.svg';
 import useStyles from './DropZone.styles';
 import configApp from '../../../../appConf';
 
@@ -14,7 +14,7 @@ const DropZone = ({ files, setFiles }) => {
   const createErrorNorifications = (fileName, errorsArray) => {
     errorsArray.forEach((e) => {
       // cast error code to t('code')
-      const translationCasting = `xmlPage.${(e.code)?.replace(/-([a-z])/g, (g) => g[1].toUpperCase())}`;
+      const translationCasting = `uploadPage.${(e.code)?.replace(/-([a-z])/g, (g) => g[1].toUpperCase())}`;
       if (i18n.exists(translationCasting)) {
         toast(`${fileName}: ${t(translationCasting)}`);
       } else toast(`${fileName}: ${e.code}`);
@@ -89,7 +89,7 @@ const DropZone = ({ files, setFiles }) => {
         const formData = new FormData();
         formData.append('file', acceptedFile);
         axios
-          .post(`${configApp.uri.api}/api/xml-upload`, formData, {
+          .post(`${configApp.uri.api}/api/upload`, formData, {
             params: {
               filename: acceptedFile.name,
             },
@@ -113,8 +113,8 @@ const DropZone = ({ files, setFiles }) => {
   return (
     <Dropzone
       onDrop={handleOnDrop}
-      accept={configApp.xmlUpload.acceptedFileTypes}
-      maxSize={configApp.xmlUpload.sizeLimit}
+      accept={configApp.fileUpload.acceptedFileTypes}
+      maxSize={configApp.fileUpload.sizeLimit}
     >
       {({ getRootProps, getInputProps }) => (
         /* eslint-disable react/jsx-props-no-spreading */
@@ -123,10 +123,10 @@ const DropZone = ({ files, setFiles }) => {
           <img alt='drop files' src={cloudImg} className={classes.cloudImg} />
           <p className={classes.explanation}>Drag and Drop to upload files</p>
           <Button className={classes.uploadButton}>
-            {t('xmlPage.uploadButton')}
+            {t('uploadPage.uploadButton')}
             <img className={classes.uploadIcon} src={uploadIcon} alt='upload' />
           </Button>
-          <p className={classes.limitation}>{t('xmlPage.sizeLimitation', { sizeLimit: configApp.xmlUpload.sizeLimit / conversion })}</p>
+          <p className={classes.limitation}>{t('uploadPage.sizeLimitation', { sizeLimit: configApp.fileUpload.sizeLimit / conversion })}</p>
         </div>
       ) }
     </Dropzone>

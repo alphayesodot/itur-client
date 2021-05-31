@@ -6,7 +6,12 @@ const useStyles = makeStyles((theme) => ({
     maxHeight: '22rem',
     overflowY: 'auto',
     margin: 'auto',
+    marginLeft: '3rem',
     padding: 'auto 0',
+    minWidth: '10rem',
+    [theme.breakpoints.down('sm')]: {
+      margin: 'auto',
+    },
   },
   progressBox: {
     display: 'flex',
@@ -60,8 +65,8 @@ const useStyles = makeStyles((theme) => ({
   progressBarColor: {
     backgroundColor: theme.palette.section.primary,
   },
-  xmlImg: {
-    marginRight: '0.5rem',
+  fileImg: {
+    marginLeft: '0.5rem',
   },
   noneLi: {
     listStyleType: 'none',

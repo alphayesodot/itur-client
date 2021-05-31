@@ -6,8 +6,8 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     alignItems: 'center',
     direction: 'rtl',
-    width: 'calc(100% - 3rem)',
-    minWidth: 'calc(100% - 3rem)',
+    width: 'calc(100% - 5.5vw)',
+    minWidth: 'calc(100% - 5.5vw)',
     [theme.breakpoints.down('sm')]: {
       minWidth: '100%',
       width: '100%',

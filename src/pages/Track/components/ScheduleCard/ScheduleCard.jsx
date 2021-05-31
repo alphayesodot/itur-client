@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Avatar, Typography } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 import DashboardCard from '../../../../common/DashboardCard/DashboardCard';
-import avatar from '../../../../utils/images/userpic-blue.svg';
+import avatar from '../../../../utils/images/track/userpic-blue.svg';
 import useStyles from './ScheduleCard.styles';
 import InterviewsList from '../InterviewsList/InterviewsList';
 import ScheduleStore from '../../../../stores/Schedule.store';
@@ -16,7 +16,7 @@ const ScheduleCard = ({ interviewer, date, nodeGroupId }) => {
     setInterviews(ScheduleStore.getScheduleOfInterviewer(
       date,
       nodeGroupId,
-      interviewer._id,
+      interviewer.id,
     ));
   }, [ScheduleStore.schedules, nodeGroupId, date]);
 

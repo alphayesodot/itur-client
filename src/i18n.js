@@ -15,10 +15,36 @@ const resources = {
         noInterviews: 'אין ראיונות',
         oneInterview: 'ראיון אחד',
         noNodeGroups: 'אין מסלולים',
+        users: 'משתמשים',
+        newUsers: 'משתמשים חדשים',
+        units: 'יחידות',
+        role: 'תפקיד',
+        amount: 'כמות',
+        permissions: 'הגדרות כניסה',
+        add: 'הוספה',
+        noSelectedUnit: 'אנא בחר יחידה',
+        userName: 'שם משתמש',
+        password: 'סיסמה',
       },
       message: {
         noInterviewersInNodeGroup: 'אין מראיינים במסלול',
         chooseNodeGroup: 'בחרו מסלול',
+      },
+      headerTitles: {
+        addUsers: 'הוספת משתמשים',
+        addUnit: 'הוספת יחידה',
+      },
+      placeholders: {
+        searchUnit: 'חיפוש יחידה',
+      },
+      userManagementText: {
+        users: 'משתמשים',
+        unitName: 'שם יחידה',
+        noUnits: 'אין יחידות',
+        unit: 'יחידה',
+        unitNotAddWarning: 'יחידה לא נוספה',
+        unitAdded: 'היחידה התווספה',
+        userNotAddWarning: 'יוזר לא נוסף',
       },
       headerBlessings: {
         morning: 'בוקר טוב',
@@ -27,7 +53,11 @@ const resources = {
         night: 'לילה טוב',
       },
       button: {
+        addUnit: '+ הוספת יחידה',
+        addUsers: '+ הוספת משתמשים',
         newSchedule: 'לוז חדש',
+        add: 'הוספה',
+        view: 'הצג',
       },
       day: {
         1: 'ראשון',
@@ -44,12 +74,23 @@ const resources = {
         CANCELED: 'פגישה בוטלה',
         BREAK: 'הפסקה',
       },
-      xmlPage: {
+      uploadPage: {
         uploadButton: 'העלאת קבצים',
-        sizeLimitation: '( MB {{sizeLimit}} עד)',
+        sizeLimitation: '( עד {{sizeLimit}} MB )',
         hideFromView: 'הסתר מהתצוגה',
         fileInvalidType: 'סוג הקובץ לא תקין',
         fileTooLarge: 'הקובץ גדול מדי',
+      },
+      roles: {
+        interviewer: 'מראיינ.ת',
+        ramadIturOfUnit: 'רמ"ד איתור',
+        ramadIturAssistant: 'עוזר.ת רמ"ד איתור',
+        professionalRamad: 'רמ"ד מקצועי',
+        mada: 'מד"ה',
+        itur: 'איתור',
+        psychologist: 'פסיכולוג.ית',
+        diagnoser: 'מאבחנ.ת',
+        technical: 'טכני',
       },
       sideBar: {
         luz: 'לו"ז',
@@ -64,6 +105,12 @@ const resources = {
         userManagement: 'ניהול משתמשים',
         editQuestionnaire: 'עריכת שאלון',
         settings: 'הגדרות',
+      },
+      toolTip: {
+        copyUsers: 'העתקת יוזרים',
+      },
+      warnings: {
+        oneTimePassword: 'שים לב, לאחר סגירת החלונית לא יהיה ניתן לצפות בסיסמה בשנית. יש לשמור את הסיסמה במקום מאובטח.',
       },
     },
   },

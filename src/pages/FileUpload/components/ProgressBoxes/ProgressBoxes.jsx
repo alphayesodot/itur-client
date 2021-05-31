@@ -9,7 +9,7 @@ import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import { useTranslation } from 'react-i18next';
 import useStyles from './ProgressBoxes.styles';
-import xmlImg from '../../../../utils/images/xmlPage/upload-progress-xml.svg';
+import fileImg from '../../../../utils/images/uploadPage/upload-progress.svg';
 
 const ProgressBoxes = ({ files, setFiles }) => {
   const classes = useStyles();
@@ -25,7 +25,7 @@ const ProgressBoxes = ({ files, setFiles }) => {
           {!file.progress ? (
             <CircularProgress size={17} className={classes.loader} />
           ) : (
-            <Tooltip placement='top' title={t('xmlPage.hideFromView')}>
+            <Tooltip placement='top' title={t('uploadPage.hideFromView')}>
               <IconButton
                 onClick={() => {
                   deleteFromList(file);
@@ -58,7 +58,7 @@ const ProgressBoxes = ({ files, setFiles }) => {
           />
         </ThemeProvider>
       </Box>
-      <img alt='xml file' className={classes.xmlImg} src={xmlImg} />
+      <img alt='file' className={classes.fileImg} src={fileImg} />
     </Box>
   );
 
