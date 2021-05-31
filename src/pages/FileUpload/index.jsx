@@ -4,7 +4,7 @@ import DropZone from './components/DropZone/DropZone';
 import DashboardCard from '../../common/DashboardCard/DashboardCard';
 import useStyles from './index.styles';
 
-const UploadXmlPage = () => {
+const UploadPage = () => {
   const classes = useStyles();
   const [files, setFiles] = useState([]);
   return (
@@ -15,4 +15,4 @@ const UploadXmlPage = () => {
   );
 };
 
-export default UploadXmlPage;
+export default UploadPage;

@@ -1,10 +1,10 @@
 import React from 'react';
 import { ListItem, Divider, Typography, Avatar, Tooltip } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
-import DONE from '../../../../utils/images/passed-positive.svg';
-import CANCELED from '../../../../utils/images/passed-negative.svg';
-import BREAK from '../../../../utils/images/break.svg';
-import DURING from '../../../../utils/images/during.svg';
+import DONE from '../../../../utils/images/track/passed-positive.svg';
+import CANCELED from '../../../../utils/images/track/passed-negative.svg';
+import BREAK from '../../../../utils/images/track/break.svg';
+import DURING from '../../../../utils/images/track/during.svg';
 import useStyles from './InterviewItem.styles';
 
 const InterviewItem = ({ status, time, name }) => {

@@ -22,7 +22,7 @@ const Header = observer(({
 
   useEffect(() => {
     if (selectedDate && selectedNodeGroup
-      && !ScheduleStore.getScheduleOfNodeGroup(selectedDate, selectedNodeGroup._id)) {
+      && !ScheduleStore.getScheduleOfNodeGroup(selectedDate, selectedNodeGroup.id)) {
       setIsLoading(true);
       ScheduleStore.addNewSchedule(selectedDate, selectedNodeGroup).catch(() => {
         toast(t('error.server'));
@@ -42,8 +42,8 @@ const Header = observer(({
             setSelectedNodeGroup={setSelectedNodeGroup}
           />
           <Typography className={`${classes.unit} ${classes.item}`}>
-            {t('title.unit')}
             :
+            {t('title.unit')}
             {' '}
             <strong>{unit ? unit.name : ''}</strong>
           </Typography>
