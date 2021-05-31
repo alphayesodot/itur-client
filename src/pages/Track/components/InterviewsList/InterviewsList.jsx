@@ -19,11 +19,15 @@ const InterviewsList = ({ interviews }) => {
     return 'PAST';
   };
 
+  const hasInterviewDone = (interview) => (
+    Object.values(interview.results).some((value) => !value || !value.length)
+  );
+
   const getInterviewStatus = (interview) => {
     const timeStatus = getTimeStatus(interview.time);
     switch (timeStatus) {
       case 'PAST':
-        return interview.results ? 'DONE' : 'CANCELED';
+        return hasInterviewDone(interview) ? 'DONE' : 'CANCELED';
       case 'PRESENT':
         return 'DURING';
       case 'FUTURE':

@@ -14,6 +14,7 @@ const events = [
     location: 'place',
     interviewersIds: ['507f1f77bcf86cd799439021', '507f1f77bcf86cd799439013', '507f1f77bcf86cd799439012'],
     url: 'http://',
+    results: { notes: [''] },
   },
   {
     id: '2',
@@ -30,6 +31,7 @@ const events = [
     location: 'place',
     interviewersIds: ['507f1f77bcf86cd799439033', '507f1f77bcf86cd799439021', '507f1f77bcf86cd799439013'],
     url: 'http://',
+    results: { notes: [] },
   },
   {
     id: '507f1f77bcf86cd799439021',
@@ -46,6 +48,7 @@ const events = [
     location: 'place',
     interviewersIds: ['507f1f77bcf86cd799439011'],
     url: 'http://',
+    results: { notes: [''] },
   },
   {
     id: '4',
@@ -62,6 +65,7 @@ const events = [
     location: 'place',
     interviewersIds: ['507f1f77bcf86cd799439012', '507f1f77bcf86cd799439033', '507f1f77bcf86cd799439022', '507f1f77bcf86cd799439023'],
     url: 'http://',
+    results: { notes: [''] },
   },
   {
     id: '5',
