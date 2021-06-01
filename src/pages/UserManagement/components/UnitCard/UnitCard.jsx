@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { Button } from '@material-ui/core';
+import { toast } from 'react-toastify';
 import { useEffect, useState } from 'react';
 import UserService from '../../../../services/user.service';
 import DashboardCard from '../../../../common/DashboardCard/DashboardCard';
@@ -11,8 +12,12 @@ const UnitCard = ({ unit, isSelected, setSelectedUnit, users }) => {
   const classes = useStyles();
   const [unitUsers, setUnitusers] = useState([]);
 
-  useEffect(async () => {
-    setUnitusers(await UserService.getUsersByUnitId(unit.id));
+  useEffect(() => {
+    UserService.getUsersByUnitId(unit.id).then((res) => {
+      setUnitusers(res);
+    }).catch(() => {
+      toast(t('error.server'));
+    });
   }, [users]);
 
   return (
