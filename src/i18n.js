@@ -8,6 +8,8 @@ const resources = {
         server: 'קרתה תקלה. נסו שוב מאוחר יותר',
       },
       title: {
+        break: 'הפסקה',
+        identityNumber: 'ת"ז',
         example: 'מערכת איתור',
         unit: 'יחידה',
         nodeGroup: 'מסלול',

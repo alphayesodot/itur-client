@@ -74,6 +74,7 @@ const InterviewsList = ({ interviews, InterviewItem }) => {
               status={status}
               time={new Date(time)}
               malshabShort={malshabShort}
+              timeDifference={timeDifference}
             />
           </div>
         ))}

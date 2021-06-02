@@ -8,6 +8,7 @@ import InterviewRaw from './components/InterviewRaw/InterviewRaw';
 import NodeGroupService from '../../services/nodeGroup.service';
 import Title from './components/Title/Title';
 import useStyles from './index.styles';
+import InterviewsList from '../../common/InterviewsList/InterviewsList';
 
 const Luz = () => {
   const classes = useStyles();
@@ -45,9 +46,7 @@ const Luz = () => {
         nodeGroupName={nodeGroup && nodeGroup.name}
       />
       <div className={classes.list}>
-        {interviews && interviews.map((interview) => (
-          <InterviewRaw interview={interview} />
-        ))}
+        <InterviewsList interviews={interviews} InterviewItem={InterviewRaw} />
       </div>
     </DashboardCard>
   );

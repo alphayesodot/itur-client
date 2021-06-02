@@ -78,7 +78,7 @@ const events = [
       firstName: 'עדי',
       lastName: 'ביטי',
     },
-    time: '2021-06-02T10:00:07.996+00:00',
+    time: '2021-06-02T10:30:07.996+00:00',
     location: 'place',
     interviewersIds: ['507f1f77bcf86cd799439012', '507f1f77bcf86cd799439022', '507f1f77bcf86cd799439023'],
     url: 'http://',
