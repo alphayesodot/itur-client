@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { List } from '@material-ui/core';
-import InterviewItem from '../InterviewItem/InterviewItem';
 import useStyles from './InterviewsList.styles';
 
 const timeDifference = 1800000; // 30 minutes
 
-const InterviewsList = ({ interviews }) => {
+const InterviewsList = ({ interviews, InterviewItem }) => {
   const classes = useStyles();
   const [expandedInterviews, setExpandedInterviews] = useState([]);
 
@@ -74,7 +73,7 @@ const InterviewsList = ({ interviews }) => {
             <InterviewItem
               status={status}
               time={new Date(time)}
-              name={malshabShort ? `${malshabShort.firstName} ${malshabShort.lastName}` : undefined}
+              malshabShort={malshabShort}
             />
           </div>
         ))}
