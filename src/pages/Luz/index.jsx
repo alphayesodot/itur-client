@@ -40,9 +40,12 @@ const Luz = () => {
 
   return (
     <DashboardCard className={classes.root}>
-      <Title interviewsCount={interviews.length} nodeGroupName={nodeGroup && nodeGroup.name} />
+      <Title
+        interviewsCount={interviews && interviews.length}
+        nodeGroupName={nodeGroup && nodeGroup.name}
+      />
       <div className={classes.list}>
-        {interviews.map((interview) => (
+        {interviews && interviews.map((interview) => (
           <InterviewRaw interview={interview} />
         ))}
       </div>
