@@ -27,7 +27,7 @@ const events = [
       firstName: 'דנה',
       lastName: 'זרמון',
     },
-    time: '2021-06-02T07:00:07.996+00:00',
+    time: '2021-06-02T15:30:07.996+00:00',
     location: 'place',
     interviewersIds: ['507f1f77bcf86cd799439033', '507f1f77bcf86cd799439021', '507f1f77bcf86cd799439013'],
     url: 'http://',

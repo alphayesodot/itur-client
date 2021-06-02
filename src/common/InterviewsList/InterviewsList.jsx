@@ -26,7 +26,7 @@ const InterviewsList = ({ interviews, InterviewItem }) => {
     const timeStatus = getTimeStatus(interview.time);
     switch (timeStatus) {
       case 'PAST':
-        return hasInterviewDone(interview) ? 'DONE' : 'CANCELED';
+        return hasInterviewDone(interview) ? 'CANCELED' : 'DONE';
       case 'PRESENT':
         return 'DURING';
       case 'FUTURE':

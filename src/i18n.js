@@ -63,6 +63,7 @@ const resources = {
         newSchedule: 'לוז חדש',
         add: 'הוספה',
         view: 'הצג',
+        enter: 'כניסה',
       },
       day: {
         1: 'ראשון',
@@ -127,6 +128,8 @@ const resources = {
       },
       toolTip: {
         copyUsers: 'העתקת יוזרים',
+        information: 'מידע נוסף',
+        playInterview: 'צפייה בראיון',
       },
       warnings: {
         oneTimePassword: 'שים לב, לאחר סגירת החלונית לא יהיה ניתן לצפות בסיסמה בשנית. יש לשמור את הסיסמה במקום מאובטח.',
