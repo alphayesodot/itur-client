@@ -1,25 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Typography, Avatar } from '@material-ui/core';
-import { toast } from 'react-toastify';
 import UserStore from '../../../../stores/User.store';
-import NodeGroupService from '../../../../services/nodeGroup.service';
 import avatar from '../../../../utils/images/schedule/userpic-blue.svg';
 import useStyles from './Title.styles';
 
-const Title = ({ interviewsCount }) => {
+const Title = ({ interviewsCount, nodeGroupName }) => {
   const classes = useStyles();
-  const currentUser = UserStore.userProfile;
   const { t } = useTranslation();
-  const [nodeGroup, setNodeGroup] = useState();
-
-  useEffect(() => {
-    NodeGroupService.getNodeGroups().then((res) => {
-      setNodeGroup(res);
-    }).catch(() => {
-      toast(t('error.server'));
-    });
-  }, []);
+  const currentUser = UserStore.userProfile;
 
   /* eslint-disable react/jsx-no-comment-textnodes */
   const separation = <strong className={classes.separation}>//</strong>;
@@ -34,7 +23,7 @@ const Title = ({ interviewsCount }) => {
       {getStringOfDate(new Date())}
       {separation}
       <strong>{`${t('title.nodeGroup')} `}</strong>
-      {nodeGroup && nodeGroup.name}
+      {nodeGroupName}
       {separation}
       <strong>{`${t('title.interviewsSchedule')} `}</strong>
       {interviewsCount}

@@ -10,7 +10,7 @@ class ScheduleStore {
 
   getScheduleOfNodeGroup(date, nodeGroupId) {
     return this.schedules ? this.schedules.find(
-      (schedule) => new Date(schedule.date).getTime() === new Date(date).getTime()
+      (schedule) => new Date(schedule.date).toDateString() === new Date(date).toDateString()
         && schedule.nodeGroupId === nodeGroupId,
     ) : undefined;
   }
