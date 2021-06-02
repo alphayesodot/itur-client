@@ -4,7 +4,6 @@ const useStyles = makeStyles(() => ({
   root: {
     height: '80%',
     width: '100%',
-    overflowY: 'scroll',
     overflowX: 'hidden',
     margin: '0.5em',
   },
