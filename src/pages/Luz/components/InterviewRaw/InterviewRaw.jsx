@@ -12,7 +12,7 @@ const InterviewRaw = ({ status, time, malshabShort, timeDifference }) => {
 
   return (
     <ListItem className={`${classes.root} ${interviewRawClasses.item} ${interviewRawClasses[`item${status}`]}`}>
-      <Typography className={classes.identityNumber}>
+      <Typography className={`${classes.identityNumber} ${classes[`identityNumber${status}`]}`}>
         {malshabShort && `${t('title.identityNumber')}: ${malshabShort.identityNumber}`}
       </Typography>
       <Tooltip
@@ -23,12 +23,14 @@ const InterviewRaw = ({ status, time, malshabShort, timeDifference }) => {
           {malshabShort ? `${malshabShort.firstName} ${malshabShort.lastName}` : t('title.break')}
         </Typography>
       </Tooltip>
-      <Typography className={`${interviewRawClasses.time} ${interviewRawClasses[`time${status}`]}`}>
+      <Typography className={`${classes.time} ${interviewRawClasses.time} ${interviewRawClasses[`time${status}`]}`}>
         {time.toTimeString().split(' ')[0].slice(0, 5)}
         -
         {new Date(time.getTime() + timeDifference).toTimeString().split(' ')[0].slice(0, 5)}
       </Typography>
-      <InterviewStatusIcon status={status} />
+      <div className={classes.icon}>
+        <InterviewStatusIcon status={status} />
+      </div>
     </ListItem>
   );
 };

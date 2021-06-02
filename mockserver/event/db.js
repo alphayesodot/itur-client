@@ -63,7 +63,7 @@ const events = [
     },
     time: '2021-06-02T14:00:07.996+00:00',
     location: 'place',
-    interviewersIds: ['507f1f77bcf86cd799439012', '507f1f77bcf86cd799439033', '507f1f77bcf86cd799439022', '507f1f77bcf86cd799439023'],
+    interviewersIds: ['507f1f77bcf86cd799439012', '507f1f77bcf86cd799439021', '507f1f77bcf86cd799439033', '507f1f77bcf86cd799439022', '507f1f77bcf86cd799439023'],
     url: 'http://',
     results: { notes: [''] },
   },
