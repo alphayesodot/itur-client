@@ -10,6 +10,7 @@ const resources = {
       title: {
         example: 'מערכת איתור',
         unit: 'יחידה',
+        nodeGroup: 'מסלול',
         day: 'יום',
         interviewsCount: 'סה"כ ראיונות',
         noInterviews: 'אין ראיונות',
@@ -25,6 +26,7 @@ const resources = {
         noSelectedUnit: 'אנא בחר יחידה',
         userName: 'שם משתמש',
         password: 'סיסמה',
+        interviewsSchedule: 'לוז ראיונות',
       },
       message: {
         noInterviewersInNodeGroup: 'אין מראיינים במסלול',
@@ -37,7 +39,8 @@ const resources = {
       placeholders: {
         searchUnit: 'חיפוש יחידה',
       },
-      userManagementText: {
+      text: {
+        in: 'ב',
         users: 'משתמשים',
         unitName: 'שם יחידה',
         noUnits: 'אין יחידות',
@@ -67,6 +70,20 @@ const resources = {
         5: 'חמישי',
         6: 'שישי',
         7: 'שבת',
+      },
+      month: {
+        0: 'ינואר',
+        1: 'פברואר',
+        2: 'מרץ',
+        3: 'אפריל',
+        4: 'מאי',
+        5: 'יוני',
+        6: 'יולי',
+        7: 'אוגוסט',
+        8: 'ספטמבר',
+        9: 'אוקטובר',
+        10: 'נובמבר',
+        11: 'דצמבר',
       },
       interviewStatus: {
         DURING: 'פגישה מתקיימת',

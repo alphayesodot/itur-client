@@ -43,7 +43,7 @@ const units = ({ unitsArray, setOpenAddUnit, selectedUnit, setSelectedUnit, user
               users={users}
             />
           ))
-        ) : <Typography className={classes.noUnits}>{t('userManagementText.noUnits')}</Typography> }
+        ) : <Typography className={classes.noUnits}>{t('text.noUnits')}</Typography> }
       </div>
       <div className={classes.addUnitDiv}>
         <Button variant='contained' className={classes.addUnitButton} onClick={() => setOpenAddUnit(true)}>
