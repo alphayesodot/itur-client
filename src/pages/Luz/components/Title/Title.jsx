@@ -16,18 +16,20 @@ const Title = ({ interviewsCount, nodeGroupName }) => {
   const getStringOfDate = (date) => `${date.getDate()} ${t('text.in')}${t(`month.${date.getMonth()}`)}`;
 
   return (
-    <Typography component='span' className={classes.root}>
+    <div className={classes.root}>
       <Avatar alt={currentUser.name} src={avatar} className={classes.avatar} />
-      {currentUser.name}
-      {separation}
-      {getStringOfDate(new Date())}
-      {separation}
-      <strong>{`${t('title.nodeGroup')} `}</strong>
-      {nodeGroupName}
-      {separation}
-      <strong>{`${t('title.interviewsSchedule')} `}</strong>
-      {interviewsCount}
-    </Typography>
+      <Typography component='span' className={classes.text}>
+        {currentUser.name}
+        {separation}
+        {getStringOfDate(new Date())}
+        {separation}
+        <strong>{`${t('title.nodeGroup')} `}</strong>
+        {nodeGroupName}
+        {separation}
+        <strong>{`${t('title.interviewsSchedule')} `}</strong>
+        {interviewsCount}
+      </Typography>
+    </div>
   );
 };
 
