@@ -7,6 +7,10 @@ const useStyles = makeStyles(() => ({
     flexDirection: 'column',
     alignItems: 'center',
   },
+  message: {
+    textAlign: 'center',
+    fontSize: '1.5rem',
+  },
   list: {
     width: '80%',
     height: '100%',

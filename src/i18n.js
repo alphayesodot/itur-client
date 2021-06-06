@@ -32,6 +32,7 @@ const resources = {
       },
       message: {
         noInterviewersInNodeGroup: 'אין מראיינים במסלול',
+        noInterviews: 'אין ראיונות',
         chooseNodeGroup: 'בחרו מסלול',
       },
       headerTitles: {

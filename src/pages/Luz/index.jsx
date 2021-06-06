@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { useTranslation } from 'react-i18next';
+import { Typography } from '@material-ui/core';
 import DashboardCard from '../../common/DashboardCard/DashboardCard';
 import UserStore from '../../stores/User.store';
 import ScheduleStore from '../../stores/Schedule.store';
@@ -46,7 +47,9 @@ const Luz = () => {
         nodeGroupName={nodeGroup && nodeGroup.name}
       />
       <div className={classes.list}>
-        <InterviewsList interviews={interviews} InterviewItem={InterviewRaw} />
+        {interviews.length
+          ? <InterviewsList interviews={interviews} InterviewItem={InterviewRaw} />
+          : <Typography className={classes.message}>{t('message.noInterviews')}</Typography>}
       </div>
     </DashboardCard>
   );
