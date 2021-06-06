@@ -6,6 +6,9 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    [theme.breakpoints.down('sm')]: {
+      height: 'calc(100vh - 15rem)',
+    },
   },
   message: {
     textAlign: 'center',
@@ -13,10 +16,10 @@ const useStyles = makeStyles((theme) => ({
   },
   list: {
     width: '80%',
-    height: '100%',
+    height: '80%',
     direction: 'rtl',
     [theme.breakpoints.down('sm')]: {
-      width: '100%',
+      width: '95%',
     },
   },
 }));

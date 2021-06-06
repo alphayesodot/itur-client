@@ -71,6 +71,9 @@ const useStyles = makeStyles((theme) => ({
       background: 'white',
       color: theme.palette.primary.secondary,
     },
+    [theme.breakpoints.down('sm')]: {
+      marginRight: '1%',
+    },
   },
 }));
 
