@@ -116,7 +116,7 @@ const resources = {
       sideBar: {
         luz: 'לו"ז',
         track: 'לו"ז שבועי',
-        malshabSchedule: 'שיבץ מלש"ב',
+        malshabSchedule: 'שיבוץ מלש"ב',
         malshabSearch: 'חיפוש מלש"ב',
         reports: 'דוחות',
         posh: 'פו"ש',
