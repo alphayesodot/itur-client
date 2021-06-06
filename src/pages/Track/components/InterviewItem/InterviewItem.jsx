@@ -1,10 +1,11 @@
 import React from 'react';
 import { ListItem, Divider, Typography, Tooltip } from '@material-ui/core';
-import useStyles from '../../../../common/InterviewItem.styles';
+import useStyles from '../../../../common/InterviewItem/InterviewItem.styles';
 import InterviewStatusIcon from '../../../../common/InterviewStatusIcon/InterviewStatusIcon';
 
-const InterviewItem = ({ status, time, malshabShort }) => {
+const InterviewItem = ({ event }) => {
   const classes = useStyles();
+  const { status, malshabShort, time } = event;
 
   return (
     <>
@@ -19,7 +20,7 @@ const InterviewItem = ({ status, time, malshabShort }) => {
           </Typography>
         </Tooltip>
         <Typography className={`${classes.time} ${classes[`time${status}`]}`}>
-          {time.toTimeString().split(' ')[0].slice(0, 5)}
+          {new Date(time).toTimeString().split(' ')[0].slice(0, 5)}
         </Typography>
       </ListItem>
       <Divider />

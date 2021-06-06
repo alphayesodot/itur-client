@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
   iconButton: {
     width: '1.5rem',
     height: '1.5rem',
-    paddingRight: '10%',
+    marginRight: '8%',
   },
   icon: {
     width: '5%',

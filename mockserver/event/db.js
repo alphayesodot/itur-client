@@ -14,7 +14,7 @@ const events = [
     location: 'place',
     interviewersIds: ['507f1f77bcf86cd799439021', '507f1f77bcf86cd799439013', '507f1f77bcf86cd799439012'],
     url: 'http://',
-    results: { notes: [''] },
+    results: { notes: [''], videoUrl: '111' },
   },
   {
     id: '2',

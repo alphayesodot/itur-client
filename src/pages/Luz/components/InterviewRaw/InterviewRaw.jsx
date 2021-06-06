@@ -6,14 +6,15 @@ import information from '../../../../utils/images/schedule/information.svg';
 import informationLight from '../../../../utils/images/schedule/information-light.svg';
 import play from '../../../../utils/images/schedule/play-button.svg';
 import InterviewStatusIcon from '../../../../common/InterviewStatusIcon/InterviewStatusIcon';
-import useStylesInterviewRaw from '../../../../common/InterviewItem.styles';
+import useStylesInterviewRaw from '../../../../common/InterviewItem/InterviewItem.styles';
 import useStyles from './InterviewRaw.styles';
 
-const InterviewRaw = ({ status, time, malshabShort, timeDifference }) => {
+const InterviewRaw = ({ event, timeDifference }) => {
   const classes = useStyles();
   const history = useHistory();
   const interviewRawClasses = useStylesInterviewRaw();
   const [openDialog, setOpenDialog] = useState(false);
+  const { status, time, malshabShort, results } = event;
   const { t } = useTranslation();
 
   return (
@@ -30,8 +31,7 @@ const InterviewRaw = ({ status, time, malshabShort, timeDifference }) => {
             {t('button.enter')}
           </Button>
           )}
-          {/* TODO: Go to malshab page when there is a video */}
-          {status === 'DONE' && (
+          {status === 'DONE' && results.videoUrl && (
           <Tooltip title={t('toolTip.playInterview')}>
             <IconButton className={classes.iconButton} onClick={() => history.push('/interview')}>
               <img src={play} alt='playInterview' className={classes.iconButton} />
@@ -55,9 +55,9 @@ const InterviewRaw = ({ status, time, malshabShort, timeDifference }) => {
         <Typography
           className={`${classes.time} ${interviewRawClasses.time} ${interviewRawClasses[`time${status}`]}`}
         >
-          {time.toTimeString().split(' ')[0].slice(0, 5)}
+          {new Date(time).toTimeString().split(' ')[0].slice(0, 5)}
           -
-          {new Date(time.getTime() + timeDifference).toTimeString().split(' ')[0].slice(0, 5)}
+          {new Date(new Date(time).getTime() + timeDifference).toTimeString().split(' ')[0].slice(0, 5)}
         </Typography>
         <div className={classes.icon}>
           <InterviewStatusIcon status={status} />
