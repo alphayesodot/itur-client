@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, withRouter } from 'react-router-dom';
 import Tooltip from '@material-ui/core/Tooltip';
 import { useTranslation } from 'react-i18next';
 import DashboardCard from '../DashboardCard/DashboardCard';
@@ -16,7 +16,7 @@ import UserStoreInstance from '../../stores/User.store';
 const Sidebar = () => {
   const classes = useStyles();
   const { t } = useTranslation();
-  const [currentUrlPostfix, setCurrentUrlPostfix] = useState(window.location.pathname);
+  const [iconsToShow, setIconsToShow] = useState([]);
   const userRole = UserStoreInstance.userProfile.role;
   const iconDetails = {
     luz: { urlPostfix: configApp.sitesPostfixes.luz, imgDef: luzIcon, imgActive: luzIconActive, tooltip: t('sideBar.luz') },
@@ -33,14 +33,13 @@ const Sidebar = () => {
     settings: { urlPostfix: '/settings', imgDef: settingsIcon, imgActive: settingsIconActive, tooltip: t('sideBar.settings') },
   };
   const createIcon = (iconDetailsObject) => {
-    const src = iconDetailsObject.urlPostfix === currentUrlPostfix
+    const src = iconDetailsObject.urlPostfix === window.location.pathname
       ? iconDetailsObject.imgActive : iconDetailsObject.imgDef;
     return (
       <Link
         key={iconDetailsObject.urlPostfix}
         className={classes.iconLink}
         to={iconDetailsObject.urlPostfix}
-        onClick={() => { setCurrentUrlPostfix(iconDetailsObject.urlPostfix); }}
       >
         <Tooltip placement='top' title={`${iconDetailsObject.tooltip}`}>
           <img className={classes.icons} src={src} alt={iconDetailsObject.tooltip} />
@@ -49,11 +48,13 @@ const Sidebar = () => {
     );
   };
 
-  const iconsToShow = Object.values(iconDetails).filter(
-    (iconDetail) => configApp.allowedUrlPostfixesOfRole[userRole]?.some(
-      (allowedUrl) => allowedUrl.route === iconDetail.urlPostfix && allowedUrl.sideBar,
-    ),
-  );
+  useEffect(() => {
+    setIconsToShow(Object.values(iconDetails).filter(
+      (iconDetail) => configApp.allowedUrlPostfixesOfRole[userRole]?.some(
+        (allowedUrl) => allowedUrl.route === iconDetail.urlPostfix && allowedUrl.sideBar,
+      ),
+    ));
+  }, [window.location.pathname]);
 
   return (
     <DashboardCard className={classes.root}>
@@ -65,4 +66,4 @@ const Sidebar = () => {
   );
 };
 
-export default Sidebar;
+export default withRouter(Sidebar);
