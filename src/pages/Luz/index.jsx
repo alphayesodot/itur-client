@@ -28,12 +28,12 @@ const Luz = () => {
 
   useEffect(() => {
     if (nodeGroup) {
-      ScheduleStore.addNewSchedule(new Date(), nodeGroup).then(() => {
-        setInterviews(ScheduleStore.getScheduleOfInterviewer(
-          new Date(),
-          nodeGroup.id,
-          currentUser.userID,
-        ));
+      ScheduleStore.getScheduleOfInterviewer(
+        new Date(),
+        nodeGroup.id,
+        currentUser.userID,
+      ).then((res) => {
+        setInterviews(res);
       }).catch(() => {
         toast(t('error.server'));
       });
@@ -43,11 +43,11 @@ const Luz = () => {
   return (
     <DashboardCard className={classes.root}>
       <Title
-        interviewsCount={interviews && interviews.length}
-        nodeGroupName={nodeGroup && nodeGroup.name}
+        interviewsCount={interviews?.length}
+        nodeGroupName={nodeGroup?.name}
       />
       <div className={classes.list}>
-        {interviews.length
+        {interviews?.length
           ? <InterviewsList interviews={interviews} InterviewItem={InterviewRaw} />
           : <Typography className={classes.message}>{t('message.noInterviews')}</Typography>}
       </div>

@@ -33,6 +33,7 @@ const InterviewRaw = ({ event, timeDifference }) => {
           )}
           {status === 'DONE' && results.videoUrl && (
           <Tooltip title={t('toolTip.playInterview')}>
+            {/* TODO: Send eventId as a prop to interview page */}
             <IconButton className={classes.iconButton} onClick={() => history.push('/interview')}>
               <img src={play} alt='playInterview' className={classes.iconButton} />
             </IconButton>

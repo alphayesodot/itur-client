@@ -15,7 +15,7 @@ class ScheduleStore {
     ) : undefined;
   }
 
-  getScheduleOfInterviewer(date, nodeGroupId, interviewerId) {
+  async getScheduleOfInterviewer(date, nodeGroupId, interviewerId) {
     let result;
     if (this.schedules) {
       const scheduleOfNodeGroup = this.getScheduleOfNodeGroup(date, nodeGroupId);
@@ -26,7 +26,7 @@ class ScheduleStore {
         result = searchedInterviewerObject ? searchedInterviewerObject.interviews : undefined;
       }
     }
-    return result;
+    return result || EventService.getEvents({ interviewerId, date: new Date(date) });
   }
 
   async addNewSchedule(date, nodeGroup) {

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Avatar, Typography } from '@material-ui/core';
+import { toast } from 'react-toastify';
 import { useTranslation } from 'react-i18next';
 import DashboardCard from '../../../../common/DashboardCard/DashboardCard';
 import avatar from '../../../../utils/images/schedule/userpic-blue.svg';
@@ -14,11 +15,15 @@ const ScheduleCard = ({ interviewer, date, nodeGroupId }) => {
   const [interviews, setInterviews] = useState([]);
 
   useEffect(() => {
-    setInterviews(ScheduleStore.getScheduleOfInterviewer(
+    ScheduleStore.getScheduleOfInterviewer(
       date,
       nodeGroupId,
       interviewer.id,
-    ));
+    ).then((res) => {
+      setInterviews(res);
+    }).catch(() => {
+      toast(t('error.server'));
+    });
   }, [ScheduleStore.schedules, nodeGroupId, date]);
 
   return (
