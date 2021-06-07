@@ -24,10 +24,10 @@ const MalshabInfo = ({ id }) => {
   }, [id]);
 
   return (
-    <Dialog className={classes.root}>
+    <Dialog open className={classes.root}>
       {isLoading
-        ? JSON.stringify(malshab)
-        : <CustomeBackDrop />}
+        ? <CustomeBackDrop />
+        : JSON.stringify(malshab)}
     </Dialog>
   );
 };
