@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { useTranslation } from 'react-i18next';
-import { Typography } from '@material-ui/core';
+import { Typography, CircularProgress, Backdrop } from '@material-ui/core';
 import DashboardCard from '../../common/DashboardCard/DashboardCard';
 import UserStore from '../../stores/User.store';
 import ScheduleStore from '../../stores/Schedule.store';
@@ -14,20 +14,25 @@ import InterviewsList from '../../common/InterviewsList/InterviewsList';
 const Luz = () => {
   const classes = useStyles();
   const { t } = useTranslation();
+  const [isLoading, setIsLoading] = useState(false);
   const [interviews, setInterviews] = useState([]);
   const [nodeGroup, setNodeGroup] = useState();
   const currentUser = UserStore.userProfile;
 
   useEffect(() => {
+    setIsLoading(true);
     NodeGroupService.getNodeGroups().then((res) => {
       setNodeGroup(res);
     }).catch(() => {
       toast(t('error.server'));
+    }).finally(() => {
+      setIsLoading(false);
     });
   }, []);
 
   useEffect(() => {
     if (nodeGroup) {
+      setIsLoading(true);
       ScheduleStore.getScheduleOfInterviewer(
         new Date(),
         nodeGroup.id,
@@ -36,6 +41,8 @@ const Luz = () => {
         setInterviews(res);
       }).catch(() => {
         toast(t('error.server'));
+      }).finally(() => {
+        setIsLoading(false);
       });
     }
   }, [nodeGroup]);
@@ -46,11 +53,19 @@ const Luz = () => {
         interviewsCount={interviews?.length}
         nodeGroupName={nodeGroup?.name}
       />
-      <div className={classes.list}>
-        {interviews?.length
-          ? <InterviewsList interviews={interviews} InterviewItem={InterviewRaw} />
-          : <Typography className={classes.message}>{t('message.noInterviews')}</Typography>}
-      </div>
+      {isLoading
+        ? (
+          <Backdrop open className={classes.backdrop}>
+            <CircularProgress color='primary' />
+          </Backdrop>
+        )
+        : (
+          <div className={classes.list}>
+            {interviews?.length
+              ? <InterviewsList interviews={interviews} InterviewItem={InterviewRaw} />
+              : <Typography className={classes.message}>{t('message.noInterviews')}</Typography>}
+          </div>
+        )}
     </DashboardCard>
   );
 };

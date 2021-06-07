@@ -75,6 +75,10 @@ const useStyles = makeStyles((theme) => ({
       marginRight: '1%',
     },
   },
+  disabled: {
+    background: '#aab5b9',
+    color: `${theme.palette.primary.main} !important`,
+  },
 }));
 
 export default useStyles;

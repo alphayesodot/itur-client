@@ -22,6 +22,10 @@ const useStyles = makeStyles((theme) => ({
       width: '95%',
     },
   },
+  backdrop: {
+    zIndex: theme.zIndex.drawer + 1,
+    color: '#fff',
+  },
 }));
 
 export default useStyles;

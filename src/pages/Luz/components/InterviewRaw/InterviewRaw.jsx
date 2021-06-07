@@ -26,18 +26,22 @@ const InterviewRaw = ({ event, timeDifference }) => {
               <img src={status === 'DURING' ? informationLight : information} alt='information' className={classes.iconButton} />
             </IconButton>
           </Tooltip>
-          {status === 'DURING' && (
-          <Button className={classes.button} onClick={() => history.push('/interview')}>
+          {status === 'DONE' && results.videoUrl && (
+            <Tooltip title={t('toolTip.playInterview')}>
+              {/* TODO: Send eventId as a prop to interview page */}
+              <IconButton className={classes.iconButton} onClick={() => history.push('/interview')}>
+                <img src={play} alt='playInterview' className={classes.iconButton} />
+              </IconButton>
+            </Tooltip>
+          )}
+          {!['DONE', 'CANCELED', 'BREAK'].includes(status) && (
+          <Button
+            className={`${classes.button} ${status !== 'DURING' ? classes.disabled : ''}`}
+            disabled={status !== 'DURING'}
+            onClick={() => history.push('/interview')}
+          >
             {t('button.enter')}
           </Button>
-          )}
-          {status === 'DONE' && results.videoUrl && (
-          <Tooltip title={t('toolTip.playInterview')}>
-            {/* TODO: Send eventId as a prop to interview page */}
-            <IconButton className={classes.iconButton} onClick={() => history.push('/interview')}>
-              <img src={play} alt='playInterview' className={classes.iconButton} />
-            </IconButton>
-          </Tooltip>
           )}
         </div>
         <Typography className={`${classes.identityNumber} ${classes[`identityNumber${status}`]}`}>
