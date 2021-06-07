@@ -11,6 +11,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     paddingTop: '0.2%',
     paddingBottom: '1.5%',
+    overflowY: 'auto',
     [theme.breakpoints.down('sm')]: {
       flexDirection: 'row',
       width: '100%',
