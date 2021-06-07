@@ -26,6 +26,10 @@ const theme = createMuiTheme({
     font: {
       secondary: '#8698ad',
     },
+    table: {
+      main: 'rgb(207,225,227)',
+      secondary: 'rgb(244,245,247)',
+    },
   },
 });
 

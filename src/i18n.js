@@ -10,6 +10,7 @@ const resources = {
       title: {
         example: 'מערכת איתור',
         unit: 'יחידה',
+        nodeGroups: 'מסלולים',
         day: 'יום',
         interviewsCount: 'סה"כ ראיונות',
         noInterviews: 'אין ראיונות',
@@ -33,9 +34,11 @@ const resources = {
       headerTitles: {
         addUsers: 'הוספת משתמשים',
         addUnit: 'הוספת יחידה',
+        searchNodeGroup: 'חיפוש מסלול',
       },
       placeholders: {
         searchUnit: 'חיפוש יחידה',
+        nodeGroup: 'מסלול',
       },
       userManagementText: {
         users: 'משתמשים',
@@ -56,6 +59,7 @@ const resources = {
         addUnit: '+ הוספת יחידה',
         addUsers: '+ הוספת משתמשים',
         newSchedule: 'לוז חדש',
+        newNodeGroup: 'מסלול חדש',
         add: 'הוספה',
         view: 'הצג',
       },
@@ -80,6 +84,12 @@ const resources = {
         hideFromView: 'הסתר מהתצוגה',
         fileInvalidType: 'סוג הקובץ לא תקין',
         fileTooLarge: 'הקובץ גדול מדי',
+      },
+      tableColumns: {
+        nodeGroupName: 'שם מסלול',
+        unit: 'יחידה',
+        users: 'משתמשים',
+        ramadOfUnit: 'רמ"ד יחידה',
       },
       roles: {
         interviewer: 'מראיינ.ת',
