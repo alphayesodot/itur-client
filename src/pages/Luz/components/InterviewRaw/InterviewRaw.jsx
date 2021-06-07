@@ -41,7 +41,7 @@ const InterviewRaw = ({ event, timeDifference }) => {
           )}
         </div>
         <Typography className={`${classes.identityNumber} ${classes[`identityNumber${status}`]}`}>
-          {malshabShort && `${t('title.identityNumber')}: ${malshabShort.identityNumber}`}
+          {malshabShort && `${t('title.identityNumber')}: ${malshabShort.id}`}
         </Typography>
         <Tooltip
           placement='bottom-start'

@@ -6,7 +6,7 @@ const events = [
       name: 'ראיון',
     },
     malshabShort: {
-      identityNumber: '22222222',
+      id: '22222222',
       firstName: 'נועה',
       lastName: 'קירל',
     },
@@ -23,7 +23,7 @@ const events = [
       name: 'ראיון',
     },
     malshabShort: {
-      identityNumber: '9999999',
+      id: '9999999',
       firstName: 'דנה',
       lastName: 'זרמון',
     },
@@ -40,7 +40,7 @@ const events = [
       name: 'ראיון',
     },
     malshabShort: {
-      identityNumber: '9999999',
+      id: '9999999',
       firstName: 'דנה',
       lastName: 'זרמון',
     },
@@ -57,7 +57,7 @@ const events = [
       name: 'ראיון',
     },
     malshabShort: {
-      identityNumber: '55555555',
+      id: '55555555',
       firstName: 'ישראל',
       lastName: 'ישראלי',
     },
@@ -74,7 +74,7 @@ const events = [
       name: 'ראיון',
     },
     malshabShort: {
-      identityNumber: '3333333',
+      id: '3333333',
       firstName: 'עדי',
       lastName: 'ביטי',
     },
@@ -91,7 +91,7 @@ const events = [
       name: 'ראיון',
     },
     malshabShort: {
-      identityNumber: '22222222',
+      id: '22222222',
       firstName: 'חיים',
       lastName: 'כהן',
     },

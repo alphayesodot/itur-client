@@ -49,9 +49,8 @@ const Sidebar = () => {
     const src = iconDetailsObject.urlPostfix === window.location.pathname
       ? iconDetailsObject.imgActive : iconDetailsObject.imgDef;
     return (
-      <div className={classes.icon}>
+      <div className={classes.icon} key={iconDetailsObject.urlPostfix}>
         <Link
-          key={iconDetailsObject.urlPostfix}
           className={classes.iconLink}
           to={iconDetailsObject.urlPostfix}
         >
