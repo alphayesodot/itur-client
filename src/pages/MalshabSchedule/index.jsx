@@ -1,6 +1,11 @@
 /* eslint-disable react/no-unescaped-entities */
-import React from 'react';
-import { InputLabel, OutlinedInput, TextField, Typography } from '@material-ui/core';
+import React, { useState } from 'react';
+import {
+  InputLabel,
+  OutlinedInput,
+  TextField,
+  Typography,
+} from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 import FormControl from '@material-ui/core/FormControl';
 import useStyles from './index.styles';
@@ -13,6 +18,7 @@ const MalshabSchedulePage = () => {
   const { t } = useTranslation();
 
   const [nameOrId, setNameOrId] = React.useState();
+  const [choosenNodeGroup, setChoosenNodeGroup] = useState('');
 
   const handleChange = (event) => {
     setNameOrId(event.target.value);
@@ -30,9 +36,20 @@ const MalshabSchedulePage = () => {
                 <span>סה"כ - 60</span>
               </Typography>
               <form>
-                <FormControl variant='outlined' className={classes.formControlNameOrId}>
-                  <InputLabel className={classes.formNameOrIdInputLabel}>{t('unitControlPage.nameOrIdText')}</InputLabel>
-                  <OutlinedInput size='small' className={classes.formNameOrIdInputText} value={nameOrId} onChange={handleChange} label='nameOrId' />
+                <FormControl
+                  variant='outlined'
+                  className={classes.formControlNameOrId}
+                >
+                  <InputLabel className={classes.formNameOrIdInputLabel}>
+                    {t('unitControlPage.nameOrIdText')}
+                  </InputLabel>
+                  <OutlinedInput
+                    size='small'
+                    className={classes.formNameOrIdInputText}
+                    value={nameOrId}
+                    onChange={handleChange}
+                    label='nameOrId'
+                  />
                 </FormControl>
 
                 <TextField
@@ -67,10 +84,8 @@ const MalshabSchedulePage = () => {
                   }}
                   variant='outlined'
                 />
-
               </form>
             </div>
-
           </DashboardCard>
           <DashboardCard className={classes.usersCard} />
         </div>
