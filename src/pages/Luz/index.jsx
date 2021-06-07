@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { useTranslation } from 'react-i18next';
-import { Typography, CircularProgress, Backdrop } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
 import DashboardCard from '../../common/DashboardCard/DashboardCard';
 import UserStore from '../../stores/User.store';
 import ScheduleStore from '../../stores/Schedule.store';
@@ -10,6 +10,7 @@ import NodeGroupService from '../../services/nodeGroup.service';
 import Title from './components/Title/Title';
 import useStyles from './index.styles';
 import InterviewsList from '../../common/InterviewsList/InterviewsList';
+import CustomeBackDrop from '../../common/CustomeBackDrop/CustomeBackDrop';
 
 const Luz = () => {
   const classes = useStyles();
@@ -54,11 +55,7 @@ const Luz = () => {
         nodeGroupName={nodeGroup?.name}
       />
       {isLoading
-        ? (
-          <Backdrop open className={classes.backdrop}>
-            <CircularProgress color='primary' />
-          </Backdrop>
-        )
+        ? <CustomeBackDrop />
         : (
           <div className={classes.list}>
             {interviews?.length

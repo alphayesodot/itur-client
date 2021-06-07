@@ -19,10 +19,6 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     marginTop: '3em',
   },
-  backdrop: {
-    zIndex: theme.zIndex.drawer + 1,
-    color: '#fff',
-  },
 }));
 
 export default useStyles;
