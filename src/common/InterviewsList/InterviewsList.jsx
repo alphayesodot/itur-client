@@ -8,6 +8,10 @@ const InterviewsList = ({ interviews, InterviewItem }) => {
   const classes = useStyles();
   const [expandedInterviews, setExpandedInterviews] = useState([]);
 
+  const hasInterviewDone = (interview) => (
+    Object.values(interview.results).some((value) => !value || !value.length)
+  );
+
   const getTimeStatus = (time) => {
     if (new Date().getTime() < new Date(time).getTime()) {
       return 'FUTURE';
@@ -18,22 +22,12 @@ const InterviewsList = ({ interviews, InterviewItem }) => {
     return 'PAST';
   };
 
-  const hasInterviewDone = (interview) => (
-    Object.values(interview.results).some((value) => !value || !value.length)
-  );
-
   const getInterviewStatus = (interview) => {
-    const timeStatus = getTimeStatus(interview.time);
-    switch (timeStatus) {
-      case 'PAST':
-        return hasInterviewDone(interview) ? 'CANCELED' : 'DONE';
-      case 'PRESENT':
-        return 'DURING';
-      case 'FUTURE':
-        return 'FUTURE';
-      default:
-        return undefined;
-    }
+    const statusMap = new Map();
+    statusMap.PAST = hasInterviewDone(interview) ? 'CANCELED' : 'DONE';
+    statusMap.PRESENT = 'DURING';
+    statusMap.FUTURE = 'FUTURE';
+    return statusMap[getTimeStatus(interview.time)];
   };
 
   useEffect(() => {

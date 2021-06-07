@@ -11,26 +11,17 @@ const InterviewStatusIcon = ({ status }) => {
   const classes = useStyles();
   const { t } = useTranslation();
 
-  const getIcon = () => {
-    switch (status) {
-      case 'DONE':
-        return DONE;
-      case 'CANCELED':
-        return CANCELED;
-      case 'BREAK':
-        return BREAK;
-      case 'DURING':
-        return DURING;
-      default:
-        return undefined;
-    }
-  };
+  const iconMap = new Map();
+  iconMap.DONE = DONE;
+  iconMap.CANCELED = CANCELED;
+  iconMap.BREAK = BREAK;
+  iconMap.DURING = DURING;
 
   return (
     <>
-      { getIcon() && (
+      { iconMap[status] && (
         <Tooltip arrow placement='right-end' title={t(`interviewStatus.${status}`)}>
-          <Avatar alt={status} src={getIcon()} className={classes.icon} />
+          <Avatar alt={status} src={iconMap[status]} className={classes.icon} />
         </Tooltip>
       )}
     </>
