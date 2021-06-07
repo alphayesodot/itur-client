@@ -6,6 +6,8 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    overflow: 'hidden',
+    position: 'relative',
     [theme.breakpoints.down('sm')]: {
       height: 'calc(100vh - 15rem)',
     },
