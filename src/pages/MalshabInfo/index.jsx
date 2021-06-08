@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
-import { Dialog } from '@material-ui/core';
+import { Dialog, DialogContent, DialogTitle, Typography } from '@material-ui/core';
 import MalshabService from '../../services/malshab.service';
+import infoIcon from '../../utils/images/malshabInfo/info.svg';
 import useStyles from './index.styles';
 import CustomeBackDrop from '../../common/CustomeBackDrop/CustomeBackDrop';
 
@@ -14,7 +15,8 @@ const MalshabInfo = ({ id }) => {
 
   useEffect(() => {
     setIsLoading(false);
-    MalshabService.getMalshabById(id).then((res) => {
+    // TODO: Change
+    MalshabService.getMalshabById(0).then((res) => {
       setMalshab(res);
     }).catch(() => {
       toast(t('error.server'));
@@ -25,9 +27,15 @@ const MalshabInfo = ({ id }) => {
 
   return (
     <Dialog open className={classes.root}>
-      {isLoading
-        ? <CustomeBackDrop />
-        : JSON.stringify(malshab)}
+      <DialogTitle className={classes.dialogTitle}>
+        <img src={infoIcon} alt='info icon' />
+        <Typography>{t('title.moreDetails')}</Typography>
+      </DialogTitle>
+      <DialogContent>
+        {isLoading
+          ? <CustomeBackDrop />
+          : JSON.stringify(malshab)}
+      </DialogContent>
     </Dialog>
   );
 };
