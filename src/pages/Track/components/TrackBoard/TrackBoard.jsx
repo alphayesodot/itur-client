@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import { useTranslation } from 'react-i18next';
 import useStyles from './TrackBoard.styles';
 import DashboardCard from '../../../../common/DashboardCard/DashboardCard';
-import UserService from '../../../../services/user.service';
+import { UserService } from '../../../../services/user.service';
 import ScheduleCard from '../ScheduleCard/ScheduleCard';
 
 const TrackBoard = ({ nodeGroup, date }) => {

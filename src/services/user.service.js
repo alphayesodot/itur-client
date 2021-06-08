@@ -6,19 +6,19 @@ const headers = {
   Accept: 'application/json',
 };
 
-// export const Role = {
-//   Interviewer: 'INTERVIEWER',
-//   RamadIturOfUnit: 'RAMAD_ITUR_OF_UNIT',
-//   RamadIturAssistant: 'RAMAD_ITUR_ASSISTANT',
-//   ProfessionalRamad: 'PROFESSIONAL_RAMAD',
-//   Mada: 'MADA',
-//   Itur: 'ITUR',
-//   Psychologist: 'PSYCHOLOGIST',
-//   Diagnoser: 'DIAGNOSER',
-//   Technical: 'TECHNICAL',
-// };
+export const Role = {
+  Interviewer: 'INTERVIEWER',
+  RamadIturOfUnit: 'RAMAD_ITUR_OF_UNIT',
+  RamadIturAssistant: 'RAMAD_ITUR_ASSISTANT',
+  ProfessionalRamad: 'PROFESSIONAL_RAMAD',
+  Mada: 'MADA',
+  Itur: 'ITUR',
+  Psychologist: 'PSYCHOLOGIST',
+  Diagnoser: 'DIAGNOSER',
+  Technical: 'TECHNICAL',
+};
 
-class UserService {
+export class UserService {
   static async getUserById(id) {
     const { data } = await axios.get(`${config.uri.api}/api/user/${id}`, { headers });
     return data;
@@ -34,4 +34,4 @@ class UserService {
   }
 }
 
-export default UserService;
+// export default UserService;

@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => ({
   root: {
     margin: 'auto 2.5em',
-    width: '50%',
+    width: '60%',
     direction: 'ltr',
   },
   title: {
@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   titleCell: {
-    padding: '0.5rem',
+    padding: '5rem !important',
   },
   cell: {
     borderBottom: 'none',

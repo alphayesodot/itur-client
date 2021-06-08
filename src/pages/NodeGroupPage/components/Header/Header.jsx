@@ -1,20 +1,14 @@
 import React from 'react';
 import { Button, Input, Typography } from '@material-ui/core';
-// import NodeGroupSelect from '../../../../common/NodeGroupSelect/NodeGroupSelect';
+// import Fab from '@material-ui/core/Fab';
 import { useTranslation } from 'react-i18next';
-import searchImg from '../../../../utils/images/general/search-yellow.svg';
-// import { toast } from 'react-toastify';
-// import { Typography } from '@material-ui/core';
-// import { observer } from 'mobx-react-lite';
+// import searchImg from '../../../../utils/images/general/search-yellow.svg';
 import DashboardCard from '../../../../common/DashboardCard/DashboardCard';
 import useStyles from './Header.styles';
-// import NodeGroupSelect from '../../../../common/NodeGroupSelect/NodeGroupSelect';
 
-// const Header = observer(({
 const Header = () => {
   const classes = useStyles();
   const { t } = useTranslation();
-  // const [selectedNodeGroup, setSelectedNodeGroup] = useState('');
   return (
     <DashboardCard className={classes.root}>
       <div className={classes.content}>
@@ -22,16 +16,16 @@ const Header = () => {
           <Button className={`${classes.newNodeGroupButton} ${classes.item}`}>
             {t('button.newNodeGroup')}
           </Button>
-          <div>
-            <Button className={classes.tangparent}>
+          <div className={classes.headerGroups}>
+            {/* <Fab size='medium' className={classes.searchButton}>
               <img src={searchImg} className={classes.searchImg} alt='search' />
-            </Button>
+            </Fab> */}
             <Input className={classes.input} />
+            <Typography className={`${classes.unit} ${classes.item}`}>
+              :
+              <strong>{t('headerTitles.searchNodeGroup')}</strong>
+            </Typography>
           </div>
-          <Typography className={`${classes.unit} ${classes.item}`}>
-            :
-            <strong>{t('headerTitles.searchNodeGroup')}</strong>
-          </Typography>
         </div>
       </div>
     </DashboardCard>

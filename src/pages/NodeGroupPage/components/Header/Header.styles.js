@@ -26,9 +26,16 @@ const useStyles = makeStyles((theme) => ({
       width: '100%',
     },
   },
+  headerGroups: {
+    flex: '0 1 50%',
+    display: 'flex',
+    alignContent: 'center',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+  },
   input: {
     backgroundColor: 'white',
-    width: '12rem',
+    width: '14rem',
     borderRadius: '15px',
   },
   newNodeGroupButton: {
@@ -38,8 +45,9 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: '20px',
     fontWeight: 'bold',
   },
-  tangparent: {
+  searchButton: {
     backgroundColor: 'transparent',
+    margin: 'auto 0.5em',
   },
   searchImg: {
     width: '1.7rem',

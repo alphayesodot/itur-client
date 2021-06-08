@@ -4,6 +4,7 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+
 import useStyles from './DataTable.styles';
 
 const DataTable = ({ rowsData, colomnsNames }) => {
@@ -12,7 +13,7 @@ const DataTable = ({ rowsData, colomnsNames }) => {
     <Table aria-label='simple table' className={classes.root}>
       <TableHead className={classes.title}>
         <TableRow>
-          {colomnsNames.map((colName) => <TableCell key={colName} classsName={classes.titleCell} align='center'>{colName}</TableCell>)}
+          {colomnsNames.map((colName) => <TableCell key={colName} classsName={classes.cell} align='center'>{colName}</TableCell>)}
         </TableRow>
       </TableHead>
       <TableBody>

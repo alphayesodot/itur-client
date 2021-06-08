@@ -31,6 +31,18 @@ const theme = createMuiTheme({
       secondary: 'rgb(244,245,247)',
     },
   },
+  overrides: {
+    MuiTableCell: {
+      head: {
+        padding: '0.5em',
+      },
+    },
+    MuiTableRow: {
+      head: {
+        borderRadius: '15px 15px 0 0',
+      },
+    },
+  },
 });
 
 export default theme;
