@@ -8,8 +8,11 @@ const resources = {
         server: 'קרתה תקלה. נסו שוב מאוחר יותר',
       },
       title: {
+        break: 'הפסקה',
+        identityNumber: 'ת"ז',
         example: 'מערכת איתור',
         unit: 'יחידה',
+        nodeGroup: 'מסלול',
         day: 'יום',
         interviewsCount: 'סה"כ ראיונות',
         noInterviews: 'אין ראיונות',
@@ -26,9 +29,11 @@ const resources = {
         userName: 'שם משתמש',
         password: 'סיסמה',
         moreDetails: 'פרטים נוספים',
+        interviewsSchedule: 'לוז ראיונות',
       },
       message: {
         noInterviewersInNodeGroup: 'אין מראיינים במסלול',
+        noInterviews: 'אין ראיונות',
         chooseNodeGroup: 'בחרו מסלול',
       },
       headerTitles: {
@@ -38,7 +43,8 @@ const resources = {
       placeholders: {
         searchUnit: 'חיפוש יחידה',
       },
-      userManagementText: {
+      text: {
+        in: 'ב',
         users: 'משתמשים',
         unitName: 'שם יחידה',
         noUnits: 'אין יחידות',
@@ -59,6 +65,7 @@ const resources = {
         newSchedule: 'לוז חדש',
         add: 'הוספה',
         view: 'הצג',
+        enter: 'כניסה',
       },
       day: {
         1: 'ראשון',
@@ -68,6 +75,20 @@ const resources = {
         5: 'חמישי',
         6: 'שישי',
         7: 'שבת',
+      },
+      month: {
+        0: 'ינואר',
+        1: 'פברואר',
+        2: 'מרץ',
+        3: 'אפריל',
+        4: 'מאי',
+        5: 'יוני',
+        6: 'יולי',
+        7: 'אוגוסט',
+        8: 'ספטמבר',
+        9: 'אוקטובר',
+        10: 'נובמבר',
+        11: 'דצמבר',
       },
       interviewStatus: {
         DURING: 'פגישה מתקיימת',
@@ -96,7 +117,7 @@ const resources = {
       sideBar: {
         luz: 'לו"ז',
         track: 'לו"ז שבועי',
-        malshabSchedule: 'שיבץ מלש"ב',
+        malshabSchedule: 'שיבוץ מלש"ב',
         malshabSearch: 'חיפוש מלש"ב',
         reports: 'דוחות',
         posh: 'פו"ש',
@@ -109,6 +130,8 @@ const resources = {
       },
       toolTip: {
         copyUsers: 'העתקת יוזרים',
+        information: 'מידע נוסף',
+        playInterview: 'צפייה בראיון',
       },
       warnings: {
         oneTimePassword: 'שים לב, לאחר סגירת החלונית לא יהיה ניתן לצפות בסיסמה בשנית. יש לשמור את הסיסמה במקום מאובטח.',

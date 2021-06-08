@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Avatar, Typography } from '@material-ui/core';
+import { toast } from 'react-toastify';
 import { useTranslation } from 'react-i18next';
 import DashboardCard from '../../../../common/DashboardCard/DashboardCard';
-import avatar from '../../../../utils/images/track/userpic-blue.svg';
+import avatar from '../../../../utils/images/schedule/userpic-blue.svg';
 import useStyles from './ScheduleCard.styles';
-import InterviewsList from '../InterviewsList/InterviewsList';
+import InterviewsList from '../../../../common/InterviewsList/InterviewsList';
+import InterviewItem from '../InterviewItem/InterviewItem';
 import ScheduleStore from '../../../../stores/Schedule.store';
 
 const ScheduleCard = ({ interviewer, date, nodeGroupId }) => {
@@ -13,11 +15,15 @@ const ScheduleCard = ({ interviewer, date, nodeGroupId }) => {
   const [interviews, setInterviews] = useState([]);
 
   useEffect(() => {
-    setInterviews(ScheduleStore.getScheduleOfInterviewer(
+    ScheduleStore.getScheduleOfInterviewer(
       date,
       nodeGroupId,
       interviewer.id,
-    ));
+    ).then((res) => {
+      setInterviews(res);
+    }).catch(() => {
+      toast(t('error.server'));
+    });
   }, [ScheduleStore.schedules, nodeGroupId, date]);
 
   return (
@@ -28,7 +34,7 @@ const ScheduleCard = ({ interviewer, date, nodeGroupId }) => {
         </Typography>
         <Avatar alt={interviewer.name} src={avatar} className={classes.avatar} />
       </div>
-      <InterviewsList interviews={interviews} />
+      <InterviewsList interviews={interviews} InterviewItem={InterviewItem} />
       <div className={classes.interviewsCount}>
         <Typography>
           {interviews.length === 0 && <strong>{t('title.noInterviews')}</strong>}

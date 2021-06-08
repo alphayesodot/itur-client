@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { List } from '@material-ui/core';
-import InterviewItem from '../InterviewItem/InterviewItem';
 import useStyles from './InterviewsList.styles';
 
 const timeDifference = 1800000; // 30 minutes
 
-const InterviewsList = ({ interviews }) => {
+const InterviewsList = ({ interviews, InterviewItem }) => {
   const classes = useStyles();
   const [expandedInterviews, setExpandedInterviews] = useState([]);
+
+  const hasInterviewDone = (interview) => (
+    Object.values(interview.results).some((value) => !value || !value.length)
+  );
 
   const getTimeStatus = (time) => {
     if (new Date().getTime() < new Date(time).getTime()) {
@@ -19,22 +22,12 @@ const InterviewsList = ({ interviews }) => {
     return 'PAST';
   };
 
-  const hasInterviewDone = (interview) => (
-    Object.values(interview.results).some((value) => !value || !value.length)
-  );
-
   const getInterviewStatus = (interview) => {
-    const timeStatus = getTimeStatus(interview.time);
-    switch (timeStatus) {
-      case 'PAST':
-        return hasInterviewDone(interview) ? 'DONE' : 'CANCELED';
-      case 'PRESENT':
-        return 'DURING';
-      case 'FUTURE':
-        return 'FUTURE';
-      default:
-        return undefined;
-    }
+    const statusMap = new Map();
+    statusMap.PAST = hasInterviewDone(interview) ? 'CANCELED' : 'DONE';
+    statusMap.PRESENT = 'DURING';
+    statusMap.FUTURE = 'FUTURE';
+    return statusMap[getTimeStatus(interview.time)];
   };
 
   useEffect(() => {
@@ -69,12 +62,11 @@ const InterviewsList = ({ interviews }) => {
   return (
     <div className={classes.root}>
       <List className={classes.list}>
-        {expandedInterviews.map(({ malshabShort, time, status }) => (
-          <div key={`${time}~${status}`}>
+        {expandedInterviews.map((event) => (
+          <div key={`${event.time}~${event.status}`}>
             <InterviewItem
-              status={status}
-              time={new Date(time)}
-              name={malshabShort ? `${malshabShort.firstName} ${malshabShort.lastName}` : undefined}
+              event={event}
+              timeDifference={timeDifference}
             />
           </div>
         ))}
