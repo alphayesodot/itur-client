@@ -20,7 +20,7 @@ app.get('/auth/login/:userId', (req, res) => {
   const accessToken = buildJwt(req.params.userId);
   const nextYear = new Date();
   nextYear.setFullYear(nextYear.getFullYear() + 1);
-  res.cookie(config.jwtTokenName, accessToken, { expires: nextYear });
+  res.cookie(config.tokenName, accessToken, { expires: nextYear });
   res.redirect(config.clientHost);
 });
 
@@ -31,7 +31,7 @@ app.get('/config', (req, res) => {
       auth: `http://localhost:${config.port}`,
       api: `http://localhost:${config.port}`,
     },
-    tokenName: config.jwtTokenName,
+    tokenName: config.tokenName,
     secret: config.secret,
     fileUpload: config.fileUpload,
     sitesPostfixes: config.sitesPostfixes,

@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { toast } from 'react-toastify';
 import { useTranslation } from 'react-i18next';
 import useStyles from './UnitDetails.styles';
 import DashboardCard from '../../../../common/DashboardCard/DashboardCard.jsx';
@@ -10,8 +11,12 @@ const UnitDetails = ({ unit, users, setUsers }) => {
   const classes = useStyles();
   const { t } = useTranslation();
 
-  useEffect(async () => {
-    setUsers(await UserService.getUsersByUnitId(unit.id));
+  useEffect(() => {
+    UserService.getUsersByUnitId(unit.id).then((res) => {
+      setUsers(res);
+    }).catch(() => {
+      toast(t('error.server'));
+    });
   }, [unit]);
 
   return (

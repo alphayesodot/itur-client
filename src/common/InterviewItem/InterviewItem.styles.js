@@ -22,10 +22,6 @@ const useStyles = makeStyles((theme) => ({
     whiteSpace: 'nowrap',
     overflow: 'hidden',
   },
-  icon: {
-    width: '1em',
-    height: '1em',
-  },
   item: {
     background: theme.palette.scrollbar.secondary,
   },

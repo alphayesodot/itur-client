@@ -17,7 +17,7 @@ const sitesPostfixes = {
 const config = {
   port: 8080,
   clientHost: 'http://localhost:3000',
-  jwtTokenName: 'itur',
+  tokenName: 'itur',
   secret: 'secret',
   fileUpload: {
     sizeLimit: 10000000, // bytes
