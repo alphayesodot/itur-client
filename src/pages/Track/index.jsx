@@ -8,7 +8,7 @@ import UnitService from '../../services/unit.service';
 import Header from './components/Header/Header';
 import TrackBoard from './components/TrackBoard/TrackBoard';
 import useStyles from './index.styles';
-import CustomeBackDrop from '../../common/CustomeBackDrop/CustomeBackDrop';
+import CustomBackDrop from '../../common/CustomBackDrop/CustomBackDrop';
 
 const Track = observer(() => {
   const classes = useStyles();
@@ -45,7 +45,7 @@ const Track = observer(() => {
         setIsLoading={setIsLoading}
       />
       {isLoading
-        ? <CustomeBackDrop />
+        ? <CustomBackDrop />
         : (
           <>
             {selectedNodeGroup

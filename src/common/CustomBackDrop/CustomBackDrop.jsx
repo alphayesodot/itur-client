@@ -1,8 +1,8 @@
 import React from 'react';
 import { Backdrop, CircularProgress } from '@material-ui/core';
-import useStyles from './CustomeBackDrop.styles';
+import useStyles from './CustomBackDrop.styles';
 
-const CustomeBackDrop = () => {
+const CustomBackDrop = () => {
   const classes = useStyles();
 
   return (
@@ -12,4 +12,4 @@ const CustomeBackDrop = () => {
   );
 };
 
-export default CustomeBackDrop;
+export default CustomBackDrop;

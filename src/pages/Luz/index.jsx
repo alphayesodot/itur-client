@@ -10,7 +10,7 @@ import NodeGroupService from '../../services/nodeGroup.service';
 import Title from './components/Title/Title';
 import useStyles from './index.styles';
 import InterviewsList from '../../common/InterviewsList/InterviewsList';
-import CustomeBackDrop from '../../common/CustomeBackDrop/CustomeBackDrop';
+import CustomBackDrop from '../../common/CustomBackDrop/CustomBackDrop';
 
 const Luz = () => {
   const classes = useStyles();
@@ -55,7 +55,7 @@ const Luz = () => {
         nodeGroupName={nodeGroup?.name}
       />
       {isLoading
-        ? <CustomeBackDrop />
+        ? <CustomBackDrop />
         : (
           <div className={classes.list}>
             {interviews?.length
