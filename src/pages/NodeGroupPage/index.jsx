@@ -1,23 +1,30 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { useTranslation } from 'react-i18next';
 import { Typography } from '@material-ui/core';
 import useStyles from './index.styles';
 import DashboardCard from '../../common/DashboardCard/DashboardCard';
 import Header from './components/Header/Header';
 import DataTable from './DataTable/DataTable';
-
-function createData(nodeGroupName, unit, users, ramadOfUnit) {
+import NodeGroupService from '../../services/nodeGroup.service'
+import UnitService from '../../services/unit.service'
+import UserService from '../../services/user.service'
+const objectToArray = (nodeGroupName, unit, users, ramadOfUnit) => {
   return [nodeGroupName, unit, users, ramadOfUnit];
 }
 
 const NodeGroupPage = () => {
-  const rows = [
-    createData('Frozen yoghurt', 159, 6.0, 24),
-    createData('Ice cream sandwich', 237, 9.0, 37),
-    createData('Eclair', 262, 16.0, 24),
-    createData('Cupcake', 305, 3.7, 67),
-    createData('Gingerbread', 356, 16.0, 49),
-  ];
+  const [nodeGroupRows, setnodeGroupRows] =  useState([]);
+  useEffect(() => {
+    NodeGroupService.getNodeGroups().then(async (res)=> {
+      const pickedNodeGroupFields = res.map(async (nodeGroup)=>{
+        // const unitName= (await UnitService.getUnitById(nodeGroup.unitId)).name;
+        // const ramad = (await UserService.getUsersByUnitId(nodeGroup.unitId)).find((user) => user.role === Role.RamadIturOfUnit);
+        return objectToArray(nodeGroup.name,'unitName',nodeGroup.usersIds.length, '')
+      });
+      setnodeGroupRows(pickedNodeGroupFields);
+    })
+  }, []);
+  console.log(nodeGroupRows)
   const classes = useStyles();
   const { t } = useTranslation();
   const colNames = [t('tableColumns.nodeGroupName'), t('tableColumns.unit'), t('tableColumns.users'), t('tableColumns.ramadOfUnit')];
@@ -31,7 +38,7 @@ const NodeGroupPage = () => {
             :
           </Typography>
         </div>
-        <DataTable rowsData={rows} colomnsNames={colNames} />
+        <DataTable rowsData={nodeGroupRows} colomnsNames={colNames} />
       </DashboardCard>
     </div>
   );
