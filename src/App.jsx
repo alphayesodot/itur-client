@@ -16,7 +16,6 @@ import configApp from './appConf';
 import 'react-toastify/dist/ReactToastify.css';
 import UserManagement from './pages/UserManagement/index';
 import PermissionCheck from './common/PermissionCheck/PermissionCheck';
-import MalshabInfo from './pages/MalshabInfo';
 
 const App = () => {
   const classes = useStyles();
@@ -121,7 +120,6 @@ const App = () => {
           <Route path='/' exact>
             <Home />
           </Route>
-          <MalshabInfo />
           {getRoutes().map(({ path, component }) => (
             <Route key={path} path={path}>
               {component}
