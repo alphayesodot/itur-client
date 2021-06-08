@@ -7,7 +7,7 @@ import infoIcon from '../../utils/images/malshabInfo/info.svg';
 import useStyles from './index.styles';
 import CustomeBackDrop from '../../common/CustomeBackDrop/CustomeBackDrop';
 
-const MalshabInfo = ({ id }) => {
+const MalshabInfo = ({ id, open, onClose }) => {
   const classes = useStyles();
   const { t } = useTranslation();
   const [isLoading, setIsLoading] = useState(false);
@@ -26,7 +26,7 @@ const MalshabInfo = ({ id }) => {
   }, [id]);
 
   return (
-    <Dialog open className={classes.root}>
+    <Dialog open={open} onClose={onClose} className={classes.root}>
       <DialogTitle className={classes.dialogTitle}>
         <img src={infoIcon} alt='info icon' />
         <Typography>{t('title.moreDetails')}</Typography>
