@@ -2,7 +2,7 @@ import events from './db.js';
 
 class EventManager {
   static async getEvents(req, res) {
-    const { date, interviewerId } = req.query;
+    const { date, interviewerId, nodeId } = req.query;
     res.send(events.filter((event) => {
       if (date) {
         const eventDate = new Date(event.time);
@@ -14,6 +14,9 @@ class EventManager {
         }
       }
       if (interviewerId && !event.interviewersIds.includes(interviewerId)) {
+        return false;
+      }
+      if (nodeId && event.node.id !== nodeId) {
         return false;
       }
       return true;

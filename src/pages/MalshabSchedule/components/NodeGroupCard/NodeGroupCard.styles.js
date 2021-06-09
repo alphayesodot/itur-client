@@ -1,7 +1,7 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(() => ({
-  root: {
+  positiveRoot: {
     display: 'inline-block',
     color: '#0f2231',
     width: '9rem',
@@ -12,6 +12,20 @@ const useStyles = makeStyles(() => ({
     position: 'relative',
     margin: '1rem',
     direction: 'ltr',
+    cursor: 'pointer',
+  },
+  negativeRoot: {
+    display: 'inline-block',
+    color: '#0f2231',
+    width: '9rem',
+    height: '9rem',
+    borderRadius: '14px',
+    backgroundColor: '#ecd8d8',
+    padding: '27px 29px 27px 29px',
+    position: 'relative',
+    margin: '1rem',
+    direction: 'ltr',
+    cursor: 'pointer',
   },
   nodeGroupTitle: {
     wordSpacing: '0.1rem',

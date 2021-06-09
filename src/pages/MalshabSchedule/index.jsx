@@ -48,7 +48,6 @@ const MalshabSchedulePage = () => {
       toast(t('error.server'));
     });
   }, []);
-  // <NodeGroups unitNodesGroups={unitNodesGroups} setChoosenNodeGroup={setChoosenNodeGroup} />
 
   const columnData = [
     { id: 1, name: t('malshabimTable.name') },

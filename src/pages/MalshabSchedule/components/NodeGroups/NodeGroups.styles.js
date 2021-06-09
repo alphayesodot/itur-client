@@ -8,11 +8,12 @@ const useStyles = makeStyles(() => ({
     alignItems: 'center',
   },
   mainDiv: {
-    backgroundColor: 'black',
     height: '90%',
-    width: '60%',
-    display: 'flex',
-    direction: 'ltr',
+    maxHeight: '45rem',
+    width: '70%',
+    padding: '0 15%',
+    flexWrap: 'wrap',
+    overflow: 'auto',
   },
 }));
 
