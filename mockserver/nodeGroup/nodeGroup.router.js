@@ -1,10 +1,9 @@
 import express from 'express';
-import nodeGroups from './db.js';
+import NodeGroupManager from './nodeGroup.manager.js';
 
 const nodeGroupRouter = express.Router();
 
-nodeGroupRouter.get('/', (req, res) => {
-  res.send(nodeGroups);
-});
+// nodeGroupRouter.get('/', NodeGroupManager.getNodeGroups);
+nodeGroupRouter.get('/', NodeGroupManager.getNodesGroupsByUnit);
 
 export default nodeGroupRouter;

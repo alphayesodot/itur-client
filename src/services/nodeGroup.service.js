@@ -11,6 +11,11 @@ class NodeGroupService {
     const { data } = await axios.get(`${config.uri.api}/api/nodeGroup`, { headers });
     return data;
   }
+
+  static async getNodesGroupByUnit(unitId) {
+    const res = await axios.get(`${await config.uri.api}/api/nodeGroup/`, { headers, params: { unitId } });
+    return res?.data;
+  }
 }
 
 export default NodeGroupService;
