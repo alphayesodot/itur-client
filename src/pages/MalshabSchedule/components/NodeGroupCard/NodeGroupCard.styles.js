@@ -23,7 +23,6 @@ const useStyles = makeStyles(() => ({
   malshabs: {
     fontSize: '0.938rem',
     lineHeight: '1.25rem',
-    fontWeight: 400,
   },
   iconImg: {
     position: 'absolute',

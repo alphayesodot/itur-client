@@ -11,18 +11,8 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     justifyContent: 'flex-end',
     [theme.breakpoints.down('sm')]: {
-      flexDirection: 'column',
-      alignItems: 'stretch',
-    },
-  },
-  main: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-around',
-    minWidth: '35%',
-    [theme.breakpoints.down('sm')]: {
       flexDirection: 'column-reverse',
-      width: '100%',
+      alignItems: 'stretch',
     },
   },
   item: {

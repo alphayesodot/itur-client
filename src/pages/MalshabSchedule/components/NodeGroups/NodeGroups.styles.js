@@ -11,6 +11,8 @@ const useStyles = makeStyles(() => ({
     backgroundColor: 'black',
     height: '90%',
     width: '60%',
+    display: 'flex',
+    direction: 'ltr',
   },
 }));
 

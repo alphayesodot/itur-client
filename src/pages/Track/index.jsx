@@ -2,12 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { observer } from 'mobx-react-lite';
 import { toast } from 'react-toastify';
-import { Backdrop, CircularProgress, Typography } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
 import UserStore from '../../stores/User.store';
 import UnitService from '../../services/unit.service';
 import Header from './components/Header/Header';
 import TrackBoard from './components/TrackBoard/TrackBoard';
 import useStyles from './index.styles';
+import CustomBackDrop from '../../common/CustomBackDrop/CustomBackDrop';
 
 const Track = observer(() => {
   const classes = useStyles();
@@ -24,7 +25,7 @@ const Track = observer(() => {
 
   useEffect(() => {
     setIsLoading(true);
-    UnitService.getUnitById(currentUser.unit).then((res) => {
+    UnitService.getUnitById(currentUser.unitId).then((res) => {
       setUnit(res);
     }).catch(() => {
       toast(t('error.server'));
@@ -44,11 +45,7 @@ const Track = observer(() => {
         setIsLoading={setIsLoading}
       />
       {isLoading
-        ? (
-          <Backdrop open className={classes.backdrop}>
-            <CircularProgress color='primary' />
-          </Backdrop>
-        )
+        ? <CustomBackDrop />
         : (
           <>
             {selectedNodeGroup

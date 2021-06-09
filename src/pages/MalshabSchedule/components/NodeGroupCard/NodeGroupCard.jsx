@@ -1,7 +1,7 @@
 import { Typography } from '@material-ui/core';
 import DashboardCard from '../../../../common/DashboardCard/DashboardCard';
 import useStyles from './NodeGroupCard.styles';
-import POSITIVE from '../../../../utils/images/passed-positive.svg';
+import POSITIVE from '../../../../utils/images/schedule/passed-positive.svg';
 
 const NodeGroupCard = ({ nodeGroup }) => {
   const classes = useStyles();
@@ -14,7 +14,7 @@ const NodeGroupCard = ({ nodeGroup }) => {
           {nodeGroup.name}
         </Typography>
         <Typography className={classes.malshabs}>
-          מלשב"ים לשיבוץ
+          <strong>מלשב"ים לשיבוץ</strong>
         </Typography>
         <Typography className={classes.malshabs}>
           <strong>10/150</strong>
