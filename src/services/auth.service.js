@@ -20,11 +20,14 @@ class AuthService {
   static async setAuthHeaders() {
     axios.interceptors.request.use((value) => {
       const requestsConfig = value;
-      const token = Cookies.get(config.token_name);
+      const token = Cookies.get(config.tokenName);
       if (!token) {
         this.redirect();
       } else {
         requestsConfig.headers.Authorization = `Bearer ${token}`;
+        // TODO: In case the malshab using this client,
+        // send a different header depends on the authorized user
+        requestsConfig.headers['Requester-Type'] = 'USER';
         return requestsConfig;
       }
     });
@@ -32,7 +35,7 @@ class AuthService {
 
   static async redirect() {
     // TODO: Remove user id
-    window.location.replace(`${config.uri.auth}/auth/login/1`);
+    window.location.replace(`${config.uri.auth}/auth/login/0`);
   }
 }
 

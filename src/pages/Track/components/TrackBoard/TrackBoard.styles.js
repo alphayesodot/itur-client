@@ -22,8 +22,8 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: '1.3em',
   },
   item: {
-    minWidth: '18em',
-    width: '18em',
+    minWidth: '17.5rem',
+    width: '17.5rem',
     height: 'calc(100vh - 23em)',
     minHeight: '20em',
   },

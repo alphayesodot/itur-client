@@ -12,7 +12,7 @@ class ConfigService {
     config.uri = { ...data.uri };
     config.tokenName = data.tokenName;
     config.secret = data.secret;
-    config.xmlUpload = data.xmlUpload;
+    config.fileUpload = data.fileUpload;
     config.sitesPostfixes = data.sitesPostfixes;
     console.log(config.sitesPostfixes);
     config.allowedUrlPostfixesOfRole = data.allowedUrlPostfixesOfRole;
