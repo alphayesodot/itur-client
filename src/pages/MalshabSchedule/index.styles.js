@@ -5,29 +5,32 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     display: 'flex',
     flexDirection: 'column',
-    direction: 'rtl',
   },
   formUnitHeader: {
-    height: '5.5rem',
+    minHeight: '5.5rem',
     width: '100%',
     display: 'block',
     marginBottom: '1rem',
     backgroundColor: '#0f2231',
   },
   mainInner: {
+    // maxHeight: '55rem',
     backgroundColor: 'transparent',
-    width: '100%',
-    height: '100%',
+    // width: '100%',
+    // height: '100%',
+    height: 'calc(100vh - 15em)',
     display: 'flex',
     alignItems: 'stretch',
     [theme.breakpoints.down('sm')]: {
       flexDirection: 'column-reverse',
       height: 'calc(100vh - 15em)',
     },
+    // position: 'relative',
+    // height: '90%',
   },
   malshabimCard: {
-    marginLeft: '2rem',
-    height: '100%',
+    marginRight: '2rem',
+    // height: '100%',
     width: '50%',
     backgroundColor: 'white',
     [theme.breakpoints.down('sm')]: {
@@ -44,6 +47,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'space-between',
     paddingBottom: '1rem',
     position: 'relative',
+    height: '10%',
   },
 
   malshabimText: {
@@ -52,13 +56,13 @@ const useStyles = makeStyles((theme) => ({
     lineHeight: '1.3rem',
     '& span': {
       fontWeight: '200',
-      paddingRight: '0.5rem',
+      paddingLeft: '0.5rem',
     },
   },
 
   usersCard: {
     width: '50%',
-    height: '100%',
+    // height: '100%',
     [theme.breakpoints.down('sm')]: {
       width: '100%',
     },

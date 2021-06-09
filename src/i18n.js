@@ -72,6 +72,13 @@ const resources = {
         users: 'יוזרים',
         isScheduled: 'עם שיבוץ',
       },
+      malshabimTable: {
+        name: 'שם',
+        id: 'ת"ז',
+        status: 'סטטוס',
+        users: 'יוזרים',
+        time: 'שעה',
+      },
     },
   },
 };
