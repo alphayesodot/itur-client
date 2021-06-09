@@ -10,10 +10,6 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'flex-end',
-    [theme.breakpoints.down('sm')]: {
-      flexDirection: 'column',
-      alignItems: 'stretch',
-    },
   },
   main: {
     display: 'flex',
@@ -21,10 +17,6 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'space-between',
     minWidth: '35%',
     width: '100%',
-    [theme.breakpoints.down('sm')]: {
-      flexDirection: 'column-reverse',
-      width: '100%',
-    },
   },
   headerGroups: {
     flex: '0 1 50%',
@@ -32,11 +24,23 @@ const useStyles = makeStyles((theme) => ({
     alignContent: 'center',
     alignItems: 'center',
     justifyContent: 'flex-end',
+    [theme.breakpoints.down('sm')]: {
+      flex: '0 1 70%',
+      width: '100%',
+      justifyContent: 'center',
+    },
   },
   input: {
     backgroundColor: 'white',
     width: '14rem',
     borderRadius: '15px',
+    color: theme.palette.font.secondary,
+    fontWeight: 'bold',
+    direction: 'ltr',
+    padding: '0 1rem',
+    [theme.breakpoints.down('sm')]: {
+      width: '70%',
+    },
   },
   newNodeGroupButton: {
     backgroundColor: theme.palette.section.secondary,
@@ -44,6 +48,10 @@ const useStyles = makeStyles((theme) => ({
     width: '7.5rem',
     borderRadius: '20px',
     fontWeight: 'bold',
+    '&:hover': {
+      backgroundColor: 'white',
+      color: theme.palette.section.secondary,
+    },
   },
   searchButton: {
     backgroundColor: 'transparent',
@@ -64,6 +72,9 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '1.15em',
     whiteSpace: 'nowrap',
     textAlign: 'left',
+    [theme.breakpoints.down('sm')]: {
+      marginRight: '1rem',
+    },
   },
 }));
 

@@ -26,6 +26,7 @@ const resources = {
         noSelectedUnit: 'אנא בחר יחידה',
         userName: 'שם משתמש',
         password: 'סיסמה',
+        newNodeGroup: 'מסלול חדש',
       },
       message: {
         noInterviewersInNodeGroup: 'אין מראיינים במסלול',
@@ -62,6 +63,7 @@ const resources = {
         newNodeGroup: 'מסלול חדש',
         add: 'הוספה',
         view: 'הצג',
+        saveNodeGroup: 'שמירת מסלול',
       },
       day: {
         1: 'ראשון',
@@ -121,6 +123,9 @@ const resources = {
       },
       warnings: {
         oneTimePassword: 'שים לב, לאחר סגירת החלונית לא יהיה ניתן לצפות בסיסמה בשנית. יש לשמור את הסיסמה במקום מאובטח.',
+      },
+      formTitle: {
+        name: 'שם',
       },
     },
   },

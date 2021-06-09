@@ -13,6 +13,13 @@ const useStyles = makeStyles((theme) => ({
       width: '100%',
     },
   },
+  title: {
+    marginRight: '0.5rem',
+    fontSize: '1.2rem',
+  },
+  countTitle: {
+    color: theme.palette.font.secondary,
+  },
   content: {
     padding: '2.5em',
     textAlign: 'left',
@@ -23,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
   dashbord: {
     backgroundColor: 'white',
     width: '100%',
-    height: '100vh',
+    height: '73.5vh',
     marginTop: '1rem',
     direction: 'ltr',
   },
