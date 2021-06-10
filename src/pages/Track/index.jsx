@@ -13,7 +13,7 @@ const Track = observer(() => {
   const classes = useStyles();
   const { t } = useTranslation();
   const [unit, setUnit] = useState();
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [selectedNodeGroup, setSelectedNodeGroup] = useState('');
   const [selectedDate, setSelectedDate] = useState(new Date().toLocaleDateString('fr-CA', {
     year: 'numeric',
