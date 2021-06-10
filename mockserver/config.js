@@ -18,7 +18,7 @@ const config = {
   port: 8080,
   clientHost: 'http://localhost:3000',
   tokenName: 'itur',
-  secret: 'secret',
+  secret: 'remember2replace',
   fileUpload: {
     sizeLimit: 10000000, // bytes
     acceptedFileTypes:
