@@ -26,6 +26,27 @@ const useStyles = makeStyles((theme) => ({
     height: '1rem',
     width: '1rem',
   },
+  cardBody: {
+    width: '100%',
+    height: '85%',
+    display: 'flex',
+  },
+  noEvents: {
+    display: 'flex',
+    width: '9rem',
+    height: '3rem',
+    backgroundColor: theme.palette.card.warning,
+    margin: 'auto',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: '25px',
+  },
+  noEventsText: {
+    fontSize: '1.1rem',
+    fontWeight: 'bolder',
+    lineHeight: '1.3rem',
+    textAlign: 'center',
+  },
 }));
 
 export default useStyles;

@@ -29,6 +29,7 @@ const theme = createMuiTheme({
     card: {
       header: '#d0e1e3',
       body: '#ecf4f6',
+      warning: '#ecd8d8',
     },
 
   },

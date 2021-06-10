@@ -22,6 +22,15 @@ const UserCard = ({ user }) => {
         {user.name}
         <img alt='icon' src={userIcon} className={classes.icon} />
       </Typography>
+      <div className={classes.cardBody}>
+        {events.length
+          ? <div className={classes.eventsList} />
+          : (
+            <div className={classes.noEvents}>
+              <Typography className={classes.noEventsText}>{t('unitControlPage.noEvents')}</Typography>
+            </div>
+          )}
+      </div>
     </DashboardCard>
   );
 };

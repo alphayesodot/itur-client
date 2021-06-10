@@ -135,6 +135,7 @@ const resources = {
         hour: 'שעה',
         users: 'יוזרים',
         isScheduled: 'עם שיבוץ',
+        noEvents: 'ללא שיבוץ',
       },
       malshabimTable: {
         name: 'שם',
