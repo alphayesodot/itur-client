@@ -1,13 +1,15 @@
+import { useTranslation } from 'react-i18next';
 import NodeGroupCard from '../NodeGroupCard/NodeGroupCard';
 import DashboardCard from '../../../../common/DashboardCard/DashboardCard';
 import useStyles from './NodeGroups.styles';
 
 const NodeGroups = ({ unitNodesGroups, setChoosenNodeGroup }) => {
   const classes = useStyles();
+  const { t } = useTranslation();
 
   return (
     <DashboardCard className={classes.root}>
-      {unitNodesGroups.length >= 1 ? (
+      {unitNodesGroups.length ? (
         <div className={classes.mainDiv}>
           {unitNodesGroups.map((nodeGroup) => (
             <NodeGroupCard
@@ -17,7 +19,7 @@ const NodeGroups = ({ unitNodesGroups, setChoosenNodeGroup }) => {
             />
           ))}
         </div>
-      ) : <div>אין מסלולים</div>}
+      ) : <div className={classes.noNodesGroups}>{t('text.noNodesGroups')}</div>}
 
     </DashboardCard>
   );

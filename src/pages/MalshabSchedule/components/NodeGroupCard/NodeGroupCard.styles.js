@@ -1,31 +1,23 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles(() => ({
-  positiveRoot: {
+const useStyles = makeStyles((theme) => ({
+  root: {
     display: 'inline-block',
-    color: '#0f2231',
+    color: 'black',
     width: '9rem',
     height: '9rem',
     borderRadius: '14px',
-    backgroundColor: '#d0e1e3',
     padding: '27px 29px 27px 29px',
     position: 'relative',
     margin: '1rem',
     direction: 'ltr',
     cursor: 'pointer',
   },
-  negativeRoot: {
-    display: 'inline-block',
-    color: '#0f2231',
-    width: '9rem',
-    height: '9rem',
-    borderRadius: '14px',
-    backgroundColor: '#ecd8d8',
-    padding: '27px 29px 27px 29px',
-    position: 'relative',
-    margin: '1rem',
-    direction: 'ltr',
-    cursor: 'pointer',
+  positive: {
+    backgroundColor: theme.palette.card.header,
+  },
+  negative: {
+    backgroundColor: theme.palette.card.warning,
   },
   nodeGroupTitle: {
     wordSpacing: '0.1rem',

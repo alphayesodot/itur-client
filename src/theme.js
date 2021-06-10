@@ -26,6 +26,11 @@ const theme = createMuiTheme({
     font: {
       secondary: '#8698ad',
     },
+    card: {
+      header: '#d0e1e3',
+      body: '#ecf4f6',
+      warning: '#ecd8d8',
+    },
   },
 });
 

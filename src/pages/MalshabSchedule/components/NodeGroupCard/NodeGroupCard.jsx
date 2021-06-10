@@ -34,7 +34,7 @@ const NodeGroupCard = ({ nodeGroup, setChoosenNodeGroup }) => {
   useEffect(() => {
     setScheduledEvents([]);
     nodeGroupEvents.forEach((event) => {
-      if (event.interviewersIds.length > 0) {
+      if (event.interviewersIds.length) {
         setScheduledEvents((prevValue) => [...prevValue, event]);
       }
     });
@@ -44,9 +44,10 @@ const NodeGroupCard = ({ nodeGroup, setChoosenNodeGroup }) => {
     <DashboardCard
       onClick={() => { setChoosenNodeGroup(nodeGroup.id); }}
       className={
-        scheduledEvents.length === nodeGroupEvents.length
-          ? classes.positiveRoot
-          : classes.negativeRoot
+        `${classes.root} 
+        ${scheduledEvents.length === nodeGroupEvents.length
+          ? classes.positive
+          : classes.negative}`
       }
     >
       <Typography className={classes.nodeGroupTitle}>
@@ -63,7 +64,7 @@ const NodeGroupCard = ({ nodeGroup, setChoosenNodeGroup }) => {
       <Typography className={classes.malshabs}>
         <strong>{`${scheduledEvents.length}/${nodeGroupEvents.length}`}</strong>
       </Typography>
-      <img src={scheduledEvents.length === nodeGroupEvents.length ? `${POSITIVE}` : `${WARNING}`} alt='' className={classes.iconImg} />
+      <img src={scheduledEvents.length === nodeGroupEvents.length ? `${POSITIVE}` : `${WARNING}`} alt='status' className={classes.iconImg} />
     </DashboardCard>
   );
 };

@@ -14,6 +14,7 @@ import NodeGroups from './components/NodeGroups/NodeGroups';
 import DashboardCard from '../../common/DashboardCard/DashboardCard';
 import NodeGroupService from '../../services/nodeGroup.service';
 import BasicTable from './components/GenericTable';
+import UsersCard from './components/UsersCard/UsersCard';
 
 const rowsData = [
   { name: 'שלומי אליאס', id: '123123123', status: 'לא שובץ', users: '#1 #2 #3', time: '08:00' },
@@ -36,6 +37,7 @@ const MalshabSchedulePage = () => {
   const [nameOrId, setNameOrId] = React.useState();
   const [choosenNodeGroup, setChoosenNodeGroup] = useState('');
   const [unitNodesGroups, setUnitNodesGroups] = useState([]);
+  const [chosenMalshabs, setChosenMalshabs] = React.useState();
 
   const handleChange = (event) => {
     setNameOrId(event.target.value);
@@ -50,17 +52,17 @@ const MalshabSchedulePage = () => {
   }, []);
 
   const columnData = [
-    { id: 1, name: t('malshabimTable.name') },
-    { id: 2, name: t('malshabimTable.id') },
-    { id: 3, name: t('malshabimTable.status') },
-    { id: 4, name: t('malshabimTable.users') },
     { id: 5, name: t('malshabimTable.time') },
+    { id: 4, name: t('malshabimTable.users') },
+    { id: 3, name: t('malshabimTable.status') },
+    { id: 2, name: t('malshabimTable.id') },
+    { id: 1, name: t('malshabimTable.name') },
   ];
 
   return (
     <div className={classes.root}>
       <DashboardCard className={classes.formUnitHeader} />
-      {choosenNodeGroup !== '' ? (
+      {choosenNodeGroup ? (
         <div className={classes.mainInner}>
           <DashboardCard className={classes.malshabimCard}>
             <div className={classes.malshabimTopRow}>
@@ -108,10 +110,15 @@ const MalshabSchedulePage = () => {
                 />
               </form>
             </div>
-            <BasicTable columnData={columnData} rowsData={rowsData} />
+            <BasicTable
+              columnData={columnData}
+              rowsData={rowsData}
+              chosenMalshabs={chosenMalshabs}
+              setChosenMalshabs={setChosenMalshabs}
+            />
           </DashboardCard>
 
-          <DashboardCard className={classes.usersCard} />
+          <UsersCard />
         </div>
       )
         : (

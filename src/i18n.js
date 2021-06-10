@@ -52,6 +52,7 @@ const resources = {
         unitAdded: 'היחידה התווספה',
         userNotAddWarning: 'יוזר לא נוסף',
         malshabsToSchedule: 'מלש"בים לשיבוץ',
+        noNodesGroups: 'אין מסלולים',
       },
       headerBlessings: {
         morning: 'בוקר טוב',
@@ -130,6 +131,8 @@ const resources = {
       },
       unitControlPage: {
         malshabimText: 'מלש"בים',
+        usersText: 'יוזרים',
+        totalText: 'סה"כ',
         nameOrIdText: 'שם / תז',
         hour: 'שעה',
         users: 'יוזרים',
