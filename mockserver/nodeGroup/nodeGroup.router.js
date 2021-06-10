@@ -6,5 +6,4 @@ const nodeGroupRouter = express.Router();
 nodeGroupRouter.get('/', NodeGroupManager.getNodeGroups);
 nodeGroupRouter.post('/', NodeGroupManager.createNodeGroup);
 
-
 export default nodeGroupRouter;

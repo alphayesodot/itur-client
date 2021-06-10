@@ -13,13 +13,15 @@ class NodeGroupManager {
   }
   static async createNodeGroup(req, res) {
     const requester = jwt.decode(req.headers.authorization.split(' ')[1]);
-    if (requester.role === 'RAMAD_ITUR_OF_UNIT') {
+    if (['RAMAD_ITUR_OF_UNIT', 'MADA'].includes(requester.role)) {
       const newNodeGroup = {
         id: generateId(),
         name: req.body.name,
         usersIds: [],
         unitId: requester.unitId,
       };
+      console.log(newNodeGroup);
+      console.log(requester);
       nodeGroups.push(newNodeGroup);
       res.send(newNodeGroup);
     } else {

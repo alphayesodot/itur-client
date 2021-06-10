@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-// import PropTypes from 'prop-types';
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField, MenuItem, IconButton } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
+import { toast } from 'react-toastify';
 import NodeGroupService from '../../../../services/nodeGroup.service';
 import useStyles from './CreationDialog.styles';
 
@@ -11,14 +11,13 @@ const CreationDialog = ({ open, onClose, UpdateAllNodeGroupList }) => {
   const { t } = useTranslation();
   const [nameValue, setNameValue] = useState('');
   const onSubmit = () => {
-    console.log('sending');
     NodeGroupService.createNodeGroup(nameValue).then(async (res, err) => {
       if (!err) {
+        onClose();
         await UpdateAllNodeGroupList();
       }
-      onClose();
-    }).catch((err) => {
-      console.log('eroorrrrr');
+    }).catch((error) => {
+      toast(error.massage);
     });
   };
   // const currencies = [
@@ -40,10 +39,6 @@ const CreationDialog = ({ open, onClose, UpdateAllNodeGroupList }) => {
   //   },
   // ];
 
-  // const handleClose = () => {
-  //   onClose(selectedValue);
-  // };
-  // onClose={handleClose} open={open}
   return (
     <Dialog onClose={onClose} className={classes.root} classes={{ paperScrollPaper: classes.popup }} aria-labelledby='form-dialog-title' open={open}>
       <DialogTitle classes={{ root: classes.title }} id='form-dialog-title' disableTypography>
@@ -92,10 +87,5 @@ const CreationDialog = ({ open, onClose, UpdateAllNodeGroupList }) => {
     </Dialog>
   );
 };
-
-// CreationDialog.propTypes = {
-//   onClose: PropTypes.func.isRequired,
-//   open: PropTypes.bool.isRequired,
-// };
 
 export default CreationDialog;

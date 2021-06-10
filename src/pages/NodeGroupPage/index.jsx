@@ -31,18 +31,6 @@ const NodeGroupPage = () => {
   };
   useEffect(() => {
     UpdateAllNodeGroupList();
-    // (async () => {
-    //   const nodeGroups = await NodeGroupService.getNodeGroups();
-    //   const promises = nodeGroups.map(async (nodeGroup) => {
-    //     const unit = await UnitService.getUnitById(nodeGroup.unitId);
-    //     const ramad = (await UserService.getUsersByUnitId(nodeGroup.unitId))
-    //       .find((user) => user.role === Role.RamadIturOfUnit);
-    //     return [nodeGroup.name, unit.name, nodeGroup.usersIds.length, ramad?.name || ''];
-    //   });
-    //   const getAllNodeGroupRows = await Promise.all(promises);
-    //   setAllNodeGroupRows(getAllNodeGroupRows);
-    //   setNodeGroupRowsToShow(getAllNodeGroupRows);
-    // })();
   }, []);
 
   const handeOnCloseDialog = () => {
