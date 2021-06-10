@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+import { toast } from 'react-toastify';
 import AddUnit from './components/AddUnit/AddUnit';
 import useStyles from './index.styles';
 import UnitDetails from './components/UnitDetails/UnitDetails';
@@ -7,13 +9,19 @@ import UnitService from '../../services/unit.service';
 
 const UserManagement = () => {
   const classes = useStyles();
+  const { t } = useTranslation();
+
   const [openAddUnit, setOpenAddUnit] = useState(false);
   const [units, setUnits] = useState([]);
   const [selectedUnit, setSelectedUnit] = useState('');
   const [users, setUsers] = useState([]);
 
-  useEffect(async () => {
-    setUnits(await UnitService.getUnits());
+  useEffect(() => {
+    UnitService.getUnits().then((res) => {
+      setUnits(res);
+    }).catch(() => {
+      toast(t('error.server'));
+    });
   }, []);
 
   return (

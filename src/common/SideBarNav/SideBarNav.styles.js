@@ -11,6 +11,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     paddingTop: '0.2%',
     paddingBottom: '1.5%',
+    overflowY: 'auto',
     [theme.breakpoints.down('sm')]: {
       flexDirection: 'row',
       width: '100%',
@@ -22,14 +23,28 @@ const useStyles = makeStyles((theme) => ({
       overflowX: 'auto',
     },
   },
-  icons: {
+  icon: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  iconImg: {
+    height: '2rem',
+    width: '2rem',
     '&:hover,&:focus': {
-      transform: 'rotate(-10deg)',
+      transform: 'rotate(10deg)',
       transitionDuration: '0.2s',
     },
   },
+  iconTitle: {
+    fontSize: '0.8rem',
+    textAlign: 'center',
+    [theme.breakpoints.down('sm')]: {
+      display: 'none',
+    },
+  },
   iconLink: {
-    marginTop: '2rem',
+    marginTop: '1.5rem',
     [theme.breakpoints.down('sm')]: {
       margin: 'auto 1rem',
     },

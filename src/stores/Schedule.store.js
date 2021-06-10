@@ -10,12 +10,12 @@ class ScheduleStore {
 
   getScheduleOfNodeGroup(date, nodeGroupId) {
     return this.schedules ? this.schedules.find(
-      (schedule) => new Date(schedule.date).getTime() === new Date(date).getTime()
+      (schedule) => new Date(schedule.date).toDateString() === new Date(date).toDateString()
         && schedule.nodeGroupId === nodeGroupId,
     ) : undefined;
   }
 
-  getScheduleOfInterviewer(date, nodeGroupId, interviewerId) {
+  async getScheduleOfInterviewer(date, nodeGroupId, interviewerId) {
     let result;
     if (this.schedules) {
       const scheduleOfNodeGroup = this.getScheduleOfNodeGroup(date, nodeGroupId);
@@ -26,7 +26,7 @@ class ScheduleStore {
         result = searchedInterviewerObject ? searchedInterviewerObject.interviews : undefined;
       }
     }
-    return result;
+    return result || EventService.getEvents({ interviewerId, date: new Date(date) });
   }
 
   async addNewSchedule(date, nodeGroup) {

@@ -67,7 +67,6 @@ const useStyles = makeStyles((theme) => ({
       flexDirection: 'column',
       alignItems: 'stretch',
       justifyContent: 'flex-start',
-      height: 'calc(100vh - 3rem)',
     },
   },
 }));

@@ -4,6 +4,7 @@ import { ToastContainer } from 'react-toastify';
 import Home from './pages/Home/index';
 import Track from './pages/Track/index';
 import NodeGroupPage from './pages/NodeGroupPage/index';
+import Luz from './pages/Luz/index';
 import AuthService from './services/auth.service';
 import UploadPage from './pages/FileUpload/index';
 import ConfigService from './services/config.service';
@@ -67,7 +68,7 @@ const App = () => {
     },
     {
       path: configApp.sitesPostfixes.luz,
-      component: <h1>luz</h1>,
+      component: <Luz />,
     },
     {
       path: configApp.sitesPostfixes.track,

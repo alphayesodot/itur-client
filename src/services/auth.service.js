@@ -20,7 +20,7 @@ class AuthService {
   static async setAuthHeaders() {
     axios.interceptors.request.use((value) => {
       const requestsConfig = value;
-      const token = Cookies.get(config.token_name);
+      const token = Cookies.get(config.tokenName);
       if (!token) {
         this.redirect();
       } else {
