@@ -29,6 +29,7 @@ const resources = {
         userName: 'שם משתמש',
         password: 'סיסמה',
         interviewsSchedule: 'לוז ראיונות',
+        confirm: 'אישור',
       },
       message: {
         noInterviewersInNodeGroup: 'אין מראיינים במסלול',
@@ -153,7 +154,8 @@ const resources = {
         playInterview: 'צפייה בראיון',
       },
       warnings: {
-        oneTimePassword: 'שים לב, לאחר סגירת החלונית לא יהיה ניתן לצפות בסיסמה בשנית. יש לשמור את הסיסמה במקום מאובטח.',
+        oneTimePassword:
+          'שים לב, לאחר סגירת החלונית לא יהיה ניתן לצפות בסיסמה בשנית. יש לשמור את הסיסמה במקום מאובטח.',
       },
     },
   },
