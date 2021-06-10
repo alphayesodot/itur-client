@@ -13,7 +13,9 @@ const CreationDialog = ({ open, onClose }) => { // { onClose, selectedValue, ope
   const { t } = useTranslation();
   const [nameValue, setNameValue] = useState('');
   const onSubmit = () => {
-    NodeGroupService.createNodeGroup(nameValue);
+    NodeGroupService.createNodeGroup(nameValue).then(() => {
+      // update state of all-nodeGroups list
+    });
   };
   // const currencies = [
   //   {
