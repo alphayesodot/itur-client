@@ -15,8 +15,8 @@ const NodeGroupPage = () => {
   const { t } = useTranslation();
   const [allNodeGroupRows, setAllNodeGroupRows] = useState([]);
   const [nodeGroupRowsToShow, setNodeGroupRowsToShow] = useState([]);
+  const [openDialog, setOpenDialog] = useState(false);
   const colNames = [t('tableColumns.nodeGroupName'), t('tableColumns.unit'), t('tableColumns.users'), t('tableColumns.ramadOfUnit')];
-
   useEffect(() => {
     (async () => {
       const nodeGroups = await NodeGroupService.getNodeGroups();
@@ -32,11 +32,15 @@ const NodeGroupPage = () => {
     })();
   }, []);
 
+  const handeOnCloseDialog = () => {
+    setOpenDialog(false);
+  };
   return (
     <div className={classes.root}>
       <Header
         allNodeGroupRows={allNodeGroupRows}
         setNodeGroupRowsToShow={setNodeGroupRowsToShow}
+        setOpenDialog={setOpenDialog}
       />
       <DashboardCard className={classes.dashbord}>
         <Typography className={classes.content}>
@@ -45,8 +49,7 @@ const NodeGroupPage = () => {
           <span className={classes.countTitle}>{`(${nodeGroupRowsToShow.length})`}</span>
         </Typography>
         <DataTable rowsData={nodeGroupRowsToShow} colomnsNames={colNames} />
-        {/* <SimpleDialog selectedValue={selectedValue} open={open} onClose={handleClose} /> */}
-        <CreationDialog />
+        <CreationDialog open={openDialog} onClose={handeOnCloseDialog} />
       </DashboardCard>
     </div>
   );

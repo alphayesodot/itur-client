@@ -11,6 +11,10 @@ class NodeGroupService {
     const { data } = await axios.get(`${config.uri.api}/api/nodeGroup`, { headers });
     return data;
   }
+  static async createNodeGroup(nodeGroupName: string) {
+    const { data } = await axios.post(`${config.uri.api}/api/nodeGroup`, { name: nodeGroupName }, { headers });
+    return data;
+  }
 }
 
 export default NodeGroupService;

@@ -3,8 +3,6 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => ({
   root: {
     maxHeight: '80%',
-    overflowY: 'auto',
-    overflowX: 'none',
     direction: 'rtl',
     width: '50%',
     margin: '0 2.5em',

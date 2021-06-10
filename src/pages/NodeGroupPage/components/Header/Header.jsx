@@ -18,7 +18,7 @@ const filterSearch = (prefix: string, allNodeGroupRows: Array, setNodeGroupRowsT
   setNodeGroupRowsToShow(searchResults);
 };
 
-const Header = ({ allNodeGroupRows, setNodeGroupRowsToShow }) => {
+const Header = ({ allNodeGroupRows, setNodeGroupRowsToShow, setOpenDialog }) => {
   const classes = useStyles();
   const [inputValue, setInputValue] = useState('');
   const { t } = useTranslation();
@@ -28,6 +28,7 @@ const Header = ({ allNodeGroupRows, setNodeGroupRowsToShow }) => {
         <div className={classes.main}>
           <Button
             className={`${classes.newNodeGroupButton} ${classes.item}`}
+            onClick={() => { setOpenDialog(true); }}
           >
             {t('button.newNodeGroup')}
           </Button>

@@ -13,6 +13,15 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 'bold',
     fontSize: '1rem',
     color: theme.palette.primary.main,
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  closeIcon: {
+    color: theme.palette.primary.main,
+    '&:hover': {
+      color: theme.palette.font.secondary,
+    },
   },
   label: {
     margin: '0.1rem',
