@@ -1,5 +1,6 @@
 import jwt from 'jsonwebtoken';
 import nodeGroups from './db.js';
+import { generateId } from '../utils.js';
 
 class NodeGroupManager {
   static async getNodeGroups(req, res) {
@@ -11,9 +12,19 @@ class NodeGroupManager {
     }
   }
   static async createNodeGroup(req, res) {
-    const newNodeGroup={};
-    nodeGroups.push()
-    res.send()
+    const requester = jwt.decode(req.headers.authorization.split(' ')[1]);
+    if (requester.role === 'RAMAD_ITUR_OF_UNIT') {
+      const newNodeGroup = {
+        id: generateId(),
+        name: req.body.name,
+        usersIds: [],
+        unitId: requester.unitId,
+      };
+      nodeGroups.push(newNodeGroup);
+      res.send(newNodeGroup);
+    } else {
+      res.status(400).send();
+    }
   }
 }
 

@@ -11,11 +11,14 @@ const CreationDialog = ({ open, onClose, UpdateAllNodeGroupList }) => {
   const { t } = useTranslation();
   const [nameValue, setNameValue] = useState('');
   const onSubmit = () => {
+    console.log('sending');
     NodeGroupService.createNodeGroup(nameValue).then(async (res, err) => {
       if (!err) {
         await UpdateAllNodeGroupList();
       }
       onClose();
+    }).catch((err) => {
+      console.log('eroorrrrr');
     });
   };
   // const currencies = [
