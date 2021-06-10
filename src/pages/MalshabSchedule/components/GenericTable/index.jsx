@@ -1,6 +1,5 @@
 /* eslint-disable max-len */
 import React, { useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -41,7 +40,6 @@ export default function BasicTable(props) {
   };
 
   const handleChooseAll = (event) => {
-    console.log(event.target.checked);
     setRows((prevState) => (
       prevState.map((row) => ({ ...row, checked: event.target.checked }))
     ));
@@ -50,30 +48,30 @@ export default function BasicTable(props) {
   };
 
   return (
-    <TableContainer component={Paper} className={classes.tableContainer}>
-      <Table className={classes.table} aria-label='simple table'>
+    <TableContainer component={Paper} className={classes.root}>
+      <Table stickyHeader className={classes.table} aria-label='simple table'>
         <TableHead>
           <TableRow>
-            <TableCell><Checkbox checked={chooseAllRows} onChange={(event) => handleChooseAll(event)} /></TableCell>
             {columnData.map((column) => (
               <>
                 <TableCell>{column.name}</TableCell>
               </>
             ))}
+            <TableCell><Checkbox checked={chooseAllRows} onChange={(event) => handleChooseAll(event)} /></TableCell>
           </TableRow>
         </TableHead>
 
         <TableBody>
           {rows.map((row) => (
             <TableRow key={row.id}>
+              <TableCell>{row.time}</TableCell>
+              <TableCell>{row.users}</TableCell>
+              <TableCell>{row.status}</TableCell>
+              <TableCell>{row.id}</TableCell>
+              <TableCell>{row.name}</TableCell>
               <TableCell>
                 <Checkbox checked={row.checked} onChange={() => handleChange(row)} />
               </TableCell>
-              <TableCell>{row.name}</TableCell>
-              <TableCell>{row.id}</TableCell>
-              <TableCell>{row.status}</TableCell>
-              <TableCell>{row.users}</TableCell>
-              <TableCell>{row.time}</TableCell>
             </TableRow>
           ))}
         </TableBody>

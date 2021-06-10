@@ -34,6 +34,7 @@ class ScheduleStore {
       this.schedules = [];
     }
     const schedule = await Promise.all(
+      // TODO: Check if user is an inteviewer
       nodeGroup.usersIds.map(async (interviewerId) => ({
         interviewerId,
         interviews: await EventService.getEvents({ interviewerId, date: new Date(date) }),

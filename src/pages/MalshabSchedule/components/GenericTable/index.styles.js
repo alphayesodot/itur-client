@@ -1,8 +1,12 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
-  tableContainer: {
+  root: {
     height: '90%',
+    direction: 'rtl',
+  },
+  tableHead: {
+    backgroundColor: `${theme.palette.card.header} !important`,
   },
 }));
 

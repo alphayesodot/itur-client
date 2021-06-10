@@ -129,6 +129,8 @@ const resources = {
       },
       unitControlPage: {
         malshabimText: 'מלש"בים',
+        usersText: 'יוזרים',
+        totalText: 'סה"כ',
         nameOrIdText: 'שם / תז',
         hour: 'שעה',
         users: 'יוזרים',
