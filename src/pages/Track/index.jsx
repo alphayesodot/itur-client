@@ -25,7 +25,7 @@ const Track = observer(() => {
 
   useEffect(() => {
     setIsLoading(true);
-    UnitService.getUnitById(currentUser.unit).then((res) => {
+    UnitService.getUnitById(currentUser.unitId).then((res) => {
       setUnit(res);
     }).catch(() => {
       toast(t('error.server'));

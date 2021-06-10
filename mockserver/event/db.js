@@ -2,7 +2,7 @@ const events = [
   {
     id: '1',
     node: {
-      id: '123',
+      id: '508f1f77bcf86cd7994390337',
       name: 'ראיון',
     },
     malshabShort: {
@@ -12,14 +12,14 @@ const events = [
     },
     time: `${new Date().toISOString().slice(0, 10)}T06:00:07.996+00:00`,
     location: 'place',
-    interviewersIds: ['507f1f77bcf86cd799439021', '507f1f77bcf86cd799439013', '507f1f77bcf86cd799439012'],
+    interviewersIds: [],
     url: 'http://',
     results: { notes: [''], videoUrl: '111' },
   },
   {
     id: '2',
     node: {
-      id: '123',
+      id: '508f1f77bcf86cd7994390337',
       name: 'ראיון',
     },
     malshabShort: {
@@ -36,7 +36,7 @@ const events = [
   {
     id: '507f1f77bcf86cd799439021',
     node: {
-      id: '666',
+      id: '508f1f77bcf86cd7994390337',
       name: 'ראיון',
     },
     malshabShort: {
@@ -53,7 +53,7 @@ const events = [
   {
     id: '4',
     node: {
-      id: '123',
+      id: '508f1f77bcf86cd7994390337',
       name: 'ראיון',
     },
     malshabShort: {
@@ -70,7 +70,7 @@ const events = [
   {
     id: '5',
     node: {
-      id: '123',
+      id: '508f1f77bcf86cd7994390337',
       name: 'ראיון',
     },
     malshabShort: {
@@ -87,7 +87,7 @@ const events = [
   {
     id: '507f1f77bcf86ca7994390555',
     node: {
-      id: '666',
+      id: '508f1f77bcf86cd7994390337',
       name: 'ראיון',
     },
     malshabShort: {

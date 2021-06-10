@@ -14,7 +14,6 @@ class ConfigService {
     config.secret = data.secret;
     config.fileUpload = data.fileUpload;
     config.sitesPostfixes = data.sitesPostfixes;
-    console.log(config.sitesPostfixes);
     config.allowedUrlPostfixesOfRole = data.allowedUrlPostfixesOfRole;
   }
 }

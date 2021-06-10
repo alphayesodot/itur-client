@@ -2,12 +2,13 @@ import jwt from 'jsonwebtoken';
 import nodeGroups from './db.js';
 
 class NodeGroupManager {
-  static async getNodeGroups(req, res) {
+  static async getNodesGroups(req, res) {
     const requester = jwt.decode(req.headers.authorization.split(' ')[1]);
+    const unitNodesGroup = nodeGroups.filter((nodeGroup) => nodeGroup.unitId === requester.unitId);
     if (requester.role === 'INTERVIEWER') {
-      res.send(nodeGroups[0]);
+      res.send(unitNodesGroup[0]);
     } else {
-      res.send(nodeGroups);
+      res.send(unitNodesGroup || 404);
     }
   }
 }

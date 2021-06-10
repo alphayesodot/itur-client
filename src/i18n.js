@@ -51,6 +51,8 @@ const resources = {
         unitNotAddWarning: 'יחידה לא נוספה',
         unitAdded: 'היחידה התווספה',
         userNotAddWarning: 'יוזר לא נוסף',
+        malshabsToSchedule: 'מלש"בים לשיבוץ',
+        noNodesGroups: 'אין מסלולים',
       },
       headerBlessings: {
         morning: 'בוקר טוב',

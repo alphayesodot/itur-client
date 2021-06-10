@@ -31,9 +31,7 @@ const theme = createMuiTheme({
       body: '#ecf4f6',
       warning: '#ecd8d8',
     },
-
   },
-
 });
 
 export default theme;
