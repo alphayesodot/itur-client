@@ -17,19 +17,32 @@ const NodeGroupPage = () => {
   const [nodeGroupRowsToShow, setNodeGroupRowsToShow] = useState([]);
   const [openDialog, setOpenDialog] = useState(false);
   const colNames = [t('tableColumns.nodeGroupName'), t('tableColumns.unit'), t('tableColumns.users'), t('tableColumns.ramadOfUnit')];
+  const UpdateAllNodeGroupList = async () => {
+    const nodeGroups = await NodeGroupService.getNodeGroups();
+    const promises = nodeGroups.map(async (nodeGroup) => {
+      const unit = await UnitService.getUnitById(nodeGroup.unitId);
+      const ramad = (await UserService.getUsersByUnitId(nodeGroup.unitId))
+        .find((user) => user.role === Role.RamadIturOfUnit);
+      return [nodeGroup.name, unit.name, nodeGroup.usersIds.length, ramad?.name || ''];
+    });
+    const getAllNodeGroupRows = await Promise.all(promises);
+    setAllNodeGroupRows(getAllNodeGroupRows);
+    setNodeGroupRowsToShow(getAllNodeGroupRows);
+  };
   useEffect(() => {
-    (async () => {
-      const nodeGroups = await NodeGroupService.getNodeGroups();
-      const promises = nodeGroups.map(async (nodeGroup) => {
-        const unit = await UnitService.getUnitById(nodeGroup.unitId);
-        const ramad = (await UserService.getUsersByUnitId(nodeGroup.unitId))
-          .find((user) => user.role === Role.RamadIturOfUnit);
-        return [nodeGroup.name, unit.name, nodeGroup.usersIds.length, ramad?.name || ''];
-      });
-      const getAllNodeGroupRows = await Promise.all(promises);
-      setAllNodeGroupRows(getAllNodeGroupRows);
-      setNodeGroupRowsToShow(getAllNodeGroupRows);
-    })();
+    UpdateAllNodeGroupList();
+    // (async () => {
+    //   const nodeGroups = await NodeGroupService.getNodeGroups();
+    //   const promises = nodeGroups.map(async (nodeGroup) => {
+    //     const unit = await UnitService.getUnitById(nodeGroup.unitId);
+    //     const ramad = (await UserService.getUsersByUnitId(nodeGroup.unitId))
+    //       .find((user) => user.role === Role.RamadIturOfUnit);
+    //     return [nodeGroup.name, unit.name, nodeGroup.usersIds.length, ramad?.name || ''];
+    //   });
+    //   const getAllNodeGroupRows = await Promise.all(promises);
+    //   setAllNodeGroupRows(getAllNodeGroupRows);
+    //   setNodeGroupRowsToShow(getAllNodeGroupRows);
+    // })();
   }, []);
 
   const handeOnCloseDialog = () => {
@@ -49,7 +62,11 @@ const NodeGroupPage = () => {
           <span className={classes.countTitle}>{`(${nodeGroupRowsToShow.length})`}</span>
         </Typography>
         <DataTable rowsData={nodeGroupRowsToShow} colomnsNames={colNames} />
-        <CreationDialog open={openDialog} onClose={handeOnCloseDialog} />
+        <CreationDialog
+          open={openDialog}
+          onClose={handeOnCloseDialog}
+          UpdateAllNodeGroupLis={UpdateAllNodeGroupList}
+        />
       </DashboardCard>
     </div>
   );

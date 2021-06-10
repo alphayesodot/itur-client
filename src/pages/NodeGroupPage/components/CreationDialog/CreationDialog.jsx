@@ -1,20 +1,21 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField, MenuItem, IconButton } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
 import NodeGroupService from '../../../../services/nodeGroup.service';
-// import FormControl from '@material-ui/core/FormControl';
-
 import useStyles from './CreationDialog.styles';
 
-const CreationDialog = ({ open, onClose }) => { // { onClose, selectedValue, open }
+const CreationDialog = ({ open, onClose, UpdateAllNodeGroupList }) => {
   const classes = useStyles();
   const { t } = useTranslation();
   const [nameValue, setNameValue] = useState('');
   const onSubmit = () => {
-    NodeGroupService.createNodeGroup(nameValue).then(() => {
-      // update state of all-nodeGroups list
+    NodeGroupService.createNodeGroup(nameValue).then(async (res, err) => {
+      if (!err) {
+        await UpdateAllNodeGroupList();
+      }
+      onClose();
     });
   };
   // const currencies = [
@@ -89,9 +90,9 @@ const CreationDialog = ({ open, onClose }) => { // { onClose, selectedValue, ope
   );
 };
 
-CreationDialog.propTypes = {
-  onClose: PropTypes.func.isRequired,
-  open: PropTypes.bool.isRequired,
-};
+// CreationDialog.propTypes = {
+//   onClose: PropTypes.func.isRequired,
+//   open: PropTypes.bool.isRequired,
+// };
 
 export default CreationDialog;
