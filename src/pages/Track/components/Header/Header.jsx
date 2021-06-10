@@ -9,7 +9,7 @@ import NodeGroupSelect from '../../../../common/NodeGroupSelect/NodeGroupSelect'
 import DateInput from '../../../../common/DateInput/DateInput';
 
 const Header = ({
-  unit,
+  unitName,
   selectedNodeGroup,
   setSelectedNodeGroup,
   selectedDate,
@@ -43,7 +43,7 @@ const Header = ({
           :
           {t('title.unit')}
           {' '}
-          <strong>{unit ? unit.name : ''}</strong>
+          <strong>{unitName}</strong>
         </Typography>
       </div>
     </DashboardCard>

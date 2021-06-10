@@ -1,4 +1,6 @@
+import jwt from 'jsonwebtoken';
 import users from './db.js';
+import units from '../unit/db.js';
 import { generateId } from '../utils.js';
 
 class UserManager {
@@ -22,6 +24,11 @@ class UserManager {
     users.push(newUser);
     newUser = { ...newUser, password: 'DFGJKL123456' };
     res.send(newUser || 404);
+  }
+
+  static async getMyUnit(req, res) {
+    const requester = jwt.decode(req.headers.authorization.split(' ')[1]);
+    res.send(units.find((unit) => unit.id === requester.unitId));
   }
 }
 
