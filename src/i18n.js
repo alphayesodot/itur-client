@@ -138,6 +138,7 @@ const resources = {
         users: 'יוזרים',
         isScheduled: 'עם שיבוץ',
         noEvents: 'ללא שיבוץ',
+        saveSchedule: 'שמירת לו"ז',
       },
       malshabimTable: {
         name: 'שם',

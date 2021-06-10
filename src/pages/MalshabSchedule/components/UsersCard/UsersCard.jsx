@@ -1,5 +1,5 @@
-import { Typography } from '@material-ui/core';
-import React from 'react';
+import { Button, Typography } from '@material-ui/core';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import DashboardCard from '../../../../common/DashboardCard/DashboardCard';
 import UserCard from '../UserCard/UserCard';
@@ -46,6 +46,7 @@ const users = [
 const UsersCard = () => {
   const classes = useStyles();
   const { t } = useTranslation();
+  const [scheduleHasChanged, setScheduleHasChanged] = useState(false);
 
   return (
     <DashboardCard className={classes.root}>
@@ -54,6 +55,7 @@ const UsersCard = () => {
           {t('unitControlPage.usersText')}
           <span>סה"כ - 60</span>
         </Typography>
+        <Button disabled={!scheduleHasChanged} className={`${classes.button} ${!scheduleHasChanged ? classes.disabled : ''}`}>{t('unitControlPage.saveSchedule')}</Button>
       </div>
       <div className={classes.usersList}>
         {users.map((user) => (

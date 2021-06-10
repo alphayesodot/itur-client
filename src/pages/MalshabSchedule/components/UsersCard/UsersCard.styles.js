@@ -44,6 +44,23 @@ const useStyles = makeStyles((theme) => ({
     height: '90%',
     overflow: 'auto',
   },
+  button: {
+    backgroundColor: theme.palette.primary.secondary,
+    borderRadius: '20px',
+    fontSize: '0.9rem',
+    height: '2.5rem',
+    width: '8rem',
+    padding: '0 1.9rem',
+    lineHeight: '1.25rem',
+    fontWeight: 600,
+    '&:hover': {
+      backgroundColor: theme.palette.primary.secondary,
+      opacity: 0.94,
+    },
+  },
+  disabled: {
+    backgroundColor: theme.palette.scrollbar.main,
+  },
 }));
 
 export default useStyles;
