@@ -11,7 +11,7 @@ const NodeGroupSelect = ({ selectedNodeGroup, setSelectedNodeGroup }) => {
   const [nodeGroups, setNodeGroups] = useState([]);
 
   useEffect(() => {
-    nodeGroupService.getNodesGroups().then((res) => {
+    nodeGroupService.getNodeGroups().then((res) => {
       setNodeGroups(res);
       setSelectedNodeGroup(res[0]);
     }).catch(() => {

@@ -44,7 +44,7 @@ const MalshabSchedulePage = () => {
   };
 
   useEffect(() => {
-    NodeGroupService.getNodesGroups().then((res) => {
+    NodeGroupService.getNodeGroups().then((res) => {
       setUnitNodesGroups(res);
     }).catch(() => {
       toast(t('error.server'));

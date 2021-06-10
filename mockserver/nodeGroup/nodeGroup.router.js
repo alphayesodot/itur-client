@@ -3,6 +3,6 @@ import NodeGroupManager from './nodeGroup.manager.js';
 
 const nodeGroupRouter = express.Router();
 
-nodeGroupRouter.get('/', NodeGroupManager.getNodesGroups);
+nodeGroupRouter.get('/', NodeGroupManager.getNodeGroups);
 
 export default nodeGroupRouter;

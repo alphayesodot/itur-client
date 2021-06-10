@@ -22,7 +22,7 @@ const Luz = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    NodeGroupService.getNodesGroups().then((res) => {
+    NodeGroupService.getNodeGroups().then((res) => {
       setNodeGroup(res);
     }).catch(() => {
       toast(t('error.server'));
