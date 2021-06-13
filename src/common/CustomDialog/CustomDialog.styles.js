@@ -21,6 +21,9 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 'bold',
     fontSize: '1.1rem',
   },
+  closeButton: {
+    width: '1rem',
+  },
   closeIcon: {
     color: theme.palette.primary.main,
     '&:hover': {

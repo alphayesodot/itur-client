@@ -26,6 +26,7 @@ const CustomDialog = ({ open, onClose, title, content }) => {
         <IconButton
           onClick={() => onClose()}
           style={{ backgroundColor: 'transparent' }}
+          className={classes.closeButton}
         >
           <CloseIcon fontSize='small' classes={{ root: classes.closeIcon }} />
         </IconButton>
