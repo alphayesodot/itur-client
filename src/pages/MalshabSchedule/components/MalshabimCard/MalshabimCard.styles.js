@@ -46,13 +46,6 @@ const useStyles = makeStyles((theme) => ({
       color: '#27b9d1',
     },
   },
-  selectHour: {
-    width: '5rem',
-    '& label.Mui-focused': {
-      color: '#27b9d1',
-    },
-    paddingLeft: '0.38rem',
-  },
   selectUsers: {
     width: '5rem',
     '& label.Mui-focused': {
@@ -68,10 +61,13 @@ const useStyles = makeStyles((theme) => ({
     paddingLeft: '0.38rem',
   },
   bottomRow: {
+    padding: '1.25em 2.8em',
     position: 'absolute',
+    justifyContent: 'space-between',
     width: '100%',
     right: 0,
     display: 'flex',
+    alignItems: 'center',
     height: '10%',
     boxSizing: 'border-box',
     backgroundColor: theme.palette.primary.main,
@@ -90,6 +86,25 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: theme.palette.primary.secondary,
       opacity: 0.94,
     },
+  },
+  selectScheduling: {
+    fill: 'white',
+    backgroundColor: 'white',
+    width: '8rem',
+    height: '2.5rem',
+    borderRadius: '8px',
+    padding: '0 0.6em',
+  },
+  selectionBox: {
+    display: 'flex',
+    alignItems: 'center',
+  },
+  selectedText: {
+    color: 'white',
+    paddingRight: '1em',
+    // fontSize: '14px',
+    // lineHeight: '16px',
+    // fontWeight: '200',
   },
 }));
 
