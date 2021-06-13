@@ -5,11 +5,12 @@ import useStyles from './index.styles';
 import DashboardCard from '../../common/DashboardCard/DashboardCard';
 import Header from './components/Header/Header';
 import CreationDialog from './components/CreationDialog/CreationDialog';
-import DataTable from './components/DataTable/DataTable';
+import DataTable from '../../common/DataTable/DataTable';
 import NodeGroupService from '../../services/nodeGroup.service';
 import UnitService from '../../services/unit.service';
 import { UserService, Role } from '../../services/user.service';
 import UserStoreInstance from '../../stores/User.store';
+import moreImg from '../../utils/images/general/more.svg';
 
 const NodeGroupPage = () => {
   const classes = useStyles();
@@ -52,7 +53,11 @@ const NodeGroupPage = () => {
           {' '}
           <span className={classes.countTitle}>{`(${nodeGroupRowsToShow.length})`}</span>
         </Typography>
-        <DataTable rowsData={nodeGroupRowsToShow} colomnsNames={colNames} />
+        <DataTable
+          rowsData={nodeGroupRowsToShow}
+          colomnsNames={colNames}
+          iconColomnsImages={[moreImg]}
+        />
         <CreationDialog
           open={openDialog}
           onClose={handeOnCloseDialog}

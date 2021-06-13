@@ -6,11 +6,17 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import TableContainer from '@material-ui/core/TableContainer';
 import { Button } from '@material-ui/core';
-import moreImg from '../../../../utils/images/general/more.svg';
 
 import useStyles from './DataTable.styles';
 
-const DataTable = ({ rowsData, colomnsNames }) => {
+/**
+ *
+ * @param {*} rowsData: array of row-data arrays.
+ * @param {*} colomnsNames: array of coloms names (right to left).
+ * @param {*} iconColomnsImages: array of icons that should be in an a non-named coloms.
+ * @returns design table
+ */
+const DataTable = ({ rowsData, colomnsNames, iconColomnsImages }) => {
   const classes = useStyles();
   const tableHeaderClasses = (idx) => {
     if (idx === 0) return classes.roundBorderRight;
@@ -30,12 +36,14 @@ const DataTable = ({ rowsData, colomnsNames }) => {
             <TableRow key={row.name} className={classes.row}>
               {/* eslint-disable-next-line react/no-array-index-key */}
               {row.map((cell, cellIndex) => <TableCell key={`${rowIndex}-${cellIndex}`} className={classes.cell} align='center'>{cell}</TableCell>) }
-              {/* eslint-disable-next-line react/no-array-index-key */}
-              <TableCell key={`icon-${rowIndex}`} className={classes.cell} align='center'>
-                <Button style={{ backgroundColor: 'transparent' }} className={classes.viewButton}>
-                  <img height='15rem' src={moreImg} alt='see more' />
-                </Button>
-              </TableCell>
+              {iconColomnsImages && iconColomnsImages.map((iconImg, idx) => (
+                /* eslint-disable-next-line react/no-array-index-key */
+                <TableCell key={`icon-${idx}-${rowIndex}`} className={classes.cell} align='center'>
+                  <Button style={{ backgroundColor: 'transparent' }} className={classes.viewButton}>
+                    <img height='15rem' src={iconImg} alt='see more' />
+                  </Button>
+                </TableCell>
+              ))}
             </TableRow>
           ))}
         </TableBody>
