@@ -117,15 +117,15 @@ const resources = {
       sideBar: {
         luz: 'לו"ז',
         track: 'לו"ז שבועי',
-        malshabSchedule: 'שיבוץ מלש"ב',
+        malshabSchedule: 'שיבוץ ראיונות',
         malshabSearch: 'חיפוש מלש"ב',
         reports: 'דוחות',
         posh: 'פו"ש',
-        preparationKit: 'ערכת הכנה',
+        preparationKit: 'ערכת הכנה למעריך',
         nodeGroupCreation: 'יצירת מסלול',
         fileUpload: 'העלאת קבצים',
         userManagement: 'ניהול משתמשים',
-        editQuestionnaire: 'עריכת שאלון',
+        editQuestionnaire: 'שאלונים',
         settings: 'הגדרות',
       },
       toolTip: {
