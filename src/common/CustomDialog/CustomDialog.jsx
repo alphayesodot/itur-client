@@ -3,6 +3,13 @@ import { Dialog, DialogTitle, Typography, IconButton } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
 import useStyles from './CustomDialog.styles.js';
 
+/**
+ * @param {*} open: is dialog open- boolean variable
+ * @param {*} onClose: dialog's closing function
+ * @param {*} title: dialog's title's string/component
+ * @param {*} content: dialog's content component
+ * @returns custom dialog
+ */
 const CustomDialog = ({ open, onClose, title, content }) => {
   const classes = useStyles();
 
