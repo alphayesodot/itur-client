@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
-import { ListItem, Typography, Tooltip, Button, IconButton } from '@material-ui/core';
+import { ListItem, Typography, Tooltip, Button, Dialog, IconButton } from '@material-ui/core';
 import information from '../../../../utils/images/schedule/information.svg';
 import informationLight from '../../../../utils/images/schedule/information-light.svg';
 import play from '../../../../utils/images/schedule/play-button.svg';
-import MalshabInfo from '../../../MalshabInfo';
 import InterviewStatusIcon from '../../../../common/InterviewStatusIcon/InterviewStatusIcon';
 import useStylesInterviewRaw from '../../../../common/InterviewItem/InterviewItem.styles';
 import useStyles from './InterviewRaw.styles';
@@ -69,7 +68,8 @@ const InterviewRaw = ({ event, timeDifference }) => {
           <InterviewStatusIcon status={status} />
         </div>
       </ListItem>
-      <MalshabInfo open={openDialog} onClose={() => setOpenDialog(false)} />
+      {/* TODO: Add malshab info dialog */}
+      <Dialog open={openDialog} onClose={() => setOpenDialog(false)}>Malshab info</Dialog>
     </>
   );
 };

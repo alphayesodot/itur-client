@@ -1,34 +1,30 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
+  paper: {
+    borderRadius: 15,
+    overflow: 'hidden',
+    [theme.breakpoints.up('lg')]: {
+      width: '28%',
+    },
+  },
   titleDiv: {
+    fontWeight: 'bold',
+    fontSize: '1rem',
+    color: theme.palette.primary.main,
     display: 'flex',
-    alignItems: 'center',
     justifyContent: 'space-between',
-    padding: '2rem',
-    height: '5%',
+    alignItems: 'center',
   },
   title: {
     direction: 'rtl',
     fontWeight: 'bold',
     fontSize: '1.1rem',
   },
-  closeButton: {
-    transform: 'rotate(45deg)',
-    backgroundColor: 'transparent',
-    '&:hover,&:focus': {
-      backgroundColor: 'white',
-    },
-  },
-  closeImg: {
-    height: '1.1rem',
-    width: '1.1rem',
-  },
-  paper: {
-    borderRadius: 15,
-    overflow: 'hidden',
-    [theme.breakpoints.up('lg')]: {
-      width: '28%',
+  closeIcon: {
+    color: theme.palette.primary.main,
+    '&:hover': {
+      color: theme.palette.font.secondary,
     },
   },
 }));

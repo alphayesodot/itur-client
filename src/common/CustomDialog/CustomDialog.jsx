@@ -1,7 +1,7 @@
 import React from 'react';
-import { Button, Dialog, Typography } from '@material-ui/core';
+import { Dialog, DialogTitle, Typography, IconButton } from '@material-ui/core';
+import CloseIcon from '@material-ui/icons/Close';
 import useStyles from './CustomDialog.styles.js';
-import closeImg from '../../utils/images/userManagement/add-icon.svg';
 
 const CustomDialog = ({ open, onClose, title, content }) => {
   const classes = useStyles();
@@ -14,16 +14,15 @@ const CustomDialog = ({ open, onClose, title, content }) => {
       onClose={() => onClose()}
       open={open}
     >
-      <div className={classes.titleDiv}>
+      <DialogTitle classes={{ root: classes.titleDiv }} disableTypography>
         <Typography className={classes.title}>{title}</Typography>
-        <Button
-          className={classes.closeButton}
-          onClose={() => onClose()}
-          disableRipple
+        <IconButton
+          onClick={() => onClose()}
+          style={{ backgroundColor: 'transparent' }}
         >
-          <img src={closeImg} alt='close' className={classes.closeImg} />
-        </Button>
-      </div>
+          <CloseIcon fontSize='small' classes={{ root: classes.closeIcon }} />
+        </IconButton>
+      </DialogTitle>
       <div>
         {content}
       </div>
