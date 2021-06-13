@@ -79,6 +79,17 @@ const useStyles = makeStyles((theme) => ({
     background: '#aab5b9',
     color: `${theme.palette.primary.main} !important`,
   },
+  dialogTitle: {
+    fontWeight: 'bold',
+    width: '120%',
+    display: 'flex',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+  },
+  infoIcon: {
+    width: '1.25rem',
+    height: '1.25rem',
+  },
 }));
 
 export default useStyles;

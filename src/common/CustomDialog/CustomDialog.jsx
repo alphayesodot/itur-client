@@ -22,7 +22,7 @@ const CustomDialog = ({ open, onClose, title, content }) => {
       open={open}
     >
       <DialogTitle classes={{ root: classes.titleDiv }} disableTypography>
-        <Typography className={classes.title}>{title}</Typography>
+        <Typography component='span' className={classes.title}>{title}</Typography>
         <IconButton
           onClick={() => onClose()}
           style={{ backgroundColor: 'transparent' }}
