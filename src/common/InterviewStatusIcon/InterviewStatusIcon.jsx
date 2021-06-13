@@ -18,13 +18,13 @@ const InterviewStatusIcon = ({ status }) => {
   iconMap.DURING = DURING;
 
   return (
-    <>
+    <div className={classes.root}>
       { iconMap[status] && (
         <Tooltip arrow placement='right-end' title={t(`interviewStatus.${status}`)}>
           <Avatar alt={status} src={iconMap[status]} className={classes.icon} />
         </Tooltip>
       )}
-    </>
+    </div>
   );
 };
 
