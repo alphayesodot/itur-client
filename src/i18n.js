@@ -28,6 +28,7 @@ const resources = {
         noSelectedUnit: 'אנא בחר יחידה',
         userName: 'שם משתמש',
         password: 'סיסמה',
+        moreDetails: 'פרטים נוספים',
         interviewsSchedule: 'לוז ראיונות',
       },
       message: {
