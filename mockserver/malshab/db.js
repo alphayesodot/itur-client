@@ -23,6 +23,7 @@ const malshabs = [
     schoolId: 32,
     schoolName: 'בן גוריון',
     email: 'noa@gmail.com',
+    attachments: ['שאלון מקצועי', 'שאלון אישי', 'צילום תעודת זהות'],
   },
 ];
 
