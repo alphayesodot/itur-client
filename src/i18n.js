@@ -30,6 +30,7 @@ const resources = {
         password: 'סיסמה',
         moreDetails: 'פרטים נוספים',
         interviewsSchedule: 'לוז ראיונות',
+        attachments: 'מסמכים',
       },
       message: {
         noInterviewersInNodeGroup: 'אין מראיינים במסלול',

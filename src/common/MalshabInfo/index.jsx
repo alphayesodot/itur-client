@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
+import { Typography } from '@material-ui/core';
 import MalshabService from '../../services/malshab.service';
-import useStyles from './index.styles';
+import DashboardCard from '../DashboardCard/DashboardCard';
 import CustomBackDrop from '../CustomBackDrop/CustomBackDrop';
+import useStyles from './index.styles';
 
 const MalshabInfo = ({ id }) => {
   const classes = useStyles();
@@ -27,7 +29,14 @@ const MalshabInfo = ({ id }) => {
     <>
       {isLoading
         ? <CustomBackDrop />
-        : JSON.stringify(malshab)}
+        : (
+          <div className={classes.root}>
+            <div className={classes.attachments}>
+              <Typography className={classes.attachmentsTitle}>{t('title.attachments')}</Typography>
+              <DashboardCard className={classes.attachmentsCard} />
+            </div>
+          </div>
+        )}
     </>
   );
 };
