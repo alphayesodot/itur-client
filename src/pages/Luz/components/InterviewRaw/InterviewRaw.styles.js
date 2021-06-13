@@ -80,15 +80,16 @@ const useStyles = makeStyles((theme) => ({
     color: `${theme.palette.primary.main} !important`,
   },
   dialogTitle: {
+    width: '35%',
     fontWeight: 'bold',
-    width: '120%',
     display: 'flex',
     justifyContent: 'space-around',
     alignItems: 'center',
+    fontSize: '1.25rem',
   },
   infoIcon: {
-    width: '1.25rem',
-    height: '1.25rem',
+    width: '1.5rem',
+    height: '1.5rem',
   },
 }));
 

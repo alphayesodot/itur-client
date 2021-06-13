@@ -76,8 +76,8 @@ const InterviewRaw = ({ event, timeDifference }) => {
         onClose={() => setOpenDialog(false)}
         title={(
           <Typography className={classes.dialogTitle}>
-            {t('title.moreDetails')}
             <img src={info} alt='info' className={classes.infoIcon} />
+            {t('title.moreDetails')}
           </Typography>
         )}
         content={<MalshabInfo id={malshabShort?.identityNumber} />}
