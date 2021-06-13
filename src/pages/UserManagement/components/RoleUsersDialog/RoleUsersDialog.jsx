@@ -1,10 +1,10 @@
-import { Typography, Button, Dialog, IconButton, Tooltip } from '@material-ui/core';
+import { IconButton, Tooltip } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 import useStyles from './RoleUsersDialog.styles.js';
 import RoleUsersTable from '../RoleUsersTable/RoleUsersTable';
 import RolesDialogsHeadLine from '../RolesDialogsHeadLine/RolesDialogsHeadLine';
-import addImg from '../../../../utils/images/userManagement/add-icon.svg';
 import copyImg from '../../../../utils/images/userManagement/copy.svg';
+import CustomDialog from '../../../../common/CustomDialog/CustomDialog.jsx';
 
 const RoleUsersDialog = ({ users, role, unit, openDialog, setOpenUsersDialog }) => {
   const classes = useStyles();
@@ -19,36 +19,24 @@ const RoleUsersDialog = ({ users, role, unit, openDialog, setOpenUsersDialog }) 
   };
 
   return (
-    <Dialog
-      classes={{
-        paper: classes.paper,
-      }}
-      aria-labelledby='simple-dialog-title'
+    <CustomDialog
       open={openDialog}
       onClose={() => setOpenUsersDialog(false)}
-    >
-      <div className={classes.root}>
-        <div className={classes.titleDiv}>
-          <Typography className={classes.usersTitle}>{t('title.users')}</Typography>
-          <Button
-            className={classes.closeButton}
-            onClick={() => { setOpenUsersDialog(false); }}
-            disableRipple
-          >
-            <img src={addImg} alt='close' className={classes.closeIcon} />
-          </Button>
+      title={t('title.users')}
+      content={(
+        <div className={classes.content}>
+          <RolesDialogsHeadLine users={users} role={role} unit={unit} />
+          <div className={classes.mainDiv}>
+            <RoleUsersTable users={users} />
+            <Tooltip title={t('toolTip.copyUsers')}>
+              <IconButton onClick={() => { copyUsers(); }}>
+                <img src={copyImg} alt='copy' />
+              </IconButton>
+            </Tooltip>
+          </div>
         </div>
-        <RolesDialogsHeadLine users={users} role={role} unit={unit} />
-        <div className={classes.mainDiv}>
-          <RoleUsersTable users={users} />
-          <Tooltip title={t('toolTip.copyUsers')}>
-            <IconButton onClick={() => { copyUsers(); }}>
-              <img src={copyImg} alt='copy' />
-            </IconButton>
-          </Tooltip>
-        </div>
-      </div>
-    </Dialog>
+        )}
+    />
   );
 };
 

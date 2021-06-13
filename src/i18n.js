@@ -30,6 +30,7 @@ const resources = {
         userName: 'שם משתמש',
         password: 'סיסמה',
         newNodeGroup: 'מסלול חדש',
+        moreDetails: 'פרטים נוספים',
         interviewsSchedule: 'לוז ראיונות',
       },
       message: {

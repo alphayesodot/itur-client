@@ -1,10 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    height: ' 11rem',
-    width: '33rem',
-  },
   addButton: {
     fontSize: '1rem',
     lineHeight: '20px',
@@ -42,38 +38,10 @@ const useStyles = makeStyles((theme) => ({
       borderBottom: 'none',
     },
   },
-  titleDiv: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: '1.3rem',
-    paddingRight: '2rem',
-  },
-  addDiv: {
+  content: {
+    height: '5rem',
+    width: '33rem',
     marginLeft: '2rem',
-  },
-  title: {
-    direction: 'rtl',
-    fontFamily: 'Assistant',
-    fontWeight: 'bold',
-    fontSize: '1.1rem',
-  },
-  closeButton: {
-    transform: 'rotate(45deg)',
-    '&:hover,&:focus': {
-      backgroundColor: 'white',
-    },
-  },
-  addIcon: {
-    height: '1.1rem',
-    width: '1.1rem',
-  },
-  paper: {
-    borderRadius: 15,
-    overflow: 'hidden',
-    [theme.breakpoints.up('lg')]: {
-      width: '28%',
-    },
   },
 }));
 

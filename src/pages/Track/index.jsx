@@ -3,7 +3,6 @@ import { useTranslation } from 'react-i18next';
 import { observer } from 'mobx-react-lite';
 import { toast } from 'react-toastify';
 import { Typography } from '@material-ui/core';
-import UserStore from '../../stores/User.store';
 import UnitService from '../../services/unit.service';
 import Header from './components/Header/Header';
 import TrackBoard from './components/TrackBoard/TrackBoard';
@@ -13,7 +12,6 @@ import CustomBackDrop from '../../common/CustomBackDrop/CustomBackDrop';
 const Track = observer(() => {
   const classes = useStyles();
   const { t } = useTranslation();
-  const currentUser = UserStore.userProfile;
   const [unit, setUnit] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const [selectedNodeGroup, setSelectedNodeGroup] = useState('');
@@ -25,7 +23,7 @@ const Track = observer(() => {
 
   useEffect(() => {
     setIsLoading(true);
-    UnitService.getUnitById(currentUser.unit).then((res) => {
+    UnitService.getMyUnit().then((res) => {
       setUnit(res);
     }).catch(() => {
       toast(t('error.server'));
@@ -37,7 +35,7 @@ const Track = observer(() => {
   return (
     <div className={classes.root}>
       <Header
-        unit={unit}
+        unitName={unit?.name}
         selectedNodeGroup={selectedNodeGroup}
         setSelectedNodeGroup={setSelectedNodeGroup}
         selectedDate={selectedDate}

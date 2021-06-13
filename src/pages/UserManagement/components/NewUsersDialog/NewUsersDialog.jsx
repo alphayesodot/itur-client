@@ -1,11 +1,11 @@
-import { Typography, Button, Dialog, IconButton, Tooltip, Snackbar } from '@material-ui/core';
+import { Typography, IconButton, Tooltip, Snackbar } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 import { Alert } from '@material-ui/lab';
 import useStyles from './NewUsersDialog.styles.js';
 import NewUsersTable from '../NewUsersTable/NewUsersTable.jsx';
 import RolesDialogsHeadLine from '../RolesDialogsHeadLine/RolesDialogsHeadLine';
-import addImg from '../../../../utils/images/userManagement/add-icon.svg';
 import copyImg from '../../../../utils/images/userManagement/copy.svg';
+import CustomDialog from '../../../../common/CustomDialog/CustomDialog.jsx';
 
 const NewUsersDialog = ({
   users,
@@ -33,39 +33,31 @@ const NewUsersDialog = ({
   };
 
   return (
-    <Dialog
-      classes={{
-        paper: classes.paper,
-      }}
-      onClose={() => setOpenNewUsersDialog(false)}
-      aria-labelledby='simple-dialog-title'
+    <CustomDialog
       open={openNewUsersDialog}
-    >
-      <div className={classes.root}>
-        <div className={classes.titleDiv}>
-          <Typography className={classes.usersTitle}>{t('title.newUsers')}</Typography>
-          <Button className={classes.closeButton} onClick={() => { closeDialog(); }}>
-            <img src={addImg} alt='close' className={classes.closeIcon} />
-          </Button>
+      onClose={closeDialog}
+      title={t('title.newUsers')}
+      content={(
+        <div className={classes.content}>
+          <RolesDialogsHeadLine users={users} role={role} unit={unit} />
+          <div className={classes.mainDiv}>
+            <NewUsersTable users={users} />
+            <Tooltip title={t('toolTip.copyUsers')}>
+              <IconButton onClick={() => { copyUsers(); }}>
+                <img src={copyImg} alt='copy' />
+              </IconButton>
+            </Tooltip>
+            <Snackbar open>
+              <Alert severity='error' variant='filled' className={classes.alert}>
+                <Typography className={classes.savePassWarning}>
+                  {t('warnings.oneTimePassword')}
+                </Typography>
+              </Alert>
+            </Snackbar>
+          </div>
         </div>
-        <RolesDialogsHeadLine users={users} role={role} unit={unit} />
-        <div className={classes.mainDiv}>
-          <NewUsersTable users={users} />
-          <Tooltip title={t('toolTip.copyUsers')}>
-            <IconButton onClick={() => { copyUsers(); }}>
-              <img src={copyImg} alt='copy' />
-            </IconButton>
-          </Tooltip>
-          <Snackbar open>
-            <Alert severity='error' variant='filled' className={classes.alert}>
-              <Typography className={classes.savePassWarning}>
-                {t('warnings.oneTimePassword')}
-              </Typography>
-            </Alert>
-          </Snackbar>
-        </div>
-      </div>
-    </Dialog>
+      )}
+    />
   );
 };
 
