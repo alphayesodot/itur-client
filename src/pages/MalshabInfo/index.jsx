@@ -5,7 +5,7 @@ import { Dialog, DialogContent, DialogTitle, Typography } from '@material-ui/cor
 import MalshabService from '../../services/malshab.service';
 import infoIcon from '../../utils/images/malshabInfo/info.svg';
 import useStyles from './index.styles';
-import CustomeBackDrop from '../../common/CustomeBackDrop/CustomeBackDrop';
+import CustomBackDrop from '../../common/CustomBackDrop/CustomBackDrop';
 
 const MalshabInfo = ({ id, open, onClose }) => {
   const classes = useStyles();
@@ -33,7 +33,7 @@ const MalshabInfo = ({ id, open, onClose }) => {
       </DialogTitle>
       <DialogContent>
         {isLoading
-          ? <CustomeBackDrop />
+          ? <CustomBackDrop />
           : JSON.stringify(malshab)}
       </DialogContent>
     </Dialog>
