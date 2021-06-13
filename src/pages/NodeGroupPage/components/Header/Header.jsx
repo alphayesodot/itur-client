@@ -18,7 +18,7 @@ const filterSearch = (prefix: string, allNodeGroupRows: Array, setNodeGroupRowsT
   setNodeGroupRowsToShow(searchResults);
 };
 
-const Header = ({ allNodeGroupRows, setNodeGroupRowsToShow, setOpenDialog }) => {
+const Header = ({ allNodeGroupRows, setNodeGroupRowsToShow, setOpenDialog, allowNewNodeGroup }) => {
   const classes = useStyles();
   const [inputValue, setInputValue] = useState('');
   const { t } = useTranslation();
@@ -26,12 +26,15 @@ const Header = ({ allNodeGroupRows, setNodeGroupRowsToShow, setOpenDialog }) => 
     <DashboardCard className={classes.root}>
       <div className={classes.content}>
         <div className={classes.main}>
-          <Button
-            className={`${classes.newNodeGroupButton} ${classes.item}`}
-            onClick={() => { setOpenDialog(true); }}
-          >
-            {t('button.newNodeGroup')}
-          </Button>
+          { allowNewNodeGroup ? (
+            <Button
+              className={`${classes.newNodeGroupButton} ${classes.item}`}
+              onClick={() => { setOpenDialog(true); }}
+            >
+              {t('button.newNodeGroup')}
+            </Button>
+          )
+            : <div />}
           <div className={classes.headerGroups}>
             <Fab
               size='medium'

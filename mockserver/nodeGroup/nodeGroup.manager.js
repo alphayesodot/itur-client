@@ -20,12 +20,10 @@ class NodeGroupManager {
         usersIds: [],
         unitId: requester.unitId,
       };
-      console.log(newNodeGroup);
-      console.log(requester);
       nodeGroups.push(newNodeGroup);
       res.send(newNodeGroup);
     } else {
-      res.status(400).send();
+      throw new Error('BROKEN');
     }
   }
 }

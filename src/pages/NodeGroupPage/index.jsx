@@ -9,10 +9,12 @@ import DataTable from './components/DataTable/DataTable';
 import NodeGroupService from '../../services/nodeGroup.service';
 import UnitService from '../../services/unit.service';
 import { UserService, Role } from '../../services/user.service';
+import UserStoreInstance from '../../stores/User.store';
 
 const NodeGroupPage = () => {
   const classes = useStyles();
   const { t } = useTranslation();
+  const userRole = UserStoreInstance.userProfile.role;
   const [allNodeGroupRows, setAllNodeGroupRows] = useState([]);
   const [nodeGroupRowsToShow, setNodeGroupRowsToShow] = useState([]);
   const [openDialog, setOpenDialog] = useState(false);
@@ -29,8 +31,8 @@ const NodeGroupPage = () => {
     setAllNodeGroupRows(getAllNodeGroupRows);
     setNodeGroupRowsToShow(getAllNodeGroupRows);
   };
-  useEffect(() => {
-    UpdateAllNodeGroupList();
+  useEffect(async () => {
+    await UpdateAllNodeGroupList();
   }, []);
 
   const handeOnCloseDialog = () => {
@@ -42,6 +44,7 @@ const NodeGroupPage = () => {
         allNodeGroupRows={allNodeGroupRows}
         setNodeGroupRowsToShow={setNodeGroupRowsToShow}
         setOpenDialog={setOpenDialog}
+        allowNewNodeGroup={userRole === 'RAMAD_ITUR_OF_UNIT'}
       />
       <DashboardCard className={classes.dashbord}>
         <Typography className={classes.content}>

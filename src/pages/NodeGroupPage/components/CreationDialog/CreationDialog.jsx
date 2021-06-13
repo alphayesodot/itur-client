@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField, MenuItem, IconButton } from '@material-ui/core';
+import { Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField, IconButton } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
 import { toast } from 'react-toastify';
 import NodeGroupService from '../../../../services/nodeGroup.service';
@@ -11,13 +11,11 @@ const CreationDialog = ({ open, onClose, UpdateAllNodeGroupList }) => {
   const { t } = useTranslation();
   const [nameValue, setNameValue] = useState('');
   const onSubmit = () => {
-    NodeGroupService.createNodeGroup(nameValue).then(async (res, err) => {
-      if (!err) {
-        onClose();
-        await UpdateAllNodeGroupList();
-      }
-    }).catch((error) => {
-      toast(error.massage);
+    NodeGroupService.createNodeGroup(nameValue).then(async () => {
+      onClose();
+      await UpdateAllNodeGroupList();
+    }).catch(() => {
+      toast(t('error.server'));
     });
   };
   // const currencies = [
