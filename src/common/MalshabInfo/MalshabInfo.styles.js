@@ -14,16 +14,18 @@ const useStyles = makeStyles((theme) => ({
   field: {
     display: 'flex',
     flexDirection: 'column',
-    margin: '1%',
+    margin: '0 1.5%',
     minWidth: '15%',
   },
   fieldTitle: {
-    fontWeight: '600',
     userSelect: 'none',
+    fontSize: '0.8rem',
   },
   fieldValue: {
-    border: '0.1px solid black',
+    border: '0.1px solid lightgrey',
     borderRadius: '5px',
+    padding: '0.25rem',
+    fontSize: '0.9rem',
   },
   attachments: {
     width: '25%',
@@ -32,7 +34,6 @@ const useStyles = makeStyles((theme) => ({
   attachmentsTitle: {
     userSelect: 'none',
     fontWeight: '900',
-    fontSize: '1.15rem',
   },
   attachmentsCard: {
     display: 'flex',
