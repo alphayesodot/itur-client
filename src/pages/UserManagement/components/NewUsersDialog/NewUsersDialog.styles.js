@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles(() => ({
   content: {
     height: '22rem',
+    flex: 1,
   },
   mainDiv: {
     display: 'flex',

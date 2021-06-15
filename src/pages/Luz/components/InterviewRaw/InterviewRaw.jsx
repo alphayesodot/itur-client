@@ -83,6 +83,8 @@ const InterviewRaw = ({ event, timeDifference }) => {
           </Typography>
         )}
         content={<MalshabInfo id={malshabShort?.id} />}
+        dividers
+        paperClass={classes.dialogPaper}
       />
     </>
   );

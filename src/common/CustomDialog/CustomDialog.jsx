@@ -1,5 +1,5 @@
 import React from 'react';
-import { Dialog, DialogTitle, Typography, IconButton } from '@material-ui/core';
+import { Dialog, DialogTitle, Typography, IconButton, DialogContent } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
 import useStyles from './CustomDialog.styles.js';
 
@@ -10,13 +10,13 @@ import useStyles from './CustomDialog.styles.js';
  * @param {*} content: dialog's content component
  * @returns custom dialog
  */
-const CustomDialog = ({ open, onClose, title, content }) => {
+const CustomDialog = ({ open, onClose, title, content, dividers, paperClass }) => {
   const classes = useStyles();
 
   return (
     <Dialog
       classes={{
-        paper: classes.paper,
+        paper: `${classes.paper} ${paperClass}`,
       }}
       onClose={() => onClose()}
       open={open}
@@ -31,9 +31,9 @@ const CustomDialog = ({ open, onClose, title, content }) => {
           <CloseIcon fontSize='small' classes={{ root: classes.closeIcon }} />
         </IconButton>
       </DialogTitle>
-      <div>
+      <DialogContent dividers={dividers} classes={{ root: classes.content }}>
         {content}
-      </div>
+      </DialogContent>
     </Dialog>
   );
 };

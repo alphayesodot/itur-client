@@ -83,13 +83,18 @@ const useStyles = makeStyles((theme) => ({
     width: '35%',
     fontWeight: 'bold',
     display: 'flex',
-    justifyContent: 'space-around',
     alignItems: 'center',
-    fontSize: '1.25rem',
+    fontSize: '1.5rem',
+  },
+  dialogPaper: {
+    minWidth: '70%',
+    minHeight: '70%',
   },
   infoIcon: {
-    width: '1.5rem',
-    height: '1.5rem',
+    width: '1.75rem',
+    height: '1.75rem',
+    marginRight: '1rem',
+    marginLeft: '1rem',
   },
 }));
 

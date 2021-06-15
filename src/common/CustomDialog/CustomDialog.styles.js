@@ -30,6 +30,11 @@ const useStyles = makeStyles((theme) => ({
       color: theme.palette.font.secondary,
     },
   },
+  content: {
+    display: 'flex',
+    alignItems: 'stretch',
+    justifyContent: 'center',
+  },
 }));
 
 export default useStyles;
