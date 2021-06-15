@@ -25,7 +25,7 @@ const MalshabInfo = ({ id }) => {
     { name: 'kaba', type: 'text' },
     { name: 'dapar', type: 'text' },
     { name: 'birthCountry', type: 'text' },
-    { name: 'imigrationDate', type: 'text' },
+    { name: 'imigrationDate', type: 'date' },
     { name: 'hasIsraeliCitizenship', type: 'boolean' },
     { name: 'hasAnotherCitizenship', type: 'boolean' },
     { name: 'isBereaved', type: 'boolean' },
@@ -104,7 +104,11 @@ const MalshabInfo = ({ id }) => {
         return value ? t('malshabInfo.true') : t('malshabInfo.false');
         // TODO: Check how date field will be returned from the db
       case 'date':
-        return value.toString();
+        return new Date(value).toLocaleDateString('de-DE', {
+          year: 'numeric',
+          month: '2-digit',
+          day: '2-digit',
+        });
         // TODO: Check how gender field will be returned from the db
       case 'gender':
         return value === 1 ? t('malshabInfo.female') : t('malshabInfo.male');
