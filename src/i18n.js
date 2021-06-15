@@ -36,6 +36,7 @@ const resources = {
         noInterviewersInNodeGroup: 'אין מראיינים במסלול',
         noInterviews: 'אין ראיונות',
         chooseNodeGroup: 'בחרו מסלול',
+        noAttachments: 'אין מסמכים',
       },
       headerTitles: {
         addUsers: 'הוספת משתמשים',

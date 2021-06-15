@@ -7,7 +7,7 @@ import MalshabService from '../../services/malshab.service';
 import DashboardCard from '../DashboardCard/DashboardCard';
 import CustomBackDrop from '../CustomBackDrop/CustomBackDrop';
 import attachmentIcon from '../../utils/images/malshabInfo/attachment.svg';
-import useStyles from './index.styles';
+import useStyles from './MalshabInfo.styles';
 
 const MalshabInfo = ({ id }) => {
   const classes = useStyles();
@@ -17,8 +17,7 @@ const MalshabInfo = ({ id }) => {
 
   useEffect(() => {
     setIsLoading(false);
-    // TODO: Change
-    MalshabService.getMalshabById(0).then((res) => {
+    MalshabService.getMalshabById(id).then((res) => {
       setMalshab(res);
     }).catch(() => {
       toast(t('error.server'));
@@ -27,32 +26,46 @@ const MalshabInfo = ({ id }) => {
     });
   }, [id]);
 
+  const handleOnDownload = (attachment) => {
+    MalshabService.getAttachmentByKey(id, attachment).then((data) => {
+      const url = window.URL.createObjectURL(data);
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', decodeURIComponent(attachment));
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }).catch(() => {
+      toast(t('error.server'));
+    });
+  };
+
   return (
     <>
       {isLoading
         ? <CustomBackDrop />
         : (
           <div className={classes.root}>
+            {malshab?.attachments && (
             <div className={classes.attachments}>
               <Typography className={classes.attachmentsTitle}>{t('title.attachments')}</Typography>
               <DashboardCard className={classes.attachmentsCard}>
-                {malshab?.attachments.map((attachment) => (
+                {malshab.attachments.length ? malshab.attachments.map((attachment) => (
                   <div className={classes.attachment} key={attachment}>
                     <img src={attachmentIcon} alt='icon' className={classes.attachmentIcon} />
                     <Link
                       className={classes.link}
                       component='button'
                       variant='body2'
-                      onClick={() => {
-                        console.info("I'm a button.");
-                      }}
+                      onClick={() => handleOnDownload(attachment)}
                     >
-                      {attachment}
+                      {decodeURIComponent(attachment)}
                     </Link>
                   </div>
-                ))}
+                )) : <Typography className={classes.message}>{t('message.noAttachments')}</Typography>}
               </DashboardCard>
             </div>
+            )}
           </div>
         )}
     </>

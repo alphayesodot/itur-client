@@ -24,7 +24,6 @@ const useStyles = makeStyles((theme) => ({
   },
   attachment: {
     display: 'flex',
-    alignItems: 'center',
     padding: '3%',
   },
   attachmentIcon: {
@@ -34,7 +33,14 @@ const useStyles = makeStyles((theme) => ({
   },
   link: {
     color: 'white',
+    textAlign: 'left',
     textDecoration: 'underline',
+  },
+  message: {
+    paddingTop: '20%',
+    color: 'white',
+    width: '100%',
+    textAlign: 'center',
   },
 }));
 

@@ -10,7 +10,7 @@ import InterviewStatusIcon from '../../../../common/InterviewStatusIcon/Intervie
 import useStylesInterviewRaw from '../../../../common/InterviewItem/InterviewItem.styles';
 import useStyles from './InterviewRaw.styles';
 import CustomDialog from '../../../../common/CustomDialog/CustomDialog';
-import MalshabInfo from '../../../../common/MalshabInfo';
+import MalshabInfo from '../../../../common/MalshabInfo/MalshabInfo';
 
 const InterviewRaw = ({ event, timeDifference }) => {
   const classes = useStyles();
@@ -24,11 +24,13 @@ const InterviewRaw = ({ event, timeDifference }) => {
     <>
       <ListItem className={`${classes.root} ${interviewRawClasses.item} ${interviewRawClasses[`item${status}`]}`}>
         <div className={classes.iconsSection}>
+          {status !== 'BREAK' && (
           <Tooltip title={t('toolTip.information')}>
             <IconButton className={classes.iconButton} onClick={() => setOpenDialog(true)}>
               <img src={status === 'DURING' ? informationLight : information} alt='information' className={classes.iconButton} />
             </IconButton>
           </Tooltip>
+          )}
           {status === 'DONE' && results.videoUrl && (
             <Tooltip title={t('toolTip.playInterview')}>
               {/* TODO: Send eventId as a prop to interview page */}
@@ -80,7 +82,7 @@ const InterviewRaw = ({ event, timeDifference }) => {
             {t('title.moreDetails')}
           </Typography>
         )}
-        content={<MalshabInfo id={malshabShort?.identityNumber} />}
+        content={<MalshabInfo id={malshabShort?.id} />}
       />
     </>
   );
