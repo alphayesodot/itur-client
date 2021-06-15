@@ -2,6 +2,10 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    display: 'flex',
+  },
+  fields: {
+    width: '60%',
   },
   attachments: {
     height: '15rem',
