@@ -7,12 +7,30 @@ const useStyles = makeStyles((theme) => ({
   },
   fields: {
     width: '75%',
+    display: 'flex',
+    alignItems: 'center',
+    flexWrap: 'wrap',
+  },
+  field: {
+    display: 'flex',
+    flexDirection: 'column',
+    margin: '1%',
+    minWidth: '15%',
+  },
+  fieldTitle: {
+    fontWeight: '600',
+    userSelect: 'none',
+  },
+  fieldValue: {
+    border: '0.1px solid black',
+    borderRadius: '5px',
   },
   attachments: {
     width: '25%',
     margin: '0 2%',
   },
   attachmentsTitle: {
+    userSelect: 'none',
     fontWeight: '900',
     fontSize: '1.15rem',
   },
@@ -32,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
   attachmentIcon: {
     width: '1rem',
     height: '1rem',
-    paddingRight: '3%',
+    paddingRight: '5%',
   },
   link: {
     color: 'white',

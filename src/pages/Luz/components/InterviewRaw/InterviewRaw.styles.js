@@ -84,6 +84,7 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 'bold',
     display: 'flex',
     alignItems: 'center',
+    userSelect: 'none',
     fontSize: '1.5rem',
   },
   dialogPaper: {

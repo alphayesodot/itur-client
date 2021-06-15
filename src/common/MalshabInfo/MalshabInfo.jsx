@@ -19,7 +19,7 @@ const MalshabInfo = ({ id }) => {
     { name: 'personalNumber', type: 'text' },
     { name: 'firstName', type: 'text' },
     { name: 'lastName', type: 'text' },
-    { name: 'gender', type: 'text' },
+    { name: 'gender', type: 'gender' },
     { name: 'birthDate', type: 'date' },
     { name: 'medicalProfile', type: 'text' },
     { name: 'kaba', type: 'text' },
@@ -96,8 +96,31 @@ const MalshabInfo = ({ id }) => {
     </div>
   );
 
+  const getFormattedValue = (type, value) => {
+    switch (type) {
+      case 'text':
+        return value.toString();
+      case 'boolean':
+        return value ? t('malshabInfo.true') : t('malshabInfo.false');
+        // TODO: Check how date field will be returned from the db
+      case 'date':
+        return value.toString();
+        // TODO: Check how gender field will be returned from the db
+      case 'gender':
+        return value === 1 ? t('malshabInfo.female') : t('malshabInfo.male');
+      default:
+    }
+  };
+
   const getFieldComponent = (name, type, value) => (
-    `${t(`malshabInfo.${name}`)} ${value}`
+    <div className={classes.field}>
+      <Typography className={classes.fieldTitle}>
+        {t(`malshabInfo.${name}`)}
+      </Typography>
+      <Typography className={classes.fieldValue}>
+        {getFormattedValue(type, value)}
+      </Typography>
+    </div>
   );
 
   return (
@@ -109,14 +132,14 @@ const MalshabInfo = ({ id }) => {
             {malshab?.attachments && getAttachments()}
             <div className={classes.fields}>
               {fields.map(({ name, type }) => (
-                malshab?.[name]
+                malshab?.[name] !== undefined
                 && getFieldComponent(
                   name,
                   type,
                   malshab?.[name],
                 )))}
               {addressFields.map(({ name, type }) => (
-                malshab?.addresses[0][name]
+                malshab?.addresses[0][name] !== undefined
                 && getFieldComponent(
                   name,
                   type,
