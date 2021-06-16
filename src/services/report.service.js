@@ -9,8 +9,6 @@ class ReportService {
       data: {
         name, nodeGroup, unit, startDate, endDate,
       },
-      responseType: 'blob',
-      reponseEncoding: 'binary',
     });
     return data;
   }
