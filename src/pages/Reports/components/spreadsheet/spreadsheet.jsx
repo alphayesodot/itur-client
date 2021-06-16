@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Input } from '@material-ui/core';
 import Spreadsheet from 'react-spreadsheet';
 import csv from 'csvtojson';
 import useStyles from './spreadsheet.styles';
@@ -8,11 +9,11 @@ const SpreadsheetComponent = ({ data }) => {
   const [spreadsheetData, setSpreadsheetData] = useState([]);
 
   const RangeView = ({ cell }) => (
-    <input
+    <Input
       type='text'
       value={cell.value}
       disabled
-      clasName={classes.input}
+      className={classes.input}
     />
   );
 

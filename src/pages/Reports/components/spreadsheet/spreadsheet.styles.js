@@ -2,12 +2,14 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(() => ({
   root: {
-    width: '10px',
-    height: '100%',
+    alignSelf: 'center',
+    maxHeight: '75%',
+    height: '75%',
+    width: '85%',
+    overflowY: 'auto',
   },
   input: {
     pointerEvents: 'none',
-    maxWidth: '2rem',
   },
 }));
 
