@@ -28,6 +28,10 @@ const useStyles = makeStyles((theme) => ({
     whiteSpace: 'nowrap',
     textAlign: 'left',
   },
+  dateInput: {
+    padding: '0.25em 1.3em',
+    margin: '0 1em',
+  },
 }));
 
 export default useStyles;

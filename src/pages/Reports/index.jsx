@@ -4,6 +4,7 @@ import { toast } from 'react-toastify';
 import { TextField, Typography } from '@material-ui/core';
 import NodeGroupSelect from '../../common/NodeGroupSelect/NodeGroupSelect';
 import UnitSelect from '../../common/UnitSelect/UnitSelect';
+import DateInput from '../../common/DateInput/DateInput';
 import useStyles from './index.styles';
 import InputSection from './components/InputSection/InputSection';
 
@@ -12,8 +13,15 @@ const Reports = () => {
   const [name, setName] = useState('');
   const [nodeGroup, setNodeGroup] = useState();
   const [unit, setUnit] = useState();
+  const [minDate, setMinDate] = useState();
+  const [maxDate, setMaxDate] = useState();
   const { t } = useTranslation();
 
+  useEffect(() => {
+    if (!maxDate || new Date(maxDate).getTime() > new Date(minDate).getTime()) {
+      setMaxDate(minDate);
+    }
+  }, [minDate]);
   return (
     <div className={classes.root}>
       <Typography className={classes.title}>
@@ -34,6 +42,7 @@ const Reports = () => {
             />
           )}
         />
+        {/* TODO: Only if the user don't have a unit himself */}
         <InputSection
           label={t('label.unit')}
           input={(
@@ -44,6 +53,7 @@ const Reports = () => {
             />
           )}
         />
+        {/* TODO: Only if not ramad itur-assistant/pr */}
         <InputSection
           label={t('label.nodeGroup')}
           input={(
@@ -55,16 +65,23 @@ const Reports = () => {
           )}
         />
         <InputSection
-          label={t('label.datesRange')}
+          label={t('label.minDate')}
           input={(
-            <TextField
-              className={classes.input}
-              type='text'
-              onChange={(e) => setName(e.target.value)}
-              value={name}
-              InputProps={{
-                disableUnderline: true,
-              }}
+            <DateInput
+              selectedDate={minDate}
+              setSelectedDate={setMinDate}
+              inputClassName={classes.input}
+            />
+          )}
+        />
+        {/* TODO When changing minDate- complete max date to the same value if it is smaller */}
+        <InputSection
+          label={t('label.maxDate')}
+          input={(
+            <DateInput
+              selectedDate={maxDate}
+              setSelectedDate={setMaxDate}
+              inputClassName={classes.input}
             />
           )}
         />
