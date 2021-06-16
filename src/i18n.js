@@ -17,7 +17,6 @@ const resources = {
         interviewsCount: 'סה"כ ראיונות',
         noInterviews: 'אין ראיונות',
         oneInterview: 'ראיון אחד',
-        noNodeGroups: 'אין מסלולים',
         users: 'משתמשים',
         newUsers: 'משתמשים חדשים',
         units: 'יחידות',
@@ -30,11 +29,14 @@ const resources = {
         password: 'סיסמה',
         moreDetails: 'פרטים נוספים',
         interviewsSchedule: 'לוז ראיונות',
+        reports: 'דוחות',
       },
       message: {
         noInterviewersInNodeGroup: 'אין מראיינים במסלול',
         noInterviews: 'אין ראיונות',
         chooseNodeGroup: 'בחרו מסלול',
+        noUnits: 'אין יחידות',
+        noNodeGroups: 'אין מסלולים',
       },
       headerTitles: {
         addUsers: 'הוספת משתמשים',
@@ -135,6 +137,12 @@ const resources = {
       },
       warnings: {
         oneTimePassword: 'שים לב, לאחר סגירת החלונית לא יהיה ניתן לצפות בסיסמה בשנית. יש לשמור את הסיסמה במקום מאובטח.',
+      },
+      label: {
+        reportName: 'שם דוח',
+        unit: 'יחידה',
+        nodeGroup: 'מסלול',
+        datesRange: 'טווח תאריכים',
       },
     },
   },

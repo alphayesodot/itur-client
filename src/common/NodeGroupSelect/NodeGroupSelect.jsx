@@ -5,7 +5,13 @@ import { Select, MenuItem } from '@material-ui/core';
 import nodeGroupService from '../../services/nodeGroup.service';
 import useStyles from './NodeGroupSelect.styles';
 
-const NodeGroupSelect = ({ selectedNodeGroup, setSelectedNodeGroup }) => {
+/**
+ * @param {*} selectedNodeGroup: selected nodeGroup state
+ * @param {*} setSelectedNodeGroup: set selected nodeGroup's state function
+ * @param {*} selectClassName: optional, additional select's class name defined by makestyles
+ * @returns nodeGroup select
+ */
+const NodeGroupSelect = ({ selectedNodeGroup, setSelectedNodeGroup, selectClassName }) => {
   const classes = useStyles();
   const { t } = useTranslation();
   const [nodeGroups, setNodeGroups] = useState([]);
@@ -25,7 +31,7 @@ const NodeGroupSelect = ({ selectedNodeGroup, setSelectedNodeGroup }) => {
 
   return (
     <Select
-      className={classes.root}
+      className={selectClassName || classes.root}
       inputProps={{ classes: { root: classes.select, icon: classes.icon } }}
       onChange={handleOnChange}
       value={selectedNodeGroup ? selectedNodeGroup.id : ''}
@@ -34,7 +40,7 @@ const NodeGroupSelect = ({ selectedNodeGroup, setSelectedNodeGroup }) => {
       {nodeGroups.length === 0
         ? (
           <MenuItem disabled>
-            {t('title.noNodeGroups')}
+            {t('message.noNodeGroups')}
           </MenuItem>
         )
         : nodeGroups.map((nodeGroup) => (
