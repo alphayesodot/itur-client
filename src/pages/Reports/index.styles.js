@@ -16,13 +16,6 @@ const useStyles = makeStyles((theme) => ({
       justifyContent: 'center',
     },
   },
-  inputSection: {
-    padding: '2% 0',
-    marginRight: '2%',
-  },
-  inputLabel: {
-    fontWeight: '600',
-  },
   input: {
     border: '0.2px solid lightgrey',
     borderRadius: '0.5rem',

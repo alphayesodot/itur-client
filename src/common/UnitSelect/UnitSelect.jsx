@@ -31,7 +31,7 @@ const UnitSelect = ({ selectedUnit, setSelectedUnit, selectClassName }) => {
 
   return (
     <Select
-      className={selectClassName || classes.root}
+      className={selectClassName}
       inputProps={{ classes: { root: classes.select, icon: classes.icon } }}
       onChange={handleOnChange}
       value={selectedUnit ? selectedUnit.id : ''}

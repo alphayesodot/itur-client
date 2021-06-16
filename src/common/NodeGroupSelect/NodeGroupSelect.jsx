@@ -31,7 +31,7 @@ const NodeGroupSelect = ({ selectedNodeGroup, setSelectedNodeGroup, selectClassN
 
   return (
     <Select
-      className={selectClassName || classes.root}
+      className={selectClassName}
       inputProps={{ classes: { root: classes.select, icon: classes.icon } }}
       onChange={handleOnChange}
       value={selectedNodeGroup ? selectedNodeGroup.id : ''}

@@ -3,7 +3,13 @@ import { TextField } from '@material-ui/core';
 import { observer } from 'mobx-react-lite';
 import useStyles from './DateInput.styles';
 
-const DateInput = observer(({ selectedDate, setSelectedDate }) => {
+/**
+ * @param {*} selectedDate: selected date state
+ * @param {*} setSelectedDate: set selected date's state function
+ * @param {*} inputClassName: optional, additional input's class name defined by makestyles
+ * @returns date select
+ */
+const DateInput = observer(({ selectedDate, setSelectedDate, inputClassName }) => {
   const classes = useStyles();
 
   const handleOnDateChange = (e) => {
@@ -12,7 +18,7 @@ const DateInput = observer(({ selectedDate, setSelectedDate }) => {
 
   return (
     <TextField
-      className={`${classes.date} ${classes.root}`}
+      className={`${classes.date} ${inputClassName}`}
       type='date'
       onChange={handleOnDateChange}
       value={selectedDate}
