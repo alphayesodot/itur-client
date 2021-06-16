@@ -68,6 +68,7 @@ const resources = {
         add: 'הוספה',
         view: 'הצג',
         enter: 'כניסה',
+        createReport: 'יצירת דוח',
       },
       day: {
         1: 'ראשון',
