@@ -17,15 +17,23 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
   },
   title: {
-    direction: 'rtl',
+    width: '100%',
     fontWeight: 'bold',
     fontSize: '1.1rem',
+  },
+  closeButton: {
+    width: '1rem',
   },
   closeIcon: {
     color: theme.palette.primary.main,
     '&:hover': {
       color: theme.palette.font.secondary,
     },
+  },
+  content: {
+    display: 'flex',
+    alignItems: 'stretch',
+    justifyContent: 'center',
   },
 }));
 
