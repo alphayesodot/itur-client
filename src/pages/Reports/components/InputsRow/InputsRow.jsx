@@ -13,30 +13,30 @@ const InputsRow = ({ onClick }) => {
   const [name, setName] = useState('');
   const [nodeGroup, setNodeGroup] = useState();
   const [unit, setUnit] = useState();
-  const [minDate, setMinDate] = useState();
-  const [maxDate, setMaxDate] = useState();
+  const [startDate, setStartDate] = useState();
+  const [endDate, setEndDate] = useState();
   const [canSubmit, setCanSubmit] = useState(false);
   const { t } = useTranslation();
 
   useEffect(() => {
-    if (!maxDate || new Date(maxDate).getTime() < new Date(minDate).getTime()) {
-      setMaxDate(minDate);
+    if (!endDate || new Date(endDate).getTime() < new Date(startDate).getTime()) {
+      setEndDate(startDate);
     }
-  }, [minDate]);
+  }, [startDate]);
 
   useEffect(() => {
-    if (!minDate || new Date(maxDate).getTime() < new Date(minDate).getTime()) {
-      setMinDate(maxDate);
+    if (!startDate || new Date(endDate).getTime() < new Date(startDate).getTime()) {
+      setStartDate(endDate);
     }
-  }, [maxDate]);
+  }, [endDate]);
 
   useEffect(() => {
-    setCanSubmit(name && nodeGroup && unit && minDate && maxDate);
-  }, [name, nodeGroup, unit, minDate, maxDate]);
+    setCanSubmit(name && nodeGroup && unit && startDate && endDate);
+  }, [name, nodeGroup, unit, startDate, endDate]);
 
   const restart = () => {
-    setMinDate(undefined);
-    setMaxDate(undefined);
+    setStartDate(undefined);
+    setEndDate(undefined);
     setName('');
   };
 
@@ -79,21 +79,21 @@ const InputsRow = ({ onClick }) => {
           )}
       />
       <InputSection
-        label={t('label.minDate')}
+        label={t('label.startDate')}
         input={(
           <DateInput
-            selectedDate={minDate}
-            setSelectedDate={setMinDate}
+            selectedDate={startDate}
+            setSelectedDate={setStartDate}
             inputClassName={`${classes.input} ${classes.date}`}
           />
           )}
       />
       <InputSection
-        label={t('label.maxDate')}
+        label={t('label.endDate')}
         input={(
           <DateInput
-            selectedDate={maxDate}
-            setSelectedDate={setMaxDate}
+            selectedDate={endDate}
+            setSelectedDate={setEndDate}
             inputClassName={`${classes.input} ${classes.date}`}
           />
           )}
@@ -101,7 +101,7 @@ const InputsRow = ({ onClick }) => {
       <div>
         <Button
           disabled={!canSubmit}
-          onClick={() => onClick(name, nodeGroup, unit, minDate, maxDate)}
+          onClick={() => onClick(name, nodeGroup, unit, startDate, endDate)}
           className={classes.button}
         >
           {t('button.createReport')}
