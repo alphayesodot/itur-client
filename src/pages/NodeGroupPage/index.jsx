@@ -10,7 +10,7 @@ import NodeGroupService from '../../services/nodeGroup.service';
 import UnitService from '../../services/unit.service';
 import { UserService, Role } from '../../services/user.service';
 import UserStoreInstance from '../../stores/User.store';
-import moreImg from '../../utils/images/general/more.svg';
+import OptionsButton from './components/OptionsButton/OptionsButton';
 
 const NodeGroupPage = () => {
   const classes = useStyles();
@@ -26,7 +26,10 @@ const NodeGroupPage = () => {
       const unit = await UnitService.getUnitById(nodeGroup.unitId);
       const ramad = (await UserService.getUsersByUnitId(nodeGroup.unitId))
         .find((user) => user.role === Role.RamadIturOfUnit);
-      return [nodeGroup.name, unit.name, nodeGroup.usersIds.length, ramad?.name || ''];
+      return [nodeGroup.name,
+        unit.name,
+        nodeGroup.usersIds ? nodeGroup.usersIds.length : 0, ramad?.name || '',
+        <OptionsButton nodeGroup={nodeGroup} UpdateAllNodeGroupList={UpdateAllNodeGroupList} />];
     });
     const getAllNodeGroupRows = await Promise.all(promises);
     setAllNodeGroupRows(getAllNodeGroupRows);
@@ -39,6 +42,7 @@ const NodeGroupPage = () => {
   const handeOnCloseDialog = () => {
     setOpenDialog(false);
   };
+
   return (
     <div className={classes.root}>
       <Header
@@ -53,15 +57,11 @@ const NodeGroupPage = () => {
           {' '}
           <span className={classes.countTitle}>{`(${nodeGroupRowsToShow.length})`}</span>
         </Typography>
-        <DataTable
-          rowsData={nodeGroupRowsToShow}
-          colomnsNames={colNames}
-          iconColomnsImages={[moreImg]}
-        />
+        <DataTable rowsData={nodeGroupRowsToShow} colomnsNames={colNames} />
         <CreationDialog
           open={openDialog}
           onClose={handeOnCloseDialog}
-          UpdateAllNodeGroupLis={UpdateAllNodeGroupList}
+          UpdateAllNodeGroupList={UpdateAllNodeGroupList}
         />
       </DashboardCard>
     </div>

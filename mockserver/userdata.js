@@ -21,7 +21,7 @@ const users = [
     userId: 3,
     name: 'רמד איתור מקצועי ביחידה 0',
     role: 'RAMAD_ITUR_OF_UNIT',
-    unitId: '507f191e810c19729de862ea',
+    unitId: '507f191e810c19729de861ea',
   },
   {
     userId: 4,

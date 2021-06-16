@@ -36,10 +36,6 @@ const useStyles = makeStyles((theme) => ({
   cell: {
     borderBottom: 'none',
   },
-  viewButton: {
-    width: '1rem',
-    padding: '0.2rem 0.1rem',
-  },
 }));
 
 export default useStyles;

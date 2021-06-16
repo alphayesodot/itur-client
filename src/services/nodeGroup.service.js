@@ -15,6 +15,23 @@ class NodeGroupService {
     const { data } = await axios.post(`${config.uri.api}/api/nodeGroup`, { name: nodeGroupName }, { headers });
     return data;
   }
+  static async updateNodeGroup(id, nodeGroupObject: Object) {
+    if (!nodeGroupObject || typeof (nodeGroupObject) !== 'object') return;
+    const { data } = await axios.put(`${config.uri.api}/api/nodeGroup/${id}`, nodeGroupObject, { headers });
+    return data;
+  }
+  static async deleteNodeGroup(id) {
+    const { data } = await axios.delete(`${config.uri.api}/api/nodeGroup/${id}`, { headers });
+    return data;
+  }
+  static async addUserToNodeGroup(nodeGroupId, userId) {
+    const { data } = await axios.post(`${config.uri.api}/api/nodeGroup/${nodeGroupId}/user/${userId}`, { headers });
+    return data;
+  }
+  static async removeUserFromNodeGroup(nodeGroupId, userId) {
+    const { data } = await axios.delete(`${config.uri.api}/api/nodeGroup/${nodeGroupId}/user/${userId}`, { headers });
+    return data;
+  }
 }
 
 export default NodeGroupService;

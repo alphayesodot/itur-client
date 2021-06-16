@@ -45,6 +45,9 @@ const useStyles = makeStyles((theme) => ({
       border: `1px solid ${theme.palette.dilogs.primary}`,
     },
   },
+  inputsLine: {
+
+  },
 }));
 
 export default useStyles;

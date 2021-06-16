@@ -109,7 +109,7 @@ const UnitDetailsUsersTable = ({ users, setUsers, unit }) => {
                 </TableCell>
               ))}
               <TableCell align='left' className={classes.tableHeadLine}>
-                {t('title.add')}
+                {t('actions.add')}
               </TableCell>
             </TableRow>
           </TableHead>

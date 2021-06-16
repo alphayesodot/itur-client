@@ -6,6 +6,7 @@ import config from './config.js';
 import eventRouter from './event/event.router.js';
 import uploadRouter from './upload/upload.router.js';
 import userRouter from './user/user.router.js';
+import nodeRouter from './node/node.router.js';
 import nodeGroupRouter from './nodeGroup/nodeGroup.router.js';
 import unitRouter from './unit/unit.router.js';
 import malshabRouter from './malshab/malshab.router.js';
@@ -46,5 +47,6 @@ app.use('/api/user', userRouter);
 app.use('/api/unit', unitRouter);
 app.use('/api/upload', uploadRouter);
 app.use('/api/malshab', malshabRouter);
+app.use('/api/node', nodeRouter);
 
 app.listen(config.port, () => console.log(`Mock server listening on ${config.port}`));

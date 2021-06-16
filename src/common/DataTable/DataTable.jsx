@@ -5,7 +5,6 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import TableContainer from '@material-ui/core/TableContainer';
-import { Button } from '@material-ui/core';
 
 import useStyles from './DataTable.styles';
 
@@ -16,7 +15,7 @@ import useStyles from './DataTable.styles';
  * @param {*} iconColomnsImages: array of icons that should be in an a non-named coloms.
  * @returns design table
  */
-const DataTable = ({ rowsData, colomnsNames, iconColomnsImages }) => {
+const DataTable = ({ rowsData, colomnsNames }) => {
   const classes = useStyles();
   const tableHeaderClasses = (idx) => {
     if (idx === 0) return classes.roundBorderRight;
@@ -36,14 +35,6 @@ const DataTable = ({ rowsData, colomnsNames, iconColomnsImages }) => {
             <TableRow key={row.name} className={classes.row}>
               {/* eslint-disable-next-line react/no-array-index-key */}
               {row.map((cell, cellIndex) => <TableCell key={`${rowIndex}-${cellIndex}`} className={classes.cell} align='center'>{cell}</TableCell>) }
-              {iconColomnsImages && iconColomnsImages.map((iconImg, idx) => (
-                /* eslint-disable-next-line react/no-array-index-key */
-                <TableCell key={`icon-${idx}-${rowIndex}`} className={classes.cell} align='center'>
-                  <Button style={{ backgroundColor: 'transparent' }} className={classes.viewButton}>
-                    <img height='15rem' src={iconImg} alt='see more' />
-                  </Button>
-                </TableCell>
-              ))}
             </TableRow>
           ))}
         </TableBody>

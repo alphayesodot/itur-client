@@ -34,6 +34,10 @@ const useStyles = makeStyles((theme) => ({
     marginTop: '1rem',
     direction: 'ltr',
   },
+  viewButton: {
+    width: '1rem',
+    padding: '0.2rem 0.1rem',
+  },
 }));
 
 export default useStyles;
