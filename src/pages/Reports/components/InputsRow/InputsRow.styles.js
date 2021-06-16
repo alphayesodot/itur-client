@@ -20,6 +20,9 @@ const useStyles = makeStyles((theme) => ({
   select: {
     height: '2.5rem',
   },
+  date: {
+    padding: '0 0.5rem',
+  },
   button: {
     background: theme.palette.primary.secondary,
     height: '2rem',
@@ -30,7 +33,6 @@ const useStyles = makeStyles((theme) => ({
     '&:hover': {
       background: 'white',
       color: theme.palette.primary.secondary,
-      border: `1px solid ${theme.palette.primary.secondary}`,
     },
   },
   iconButton: {

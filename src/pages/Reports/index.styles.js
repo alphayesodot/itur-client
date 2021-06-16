@@ -9,6 +9,7 @@ const useStyles = makeStyles(() => ({
     width: '100%',
     fontSize: '2rem',
     fontWeight: '800',
+    userSelect: 'none',
   },
 }));
 

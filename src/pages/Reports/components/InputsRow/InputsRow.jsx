@@ -84,7 +84,7 @@ const InputsRow = ({ onClick }) => {
           <DateInput
             selectedDate={minDate}
             setSelectedDate={setMinDate}
-            inputClassName={classes.input}
+            inputClassName={`${classes.input} ${classes.date}`}
           />
           )}
       />
@@ -94,7 +94,7 @@ const InputsRow = ({ onClick }) => {
           <DateInput
             selectedDate={maxDate}
             setSelectedDate={setMaxDate}
-            inputClassName={classes.input}
+            inputClassName={`${classes.input} ${classes.date}`}
           />
           )}
       />
