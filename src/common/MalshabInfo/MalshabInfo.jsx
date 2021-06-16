@@ -117,7 +117,7 @@ const MalshabInfo = ({ id }) => {
   };
 
   const getFieldComponent = (name, type, value) => (
-    <div className={classes.field}>
+    <div className={classes.field} key={name}>
       <Typography className={classes.fieldTitle}>
         {t(`malshabInfo.${name}`)}
       </Typography>
@@ -142,12 +142,12 @@ const MalshabInfo = ({ id }) => {
                   type,
                   malshab?.[name],
                 )))}
-              {addressFields.map(({ name, type }) => (
-                malshab?.addresses[0][name] !== undefined
+              {malshab?.addresses?.length && addressFields.map(({ name, type }) => (
+                malshab.addresses[0][name] !== undefined
                 && getFieldComponent(
                   name,
                   type,
-                  malshab?.addresses[0][name],
+                  malshab.addresses[0][name],
                 )))}
             </div>
           </div>

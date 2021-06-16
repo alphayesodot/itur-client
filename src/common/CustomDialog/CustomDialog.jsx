@@ -8,15 +8,19 @@ import useStyles from './CustomDialog.styles.js';
  * @param {*} onClose: dialog's closing function
  * @param {*} title: dialog's title's string/component
  * @param {*} content: dialog's content component
+ *                     (add `flex: 1` on content's root for perfect alignment)
+ * @param {*} dividers: optional, are there dividers- boolean variable (false by default)
+ * @param {*} paperClassName: optional, additional paper's class name defined by makestyles
+ *                           (good for defining paper's width and height)
  * @returns custom dialog
  */
-const CustomDialog = ({ open, onClose, title, content, dividers, paperClass }) => {
+const CustomDialog = ({ open, onClose, title, content, dividers, paperClassName }) => {
   const classes = useStyles();
 
   return (
     <Dialog
       classes={{
-        paper: `${classes.paper} ${paperClass}`,
+        paper: `${classes.paper} ${paperClassName}`,
       }}
       onClose={() => onClose()}
       open={open}
