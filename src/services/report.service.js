@@ -7,7 +7,7 @@ class ReportService {
       method: 'POST',
       url: `${config.uri.api}/api/report`,
       data: {
-        name, nodeGroup, unit, startDate, endDate,
+        name, nodeGroupId: nodeGroup.id, unitId: unit.id, startDate, endDate,
       },
     });
     return data;
