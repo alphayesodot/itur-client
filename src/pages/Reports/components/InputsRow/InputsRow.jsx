@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { TextField, Button } from '@material-ui/core';
+import { TextField, Button, IconButton, Tooltip } from '@material-ui/core';
+import RedoIcon from '@material-ui/icons/Redo';
 import NodeGroupSelect from '../../../../common/NodeGroupSelect/NodeGroupSelect';
 import UnitSelect from '../../../../common/UnitSelect/UnitSelect';
 import DateInput from '../../../../common/DateInput/DateInput';
@@ -32,6 +33,12 @@ const InputsRow = ({ onClick }) => {
   useEffect(() => {
     setCanSubmit(name && nodeGroup && unit && minDate && maxDate);
   }, [name, nodeGroup, unit, minDate, maxDate]);
+
+  const restart = () => {
+    setMinDate(undefined);
+    setMaxDate(undefined);
+    setName('');
+  };
 
   return (
     <div className={classes.root}>
@@ -91,13 +98,23 @@ const InputsRow = ({ onClick }) => {
           />
           )}
       />
-      <Button
-        disabled={!canSubmit}
-        onClick={() => onClick(name, nodeGroup, unit, minDate, maxDate)}
-        className={classes.button}
-      >
-        {t('button.createReport')}
-      </Button>
+      <div>
+        <Button
+          disabled={!canSubmit}
+          onClick={() => onClick(name, nodeGroup, unit, minDate, maxDate)}
+          className={classes.button}
+        >
+          {t('button.createReport')}
+        </Button>
+        <Tooltip title={t('toolTip.restart')}>
+          <IconButton
+            onClick={() => restart()}
+            className={classes.iconButton}
+          >
+            <RedoIcon />
+          </IconButton>
+        </Tooltip>
+      </div>
     </div>
   );
 };

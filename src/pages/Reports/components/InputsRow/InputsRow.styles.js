@@ -33,6 +33,9 @@ const useStyles = makeStyles((theme) => ({
       border: `1px solid ${theme.palette.primary.secondary}`,
     },
   },
+  iconButton: {
+    marginTop: '1.5rem',
+  },
 }));
 
 export default useStyles;

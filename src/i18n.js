@@ -135,6 +135,7 @@ const resources = {
         copyUsers: 'העתקת יוזרים',
         information: 'מידע נוסף',
         playInterview: 'צפייה בראיון',
+        restart: 'התחל מחדש',
       },
       warnings: {
         oneTimePassword: 'שים לב, לאחר סגירת החלונית לא יהיה ניתן לצפות בסיסמה בשנית. יש לשמור את הסיסמה במקום מאובטח.',
