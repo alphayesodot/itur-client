@@ -31,6 +31,7 @@ const resources = {
         moreDetails: 'פרטים נוספים',
         interviewsSchedule: 'לוז ראיונות',
         attachments: 'מסמכים',
+        generalInfo: 'פרטים כללים',
       },
       message: {
         noInterviewersInNodeGroup: 'אין מראיינים במסלול',

@@ -5,11 +5,15 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'stretch',
   },
-  fields: {
-    width: '75%',
+  fieldsSection: {
     display: 'flex',
-    alignItems: 'center',
+    flexDirection: 'column',
+    width: '75%',
+  },
+  fields: {
+    display: 'flex',
     flexWrap: 'wrap',
+    height: '100%',
   },
   field: {
     display: 'flex',

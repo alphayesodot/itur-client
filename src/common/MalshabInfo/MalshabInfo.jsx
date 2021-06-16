@@ -133,21 +133,27 @@ const MalshabInfo = ({ id }) => {
         : (
           <div className={classes.root}>
             {malshab?.attachments && getAttachments()}
-            <div className={classes.fields}>
-              {fields.map(({ name, type }) => (
-                malshab?.[name] !== undefined
+            <div className={classes.fieldsSection}>
+              <Typography className={classes.attachmentsTitle}>
+                {t('title.generalInfo')}
+              </Typography>
+              <div className={classes.fields}>
+                {fields.map(({ name, type }) => (
+                  malshab?.[name] !== undefined
                 && getFieldComponent(
                   name,
                   type,
                   malshab?.[name],
                 )))}
-              {malshab?.addresses?.length && addressFields.map(({ name, type }) => (
-                malshab.addresses[0][name] !== undefined
+                {malshab?.addresses?.length
+                && addressFields.map(({ name, type }) => (
+                  malshab.addresses[0][name] !== undefined
                 && getFieldComponent(
                   name,
                   type,
                   malshab.addresses[0][name],
                 )))}
+              </div>
             </div>
           </div>
         )}
