@@ -5,7 +5,7 @@ class ReportService {
   static async createReport(name, nodeGroup, unit, startDate, endDate) {
     const { data } = await axios.request({
       method: 'POST',
-      url: `${config.uri.api}/api/reports`,
+      url: `${config.uri.api}/api/report`,
       data: {
         name, nodeGroup, unit, startDate, endDate,
       },
