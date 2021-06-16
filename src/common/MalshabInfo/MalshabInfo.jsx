@@ -102,7 +102,6 @@ const MalshabInfo = ({ id }) => {
         return value.toString();
       case 'boolean':
         return value ? t('malshabInfo.true') : t('malshabInfo.false');
-        // TODO: Check how date field will be returned from the db
       case 'date':
         return new Date(value).toLocaleDateString('de-DE', {
           year: 'numeric',
