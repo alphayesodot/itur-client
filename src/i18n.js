@@ -35,9 +35,8 @@ const resources = {
         noInterviewersInNodeGroup: 'אין מראיינים במסלול',
         noInterviews: 'אין ראיונות',
         chooseNodeGroup: 'בחרו מסלול',
-        noUnits: 'אין יחידות',
-        noNodeGroups: 'אין מסלולים',
         noReport: 'אין דוח לתצוגה',
+        noOptions: 'אין אופציות',
       },
       headerTitles: {
         addUsers: 'הוספת משתמשים',
@@ -143,8 +142,8 @@ const resources = {
       },
       label: {
         reportName: 'שם דוח',
-        unit: 'יחידה',
-        nodeGroup: 'מסלול',
+        units: 'יחידות',
+        nodeGroups: 'מסלולים',
         startDate: 'תאריך התחלתי',
         endDate: 'תאריך סיום',
       },

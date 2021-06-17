@@ -1,18 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
-import { Select, MenuItem } from '@material-ui/core';
 import UnitService from '../../services/unit.service';
-import useStyles from './UnitSelect.styles';
+import GenericSelect from '../GenericSelect/GenericSelect';
 
 /**
  * @param {*} selectedUnit: selected unit state
  * @param {*} setSelectedUnit: set selected unit's state function
  * @param {*} selectClassName: optional, additional select's class name defined by makestyles
+ * @param {*} isMultiple: optional, is multiple options
  * @returns unit select
  */
-const UnitSelect = ({ selectedUnit, setSelectedUnit, selectClassName }) => {
-  const classes = useStyles();
+const UnitSelect = ({ selectedUnit, setSelectedUnit, selectClassName, isMultiple }) => {
   const { t } = useTranslation();
   const [units, setUnits] = useState([]);
 
@@ -25,30 +24,14 @@ const UnitSelect = ({ selectedUnit, setSelectedUnit, selectClassName }) => {
     });
   }, []);
 
-  const handleOnChange = (e) => {
-    setSelectedUnit(units.find((unit) => unit.id === e.target.value));
-  };
-
   return (
-    <Select
-      className={selectClassName}
-      inputProps={{ classes: { root: classes.select, icon: classes.icon } }}
-      onChange={handleOnChange}
-      value={selectedUnit ? selectedUnit.id : ''}
-      disableUnderline
-    >
-      {units.length === 0
-        ? (
-          <MenuItem disabled>
-            {t('message.noUnits')}
-          </MenuItem>
-        )
-        : units.map((unit) => (
-          <MenuItem key={unit.id} value={unit.id}>
-            {unit.name}
-          </MenuItem>
-        ))}
-    </Select>
+    <GenericSelect
+      options={units}
+      selectedValue={selectedUnit}
+      setSelectedValue={setSelectedUnit}
+      selectClassName={selectClassName}
+      isMultiple={isMultiple}
+    />
   );
 };
 

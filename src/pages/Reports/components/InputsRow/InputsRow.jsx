@@ -12,8 +12,8 @@ import useStyles from './InputsRow.styles';
 const InputsRow = ({ onClick, resetData }) => {
   const classes = useStyles();
   const [name, setName] = useState('');
-  const [nodeGroup, setNodeGroup] = useState();
-  const [unit, setUnit] = useState();
+  const [nodeGroups, setNodeGroups] = useState();
+  const [units, setUnits] = useState();
   const [startDate, setStartDate] = useState();
   const [endDate, setEndDate] = useState();
   const [canSubmit, setCanSubmit] = useState(false);
@@ -32,8 +32,9 @@ const InputsRow = ({ onClick, resetData }) => {
   }, [endDate]);
 
   useEffect(() => {
-    setCanSubmit(name && nodeGroup && unit && startDate && endDate);
-  }, [name, nodeGroup, unit, startDate, endDate]);
+    // TODO: Change depends on required fields for each role
+    setCanSubmit(name && nodeGroups?.length && units?.length && startDate && endDate);
+  }, [name, nodeGroups, units, startDate, endDate]);
 
   const restart = () => {
     setStartDate(undefined);
@@ -58,24 +59,26 @@ const InputsRow = ({ onClick, resetData }) => {
           />
           )}
       />
+      {/* TODO: Change to multiple checks */}
       {/* TODO: Only if the user don't have a unit himself */}
       <InputSection
-        label={t('label.unit')}
+        label={t('label.units')}
         input={(
           <UnitSelect
-            selectedUnit={unit}
-            setSelectedUnit={setUnit}
+            selectedUnit={units}
+            setSelectedUnit={setUnits}
             selectClassName={`${classes.input} ${classes.select}`}
           />
           )}
       />
+      {/* TODO: Change to multiple checks */}
       {/* TODO: Only if not ramad itur-assistant/pr */}
       <InputSection
-        label={t('label.nodeGroup')}
+        label={t('label.nodeGroups')}
         input={(
           <NodeGroupSelect
-            selectedNodeGroup={nodeGroup}
-            setSelectedNodeGroup={setNodeGroup}
+            selectedNodeGroup={nodeGroups}
+            setSelectedNodeGroup={setNodeGroups}
             selectClassName={`${classes.input} ${classes.select}`}
           />
           )}
@@ -103,7 +106,7 @@ const InputsRow = ({ onClick, resetData }) => {
       <div>
         <Button
           disabled={!canSubmit}
-          onClick={() => onClick(name, nodeGroup, unit, startDate, endDate)}
+          onClick={() => onClick(name, nodeGroups, units, startDate, endDate)}
           className={classes.button}
         >
           {t('button.createReport')}
