@@ -56,7 +56,7 @@ const GenericSelect = ({
       }}
       renderValue={getRenderValue}
       onChange={handleOnChange}
-      value={getValue()}
+      value={getValue() || ''}
       disableUnderline
     >
       {options.length === 0
