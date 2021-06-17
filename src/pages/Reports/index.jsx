@@ -6,7 +6,7 @@ import ReportService from '../../services/report.service';
 import InputsRow from './components/InputsRow/InputsRow';
 import DashboardCard from '../../common/DashboardCard/DashboardCard';
 import useStyles from './index.styles';
-import SpreadsheetComponent from './components/spreadsheet/spreadsheet';
+import SpreadsheetComponent from './components/Spreadsheet/Spreadsheet';
 
 const Reports = () => {
   const classes = useStyles();
