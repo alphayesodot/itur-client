@@ -31,7 +31,10 @@ const theme = createMuiTheme({
       body: '#ecf4f6',
       warning: '#ecd8d8',
     },
-    
+    textField: {
+      focused: '#27b9d1',
+    },
+
   },
 });
 

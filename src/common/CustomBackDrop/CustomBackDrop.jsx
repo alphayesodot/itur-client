@@ -6,7 +6,7 @@ const CustomBackDrop = () => {
   const classes = useStyles();
 
   return (
-    <Backdrop open className={classes.backdrop}>
+    <Backdrop open className={classes.root}>
       <CircularProgress color='primary' />
     </Backdrop>
   );

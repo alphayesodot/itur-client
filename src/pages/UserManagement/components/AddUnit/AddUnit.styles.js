@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
     lineHeight: '20px',
     fontWeight: 300,
     color: '#fff',
-    backgroundColor: '#27b9d1',
+    backgroundColor: theme.palette.textField.focused,
     borderRadius: '8px',
     padding: '0px 25px',
     height: '40px',

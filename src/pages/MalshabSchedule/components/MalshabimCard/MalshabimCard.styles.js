@@ -4,7 +4,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     position: 'relative',
     marginRight: '2rem',
-    width: '50%',
+    width: '100%',
     backgroundColor: 'white',
     padding: '1.5rem 1.9rem 1.5rem 1.9rem',
     [theme.breakpoints.down('sm')]: {
@@ -16,14 +16,12 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   malshabimTopRow: {
+    marginRight: '10px',
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'space-between',
     paddingBottom: '1rem',
-    height: '10%',
-    [theme.breakpoints.down('sm')]: {
-      justifyContent: 'space-around',
-    },
+    flexWrap: 'wrap',
+    height: '12.5%',
   },
   malshabimText: {
     fontSize: '1.1rem',
@@ -33,32 +31,31 @@ const useStyles = makeStyles((theme) => ({
       fontWeight: '200',
       paddingLeft: '0.5rem',
     },
+    marginRight: 'auto',
   },
   formControlNameOrId: {
     paddingLeft: '0.38rem',
   },
   formNameOrIdInputText: {
+    marginRight: '0.5em',
     fontWeight: '300',
-    width: '10.6rem',
+    width: '7.5rem',
   },
   formNameOrIdInputLabel: {
     '&.Mui-focused': {
-      color: '#27b9d1',
+      color: theme.palette.textField.focused,
     },
   },
   selectUsers: {
+    marginRight: '0.5em',
     width: '5rem',
-    '& label.Mui-focused': {
-      color: '#27b9d1',
-    },
-    paddingLeft: '0.38rem',
   },
-  isScheduled: {
+  selectScheduled: {
+    width: '7rem',
+  },
+  selectHour: {
+    marginRight: '0.5rem',
     width: '6rem',
-    '& label.Mui-focused': {
-      color: '#27b9d1',
-    },
-    paddingLeft: '0.38rem',
   },
   bottomRow: {
     padding: '1.25em 2.8em',
@@ -73,7 +70,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.primary.main,
     borderRadius: '0px 0px 16px 16px',
   },
-  button: {
+  confirmButton: {
     backgroundColor: theme.palette.primary.secondary,
     borderRadius: '20px',
     fontSize: '0.9rem',
@@ -90,10 +87,7 @@ const useStyles = makeStyles((theme) => ({
   selectScheduling: {
     fill: 'white',
     backgroundColor: 'white',
-    width: '8rem',
-    height: '2.5rem',
-    borderRadius: '8px',
-    padding: '0 0.6em',
+    width: '10rem',
   },
   selectionBox: {
     display: 'flex',

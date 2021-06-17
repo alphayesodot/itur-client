@@ -8,6 +8,7 @@ import NodeGroupService from '../../services/nodeGroup.service';
 import UsersCard from './components/UsersCard/UsersCard';
 import Header from '../Track/components/Header/Header';
 import MalshabimCard from './components/MalshabimCard/MalshabimCard';
+import UserService from '../../services/user.service';
 
 const MalshabSchedulePage = () => {
   const classes = useStyles();
@@ -22,6 +23,7 @@ const MalshabSchedulePage = () => {
     month: '2-digit',
     day: '2-digit',
   }));
+  const [users, setUsers] = useState([]);
 
   useEffect(() => {
     NodeGroupService.getNodeGroups().then((res) => {
@@ -30,6 +32,18 @@ const MalshabSchedulePage = () => {
       toast(t('error.server'));
     });
   }, []);
+
+  useEffect(() => {
+    UserService.getUsersByUnitId().then((res) => {
+      setUsers(res.filter((user) => user.role === 'INTERVIEWER'));
+    }).catch(() => {
+      toast(t('error.server'));
+    });
+  }, []);
+
+  const handleMalshabsToSchedule = (chosenMalshabs, selectedScheduling) => {
+
+  };
 
   return (
     <div className={classes.root}>
@@ -43,8 +57,8 @@ const MalshabSchedulePage = () => {
       />
       {choosenNodeGroup ? (
         <div className={classes.mainInner}>
-          <MalshabimCard />
-          <UsersCard />
+          <MalshabimCard handleMalshabsToSchedule={handleMalshabsToSchedule} />
+          <UsersCard users={users} selectedDate={selectedDate} />
         </div>
       )
         : (
