@@ -4,6 +4,7 @@ import { toast } from 'react-toastify';
 import { CSVLink } from 'react-csv';
 import ReportService from '../../services/report.service';
 import InputsRow from './components/InputsRow/InputsRow';
+import DashboardCard from '../../common/DashboardCard/DashboardCard';
 import useStyles from './index.styles';
 import SpreadsheetComponent from './components/spreadsheet/spreadsheet';
 
@@ -27,14 +28,16 @@ const Reports = () => {
   return (
     <div className={classes.root}>
       <InputsRow onClick={handleOnClick} />
-      {file && (
+      <DashboardCard className={classes.dashboard}>
+        {file && (
         <>
           <CSVLink filename={`${fileName}.csv`} data={file}>
             <span ref={btnRef} />
           </CSVLink>
           <SpreadsheetComponent data={file} />
         </>
-      )}
+        )}
+      </DashboardCard>
     </div>
   );
 };

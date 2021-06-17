@@ -8,6 +8,12 @@ const useStyles = makeStyles(() => ({
     flexDirection: 'column',
     alignItems: 'stretch',
   },
+  dashboard: {
+    height: '100%',
+    marginTop: '1%',
+    display: 'flex',
+    justifyContent: 'center',
+  },
 }));
 
 export default useStyles;
