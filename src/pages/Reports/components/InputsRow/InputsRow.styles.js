@@ -5,7 +5,8 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexWrap: 'wrap',
     alignItems: 'center',
-    justifyContent: 'center',
+    paddingLeft: '3%',
+    background: theme.palette.primary.main,
     [theme.breakpoints.down('sm')]: {
       justifyContent: 'center',
     },
@@ -38,6 +39,7 @@ const useStyles = makeStyles((theme) => ({
   },
   iconButton: {
     marginTop: '1.5rem',
+    color: 'white',
   },
 }));
 

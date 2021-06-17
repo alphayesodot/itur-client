@@ -5,6 +5,7 @@ import RedoIcon from '@material-ui/icons/Redo';
 import NodeGroupSelect from '../../../../common/NodeGroupSelect/NodeGroupSelect';
 import UnitSelect from '../../../../common/UnitSelect/UnitSelect';
 import DateInput from '../../../../common/DateInput/DateInput';
+import DashboardCard from '../../../../common/DashboardCard/DashboardCard';
 import InputSection from '../InputSection/InputSection';
 import useStyles from './InputsRow.styles';
 
@@ -41,7 +42,7 @@ const InputsRow = ({ onClick }) => {
   };
 
   return (
-    <div className={classes.root}>
+    <DashboardCard className={classes.root}>
       <InputSection
         label={t('label.reportName')}
         input={(
@@ -115,7 +116,7 @@ const InputsRow = ({ onClick }) => {
           </IconButton>
         </Tooltip>
       </div>
-    </div>
+    </DashboardCard>
   );
 };
 

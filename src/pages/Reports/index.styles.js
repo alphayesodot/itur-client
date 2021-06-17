@@ -8,12 +8,6 @@ const useStyles = makeStyles(() => ({
     flexDirection: 'column',
     alignItems: 'stretch',
   },
-  title: {
-    width: '100%',
-    fontSize: '2rem',
-    fontWeight: '800',
-    userSelect: 'none',
-  },
 }));
 
 export default useStyles;

@@ -2,7 +2,6 @@ import React, { useState, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
 import { CSVLink } from 'react-csv';
-import { Typography } from '@material-ui/core';
 import ReportService from '../../services/report.service';
 import InputsRow from './components/InputsRow/InputsRow';
 import useStyles from './index.styles';
@@ -27,9 +26,6 @@ const Reports = () => {
 
   return (
     <div className={classes.root}>
-      <Typography className={classes.title}>
-        {t('title.reports')}
-      </Typography>
       <InputsRow onClick={handleOnClick} />
       {file && (
         <>

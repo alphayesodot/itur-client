@@ -29,7 +29,6 @@ const resources = {
         password: 'סיסמה',
         moreDetails: 'פרטים נוספים',
         interviewsSchedule: 'לוז ראיונות',
-        reports: 'דוחות',
       },
       message: {
         noInterviewersInNodeGroup: 'אין מראיינים במסלול',
