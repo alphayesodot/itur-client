@@ -18,6 +18,31 @@ class NodesManager {
       res.status(400).send('BROKEN');
     }
   }
+
+  static async updateNode(req, res) {
+    const requester = jwt.decode(req.headers.authorization.split(' ')[1]);
+    if ([Role.Technical, Role.RamadIturOfUnit].includes(requester.role)) {
+      const nodeIndex = nodes.findIndex((node) => node.id === req.params.id.toString());
+      if (nodeIndex > -1) {
+        if (req.body.name) nodes[nodeIndex].name = req.body.name;
+        if (req.body.nodeGroupId !== undefined) {
+          if (requester.role !== Role.RamadIturOfUnit) res.status(400).send('BROKEN');
+          nodes[nodeIndex].nodeGroupId = req.body.nodeGroupId;
+        }
+        if (req.body.type) {
+          if (req.body.type === 'INTERVIEW' && !req.body.unitId) res.status(400).send('BROKEN');
+          nodes[nodeIndex].type = req.body.type;
+        }
+        if (req.body.unitId) {
+          nodes[nodeIndex].unitId = req.body.unitId;
+          nodes[nodeIndex].nodeGroupId = '';
+        }
+        res.send(nodes[nodeIndex]);
+      }
+    } else {
+      res.status(400).send('BROKEN');
+    }
+  }
 }
 
 export default NodesManager;

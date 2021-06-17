@@ -31,6 +31,7 @@ const resources = {
         userName: 'שם משתמש',
         password: 'סיסמה',
         newNodeGroup: 'מסלול חדש',
+        editNodeGroup: 'ערוך מסלול',
         moreDetails: 'פרטים נוספים',
         interviewsSchedule: 'לוז ראיונות',
       },

@@ -32,9 +32,9 @@ const DataTable = ({ rowsData, colomnsNames }) => {
         </TableHead>
         <TableBody className={classes.tableContent}>
           {rowsData.map((row, rowIndex) => (
-            <TableRow key={row.name} className={classes.row}>
+            <TableRow key={row.id} className={classes.row}>
               {/* eslint-disable-next-line react/no-array-index-key */}
-              {row.map((cell, cellIndex) => <TableCell key={`${rowIndex}-${cellIndex}`} className={classes.cell} align='center'>{cell}</TableCell>) }
+              {row.data.map((cell, cellIndex) => <TableCell key={`${rowIndex}-${cellIndex}`} className={classes.cell} align='center'>{cell}</TableCell>) }
             </TableRow>
           ))}
         </TableBody>

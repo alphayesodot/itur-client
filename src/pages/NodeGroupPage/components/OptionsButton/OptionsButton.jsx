@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Menu, MenuItem, Button } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 import moreImg from '../../../../utils/images/general/more.svg';
@@ -6,26 +6,26 @@ import useStyles from './OptionsButton.styles';
 import deleteImg from '../../../../utils/images/general/trash.svg';
 import editImg from '../../../../utils/images/general/edit-regular.svg';
 import NodeGroupService from '../../../../services/nodeGroup.service';
-import CreationDialog from '../CreationDialog/CreationDialog';
+import NodeGroupDialog from '../NodeGroupDialog/NodeGroupDialog';
 
-const SelectCheckboxItem = ({ nodeGroup, UpdateAllNodeGroupList }) => {
+const OptionsButton = ({ nodeGroup, updateAllNodeGroupList }) => {
   const { t } = useTranslation();
-  const [openMenu, setOpenMenu] = useState(false);
   const classes = useStyles();
   const [duringDeletion, setDuringDeletion] = useState(false);
   const [openEditDialog, setOpenEditDialog] = useState(false);
+  const [anchorEl, setAnchorEl] = useState(null);
 
-  const handleCloseMenu = () => {
-    setOpenMenu(false);
+  const handleOnOpenMenu = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
   };
-  const handeOnCloseDialog = () => {
-    setOpenEditDialog(false);
+  const handleOnCloseMenu = () => {
+    setAnchorEl(null);
   };
   const handleDelete = () => {
     if (!duringDeletion) {
       setDuringDeletion(true);
       NodeGroupService.deleteNodeGroup(nodeGroup.id).then(async () => {
-        UpdateAllNodeGroupList();
+        updateAllNodeGroupList();
         setDuringDeletion(false);
       });
     }
@@ -36,7 +36,7 @@ const SelectCheckboxItem = ({ nodeGroup, UpdateAllNodeGroupList }) => {
       <Button
         aria-controls='simple-menu'
         aria-haspopup='true'
-        onClick={() => { setOpenMenu(true); }}
+        onClick={handleOnOpenMenu}
         style={{ backgroundColor: 'transparent' }}
         className={classes.root}
       >
@@ -44,17 +44,15 @@ const SelectCheckboxItem = ({ nodeGroup, UpdateAllNodeGroupList }) => {
       </Button>
       <Menu
         id='simple-menu'
-        open={openMenu}
-        onClose={handleCloseMenu}
+        open={Boolean(anchorEl)}
+        keepMounted
+        onClose={handleOnCloseMenu}
+        anchorEl={anchorEl}
         className={classes.menu}
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'center',
-        }}
       >
         <MenuItem onClick={async () => {
           await handleDelete();
-          handleCloseMenu();
+          handleOnCloseMenu();
         }}
         >
           <div className={classes.menuItem}>
@@ -64,24 +62,24 @@ const SelectCheckboxItem = ({ nodeGroup, UpdateAllNodeGroupList }) => {
         </MenuItem>
         <MenuItem onClick={() => {
           setOpenEditDialog(true);
-          handleCloseMenu();
+          handleOnCloseMenu();
         }}
         >
           <div className={classes.menuItem}>
             <img className={classes.img} width='17rem' src={editImg} alt='see more' />
             {t('actions.edit')}
           </div>
-          <CreationDialog
-            open={openEditDialog}
-            onClose={handeOnCloseDialog}
-            UpdateAllNodeGroupList={UpdateAllNodeGroupList}
-            currentNodeGroup={nodeGroup}
-          />
         </MenuItem>
       </Menu>
+      <NodeGroupDialog
+        open={openEditDialog}
+        onClose={() => { setOpenEditDialog(false); }}
+        updateAllNodeGroupList={updateAllNodeGroupList}
+        currentNodeGroup={nodeGroup}
+      />
     </>
 
   );
 };
 
-export default SelectCheckboxItem;
+export default OptionsButton;

@@ -4,13 +4,13 @@ import { Button, DialogActions, DialogContent, TextField } from '@material-ui/co
 import { toast } from 'react-toastify';
 import NodeGroupService from '../../../../services/nodeGroup.service';
 import NodeService from '../../../../services/node.service';
-import useStyles from './CreationDialog.styles';
+import useStyles from './NodeGroupDialog.styles';
 import CustomDialog from '../../../../common/CustomDialog/CustomDialog';
 import SelectCheckboxItem from '../SelectCheckboxItem/SelectCheckboxItem';
 import { UserService } from '../../../../services/user.service';
 import UserStoreInstance from '../../../../stores/User.store';
 
-const CreationDialog = ({ open, onClose, UpdateAllNodeGroupList, currentNodeGroup }) => {
+const NodeGroupDialog = ({ open, onClose, updateAllNodeGroupList, currentNodeGroup }) => {
   const classes = useStyles();
   const { t } = useTranslation();
   const [nameValue, setNameValue] = useState('');
@@ -54,7 +54,8 @@ const CreationDialog = ({ open, onClose, UpdateAllNodeGroupList, currentNodeGrou
       NodeService.getNodes().then((nodesRes) => {
         if (currentNodeGroup) {
           setNodes(nodesRes.filter((node) => !node.nodeGroupId || node.nodeGroupId === '' || node.nodeGroupId === currentNodeGroup.id));
-          setCheckedNodes(nodesRes.filter((node) => node.nodeGroupId === currentNodeGroup.id));
+          setCheckedNodes(nodesRes.filter((node) => node.nodeGroupId === currentNodeGroup.id)
+            .map((node) => node.id));
         } else {
           setNodes(nodesRes.filter((node) => !node.nodeGroupId || node.nodeGroupId === ''));
         }
@@ -66,22 +67,24 @@ const CreationDialog = ({ open, onClose, UpdateAllNodeGroupList, currentNodeGrou
   }, []);
 
   useEffect(async () => {
-    console.log(open);
     if (!open) return;
 
     const allNodes = await NodeService.getNodes();
     if (!currentNodeGroup) {
+      setNameValue('');
       setCheckedPrUsers([]);
       setCheckedEvaluators([]);
       setCheckedRiuAUsers([]);
       setCheckedNodes([]);
       setNodes(allNodes.filter((node) => !node.nodeGroupId || node.nodeGroupId === ''));
     } else {
+      setNameValue(currentNodeGroup.name);
       UserService.getUsersByUnitId(UserStoreInstance.userProfile.unitId).then((users) => {
         setCheckedUsers(users);
       });
       setNodes(allNodes.filter((node) => !node.nodeGroupId || node.nodeGroupId === '' || node.nodeGroupId === currentNodeGroup.id));
-      setCheckedNodes(allNodes.filter((node) => node.nodeGroupId === currentNodeGroup.id));
+      setCheckedNodes(allNodes.filter((node) => node.nodeGroupId === currentNodeGroup.id)
+        .map((node) => node.id));
     }
   }, [open]);
 
@@ -90,7 +93,10 @@ const CreationDialog = ({ open, onClose, UpdateAllNodeGroupList, currentNodeGrou
       const nodeGroup = await NodeGroupService.createNodeGroup(nameValue);
       nodeGroup.usersIds = [...checkedPrUsers, ...checkedRiuAUsers, ...checkedEvaluators];
       await NodeGroupService.updateNodeGroup(nodeGroup.id, nodeGroup);
-      await UpdateAllNodeGroupList();
+      checkedNodes.forEach(async (checkedNode) => {
+        await NodeGroupService.updateNode(nodeGroup.id, checkedNode);
+      });
+      await updateAllNodeGroupList();
       onClose();
     } catch {
       toast(t('error.server'));
@@ -102,18 +108,31 @@ const CreationDialog = ({ open, onClose, UpdateAllNodeGroupList, currentNodeGrou
       const checkedUsersIds = [...checkedPrUsers, ...checkedRiuAUsers, ...checkedEvaluators];
       const usersToRemove = currentNodeGroup.usersIds.filter((id) => !checkedUsersIds.includes(id));
       const usersToAdd = checkedUsersIds.filter((id) => !currentNodeGroup.usersIds.includes(id));
+      const allNodes = await NodeService.getNodes();
+      const nodesToAdd = allNodes.filter((node) => node.nodeGroupId === '' && checkedNodes.some((checkedNode) => checkedNode === node.id));
+      const nodesToRemove = allNodes.filter(
+        (node) => node.nodeGroupId === currentNodeGroup.id
+        && !checkedNodes.some((checkedNode) => checkedNode === node.id),
+      );
+      await NodeGroupService.updateNodeGroup(currentNodeGroup.id, { name: nameValue });
       usersToAdd.forEach(async (userId) => {
-        await NodeGroupService.addUserToNodeGroup(currentNodeGroup, userId);
+        await NodeGroupService.addUserToNodeGroup(currentNodeGroup.id, userId);
       });
       usersToRemove.forEach(async (userId) => {
-        await NodeGroupService.removeUserFromNodeGroup(currentNodeGroup, userId);
+        await NodeGroupService.removeUserFromNodeGroup(currentNodeGroup.id, userId);
       });
+      nodesToAdd.forEach(async (node) => {
+        await NodeGroupService.updateNode(currentNodeGroup.id, node.id);
+      });
+      nodesToRemove.forEach(async (node) => {
+        await NodeGroupService.updateNode('', node.id);
+      });
+      await updateAllNodeGroupList();
       onClose();
     } catch {
       toast(t('error.server'));
     }
   };
-
   const content = (
     <DialogContent className={classes.root}>
       <div className={classes.labeledInput}>
@@ -187,10 +206,10 @@ const CreationDialog = ({ open, onClose, UpdateAllNodeGroupList, currentNodeGrou
     <CustomDialog
       open={open}
       onClose={onClose}
-      title={t('title.newNodeGroup')}
+      title={currentNodeGroup ? t('title.editNodeGroup') : t('title.newNodeGroup')}
       content={content}
     />
   );
 };
 
-export default CreationDialog;
+export default NodeGroupDialog;

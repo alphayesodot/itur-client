@@ -4,7 +4,7 @@ import { Typography } from '@material-ui/core';
 import useStyles from './index.styles';
 import DashboardCard from '../../common/DashboardCard/DashboardCard';
 import Header from './components/Header/Header';
-import CreationDialog from './components/CreationDialog/CreationDialog';
+import NodeGroupDialog from './components/NodeGroupDialog/NodeGroupDialog';
 import DataTable from '../../common/DataTable/DataTable';
 import NodeGroupService from '../../services/nodeGroup.service';
 import UnitService from '../../services/unit.service';
@@ -20,23 +20,27 @@ const NodeGroupPage = () => {
   const [nodeGroupRowsToShow, setNodeGroupRowsToShow] = useState([]);
   const [openDialog, setOpenDialog] = useState(false);
   const colNames = [t('tableColumns.nodeGroupName'), t('tableColumns.unit'), t('tableColumns.users'), t('tableColumns.ramadOfUnit')];
-  const UpdateAllNodeGroupList = async () => {
+
+  const updateAllNodeGroupList = async () => {
     const nodeGroups = await NodeGroupService.getNodeGroups();
     const promises = nodeGroups.map(async (nodeGroup) => {
       const unit = await UnitService.getUnitById(nodeGroup.unitId);
       const ramad = (await UserService.getUsersByUnitId(nodeGroup.unitId))
         .find((user) => user.role === Role.RamadIturOfUnit);
-      return [nodeGroup.name,
-        unit.name,
-        nodeGroup.usersIds ? nodeGroup.usersIds.length : 0, ramad?.name || '',
-        <OptionsButton nodeGroup={nodeGroup} UpdateAllNodeGroupList={UpdateAllNodeGroupList} />];
+      return {
+        id: nodeGroup.id,
+        data: [nodeGroup.name,
+          unit.name,
+          nodeGroup.usersIds ? nodeGroup.usersIds.length : 0, ramad?.name || '',
+          <OptionsButton nodeGroup={nodeGroup} updateAllNodeGroupList={updateAllNodeGroupList} />],
+      };
     });
     const getAllNodeGroupRows = await Promise.all(promises);
     setAllNodeGroupRows(getAllNodeGroupRows);
     setNodeGroupRowsToShow(getAllNodeGroupRows);
   };
   useEffect(async () => {
-    await UpdateAllNodeGroupList();
+    await updateAllNodeGroupList();
   }, []);
 
   const handeOnCloseDialog = () => {
@@ -58,10 +62,10 @@ const NodeGroupPage = () => {
           <span className={classes.countTitle}>{`(${nodeGroupRowsToShow.length})`}</span>
         </Typography>
         <DataTable rowsData={nodeGroupRowsToShow} colomnsNames={colNames} />
-        <CreationDialog
+        <NodeGroupDialog
           open={openDialog}
           onClose={handeOnCloseDialog}
-          UpdateAllNodeGroupList={UpdateAllNodeGroupList}
+          updateAllNodeGroupList={updateAllNodeGroupList}
         />
       </DashboardCard>
     </div>

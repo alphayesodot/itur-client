@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, Input, Typography } from '@material-ui/core';
 import Fab from '@material-ui/core/Fab';
 import { useTranslation } from 'react-i18next';
@@ -14,7 +14,7 @@ import useStyles from './Header.styles';
  */
 const filterSearch = (prefix: string, allNodeGroupRows: Array, setNodeGroupRowsToShow) => {
   const searchResults = allNodeGroupRows
-    .filter((nodeGroupRow) => nodeGroupRow[0].startsWith(prefix));
+    .filter((nodeGroupRow) => nodeGroupRow.data[0].startsWith(prefix));
   setNodeGroupRowsToShow(searchResults);
 };
 
@@ -22,6 +22,9 @@ const Header = ({ allNodeGroupRows, setNodeGroupRowsToShow, setOpenDialog, allow
   const classes = useStyles();
   const [inputValue, setInputValue] = useState('');
   const { t } = useTranslation();
+  useEffect(() => {
+    if (inputValue) filterSearch(inputValue, allNodeGroupRows, setNodeGroupRowsToShow);
+  }, [allNodeGroupRows]);
   return (
     <DashboardCard className={classes.root}>
       <div className={classes.content}>
