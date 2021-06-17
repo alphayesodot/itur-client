@@ -9,7 +9,7 @@ import DashboardCard from '../../../../common/DashboardCard/DashboardCard';
 import InputSection from '../InputSection/InputSection';
 import useStyles from './InputsRow.styles';
 
-const InputsRow = ({ onClick }) => {
+const InputsRow = ({ onClick, resetData }) => {
   const classes = useStyles();
   const [name, setName] = useState('');
   const [nodeGroup, setNodeGroup] = useState();
@@ -39,6 +39,7 @@ const InputsRow = ({ onClick }) => {
     setStartDate(undefined);
     setEndDate(undefined);
     setName('');
+    resetData();
   };
 
   return (

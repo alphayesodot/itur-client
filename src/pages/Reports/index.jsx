@@ -27,16 +27,14 @@ const Reports = () => {
 
   return (
     <div className={classes.root}>
-      <InputsRow onClick={handleOnClick} />
+      <InputsRow onClick={handleOnClick} resetData={() => setFile(null)} />
       <DashboardCard className={classes.dashboard}>
         {file && (
-        <>
           <CSVLink filename={`${fileName}.csv`} data={file}>
             <span ref={btnRef} />
           </CSVLink>
-          <SpreadsheetComponent data={file} />
-        </>
         )}
+        <SpreadsheetComponent data={file} />
       </DashboardCard>
     </div>
   );

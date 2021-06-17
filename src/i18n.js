@@ -29,6 +29,7 @@ const resources = {
         password: 'סיסמה',
         moreDetails: 'פרטים נוספים',
         interviewsSchedule: 'לוז ראיונות',
+        view: 'תצוגה',
       },
       message: {
         noInterviewersInNodeGroup: 'אין מראיינים במסלול',
@@ -36,6 +37,7 @@ const resources = {
         chooseNodeGroup: 'בחרו מסלול',
         noUnits: 'אין יחידות',
         noNodeGroups: 'אין מסלולים',
+        noReport: 'אין דוח לתצוגה',
       },
       headerTitles: {
         addUsers: 'הוספת משתמשים',
