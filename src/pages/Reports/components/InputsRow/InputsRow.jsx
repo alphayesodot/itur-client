@@ -12,8 +12,8 @@ import useStyles from './InputsRow.styles';
 const InputsRow = ({ onClick, resetData }) => {
   const classes = useStyles();
   const [name, setName] = useState('');
-  const [nodeGroups, setNodeGroups] = useState();
-  const [units, setUnits] = useState();
+  const [nodeGroups, setNodeGroups] = useState([]);
+  const [units, setUnits] = useState([]);
   const [startDate, setStartDate] = useState();
   const [endDate, setEndDate] = useState();
   const [canSubmit, setCanSubmit] = useState(false);
@@ -68,6 +68,7 @@ const InputsRow = ({ onClick, resetData }) => {
             selectedUnit={units}
             setSelectedUnit={setUnits}
             selectClassName={`${classes.input} ${classes.select}`}
+            isMultiple
           />
           )}
       />
@@ -80,6 +81,7 @@ const InputsRow = ({ onClick, resetData }) => {
             selectedNodeGroup={nodeGroups}
             setSelectedNodeGroup={setNodeGroups}
             selectClassName={`${classes.input} ${classes.select}`}
+            isMultiple
           />
           )}
       />

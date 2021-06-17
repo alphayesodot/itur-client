@@ -18,7 +18,7 @@ const UnitSelect = ({ selectedUnit, setSelectedUnit, selectClassName, isMultiple
   useEffect(() => {
     UnitService.getUnits().then((res) => {
       setUnits(res);
-      setSelectedUnit(res[0]);
+      setSelectedUnit(isMultiple ? [] : res[0]);
     }).catch(() => {
       toast(t('error.server'));
     });
