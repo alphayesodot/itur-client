@@ -108,7 +108,13 @@ const InputsRow = ({ onClick, resetData }) => {
       <div>
         <Button
           disabled={!canSubmit}
-          onClick={() => onClick(name, nodeGroups, units, startDate, endDate)}
+          onClick={() => onClick(
+            name,
+            nodeGroups.map(({ id }) => id),
+            units.map(({ id }) => id),
+            startDate,
+            endDate,
+          )}
           className={classes.button}
         >
           {t('button.createReport')}
