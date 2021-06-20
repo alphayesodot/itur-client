@@ -57,6 +57,13 @@ const GenericSelect = ({
       renderValue={getRenderValue}
       onChange={handleOnChange}
       value={getValue() || ''}
+      MenuProps={{
+        anchorOrigin: {
+          vertical: 'bottom',
+          horizontal: 'right',
+        },
+        getContentAnchorEl: null,
+      }}
       disableUnderline
     >
       {options.length === 0

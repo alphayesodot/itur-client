@@ -40,13 +40,15 @@ const SpreadsheetComponent = ({ data }) => {
       <Typography className={classes.title}>
         {t('title.view')}
       </Typography>
-      {data
-        ? <Spreadsheet data={spreadsheetData} />
-        : (
-          <Typography className={classes.message}>
-            {t('message.noReport')}
-          </Typography>
-        )}
+      <div className={classes.content}>
+        {data
+          ? <Spreadsheet data={spreadsheetData} />
+          : (
+            <Typography className={classes.message}>
+              {t('message.noReport')}
+            </Typography>
+          )}
+      </div>
     </div>
   );
 };

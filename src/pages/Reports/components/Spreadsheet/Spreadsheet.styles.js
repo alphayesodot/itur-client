@@ -8,10 +8,13 @@ const useStyles = makeStyles(() => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    overflowY: 'auto',
+    overflow: 'auto',
   },
   input: {
     pointerEvents: 'none',
+  },
+  content: {
+    width: '90%',
   },
   title: {
     fontSize: '2rem',
