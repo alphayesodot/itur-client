@@ -45,13 +45,17 @@ const Header = ({ onClick, resetData }) => {
     );
   }, [name, nodeGroups, units, startDate, endDate]);
 
-  const restart = () => {
+  const clearInputs = () => {
     setStartDate('');
     setEndDate('');
     setName('');
-    resetData();
     setNodeGroups([]);
     setUnits([]);
+  };
+
+  const restart = () => {
+    clearInputs();
+    resetData();
   };
 
   return (
@@ -120,13 +124,16 @@ const Header = ({ onClick, resetData }) => {
       <div>
         <Button
           disabled={!canSubmit}
-          onClick={() => onClick(
-            name,
-            nodeGroups.map(({ id }) => id),
-            units.map(({ id }) => id),
-            startDate,
-            endDate,
-          )}
+          onClick={() => {
+            onClick(
+              name,
+              nodeGroups.map(({ id }) => id),
+              units.map(({ id }) => id),
+              startDate,
+              endDate,
+            );
+            clearInputs();
+          }}
           className={classes.button}
         >
           {t('button.createReport')}
