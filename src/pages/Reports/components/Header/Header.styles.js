@@ -5,8 +5,19 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexWrap: 'wrap',
     alignItems: 'center',
-    paddingLeft: '3%',
+    justifyContent: 'space-around',
     background: theme.palette.primary.main,
+    [theme.breakpoints.down('sm')]: {
+      padding: '5%',
+      justifyContent: 'center',
+    },
+  },
+  inputsDiv: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    alignItems: 'center',
+    width: '80%',
+    marginBottom: '0.5%',
     [theme.breakpoints.down('sm')]: {
       justifyContent: 'center',
     },
@@ -22,14 +33,16 @@ const useStyles = makeStyles((theme) => ({
   select: {
     height: '2.5rem',
   },
+  textField: {
+    paddingLeft: '2%',
+  },
   date: {
     padding: '0.07rem 0.5rem',
   },
   button: {
     background: theme.palette.primary.secondary,
-    height: '2rem',
+    height: '2.5rem',
     padding: '1rem 2rem',
-    marginTop: '1.5rem',
     borderRadius: 30,
     fontWeight: '600',
     '&:hover': {
@@ -37,9 +50,9 @@ const useStyles = makeStyles((theme) => ({
       color: theme.palette.primary.secondary,
     },
   },
-  iconButton: {
-    marginTop: '1.5rem',
-    color: 'white',
+  undo: {
+    width: '1.25rem',
+    height: '1.25rem',
   },
 }));
 

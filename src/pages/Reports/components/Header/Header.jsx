@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { TextField, Button, IconButton, Tooltip } from '@material-ui/core';
-import RedoIcon from '@material-ui/icons/Redo';
+import { TextField, Button, Tooltip } from '@material-ui/core';
+import UndoIcon from '../../../../utils/images/reports/undo-solid.svg';
 import UserStore from '../../../../stores/User.store';
 import NodeGroupSelect from '../../../../common/NodeGroupSelect/NodeGroupSelect';
 import UnitSelect from '../../../../common/UnitSelect/UnitSelect';
@@ -60,67 +60,69 @@ const Header = ({ onClick, resetData }) => {
 
   return (
     <DashboardCard className={classes.root}>
-      <LabeledInput
-        label={t('label.reportName')}
-        input={(
-          <TextField
-            className={classes.input}
-            type='text'
-            onChange={(e) => setName(e.target.value)}
-            value={name}
-            InputProps={{
-              disableUnderline: true,
-            }}
-          />
+      <div className={classes.inputsDiv}>
+        <LabeledInput
+          label={t('label.reportName')}
+          input={(
+            <TextField
+              className={`${classes.input} ${classes.textField}`}
+              type='text'
+              onChange={(e) => setName(e.target.value)}
+              value={name}
+              InputProps={{
+                disableUnderline: true,
+              }}
+            />
           )}
-      />
-      {unitsOptionalRoles.includes(currentUser.role) && (
-      <LabeledInput
-        label={t('label.units')}
-        input={(
-          <UnitSelect
-            selectedUnit={units}
-            setSelectedUnit={setUnits}
-            selectClassName={`${classes.input} ${classes.select}`}
-            isMultiple
-          />
+        />
+        {unitsOptionalRoles.includes(currentUser.role) && (
+        <LabeledInput
+          label={t('label.units')}
+          input={(
+            <UnitSelect
+              selectedUnit={units}
+              setSelectedUnit={setUnits}
+              selectClassName={`${classes.input} ${classes.select}`}
+              isMultiple
+            />
           )}
-      />
-      )}
-      {(nodeGroupsRequiredRoles.includes(currentUser.role)
+        />
+        )}
+        {(nodeGroupsRequiredRoles.includes(currentUser.role)
       || nodeGroupsOptionalRoles.includes(currentUser.role)) && (
-      <LabeledInput
-        label={t('label.nodeGroups')}
-        input={(
-          <NodeGroupSelect
-            selectedNodeGroup={nodeGroups}
-            setSelectedNodeGroup={setNodeGroups}
-            selectClassName={`${classes.input} ${classes.select}`}
-            isMultiple
-          />
+        <LabeledInput
+          label={t('label.nodeGroups')}
+          input={(
+            <NodeGroupSelect
+              selectedNodeGroup={nodeGroups}
+              setSelectedNodeGroup={setNodeGroups}
+              selectClassName={`${classes.input} ${classes.select}`}
+              isMultiple
+            />
+            )}
+        />
+        )}
+        <LabeledInput
+          label={t('label.startDate')}
+          input={(
+            <DateInput
+              selectedDate={startDate}
+              setSelectedDate={setStartDate}
+              inputClassName={`${classes.input} ${classes.date}`}
+            />
           )}
-      />
-      )}
-      <LabeledInput
-        label={t('label.startDate')}
-        input={(
-          <DateInput
-            selectedDate={startDate}
-            setSelectedDate={setStartDate}
-            inputClassName={`${classes.input} ${classes.date}`}
-          />
+        />
+        <LabeledInput
+          label={t('label.endDate')}
+          input={(
+            <DateInput
+              selectedDate={endDate}
+              setSelectedDate={setEndDate}
+              inputClassName={`${classes.input} ${classes.date}`}
+            />
           )}
-      />
-      <LabeledInput
-        label={t('label.endDate')}
-        input={(
-          <DateInput
-            selectedDate={endDate}
-            setSelectedDate={setEndDate}
-            inputClassName={`${classes.input} ${classes.date}`}
-          />
-          )}
-      />
+        />
+      </div>
       <div>
         <Button
           disabled={!canSubmit}
@@ -139,12 +141,9 @@ const Header = ({ onClick, resetData }) => {
           {t('button.createReport')}
         </Button>
         <Tooltip title={t('toolTip.restart')}>
-          <IconButton
-            onClick={() => restart()}
-            className={classes.iconButton}
-          >
-            <RedoIcon />
-          </IconButton>
+          <Button onClick={() => restart()}>
+            <img src={UndoIcon} alt='undo' className={classes.undo} />
+          </Button>
         </Tooltip>
       </div>
     </DashboardCard>

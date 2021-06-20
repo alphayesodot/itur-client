@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles(() => ({
   root: {
     padding: '0.8% 0',
-    marginRight: '2%',
+    width: '15rem',
   },
   inputLabel: {
     fontWeight: '600',
