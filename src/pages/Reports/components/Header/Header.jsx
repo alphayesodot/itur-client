@@ -8,9 +8,9 @@ import UnitSelect from '../../../../common/UnitSelect/UnitSelect';
 import DateInput from '../../../../common/DateInput/DateInput';
 import DashboardCard from '../../../../common/DashboardCard/DashboardCard';
 import LabeledInput from '../LabeledInput/LabeledInput';
-import useStyles from './InputsRow.styles';
+import useStyles from './Header.styles';
 
-const InputsRow = ({ onClick, resetData }) => {
+const Header = ({ onClick, resetData }) => {
   const classes = useStyles();
   const { t } = useTranslation();
   const currentUser = UserStore.userProfile;
@@ -144,4 +144,4 @@ const InputsRow = ({ onClick, resetData }) => {
   );
 };
 
-export default InputsRow;
+export default Header;

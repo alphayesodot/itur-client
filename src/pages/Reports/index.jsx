@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
 import { CSVLink } from 'react-csv';
 import ReportService from '../../services/report.service';
-import InputsRow from './components/InputsRow/InputsRow';
+import Header from './components/Header/Header';
 import DashboardCard from '../../common/DashboardCard/DashboardCard';
 import useStyles from './index.styles';
 import SpreadsheetComponent from './components/Spreadsheet/Spreadsheet';
@@ -27,7 +27,7 @@ const Reports = () => {
 
   return (
     <div className={classes.root}>
-      <InputsRow onClick={handleOnClick} resetData={() => setFile(null)} />
+      <Header onClick={handleOnClick} resetData={() => setFile(null)} />
       <DashboardCard className={classes.dashboard}>
         {file && (
           <CSVLink filename={`${fileName}.csv`} data={file}>
