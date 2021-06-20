@@ -46,8 +46,8 @@ const InputsRow = ({ onClick, resetData }) => {
   }, [name, nodeGroups, units, startDate, endDate]);
 
   const restart = () => {
-    setStartDate(undefined);
-    setEndDate(undefined);
+    setStartDate('');
+    setEndDate('');
     setName('');
     resetData();
     setNodeGroups([]);
