@@ -10,10 +10,10 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     width: '75%',
   },
-  fields: {
+  fieldsDiv: {
     display: 'flex',
     flexWrap: 'wrap',
-    height: '100%',
+    height: '75%',
   },
   field: {
     display: 'flex',
@@ -35,6 +35,7 @@ const useStyles = makeStyles((theme) => ({
     userSelect: 'none',
     fontWeight: '900',
     paddingLeft: '1%',
+    paddingBottom: '2%',
   },
   attachmentsSection: {
     width: '25%',

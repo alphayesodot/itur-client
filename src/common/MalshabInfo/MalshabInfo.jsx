@@ -108,9 +108,8 @@ const MalshabInfo = ({ id }) => {
           month: '2-digit',
           day: '2-digit',
         });
-        // TODO: Check how gender field will be returned from the db
       case 'gender':
-        return value === 1 ? t('malshabInfo.female') : t('malshabInfo.male');
+        return value === 1 ? t('malshabInfo.male') : t('malshabInfo.female');
       default:
     }
   };
@@ -137,7 +136,7 @@ const MalshabInfo = ({ id }) => {
               <Typography className={classes.sectionTitle}>
                 {t('title.generalInfo')}
               </Typography>
-              <div className={classes.fields}>
+              <div className={classes.fieldsDiv}>
                 {fields.map(({ fieldName, type }) => (
                   malshab?.[fieldName] !== undefined
                 && getFieldComponent(
