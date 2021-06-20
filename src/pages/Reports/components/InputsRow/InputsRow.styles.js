@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
     height: '2.5rem',
   },
   date: {
-    padding: '0 0.5rem',
+    padding: '0.07rem 0.5rem',
   },
   button: {
     background: theme.palette.primary.secondary,
