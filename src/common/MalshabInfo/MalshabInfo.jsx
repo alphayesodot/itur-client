@@ -15,29 +15,29 @@ const MalshabInfo = ({ id }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [malshab, setMalshab] = useState();
   const fields = [
-    { name: 'identityNumber', type: 'text' },
-    { name: 'personalNumber', type: 'text' },
-    { name: 'firstName', type: 'text' },
-    { name: 'lastName', type: 'text' },
-    { name: 'gender', type: 'gender' },
-    { name: 'birthDate', type: 'date' },
-    { name: 'medicalProfile', type: 'text' },
-    { name: 'kaba', type: 'text' },
-    { name: 'dapar', type: 'text' },
-    { name: 'birthCountry', type: 'text' },
-    { name: 'imigrationDate', type: 'date' },
-    { name: 'hasIsraeliCitizenship', type: 'boolean' },
-    { name: 'hasAnotherCitizenship', type: 'boolean' },
-    { name: 'isBereaved', type: 'boolean' },
-    { name: 'schoolId', type: 'text' },
-    { name: 'schoolName', type: 'text' },
-    { name: 'email', type: 'text' },
+    { fieldName: 'identityNumber', type: 'text' },
+    { fieldName: 'personalNumber', type: 'text' },
+    { fieldName: 'firstName', type: 'text' },
+    { fieldName: 'lastName', type: 'text' },
+    { fieldName: 'gender', type: 'gender' },
+    { fieldName: 'birthDate', type: 'date' },
+    { fieldName: 'medicalProfile', type: 'text' },
+    { fieldName: 'kaba', type: 'text' },
+    { fieldName: 'dapar', type: 'text' },
+    { fieldName: 'birthCountry', type: 'text' },
+    { fieldName: 'imigrationDate', type: 'date' },
+    { fieldName: 'hasIsraeliCitizenship', type: 'boolean' },
+    { fieldName: 'hasAnotherCitizenship', type: 'boolean' },
+    { fieldName: 'isBereaved', type: 'boolean' },
+    { fieldName: 'schoolId', type: 'text' },
+    { fieldName: 'schoolName', type: 'text' },
+    { fieldName: 'email', type: 'text' },
   ];
   const addressFields = [
-    { name: 'cityId', type: 'text' },
-    { name: 'cityName', type: 'text' },
-    { name: 'houseNumber', type: 'text' },
-    { name: 'street', type: 'text' },
+    { fieldName: 'cityId', type: 'text' },
+    { fieldName: 'cityName', type: 'text' },
+    { fieldName: 'houseNumber', type: 'text' },
+    { fieldName: 'street', type: 'text' },
   ];
 
   useEffect(() => {
@@ -66,8 +66,8 @@ const MalshabInfo = ({ id }) => {
   };
 
   const getAttachments = () => (
-    <div className={classes.attachments}>
-      <Typography className={classes.attachmentsTitle}>
+    <div className={classes.attachmentsSection}>
+      <Typography className={classes.sectionTitle}>
         {t('title.attachments')}
       </Typography>
       <DashboardCard className={classes.attachmentsCard}>
@@ -115,10 +115,10 @@ const MalshabInfo = ({ id }) => {
     }
   };
 
-  const getFieldComponent = (name, type, value) => (
-    <div className={classes.field} key={name}>
+  const getFieldComponent = (fieldName, type, value) => (
+    <div className={classes.field} key={fieldName}>
       <Typography className={classes.fieldTitle}>
-        {t(`malshabInfo.${name}`)}
+        {t(`malshabInfo.${fieldName}`)}
       </Typography>
       <Typography className={classes.fieldValue}>
         {getFormattedValue(type, value)}
@@ -134,24 +134,24 @@ const MalshabInfo = ({ id }) => {
           <div className={classes.root}>
             {malshab?.attachments && getAttachments()}
             <div className={classes.fieldsSection}>
-              <Typography className={classes.attachmentsTitle}>
+              <Typography className={classes.sectionTitle}>
                 {t('title.generalInfo')}
               </Typography>
               <div className={classes.fields}>
-                {fields.map(({ name, type }) => (
-                  malshab?.[name] !== undefined
+                {fields.map(({ fieldName, type }) => (
+                  malshab?.[fieldName] !== undefined
                 && getFieldComponent(
-                  name,
+                  fieldName,
                   type,
-                  malshab?.[name],
+                  malshab?.[fieldName],
                 )))}
                 {malshab?.addresses?.length
-                && addressFields.map(({ name, type }) => (
-                  malshab.addresses[0][name] !== undefined
+                && addressFields.map(({ fieldName, type }) => (
+                  malshab.addresses[0][fieldName] !== undefined
                 && getFieldComponent(
-                  name,
+                  fieldName,
                   type,
-                  malshab.addresses[0][name],
+                  malshab.addresses[0][fieldName],
                 )))}
               </div>
             </div>

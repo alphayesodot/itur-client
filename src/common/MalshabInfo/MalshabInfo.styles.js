@@ -31,13 +31,14 @@ const useStyles = makeStyles((theme) => ({
     padding: '0.25rem',
     fontSize: '0.9rem',
   },
-  attachments: {
-    width: '25%',
-    margin: '0 2%',
-  },
-  attachmentsTitle: {
+  sectionTitle: {
     userSelect: 'none',
     fontWeight: '900',
+    paddingLeft: '1%',
+  },
+  attachmentsSection: {
+    width: '25%',
+    margin: '0 2%',
   },
   attachmentsCard: {
     display: 'flex',
