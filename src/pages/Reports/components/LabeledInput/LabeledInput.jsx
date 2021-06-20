@@ -1,8 +1,8 @@
 import React from 'react';
 import { Typography } from '@material-ui/core';
-import useStyles from './InputSection.styles';
+import useStyles from './LabeledInput.styles';
 
-const InputSection = ({ label, input }) => {
+const LabeledInput = ({ label, input }) => {
   const classes = useStyles();
 
   return (
@@ -15,4 +15,4 @@ const InputSection = ({ label, input }) => {
   );
 };
 
-export default InputSection;
+export default LabeledInput;

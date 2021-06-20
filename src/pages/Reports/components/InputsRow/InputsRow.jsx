@@ -7,7 +7,7 @@ import NodeGroupSelect from '../../../../common/NodeGroupSelect/NodeGroupSelect'
 import UnitSelect from '../../../../common/UnitSelect/UnitSelect';
 import DateInput from '../../../../common/DateInput/DateInput';
 import DashboardCard from '../../../../common/DashboardCard/DashboardCard';
-import InputSection from '../InputSection/InputSection';
+import LabeledInput from '../LabeledInput/LabeledInput';
 import useStyles from './InputsRow.styles';
 
 const InputsRow = ({ onClick, resetData }) => {
@@ -56,7 +56,7 @@ const InputsRow = ({ onClick, resetData }) => {
 
   return (
     <DashboardCard className={classes.root}>
-      <InputSection
+      <LabeledInput
         label={t('label.reportName')}
         input={(
           <TextField
@@ -71,7 +71,7 @@ const InputsRow = ({ onClick, resetData }) => {
           )}
       />
       {unitsOptionalRoles.includes(currentUser.role) && (
-      <InputSection
+      <LabeledInput
         label={t('label.units')}
         input={(
           <UnitSelect
@@ -85,7 +85,7 @@ const InputsRow = ({ onClick, resetData }) => {
       )}
       {(nodeGroupsRequiredRoles.includes(currentUser.role)
       || nodeGroupsOptionalRoles.includes(currentUser.role)) && (
-      <InputSection
+      <LabeledInput
         label={t('label.nodeGroups')}
         input={(
           <NodeGroupSelect
@@ -97,7 +97,7 @@ const InputsRow = ({ onClick, resetData }) => {
           )}
       />
       )}
-      <InputSection
+      <LabeledInput
         label={t('label.startDate')}
         input={(
           <DateInput
@@ -107,7 +107,7 @@ const InputsRow = ({ onClick, resetData }) => {
           />
           )}
       />
-      <InputSection
+      <LabeledInput
         label={t('label.endDate')}
         input={(
           <DateInput
