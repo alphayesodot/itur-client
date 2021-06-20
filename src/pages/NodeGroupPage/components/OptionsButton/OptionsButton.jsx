@@ -78,7 +78,6 @@ const OptionsButton = ({ nodeGroup, updateAllNodeGroupList }) => {
         currentNodeGroup={nodeGroup}
       />
     </>
-
   );
 };
 

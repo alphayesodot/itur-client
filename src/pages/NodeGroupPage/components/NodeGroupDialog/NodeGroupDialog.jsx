@@ -170,7 +170,6 @@ const NodeGroupDialog = ({ open, onClose, updateAllNodeGroupList, currentNodeGro
           />
         </div>
       </div>
-
       <div className={classes.labeledInput}>
         <span>{t('roles.otherDiagnoses')}</span>
         <SelectCheckboxItem
@@ -201,7 +200,6 @@ const NodeGroupDialog = ({ open, onClose, updateAllNodeGroupList, currentNodeGro
       </DialogActions>
     </DialogContent>
   );
-
   return (
     <CustomDialog
       open={open}
