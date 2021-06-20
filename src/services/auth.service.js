@@ -35,7 +35,7 @@ class AuthService {
 
   static async redirect() {
     // TODO: Remove user id
-    window.location.replace(`${config.uri.auth}/auth/login/3`);
+    window.location.replace(`${config.uri.auth}/auth/login/4`);
   }
 }
 

@@ -34,6 +34,7 @@ const resources = {
         editNodeGroup: 'ערוך מסלול',
         moreDetails: 'פרטים נוספים',
         interviewsSchedule: 'לוז ראיונות',
+        questionnaires: 'שאלונים',
       },
       actions: {
         delete: 'מחיקה',
@@ -51,10 +52,12 @@ const resources = {
         addUsers: 'הוספת משתמשים',
         addUnit: 'הוספת יחידה',
         searchNodeGroup: 'חיפוש מסלול',
+        searchQuestionnaie: 'חיפוש שאלון',
       },
       placeholders: {
         searchUnit: 'חיפוש יחידה',
         nodeGroup: 'מסלול',
+        questionnaire: 'שאלון',
       },
       text: {
         in: 'ב',
@@ -81,6 +84,7 @@ const resources = {
         view: 'הצג',
         saveNodeGroup: 'שמירת מסלול',
         enter: 'כניסה',
+        newQuestionnaire: 'שאלון חדש',
       },
       day: {
         1: 'ראשון',
@@ -123,6 +127,7 @@ const resources = {
         unit: 'יחידה',
         users: 'משתמשים',
         ramadOfUnit: 'רמ"ד יחידה',
+        questionnaireName: 'שם שאלון',
       },
       roles: {
         interviewer: 'מראיינ/ת',
@@ -147,7 +152,7 @@ const resources = {
         nodeGroupCreation: 'יצירת מסלול',
         fileUpload: 'העלאת קבצים',
         userManagement: 'ניהול משתמשים',
-        editQuestionnaire: 'שאלונים',
+        questionnaires: 'שאלונים',
         settings: 'הגדרות',
       },
       toolTip: {
