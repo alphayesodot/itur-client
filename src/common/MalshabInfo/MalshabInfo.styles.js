@@ -4,6 +4,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
     alignItems: 'stretch',
+    height: '100%',
   },
   fieldsSection: {
     display: 'flex',
