@@ -25,14 +25,16 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'left',
     fontFamily: theme.typography.fontFamily,
     fontSize: '1rem',
-    fontWeight: '!important bold',
   },
   dashbord: {
     backgroundColor: 'white',
     width: '100%',
-    height: '73.5vh',
+    height: '90%',
     marginTop: '1rem',
     direction: 'ltr',
+  },
+  tableContainer: {
+    height: '80%',
   },
 }));
 

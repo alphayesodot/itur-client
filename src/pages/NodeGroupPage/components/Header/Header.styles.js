@@ -4,6 +4,8 @@ const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.primary.main,
     width: '100%',
+    height: '10%',
+    minHeight: '5rem',
   },
   content: {
     padding: '1.25em',
