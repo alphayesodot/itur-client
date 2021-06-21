@@ -134,6 +134,7 @@ const NodeGroupDialog = ({ open, onClose, updateAllNodeGroupList, currentNodeGro
       toast(t('error.server'));
     }
   };
+
   const content = (
     <DialogContent className={classes.root}>
       <div className={classes.labeledInput}>
@@ -201,6 +202,7 @@ const NodeGroupDialog = ({ open, onClose, updateAllNodeGroupList, currentNodeGro
       </DialogActions>
     </DialogContent>
   );
+
   return (
     <CustomDialog
       open={open}

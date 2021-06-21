@@ -23,9 +23,11 @@ const Header = ({ allNodeGroupRows, setNodeGroupRowsToShow, setOpenDialog, allow
   const enterChar = 13;
   const [inputValue, setInputValue] = useState('');
   const { t } = useTranslation();
+
   useEffect(() => {
     if (inputValue) filterSearch(inputValue, allNodeGroupRows, setNodeGroupRowsToShow);
   }, [allNodeGroupRows]);
+
   return (
     <DashboardCard className={classes.root}>
       <div className={classes.content}>

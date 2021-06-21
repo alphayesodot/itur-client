@@ -4,8 +4,9 @@ const useStyles = makeStyles((theme) => ({
   root: {
     maxHeight: '100%',
     direction: 'rtl',
-    width: '50%',
-    margin: 'auto 2.5em',
+    width: '100%',
+    margin: 'auto',
+    overflowY: 'auto',
   },
   table: {
     width: '100%',
@@ -18,7 +19,6 @@ const useStyles = makeStyles((theme) => ({
   },
   tableContent: {
     maxHeight: '200px',
-    overflowY: 'auto',
     width: '100%',
     border: 'none',
   },
