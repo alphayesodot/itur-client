@@ -28,7 +28,7 @@ const NodeGroupDialog = ({ open, onClose, updateAllNodeGroupList, currentNodeGro
     const tempRuiA = [];
     const tempEvaluators = [];
     currentNodeGroup.usersIds.forEach((userId) => {
-      const checkedUser = allUsers.find((user) => user.id === userId);
+      const checkedUser = allUsers.find((user) => user.id === userId) || {};
       switch (checkedUser.role) {
         case 'PROFETIONAL_RAMAD':
           tempPr.push(checkedUser.id);

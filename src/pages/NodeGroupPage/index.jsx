@@ -19,7 +19,7 @@ const NodeGroupPage = () => {
   const [allNodeGroupRows, setAllNodeGroupRows] = useState([]);
   const [nodeGroupRowsToShow, setNodeGroupRowsToShow] = useState([]);
   const [openDialog, setOpenDialog] = useState(false);
-  const colNames = [t('tableColumns.nodeGroupName'), t('tableColumns.unit'), t('tableColumns.users'), t('tableColumns.ramadOfUnit')];
+  const colNames = [t('tableColumns.nodeGroupName'), t('tableColumns.unit'), t('tableColumns.users'), t('tableColumns.ramadOfUnit'), ''];
 
   const updateAllNodeGroupList = async () => {
     const nodeGroups = await NodeGroupService.getNodeGroups();
@@ -55,7 +55,7 @@ const NodeGroupPage = () => {
         setOpenDialog={setOpenDialog}
         allowNewNodeGroup={userRole === 'RAMAD_ITUR_OF_UNIT'}
       />
-      <DashboardCard className={classes.dashbord}>
+      <DashboardCard className={classes.dashboard}>
         <Typography className={classes.content}>
           <strong className={classes.title}>{t('title.nodeGroups')}</strong>
           {' '}

@@ -17,8 +17,9 @@ import useStyles from './DataTable.styles';
  */
 const DataTable = ({ rowsData, colomnsNames }) => {
   const classes = useStyles();
-  const tableHeaderClasses = (idx) => {
+  const tableHeaderClasses = (idx, length) => {
     if (idx === 0) return classes.roundBorderRight;
+    if (idx === length - 1) return classes.roundBorderLeft;
     return undefined;
   };
   return (
@@ -26,8 +27,7 @@ const DataTable = ({ rowsData, colomnsNames }) => {
       <Table stickyHeader aria-label='sticky table' className={classes.table}>
         <TableHead className={classes.tableHeader}>
           <TableRow key='title'>
-            {colomnsNames.map((colName, index) => <TableCell key={colName} className={`${classes.titleCell} ${tableHeaderClasses(index)}`} align='center'>{colName}</TableCell>)}
-            <TableCell className={`${classes.titleCell} ${classes.roundBorderLeft}`} align='center' />
+            {colomnsNames.map((colName, index) => <TableCell key={colName} className={`${classes.titleCell} ${tableHeaderClasses(index, colomnsNames.length)}`} align='center'>{colName}</TableCell>)}
           </TableRow>
         </TableHead>
         <TableBody className={classes.tableContent}>

@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '1rem',
     fontWeight: '!important bold',
   },
-  dashbord: {
+  dashboard: {
     backgroundColor: 'white',
     width: '100%',
     height: '73.5vh',

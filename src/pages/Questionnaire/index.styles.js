@@ -34,6 +34,19 @@ const useStyles = makeStyles((theme) => ({
     marginTop: '1rem',
     direction: 'ltr',
   },
+  emptyTable: {
+    fontFamily: theme.typography.fontFamily,
+    textAlign: 'center',
+    fontSize: '1.7rem',
+    fontWeight: 'bold',
+    color: 'lightGray',
+  },
+  viewContainer: {
+    maxHeight: '80%',
+    direction: 'rtl',
+    width: '50%',
+    margin: '0 2.5em',
+  },
 }));
 
 export default useStyles;

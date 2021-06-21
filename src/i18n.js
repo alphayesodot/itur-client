@@ -35,6 +35,7 @@ const resources = {
         moreDetails: 'פרטים נוספים',
         interviewsSchedule: 'לוז ראיונות',
         questionnaires: 'שאלונים',
+        noQuestionnaires: 'אין שאלונים',
       },
       actions: {
         delete: 'מחיקה',
@@ -128,6 +129,10 @@ const resources = {
         users: 'משתמשים',
         ramadOfUnit: 'רמ"ד יחידה',
         questionnaireName: 'שם שאלון',
+        intended: 'מיועד ל...',
+        changeDate: 'תאריך שינוי',
+        questionsNumber: 'מס שאלות',
+        writer: 'כותב/ת',
       },
       roles: {
         interviewer: 'מראיינ/ת',
@@ -140,6 +145,10 @@ const resources = {
         diagnoser: 'מאבחנ/ת',
         technical: 'טכני',
         otherDiagnoses: 'מאבחנים אחרים',
+      },
+      permissions: {
+        malshabAppreciateor: 'מעריך ומשל"ב',
+        appreciateor: 'מעריך',
       },
       sideBar: {
         luz: 'לו"ז',
