@@ -39,6 +39,7 @@ const NodeGroupPage = () => {
     setAllNodeGroupRows(getAllNodeGroupRows);
     setNodeGroupRowsToShow(getAllNodeGroupRows);
   };
+
   useEffect(async () => {
     await updateAllNodeGroupList();
   }, []);

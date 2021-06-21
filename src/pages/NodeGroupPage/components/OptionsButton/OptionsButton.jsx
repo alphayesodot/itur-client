@@ -18,9 +18,11 @@ const OptionsButton = ({ nodeGroup, updateAllNodeGroupList }) => {
   const handleOnOpenMenu = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
+
   const handleOnCloseMenu = () => {
     setAnchorEl(null);
   };
+
   const handleDelete = () => {
     if (!duringDeletion) {
       setDuringDeletion(true);
