@@ -6,6 +6,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     alignItems: 'center',
     direction: 'rtl',
+    height: '100%',
     width: 'calc(100% - 5.5vw)',
     minWidth: 'calc(100% - 5.5vw)',
     [theme.breakpoints.down('sm')]: {
@@ -28,11 +29,13 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: '!important bold',
   },
   dashbord: {
-    backgroundColor: 'white',
     width: '100%',
-    height: '73.5vh',
+    height: '100%',
     marginTop: '1rem',
     direction: 'ltr',
+  },
+  tableContainer: {
+    height: '60%',
   },
 }));
 

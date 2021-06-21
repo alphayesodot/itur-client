@@ -163,6 +163,7 @@ const resources = {
       },
       formTitle: {
         name: 'שם',
+      },
       malshabInfo: {
         identityNumber: 'ת.ז',
         personalNumber: 'מספר אישי',

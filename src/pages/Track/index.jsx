@@ -4,7 +4,7 @@ import { observer } from 'mobx-react-lite';
 import { toast } from 'react-toastify';
 import { Typography } from '@material-ui/core';
 import UnitService from '../../services/unit.service';
-import UserService from '../../services/user.service';
+import { UserService } from '../../services/user.service';
 import Header from './components/Header/Header';
 import TrackBoard from './components/TrackBoard/TrackBoard';
 import useStyles from './index.styles';

@@ -53,7 +53,7 @@ const NodeGroupPage = () => {
         allNodeGroupRows={allNodeGroupRows}
         setNodeGroupRowsToShow={setNodeGroupRowsToShow}
         setOpenDialog={setOpenDialog}
-        allowNewNodeGroup={userRole === 'RAMAD_ITUR_OF_UNIT'}
+        allowNewNodeGroup={userRole === Role.RamadIturOfUnit}
       />
       <DashboardCard className={classes.dashbord}>
         <Typography className={classes.content}>
@@ -61,7 +61,9 @@ const NodeGroupPage = () => {
           {' '}
           <span className={classes.countTitle}>{`(${nodeGroupRowsToShow.length})`}</span>
         </Typography>
-        <DataTable rowsData={nodeGroupRowsToShow} colomnsNames={colNames} />
+        <div className={classes.tableContainer}>
+          <DataTable rowsData={nodeGroupRowsToShow} colomnsNames={colNames} />
+        </div>
         <NodeGroupDialog
           open={openDialog}
           onClose={handeOnCloseDialog}

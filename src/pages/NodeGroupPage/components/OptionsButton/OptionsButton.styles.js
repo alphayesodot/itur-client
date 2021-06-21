@@ -17,6 +17,9 @@ const useStyles = makeStyles(() => ({
   img: {
     paddingRight: '0.5rem',
   },
+  optionIcon: {
+    height: '1rem',
+  },
 }));
 
 export default useStyles;

@@ -2,10 +2,10 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    maxHeight: '80%',
+    maxHeight: '100%',
     direction: 'rtl',
     width: '50%',
-    margin: '0 2.5em',
+    margin: 'auto 2.5em',
   },
   table: {
     width: '100%',

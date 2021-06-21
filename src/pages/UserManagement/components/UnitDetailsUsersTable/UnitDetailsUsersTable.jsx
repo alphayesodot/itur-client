@@ -11,6 +11,7 @@ import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import useStyles from './UnitDetailsUsersTable.styles';
 import UnitDetailsTableRow from '../UnitDetailsTableRow/UnitDetailsTableRow';
+import { Role } from '../../../../services/user.service';
 
 const UnitDetailsUsersTable = ({ users, setUsers, unit }) => {
   const { t } = useTranslation();
@@ -24,37 +25,37 @@ const UnitDetailsUsersTable = ({ users, setUsers, unit }) => {
   const roleObjects = [
     {
       roleToDisplay: t('roles.interviewer'),
-      role: 'INTERVIEWER',
+      role: Role.Interviewer,
       list: interviewers,
       setList: setInterviewers,
     },
     {
       roleToDisplay: t('roles.ramadIturOfUnit'),
-      role: 'RAMAD_ITUR_OF_UNIT',
+      role: Role.RamadIturOfUnit,
       list: unitRamadsItur,
       setList: setUnitRamadsItur,
     },
     {
       roleToDisplay: t('roles.ramadIturAssistant'),
-      role: 'RAMAD_ITUR_ASSISTANT',
+      role: Role.RamadIturAssistant,
       list: unitRamadIturAssistants,
       setList: setUnitRamadIturAssistants,
     },
     {
       roleToDisplay: t('roles.professionalRamad'),
-      role: 'PROFESSIONAL_RAMAD',
+      role: Role.ProfessionalRamad,
       list: professionalRamads,
       setList: setProfessionalRamads,
     },
     {
       roleToDisplay: t('roles.psychologist'),
-      role: 'PSYCHOLOGIST',
+      role: Role.Psychologist,
       list: psychologists,
       setList: setPsychologists,
     },
     {
       roleToDisplay: t('roles.diagnoser'),
-      role: 'DIAGNOSER',
+      role: Role.Diagnoser,
       list: diagnostics,
       setList: setDiagnostics,
     },
@@ -64,22 +65,22 @@ const UnitDetailsUsersTable = ({ users, setUsers, unit }) => {
   const sortUsersByRole = () => {
     users.forEach((user) => {
       switch (user.role) {
-        case 'INTERVIEWER':
+        case Role.Interviewer:
           setInterviewers((prevValue) => [...prevValue, user]);
           break;
-        case 'RAMAD_ITUR_OF_UNIT':
+        case Role.RamadIturOfUnit:
           setUnitRamadsItur((prevValue) => [...prevValue, user]);
           break;
-        case 'RAMAD_ITUR_ASSISTANT':
+        case Role.RamadIturAssistant:
           setUnitRamadIturAssistants((prevValue) => [...prevValue, user]);
           break;
-        case 'PROFESSIONAL_RAMAD':
+        case Role.ProfessionalRamad:
           setProfessionalRamads((prevValue) => [...prevValue, user]);
           break;
-        case 'PSYCHOLOGIST':
+        case Role.Psychologist:
           setPsychologists((prevValue) => [...prevValue, user]);
           break;
-        case 'DIAGNOSER':
+        case Role.Diagnoser:
           setDiagnostics((prevValue) => [...prevValue, user]);
           break;
         default:

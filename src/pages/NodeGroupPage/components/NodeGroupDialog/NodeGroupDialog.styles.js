@@ -34,15 +34,16 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
   },
   saveButton: {
-    backgroundColor: theme.palette.dilogs.primary,
+    backgroundColor: theme.palette.dialogs.primary,
     borderRadius: '25px',
     padding: '0.5rem 1rem',
     color: 'white',
     marginBottom: '1rem',
+    border: '1px solid transparent',
     '&:hover': {
       backgroundColor: 'white',
-      color: theme.palette.dilogs.primary,
-      border: `1px solid ${theme.palette.dilogs.primary}`,
+      color: theme.palette.dialogs.primary,
+      border: `1px solid ${theme.palette.dialogs.primary}`,
     },
   },
 }));
