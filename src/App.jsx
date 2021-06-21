@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import Home from './pages/Home/index';
 import Track from './pages/Track/index';
+import MalshabSearch from './pages/MalshabSearch/index';
 import Luz from './pages/Luz/index';
 import AuthService from './services/auth.service';
 import UploadPage from './pages/FileUpload/index';
@@ -79,7 +80,7 @@ const App = () => {
     },
     {
       path: configApp.sitesPostfixes.malshabSearch,
-      component: <h1>malshabSearch</h1>,
+      component: <MalshabSearch />,
     },
     {
       path: configApp.sitesPostfixes.reports,
