@@ -10,7 +10,9 @@ import RTL from './utils/rtl';
 ReactDOM.render(
   <ThemeProvider theme={theme}>
     <RTL>
-      <App />
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
     </RTL>
   </ThemeProvider>,
   document.getElementById('root'),

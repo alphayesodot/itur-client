@@ -17,6 +17,7 @@ const resources = {
         interviewsCount: 'סה"כ ראיונות',
         noInterviews: 'אין ראיונות',
         oneInterview: 'ראיון אחד',
+        noNodeGroups: 'אין מסלולים',
         users: 'משתמשים',
         newUsers: 'משתמשים חדשים',
         units: 'יחידות',

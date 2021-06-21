@@ -32,9 +32,10 @@ const useStyles = makeStyles((theme) => ({
   },
   select: {
     height: '2.5rem',
+    width: '13.25em',
   },
   textField: {
-    paddingLeft: '2%',
+    paddingLeft: '1rem',
   },
   date: {
     padding: '0.07rem 0.5rem',

@@ -25,7 +25,6 @@ const useStyles = makeStyles(() => ({
   },
   message: {
     height: '100%',
-    paddingTop: '6rem',
     fontSize: '2rem',
     textAlign: 'center',
     fontWeight: 700,
