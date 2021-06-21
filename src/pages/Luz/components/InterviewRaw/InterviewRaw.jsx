@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useHistory } from 'react-router-dom';
-import { ListItem, Typography, Tooltip, Button, Dialog, IconButton } from '@material-ui/core';
+import { ListItem, Typography, Tooltip, Button, IconButton } from '@material-ui/core';
 import information from '../../../../utils/images/schedule/information.svg';
 import informationLight from '../../../../utils/images/schedule/information-light.svg';
 import play from '../../../../utils/images/schedule/play-button.svg';
+import info from '../../../../utils/images/malshabInfo/info.svg';
 import InterviewStatusIcon from '../../../../common/InterviewStatusIcon/InterviewStatusIcon';
 import useStylesInterviewRaw from '../../../../common/InterviewItem/InterviewItem.styles';
 import useStyles from './InterviewRaw.styles';
+import CustomDialog from '../../../../common/CustomDialog/CustomDialog';
+import MalshabInfo from '../../../../common/MalshabInfo/MalshabInfo';
 
 const InterviewRaw = ({ event, timeDifference }) => {
   const classes = useStyles();
@@ -21,11 +24,13 @@ const InterviewRaw = ({ event, timeDifference }) => {
     <>
       <ListItem className={`${classes.root} ${interviewRawClasses.item} ${interviewRawClasses[`item${status}`]}`}>
         <div className={classes.iconsSection}>
+          {status !== 'BREAK' && (
           <Tooltip title={t('toolTip.information')}>
             <IconButton className={classes.iconButton} onClick={() => setOpenDialog(true)}>
               <img src={status === 'DURING' ? informationLight : information} alt='information' className={classes.iconButton} />
             </IconButton>
           </Tooltip>
+          )}
           {status === 'DONE' && results.videoUrl && (
             <Tooltip title={t('toolTip.playInterview')}>
               {/* TODO: Send eventId as a prop to interview page */}
@@ -68,8 +73,19 @@ const InterviewRaw = ({ event, timeDifference }) => {
           <InterviewStatusIcon status={status} />
         </div>
       </ListItem>
-      {/* TODO: Add malshab info dialog */}
-      <Dialog open={openDialog} onClose={() => setOpenDialog(false)}>Malshab info</Dialog>
+      <CustomDialog
+        open={openDialog}
+        onClose={() => setOpenDialog(false)}
+        title={(
+          <Typography className={classes.dialogTitle}>
+            <img src={info} alt='info' className={classes.infoIcon} />
+            {t('title.moreDetails')}
+          </Typography>
+        )}
+        content={<MalshabInfo id={malshabShort?.id} />}
+        dividers
+        paperClassName={classes.dialogPaper}
+      />
     </>
   );
 };

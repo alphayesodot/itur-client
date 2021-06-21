@@ -35,8 +35,10 @@ const CustomDialog = ({ open, onClose, title, content, dividers, paperClassName 
           <CloseIcon fontSize='small' classes={{ root: classes.closeIcon }} />
         </IconButton>
       </DialogTitle>
-      <DialogContent dividers={dividers} classes={{ root: classes.content }}>
-        {content}
+      <DialogContent dividers={dividers} classes={{ root: classes.dialogContent }}>
+        <div className={classes.content}>
+          {content}
+        </div>
       </DialogContent>
     </Dialog>
   );

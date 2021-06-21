@@ -30,10 +30,13 @@ const useStyles = makeStyles((theme) => ({
       color: theme.palette.font.secondary,
     },
   },
-  content: {
+  dialogContent: {
     display: 'flex',
     alignItems: 'stretch',
     justifyContent: 'center',
+  },
+  content: {
+    flex: 1,
   },
 }));
 
