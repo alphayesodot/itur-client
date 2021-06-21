@@ -17,8 +17,8 @@ const Header = ({ onClick, resetData }) => {
   const [name, setName] = useState('');
   const [nodeGroups, setNodeGroups] = useState([]);
   const [units, setUnits] = useState([]);
-  const [startDate, setStartDate] = useState();
-  const [endDate, setEndDate] = useState();
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
   const [canSubmit, setCanSubmit] = useState(false);
   const unitsOptionalRoles = ['MADA', 'ITUR', 'TECHNICAL'];
   const nodeGroupsRequiredRoles = ['PROFESSIONAL_RAMAD', 'RAMAD_ITUR_ASSISTANT'];
@@ -46,8 +46,8 @@ const Header = ({ onClick, resetData }) => {
   }, [name, nodeGroups, units, startDate, endDate]);
 
   const clearInputs = () => {
-    setStartDate('');
-    setEndDate('');
+    setStartDate(null);
+    setEndDate(null);
     setName('');
     setNodeGroups([]);
     setUnits([]);
