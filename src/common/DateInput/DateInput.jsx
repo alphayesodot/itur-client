@@ -1,5 +1,9 @@
 import React from 'react';
-import { TextField } from '@material-ui/core';
+import DateFnsUtils from '@date-io/date-fns';
+import {
+  KeyboardDatePicker,
+  MuiPickersUtilsProvider,
+} from '@material-ui/pickers';
 import { observer } from 'mobx-react-lite';
 import useStyles from './DateInput.styles';
 
@@ -12,20 +16,20 @@ import useStyles from './DateInput.styles';
 const DateInput = observer(({ selectedDate, setSelectedDate, inputClassName }) => {
   const classes = useStyles();
 
-  const handleOnDateChange = (e) => {
-    setSelectedDate(e.target.value);
-  };
-
   return (
-    <TextField
-      className={`${classes.date} ${inputClassName}`}
-      type='date'
-      onChange={handleOnDateChange}
-      value={selectedDate}
-      InputProps={{
-        disableUnderline: true,
-      }}
-    />
+    <MuiPickersUtilsProvider utils={DateFnsUtils}>
+      <KeyboardDatePicker
+        disableToolbar
+        format='dd/MM/yyyy'
+        className={`${classes.date} ${inputClassName}`}
+        value={selectedDate}
+        onChange={setSelectedDate}
+        variant='inline'
+        InputProps={{
+          disableUnderline: true,
+        }}
+      />
+    </MuiPickersUtilsProvider>
   );
 });
 

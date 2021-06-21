@@ -29,7 +29,8 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'left',
   },
   dateInput: {
-    padding: '0.25em 1.3em',
+    paddingTop: '0.25em',
+    paddingBottom: '0.25em',
     margin: '0 1em',
   },
 }));

@@ -36,9 +36,12 @@ const useStyles = makeStyles((theme) => ({
   },
   textField: {
     paddingLeft: '1rem',
+    paddingTop: '0.1rem',
+    paddingBottom: '0.1rem',
   },
   date: {
-    padding: '0.07rem 0.5rem',
+    paddingTop: '0.1rem',
+    paddingBottom: '0.1rem',
   },
   button: {
     background: theme.palette.primary.secondary,
