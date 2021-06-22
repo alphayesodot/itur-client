@@ -25,7 +25,7 @@ const Header = ({ onClick, resetData }) => {
   const nodeGroupsOptionalRoles = ['RAMAD_ITUR_OF_UNIT'];
 
   useEffect(() => {
-    if (!endDate || new Date(endDate).getTime() < new Date(startDate).getTime()) {
+    if (endDate && new Date(endDate).getTime() < new Date(startDate).getTime()) {
       setEndDate(startDate);
     }
   }, [startDate]);

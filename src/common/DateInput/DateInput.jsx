@@ -28,6 +28,7 @@ const DateInput = observer(({ selectedDate, setSelectedDate, inputClassName }) =
         className={`${classes.date} ${inputClassName}`}
         value={selectedDate}
         onChange={setSelectedDate}
+        autoOk
         variant='inline'
         maxDate={getMaxDate()}
         InputProps={{

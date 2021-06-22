@@ -13,9 +13,6 @@ const useStyles = makeStyles(() => ({
   input: {
     pointerEvents: 'none',
   },
-  content: {
-    width: '90%',
-  },
   title: {
     fontSize: '2rem',
     fontWeight: '600',
@@ -24,12 +21,12 @@ const useStyles = makeStyles(() => ({
     userSelect: 'none',
   },
   message: {
-    height: '100%',
     fontSize: '2rem',
     textAlign: 'center',
     fontWeight: 700,
     color: 'lightgrey',
     userSelect: 'none',
+    margin: 'auto',
   },
 }));
 

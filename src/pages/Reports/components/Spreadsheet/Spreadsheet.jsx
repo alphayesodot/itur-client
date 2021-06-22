@@ -37,18 +37,20 @@ const SpreadsheetComponent = ({ data }) => {
 
   return (
     <div className={classes.root}>
-      <Typography className={classes.title}>
-        {t('title.view')}
-      </Typography>
-      <div className={classes.content}>
-        {data
-          ? <Spreadsheet data={spreadsheetData} />
-          : (
-            <Typography className={classes.message}>
-              {t('message.noReport')}
+      {data
+        ? (
+          <>
+            <Typography className={classes.title}>
+              {t('title.view')}
             </Typography>
-          )}
-      </div>
+            <Spreadsheet data={spreadsheetData} />
+          </>
+        )
+        : (
+          <Typography className={classes.message}>
+            {t('message.noReport')}
+          </Typography>
+        )}
     </div>
   );
 };
