@@ -3,10 +3,11 @@ import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
 import { Typography } from '@material-ui/core';
 import DashboardCard from '../DashboardCard/DashboardCard';
+import DateInput from '../DateInput/DateInput';
 import ScheduleStore from '../../stores/Schedule.store';
 import useStyles from './ScheduleHeader.styles';
 import NodeGroupSelect from '../NodeGroupSelect/NodeGroupSelect';
-import DateInput from '../DateInput/DateInput';
+import commonInputUseStyles from '../CommonInput/CommonInput.styles';
 
 const Header = ({
   unitName,
@@ -19,6 +20,7 @@ const Header = ({
   selectFirst,
 }) => {
   const classes = useStyles();
+  const commonInputClasses = commonInputUseStyles();
   const { t } = useTranslation();
 
   useEffect(() => {
@@ -36,11 +38,16 @@ const Header = ({
   return (
     <DashboardCard className={classes.root}>
       <div className={classes.content}>
-        <DateInput selectedDate={selectedDate} setSelectedDate={setSelectedDate} />
+        <DateInput
+          selectedDate={selectedDate}
+          setSelectedDate={setSelectedDate}
+          inputClassName={`${commonInputClasses.root} ${classes.dateInput}`}
+        />
         <NodeGroupSelect
           selectedNodeGroup={selectedNodeGroup}
           setSelectedNodeGroup={setSelectedNodeGroup}
           selectFirst={selectFirst}
+          selectClassName={commonInputClasses.root}
         />
         <Typography className={`${classes.unit} ${classes.item}`}>
           :

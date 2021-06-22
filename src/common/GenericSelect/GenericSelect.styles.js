@@ -1,16 +1,15 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
-  date: {
-    height: '2em',
-    width: '12.5em',
-    background: 'white',
+  select: {
     direction: 'ltr',
-    paddingLeft: '1rem',
+    padding: '1em',
+  },
+  icon: {
+    fill: '#9aa3aa',
+    width: '20%',
     [theme.breakpoints.down('sm')]: {
-      width: 'auto',
-      margin: '0.5em 0',
-      alignSelf: 'stretch',
+      width: '10%',
     },
   },
 }));

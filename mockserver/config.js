@@ -10,7 +10,6 @@ const sitesPostfixes = {
   nodeGroupCreation: '/node-group-creation',
   fileUpload: '/file-upload',
   userManagement: '/user-management',
-  unitCreation: '/unit-creation',
   editQuestionnaire: '/edit-questionnaire',
 };
 
@@ -143,10 +142,6 @@ const config = {
       {
         route: sitesPostfixes.userManagement,
         sideBar: true,
-      },
-      {
-        route: sitesPostfixes.unitCreation,
-        sideBar: false,
       },
     ],
     PSYCHOLOGIST: [],

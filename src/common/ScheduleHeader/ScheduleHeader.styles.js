@@ -29,6 +29,11 @@ const useStyles = makeStyles((theme) => ({
     whiteSpace: 'nowrap',
     textAlign: 'left',
   },
+  dateInput: {
+    paddingTop: '0.25em',
+    paddingBottom: '0.25em',
+    margin: '0 1em',
+  },
 }));
 
 export default useStyles;

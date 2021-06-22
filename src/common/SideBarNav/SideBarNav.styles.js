@@ -27,6 +27,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    userSelect: 'none',
   },
   iconImg: {
     height: '2rem',
