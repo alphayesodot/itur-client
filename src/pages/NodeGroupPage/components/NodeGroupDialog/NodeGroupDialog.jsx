@@ -7,7 +7,7 @@ import NodeService from '../../../../services/node.service';
 import useStyles from './NodeGroupDialog.styles';
 import CustomDialog from '../../../../common/CustomDialog/CustomDialog';
 import SelectCheckboxItem from '../SelectCheckboxItem/SelectCheckboxItem';
-import { UserService } from '../../../../services/user.service';
+import { UserService, Role } from '../../../../services/user.service';
 import UserStoreInstance from '../../../../stores/User.store';
 
 const NodeGroupDialog = ({ open, onClose, updateAllNodeGroupList, currentNodeGroup }) => {
@@ -30,11 +30,11 @@ const NodeGroupDialog = ({ open, onClose, updateAllNodeGroupList, currentNodeGro
     currentNodeGroup.usersIds.forEach((userId) => {
       const checkedUser = allUsers.find((user) => user.id === userId) || {};
       switch (checkedUser.role) {
-        case 'PROFETIONAL_RAMAD':
+        case Role.ProfessionalRamad:
           tempPr.push(checkedUser.id);
           break;
 
-        case 'RAMAD_ITUR_ASSISTANT':
+        case Role.RamadIturAssistant:
           tempRuiA.push(checkedUser.id);
           break;
         default:
@@ -48,9 +48,10 @@ const NodeGroupDialog = ({ open, onClose, updateAllNodeGroupList, currentNodeGro
 
   useEffect(() => {
     UserService.getUsersByUnitId(UserStoreInstance.userProfile.unitId).then((users) => {
-      setPrUsers(users.filter((user) => user.role === 'PROFETIONAL_RAMAD'));
-      setRiuAUsers(users.filter((user) => user.role === 'RAMAD_ITUR_ASSISTANT'));
-      setEvaluators(users.filter((user) => user.role !== 'RAMAD_ITUR_ASSISTANT' && user.role !== 'PROFETIONAL_RAMAD'));
+      setPrUsers(users.filter((user) => user.role === Role.ProfessionalRamad));
+      setRiuAUsers(users.filter((user) => user.role === Role.RamadIturAssistant));
+      setEvaluators(users.filter((user) => user.role !== Role.RamadIturAssistant
+       && user.role !== Role.ProfessionalRamad));
       NodeService.getNodes().then((nodesRes) => {
         if (currentNodeGroup) {
           setNodes(nodesRes.filter((node) => !node.nodeGroupId || node.nodeGroupId === '' || node.nodeGroupId === currentNodeGroup.id));
@@ -133,6 +134,7 @@ const NodeGroupDialog = ({ open, onClose, updateAllNodeGroupList, currentNodeGro
       toast(t('error.server'));
     }
   };
+
   const content = (
     <DialogContent className={classes.root}>
       <div className={classes.labeledInput}>
@@ -200,6 +202,7 @@ const NodeGroupDialog = ({ open, onClose, updateAllNodeGroupList, currentNodeGro
       </DialogActions>
     </DialogContent>
   );
+
   return (
     <CustomDialog
       open={open}

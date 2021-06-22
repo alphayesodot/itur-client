@@ -33,5 +33,3 @@ export class UserService {
     return res?.data;
   }
 }
-
-// export default UserService;

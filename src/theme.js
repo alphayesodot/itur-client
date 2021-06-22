@@ -30,7 +30,7 @@ const theme = createMuiTheme({
       main: 'rgb(207,225,227)',
       secondary: 'rgb(244,245,247)',
     },
-    dilogs: {
+    dialogs: {
       primary: 'rgb(0,175,204)',
     },
   },

@@ -7,6 +7,8 @@ import deleteImg from '../../../../utils/images/general/trash.svg';
 import editImg from '../../../../utils/images/general/edit-regular.svg';
 import NodeGroupService from '../../../../services/nodeGroup.service';
 import NodeGroupDialog from '../NodeGroupDialog/NodeGroupDialog';
+import UserStoreInstance from '../../../../stores/User.store';
+import { Role } from '../../../../services/user.service';
 
 const OptionsButton = ({ nodeGroup, updateAllNodeGroupList }) => {
   const { t } = useTranslation();
@@ -14,13 +16,16 @@ const OptionsButton = ({ nodeGroup, updateAllNodeGroupList }) => {
   const [duringDeletion, setDuringDeletion] = useState(false);
   const [openEditDialog, setOpenEditDialog] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
+  const userRole = UserStoreInstance.userProfile.role;
 
   const handleOnOpenMenu = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
+
   const handleOnCloseMenu = () => {
     setAnchorEl(null);
   };
+
   const handleDelete = () => {
     if (!duringDeletion) {
       setDuringDeletion(true);
@@ -40,7 +45,7 @@ const OptionsButton = ({ nodeGroup, updateAllNodeGroupList }) => {
         style={{ backgroundColor: 'transparent' }}
         className={classes.root}
       >
-        <img height='15rem' src={moreImg} alt='see more' />
+        <img className={classes.optionIcon} src={moreImg} alt='see more' />
       </Button>
       <Menu
         id='simple-menu'
@@ -60,16 +65,21 @@ const OptionsButton = ({ nodeGroup, updateAllNodeGroupList }) => {
             {t('actions.delete')}
           </div>
         </MenuItem>
-        <MenuItem onClick={() => {
-          setOpenEditDialog(true);
-          handleOnCloseMenu();
-        }}
-        >
-          <div className={classes.menuItem}>
-            <img className={classes.img} width='17rem' src={editImg} alt='see more' />
-            {t('actions.edit')}
-          </div>
-        </MenuItem>
+        {
+          userRole === Role.RamadIturOfUnit && (
+          <MenuItem onClick={() => {
+            setOpenEditDialog(true);
+            handleOnCloseMenu();
+          }}
+          >
+            <div className={classes.menuItem}>
+              <img className={classes.img} width='17rem' src={editImg} alt='see more' />
+              {t('actions.edit')}
+            </div>
+          </MenuItem>
+          )
+        }
+
       </Menu>
       <NodeGroupDialog
         open={openEditDialog}

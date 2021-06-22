@@ -30,6 +30,14 @@ const useStyles = makeStyles((theme) => ({
       color: theme.palette.font.secondary,
     },
   },
+  dialogContent: {
+    display: 'flex',
+    alignItems: 'stretch',
+    justifyContent: 'center',
+  },
+  content: {
+    flex: 1,
+  },
 }));
 
 export default useStyles;

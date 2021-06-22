@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
   },
   checkbox: {
     '&$checkedCheckbox': {
-      color: theme.palette.dilogs.primary,
+      color: theme.palette.dialogs.primary,
     },
   },
   checkedCheckbox: {

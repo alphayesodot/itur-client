@@ -20,11 +20,14 @@ const filterSearch = (prefix: string, allNodeGroupRows: Array, setNodeGroupRowsT
 
 const Header = ({ allNodeGroupRows, setNodeGroupRowsToShow, setOpenDialog, allowNewNodeGroup }) => {
   const classes = useStyles();
+  const enterChar = 13;
   const [inputValue, setInputValue] = useState('');
   const { t } = useTranslation();
+
   useEffect(() => {
     if (inputValue) filterSearch(inputValue, allNodeGroupRows, setNodeGroupRowsToShow);
   }, [allNodeGroupRows]);
+
   return (
     <DashboardCard className={classes.root}>
       <div className={classes.content}>
@@ -48,6 +51,7 @@ const Header = ({ allNodeGroupRows, setNodeGroupRowsToShow, setOpenDialog, allow
             </Fab>
             <Input
               className={classes.input}
+              disableUnderline
               placeholder={t('placeholders.nodeGroup')}
               value={inputValue}
               onChange={(e) => {
@@ -56,7 +60,7 @@ const Header = ({ allNodeGroupRows, setNodeGroupRowsToShow, setOpenDialog, allow
                   setNodeGroupRowsToShow(allNodeGroupRows);
                 }
               }}
-              onKeyPress={(e) => e.charCode === 13
+              onKeyPress={(e) => e.charCode === enterChar
                 && filterSearch(inputValue, allNodeGroupRows, setNodeGroupRowsToShow)}
             />
             <Typography className={`${classes.unit} ${classes.item}`}>
