@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.font.secondary,
     fontWeight: 'bold',
     direction: 'ltr',
-    padding: '0 1rem',
+    padding: '0.2rem 1rem',
     [theme.breakpoints.down('sm')]: {
       width: '70%',
     },

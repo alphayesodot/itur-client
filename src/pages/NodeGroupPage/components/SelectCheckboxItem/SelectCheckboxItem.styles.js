@@ -40,6 +40,7 @@ const useStyles = makeStyles((theme) => ({
       color: theme.palette.dialogs.primary,
     },
   },
+  // This object is needed although it's empty. It is needed for override the default color.
   checkedCheckbox: {
   },
   selectedMenuItem: {

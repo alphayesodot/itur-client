@@ -9,11 +9,11 @@ import useStyles from './DataTable.styles';
 
 /**
  * @param {*} rowsData: array of row-data arrays.
- * @param {*} colomnsNames: array of columns names (right to left).
+ * @param {*} columnNames: array of columns names (right to left).
  * @param {*} iconColomnsImages: array of icons that should be in an a non-named columns.
  * @returns design table
  */
-const DataTable = ({ rowsData, colomnsNames }) => {
+const DataTable = ({ rowsData, columnNames }) => {
   const classes = useStyles();
 
   const tableHeaderClasses = (idx) => {
@@ -26,7 +26,7 @@ const DataTable = ({ rowsData, colomnsNames }) => {
       <Table stickyHeader aria-label='sticky table' className={classes.table}>
         <TableHead className={classes.tableHeader}>
           <TableRow key='title'>
-            {colomnsNames.map((colName, index) => (
+            {columnNames.map((colName, index) => (
               <TableCell
                 key={colName}
                 align='center'

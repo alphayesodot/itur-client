@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken';
 import nodes from './db.js';
 import Role from '../user/enum.js';
 
-class NodesManager {
+class NodeManager {
   static async getNodes(req, res) {
     const requester = jwt.decode(req.headers.authorization.split(' ')[1]);
     if ([
@@ -45,4 +45,4 @@ class NodesManager {
   }
 }
 
-export default NodesManager;
+export default NodeManager;

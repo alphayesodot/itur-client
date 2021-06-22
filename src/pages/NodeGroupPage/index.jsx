@@ -63,7 +63,7 @@ const NodeGroupPage = () => {
           <span className={classes.countTitle}>{`(${nodeGroupRowsToShow.length})`}</span>
         </Typography>
         <div className={classes.tableContainer}>
-          <DataTable rowsData={nodeGroupRowsToShow} colomnsNames={colNames} />
+          <DataTable rowsData={nodeGroupRowsToShow} columnNames={colNames} />
         </div>
         <NodeGroupDialog
           open={openDialog}
