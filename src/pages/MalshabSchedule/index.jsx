@@ -58,7 +58,7 @@ const MalshabSchedulePage = () => {
       {choosenNodeGroup ? (
         <div className={classes.mainInner}>
           <MalshabimCard handleMalshabsToSchedule={handleMalshabsToSchedule} />
-          <UsersCard users={users} selectedDate={selectedDate} />
+          <UsersCard users={selectedNodeGroup.usersIds} selectedDate={selectedDate} />
         </div>
       )
         : (

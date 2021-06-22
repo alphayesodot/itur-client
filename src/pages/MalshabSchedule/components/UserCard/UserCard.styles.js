@@ -22,6 +22,9 @@ const useStyles = makeStyles((theme) => ({
       fontWeight: '200',
     },
   },
+  sum: {
+    fontSize: '0.875rem',
+  },
   icon: {
     height: '1rem',
     width: '1rem',
@@ -29,7 +32,35 @@ const useStyles = makeStyles((theme) => ({
   cardBody: {
     width: '100%',
     height: '85%',
+    position: 'relative',
+    padding: '0.6rem 0 0 0.4rem',
+    boxSizing: 'border-box',
+    overflowY: 'scroll',
+  },
+  eventsBox: {
+  },
+  innerRow: {
     display: 'flex',
+    alignItems: 'center',
+    wordBreak: 'break-word',
+  },
+  deleteIcon: {
+    padding: '0.3rem',
+  },
+  eventsList: {
+    direction: 'ltr',
+    listStyle: 'none',
+    margin: 0,
+    padding: 0,
+  },
+  eventItem: {
+    display: 'list-item',
+    borderBottom: '1px solid #ccd8dc',
+    marginRight: '0.87rem',
+  },
+  eventText: {
+    fontSize: '0.875rem',
+    wordSpacing: '0.8rem',
   },
   noEvents: {
     display: 'flex',
