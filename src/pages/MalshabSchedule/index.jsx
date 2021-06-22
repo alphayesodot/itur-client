@@ -50,17 +50,16 @@ const MalshabSchedulePage = () => {
   const handleMalshabsToSchedule = (chosenMalshabs, selectedScheduling) => {
     if (selectedScheduling === t('unitControlPage.automaticScheduling')) {
       // TODO: automatic selected malshabs to interviewers
-    }
-    else{
+    } else {
       chosenMalshabs.map((malshab) => {
-        scheduleMalshabToInterviewer(malshab, selectedScheduling)
-      })
+        scheduleMalshabToInterviewer(malshab, selectedScheduling);
+      });
     }
   };
 
   const scheduleMalshabToInterviewer = (malshab, selectedScheduling) => {
-    const updatedInterviewers = interviewers.map((interviewer) => )
-  }
+    const updatedInterviewers = interviewers.map((interviewer) => interviewer);
+  };
 
   useEffect(() => {
     if (choosenNodeGroup) {
