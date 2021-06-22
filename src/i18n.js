@@ -47,13 +47,10 @@ const resources = {
         noInterviewersInNodeGroup: 'אין מראיינים במסלול',
         noInterviews: 'אין ראיונות',
         chooseNodeGroup: 'בחרו מסלול',
-<<<<<<< HEAD
         noUsers: 'אין משתמשים',
         chosen: 'נבחר',
-=======
         noReport: 'אין דוח לתצוגה',
         noOptions: 'אין אופציות',
->>>>>>> f852bbf3b0dd9b5b50d7181202cdeb435a7818d6
         noAttachments: 'אין מסמכים',
       },
       headerTitles: {

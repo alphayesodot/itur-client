@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { TextField, Button, Tooltip } from '@material-ui/core';
 import UndoIcon from '../../../../utils/images/reports/undo-solid.svg';
 import UserStore from '../../../../stores/User.store';
+import { Role } from '../../../../services/user.service';
 import NodeGroupSelect from '../../../../common/NodeGroupSelect/NodeGroupSelect';
 import UnitSelect from '../../../../common/UnitSelect/UnitSelect';
 import DateInput from '../../../../common/DateInput/DateInput';
@@ -20,9 +21,9 @@ const Header = ({ onClick, resetData }) => {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const [canSubmit, setCanSubmit] = useState(false);
-  const unitsOptionalRoles = ['MADA', 'ITUR', 'TECHNICAL'];
-  const nodeGroupsRequiredRoles = ['PROFESSIONAL_RAMAD', 'RAMAD_ITUR_ASSISTANT'];
-  const nodeGroupsOptionalRoles = ['RAMAD_ITUR_OF_UNIT'];
+  const unitsOptionalRoles = [Role.Mada, Role.Itur, Role.Technical];
+  const nodeGroupsRequiredRoles = [Role.ProfessionalRamad, Role.RamadIturAssistant];
+  const nodeGroupsOptionalRoles = [Role.RamadIturOfUnit];
 
   useEffect(() => {
     if (endDate && new Date(endDate).getTime() < new Date(startDate).getTime()) {
