@@ -7,6 +7,7 @@ import NodeGroupPage from './pages/NodeGroupPage/index';
 import Luz from './pages/Luz/index';
 import AuthService from './services/auth.service';
 import UploadPage from './pages/FileUpload/index';
+import Report from './pages/Reports/index';
 import ConfigService from './services/config.service';
 import Sidebar from './common/SideBarNav/SideBarNav';
 import Header from './common/Header/Header';
@@ -84,7 +85,7 @@ const App = () => {
     },
     {
       path: configApp.sitesPostfixes.reports,
-      component: <h1>reports</h1>,
+      component: <Report />,
     },
     {
       path: configApp.sitesPostfixes.posh,
@@ -101,10 +102,6 @@ const App = () => {
     {
       path: configApp.sitesPostfixes.userManagement,
       component: <UserManagement />,
-    },
-    {
-      path: configApp.sitesPostfixes.unitCreation,
-      component: <h1>unitCreation</h1>,
     },
     {
       path: configApp.sitesPostfixes.editQuestionnaire,

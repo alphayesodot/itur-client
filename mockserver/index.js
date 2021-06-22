@@ -10,6 +10,7 @@ import nodeRouter from './node/node.router.js';
 import nodeGroupRouter from './nodeGroup/nodeGroup.router.js';
 import unitRouter from './unit/unit.router.js';
 import malshabRouter from './malshab/malshab.router.js';
+import reportRouter from './report/report.router.js';
 
 const app = express();
 app.use(cors({ origin: '*', credentials: true }));
@@ -48,5 +49,6 @@ app.use('/api/unit', unitRouter);
 app.use('/api/upload', uploadRouter);
 app.use('/api/malshab', malshabRouter);
 app.use('/api/node', nodeRouter);
+app.use('/api/report', reportRouter);
 
 app.listen(config.port, () => console.log(`Mock server listening on ${config.port}`));

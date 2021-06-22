@@ -1,25 +1,41 @@
 import React from 'react';
-import { TextField } from '@material-ui/core';
+import DateFnsUtils from '@date-io/date-fns';
+import {
+  KeyboardDatePicker,
+  MuiPickersUtilsProvider,
+} from '@material-ui/pickers';
 import { observer } from 'mobx-react-lite';
 import useStyles from './DateInput.styles';
 
-const DateInput = observer(({ selectedDate, setSelectedDate }) => {
+/**
+ * @param {*} selectedDate: selected date state
+ * @param {*} setSelectedDate: set selected date's state function
+ * @param {*} inputClassName: optional, additional input's class name defined by makestyles
+ * @returns date select
+ */
+const DateInput = observer(({ selectedDate, setSelectedDate, inputClassName }) => {
   const classes = useStyles();
 
-  const handleOnDateChange = (e) => {
-    setSelectedDate(e.target.value);
-  };
+  const getMaxDate = () => (
+    new Date().setDate(new Date().getDate() + 1)
+  );
 
   return (
-    <TextField
-      className={`${classes.date} ${classes.root}`}
-      type='date'
-      onChange={handleOnDateChange}
-      value={selectedDate}
-      InputProps={{
-        disableUnderline: true,
-      }}
-    />
+    <MuiPickersUtilsProvider utils={DateFnsUtils}>
+      <KeyboardDatePicker
+        disableToolbar
+        format='dd/MM/yyyy'
+        className={`${classes.date} ${inputClassName}`}
+        value={selectedDate}
+        onChange={setSelectedDate}
+        autoOk
+        variant='inline'
+        maxDate={getMaxDate()}
+        InputProps={{
+          disableUnderline: true,
+        }}
+      />
+    </MuiPickersUtilsProvider>
   );
 });
 

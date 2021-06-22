@@ -8,12 +8,12 @@ import App from './App';
 import RTL from './utils/rtl';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <RTL>
+  <ThemeProvider theme={theme}>
+    <RTL>
+      <React.StrictMode>
         <App />
-      </RTL>
-    </ThemeProvider>
-  </React.StrictMode>,
+      </React.StrictMode>
+    </RTL>
+  </ThemeProvider>,
   document.getElementById('root'),
 );
