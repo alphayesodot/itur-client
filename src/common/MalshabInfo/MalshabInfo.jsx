@@ -2,11 +2,10 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
-import { Link, Typography } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
 import MalshabService from '../../services/malshab.service';
-import DashboardCard from '../DashboardCard/DashboardCard';
 import CustomBackDrop from '../CustomBackDrop/CustomBackDrop';
-import attachmentIcon from '../../utils/images/malshabInfo/attachment.svg';
+import Attachments from '../Attachments/Attachments';
 import useStyles from './MalshabInfo.styles';
 
 const MalshabInfo = ({ id }) => {
@@ -51,51 +50,6 @@ const MalshabInfo = ({ id }) => {
     });
   }, [id]);
 
-  const handleOnDownload = (attachment) => {
-    MalshabService.getAttachmentByKey(id, attachment).then((data) => {
-      const url = window.URL.createObjectURL(data);
-      const link = document.createElement('a');
-      link.href = url;
-      link.setAttribute('download', decodeURIComponent(attachment));
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    }).catch(() => {
-      toast(t('error.server'));
-    });
-  };
-
-  const getAttachments = () => (
-    <div className={classes.attachmentsSection}>
-      <Typography className={classes.sectionTitle}>
-        {t('title.attachments')}
-      </Typography>
-      <DashboardCard className={classes.attachmentsCard}>
-        {malshab.attachments.length ? malshab.attachments.map((attachment) => (
-          <div className={classes.attachment} key={attachment}>
-            <img
-              alt='icon'
-              src={attachmentIcon}
-              className={classes.attachmentIcon}
-            />
-            <Link
-              className={classes.link}
-              component='button'
-              variant='body2'
-              onClick={() => handleOnDownload(attachment)}
-            >
-              {decodeURIComponent(attachment)}
-            </Link>
-          </div>
-        )) : (
-          <Typography className={classes.message}>
-            {t('message.noAttachments')}
-          </Typography>
-        )}
-      </DashboardCard>
-    </div>
-  );
-
   const getFormattedValue = (type, value) => {
     switch (type) {
       case 'text':
@@ -131,7 +85,9 @@ const MalshabInfo = ({ id }) => {
         ? <CustomBackDrop />
         : (
           <div className={classes.root}>
-            {malshab?.attachments && getAttachments()}
+            {malshab?.attachments && (
+            <Attachments malshabId={id} attachments={malshab?.attachments} />
+            )}
             <div className={classes.fieldsSection}>
               <Typography className={classes.sectionTitle}>
                 {t('title.generalInfo')}
