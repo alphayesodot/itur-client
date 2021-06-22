@@ -5,7 +5,7 @@ import useStyles from './index.styles';
 import DashboardCard from '../../common/DashboardCard/DashboardCard';
 import Header from './components/Header/Header';
 import DataTable from '../../common/DataTable/DataTable';
-import QuestionnaireService from '../../services/nodeGroup.service';
+import QuestionnaireService from '../../services/Questionnaire.service';
 // import UnitService from '../../services/unit.service';
 // import { UserService, Role } from '../../services/user.service';
 import UserStoreInstance from '../../stores/User.store';
@@ -80,7 +80,10 @@ const Questionnaire = () => {
           {' '}
           <span className={classes.countTitle}>{`(${questionnaireRowsToShow.length})`}</span>
         </Typography>
-        <DataTable rowsData={questionnaireRowsToShow} colomnsNames={colNames} />
+        <div class={classes.tableContainer}>
+          <DataTable rowsData={questionnaireRowsToShow} colomnsNames={colNames} />
+
+        </div>
         {/* {questionnaireRowsToShow.length
           ? <DataTable rowsData={questionnaireRowsToShow} colomnsNames={colNames} />
           : (

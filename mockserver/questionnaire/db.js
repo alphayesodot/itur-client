@@ -1,6 +1,6 @@
 import Role from '../user/enum.js';
 
-const nodeGroups = [
+const questionnaires = [
   {
     id: '507f1f77bcf86cd7994390555',
     name: 'שאלון 1',
@@ -13,4 +13,4 @@ const nodeGroups = [
   },
 ];
 
-export default nodeGroups;
+export default questionnaires;

@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
   dashbord: {
     backgroundColor: 'white',
     width: '100%',
-    height: '73.5vh',
+    height: '100%',
     marginTop: '1rem',
     direction: 'ltr',
   },
@@ -46,6 +46,11 @@ const useStyles = makeStyles((theme) => ({
     direction: 'rtl',
     width: '50%',
     margin: '0 2.5em',
+  },
+  tableContainer: {
+    width: '43%',
+    marginLeft: '2%',
+    marginRight: '5%',
   },
 }));
 
