@@ -16,6 +16,10 @@ import useStyles from './DateInput.styles';
 const DateInput = observer(({ selectedDate, setSelectedDate, inputClassName }) => {
   const classes = useStyles();
 
+  const getMaxDate = () => (
+    new Date().setDate(new Date().getDate() + 1)
+  );
+
   return (
     <MuiPickersUtilsProvider utils={DateFnsUtils}>
       <KeyboardDatePicker
@@ -25,6 +29,7 @@ const DateInput = observer(({ selectedDate, setSelectedDate, inputClassName }) =
         value={selectedDate}
         onChange={setSelectedDate}
         variant='inline'
+        maxDate={getMaxDate()}
         InputProps={{
           disableUnderline: true,
         }}
