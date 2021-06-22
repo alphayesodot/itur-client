@@ -6,7 +6,7 @@ import useStyles from './index.styles';
 import NodeGroups from './components/NodeGroups/NodeGroups';
 import NodeGroupService from '../../services/nodeGroup.service';
 import UsersCard from './components/UsersCard/UsersCard';
-import Header from '../Track/components/Header/Header';
+import ScheduleHeader from '../../common/ScheduleHeader/ScheduleHeader';
 import MalshabimCard from './components/MalshabimCard/MalshabimCard';
 import UserService from '../../services/user.service';
 import UnitService from '../../services/unit.service';
@@ -68,8 +68,8 @@ const MalshabSchedulePage = () => {
 
   return (
     <div className={classes.root}>
-      <Header
-        unitName={unit.name}
+      <ScheduleHeader
+        unitName={unit?.name}
         selectedNodeGroup={choosenNodeGroup}
         setSelectedNodeGroup={setChoosenNodeGroup}
         selectedDate={selectedDate}

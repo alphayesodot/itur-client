@@ -2,11 +2,11 @@ import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
 import { Typography } from '@material-ui/core';
-import DashboardCard from '../../../../common/DashboardCard/DashboardCard';
-import ScheduleStore from '../../../../stores/Schedule.store';
-import useStyles from './Header.styles';
-import NodeGroupSelect from '../../../../common/NodeGroupSelect/NodeGroupSelect';
-import DateInput from '../../../../common/DateInput/DateInput';
+import DashboardCard from '../DashboardCard/DashboardCard';
+import ScheduleStore from '../../stores/Schedule.store';
+import useStyles from './ScheduleHeader.styles';
+import NodeGroupSelect from '../NodeGroupSelect/NodeGroupSelect';
+import DateInput from '../DateInput/DateInput';
 
 const Header = ({
   unitName,
