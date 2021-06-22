@@ -39,12 +39,12 @@ const SpreadsheetComponent = ({ data }) => {
     <div className={classes.root}>
       {data
         ? (
-          <>
+          <div className={classes.content}>
             <Typography className={classes.title}>
               {t('title.view')}
             </Typography>
             <Spreadsheet data={spreadsheetData} />
-          </>
+          </div>
         )
         : (
           <Typography className={classes.message}>

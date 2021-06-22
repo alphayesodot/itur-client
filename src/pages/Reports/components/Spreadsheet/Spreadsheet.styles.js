@@ -20,6 +20,9 @@ const useStyles = makeStyles(() => ({
     margin: '2% 0',
     userSelect: 'none',
   },
+  content: {
+    width: '90%',
+  },
   message: {
     fontSize: '2rem',
     textAlign: 'center',
