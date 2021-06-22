@@ -36,6 +36,7 @@ const resources = {
         interviewsSchedule: 'לוז ראיונות',
         questionnaires: 'שאלונים',
         noQuestionnaires: 'אין שאלונים',
+        view: 'תצוגה',
         attachments: 'מסמכים',
         generalInfo: 'פרטים כללים',
       },
@@ -50,6 +51,8 @@ const resources = {
         chooseNodeGroup: 'בחרו מסלול',
         noUsers: 'אין משתמשים',
         chosen: 'נבחר',
+        noReport: 'אין דוח לתצוגה',
+        noOptions: 'אין אופציות',
         noAttachments: 'אין מסמכים',
       },
       headerTitles: {
@@ -89,6 +92,7 @@ const resources = {
         saveNodeGroup: 'שמירת מסלול',
         enter: 'כניסה',
         newQuestionnaire: 'שאלון חדש',
+        createReport: 'יצירת דוח',
       },
       day: {
         1: 'ראשון',
@@ -171,12 +175,20 @@ const resources = {
         copyUsers: 'העתקת יוזרים',
         information: 'מידע נוסף',
         playInterview: 'צפייה בראיון',
+        restart: 'התחל מחדש',
       },
       warnings: {
         oneTimePassword: 'שים לב, לאחר סגירת החלונית לא יהיה ניתן לצפות בסיסמה בשנית. יש לשמור את הסיסמה במקום מאובטח.',
       },
       formTitle: {
         name: 'שם',
+      },
+      label: {
+        reportName: 'שם דוח',
+        units: 'יחידות',
+        nodeGroups: 'מסלולים',
+        startDate: 'תאריך התחלתי',
+        endDate: 'תאריך סיום',
       },
       malshabInfo: {
         identityNumber: 'ת.ז',

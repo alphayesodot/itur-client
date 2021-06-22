@@ -9,11 +9,11 @@ import useStyles from './DataTable.styles';
 
 /**
  * @param {*} rowsData: array of row-data arrays.
- * @param {*} colomnsNames: array of columns names (right to left).
+ * @param {*} columnNames: array of columns names (right to left).
  * @param {*} iconColomnsImages: array of icons that should be in an a non-named columns.
  * @returns design table
  */
-const DataTable = ({ rowsData, colomnsNames }) => {
+const DataTable = ({ rowsData, columnNames }) => {
   const classes = useStyles();
   const tableHeaderClasses = (idx, length) => {
     if (idx === 0) return classes.roundBorderRight;
@@ -26,7 +26,7 @@ const DataTable = ({ rowsData, colomnsNames }) => {
       <Table stickyHeader aria-label='sticky table' className={classes.table}>
         <TableHead className={classes.tableHeader}>
           <TableRow key='title'>
-            {colomnsNames.map((colName, index) => <TableCell key={colName} className={`${classes.titleCell} ${tableHeaderClasses(index, colomnsNames.length)}`} align='center'>{colName}</TableCell>)}
+            {columnNames.map((colName, index) => <TableCell key={colName} className={`${classes.titleCell} ${tableHeaderClasses(index, columnNames.length)}`} align='center'>{colName}</TableCell>)}
           </TableRow>
         </TableHead>
         <TableBody className={classes.tableContent}>

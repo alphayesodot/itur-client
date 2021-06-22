@@ -10,7 +10,7 @@ const SelectCheckboxItem = ({
   emptyMessege }) => {
   const { t } = useTranslation();
   const classes = useStyles();
-  const menuItemHieght = 48;
+  const menuItemHeight = 48;
   const menuItemPaddingTop = 8;
   const MenuProps = {
     anchorOrigin: {
@@ -20,7 +20,7 @@ const SelectCheckboxItem = ({
     getContentAnchorEl: null,
     PaperProps: {
       style: {
-        maxHeight: menuItemHieght * 4.5 + menuItemPaddingTop,
+        maxHeight: menuItemHeight * 4.5 + menuItemPaddingTop,
         width: 250,
       },
     },

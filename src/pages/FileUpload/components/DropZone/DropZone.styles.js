@@ -2,6 +2,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    userSelect: 'none',
     width: '20rem',
     textAlign: 'center',
     padding: '5% 12%',

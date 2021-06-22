@@ -152,10 +152,6 @@ const config = {
         route: sitesPostfixes.userManagement,
         sideBar: true,
       },
-      {
-        route: sitesPostfixes.unitCreation,
-        sideBar: false,
-      },
     ],
     PSYCHOLOGIST: [],
     DIAGNOSER: [],
