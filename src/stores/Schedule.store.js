@@ -29,15 +29,18 @@ class ScheduleStore {
     return result || EventService.getEvents({ interviewerId, date: new Date(date) });
   }
 
-  async addNewSchedule(date, nodeGroup) {
+  async addNewSchedule(date, nodeGroup, interviewers) {
     if (!this.schedules) {
       this.schedules = [];
     }
+
     const schedule = await Promise.all(
-      // TODO: Check if user is an inteviewer
-      nodeGroup.usersIds.map(async (interviewerId) => ({
-        interviewerId,
-        interviews: await EventService.getEvents({ interviewerId, date: new Date(date) }),
+      interviewers.map(async (interviewer) => ({
+        interviewerId: interviewer.id,
+        interviews: await EventService.getEvents({
+          interviewerId: interviewer.id,
+          date: new Date(date),
+        }),
       })),
     );
     this.schedules.push({

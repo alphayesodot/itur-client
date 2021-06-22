@@ -9,12 +9,13 @@ import NodeGroupSelect from '../../../../common/NodeGroupSelect/NodeGroupSelect'
 import DateInput from '../../../../common/DateInput/DateInput';
 
 const Header = ({
-  unit,
+  unitName,
   selectedNodeGroup,
   setSelectedNodeGroup,
   selectedDate,
   setSelectedDate,
   setIsLoading,
+  interviewers,
 }) => {
   const classes = useStyles();
   const { t } = useTranslation();
@@ -23,7 +24,7 @@ const Header = ({
     if (selectedDate && selectedNodeGroup
       && !ScheduleStore.getScheduleOfNodeGroup(selectedDate, selectedNodeGroup.id)) {
       setIsLoading(true);
-      ScheduleStore.addNewSchedule(selectedDate, selectedNodeGroup).catch(() => {
+      ScheduleStore.addNewSchedule(selectedDate, selectedNodeGroup, interviewers).catch(() => {
         toast(t('error.server'));
       }).finally(() => {
         setIsLoading(false);
@@ -43,7 +44,7 @@ const Header = ({
           :
           {t('title.unit')}
           {' '}
-          <strong>{unit ? unit.name : ''}</strong>
+          <strong>{unitName}</strong>
         </Typography>
       </div>
     </DashboardCard>
