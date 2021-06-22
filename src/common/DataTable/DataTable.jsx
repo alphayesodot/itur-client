@@ -10,7 +10,6 @@ import useStyles from './DataTable.styles';
 /**
  * @param {*} rowsData: array of row-data arrays.
  * @param {*} columnNames: array of columns names (right to left).
- * @param {*} iconColomnsImages: array of icons that should be in an a non-named columns.
  * @returns design table
  */
 const DataTable = ({ rowsData, columnNames }) => {
