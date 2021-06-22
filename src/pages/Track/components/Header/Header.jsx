@@ -16,6 +16,7 @@ const Header = ({
   setSelectedDate,
   setIsLoading,
   interviewers,
+  selectFirst,
 }) => {
   const classes = useStyles();
   const { t } = useTranslation();
@@ -39,6 +40,7 @@ const Header = ({
         <NodeGroupSelect
           selectedNodeGroup={selectedNodeGroup}
           setSelectedNodeGroup={setSelectedNodeGroup}
+          selectFirst={selectFirst}
         />
         <Typography className={`${classes.unit} ${classes.item}`}>
           :

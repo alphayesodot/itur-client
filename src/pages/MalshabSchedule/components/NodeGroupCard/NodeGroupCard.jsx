@@ -42,7 +42,7 @@ const NodeGroupCard = ({ nodeGroup, setChoosenNodeGroup }) => {
 
   return (
     <DashboardCard
-      onClick={() => { setChoosenNodeGroup(nodeGroup.id); }}
+      onClick={() => { setChoosenNodeGroup(nodeGroup); }}
       className={
         `${classes.root} 
         ${scheduledEvents.length === nodeGroupEvents.length

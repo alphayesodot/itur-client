@@ -9,14 +9,15 @@ import UsersCard from './components/UsersCard/UsersCard';
 import Header from '../Track/components/Header/Header';
 import MalshabimCard from './components/MalshabimCard/MalshabimCard';
 import UserService from '../../services/user.service';
+import UnitService from '../../services/unit.service';
 
 const MalshabSchedulePage = () => {
   const classes = useStyles();
   const { t } = useTranslation();
-  const [choosenNodeGroup, setChoosenNodeGroup] = useState('');
+  const [choosenNodeGroup, setChoosenNodeGroup] = useState();
   const [unitNodesGroups, setUnitNodesGroups] = useState([]);
-  const [unit, setUnit] = useState('יחידת במבינו');
-  const [selectedNodeGroup, setSelectedNodeGroup] = useState('');
+  const [interviewers, setInterviewers] = useState([]);
+  const [unit, setUnit] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const [selectedDate, setSelectedDate] = useState(new Date().toLocaleDateString('fr-CA', {
     year: 'numeric',
@@ -28,6 +29,11 @@ const MalshabSchedulePage = () => {
   useEffect(() => {
     NodeGroupService.getNodeGroups().then((res) => {
       setUnitNodesGroups(res);
+    }).catch(() => {
+      toast(t('error.server'));
+    });
+    UnitService.getMyUnit().then((res) => {
+      setUnit(res);
     }).catch(() => {
       toast(t('error.server'));
     });
@@ -45,20 +51,37 @@ const MalshabSchedulePage = () => {
 
   };
 
+  useEffect(() => {
+    if (choosenNodeGroup) {
+      setIsLoading(true);
+      Promise.all(
+        choosenNodeGroup?.usersIds?.map((userId) => UserService.getUserById(userId)),
+      ).then((res) => {
+        setInterviewers(res.filter((user) => user.role === 'INTERVIEWER'));
+      }).catch(() => {
+        toast(t('error.server'));
+      }).finally(() => {
+        setIsLoading(false);
+      });
+    }
+  }, [choosenNodeGroup]);
+
   return (
     <div className={classes.root}>
       <Header
-        unit={unit}
-        selectedNodeGroup={selectedNodeGroup}
-        setSelectedNodeGroup={setSelectedNodeGroup}
+        unitName={unit.name}
+        selectedNodeGroup={choosenNodeGroup}
+        setSelectedNodeGroup={setChoosenNodeGroup}
         selectedDate={selectedDate}
         setSelectedDate={setSelectedDate}
         setIsLoading={setIsLoading}
+        interviewers={interviewers}
+        selectFirst={false}
       />
       {choosenNodeGroup ? (
         <div className={classes.mainInner}>
           <MalshabimCard handleMalshabsToSchedule={handleMalshabsToSchedule} />
-          <UsersCard users={selectedNodeGroup.usersIds} selectedDate={selectedDate} />
+          <UsersCard users={interviewers} selectedDate={selectedDate} />
         </div>
       )
         : (

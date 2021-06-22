@@ -59,6 +59,7 @@ const Track = observer(() => {
         setSelectedDate={setSelectedDate}
         setIsLoading={setIsLoading}
         interviewers={interviewers}
+        selectFirst
       />
       {isLoading
         ? <CustomBackDrop />

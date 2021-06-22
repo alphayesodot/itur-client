@@ -5,7 +5,7 @@ import { Select, MenuItem } from '@material-ui/core';
 import nodeGroupService from '../../services/nodeGroup.service';
 import useStyles from './NodeGroupSelect.styles';
 
-const NodeGroupSelect = ({ selectedNodeGroup, setSelectedNodeGroup }) => {
+const NodeGroupSelect = ({ selectedNodeGroup, setSelectedNodeGroup, selectFirst }) => {
   const classes = useStyles();
   const { t } = useTranslation();
   const [nodeGroups, setNodeGroups] = useState([]);
@@ -13,7 +13,9 @@ const NodeGroupSelect = ({ selectedNodeGroup, setSelectedNodeGroup }) => {
   useEffect(() => {
     nodeGroupService.getNodeGroups().then((res) => {
       setNodeGroups(res);
-      setSelectedNodeGroup(res[0]);
+      if (selectFirst) {
+        setSelectedNodeGroup(res[0]);
+      }
     }).catch(() => {
       toast(t('error.server'));
     });
