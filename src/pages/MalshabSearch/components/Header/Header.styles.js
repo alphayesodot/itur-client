@@ -1,12 +1,11 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    direction: 'rtl',
+    background: theme.palette.primary.main,
     width: '100%',
+    height: '2rem', // remove
   },
 }));
 
