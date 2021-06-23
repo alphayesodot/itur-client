@@ -13,7 +13,7 @@ const MalshabData = ({ malshab }) => {
   return (
     <DashboardCard className={classes.root}>
       {malshab
-        ? <MalshabInfo />
+        ? <MalshabInfo malshab={malshab} />
         : (
           <Typography className={classes.message}>
             {t('message.noMalshab')}

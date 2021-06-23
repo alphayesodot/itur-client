@@ -4,7 +4,7 @@ const useStyles = makeStyles(() => ({
   root: {
     display: 'flex',
     flexDirection: 'column',
-    width: '75%',
+    width: '100%',
   },
   fieldsDiv: {
     display: 'flex',

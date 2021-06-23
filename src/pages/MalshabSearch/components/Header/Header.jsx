@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { toast } from 'react-toastify';
+import { withStyles } from '@material-ui/core/styles';
 import { Button as MuiButton, TextField, Tooltip } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
-import { withStyles } from '@material-ui/core/styles';
+import MalshabService from '../../../../services/malshab.service';
 import DashboardCard from '../../../../common/DashboardCard/DashboardCard';
 import useStyles from './Header.styles';
 
@@ -13,19 +15,26 @@ const Button = withStyles({
   },
 })(MuiButton);
 
-const Header = ({ malshab, setMalshab }) => {
+const Header = ({ setMalshab }) => {
   const classes = useStyles();
   const [input, setInput] = useState('');
   const identityNumberLength = 9;
   const { t } = useTranslation();
 
-  const handleOnClick = () => {
-    setInput('');
-  };
-
   const isButtonDisabled = () => (
     input?.length !== identityNumberLength || !input?.match(/^[0-9]+$/)
   );
+
+  const handleOnClick = () => {
+    if (!isButtonDisabled()) {
+      MalshabService.getMalshabById(input).then((res) => {
+        setMalshab(res);
+        setInput('');
+      }).catch(() => {
+        toast(t('error.server'));
+      });
+    }
+  };
 
   return (
     <DashboardCard className={classes.root}>
@@ -34,6 +43,7 @@ const Header = ({ malshab, setMalshab }) => {
           disabled={isButtonDisabled()}
           onClick={handleOnClick}
           className={classes.button}
+          component={isButtonDisabled() ? 'div' : undefined}
         >
           {t('button.searchMalshab')}
         </Button>
