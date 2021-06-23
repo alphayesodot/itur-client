@@ -3,11 +3,6 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles(() => ({
   root: {
     display: 'flex',
-    alignItems: 'stretch',
-    height: '100%',
-  },
-  fieldsSection: {
-    display: 'flex',
     flexDirection: 'column',
     width: '75%',
   },

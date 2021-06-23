@@ -1,18 +1,11 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { toast } from 'react-toastify';
 import { Typography } from '@material-ui/core';
-import MalshabService from '../../services/malshab.service';
-import CustomBackDrop from '../CustomBackDrop/CustomBackDrop';
-import Attachments from '../Attachments/Attachments';
 import useStyles from './MalshabInfo.styles';
 
-const MalshabInfo = ({ id }) => {
+const MalshabInfo = ({ malshab }) => {
   const classes = useStyles();
   const { t } = useTranslation();
-  const [isLoading, setIsLoading] = useState(false);
-  const [malshab, setMalshab] = useState();
   const fields = [
     { fieldName: 'identityNumber', type: 'text' },
     { fieldName: 'personalNumber', type: 'text' },
@@ -38,17 +31,6 @@ const MalshabInfo = ({ id }) => {
     { fieldName: 'houseNumber', type: 'text' },
     { fieldName: 'street', type: 'text' },
   ];
-
-  useEffect(() => {
-    setIsLoading(false);
-    MalshabService.getMalshabById(id).then((res) => {
-      setMalshab(res);
-    }).catch(() => {
-      toast(t('error.server'));
-    }).finally(() => {
-      setIsLoading(false);
-    });
-  }, [id]);
 
   const getFormattedValue = (type, value) => {
     switch (type) {
@@ -80,39 +62,28 @@ const MalshabInfo = ({ id }) => {
   );
 
   return (
-    <>
-      {isLoading
-        ? <CustomBackDrop />
-        : (
-          <div className={classes.root}>
-            {malshab?.attachments && (
-            <Attachments malshabId={id} attachments={malshab?.attachments} />
-            )}
-            <div className={classes.fieldsSection}>
-              <Typography className={classes.sectionTitle}>
-                {t('title.generalInfo')}
-              </Typography>
-              <div className={classes.fieldsDiv}>
-                {fields.map(({ fieldName, type }) => (
-                  malshab?.[fieldName] !== undefined
-                && getFieldComponent(
-                  fieldName,
-                  type,
-                  malshab?.[fieldName],
-                )))}
-                {malshab?.addresses?.length
-                && addressFields.map(({ fieldName, type }) => (
-                  malshab.addresses[0][fieldName] !== undefined
-                && getFieldComponent(
-                  fieldName,
-                  type,
-                  malshab.addresses[0][fieldName],
-                )))}
-              </div>
-            </div>
-          </div>
-        )}
-    </>
+    <div className={classes.root}>
+      <Typography className={classes.sectionTitle}>
+        {t('title.generalInfo')}
+      </Typography>
+      <div className={classes.fieldsDiv}>
+        {fields.map(({ fieldName, type }) => (
+          malshab?.[fieldName] !== undefined
+            && getFieldComponent(
+              fieldName,
+              type,
+              malshab?.[fieldName],
+            )))}
+        {malshab?.addresses?.length
+            && addressFields.map(({ fieldName, type }) => (
+              malshab.addresses[0][fieldName] !== undefined
+            && getFieldComponent(
+              fieldName,
+              type,
+              malshab.addresses[0][fieldName],
+            )))}
+      </div>
+    </div>
   );
 };
 

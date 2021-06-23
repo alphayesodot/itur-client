@@ -97,6 +97,11 @@ const useStyles = makeStyles((theme) => ({
     marginRight: '1rem',
     marginLeft: '1rem',
   },
+  dialogContent: {
+    display: 'flex',
+    alignItems: 'stretch',
+    height: '100%',
+  },
 }));
 
 export default useStyles;
