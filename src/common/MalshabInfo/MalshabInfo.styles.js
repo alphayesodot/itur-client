@@ -20,11 +20,13 @@ const useStyles = makeStyles(() => ({
   fieldTitle: {
     userSelect: 'none',
     fontSize: '0.8rem',
+    paddingLeft: '3%',
+    paddingTop: '1%',
   },
   fieldValue: {
     border: '0.1px solid lightgrey',
-    borderRadius: '5px',
-    padding: '0.25rem',
+    borderRadius: 30,
+    padding: '0.5rem',
     fontSize: '0.9rem',
   },
   sectionTitle: {

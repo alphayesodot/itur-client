@@ -136,7 +136,6 @@ const resources = {
         fileUpload: 'העלאת קבצים',
         userManagement: 'ניהול משתמשים',
         editQuestionnaire: 'שאלונים',
-        settings: 'הגדרות',
       },
       toolTip: {
         copyUsers: 'העתקת יוזרים',
