@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import { toast } from 'react-toastify';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Typography } from '@material-ui/core';
 import DashboardCard from '../../../../common/DashboardCard/DashboardCard';
 import MalshabInfo from '../../../../common/MalshabInfo/MalshabInfo';
+import Attachments from '../../../../common/Attachments/Attachments';
 import useStyles from './MalshabData.styles';
 
 const MalshabData = ({ malshab }) => {
@@ -13,7 +13,15 @@ const MalshabData = ({ malshab }) => {
   return (
     <DashboardCard className={classes.root}>
       {malshab
-        ? <MalshabInfo malshab={malshab} />
+        ? (
+          <div className={classes.content}>
+            <MalshabInfo malshab={malshab} />
+            <div className={classes.bottomSection}>
+              <div>events</div>
+              <Attachments malshabId={malshab.identityNumber} attachments={malshab.attachments} />
+            </div>
+          </div>
+        )
         : (
           <Typography className={classes.message}>
             {t('message.noMalshab')}
