@@ -32,7 +32,7 @@ const resources = {
         interviewsSchedule: 'לוז ראיונות',
         view: 'תצוגה',
         attachments: 'מסמכים',
-        generalInfo: 'פרטים כללים',
+        generalInfo: 'פרטים כלליים',
       },
       message: {
         noInterviewersInNodeGroup: 'אין מראיינים במסלול',

@@ -6,14 +6,11 @@ import { ListItem, Typography, Tooltip, Button, IconButton } from '@material-ui/
 import information from '../../../../utils/images/schedule/information.svg';
 import informationLight from '../../../../utils/images/schedule/information-light.svg';
 import play from '../../../../utils/images/schedule/play-button.svg';
-import info from '../../../../utils/images/malshabInfo/info.svg';
 import InterviewStatusIcon from '../../../../common/InterviewStatusIcon/InterviewStatusIcon';
 import useStylesInterviewRaw from '../../../../common/InterviewItem/InterviewItem.styles';
+import MalshabInfoDialog from '../MalshabInfoDialog/MalshabInfoDialog';
 import useStyles from './InterviewRaw.styles';
 import MalshabService from '../../../../services/malshab.service';
-import CustomDialog from '../../../../common/CustomDialog/CustomDialog';
-import MalshabInfo from '../../../../common/MalshabInfo/MalshabInfo';
-import Attachments from '../../../../common/Attachments/Attachments';
 
 const InterviewRaw = ({ event, timeDifference }) => {
   const classes = useStyles();
@@ -33,15 +30,6 @@ const InterviewRaw = ({ event, timeDifference }) => {
       });
     }
   }, [malshabShort]);
-
-  const getMalshabInfoDialogContent = () => (
-    <div className={classes.dialogContent}>
-      {malshab.attachments && (
-      <Attachments malshabId={malshabShort.id} attachments={malshab.attachments} />
-      )}
-      <MalshabInfo malshab={malshab} />
-    </div>
-  );
 
   return (
     <>
@@ -96,19 +84,13 @@ const InterviewRaw = ({ event, timeDifference }) => {
           <InterviewStatusIcon status={status} />
         </div>
       </ListItem>
-      <CustomDialog
+      {malshab && (
+      <MalshabInfoDialog
+        malshab={malshab}
         open={openDialog}
         onClose={() => setOpenDialog(false)}
-        title={(
-          <Typography className={classes.dialogTitle}>
-            <img src={info} alt='info' className={classes.infoIcon} />
-            {t('title.moreDetails')}
-          </Typography>
-              )}
-        content={malshab && getMalshabInfoDialogContent()}
-        dividers
-        paperClassName={classes.dialogPaper}
       />
+      )}
     </>
   );
 };
