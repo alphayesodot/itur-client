@@ -65,7 +65,7 @@ const useStyles = makeStyles((theme) => ({
     height: 'calc(100vh - 9rem)',
     [theme.breakpoints.down('sm')]: {
       flexDirection: 'column',
-      alignItems: 'stretch',
+      alignItems: 'center',
       justifyContent: 'flex-start',
     },
   },
