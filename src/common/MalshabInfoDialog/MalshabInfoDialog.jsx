@@ -1,11 +1,11 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Typography } from '@material-ui/core';
-import info from '../../../../utils/images/malshabInfo/info.svg';
+import info from '../../utils/images/malshabInfo/info.svg';
 import useStyles from './MalshabInfoDialog.styles';
-import CustomDialog from '../../../../common/CustomDialog/CustomDialog';
-import MalshabInfo from '../../../../common/MalshabInfo/MalshabInfo';
-import Attachments from '../../../../common/Attachments/Attachments';
+import CustomDialog from '../CustomDialog/CustomDialog';
+import MalshabInfo from '../MalshabInfo/MalshabInfo';
+import Attachments from '../Attachments/Attachments';
 
 const MalshabInfoDialog = ({ malshab, open, onClose }) => {
   const classes = useStyles();

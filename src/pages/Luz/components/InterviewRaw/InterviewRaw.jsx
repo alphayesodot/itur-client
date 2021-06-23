@@ -8,7 +8,7 @@ import informationLight from '../../../../utils/images/schedule/information-ligh
 import play from '../../../../utils/images/schedule/play-button.svg';
 import InterviewStatusIcon from '../../../../common/InterviewStatusIcon/InterviewStatusIcon';
 import useStylesInterviewRaw from '../../../../common/InterviewItem/InterviewItem.styles';
-import MalshabInfoDialog from '../MalshabInfoDialog/MalshabInfoDialog';
+import MalshabInfoDialog from '../../../../common/MalshabInfoDialog/MalshabInfoDialog';
 import useStyles from './InterviewRaw.styles';
 import MalshabService from '../../../../services/malshab.service';
 
