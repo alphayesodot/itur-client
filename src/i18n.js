@@ -49,6 +49,7 @@ const resources = {
       },
       placeholders: {
         searchUnit: 'חיפוש יחידה',
+        searchMalshab: 'חיפוש לפי ת"ז',
       },
       text: {
         in: 'ב',
@@ -70,6 +71,7 @@ const resources = {
         addUnit: '+ הוספת יחידה',
         addUsers: '+ הוספת משתמשים',
         newSchedule: 'לוז חדש',
+        searchMalshab: 'חיפוש מלש"ב',
         add: 'הוספה',
         view: 'הצג',
         enter: 'כניסה',
@@ -141,6 +143,7 @@ const resources = {
         information: 'מידע נוסף',
         playInterview: 'צפייה בראיון',
         restart: 'התחל מחדש',
+        invalidId: 'ת"ז לא תקין',
       },
       warnings: {
         oneTimePassword: 'שים לב, לאחר סגירת החלונית לא יהיה ניתן לצפות בסיסמה בשנית. יש לשמור את הסיסמה במקום מאובטח.',
