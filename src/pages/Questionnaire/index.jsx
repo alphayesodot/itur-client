@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Typography } from '@material-ui/core';
+import { toast } from 'react-toastify';
+import Moment from 'moment';
 import useStyles from './index.styles';
 import DashboardCard from '../../common/DashboardCard/DashboardCard';
 import Header from './components/Header/Header';
@@ -17,55 +19,42 @@ const Questionnaire = () => {
   const { t } = useTranslation();
 
   const userRole = UserStoreInstance.userProfile.role;
-  const [allQuestionnaireRows, setAllNodeGroupRows] = useState([]);
+  const [allQuestionnaireRows, setAllQuestionnaireRows] = useState([]);
   const [questionnaireRowsToShow, setQuestionnaireToShow] = useState([]);
   const colNames = [t('tableColumns.questionnaireName'), t('tableColumns.intended'), t('tableColumns.writer'), t('tableColumns.changeDate'), t('tableColumns.questionsNumber')];
-
-  // const updateAllNodeGroupList = async () => {
-  //   const nodeGroups = await NodeGroupService.getNodeGroups();
-  //   const promises = nodeGroups.map(async (nodeGroup) => {
-  //     const unit = await UnitService.getUnitById(nodeGroup.unitId);
-  //     const ramad = (await UserService.getUsersByUnitId(nodeGroup.unitId))
-  //       .find((user) => user.role === Role.RamadIturOfUnit);
-  //     return {
-  //       id: nodeGroup.id,
-  //       data: [nodeGroup.name,
-  //         unit.name,
-  //         nodeGroup.usersIds ? nodeGroup.usersIds.length : 0, ramad?.name || '',
-  //         <OptionsButton nodeGroup={nodeGroup} updateAllNodeGroupList={updateAllNodeGroupList} />],
-  //     };
-  //   });
-  //   const getAllNodeGroupRows = await Promise.all(promises);
-  //   setAllNodeGroupRows(getAllNodeGroupRows);
-  //   setQuestionnaireToShow(getAllNodeGroupRows);
-  // };
   useEffect(async () => {
-    const allQuestionnaires = await QuestionnaireService.getQuestionnaires();
-    const questionnaireRows = allQuestionnaires.map(async (qusrionnaire) => {
-      const questionnaireWriter = await UserService.getUser(qusrionnaire.createdBy);
-      let intendedRole;
-      if (!qusrionnaire.targetRoles.length) {
-        intendedRole = '-';
-      } else if (qusrionnaire.targetRoles.includes('MALSHAB') && qusrionnaire.targetRoles.length === 1) {
-        intendedRole = t('role.malshab');
-      } else if (!qusrionnaire.targetRoles.includes('MALSHAB')) {
-        intendedRole = t('permissions.appreciateor');
-      } else {
-        intendedRole = t('permissions.malshabAppreciateor');
-      }
-      return {
-        id: qusrionnaire.id,
-        data: [
-          qusrionnaire.name,
-          intendedRole,
-          questionnaireWriter.name,
-          qusrionnaire.updatedAt,
-          qusrionnaire.questions.length,
-        ],
-      };
-    });
-    setAllNodeGroupRows(questionnaireRows);
-    setQuestionnaireToShow(questionnaireRows);
+    try {
+      const allQuestionnaires = await QuestionnaireService.getQuestionnaires();
+      const promises = allQuestionnaires.map(async (qusrionnaire) => {
+        const questionnaireWriter = await UserService.getUserById(qusrionnaire.createdBy);
+
+        let intendedRole;
+        if (!qusrionnaire.targetRoles.length) {
+          intendedRole = '-';
+        } else if (qusrionnaire.targetRoles.includes('MALSHAB') && qusrionnaire.targetRoles.length === 1) {
+          intendedRole = t('role.malshab');
+        } else if (!qusrionnaire.targetRoles.includes('MALSHAB')) {
+          intendedRole = t('permissions.appreciateor');
+        } else {
+          intendedRole = t('permissions.malshabAppreciateor');
+        }
+        return {
+          id: qusrionnaire.id,
+          data: [
+            qusrionnaire.name,
+            intendedRole,
+            questionnaireWriter.name,
+            Moment(new Date(1621506391480)).format('DD/MM/YYYY'),
+            qusrionnaire.questions.length,
+          ],
+        };
+      });
+      const questionnaireRows = await Promise.all(promises);
+      setAllQuestionnaireRows(questionnaireRows);
+      setQuestionnaireToShow(questionnaireRows);
+    } catch {
+      toast(t('error.server'));
+    }
   }, []);
 
   return (
@@ -80,18 +69,19 @@ const Questionnaire = () => {
           {' '}
           <span className={classes.countTitle}>{`(${questionnaireRowsToShow.length})`}</span>
         </Typography>
-        <div class={classes.tableContainer}>
-          <DataTable rowsData={questionnaireRowsToShow} colomnsNames={colNames} />
 
-        </div>
-        {/* {questionnaireRowsToShow.length
-          ? <DataTable rowsData={questionnaireRowsToShow} colomnsNames={colNames} />
+        {questionnaireRowsToShow.length
+          ? (
+            <div className={`${classes.tableContainer}`}>
+              <DataTable rowsData={questionnaireRowsToShow} columnNames={colNames} />
+            </div>
+          )
           : (
             <div className={` ${classes.viewContainer} ${classes.emptyTable}`}>
               {' '}
               {t('title.noQuestionnaires')}
             </div>
-          )} */}
+          )}
       </DashboardCard>
     </div>
   );

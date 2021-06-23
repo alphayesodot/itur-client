@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
   },
   tableContainer: {
     width: '43%',
-    marginLeft: '2%',
+    paddingLeft: '2.5em',
     marginRight: '5%',
   },
 }));

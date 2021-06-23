@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Typography } from '@material-ui/core';
+import { toast } from 'react-toastify';
 import useStyles from './index.styles';
 import DashboardCard from '../../common/DashboardCard/DashboardCard';
 import Header from './components/Header/Header';
@@ -22,22 +23,29 @@ const NodeGroupPage = () => {
   const colNames = [t('tableColumns.nodeGroupName'), t('tableColumns.unit'), t('tableColumns.users'), t('tableColumns.ramadOfUnit'), ''];
 
   const updateAllNodeGroupList = async () => {
-    const nodeGroups = await NodeGroupService.getNodeGroups();
-    const promises = nodeGroups.map(async (nodeGroup) => {
-      const unit = await UnitService.getUnitById(nodeGroup.unitId);
-      const ramad = (await UserService.getUsersByUnitId(nodeGroup.unitId))
-        .find((user) => user.role === Role.RamadIturOfUnit);
-      return {
-        id: nodeGroup.id,
-        data: [nodeGroup.name,
-          unit.name,
-          nodeGroup.usersIds ? nodeGroup.usersIds.length : 0, ramad?.name || '',
-          <OptionsButton nodeGroup={nodeGroup} updateAllNodeGroupList={updateAllNodeGroupList} />],
-      };
-    });
-    const getAllNodeGroupRows = await Promise.all(promises);
-    setAllNodeGroupRows(getAllNodeGroupRows);
-    setNodeGroupRowsToShow(getAllNodeGroupRows);
+    try {
+      const nodeGroups = await NodeGroupService.getNodeGroups();
+      const promises = nodeGroups.map(async (nodeGroup) => {
+        const unit = await UnitService.getUnitById(nodeGroup.unitId);
+        const ramad = (await UserService.getUsersByUnitId(nodeGroup.unitId))
+          .find((user) => user.role === Role.RamadIturOfUnit);
+        return {
+          id: nodeGroup.id,
+          data: [nodeGroup.name,
+            unit.name,
+            nodeGroup.usersIds ? nodeGroup.usersIds.length : 0, ramad?.name || '',
+            <OptionsButton
+              nodeGroup={nodeGroup}
+              updateAllNodeGroupList={updateAllNodeGroupList}
+            />],
+        };
+      });
+      const getAllNodeGroupRows = await Promise.all(promises);
+      setAllNodeGroupRows(getAllNodeGroupRows);
+      setNodeGroupRowsToShow(getAllNodeGroupRows);
+    } catch {
+      toast(t('error.server'));
+    }
   };
 
   useEffect(async () => {
