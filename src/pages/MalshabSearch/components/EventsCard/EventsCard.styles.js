@@ -16,11 +16,24 @@ const useStyles = makeStyles((theme) => ({
   card: {
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'flex-start',
+    alignItems: 'center',
     overflowY: 'auto',
     background: theme.palette.table.main,
     width: '100%',
     height: '95%',
+  },
+  raw: {
+    width: '90%',
+    padding: '1%',
+  },
+  mainData: {
+    display: 'flex',
+    width: '100%',
+    textAlign: 'center',
+    whiteSpace: 'pre',
+  },
+  divider: {
+    width: '100%',
   },
 }));
 

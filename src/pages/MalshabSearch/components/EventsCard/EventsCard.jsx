@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
-import { Typography } from '@material-ui/core';
+import { Typography, Divider } from '@material-ui/core';
 import DashboardCard from '../../../../common/DashboardCard/DashboardCard';
 import EventService from '../../../../services/event.service';
 import NodeService from '../../../../services/node.service';
@@ -33,7 +33,16 @@ const EventsCard = ({ malshabId }) => {
         {t('title.interviewsHistory')}
       </Typography>
       <DashboardCard className={classes.card}>
-        {JSON.stringify(events)}
+        {events.map((event) => (
+          <div className={classes.raw}>
+            <Typography className={classes.mainData}>
+              {new Date(event.time).toLocaleDateString('en-GB')}
+              {'   '}
+              <strong>{event.nodeData.name}</strong>
+            </Typography>
+            <Divider className={classes.divider} />
+          </div>
+        ))}
       </DashboardCard>
     </div>
   );
