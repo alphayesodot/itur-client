@@ -10,7 +10,7 @@ import { toast } from 'react-toastify';
 import { useState, useEffect } from 'react';
 import AddIcon from '@material-ui/icons/Add';
 import useStyles from './UnitDetailsTableRow.styles.js';
-import UserService from '../../../../services/user.service';
+import { UserService } from '../../../../services/user.service';
 import RoleUsersDialog from '../RoleUsersDialog/RoleUsersDialog';
 import NewUsersDialog from '../NewUsersDialog/NewUsersDialog';
 

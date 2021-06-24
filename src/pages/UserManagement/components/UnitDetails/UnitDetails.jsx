@@ -5,7 +5,7 @@ import useStyles from './UnitDetails.styles';
 import DashboardCard from '../../../../common/DashboardCard/DashboardCard.jsx';
 import UnitDetailsHeadLine from '../UnitDetailsHeadLine/UnitDetailsHeadLine';
 import UnitDetailsUsersTable from '../UnitDetailsUsersTable/UnitDetailsUsersTable';
-import UserService from '../../../../services/user.service.js';
+import { UserService } from '../../../../services/user.service.js';
 
 const UnitDetails = ({ unit, users, setUsers }) => {
   const classes = useStyles();

@@ -111,6 +111,10 @@ const config = {
         route: sitesPostfixes.preparationKit,
         sideBar: true,
       },
+      {
+        route: sitesPostfixes.nodeGroupCreation,
+        sideBar: true,
+      },
     ],
     ITUR: [
       {
