@@ -16,7 +16,7 @@ const EventsCard = ({ malshabId }) => {
   return (
     <div className={classes.root}>
       <Typography className={classes.sectionTitle}>
-        {t('title.schedule')}
+        {t('title.interviewsHistory')}
       </Typography>
       <DashboardCard className={classes.card}>
         events

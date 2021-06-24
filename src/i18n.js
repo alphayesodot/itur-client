@@ -37,7 +37,7 @@ const resources = {
         view: 'תצוגה',
         attachments: 'מסמכים',
         generalInfo: 'פרטים כלליים',
-        schedule: 'לוח זמנים',
+        interviewsHistory: 'היסטוריית ראיונות',
       },
       actions: {
         delete: 'מחיקה',

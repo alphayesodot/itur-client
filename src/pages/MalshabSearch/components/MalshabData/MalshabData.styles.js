@@ -18,9 +18,10 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'stretch',
-    justifyContent: 'space-around',
+    justifyContent: 'center',
   },
   bottomSection: {
+    marginTop: '3%',
     display: 'flex',
     height: '10rem',
     justifyContent: 'space-around',
