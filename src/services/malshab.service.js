@@ -20,6 +20,11 @@ class MalshabService {
     });
     return data;
   }
+  static async uploadAttachment(malshabId, file) {
+    // TODO: Check with back-end
+    const { data } = await axios.post(`${config.uri.api}/api/malshab/${malshabId}/attachment`, { file }, { headers });
+    return data;
+  }
 }
 
 export default MalshabService;
