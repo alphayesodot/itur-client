@@ -4,6 +4,7 @@ import { ToastContainer } from 'react-toastify';
 import Home from './pages/Home/index';
 import Track from './pages/Track/index';
 import MalshabSearch from './pages/MalshabSearch/index';
+import NodeGroupPage from './pages/NodeGroupPage/index';
 import Luz from './pages/Luz/index';
 import AuthService from './services/auth.service';
 import UploadPage from './pages/FileUpload/index';
@@ -97,7 +98,7 @@ const App = () => {
     },
     {
       path: configApp.sitesPostfixes.nodeGroupCreation,
-      component: <h1>nodeGroupCreation</h1>,
+      component: <NodeGroupPage />,
     },
     {
       path: configApp.sitesPostfixes.userManagement,
