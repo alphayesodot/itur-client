@@ -1,16 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, MouseEvent } from 'react';
 import { Menu, MenuItem, Button } from '@material-ui/core';
-import { useTranslation } from 'react-i18next';
 import moreImg from '../../utils/images/general/more.svg';
-import useStyles from './OptionsButton.styles';
+import useStyles from './OpetionButton.styles';
 
-const OptionsButton = ({ menueItems }) => {
-  const { t } = useTranslation();
+/**
+ *
+ * @param {*} menuItems array of objects with the properties: onClick, content
+ * @returns This is a button with '3-dots-menu', which opens an options menue
+ */
+const OptionsButton = ({ menuItems, popUps }) => {
   const classes = useStyles();
-  const [openEditDialog, setOpenEditDialog] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
 
-  const handleOnOpenMenu = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleOnOpenMenu = (event: MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
 
@@ -37,9 +39,23 @@ const OptionsButton = ({ menueItems }) => {
         anchorEl={anchorEl}
         className={classes.menu}
       >
-        {menueItems.map((menuItem) => menuItem)}
+        {menuItems.map((menuItem) => (
+          menuItem
+          && (
+          <MenuItem
+            onClick={() => {
+              menuItem.onClick();
+              handleOnCloseMenu();
+            }}
+          >
+            <div className={classes.menuItem}>
+              {menuItem.content}
+            </div>
+          </MenuItem>
+          )
+        ))}
       </Menu>
-
+      {popUps?.map((popUp) => popUp)}
     </>
   );
 };

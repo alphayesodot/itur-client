@@ -57,7 +57,6 @@ const Header = ({ allQuestionnaireRows, setQuestionnaireToShow }) => {
                 && filterSearch(inputValue, allQuestionnaireRows, setQuestionnaireToShow)}
             />
             <Typography className={`${classes.questionnaire} ${classes.item}`}>
-              :
               <strong>{t('headerTitles.searchQuestionnaie')}</strong>
             </Typography>
           </div>

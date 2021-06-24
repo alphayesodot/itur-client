@@ -36,8 +36,21 @@ const useStyles = makeStyles((theme) => ({
   },
   tableContainer: {
     height: '80%',
-    width: '60%',
+    width: '70%',
     margin: 'auto',
+  },
+  emptyTable: {
+    fontFamily: theme.typography.fontFamily,
+    textAlign: 'center',
+    fontSize: '1.7rem',
+    fontWeight: 'bold',
+    color: 'lightGray',
+  },
+  viewContainer: {
+    maxHeight: '80%',
+    direction: 'rtl',
+    width: '50%',
+    margin: '0 2.5em',
   },
 }));
 

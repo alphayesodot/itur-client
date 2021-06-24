@@ -11,7 +11,7 @@ import NodeGroupService from '../../services/nodeGroup.service';
 import UnitService from '../../services/unit.service';
 import { UserService, Role } from '../../services/user.service';
 import UserStoreInstance from '../../stores/User.store';
-import OptionsButton from './components/OptionsButton/OptionsButton';
+import NodeGroupOptionsButton from './components/NodeGroupOptionsButton/NodeGroupOptionsButton';
 
 const NodeGroupPage = () => {
   const classes = useStyles();
@@ -34,7 +34,7 @@ const NodeGroupPage = () => {
           data: [nodeGroup.name,
             unit.name,
             nodeGroup.usersIds ? nodeGroup.usersIds.length : 0, ramad?.name || '',
-            <OptionsButton
+            <NodeGroupOptionsButton
               nodeGroup={nodeGroup}
               updateAllNodeGroupList={updateAllNodeGroupList}
             />],
@@ -64,15 +64,25 @@ const NodeGroupPage = () => {
         setOpenDialog={setOpenDialog}
         allowNewNodeGroup={userRole === Role.RamadIturOfUnit}
       />
-      <DashboardCard className={classes.dashboard}>
+      <DashboardCard className={classes.dashbord}>
         <Typography className={classes.content}>
           <strong className={classes.title}>{t('title.nodeGroups')}</strong>
           {' '}
           <span className={classes.countTitle}>{`(${nodeGroupRowsToShow.length})`}</span>
         </Typography>
-        <div className={classes.tableContainer}>
-          <DataTable rowsData={nodeGroupRowsToShow} columnNames={colNames} />
-        </div>
+
+        {nodeGroupRowsToShow.length
+          ? (
+            <div className={classes.tableContainer}>
+              <DataTable rowsData={nodeGroupRowsToShow} columnNames={colNames} />
+            </div>
+          )
+          : (
+            <div className={` ${classes.viewContainer} ${classes.emptyTable}`}>
+              {' '}
+              {t('title.noNodeGroups')}
+            </div>
+          )}
         <NodeGroupDialog
           open={openDialog}
           onClose={handeOnCloseDialog}

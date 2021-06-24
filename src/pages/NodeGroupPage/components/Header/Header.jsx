@@ -64,7 +64,6 @@ const Header = ({ allNodeGroupRows, setNodeGroupRowsToShow, setOpenDialog, allow
                 && filterSearch(inputValue, allNodeGroupRows, setNodeGroupRowsToShow)}
             />
             <Typography className={`${classes.unit} ${classes.item}`}>
-              :
               <strong>{t('headerTitles.searchNodeGroup')}</strong>
             </Typography>
           </div>

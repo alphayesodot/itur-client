@@ -19,7 +19,6 @@ const DataTable = ({ rowsData, columnNames }) => {
     if (idx === length - 1) return classes.roundBorderLeft;
     return undefined;
   };
-
   return (
     <TableContainer className={classes.root}>
       <Table stickyHeader aria-label='sticky table' className={classes.table}>
