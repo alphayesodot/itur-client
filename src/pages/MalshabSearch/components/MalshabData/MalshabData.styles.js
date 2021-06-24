@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   content: {
-    width: '90%',
+    width: '95%',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'stretch',

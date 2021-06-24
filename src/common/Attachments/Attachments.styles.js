@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
   },
   attachmentsCard: {
     display: 'flex',
-    flexDirection: 'column',
+    flexWrap: 'wrap',
     alignItems: 'flex-start',
     overflowY: 'auto',
     background: theme.palette.primary.main,
