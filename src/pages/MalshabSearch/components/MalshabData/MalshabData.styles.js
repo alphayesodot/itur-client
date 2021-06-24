@@ -5,8 +5,6 @@ const useStyles = makeStyles((theme) => ({
     height: '100%',
     width: '100%',
     overflowY: 'auto',
-    display: 'flex',
-    justifyContent: 'center',
     marginTop: '1%',
     direction: 'ltr',
     [theme.breakpoints.down('sm')]: {
@@ -15,6 +13,8 @@ const useStyles = makeStyles((theme) => ({
   },
   content: {
     width: '95%',
+    margin: 'auto',
+    marginTop: '3%',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'stretch',
