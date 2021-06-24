@@ -21,7 +21,7 @@ const selectSchedulingOptions = ['11', '21', '13', '23', '22', '33', 'שיבוץ
 const hoursSelectOptions = ['07:00', '07:30', '08:00', '08:30', '09:00', '09:30'];
 const usersSelectOptions = ['#1', '#2', '#3', '#4'];
 
-const MalshabimCard = ({ handleMalshabsToSchedule }) => {
+const MalshabimCard = ({ events, handleMalshabsToSchedule }) => {
   const classes = useStyles();
   const { t } = useTranslation();
   const [nameOrId, setNameOrId] = React.useState('');
@@ -29,7 +29,7 @@ const MalshabimCard = ({ handleMalshabsToSchedule }) => {
   const [selectedHour, setSelectedHour] = useState('');
   const [selectedUser, setSelectedUser] = useState('');
   const [selectedStatus, setSelectedStatus] = useState('');
-  const [events, setEvents] = useState([]);
+  // const [events, setEvents] = useState([]);
   const [tableData, setTableData] = useState();
   const [tableDataToDisplay, setTableDataToDisplay] = useState();
 
@@ -37,7 +37,7 @@ const MalshabimCard = ({ handleMalshabsToSchedule }) => {
   const statusSelectOptions = [t('unitControlPage.isScheduled'), t('unitControlPage.notScheduled')];
 
   const handleRecievedEvents = (eventsData) => {
-    setEvents(eventsData);
+    // setEvents(eventsData);
     const columnData = [
       { id: 5, name: t('malshabimTable.time') },
       { id: 4, name: t('malshabimTable.users') },
@@ -75,11 +75,8 @@ const MalshabimCard = ({ handleMalshabsToSchedule }) => {
   }, [selectedStatus, selectedHour, selectedUser, nameOrId]);
 
   useEffect(() => {
-    EventService.getEvents({ nodeId: '508f1f77bcf86cd7994390337' })
-      .then((eventsData) => {
-        handleRecievedEvents(eventsData);
-      });
-  }, []);
+    handleRecievedEvents(events);
+  }, [events]);
 
   const handleChosenMalshabs = (selectedMalshabs) => {
     setChosenMalshabs(selectedMalshabs);

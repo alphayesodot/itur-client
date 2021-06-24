@@ -10,6 +10,7 @@ import ScheduleHeader from '../../common/ScheduleHeader/ScheduleHeader';
 import MalshabimCard from './components/MalshabimCard/MalshabimCard';
 import UserService from '../../services/user.service';
 import UnitService from '../../services/unit.service';
+import EventService from '../../services/event.service';
 
 const MalshabSchedulePage = () => {
   const classes = useStyles();
@@ -17,6 +18,7 @@ const MalshabSchedulePage = () => {
   const [choosenNodeGroup, setChoosenNodeGroup] = useState();
   const [unitNodesGroups, setUnitNodesGroups] = useState([]);
   const [interviewers, setInterviewers] = useState([]);
+  const [events, setEvents] = useState([]);
   const [unit, setUnit] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const [selectedDate, setSelectedDate] = useState(new Date().toLocaleDateString('fr-CA', {
@@ -39,7 +41,19 @@ const MalshabSchedulePage = () => {
     });
   }, []);
 
+  // useEffect(() => {
+  //   UserService.getUsersByUnitId().then((res) => {
+  //     setUsers(res.filter((user) => user.role === 'INTERVIEWER'));
+  //   }).catch(() => {
+  //     toast(t('error.server'));
+  //   });
+  // }, []);
+
   useEffect(() => {
+    EventService.getEvents({ nodeId: '508f1f77bcf86cd7994390337' })
+      .then((eventsData) => {
+        setEvents(eventsData);
+      });
     UserService.getUsersByUnitId().then((res) => {
       setUsers(res.filter((user) => user.role === 'INTERVIEWER'));
     }).catch(() => {
@@ -48,18 +62,21 @@ const MalshabSchedulePage = () => {
   }, []);
 
   const handleMalshabsToSchedule = (chosenMalshabs, selectedScheduling) => {
+    console.log('malshabs', chosenMalshabs);
+    console.log('slectedScheduling', events);
+
     if (selectedScheduling === t('unitControlPage.automaticScheduling')) {
       // TODO: automatic selected malshabs to interviewers
     } else {
       chosenMalshabs.map((malshab) => {
-        scheduleMalshabToInterviewer(malshab, selectedScheduling);
+        // scheduleMalshabToInterviewer(malshab, selectedScheduling);
       });
     }
   };
 
-  const scheduleMalshabToInterviewer = (malshab, selectedScheduling) => {
-    const updatedInterviewers = interviewers.map((interviewer) => interviewer);
-  };
+  // const scheduleMalshabToInterviewer = (malshab, selectedScheduling) => {
+  //   const updatedInterviewers = interviewers.map((interviewer) => interviewer);
+  // };
 
   useEffect(() => {
     if (choosenNodeGroup) {
@@ -90,7 +107,7 @@ const MalshabSchedulePage = () => {
       />
       {choosenNodeGroup ? (
         <div className={classes.mainInner}>
-          <MalshabimCard handleMalshabsToSchedule={handleMalshabsToSchedule} />
+          <MalshabimCard events={events} handleMalshabsToSchedule={handleMalshabsToSchedule} />
           <UsersCard users={interviewers} selectedDate={selectedDate} />
         </div>
       )
