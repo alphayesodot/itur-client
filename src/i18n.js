@@ -166,6 +166,7 @@ const resources = {
         playInterview: 'צפייה בראיון',
         restart: 'התחל מחדש',
         invalidId: 'ת"ז לא תקין',
+        uploadAttachment: 'העלאת מסמך',
       },
       warnings: {
         oneTimePassword: 'שים לב, לאחר סגירת החלונית לא יהיה ניתן לצפות בסיסמה בשנית. יש לשמור את הסיסמה במקום מאובטח.',

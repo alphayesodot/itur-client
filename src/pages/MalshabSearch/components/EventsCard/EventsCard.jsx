@@ -34,7 +34,7 @@ const EventsCard = ({ malshabId }) => {
       </Typography>
       <DashboardCard className={classes.card}>
         {events.map((event) => (
-          <div className={classes.raw}>
+          <div key={event.id} className={classes.row}>
             <Typography className={classes.mainData}>
               {new Date(event.time).toLocaleDateString('en-GB')}
               {'   '}

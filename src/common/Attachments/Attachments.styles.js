@@ -7,10 +7,20 @@ const useStyles = makeStyles((theme) => ({
     minHeight: '100%',
   },
   sectionTitle: {
-    userSelect: 'none',
     fontWeight: '900',
     paddingLeft: '1%',
     paddingBottom: '2%',
+    position: 'relative',
+  },
+  iconButton: {
+    background: theme.palette.secondary.main,
+    color: 'black',
+    position: 'absolute',
+    padding: '0.5%',
+    right: 0,
+    '&:hover': {
+      color: theme.palette.secondary.main,
+    },
   },
   attachmentsCard: {
     display: 'flex',

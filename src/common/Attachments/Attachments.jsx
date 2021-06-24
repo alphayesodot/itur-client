@@ -2,15 +2,20 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
-import { Link, Typography } from '@material-ui/core';
+import { Link, Typography, IconButton, Tooltip } from '@material-ui/core';
+import { Add } from '@material-ui/icons';
 import MalshabService from '../../services/malshab.service';
 import DashboardCard from '../DashboardCard/DashboardCard';
 import attachmentIcon from '../../utils/images/malshabInfo/attachment.svg';
 import useStyles from './Attachments.styles';
 
-const Attachments = ({ malshabId, attachments }) => {
+const Attachments = ({ malshabId, attachments, canUpload }) => {
   const classes = useStyles();
   const { t } = useTranslation();
+
+  const handleOnUpload = () => {
+
+  };
 
   const handleOnDownload = (attachment) => {
     MalshabService.getAttachmentByKey(malshabId, attachment).then((data) => {
@@ -30,6 +35,17 @@ const Attachments = ({ malshabId, attachments }) => {
     <div className={classes.root}>
       <Typography className={classes.sectionTitle}>
         {t('title.attachments')}
+        {canUpload && (
+          <Tooltip title={t('toolTip.uploadAttachment')}>
+            <IconButton
+              size='small'
+              className={classes.iconButton}
+              onClick={handleOnUpload}
+            >
+              <Add />
+            </IconButton>
+          </Tooltip>
+        )}
       </Typography>
       <DashboardCard className={classes.attachmentsCard}>
         {attachments.length ? attachments.map((attachment) => (

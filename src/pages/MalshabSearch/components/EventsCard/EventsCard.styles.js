@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     height: '95%',
   },
-  raw: {
+  row: {
     width: '90%',
     padding: '1%',
   },
