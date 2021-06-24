@@ -23,19 +23,22 @@ const useStyles = makeStyles((theme) => ({
   },
   content: {
     padding: '2.5em',
+    paddingBottom: 0,
     textAlign: 'left',
     fontFamily: theme.typography.fontFamily,
     fontSize: '1rem',
   },
-  dashbord: {
+  dashboard: {
+    display: 'flex',
+    flexDirection: 'column',
     width: '100%',
     height: '90%',
     marginTop: '1rem',
     direction: 'ltr',
-    alignItems: 'center',
+    alignItems: 'stretch',
   },
   tableContainer: {
-    height: '80%',
+    maxHeight: 'calc(100vh - 25rem)',
     width: '60%',
     margin: 'auto',
   },

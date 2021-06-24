@@ -56,7 +56,7 @@ const NodeGroupPage = () => {
         setOpenDialog={setOpenDialog}
         allowNewNodeGroup={userRole === Role.RamadIturOfUnit}
       />
-      <DashboardCard className={classes.dashbord}>
+      <DashboardCard className={classes.dashboard}>
         <Typography className={classes.content}>
           <strong className={classes.title}>{t('title.nodeGroups')}</strong>
           {' '}
