@@ -4,23 +4,26 @@ const useStyles = makeStyles((theme) => ({
   root: {
     height: '100%',
     width: '100%',
+    overflowY: 'auto',
     display: 'flex',
-    alignItems: 'center',
     justifyContent: 'center',
     marginTop: '1%',
     direction: 'ltr',
     [theme.breakpoints.down('sm')]: {
-      minHeight: '25rem',
+      minHeight: '35rem',
     },
   },
   content: {
     width: '90%',
     display: 'flex',
     flexDirection: 'column',
+    alignItems: 'stretch',
+    justifyContent: 'space-around',
   },
   bottomSection: {
-    marginTop: '1%',
     display: 'flex',
+    height: '10rem',
+    justifyContent: 'space-around',
   },
   message: {
     fontSize: '2rem',

@@ -37,6 +37,7 @@ const resources = {
         view: 'תצוגה',
         attachments: 'מסמכים',
         generalInfo: 'פרטים כלליים',
+        schedule: 'לוח זמנים',
       },
       actions: {
         delete: 'מחיקה',

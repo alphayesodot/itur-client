@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Typography } from '@material-ui/core';
 import DashboardCard from '../../../../common/DashboardCard/DashboardCard';
 import MalshabInfo from '../../../../common/MalshabInfo/MalshabInfo';
+import EventsCard from '../EventsCard/EventsCard';
 import Attachments from '../../../../common/Attachments/Attachments';
 import useStyles from './MalshabData.styles';
 
@@ -17,7 +18,7 @@ const MalshabData = ({ malshab }) => {
           <div className={classes.content}>
             <MalshabInfo malshab={malshab} />
             <div className={classes.bottomSection}>
-              <div>events</div>
+              <EventsCard malshabId={malshab.identityNumber} />
               <Attachments malshabId={malshab.identityNumber} attachments={malshab.attachments} />
             </div>
           </div>

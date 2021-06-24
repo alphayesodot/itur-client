@@ -18,13 +18,13 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 500,
     background: 'white',
     width: '12rem',
-    height: '2.2rem',
+    height: '2.3rem',
     paddingLeft: '1rem',
     marginLeft: '3%',
     direction: 'ltr',
     margin: '1%',
     [theme.breakpoints.down('sm')]: {
-      width: 'calc(100% - 1.75rem)',
+      width: 'calc(100% - 2rem)',
     },
   },
   button: {

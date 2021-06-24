@@ -19,14 +19,15 @@ const Header = ({ setMalshab }) => {
   const classes = useStyles();
   const [input, setInput] = useState('');
   const identityNumberLength = 9;
+  const enterCharCode = 13;
   const { t } = useTranslation();
 
-  const isButtonDisabled = () => (
-    input?.length !== identityNumberLength || !input?.match(/^[0-9]+$/)
+  const canSearch = () => (
+    input?.length === identityNumberLength && input?.match(/^[0-9]+$/)
   );
 
-  const handleOnClick = () => {
-    if (!isButtonDisabled()) {
+  const handleOnSearch = () => {
+    if (canSearch()) {
       MalshabService.getMalshabById(input).then((res) => {
         setMalshab(res);
         setInput('');
@@ -38,12 +39,12 @@ const Header = ({ setMalshab }) => {
 
   return (
     <DashboardCard className={classes.root}>
-      <Tooltip title={isButtonDisabled() ? t('toolTip.invalidId') : ''}>
+      <Tooltip title={canSearch() ? '' : t('toolTip.invalidId')}>
         <Button
-          disabled={isButtonDisabled()}
-          onClick={handleOnClick}
+          disabled={!canSearch()}
+          onClick={handleOnSearch}
           className={classes.button}
-          component={isButtonDisabled() ? 'div' : undefined}
+          component={canSearch() ? undefined : 'div'}
         >
           {t('button.searchMalshab')}
         </Button>
@@ -52,6 +53,7 @@ const Header = ({ setMalshab }) => {
         className={classes.input}
         type='text'
         onChange={(e) => setInput(e.target.value)}
+        onKeyPress={(e) => e.charCode === enterCharCode && handleOnSearch()}
         value={input}
         placeholder={t('placeholders.searchMalshab')}
         InputProps={{
