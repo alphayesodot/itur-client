@@ -5,6 +5,7 @@ const useStyles = makeStyles((theme) => ({
     height: '100%',
     width: '100%',
     overflowY: 'auto',
+    display: 'flex',
     marginTop: '1%',
     direction: 'ltr',
     [theme.breakpoints.down('sm')]: {

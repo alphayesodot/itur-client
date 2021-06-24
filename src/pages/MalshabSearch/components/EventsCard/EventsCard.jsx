@@ -4,6 +4,7 @@ import { toast } from 'react-toastify';
 import { Typography } from '@material-ui/core';
 import DashboardCard from '../../../../common/DashboardCard/DashboardCard';
 import EventService from '../../../../services/event.service';
+import NodeService from '../../../../services/node.service';
 import useStyles from './EventsCard.styles';
 
 const EventsCard = ({ malshabId }) => {
@@ -13,7 +14,14 @@ const EventsCard = ({ malshabId }) => {
 
   useEffect(() => {
     EventService.getEvents({ malshabId }).then((res) => {
-      setEvents(res);
+      Promise.all(
+        res.map(async (event) => ({
+          ...event,
+          nodeData: await NodeService.getNodeById(event.node.id),
+        })),
+      ).then((populatedRes) => {
+        setEvents(populatedRes);
+      });
     }).catch(() => {
       toast(t('error.server'));
     });
