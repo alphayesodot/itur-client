@@ -26,7 +26,7 @@ const InterviewRaw = ({ event, timeDifference }) => {
       MalshabService.getMalshabById(malshabShort.id).then((res) => {
         setMalshab(res);
       }).catch(() => {
-        toast(t('error.server'));
+        toast.error(t('error.server'));
       });
     }
   }, [malshabShort]);

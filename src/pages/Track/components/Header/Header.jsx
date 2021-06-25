@@ -27,7 +27,7 @@ const Header = ({
       && !ScheduleStore.getScheduleOfNodeGroup(selectedDate, selectedNodeGroup.id)) {
       setIsLoading(true);
       ScheduleStore.addNewSchedule(selectedDate, selectedNodeGroup, interviewers).catch(() => {
-        toast(t('error.server'));
+        toast.error(t('error.server'));
       }).finally(() => {
         setIsLoading(false);
       });

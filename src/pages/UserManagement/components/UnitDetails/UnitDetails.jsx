@@ -15,7 +15,7 @@ const UnitDetails = ({ unit, users, setUsers }) => {
     UserService.getUsersByUnitId(unit.id).then((res) => {
       setUsers(res);
     }).catch(() => {
-      toast(t('error.server'));
+      toast.error(t('error.server'));
     });
   }, [unit]);
 

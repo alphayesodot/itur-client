@@ -20,7 +20,7 @@ const UnitSelect = ({ selectedUnit, setSelectedUnit, selectClassName, isMultiple
       setUnits(res);
       setSelectedUnit(isMultiple ? [] : res[0]);
     }).catch(() => {
-      toast(t('error.server'));
+      toast.error(t('error.server'));
     });
   }, []);
 

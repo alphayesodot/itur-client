@@ -20,7 +20,7 @@ const UserManagement = () => {
     UnitService.getUnits().then((res) => {
       setUnits(res);
     }).catch(() => {
-      toast(t('error.server'));
+      toast.error(t('error.server'));
     });
   }, []);
 

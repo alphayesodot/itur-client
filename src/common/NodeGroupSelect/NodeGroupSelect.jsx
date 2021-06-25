@@ -25,7 +25,7 @@ const NodeGroupSelect = ({
       setNodeGroups(res);
       setSelectedNodeGroup(isMultiple ? [] : res[0]);
     }).catch(() => {
-      toast(t('error.server'));
+      toast.error(t('error.server'));
     });
   }, []);
 

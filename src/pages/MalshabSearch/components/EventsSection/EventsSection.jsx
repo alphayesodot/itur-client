@@ -21,7 +21,7 @@ const EventsSection = ({ malshabId }) => {
     EventService.getEvents({ malshabId }).then((res) => {
       setEvents(getSortedEvents(res));
     }).catch(() => {
-      toast(t('error.server'));
+      toast.error(t('error.server'));
     });
   }, [malshabId]);
 
