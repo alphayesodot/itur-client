@@ -54,6 +54,7 @@ const resources = {
         noOptions: 'אין אופציות',
         noAttachments: 'אין מסמכים',
         noMalshab: 'אין מלש"ב להצגה',
+        noEvents: 'אין ראיונות',
       },
       headerTitles: {
         addUsers: 'הוספת משתמשים',

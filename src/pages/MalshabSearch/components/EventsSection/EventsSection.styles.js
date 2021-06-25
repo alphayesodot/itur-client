@@ -4,14 +4,21 @@ const useStyles = makeStyles((theme) => ({
   root: {
     marginRight: '2%',
     width: '100%',
-    height: '100%',
     minHeight: '100%',
+    display: 'flex',
+  },
+  mainDiv: {
+    width: '100%',
+  },
+  calenderDiv: {
+    width: '50%',
+    marginRight: '3%',
   },
   sectionTitle: {
     userSelect: 'none',
     fontWeight: '900',
     paddingLeft: '1%',
-    paddingBottom: '2%',
+    paddingBottom: '1rem',
   },
   card: {
     display: 'flex',
@@ -34,6 +41,11 @@ const useStyles = makeStyles((theme) => ({
   },
   divider: {
     width: '100%',
+  },
+  message: {
+    margin: 'auto',
+    width: '100%',
+    textAlign: 'center',
   },
 }));
 
