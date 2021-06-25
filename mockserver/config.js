@@ -23,6 +23,10 @@ const config = {
     acceptedFileTypes:
       '.csv, text/csv, text/vnd.ms-excel, application/vnd.ms-excel,  text/xlsx, application/xlsx, application/xml, text/xml, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.openxmlformats-officedocument.presentationml.presentation',
   },
+  attachments: {
+    acceptedFileTypes:
+    'application/pdf,image/png,image/jpeg,application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+  },
   sitesPostfixes,
   allowedUrlPostfixesOfRole:
   {

@@ -7,6 +7,7 @@ import { Add } from '@material-ui/icons';
 import MalshabService from '../../services/malshab.service';
 import DashboardCard from '../DashboardCard/DashboardCard';
 import attachmentIcon from '../../utils/images/malshabInfo/attachment.svg';
+import config from '../../appConf';
 import useStyles from './Attachments.styles';
 
 const Attachments = ({ malshabId, attachments, canUpload, rootClassName }) => {
@@ -57,7 +58,7 @@ const Attachments = ({ malshabId, attachments, canUpload, rootClassName }) => {
             >
               <Add />
               <input
-                accept='/*'
+                accept={config.attachments.acceptedFileTypes}
                 type='file'
                 hidden
                 multiple

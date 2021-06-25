@@ -37,6 +37,7 @@ app.get('/config', (req, res) => {
     tokenName: config.tokenName,
     secret: config.secret,
     fileUpload: config.fileUpload,
+    attachments: config.attachments,
     sitesPostfixes: config.sitesPostfixes,
     allowedUrlPostfixesOfRole: config.allowedUrlPostfixesOfRole,
   });
