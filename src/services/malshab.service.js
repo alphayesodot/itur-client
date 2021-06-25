@@ -1,4 +1,5 @@
 import axios from 'axios';
+import FormData from 'form-data';
 import config from '../appConf';
 
 const headers = {
@@ -21,8 +22,13 @@ class MalshabService {
     return data;
   }
   static async uploadAttachment(malshabId, file) {
-    // TODO: Check with back-end
-    const { data } = await axios.post(`${config.uri.api}/api/malshab/${malshabId}/attachment`, { file }, { headers });
+    const formData = new FormData();
+    await formData.append('file', file);
+    const { data } = await axios.post(
+      `${config.uri.api}/api/malshab/${malshabId}/attachment`,
+      formData,
+      { headers },
+    );
     return data;
   }
 }
