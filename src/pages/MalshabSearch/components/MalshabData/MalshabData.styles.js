@@ -6,7 +6,6 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     overflowY: 'auto',
     display: 'flex',
-    marginTop: '1%',
     direction: 'ltr',
     [theme.breakpoints.down('sm')]: {
       minHeight: '35rem',
@@ -15,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
   content: {
     width: '95%',
     margin: 'auto',
-    marginTop: '3%',
+    marginTop: '2%',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'stretch',
@@ -24,8 +23,15 @@ const useStyles = makeStyles((theme) => ({
   bottomSection: {
     marginTop: '3%',
     display: 'flex',
-    height: '10rem',
+    minHeight: '10rem',
     justifyContent: 'space-around',
+    alignItems: 'stretch',
+    [theme.breakpoints.down('sm')]: {
+      flexDirection: 'column-reverse',
+    },
+  },
+  rootAttachments: {
+    width: '100%',
   },
   message: {
     fontSize: '2rem',

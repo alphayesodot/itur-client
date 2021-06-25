@@ -6,6 +6,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'flex-end',
     alignItems: 'center',
     padding: '1% auto',
+    marginBottom: '1%',
     background: theme.palette.primary.main,
     width: '100%',
     minHeight: '5rem',

@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
 import { Link, Typography, IconButton, Tooltip } from '@material-ui/core';
@@ -9,10 +9,14 @@ import DashboardCard from '../DashboardCard/DashboardCard';
 import attachmentIcon from '../../utils/images/malshabInfo/attachment.svg';
 import useStyles from './Attachments.styles';
 
-const Attachments = ({ malshabId, attachments, canUpload }) => {
+const Attachments = ({ malshabId, attachments, canUpload, rootClassName }) => {
   const classes = useStyles();
   const [showedAttachments, setShowedAttachments] = useState(attachments);
   const { t } = useTranslation();
+
+  useEffect(() => {
+    setShowedAttachments(attachments);
+  }, [attachments]);
 
   const handleOnUpload = (event) => {
     const file = event.target.files[0];
@@ -40,7 +44,7 @@ const Attachments = ({ malshabId, attachments, canUpload }) => {
   };
 
   return (
-    <div className={classes.root}>
+    <div className={rootClassName}>
       <Typography className={classes.sectionTitle}>
         {t('title.attachments')}
         {canUpload && (

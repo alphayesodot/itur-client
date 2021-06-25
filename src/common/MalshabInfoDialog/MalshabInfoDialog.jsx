@@ -26,6 +26,7 @@ const MalshabInfoDialog = ({ malshab, open, onClose }) => {
           {malshab.attachments && (
           <div className={classes.attachments}>
             <Attachments
+              rootClassName={classes.rootAttachments}
               malshabId={malshab.identityNumber}
               attachments={malshab.attachments}
             />

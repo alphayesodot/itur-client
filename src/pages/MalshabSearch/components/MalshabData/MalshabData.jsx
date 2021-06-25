@@ -20,6 +20,7 @@ const MalshabData = ({ malshab }) => {
             <div className={classes.bottomSection}>
               <EventsSection malshabId={malshab.identityNumber} />
               <Attachments
+                rootClassName={classes.rootAttachments}
                 canUpload
                 malshabId={malshab.identityNumber}
                 attachments={malshab.attachments}
