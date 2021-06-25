@@ -21,7 +21,7 @@ const Reports = () => {
       setFileName(name);
       btnRef?.current?.click();
     }).catch(() => {
-      toast.error(t('error.server'));
+      toast(t('error.server'));
     });
   };
 

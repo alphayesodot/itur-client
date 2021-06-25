@@ -8,7 +8,7 @@ const Home = () => {
   const classes = useStyles();
   const { t } = useTranslation();
 
-  const notify = () => toast.success('Example');
+  const notify = () => toast('Example');
 
   return (
     <div className={classes.root}>

@@ -16,7 +16,7 @@ const UnitCard = ({ unit, isSelected, setSelectedUnit, users }) => {
     UserService.getUsersByUnitId(unit.id).then((res) => {
       setUnitusers(res);
     }).catch(() => {
-      toast.error(t('error.server'));
+      toast(t('error.server'));
     });
   }, [users]);
 

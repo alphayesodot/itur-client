@@ -25,7 +25,7 @@ const Luz = () => {
     NodeGroupService.getNodeGroups().then((res) => {
       setNodeGroup(res);
     }).catch(() => {
-      toast.error(t('error.server'));
+      toast(t('error.server'));
     }).finally(() => {
       setIsLoading(false);
     });
@@ -41,7 +41,7 @@ const Luz = () => {
       ).then((res) => {
         setInterviews(res);
       }).catch(() => {
-        toast.error(t('error.server'));
+        toast(t('error.server'));
       }).finally(() => {
         setIsLoading(false);
       });

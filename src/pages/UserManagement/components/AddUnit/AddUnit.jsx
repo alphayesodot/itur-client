@@ -14,9 +14,9 @@ const AddUnit = ({ openAddUnit, setOpenAddUnit, setUnits }) => {
   const createUnit = () => {
     UnitService.createUnit(unitName).then((newUnit) => {
       setUnits((units) => [...units, { id: newUnit.id, name: newUnit.name }]);
-      toast.success(t('text.unitAdded'));
+      toast(t('text.unitAdded'));
     }).catch(() => {
-      toast.error(t('text.unitNotAddWarning'));
+      toast(t('text.unitNotAddWarning'));
     }).finally(() => {
       setOpenAddUnit(false);
     });

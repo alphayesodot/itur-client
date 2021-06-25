@@ -100,7 +100,7 @@ const NodeGroupDialog = ({ open, onClose, updateAllNodeGroupList, currentNodeGro
       await updateAllNodeGroupList();
       onClose();
     } catch {
-      toast.error(t('error.server'));
+      toast(t('error.server'));
     }
   };
 
@@ -131,7 +131,7 @@ const NodeGroupDialog = ({ open, onClose, updateAllNodeGroupList, currentNodeGro
       await updateAllNodeGroupList();
       onClose();
     } catch {
-      toast.error(t('error.server'));
+      toast(t('error.server'));
     }
   };
 

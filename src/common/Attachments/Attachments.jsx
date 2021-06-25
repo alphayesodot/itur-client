@@ -25,7 +25,7 @@ const Attachments = ({ malshabId, attachments, canUpload, rootClassName }) => {
       MalshabService.uploadAttachment(malshabId, file).then(({ fileKey }) => {
         setShowedAttachments((prevValue) => [...prevValue, fileKey]);
       }).catch(() => {
-        toast.error(t('error.server'));
+        toast(t('error.server'));
       });
     }
   };
@@ -40,7 +40,7 @@ const Attachments = ({ malshabId, attachments, canUpload, rootClassName }) => {
       link.click();
       document.body.removeChild(link);
     }).catch(() => {
-      toast.error(t('error.server'));
+      toast(t('error.server'));
     });
   };
 

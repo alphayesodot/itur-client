@@ -16,8 +16,8 @@ const DropZone = ({ files, setFiles }) => {
       // cast error code to t('code')
       const translationCasting = `uploadPage.${(e.code)?.replace(/-([a-z])/g, (g) => g[1].toUpperCase())}`;
       if (i18n.exists(translationCasting)) {
-        toast.error(`${fileName}: ${t(translationCasting)}`);
-      } else toast.error(`${fileName}: ${e.code}`);
+        toast(`${fileName}: ${t(translationCasting)}`);
+      } else toast(`${fileName}: ${e.code}`);
     });
   };
 
@@ -104,7 +104,7 @@ const DropZone = ({ files, setFiles }) => {
           })
           .catch((error) => {
             setFiles([...updatedFiles.filter((f) => f.path !== acceptedFile.path)]);
-            toast.error(`${error}`);
+            toast(`${error}`);
           });
       });
     }

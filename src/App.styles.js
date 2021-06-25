@@ -15,9 +15,6 @@ const useStyles = makeStyles((theme) => ({
       'border-radius': '50em',
     },
   },
-  toastContainer: {
-    top: '6rem',
-  },
   loading: {
     position: 'fixed',
     top: 0,
@@ -68,6 +65,14 @@ const useStyles = makeStyles((theme) => ({
       alignItems: 'center',
       justifyContent: 'flex-start',
     },
+  },
+  toastRoot: {
+    background: theme.palette.primary.main,
+    color: 'white',
+    fontFamily: theme.typography.fontFamily,
+  },
+  toastProgress: {
+    background: theme.palette.secondary.main,
   },
 }));
 

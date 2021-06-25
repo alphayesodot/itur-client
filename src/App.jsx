@@ -127,7 +127,11 @@ const App = () => {
           ))}
         </Switch>
       </div>
-      <ToastContainer />
+      <ToastContainer
+        toastClassName={classes.toastRoot}
+        progressClassName={classes.toastProgress}
+        position='bottom-left'
+      />
     </Router>
   ) : (
     renderUnauthorized()

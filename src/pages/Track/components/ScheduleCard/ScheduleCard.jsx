@@ -22,7 +22,7 @@ const ScheduleCard = ({ interviewer, date, nodeGroupId }) => {
     ).then((res) => {
       setInterviews(res);
     }).catch(() => {
-      toast.error(t('error.server'));
+      toast(t('error.server'));
     });
   }, [ScheduleStore.schedules, nodeGroupId, date]);
 

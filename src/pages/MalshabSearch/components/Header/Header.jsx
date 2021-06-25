@@ -32,7 +32,7 @@ const Header = ({ setMalshab }) => {
         setMalshab(res);
         setInput('');
       }).catch(() => {
-        toast.error(t('error.server'));
+        toast(t('error.server'));
       });
     }
   };

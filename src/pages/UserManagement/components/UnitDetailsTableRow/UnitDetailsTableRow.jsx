@@ -42,7 +42,7 @@ const UnitDetailsTableRow = ({ roleToDisplay, role, users, setRoleUsers, setUser
           setOpenNewUsersDialog(true);
         }
       }).catch(() => {
-        toast.error(t('text.userNotAddWarning'));
+        toast(t('text.userNotAddWarning'));
       });
     }
   };

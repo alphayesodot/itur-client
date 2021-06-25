@@ -28,7 +28,7 @@ const Track = observer(() => {
     UnitService.getMyUnit().then((res) => {
       setUnit(res);
     }).catch(() => {
-      toast.error(t('error.server'));
+      toast(t('error.server'));
     }).finally(() => {
       setIsLoading(false);
     });
@@ -42,7 +42,7 @@ const Track = observer(() => {
       ).then((users) => {
         setInterviewers(users.filter((user) => user.role === Role.Interviewer));
       }).catch(() => {
-        toast.error(t('error.server'));
+        toast(t('error.server'));
       }).finally(() => {
         setIsLoading(false);
       });
