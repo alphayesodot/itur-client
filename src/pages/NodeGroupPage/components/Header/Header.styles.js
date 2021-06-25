@@ -58,6 +58,7 @@ const useStyles = makeStyles((theme) => ({
   searchButton: {
     backgroundColor: 'transparent',
     margin: 'auto 0.5em',
+    boxShadow: 'none',
     '&:hover': {
       transform: 'rotate(-10deg)',
       transitionDuration: '0.2s',
