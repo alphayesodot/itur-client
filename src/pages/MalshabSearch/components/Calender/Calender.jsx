@@ -6,8 +6,7 @@ import {
 } from '@material-ui/pickers';
 import { Badge, Tooltip } from '@material-ui/core';
 
-const Calender = ({ events }) => {
-  const [selectedDate, setSelectedDate] = useState(new Date());
+const Calender = ({ events, selectedDate, setSelectedDate }) => {
   const [selectedDays, setSelectedDays] = useState([]);
 
   const getSelectedDays = (dayOfTheMonth) => {
@@ -23,6 +22,10 @@ const Calender = ({ events }) => {
     setSelectedDate(new Date(events[0]?.time));
     setSelectedDays(getSelectedDays(new Date()));
   }, [events]);
+
+  useEffect(() => {
+    setSelectedDays(getSelectedDays(selectedDate));
+  }, [selectedDate]);
 
   const datesAreOnSameDay = (first, second) => first.getFullYear() === second.getFullYear()
   && first.getMonth() === second.getMonth()

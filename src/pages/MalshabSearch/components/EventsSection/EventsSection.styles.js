@@ -33,10 +33,8 @@ const useStyles = makeStyles((theme) => ({
     width: '90%',
     padding: '1%',
   },
-  mainData: {
-    display: 'flex',
-    width: '100%',
-    textAlign: 'center',
+  button: {
+    justifyContent: 'flex-start',
     whiteSpace: 'pre',
   },
   divider: {
