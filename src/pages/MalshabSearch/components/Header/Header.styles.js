@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     [theme.breakpoints.down('sm')]: {
-      width: 'calc(100% - 2rem)',
+      width: 'calc(98% - 1rem)',
     },
   },
   button: {
