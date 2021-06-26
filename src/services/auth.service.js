@@ -9,11 +9,9 @@ class AuthService {
     const cookie = Cookies.get(config.tokenName);
     if (!cookie) {
       this.redirect();
-    } else {
+    } else if (jwt.verify(cookie, config.secret)) {
       this.setAuthHeaders();
-      if (jwt.verify(cookie, config.secret)) {
-        return jwt.decode(cookie);
-      }
+      return jwt.decode(cookie);
     }
   }
 
@@ -35,7 +33,7 @@ class AuthService {
 
   static async redirect() {
     // TODO: Remove user id
-    window.location.replace(`${config.uri.auth}/auth/login/4`);
+    window.location.replace(`${config.uri.auth}/auth/login/0`);
   }
 }
 

@@ -25,6 +25,7 @@ const useStyles = makeStyles((theme) => ({
     background: theme.palette.primary.main,
     width: '100%',
     height: '95%',
+    maxHeight: '15rem',
   },
   attachment: {
     display: 'flex',
