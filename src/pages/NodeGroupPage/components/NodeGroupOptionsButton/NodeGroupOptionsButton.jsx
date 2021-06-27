@@ -9,7 +9,7 @@ import UserStoreInstance from '../../../../stores/User.store';
 import { Role } from '../../../../services/user.service';
 import OptionsButton from '../../../../common/OpetionButton/OpetionButton';
 
-const NodeGroupOptionsButton = ({ nodeGroup, updateAllNodeGroupList }) => {
+const NodeGroupOptionsButton = ({ nodeGroup, createAllNodeGroupList, setIdToDelete }) => {
   const { t } = useTranslation();
   const classes = useStyles();
   const [duringDeletion, setDuringDeletion] = useState(false);
@@ -20,7 +20,7 @@ const NodeGroupOptionsButton = ({ nodeGroup, updateAllNodeGroupList }) => {
     if (!duringDeletion) {
       setDuringDeletion(true);
       NodeGroupService.deleteNodeGroup(nodeGroup.id).then(async () => {
-        updateAllNodeGroupList();
+        setIdToDelete(nodeGroup.id);
         setDuringDeletion(false);
       });
     }
@@ -52,7 +52,7 @@ const NodeGroupOptionsButton = ({ nodeGroup, updateAllNodeGroupList }) => {
     <NodeGroupDialog
       open={openEditDialog}
       onClose={() => { setOpenEditDialog(false); }}
-      updateAllNodeGroupList={updateAllNodeGroupList}
+      createAllNodeGroupList={createAllNodeGroupList}
       currentNodeGroup={nodeGroup}
     />
   );

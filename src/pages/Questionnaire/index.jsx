@@ -10,6 +10,7 @@ import DataTable from '../../common/DataTable/DataTable';
 import QuestionnaireService from '../../services/Questionnaire.service';
 import { UserService } from '../../services/user.service';
 import QuestionnaireOptionsButton from './components/QuestionnaireOptionsButton/QuestionnaireOptionsButton';
+import QuestionnaireDialog from './components/QuestionnaireDialog/QuestionnaireDialog';
 
 const Questionnaire = () => {
   const classes = useStyles();
@@ -18,8 +19,13 @@ const Questionnaire = () => {
   const [allQuestionnaireRows, setAllQuestionnaireRows] = useState([]);
   const [questionnaireRowsToShow, setQuestionnaireToShow] = useState([]);
   const [idToDelete, setIdToDelete] = useState(0);
-  const [x, setx] = useState(2);
+  const [openDialog, setOpenDialog] = useState(true);
   const colNames = [t('tableColumns.questionnaireName'), t('tableColumns.intended'), t('tableColumns.writer'), t('tableColumns.changeDate'), t('tableColumns.questionsNumber'), ''];
+
+  const handeOnCloseDialog = () => {
+    setOpenDialog(false);
+  };
+
   const setIntendedRole = (rolesArr) => {
     if (!rolesArr) {
       return '-';
@@ -58,7 +64,6 @@ const Questionnaire = () => {
       const questionnaireRows = await Promise.all(promises);
       setAllQuestionnaireRows(questionnaireRows);
       setQuestionnaireToShow(questionnaireRows);
-      setx(x + 1);
     } catch {
       toast(t('error.server'));
     }
@@ -111,6 +116,11 @@ const Questionnaire = () => {
               {t('title.noQuestionnaires')}
             </div>
           )}
+        <QuestionnaireDialog
+          open={openDialog}
+          onClose={handeOnCloseDialog}
+          createAllNodeGroupList={() => { console.log('update...'); }}
+        />
       </DashboardCard>
     </div>
   );

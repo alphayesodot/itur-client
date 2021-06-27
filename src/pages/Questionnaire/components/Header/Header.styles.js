@@ -4,6 +4,8 @@ const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.primary.main,
     width: '100%',
+    height: '10%',
+    minHeight: '5rem',
   },
   content: {
     padding: '1.25em',
@@ -37,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.font.secondary,
     fontWeight: 'bold',
     direction: 'ltr',
-    padding: '0 1rem',
+    padding: '0.2rem 1rem',
     [theme.breakpoints.down('sm')]: {
       width: '70%',
     },
@@ -56,6 +58,11 @@ const useStyles = makeStyles((theme) => ({
   searchButton: {
     backgroundColor: 'transparent',
     margin: 'auto 0.5em',
+    '&:hover': {
+      transform: 'rotate(-10deg)',
+      transitionDuration: '0.2s',
+      backgroundColor: 'transparent',
+    },
   },
   searchImg: {
     width: '1.7rem',

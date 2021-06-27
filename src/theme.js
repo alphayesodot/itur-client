@@ -30,8 +30,10 @@ const theme = createMuiTheme({
       main: 'rgb(207,225,227)',
       secondary: 'rgb(244,245,247)',
     },
-    dialogs: {
+    dialog: {
       primary: 'rgb(0,175,204)',
+      secondary: 'rgb(138,138,138)',
+      secondaryLight: 'rgb(244,245,247)',
     },
   },
 });

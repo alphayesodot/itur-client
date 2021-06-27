@@ -10,7 +10,7 @@ import SelectCheckboxItem from '../SelectCheckboxItem/SelectCheckboxItem';
 import { UserService, Role } from '../../../../services/user.service';
 import UserStoreInstance from '../../../../stores/User.store';
 
-const NodeGroupDialog = ({ open, onClose, updateAllNodeGroupList, currentNodeGroup }) => {
+const NodeGroupDialog = ({ open, onClose, createAllNodeGroupList, currentNodeGroup }) => {
   const classes = useStyles();
   const { t } = useTranslation();
   const [nameValue, setNameValue] = useState('');
@@ -97,7 +97,7 @@ const NodeGroupDialog = ({ open, onClose, updateAllNodeGroupList, currentNodeGro
       checkedNodes.forEach(async (checkedNode) => {
         await NodeGroupService.updateNode(nodeGroup.id, checkedNode);
       });
-      await updateAllNodeGroupList();
+      await createAllNodeGroupList();
       onClose();
     } catch {
       toast(t('error.server'));
@@ -128,7 +128,7 @@ const NodeGroupDialog = ({ open, onClose, updateAllNodeGroupList, currentNodeGro
       nodesToRemove.forEach(async (node) => {
         await NodeGroupService.updateNode('', node.id);
       });
-      await updateAllNodeGroupList();
+      await createAllNodeGroupList();
       onClose();
     } catch {
       toast(t('error.server'));

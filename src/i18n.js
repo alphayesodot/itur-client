@@ -39,11 +39,15 @@ const resources = {
         view: 'תצוגה',
         attachments: 'מסמכים',
         generalInfo: 'פרטים כללים',
+        newQuestionnaire: 'שאלון חדש',
+        editQuestionnaire: 'ערוך שאלון',
+        questions: 'שאלות',
       },
       actions: {
         delete: 'מחיקה',
         edit: 'עריכה',
         add: 'הוספה',
+        addQuestion: 'הוספת שאלה',
       },
       message: {
         noInterviewersInNodeGroup: 'אין מראיינים במסלול',
@@ -152,6 +156,7 @@ const resources = {
         diagnoser: 'מאבחנ/ת',
         technical: 'טכני',
         otherDiagnoses: 'מאבחנים אחרים',
+        malshab: 'מלש"ב',
       },
       permissions: {
         malshabAppreciateor: 'מעריך ומשל"ב',
@@ -189,6 +194,8 @@ const resources = {
         nodeGroups: 'מסלולים',
         startDate: 'תאריך התחלתי',
         endDate: 'תאריך סיום',
+        questionnaireName: 'שם שאלון',
+        intendedTo: 'מיועד ל ...',
       },
       malshabInfo: {
         identityNumber: 'ת.ז',

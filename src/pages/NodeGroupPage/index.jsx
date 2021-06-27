@@ -19,10 +19,11 @@ const NodeGroupPage = () => {
   const userRole = UserStoreInstance.userProfile.role;
   const [allNodeGroupRows, setAllNodeGroupRows] = useState([]);
   const [nodeGroupRowsToShow, setNodeGroupRowsToShow] = useState([]);
+  const [idToDelete, setIdToDelete] = useState(0);
   const [openDialog, setOpenDialog] = useState(false);
   const colNames = [t('tableColumns.nodeGroupName'), t('tableColumns.unit'), t('tableColumns.users'), t('tableColumns.ramadOfUnit'), ''];
 
-  const updateAllNodeGroupList = async () => {
+  const createAllNodeGroupList = async () => {
     try {
       const nodeGroups = await NodeGroupService.getNodeGroups();
       const promises = nodeGroups.map(async (nodeGroup) => {
@@ -36,7 +37,8 @@ const NodeGroupPage = () => {
             nodeGroup.usersIds ? nodeGroup.usersIds.length : 0, ramad?.name || '',
             <NodeGroupOptionsButton
               nodeGroup={nodeGroup}
-              updateAllNodeGroupList={updateAllNodeGroupList}
+              createAllNodeGroupList={createAllNodeGroupList}
+              setIdToDelete={setIdToDelete}
             />],
         };
       });
@@ -49,9 +51,30 @@ const NodeGroupPage = () => {
   };
 
   useEffect(async () => {
-    await updateAllNodeGroupList();
+    await createAllNodeGroupList();
   }, []);
 
+  /**
+   * delete from state
+   */
+  useEffect(async () => {
+    const allIdx = [...allNodeGroupRows].findIndex(
+      (q) => q.id === idToDelete,
+    );
+    const showIdx = [...nodeGroupRowsToShow].findIndex(
+      (q) => q.id === idToDelete,
+    );
+    if (allIdx > -1) {
+      const tmpCopy = [...allNodeGroupRows];
+      tmpCopy.splice(allIdx, 1);
+      setAllNodeGroupRows([...tmpCopy]);
+    }
+    if (showIdx > -1) {
+      const tmpCopy = [...nodeGroupRowsToShow];
+      tmpCopy.splice(showIdx, 1);
+      setNodeGroupRowsToShow([...tmpCopy]);
+    }
+  }, [idToDelete]);
   const handeOnCloseDialog = () => {
     setOpenDialog(false);
   };
@@ -86,7 +109,7 @@ const NodeGroupPage = () => {
         <NodeGroupDialog
           open={openDialog}
           onClose={handeOnCloseDialog}
-          updateAllNodeGroupList={updateAllNodeGroupList}
+          createAllNodeGroupList={createAllNodeGroupList}
         />
       </DashboardCard>
     </div>

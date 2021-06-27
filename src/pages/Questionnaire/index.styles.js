@@ -28,11 +28,13 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: '!important bold',
   },
   dashbord: {
-    backgroundColor: 'white',
+    display: 'flex',
+    flexDirection: 'column',
     width: '100%',
-    height: '100%',
+    height: '90%',
     marginTop: '1rem',
     direction: 'ltr',
+    alignItems: 'stretch',
   },
   emptyTable: {
     fontFamily: theme.typography.fontFamily,
