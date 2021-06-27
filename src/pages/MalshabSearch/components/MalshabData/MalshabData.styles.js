@@ -12,26 +12,31 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   content: {
+    marginTop: '0/5%',
     width: '95%',
+    height: '95%',
     margin: 'auto',
-    marginTop: '2%',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'stretch',
-    justifyContent: 'center',
+    justifyContent: 'space-around',
+    [theme.breakpoints.down('md')]: {
+      height: 'auto',
+    },
   },
   bottomSection: {
-    marginTop: '3%',
+    marginTop: '0.5%',
     display: 'flex',
     minHeight: '10rem',
     justifyContent: 'space-around',
     alignItems: 'stretch',
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       flexDirection: 'column-reverse',
     },
   },
   rootAttachments: {
     width: '100%',
+    maxHeight: '15.75rem',
   },
   message: {
     fontSize: '2rem',

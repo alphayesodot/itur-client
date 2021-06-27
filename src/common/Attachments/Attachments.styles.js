@@ -9,10 +9,10 @@ const useStyles = makeStyles((theme) => ({
   },
   iconButton: {
     background: theme.palette.secondary.main,
-    color: 'black',
     position: 'absolute',
     padding: '0.5%',
     right: 0,
+    color: 'white',
     '&:hover': {
       color: theme.palette.secondary.main,
     },
@@ -25,7 +25,6 @@ const useStyles = makeStyles((theme) => ({
     background: theme.palette.primary.main,
     width: '100%',
     height: '95%',
-    maxHeight: '15rem',
   },
   attachment: {
     display: 'flex',
