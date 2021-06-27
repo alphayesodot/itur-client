@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
     right: 0,
     color: 'white',
     '&:hover': {
-      color: theme.palette.secondary.main,
+      background: theme.palette.secondary.main,
     },
   },
   attachmentsCard: {

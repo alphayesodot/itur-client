@@ -65,6 +65,10 @@ const config = {
         route: sitesPostfixes.reports,
         sideBar: true,
       },
+      {
+        route: sitesPostfixes.interview,
+        sideBar: false,
+      },
     ],
     RAMAD_ITUR_ASSISTANT: [
       {
@@ -83,6 +87,10 @@ const config = {
         route: sitesPostfixes.reports,
         sideBar: true,
       },
+      {
+        route: sitesPostfixes.interview,
+        sideBar: false,
+      },
     ],
     PROFESSIONAL_RAMAD: [
       {
@@ -93,6 +101,10 @@ const config = {
         route: sitesPostfixes.malshabSearch,
         sideBar: true,
       },
+      {
+        route: sitesPostfixes.interview,
+        sideBar: false,
+      },
     ],
     MADA: [
       {
@@ -102,6 +114,10 @@ const config = {
       {
         route: sitesPostfixes.malshabSearch,
         sideBar: true,
+      },
+      {
+        route: sitesPostfixes.interview,
+        sideBar: false,
       },
       {
         route: sitesPostfixes.reports,
@@ -130,6 +146,10 @@ const config = {
         sideBar: true,
       },
       {
+        route: sitesPostfixes.interview,
+        sideBar: false,
+      },
+      {
         route: sitesPostfixes.reports,
         sideBar: true,
       },
@@ -138,6 +158,10 @@ const config = {
       {
         route: sitesPostfixes.malshabSearch,
         sideBar: true,
+      },
+      {
+        route: sitesPostfixes.interview,
+        sideBar: false,
       },
       {
         route: sitesPostfixes.reports,

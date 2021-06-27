@@ -30,12 +30,18 @@ const useStyles = makeStyles((theme) => ({
     height: '95%',
     maxHeight: '15rem',
   },
-  row: {
+  eventRow: {
     width: '90%',
     padding: '1%',
   },
+  iconButton: {
+    width: '1.25rem',
+    height: '1.25rem',
+  },
   button: {
-    justifyContent: 'flex-start',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
     whiteSpace: 'pre',
   },
   divider: {
