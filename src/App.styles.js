@@ -70,6 +70,7 @@ const useStyles = makeStyles((theme) => ({
     background: theme.palette.primary.main,
     color: 'white',
     fontFamily: theme.typography.fontFamily,
+    borderRadius: 10,
   },
   toastProgress: {
     background: theme.palette.secondary.main,
