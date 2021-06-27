@@ -6,13 +6,26 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     minHeight: '100%',
     display: 'flex',
+    [theme.breakpoints.down('sm')]: {
+      flexDirection: 'column-reverse',
+      alignItems: 'center',
+    },
   },
   mainDiv: {
     width: '100%',
   },
   calenderDiv: {
-    width: '50%',
+    minWidth: '16rem',
     marginRight: '3%',
+    paddingLeft: '7%',
+    minHeight: '18rem',
+    overflow: 'hidden',
+    [theme.breakpoints.down('md')]: {
+      paddingLeft: '2%',
+    },
+    [theme.breakpoints.down('sm')]: {
+      width: '50%',
+    },
   },
   sectionTitle: {
     userSelect: 'none',

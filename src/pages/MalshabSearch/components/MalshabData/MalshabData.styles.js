@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   content: {
-    marginTop: '0/5%',
+    marginTop: '0.5%',
     width: '95%',
     height: '95%',
     margin: 'auto',
@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: '0.5%',
     display: 'flex',
     minHeight: '10rem',
-    justifyContent: 'space-around',
+    justifyContent: 'center',
     alignItems: 'stretch',
     [theme.breakpoints.down('md')]: {
       flexDirection: 'column-reverse',
@@ -36,7 +36,11 @@ const useStyles = makeStyles((theme) => ({
   },
   rootAttachments: {
     width: '100%',
+    paddingRight: '3%',
     maxHeight: '15.75rem',
+    [theme.breakpoints.down('md')]: {
+      paddingRight: '0',
+    },
   },
   message: {
     fontSize: '2rem',
