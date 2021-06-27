@@ -51,6 +51,9 @@ const useStyles = makeStyles((theme) => ({
     margin: 'auto',
     width: '100%',
     textAlign: 'center',
+    fontSize: 20,
+    fontWeight: '600',
+    color: theme.palette.primary.main,
   },
 }));
 

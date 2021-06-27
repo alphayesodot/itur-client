@@ -1,21 +1,30 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
+  root: {
+    position: 'relative',
+  },
   sectionTitle: {
     fontWeight: '900',
     paddingLeft: '1%',
     paddingBottom: '2%',
-    position: 'relative',
   },
   iconButton: {
-    background: theme.palette.secondary.main,
     position: 'absolute',
+    background: theme.palette.secondary.main,
     padding: '0.5%',
-    right: 0,
+    right: '2rem',
+    bottom: 0,
+    width: '2.25rem',
+    height: '2.25rem',
     color: 'white',
     '&:hover': {
       background: theme.palette.secondary.main,
     },
+  },
+  icon: {
+    width: '1.5rem',
+    height: '1.5rem',
   },
   attachmentsCard: {
     display: 'flex',
@@ -29,22 +38,26 @@ const useStyles = makeStyles((theme) => ({
   attachment: {
     display: 'flex',
     padding: '3%',
+    alignItems: 'center',
   },
   attachmentIcon: {
-    width: '1rem',
-    height: '1rem',
+    width: '1.15rem',
+    height: '1.15rem',
     paddingRight: '5%',
   },
   link: {
     color: 'white',
     textAlign: 'left',
+    fontSize: '1.05rem',
     textDecoration: 'underline',
   },
   message: {
     margin: 'auto',
-    color: 'white',
     width: '100%',
     textAlign: 'center',
+    fontWeight: '600',
+    fontSize: 20,
+    color: 'white',
   },
 }));
 

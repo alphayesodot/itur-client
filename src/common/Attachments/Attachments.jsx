@@ -45,7 +45,7 @@ const Attachments = ({ malshabId, attachments, canUpload, rootClassName }) => {
   };
 
   return (
-    <div className={rootClassName}>
+    <div className={`${rootClassName} ${classes.root}`}>
       <Typography className={classes.sectionTitle}>
         {t('title.attachments')}
         {canUpload && (
@@ -53,10 +53,9 @@ const Attachments = ({ malshabId, attachments, canUpload, rootClassName }) => {
             <IconButton
               variant='contained'
               component='label'
-              size='small'
               className={classes.iconButton}
             >
-              <Add />
+              <Add className={classes.icon} />
               <input
                 accept={config.attachments.acceptedFileTypes}
                 type='file'

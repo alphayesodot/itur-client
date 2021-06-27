@@ -68,23 +68,6 @@ const events = [
     results: { notes: [''] },
   },
   {
-    id: '5',
-    node: {
-      id: '234abc1e810c19729de862ea',
-      name: 'ראיון',
-    },
-    malshabShort: {
-      id: '333333333',
-      firstName: 'עדי',
-      lastName: 'ביטי',
-    },
-    time: `${new Date().toISOString().slice(0, 10)}T10:30:07.996+00:00`,
-    location: 'place',
-    interviewersIds: ['507f1f77bcf86cd799439012', '507f1f77bcf86cd799439022', '507f1f77bcf86cd799439023'],
-    url: 'http://',
-    results: { notes: [] },
-  },
-  {
     id: '507f1f77bcf86ca7994390555',
     node: {
       id: '234abc1e810c19729de862eb',
