@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     minHeight: '18rem',
     overflow: 'hidden',
     [theme.breakpoints.down('md')]: {
-      paddingLeft: '2%',
+      paddingLeft: '4%',
     },
     [theme.breakpoints.down('sm')]: {
       width: '50%',
