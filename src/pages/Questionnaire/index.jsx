@@ -17,6 +17,7 @@ const Questionnaire = () => {
 
   const [allQuestionnaireRows, setAllQuestionnaireRows] = useState([]);
   const [questionnaireRowsToShow, setQuestionnaireToShow] = useState([]);
+  const [idToDelete, setIdToDelete] = useState(0);
   const [x, setx] = useState(2);
   const colNames = [t('tableColumns.questionnaireName'), t('tableColumns.intended'), t('tableColumns.writer'), t('tableColumns.changeDate'), t('tableColumns.questionsNumber'), ''];
   const setIntendedRole = (rolesArr) => {
@@ -30,30 +31,9 @@ const Questionnaire = () => {
     return t('permissions.malshabAppreciateor');
   };
 
-  const deleteQuestionnaireFromState = (id) => {
-    console.log('all:', [...allQuestionnaireRows]);
-    console.log('show:', [...questionnaireRowsToShow]);
-    console.log('x:', x);
-    console.log('a:', a);
-    const allIdx = [...allQuestionnaireRows].findIndex(
-      (q) => q.id === id,
-    );
-    const showIdx = [...questionnaireRowsToShow].findIndex(
-      (q) => q.id === id,
-    );
-    if (allIdx > -1) {
-      const tmpCopy = [...allQuestionnaireRows];
-      tmpCopy.splice(allIdx, 1);
-      setAllQuestionnaireRows([...tmpCopy]);
-    }
-    if (showIdx > -1) {
-      const tmpCopy = [...questionnaireRowsToShow];
-      tmpCopy.splice(showIdx, 1);
-      console.log(tmpCopy);
-      setQuestionnaireToShow([...tmpCopy]);
-    }
-  };
-
+  /**
+   * import all questionnaires - at the beeging only
+   */
   useEffect(async () => {
     try {
       const allQuestionnaires = await QuestionnaireService.getQuestionnaires();
@@ -70,12 +50,7 @@ const Questionnaire = () => {
             questionnaire.questions.length,
             <QuestionnaireOptionsButton
               questionnaire={questionnaire}
-              x={x}
-              // allQuestionnaireRows={allQuestionnaireRows}
-              // questionnaireRowsToShow={questionnaireRowsToShow}
-              // setAllQuestionnaireRows={setAllQuestionnaireRows}
-              // setQuestionnaireToShow={setQuestionnaireToShow}
-              deleteQuestionnaireFromState={deleteQuestionnaireFromState}
+              setIdToDelete={setIdToDelete}
             />,
           ],
         };
@@ -88,7 +63,29 @@ const Questionnaire = () => {
       toast(t('error.server'));
     }
   }, []);
-  console.log('mid: ', [...allQuestionnaireRows]);
+
+  /**
+   * delete questionnaire from states
+   */
+  useEffect(() => {
+    const allIdx = [...allQuestionnaireRows].findIndex(
+      (q) => q.id === idToDelete,
+    );
+    const showIdx = [...questionnaireRowsToShow].findIndex(
+      (q) => q.id === idToDelete,
+    );
+    if (allIdx > -1) {
+      const tmpCopy = [...allQuestionnaireRows];
+      tmpCopy.splice(allIdx, 1);
+      setAllQuestionnaireRows([...tmpCopy]);
+    }
+    if (showIdx > -1) {
+      const tmpCopy = [...questionnaireRowsToShow];
+      tmpCopy.splice(showIdx, 1);
+      setQuestionnaireToShow([...tmpCopy]);
+    }
+  }, [idToDelete]);
+
   return (
     <div className={classes.root}>
       <Header
