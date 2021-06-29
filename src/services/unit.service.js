@@ -19,8 +19,8 @@ class UnitService {
     const res = await axios.get(`${await config.uri.api}/api/user/me/unit`, { headers });
     return res?.data;
   }
-  static async createUnit(unitName) {
-    const res = await axios.post(`${await config.uri.api}/api/unit`, { unitName }, { headers });
+  static async createUnit(name) {
+    const res = await axios.post(`${await config.uri.api}/api/unit`, { name }, { headers });
     return res?.data;
   }
 }
