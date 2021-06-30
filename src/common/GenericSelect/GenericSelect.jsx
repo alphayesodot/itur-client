@@ -28,7 +28,7 @@ const GenericSelect = ({
   const [isChecked, setIsChecked] = useState([]);
   const { t } = useTranslation();
   const menuItemHeight = 48;
-  const menuItemPaddingTop = 8;
+  const menuItemPaddingTop = 15;
   const MenuProps = {
     anchorOrigin: {
       vertical: 'bottom',
