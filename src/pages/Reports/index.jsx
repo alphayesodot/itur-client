@@ -16,7 +16,7 @@ const Reports = () => {
   const btnRef = useRef(null);
 
   const handleOnClick = (name, nodeGroupIds, unitIds, startDate, endDate) => {
-    ReportService.createReport(name, nodeGroupIds, unitIds, startDate, endDate).then((data) => {
+    ReportService.createReport(nodeGroupIds, unitIds, startDate, endDate).then((data) => {
       setFile(data);
       setFileName(name);
       btnRef?.current?.click();
