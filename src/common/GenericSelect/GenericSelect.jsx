@@ -11,6 +11,8 @@ import useStyles from './GenericSelect.styles';
  * @param {*} setSelectedValue: set state function of the sleected value.
  * @param {*} selectClassName: class name for the select- optional.
  *                             for describing input's width, height, border radius etc.
+ * @param {*} checkboxClasses: classes for checkbox- optional.
+ *                             { root: rootClassName, checked: checkedClassName }
  * @param {*} isMultiple: is the select multiple choice- optional.
  * @returns a generic select. When multiple, selects an object from an array of objects
  */
@@ -19,6 +21,7 @@ const GenericSelect = ({
   selectedValue,
   setSelectedValue,
   selectClassName,
+  checkboxClasses,
   isMultiple,
 }) => {
   const classes = useStyles();
@@ -93,7 +96,13 @@ const GenericSelect = ({
         )
         : options.map(({ label, id }, optionId) => (
           <MenuItem key={id} value={id}>
-            {isMultiple && <Checkbox key={id} checked={isChecked[optionId]} />}
+            {isMultiple && (
+            <Checkbox
+              key={id}
+              checked={isChecked[optionId]}
+              classes={checkboxClasses}
+            />
+            )}
             {label}
           </MenuItem>
         ))}
