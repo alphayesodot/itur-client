@@ -17,8 +17,9 @@ const UnitSelect = ({ selectedUnit, setSelectedUnit, selectClassName, isMultiple
 
   useEffect(() => {
     UnitService.getUnits().then((res) => {
-      setUnits(res.map((unit) => ({ ...unit, label: unit.name })));
-      setSelectedUnit(isMultiple ? [] : res[0]);
+      const mappedRes = res.map((unit) => ({ ...unit, label: unit.name }));
+      setUnits(mappedRes);
+      setSelectedUnit(isMultiple ? [] : mappedRes[0]);
     }).catch(() => {
       toast(t('error.server'));
     });
