@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
     position: 'absolute',
     background: theme.palette.secondary.main,
     padding: '0.5%',
-    right: '2rem',
+    right: '5rem',
     bottom: 0,
     width: '2.25rem',
     height: '2.25rem',
