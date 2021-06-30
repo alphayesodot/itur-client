@@ -10,6 +10,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     marginTop: '1em',
     paddingBottom: '0.5em',
+    minHeight: '25rem',
   },
   date: {
     padding: '2em 3em',
@@ -22,6 +23,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'row-reverse',
     overflowX: 'auto',
+    height: '100%',
     width: 'calc(100vw - 15rem)',
     [theme.breakpoints.down('sm')]: {
       width: 'calc(100vw - 6rem)',
@@ -34,9 +36,13 @@ const useStyles = makeStyles((theme) => ({
     minHeight: '20em',
   },
   message: {
-    fontSize: '1.25em',
-    textAlign: 'center',
     width: '100%',
+    fontSize: '2rem',
+    textAlign: 'center',
+    fontWeight: 700,
+    color: 'lightgrey',
+    userSelect: 'none',
+    margin: 'auto',
   },
 }));
 
