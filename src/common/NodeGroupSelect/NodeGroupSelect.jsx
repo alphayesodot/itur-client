@@ -22,7 +22,7 @@ const NodeGroupSelect = ({
 
   useEffect(() => {
     nodeGroupService.getNodeGroups().then((res) => {
-      setNodeGroups(res);
+      setNodeGroups(res.map((nodeGroup) => ({ ...nodeGroup, label: nodeGroup.name })));
       setSelectedNodeGroup(isMultiple ? [] : res[0]);
     }).catch(() => {
       toast(t('error.server'));
