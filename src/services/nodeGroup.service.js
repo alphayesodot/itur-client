@@ -12,11 +12,11 @@ class NodeGroupService {
     const { data } = await axios.get(`${config.apiUri}/api/nodeGroup`, { headers });
     return data;
   }
-  static async createNodeGroup(nodeGroupName: string) {
+  static async createNodeGroup(nodeGroupName) {
     const { data } = await axios.post(`${config.apiUri}/api/nodeGroup`, { name: nodeGroupName }, { headers });
     return data;
   }
-  static async updateNodeGroup(id, nodeGroupObject: Object) {
+  static async updateNodeGroup(id, nodeGroupObject) {
     if (!nodeGroupObject || typeof (nodeGroupObject) !== 'object') return;
     const { data } = await axios.put(`${config.apiUri}/api/nodeGroup/${id}`, nodeGroupObject, { headers });
     return data;

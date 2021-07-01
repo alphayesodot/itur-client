@@ -27,9 +27,8 @@ export class UserService {
     const res = await axios.get(`${await config.apiUri}/api/user/`, { headers, params: { unitId } });
     return res?.data;
   }
-
-  static async createUser(unitId, role, userName) {
-    const res = await axios.post(`${await config.apiUri}/api/user/`, { unitId, role, userName }, { headers });
+  static async createUser(unitId, role, name) {
+    const res = await axios.post(`${await config.apiUri}/api/user/`, { unitId, role, name }, { headers });
     return res?.data;
   }
 }
