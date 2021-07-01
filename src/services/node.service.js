@@ -8,7 +8,7 @@ const headers = {
 
 class NodeService {
   static async getNodes(params) {
-    const { data } = await axios.get(`${config.uri.api}/api/node`, { headers, params });
+    const { data } = await axios.get(`${config.apiUri}/api/node`, { headers, params });
     return data;
   }
 }
