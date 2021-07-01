@@ -5,21 +5,29 @@ const useStyles = makeStyles((theme) => ({
     background: 'white',
     width: '100%',
     height: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
     marginTop: '1em',
     paddingBottom: '0.5em',
+    minHeight: '25rem',
   },
   date: {
     padding: '2em 3em',
     height: '1em',
     fontWeight: '800',
+    width: '95%',
     textAlign: 'left',
   },
   list: {
     display: 'flex',
     flexDirection: 'row-reverse',
     overflowX: 'auto',
-    marginRight: '1.3em',
-    marginLeft: '1.3em',
+    height: '100%',
+    width: 'calc(100vw - 15rem)',
+    [theme.breakpoints.down('sm')]: {
+      width: 'calc(100vw - 6rem)',
+    },
   },
   item: {
     minWidth: '17.5rem',
@@ -28,13 +36,13 @@ const useStyles = makeStyles((theme) => ({
     minHeight: '20em',
   },
   message: {
-    fontSize: '1.25em',
-    textAlign: 'center',
     width: '100%',
-  },
-  backdrop: {
-    zIndex: theme.zIndex.drawer + 1,
-    color: '#fff',
+    fontSize: '2rem',
+    textAlign: 'center',
+    fontWeight: 700,
+    color: 'lightgrey',
+    userSelect: 'none',
+    margin: 'auto',
   },
 }));
 

@@ -36,7 +36,8 @@ const resources = {
         interviewsSchedule: 'לוז ראיונות',
         view: 'תצוגה',
         attachments: 'מסמכים',
-        generalInfo: 'פרטים כללים',
+        generalInfo: 'פרטים כלליים',
+        interviewsHistory: 'היסטוריית ראיונות',
       },
       actions: {
         delete: 'מחיקה',
@@ -52,6 +53,8 @@ const resources = {
         noReport: 'אין דוח לתצוגה',
         noOptions: 'אין אופציות',
         noAttachments: 'אין מסמכים',
+        noMalshab: 'אין מלש"ב להצגה',
+        noEvents: 'אין ראיונות',
       },
       headerTitles: {
         addUsers: 'הוספת משתמשים',
@@ -60,6 +63,7 @@ const resources = {
       },
       placeholders: {
         searchUnit: 'חיפוש יחידה',
+        searchMalshab: 'חיפוש לפי ת"ז',
         nodeGroup: 'מסלול',
       },
       text: {
@@ -82,6 +86,7 @@ const resources = {
         addUnit: '+ הוספת יחידה',
         addUsers: '+ הוספת משתמשים',
         newSchedule: 'לוז חדש',
+        searchMalshab: 'חיפוש מלש"ב',
         newNodeGroup: 'מסלול חדש',
         add: 'הוספה',
         view: 'הצג',
@@ -155,13 +160,14 @@ const resources = {
         fileUpload: 'העלאת קבצים',
         userManagement: 'ניהול משתמשים',
         editQuestionnaire: 'שאלונים',
-        settings: 'הגדרות',
       },
       toolTip: {
         copyUsers: 'העתקת יוזרים',
         information: 'מידע נוסף',
         playInterview: 'צפייה בראיון',
         restart: 'התחל מחדש',
+        invalidId: 'ת"ז לא תקין',
+        uploadAttachment: 'העלאת מסמך',
       },
       warnings: {
         oneTimePassword: 'שים לב, לאחר סגירת החלונית לא יהיה ניתן לצפות בסיסמה בשנית. יש לשמור את הסיסמה במקום מאובטח.',
