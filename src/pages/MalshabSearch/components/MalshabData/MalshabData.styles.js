@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     direction: 'ltr',
     [theme.breakpoints.down('sm')]: {
-      minHeight: '35rem',
+      minHeight: '100%',
     },
   },
   content: {
@@ -22,6 +22,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'space-around',
     [theme.breakpoints.down('md')]: {
       height: 'auto',
+      minHeight: '95%',
     },
   },
   bottomSection: {

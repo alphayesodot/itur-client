@@ -21,7 +21,9 @@ const MalshabData = ({ malshab }) => {
           <div className={classes.content}>
             <MalshabInfo malshab={malshab} />
             <div className={classes.bottomSection}>
+              {![Role.Itur, Role.Mada].includes(currentUser.role) && (
               <EventsSection malshabId={malshab.identityNumber} />
+              )}
               <Attachments
                 rootClassName={classes.rootAttachments}
                 canUpload={[Role.Itur, Role.Mada].includes(currentUser.role)}

@@ -13,6 +13,7 @@ class ConfigService {
     config.tokenName = data.tokenName;
     config.secret = data.secret;
     config.fileUpload = data.fileUpload;
+    config.attachments = data.attachments;
   }
 }
 
