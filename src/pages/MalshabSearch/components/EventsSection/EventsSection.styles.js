@@ -42,6 +42,7 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     height: '95%',
     maxHeight: '15rem',
+    minHeight: '7rem',
   },
   eventRow: {
     width: '90%',

@@ -74,7 +74,7 @@ const MalshabInfo = ({ malshab }) => {
               type,
               malshab?.[fieldName],
             )))}
-        {malshab?.addresses?.length
+        {malshab?.addresses?.length > 0
             && addressFields.map(({ fieldName, type }) => (
               malshab.addresses[0][fieldName] !== undefined
             && getFieldComponent(

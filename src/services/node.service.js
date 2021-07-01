@@ -12,7 +12,7 @@ class NodeService {
     return data;
   }
   static async getNodeById(id) {
-    const { data } = await axios.get(`${config.uri.api}/api/node/${id}`, { headers });
+    const { data } = await axios.get(`${config.apiUri}/api/node/${id}`, { headers });
     return data;
   }
 }

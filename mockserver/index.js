@@ -34,6 +34,7 @@ app.get('/config', (req, res) => {
     tokenName: config.tokenName,
     secret: config.secret,
     fileUpload: config.fileUpload,
+    attachments: config.attachments,
   });
 });
 

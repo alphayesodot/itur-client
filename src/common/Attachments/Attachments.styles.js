@@ -21,6 +21,10 @@ const useStyles = makeStyles((theme) => ({
     '&:hover': {
       background: theme.palette.secondary.main,
     },
+    [theme.breakpoints.down('md')]: {
+      bottom: '1rem',
+      right: '3rem',
+    },
   },
   icon: {
     width: '1.5rem',
@@ -34,6 +38,7 @@ const useStyles = makeStyles((theme) => ({
     background: theme.palette.primary.main,
     width: '100%',
     height: '95%',
+    minHeight: '7rem',
   },
   attachment: {
     display: 'flex',
