@@ -11,6 +11,7 @@ import QuestionnaireService from '../../services/Questionnaire.service';
 import { UserService } from '../../services/user.service';
 import QuestionnaireOptionsButton from './components/QuestionnaireOptionsButton/QuestionnaireOptionsButton';
 import QuestionnaireDialog from './components/QuestionnaireDialog/QuestionnaireDialog';
+import NodeService from '../../services/node.service';
 
 const Questionnaire = () => {
   const classes = useStyles();
@@ -18,6 +19,7 @@ const Questionnaire = () => {
 
   const [allQuestionnaireRows, setAllQuestionnaireRows] = useState([]);
   const [questionnaireRowsToShow, setQuestionnaireToShow] = useState([]);
+  const [allNodes, setAllNodes] = useState([]);
   const [idToDelete, setIdToDelete] = useState(0);
   const [openDialog, setOpenDialog] = useState(true);
   const colNames = [t('tableColumns.questionnaireName'), t('tableColumns.intended'), t('tableColumns.writer'), t('tableColumns.changeDate'), t('tableColumns.questionsNumber'), ''];
@@ -42,6 +44,7 @@ const Questionnaire = () => {
    */
   useEffect(async () => {
     try {
+      setAllNodes(await NodeService.getNodes());
       const allQuestionnaires = await QuestionnaireService.getQuestionnaires();
       const promises = allQuestionnaires.map(async (questionnaire) => {
         const questionnaireWriter = await UserService.getUserById(questionnaire.createdBy);
@@ -103,7 +106,6 @@ const Questionnaire = () => {
           {' '}
           <span className={classes.countTitle}>{`(${[...questionnaireRowsToShow].length})`}</span>
         </Typography>
-
         {questionnaireRowsToShow.length
           ? (
             <div className={`${classes.tableContainer}`}>
@@ -119,6 +121,7 @@ const Questionnaire = () => {
         <QuestionnaireDialog
           open={openDialog}
           onClose={handeOnCloseDialog}
+          allNodes={allNodes}
           createAllNodeGroupList={() => { console.log('update...'); }}
         />
       </DashboardCard>

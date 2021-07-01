@@ -2,16 +2,14 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: '60%',
-    maxWidth: '200rem',
+    width: '80%',
+    maxWidth: '55rem',
     paddingBottom: '1rem',
   },
   content: {
     display: 'flex',
     flexDirection: 'column',
-    width: '90%',
     paddingBottom: '1rem',
-    // backgroundColor: 'red',
     fontFamily: theme.typography.fontFamily,
   },
   delatils: {
@@ -19,16 +17,12 @@ const useStyles = makeStyles((theme) => ({
     margin: 'auto 0',
     display: 'flex',
     flexDirection: 'row',
-    // backgroundColor: 'blue',
     justifyContent: 'space-between',
-    alignItems: 'center',
+    alignItems: 'stretch',
     marginBottom: '1.5rem',
   },
-  labeledInput: {
-  },
   inputContainer: {
-    // backgroundColor: 'green',
-    width: '40%',
+    width: '33%',
     marginRight: '2%',
     display: 'flex',
     flexDirection: 'column',
@@ -38,13 +32,32 @@ const useStyles = makeStyles((theme) => ({
   marginBottom: {
     marginBottom: '1rem',
   },
-
   nodesContainer: {
-    width: '58%',
+    width: '65%',
+    display: 'flex',
+    flexDirection: 'column',
   },
   nodesDashBoard: {
     backgroundColor: theme.palette.dialog.secondaryLight,
     padding: '1rem',
+    height: '100%',
+    maxHeight: '7.2rem',
+    marginTop: '0.5rem',
+  },
+  internalNodeContainer: {
+    overflowY: 'auto',
+    direction: 'rtl',
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'row-reverse',
+  },
+  checkboxContainer: {
+    marginLeft: '1rem',
+    direction: 'ltr',
+    width: '25%',
+    textOverflow: 'ellipsis',
+    overflow: 'hidden',
+    whiteSpace: 'nowrap',
   },
   questions: {
     marginBottom: '1.5rem',
@@ -63,21 +76,35 @@ const useStyles = makeStyles((theme) => ({
     padding: '1rem',
   },
   noNodeGroups: {
-    alignSelf: 'center',
     fontSize: '1.5rem',
     fontWeight: 'bold',
     color: theme.palette.dialog.secondary,
     width: '100%',
+    height: '100%',
     textAlign: 'center',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   label: {
     color: theme.palette.dialog.secondary,
+    marginBottom: '0.25rem',
   },
   select: {
     width: '100%',
-    border: 'solid 1.7px',
+    border: 'solid 2px',
     borderColor: theme.palette.dialog.secondaryLight,
     borderRadius: '15px',
+    padding: '0.5rem',
+  },
+  input: {
+    width: '100%',
+    border: 'solid 2px',
+    borderColor: theme.palette.dialog.secondaryLight,
+    backgroundColor: 'white',
+    borderRadius: '15px',
+    padding: '0.6em 1rem',
+    boxSizing: 'border-box',
   },
   addButton: {
     fontWeight: 'bold',
@@ -90,6 +117,55 @@ const useStyles = makeStyles((theme) => ({
   },
   iconImg: {
     margin: '0.3rem',
+  },
+  internalQuestionContainer: {
+    overflowY: 'scroll',
+    direction: 'rtl',
+    height: '18rem',
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  questionnaireCreationTitle: {
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'row-reverse',
+    textAlign: 'left',
+    direction: 'rtl',
+    marginBottom: '0.5rem',
+    marginLeft: '0.3em',
+  },
+  number: {
+    width: '2rem',
+    textAlign: 'center',
+  },
+  titleQuestionType: {
+    marginLeft: '0.6rem',
+    padding: '0 0.3rem',
+    paddingRight: '0',
+    width: '20%',
+  },
+  titleQuestion: {
+    width: '70%',
+  },
+  titlePlaceholder: {
+    margin: '0 0.5rem',
+    width: '1.2rem',
+  },
+  questionsLines: {
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  questionLine: {
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'row-reverse',
+    alignItems: 'center',
+    marginBottom: '0.4rem',
+  },
+  titleMust: {
+    width: '42px',
+    textAlign: 'center',
   },
 }));
 

@@ -36,12 +36,12 @@ const GenericSelect = ({
 
   const getValue = () => (isMultiple
     ? selectedValue.map(({ id }) => id)
-    : selectedValue.id
+    : selectedValue?.id
   );
 
   const getRenderValue = () => (isMultiple
     ? selectedValue.map((value) => value.name).join(', ')
-    : selectedValue.name
+    : selectedValue?.name
   );
 
   return (

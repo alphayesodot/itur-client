@@ -7,11 +7,12 @@ class NodeManager {
     const requester = jwt.decode(req.headers.authorization.split(' ')[1]);
     if ([
       Role.Interviewer,
-      Role.RamadIturAssistant,
       Role.Technical,
-      Role.ProfessionalRamad,
-      Role.RamadIturOfUnit,
       Role.Mada].includes(requester.role)) {
+      res.send(nodes);
+    } else if (
+      [Role.RamadIturOfUnit, Role.ProfessionalRamad, Role.RamadIturAssistant]
+        .includes(requester.role)) {
       const nodesOfUnit = nodes.filter((node) => node.unitId === requester.unitId);
       res.send(nodesOfUnit);
     } else {

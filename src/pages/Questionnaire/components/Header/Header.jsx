@@ -47,6 +47,7 @@ const Header = ({ allQuestionnaireRows, setQuestionnaireToShow }) => {
               className={classes.input}
               placeholder={t('placeholders.questionnaire')}
               value={inputValue}
+              disableUnderline
               onChange={(e) => {
                 setInputValue(e.target.value);
                 if (!e.target.value.length) {
