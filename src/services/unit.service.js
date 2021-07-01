@@ -8,19 +8,19 @@ const headers = {
 
 class UnitService {
   static async getUnitById(id) {
-    const { data } = await axios.get(`${config.uri.api}/api/unit/${id}`, { headers });
+    const { data } = await axios.get(`${config.apiUri}/api/unit/${id}`, { headers });
     return data;
   }
   static async getUnits() {
-    const res = await axios.get(`${await config.uri.api}/api/unit`, { headers });
+    const res = await axios.get(`${await config.apiUri}/api/unit`, { headers });
     return res?.data;
   }
   static async getMyUnit() {
-    const res = await axios.get(`${await config.uri.api}/api/user/me/unit`, { headers });
+    const res = await axios.get(`${await config.apiUri}/api/user/me/unit`, { headers });
     return res?.data;
   }
   static async createUnit(unitName) {
-    const res = await axios.post(`${await config.uri.api}/api/unit`, { unitName }, { headers });
+    const res = await axios.post(`${await config.apiUri}/api/unit`, { unitName }, { headers });
     return res?.data;
   }
 }
