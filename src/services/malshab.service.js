@@ -25,7 +25,7 @@ class MalshabService {
     const formData = new FormData();
     await formData.append('file', file);
     const { data } = await axios.post(
-      `${config.uri.api}/api/malshab/${malshabId}/attachment`,
+      `${config.apiUri}/api/malshab/${malshabId}/attachment`,
       formData,
       { headers },
     );
