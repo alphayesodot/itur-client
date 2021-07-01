@@ -6,6 +6,9 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     height: '10%',
     minHeight: '5rem',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
   },
   content: {
     padding: '1.25em',
@@ -58,6 +61,7 @@ const useStyles = makeStyles((theme) => ({
   searchButton: {
     backgroundColor: 'transparent',
     margin: 'auto 0.5em',
+    boxShadow: 'none',
     '&:hover': {
       transform: 'rotate(-10deg)',
       transitionDuration: '0.2s',

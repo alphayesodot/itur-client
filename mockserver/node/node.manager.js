@@ -43,6 +43,10 @@ class NodeManager {
       res.status(400).send('BROKEN');
     }
   }
+
+  static getNodeById(req, res) {
+    res.send(nodes.find((node) => node.id === req.params.id));
+  }
 }
 
 export default NodeManager;

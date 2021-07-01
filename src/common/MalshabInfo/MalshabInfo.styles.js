@@ -1,15 +1,10 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
     display: 'flex',
-    alignItems: 'stretch',
-    height: '100%',
-  },
-  fieldsSection: {
-    display: 'flex',
     flexDirection: 'column',
-    width: '75%',
+    width: '100%',
   },
   fieldsDiv: {
     display: 'flex',
@@ -25,11 +20,13 @@ const useStyles = makeStyles((theme) => ({
   fieldTitle: {
     userSelect: 'none',
     fontSize: '0.8rem',
+    paddingLeft: '3%',
+    paddingTop: '1%',
   },
   fieldValue: {
     border: '0.1px solid lightgrey',
-    borderRadius: '5px',
-    padding: '0.25rem',
+    borderRadius: 30,
+    padding: '0.5rem',
     fontSize: '0.9rem',
   },
   sectionTitle: {
@@ -37,39 +34,6 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: '900',
     paddingLeft: '1%',
     paddingBottom: '2%',
-  },
-  attachmentsSection: {
-    width: '25%',
-    margin: '0 2%',
-  },
-  attachmentsCard: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'flex-start',
-    overflowY: 'auto',
-    background: theme.palette.primary.main,
-    width: '100%',
-    height: '95%',
-  },
-  attachment: {
-    display: 'flex',
-    padding: '3%',
-  },
-  attachmentIcon: {
-    width: '1rem',
-    height: '1rem',
-    paddingRight: '5%',
-  },
-  link: {
-    color: 'white',
-    textAlign: 'left',
-    textDecoration: 'underline',
-  },
-  message: {
-    paddingTop: '20%',
-    color: 'white',
-    width: '100%',
-    textAlign: 'center',
   },
 }));
 

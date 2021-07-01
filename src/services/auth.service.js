@@ -9,11 +9,9 @@ class AuthService {
     const cookie = Cookies.get(config.tokenName);
     if (!cookie) {
       this.redirect();
-    } else {
+    } else if (jwt.verify(cookie, config.secret)) {
       this.setAuthHeaders();
-      if (jwt.verify(cookie, config.secret)) {
-        return jwt.decode(cookie);
-      }
+      return jwt.decode(cookie);
     }
   }
 
@@ -36,7 +34,7 @@ class AuthService {
   static async redirect() {
     window.location.replace('/login');
     // TODO: Comment on push
-    // window.location.replace('http://localhost:8080/login/1');
+    // window.location.replace('http://localhost:8080/login/4');
   }
 }
 
