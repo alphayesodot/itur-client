@@ -9,13 +9,10 @@ class ConfigService {
   static async setConfigVariables() {
     // TODO: Change to /config
     const { data } = await axios.get(config.configServerUri, { ...headers });
-    config.uri = { ...data.uri };
+    config.apiUri = data.apiUri;
     config.tokenName = data.tokenName;
     config.secret = data.secret;
     config.fileUpload = data.fileUpload;
-    config.attachments = data.attachments;
-    config.sitesPostfixes = data.sitesPostfixes;
-    config.allowedUrlPostfixesOfRole = data.allowedUrlPostfixesOfRole;
   }
 }
 

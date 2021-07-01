@@ -32,8 +32,9 @@ class AuthService {
   }
 
   static async redirect() {
-    // TODO: Remove user id
-    window.location.replace(`${config.uri.auth}/auth/login/8`);
+    window.location.replace('/login');
+    // TODO: Comment on push
+    // window.location.replace('http://localhost:8080/login/1');
   }
 }
 

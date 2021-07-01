@@ -9,13 +9,13 @@ const headers = {
 
 class MalshabService {
   static async getMalshabById(id) {
-    const { data } = await axios.get(`${config.uri.api}/api/malshab/${id}`, { headers });
+    const { data } = await axios.get(`${config.apiUri}/api/malshab/${id}`, { headers });
     return data;
   }
   static async getAttachmentByKey(malshabId, fileKey) {
     const { data } = await axios.request({
       method: 'GET',
-      url: `${config.uri.api}/api/malshab/${malshabId}/attachment/${fileKey}`,
+      url: `${config.apiUri}/api/malshab/${malshabId}/attachment/${fileKey}`,
       responseType: 'blob',
       reponseEncoding: 'binary',
     });
