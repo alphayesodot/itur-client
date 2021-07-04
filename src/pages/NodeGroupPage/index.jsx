@@ -8,7 +8,7 @@ import NodeGroupDialog from './components/NodeGroupDialog/NodeGroupDialog';
 import DataTable from '../../common/DataTable/DataTable';
 import NodeGroupService from '../../services/nodeGroup.service';
 import UnitService from '../../services/unit.service';
-import { UserService, Role } from '../../services/user.service';
+import UserService, { Role } from '../../services/user.service';
 import UserStoreInstance from '../../stores/User.store';
 import OptionsButton from './components/OptionsButton/OptionsButton';
 

@@ -9,7 +9,6 @@ import userRouter from './user/user.router.js';
 import nodeRouter from './node/node.router.js';
 import nodeGroupRouter from './nodeGroup/nodeGroup.router.js';
 import unitRouter from './unit/unit.router.js';
-import nodeRouter from './node/node.router.js';
 import malshabRouter from './malshab/malshab.router.js';
 import reportRouter from './report/report.router.js';
 

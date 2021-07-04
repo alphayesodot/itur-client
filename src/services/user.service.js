@@ -18,7 +18,7 @@ export const Role = {
   Technical: 'TECHNICAL',
 };
 
-export class UserService {
+export default class UserService {
   static async getUserById(id) {
     const { data } = await axios.get(`${config.apiUri}/api/user/${id}`, { headers });
     return data;
