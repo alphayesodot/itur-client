@@ -34,7 +34,13 @@ const theme = createMuiTheme({
     textField: {
       focused: '#27b9d1',
     },
-
+    table: {
+      main: 'rgb(207,225,227)',
+      secondary: 'rgb(244,245,247)',
+    },
+    dialogs: {
+      primary: 'rgb(0,175,204)',
+    },
   },
 });
 

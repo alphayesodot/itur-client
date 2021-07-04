@@ -1,8 +1,10 @@
 import express from 'express';
 import NodeManager from './node.manager.js';
 
-const nodeGroupRouter = express.Router();
+const nodeRouter = express.Router();
 
-nodeGroupRouter.get('/', NodeManager.getNodes);
+nodeRouter.get('/', NodeManager.getNodes);
+nodeRouter.put('/:id', NodeManager.updateNode);
+nodeRouter.get('/:id', NodeManager.getNodeById);
 
-export default nodeGroupRouter;
+export default nodeRouter;

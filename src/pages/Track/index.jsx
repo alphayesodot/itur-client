@@ -4,7 +4,7 @@ import { observer } from 'mobx-react-lite';
 import { toast } from 'react-toastify';
 import { Typography } from '@material-ui/core';
 import UnitService from '../../services/unit.service';
-import UserService from '../../services/user.service';
+import UserService, { Role } from '../../services/user.service';
 import ScheduleHeader from '../../common/ScheduleHeader/ScheduleHeader';
 import TrackBoard from './components/TrackBoard/TrackBoard';
 import useStyles from './index.styles';
@@ -40,7 +40,7 @@ const Track = observer(() => {
       Promise.all(
         selectedNodeGroup?.usersIds?.map((userId) => UserService.getUserById(userId)),
       ).then((users) => {
-        setInterviewers(users.filter((user) => user.role === 'INTERVIEWER'));
+        setInterviewers(users.filter((user) => user.role === Role.Interviewer));
       }).catch(() => {
         toast(t('error.server'));
       }).finally(() => {

@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: 'space-around',
     background: theme.palette.primary.main,
     [theme.breakpoints.down('sm')]: {
-      padding: '5%',
+      padding: '1%',
       justifyContent: 'center',
     },
   },
