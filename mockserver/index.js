@@ -32,7 +32,6 @@ app.get('/config', (req, res) => {
   res.send({
     apiUri: `http://localhost:${config.port}`,
     tokenName: config.tokenName,
-    secret: config.secret,
     fileUpload: config.fileUpload,
     attachments: config.attachments,
   });
