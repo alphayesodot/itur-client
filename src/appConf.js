@@ -14,7 +14,6 @@ const sitesPostfixes = {
 };
 
 const config = {
-  configServerUri: 'http://localhost:8080/config',
   sitesPostfixes,
   allowedUrlPostfixesOfRole:
   {
