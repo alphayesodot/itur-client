@@ -9,7 +9,7 @@ class AuthService {
     const cookie = Cookies.get(config.tokenName);
     if (!cookie) {
       this.redirect();
-    } else if (jwt.verify(cookie, config.secret)) {
+    } else {
       this.setAuthHeaders();
       return jwt.decode(cookie);
     }

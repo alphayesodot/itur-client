@@ -12,7 +12,6 @@ class ConfigService {
     const { data } = await axios.get('/config', { ...headers });
     config.apiUri = data.apiUri;
     config.tokenName = data.tokenName;
-    config.secret = data.secret;
     config.fileUpload = data.fileUpload;
     config.attachments = data.attachments;
   }
