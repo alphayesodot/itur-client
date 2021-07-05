@@ -40,12 +40,12 @@ const MalshabimCard = ({ interviewers, events, handleMalshabsToSchedule }) => {
 
   const handleRecievedEvents = () => {
     const columnData = [
-      { id: 6, name: t('malshabimTable.time') },
-      { id: 4, name: t('malshabimTable.node') },
-      { id: 5, name: t('malshabimTable.users') },
-      { id: 3, name: t('malshabimTable.status') },
-      { id: 2, name: t('malshabimTable.id') },
-      { id: 1, name: t('malshabimTable.name') },
+      t('malshabimTable.time'),
+      t('malshabimTable.node'),
+      t('malshabimTable.users'),
+      t('malshabimTable.status'),
+      t('malshabimTable.id'),
+      t('malshabimTable.name'),
     ];
 
     const rowsData = events.sort((a, b) => new Date(a.time).getTime() - new Date(b.time).getTime())
@@ -164,7 +164,6 @@ const MalshabimCard = ({ interviewers, events, handleMalshabsToSchedule }) => {
           />
         </div>
       </div>
-
       <BasicTable
         tableData={tableDataToDisplay}
         handleChosenMalshabs={handleChosenMalshabs}

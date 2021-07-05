@@ -46,8 +46,8 @@ const BasicTable = ({ tableData, handleChosenMalshabs }) => {
         <TableHead>
           <TableRow>
             {tableData?.columnData.map((column) => (
-              <React.Fragment key={column.name}>
-                <TableCell>{column.name}</TableCell>
+              <React.Fragment key={column}>
+                <TableCell>{column}</TableCell>
               </React.Fragment>
             ))}
             <TableCell>
