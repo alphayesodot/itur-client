@@ -62,6 +62,7 @@ const BasicTable = ({ tableData, handleChosenMalshabs }) => {
           {rows?.map((row) => (
             <TableRow key={row.id}>
               <TableCell>{row.time}</TableCell>
+              <TableCell>{row.node}</TableCell>
               <TableCell>{row.users}</TableCell>
               <TableCell>{row.status}</TableCell>
               <TableCell>{row.id}</TableCell>

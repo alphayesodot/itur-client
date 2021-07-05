@@ -70,8 +70,8 @@ const MalshabSchedulePage = () => {
           nodesOfNodeGroup.map(({ id }) => (
             EventService.getEvents({ nodeId: id, date: selectedDate })
           )),
-        ).then((res) => {
-          setEvents(...res);
+        ).then((eventsArrays) => {
+          setEvents(eventsArrays.reduce((acc, eventsArray) => [...acc, ...eventsArray], []));
         });
       }).catch(() => {
         toast(t('error.server'));

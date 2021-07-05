@@ -186,6 +186,7 @@ const resources = {
         id: 'ת"ז',
         status: 'סטטוס',
         users: 'יוזרים',
+        node: 'שלב מיון',
         time: 'שעה',
       },
       toolTip: {

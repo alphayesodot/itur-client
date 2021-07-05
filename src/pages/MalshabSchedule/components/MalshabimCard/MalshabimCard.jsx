@@ -40,8 +40,9 @@ const MalshabimCard = ({ interviewers, events, handleMalshabsToSchedule }) => {
 
   const handleRecievedEvents = () => {
     const columnData = [
-      { id: 5, name: t('malshabimTable.time') },
-      { id: 4, name: t('malshabimTable.users') },
+      { id: 6, name: t('malshabimTable.time') },
+      { id: 4, name: t('malshabimTable.node') },
+      { id: 5, name: t('malshabimTable.users') },
       { id: 3, name: t('malshabimTable.status') },
       { id: 2, name: t('malshabimTable.id') },
       { id: 1, name: t('malshabimTable.name') },
@@ -55,6 +56,7 @@ const MalshabimCard = ({ interviewers, events, handleMalshabsToSchedule }) => {
           id: event.malshabShort.id,
           status: `${event.interviewersIds.length === 0 ? t('unitControlPage.notScheduled') : t('unitControlPage.isScheduled')}`,
           users: getInterviewersDisplay(event.interviewersIds),
+          node: event.node.name,
           time: new Date(event.time).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }),
         }
       ));

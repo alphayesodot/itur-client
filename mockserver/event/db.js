@@ -2,8 +2,8 @@ const events = [
   {
     id: '1',
     node: {
-      id: '234abc1e810c19729de862ea',
-      name: 'ראיון',
+      id: '234abc1e810c19729de862eb',
+      name: '2ראיון',
     },
     malshabShort: {
       id: '222222222',
@@ -19,8 +19,8 @@ const events = [
   {
     id: '2',
     node: {
-      id: '234abc1e810c19729de862ea',
-      name: 'ראיון',
+      id: '234abc1e810c19729de862eb',
+      name: '2ראיון',
     },
     malshabShort: {
       id: '999999999',
@@ -36,8 +36,8 @@ const events = [
   {
     id: '507f1f77bcf86cd799439021',
     node: {
-      id: '234abc1e810c19729de862ed',
-      name: 'ראיון',
+      id: '234abc1e810c19729de862ee',
+      name: '3ראיון',
     },
     malshabShort: {
       id: '999999999',
@@ -53,8 +53,8 @@ const events = [
   {
     id: '4',
     node: {
-      id: '234abc1e810c19729de862ea',
-      name: 'ראיון',
+      id: '234abc1e810c19729de862eb',
+      name: '2ראיון',
     },
     malshabShort: {
       id: '555555555',
@@ -75,8 +75,8 @@ const events = [
   {
     id: '507f1f77bcf86ca7994390555',
     node: {
-      id: '234abc1e810c19729de862ed',
-      name: 'ראיון',
+      id: '234abc1e810c19729de862ee',
+      name: '3ראיון',
     },
     malshabShort: {
       id: '333333333',
