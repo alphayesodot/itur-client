@@ -173,7 +173,6 @@ const resources = {
         users: 'יוזרים',
         isScheduled: 'עם שיבוץ',
         noEvents: 'ללא שיבוץ',
-        saveSchedule: 'שמירת לו"ז',
         automaticScheduling: 'שיבוץ אוטומטי',
         noUsers: 'אין יוזרים',
         selected: 'נבחרו',

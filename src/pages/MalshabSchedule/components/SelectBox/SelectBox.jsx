@@ -1,5 +1,11 @@
-import { Checkbox, FormControl, Input, InputLabel, ListItemText, MenuItem, Select } from '@material-ui/core';
 import React from 'react';
+import {
+  Checkbox,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+} from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 import useStyles from './SelectBox.styles';
 

@@ -9,6 +9,7 @@ import ScheduleHeader from '../../common/ScheduleHeader/ScheduleHeader';
 import MalshabimCard from './components/MalshabimCard/MalshabimCard';
 import UserService, { Role } from '../../services/user.service';
 import UnitService from '../../services/unit.service';
+import ScheduleStore from '../../stores/Schedule.store';
 import EventService from '../../services/event.service';
 import CustomBackDrop from '../../common/CustomBackDrop/CustomBackDrop';
 import NodeService from '../../services/node.service';
@@ -64,6 +65,7 @@ const MalshabSchedulePage = () => {
       Promise.all(
         choosenNodeGroup?.usersIds?.map((userId) => UserService.getUserById(userId)),
       ).then(async (users) => {
+        // TODO: BUG- ADD INTERVIEWERS INTO HEADER
         setInterviewers(users.filter((user) => user.role === Role.Interviewer));
         const nodesOfNodeGroup = await NodeService.getNodes({ nodeGroupId: choosenNodeGroup.id });
         Promise.all(
@@ -77,7 +79,8 @@ const MalshabSchedulePage = () => {
         toast(t('error.server'));
       });
     }
-  }, [choosenNodeGroup, selectedDate]);
+    // TODO: update users when schedule store updates
+  }, [choosenNodeGroup, selectedDate, ScheduleStore.schedules]);
 
   return (
     <div className={classes.root}>

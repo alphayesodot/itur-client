@@ -7,6 +7,7 @@ import DashboardCard from '../../../../common/DashboardCard/DashboardCard';
 import useStyles from './UserCard.styles';
 import ScheduleStore from '../../../../stores/Schedule.store';
 import userIcon from '../../../../utils/images/unitControlPage/userpic-blue-small.svg';
+import EventService from '../../../../services/event.service';
 
 const UserCard = ({ user, selectedDate, choosenNodeGroup }) => {
   const classes = useStyles();
@@ -36,6 +37,20 @@ const UserCard = ({ user, selectedDate, choosenNodeGroup }) => {
 
   const getTotalNumberOfEvents = () => (`${t('unitControlPage.totalText')} ${events.length}`);
 
+  const handleRemoveInterviewer = (eventId) => {
+    EventService.removeInterviewer(eventId, user.id).then(() => {
+      setEvents((prevValue) => prevValue.filter((({ id }) => id !== eventId)));
+      ScheduleStore.removeInterviewFromSchedule(
+        choosenNodeGroup.id,
+        selectedDate,
+        user.id,
+        eventId,
+      );
+    }).catch(() => {
+      toast(t('error.server'));
+    });
+  };
+
   return (
     <DashboardCard className={classes.root}>
       <Typography className={classes.topRow}>
@@ -53,7 +68,10 @@ const UserCard = ({ user, selectedDate, choosenNodeGroup }) => {
                 {events.map((event) => (
                   <li key={event.id} className={classes.eventItem}>
                     <div className={classes.innerRow}>
-                      <IconButton className={classes.deleteIcon}>
+                      <IconButton
+                        onClick={() => handleRemoveInterviewer(event.id)}
+                        className={classes.deleteIcon}
+                      >
                         <DeleteOutlinedIcon />
                       </IconButton>
                       <Typography component='span' className={classes.eventText}>

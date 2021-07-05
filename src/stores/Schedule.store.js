@@ -50,6 +50,22 @@ class ScheduleStore {
       schedule,
     });
   }
+
+  removeInterviewFromSchedule = (searchedNodeGroupId, searchedDate, userId, eventId) => {
+    // TODO: fix bug
+    this.schedules = this.schedules.map((schedule) => {
+      if (searchedNodeGroupId === schedule.nodeGroupId
+        && new Date(searchedDate).toDateString() === new Date(schedule.date).toDateString()) {
+        const searchedSchedule = schedule.schedule
+          .find(({ interviewerId }) => interviewerId === userId);
+        if (searchedSchedule) {
+          searchedSchedule.interviews = searchedSchedule.interviews
+            .filter((({ id }) => id !== eventId));
+        }
+      }
+      return schedule;
+    });
+  };
 }
 
 const ScheduleStoreInstance = new ScheduleStore();
