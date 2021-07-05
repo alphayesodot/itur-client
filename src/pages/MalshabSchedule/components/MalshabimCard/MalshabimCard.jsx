@@ -34,7 +34,7 @@ const MalshabimCard = ({ interviewers, events, handleMalshabsToSchedule }) => {
       interviewersIds.includes(interviewer.id)
     ));
     const interviewersSigns = interviewersObjects.map(({ name }) => name.slice(-4));
-    setUsersSelectOptions((prevValue) => [...prevValue, ...interviewersSigns]);
+    setUsersSelectOptions((prevValue) => [...new Set([...prevValue, ...interviewersSigns])]);
     return interviewersSigns.join(',');
   };
 

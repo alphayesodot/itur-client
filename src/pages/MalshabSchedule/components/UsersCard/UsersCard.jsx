@@ -32,6 +32,7 @@ const UsersCard = ({ users, selectedDate, choosenNodeGroup }) => {
       <div className={classes.usersList}>
         {users.map((user) => (
           <UserCard
+            key={user.id}
             user={user}
             selectedDate={selectedDate}
             choosenNodeGroup={choosenNodeGroup}

@@ -49,7 +49,7 @@ const UserCard = ({ user, selectedDate, choosenNodeGroup }) => {
             <div className={classes.eventsDiv}>
               <ul className={classes.eventsList}>
                 {events.map((event) => (
-                  <li className={classes.eventItem}>
+                  <li key={event.id} className={classes.eventItem}>
                     <div className={classes.innerRow}>
                       <IconButton className={classes.deleteIcon}>
                         <DeleteOutlinedIcon />
