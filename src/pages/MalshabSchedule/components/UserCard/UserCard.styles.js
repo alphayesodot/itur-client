@@ -63,6 +63,14 @@ const useStyles = makeStyles((theme) => ({
   eventText: {
     fontSize: '0.875rem',
     wordSpacing: '0.1rem',
+    display: 'flex',
+    justifyContent: 'space-around',
+  },
+  nameText: {
+    fontSize: '0.875rem',
+    fontWeight: '600',
+    width: '6rem',
+    paddingLeft: '0.2rem',
   },
   noEvents: {
     display: 'flex',

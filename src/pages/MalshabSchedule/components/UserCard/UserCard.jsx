@@ -54,8 +54,12 @@ const UserCard = ({ user, selectedDate, choosenNodeGroup }) => {
                       <IconButton className={classes.deleteIcon}>
                         <DeleteOutlinedIcon />
                       </IconButton>
-                      <Typography className={`${classes.eventText}`}>
-                        {`${formatDate(event.time)} ${formatName(`${event.malshabShort?.firstName} ${event.malshabShort?.lastName}`)}`}
+                      <Typography className={classes.eventText}>
+                        {formatDate(event.time)}
+                        <Typography className={classes.nameText}>
+                          {formatName(`${event.malshabShort?.firstName} ${event.malshabShort?.lastName}`)}
+                        </Typography>
+                        {event.node.name}
                       </Typography>
                     </div>
                   </li>
