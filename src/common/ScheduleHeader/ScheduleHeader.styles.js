@@ -31,8 +31,8 @@ const useStyles = makeStyles((theme) => ({
   },
   dateInput: {
     marginLeft: '1em',
-    paddingTop: '0.2rem',
-    height: '2.3rem',
+    paddingTop: '0.3rem',
+    height: '2.2rem',
     [theme.breakpoints.down('sm')]: {
       maxWidth: 'calc(100% - 1em)',
     },

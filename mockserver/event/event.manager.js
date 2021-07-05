@@ -29,6 +29,21 @@ class EventManager {
   static getEventById(req, res) {
     res.send(events.find((event) => event.id === req.params.id));
   }
+
+  static addInterviewer(req, res) {
+    const { eventId, interviewerId } = req.params;
+    const searchEvent = events.find((event) => event.id === eventId);
+    searchEvent.interviewersIds.push(interviewerId);
+    res.send(searchEvent);
+  }
+
+  static removeInterviewer(req, res) {
+    const { eventId, interviewerId } = req.params;
+    const searchEvent = events.find((event) => event.id === eventId);
+    const interviewerIndexInArray = searchEvent.interviewersIds.indexOf(interviewerId);
+    searchEvent.interviewersIds.splice(interviewerIndexInArray, 1);
+    res.send(searchEvent);
+  }
 }
 
 export default EventManager;

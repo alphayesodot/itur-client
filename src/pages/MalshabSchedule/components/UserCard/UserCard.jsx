@@ -20,7 +20,9 @@ const UserCard = ({ user, selectedDate, choosenNodeGroup }) => {
         choosenNodeGroup.id,
         user.id,
       ).then((res) => {
-        setEvents(res.sort((a, b) => new Date(a.time).getTime() - new Date(b.time).getTime()));
+        setEvents(res.sort((firstEvent, secondEvent) => (
+          new Date(firstEvent.time).getTime() - new Date(secondEvent.time).getTime()
+        )));
       }).catch(() => {
         toast(t('error.server'));
       });
