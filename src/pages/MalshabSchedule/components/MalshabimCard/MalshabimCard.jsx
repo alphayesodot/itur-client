@@ -12,22 +12,22 @@ import useStyles from './MalshabimCard.styles';
 import BasicTable from '../BasicTable/BasicTable';
 import SelectBox from '../SelectBox/SelectBox';
 
-const selectSchedulingOptions = ['11', '21', '13', '23', '22', '33', 'שיבוץ אוטומטי'];
-
 const MalshabimCard = ({ interviewers, events, handleMalshabsToSchedule }) => {
   const classes = useStyles();
   const { t } = useTranslation();
-  const [nameOrId, setNameOrId] = React.useState('');
-  const [selectedScheduling, setSelectedScheduling] = React.useState([t('unitControlPage.automaticScheduling')]);
+  const autoSchedulingValue = t('unitControlPage.automaticScheduling');
+  const [nameOrId, setNameOrId] = useState('');
+  const [selectedScheduling, setSelectedScheduling] = useState([autoSchedulingValue]);
+  const [selectSchedulingOptions, setSelectSchedulingOptions] = useState([]);
   const [selectedHour, setSelectedHour] = useState('');
+  const [hoursSelectOptions, setHoursSelectOptions] = useState([]);
   const [selectedUser, setSelectedUser] = useState('');
+  const [usersSelectOptions, setUsersSelectOptions] = useState([]);
+  const statusSelectOptions = [t('unitControlPage.isScheduled'), t('unitControlPage.notScheduled')];
   const [selectedStatus, setSelectedStatus] = useState('');
   const [tableData, setTableData] = useState();
   const [tableDataToDisplay, setTableDataToDisplay] = useState();
   const [chosenMalshabs, setChosenMalshabs] = useState([]);
-  const [hoursSelectOptions, setHoursSelectOptions] = useState([]);
-  const [usersSelectOptions, setUsersSelectOptions] = useState([]);
-  const statusSelectOptions = [t('unitControlPage.isScheduled'), t('unitControlPage.notScheduled')];
 
   const getInterviewersDisplay = (interviewersIds) => {
     const interviewersObjects = interviewers.filter((interviewer) => (
@@ -48,7 +48,6 @@ const MalshabimCard = ({ interviewers, events, handleMalshabsToSchedule }) => {
       { id: 1, name: t('malshabimTable.name') },
     ];
 
-    setUsersSelectOptions([]);
     const rowsData = events.sort((a, b) => new Date(a.time).getTime() - new Date(b.time).getTime())
       .map((event) => (
         {
@@ -81,6 +80,12 @@ const MalshabimCard = ({ interviewers, events, handleMalshabsToSchedule }) => {
 
   useEffect(() => {
     if (events) {
+      setSelectedScheduling([autoSchedulingValue]);
+      setUsersSelectOptions([]);
+      setSelectedUser('');
+      setNameOrId('');
+      setSelectedHour('');
+      setSelectedStatus('');
       handleRecievedEvents();
       const eventsHours = events.map((event) => new Date(event.time).toLocaleTimeString(
         'en-GB',
@@ -90,12 +95,15 @@ const MalshabimCard = ({ interviewers, events, handleMalshabsToSchedule }) => {
     }
   }, [events]);
 
+  useEffect(() => {
+    setSelectSchedulingOptions([...usersSelectOptions, autoSchedulingValue]);
+  }, [usersSelectOptions]);
+
   const handleChosenMalshabs = (selectedMalshabs) => {
     setChosenMalshabs(selectedMalshabs);
   };
 
   const handleSetSelectedValues = (selectedValues) => {
-    const autoSchedulingValue = t('unitControlPage.automaticScheduling');
     // if none of the selected values is 'auto' or 'auto' is the only selected value
     // then just set the values as is
     if (!selectedValues.includes(autoSchedulingValue) || selectedValues.length === 1) {
