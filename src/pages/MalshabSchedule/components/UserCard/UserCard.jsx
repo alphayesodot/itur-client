@@ -30,7 +30,7 @@ const UserCard = ({ user, selectedDate, choosenNodeGroup }) => {
   // formats date and returns hour in 24hour format
   const formatDate = (date) => new Date(date).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
   // replace last chars from string with ... if exceeds maximum allowed chars
-  const formatName = (name) => (name.length > 17 ? `${name.slice(0, 17)}...` : name);
+  const formatName = (name) => (name.length > 17 ? `${name.slice(0, 12)}...` : name);
 
   const getTotalNumberOfEvents = () => (`${t('unitControlPage.totalText')} ${events.length}`);
 
@@ -54,7 +54,7 @@ const UserCard = ({ user, selectedDate, choosenNodeGroup }) => {
                       <IconButton className={classes.deleteIcon}>
                         <DeleteOutlinedIcon />
                       </IconButton>
-                      <Typography className={classes.eventText}>
+                      <Typography component='span' className={classes.eventText}>
                         {formatDate(event.time)}
                         <Typography className={classes.nameText}>
                           {formatName(`${event.malshabShort?.firstName} ${event.malshabShort?.lastName}`)}
