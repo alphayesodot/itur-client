@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import Tooltip from '@material-ui/core/Tooltip';
 import { useTranslation } from 'react-i18next';
-import { Typography } from '@material-ui/core';
+import Typography from '@material-ui/core/Typography';
 import DashboardCard from '../DashboardCard/DashboardCard';
 import useStyles from './SideBarNav.styles';
 import malshabSearchIcon from '../../utils/images/aside/aside-malshab-search-button.svg';
@@ -32,9 +32,10 @@ import luzIconActive from '../../utils/images/aside/aside-luz-button-active.svg'
 import configApp from '../../appConf';
 import UserStoreInstance from '../../stores/User.store';
 
-const Sidebar = () => {
+const Sidebar = React.forwardRef((props, ref) => {
   const classes = useStyles();
   const { t } = useTranslation();
+  const location = useLocation();
   const [iconsToShow, setIconsToShow] = useState([]);
   const userRole = UserStoreInstance.userProfile.role;
   const iconDetails = {
@@ -53,38 +54,44 @@ const Sidebar = () => {
   };
   const createIcon = (iconDetailsObject) => {
     const src = iconDetailsObject.urlPostfix === window.location.pathname
-      ? iconDetailsObject.imgActive : iconDetailsObject.imgDef;
+      ? iconDetailsObject.imgActive
+      : iconDetailsObject.imgDef;
     return (
       <div className={classes.icon} key={iconDetailsObject.urlPostfix}>
-        <Link
-          className={classes.iconLink}
-          to={iconDetailsObject.urlPostfix}
-        >
+        <Link className={classes.iconLink} to={iconDetailsObject.urlPostfix}>
           <Tooltip placement='top' title={`${iconDetailsObject.title}`}>
-            <img className={classes.iconImg} src={src} alt={iconDetailsObject.title} />
+            <img
+              className={classes.iconImg}
+              src={src}
+              alt={iconDetailsObject.title}
+            />
           </Tooltip>
         </Link>
-        <Typography className={classes.iconTitle}>{iconDetailsObject.title}</Typography>
+        <Typography className={classes.iconTitle}>
+          {iconDetailsObject.title}
+        </Typography>
       </div>
     );
   };
 
   useEffect(() => {
-    setIconsToShow(Object.values(iconDetails).filter(
-      (iconDetail) => configApp.allowedUrlPostfixesOfRole[userRole]?.some(
-        (allowedUrl) => allowedUrl.route === iconDetail.urlPostfix && allowedUrl.sideBar,
-      ),
-    ));
-  }, [window.location.pathname]);
+    setIconsToShow(
+      Object.values(iconDetails)
+        .filter((iconDetail) => configApp.allowedUrlPostfixesOfRole[userRole]
+          ?.some(
+            (allowedUrl) => allowedUrl.route === iconDetail.urlPostfix && allowedUrl.sideBar,
+          )),
+    );
+  }, [location.pathname]);
 
   return (
-    <DashboardCard className={classes.root}>
+    <DashboardCard className={classes.root} ref={ref}>
       <div className={classes.iconGroup}>
         {iconsToShow.map((iconDetail) => createIcon(iconDetail))}
       </div>
       {createIcon(iconDetails.settings)}
     </DashboardCard>
   );
-};
+});
 
-export default withRouter(Sidebar);
+export default Sidebar;
