@@ -13,7 +13,6 @@ import BasicTable from '../BasicTable/BasicTable';
 import SelectBox from '../SelectBox/SelectBox';
 
 const selectSchedulingOptions = ['11', '21', '13', '23', '22', '33', 'שיבוץ אוטומטי'];
-const hoursSelectOptions = ['07:00', '07:30', '08:00', '08:30', '09:00', '09:30'];
 const usersSelectOptions = ['#1', '#2', '#3', '#4'];
 
 const MalshabimCard = ({ events, handleMalshabsToSchedule }) => {
@@ -26,8 +25,8 @@ const MalshabimCard = ({ events, handleMalshabsToSchedule }) => {
   const [selectedStatus, setSelectedStatus] = useState('');
   const [tableData, setTableData] = useState();
   const [tableDataToDisplay, setTableDataToDisplay] = useState();
-
-  const [chosenMalshabs, setChosenMalshabs] = React.useState([]);
+  const [chosenMalshabs, setChosenMalshabs] = useState([]);
+  const [hoursSelectOptions, setHoursSelectOptions] = useState([]);
   const statusSelectOptions = [t('unitControlPage.isScheduled'), t('unitControlPage.notScheduled')];
 
   const handleRecievedEvents = () => {
@@ -39,15 +38,16 @@ const MalshabimCard = ({ events, handleMalshabsToSchedule }) => {
       { id: 1, name: t('malshabimTable.name') },
     ];
 
-    const rowsData = events.map((event) => (
-      {
-        name: `${event.malshabShort.firstName} ${event.malshabShort.lastName}`,
-        id: event.malshabShort.id,
-        status: `${event.interviewersIds.length === 0 ? t('unitControlPage.notScheduled') : t('unitControlPage.isScheduled')}`,
-        users: event.interviewersIds.map((interviewerId) => interviewerId.slice(-2)).join(', '),
-        time: new Date(event.time).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }),
-      }
-    ));
+    const rowsData = events.sort((a, b) => new Date(a.time).getTime() - new Date(b.time).getTime())
+      .map((event) => (
+        {
+          name: `${event.malshabShort.firstName} ${event.malshabShort.lastName}`,
+          id: event.malshabShort.id,
+          status: `${event.interviewersIds.length === 0 ? t('unitControlPage.notScheduled') : t('unitControlPage.isScheduled')}`,
+          users: event.interviewersIds.map((interviewerId) => interviewerId.slice(-2)).join(', '),
+          time: new Date(event.time).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }),
+        }
+      ));
     setTableData({ columnData, rowsData });
     setTableDataToDisplay({ columnData, rowsData });
   };
@@ -70,6 +70,11 @@ const MalshabimCard = ({ events, handleMalshabsToSchedule }) => {
   useEffect(() => {
     if (events) {
       handleRecievedEvents();
+      const eventsHours = events.map((event) => new Date(event.time).toLocaleTimeString(
+        'en-GB',
+        { hour: '2-digit', minute: '2-digit' },
+      ));
+      setHoursSelectOptions([...new Set(eventsHours)]);
     }
   }, [events]);
 
