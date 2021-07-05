@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { useTranslation } from 'react-i18next';
@@ -8,9 +7,11 @@ import NodeGroupService from '../../services/nodeGroup.service';
 import UsersCard from './components/UsersCard/UsersCard';
 import ScheduleHeader from '../../common/ScheduleHeader/ScheduleHeader';
 import MalshabimCard from './components/MalshabimCard/MalshabimCard';
-import UserService from '../../services/user.service';
+import UserService, { Role } from '../../services/user.service';
 import UnitService from '../../services/unit.service';
 import EventService from '../../services/event.service';
+import CustomBackDrop from '../../common/CustomBackDrop/CustomBackDrop';
+import NodeService from '../../services/node.service';
 
 const MalshabSchedulePage = () => {
   const classes = useStyles();
@@ -26,7 +27,6 @@ const MalshabSchedulePage = () => {
     month: '2-digit',
     day: '2-digit',
   }));
-  const [users, setUsers] = useState([]);
 
   useEffect(() => {
     NodeGroupService.getNodeGroups().then((res) => {
@@ -41,57 +41,46 @@ const MalshabSchedulePage = () => {
     });
   }, []);
 
-  // useEffect(() => {
-  //   UserService.getUsersByUnitId().then((res) => {
-  //     setUsers(res.filter((user) => user.role === 'INTERVIEWER'));
-  //   }).catch(() => {
-  //     toast(t('error.server'));
-  //   });
-  // }, []);
+  const handleMalshabsToSchedule = () => {
+    // const handleMalshabsToSchedule = (chosenMalshabs, selectedScheduling) => {
+    // console.log('malshabs', chosenMalshabs);
+    // console.log('slectedScheduling', selectedScheduling);
 
-  useEffect(() => {
-    EventService.getEvents({ nodeId: '508f1f77bcf86cd7994390337' })
-      .then((eventsData) => {
-        setEvents(eventsData);
-      });
-    UserService.getUsersByUnitId().then((res) => {
-      setUsers(res.filter((user) => user.role === 'INTERVIEWER'));
-    }).catch(() => {
-      toast(t('error.server'));
-    });
-  }, []);
-
-  const handleMalshabsToSchedule = (chosenMalshabs, selectedScheduling) => {
-    console.log('malshabs', chosenMalshabs);
-    console.log('slectedScheduling', selectedScheduling);
-
-    if (selectedScheduling === t('unitControlPage.automaticScheduling')) {
-      // TODO: automatic selected malshabs to interviewers
-    } else {
-      chosenMalshabs.map((malshab) => {
-        scheduleMalshabToInterviewers(malshab, selectedScheduling);
-      });
-    }
+    // if (selectedScheduling === t('unitControlPage.automaticScheduling')) {
+    //   // TODO: automatic selected malshabs to interviewers
+    // } else {
+    //   chosenMalshabs.map((malshab) => {
+    //     scheduleMalshabToInterviewers(malshab, selectedScheduling);
+    //   });
+    // }
   };
 
-  const scheduleMalshabToInterviewers = (malshab, selectedScheduling) => {
-    const updatedInterviewers = interviewers.map((interviewer) => interviewer);
-  };
+  // const scheduleMalshabToInterviewers = (malshab, selectedScheduling) => {
+  //   const updatedInterviewers = interviewers.map((interviewer) => interviewer);
+  // };
 
   useEffect(() => {
     if (choosenNodeGroup) {
       setIsLoading(true);
       Promise.all(
         choosenNodeGroup?.usersIds?.map((userId) => UserService.getUserById(userId)),
-      ).then((res) => {
-        setInterviewers(res.filter((user) => user.role === 'INTERVIEWER'));
+      ).then(async (users) => {
+        setInterviewers(users.filter((user) => user.role === Role.Interviewer));
+        const nodesOfNodeGroup = await NodeService.getNodes({ nodeGroupId: choosenNodeGroup.id });
+        Promise.all(
+          nodesOfNodeGroup.map(({ id }) => (
+            EventService.getEvents({ nodeId: id, date: selectedDate })
+          )),
+        ).then((res) => {
+          setEvents(...res);
+        });
       }).catch(() => {
         toast(t('error.server'));
       }).finally(() => {
         setIsLoading(false);
       });
     }
-  }, [choosenNodeGroup]);
+  }, [choosenNodeGroup, selectedDate]);
 
   return (
     <div className={classes.root}>
@@ -103,20 +92,30 @@ const MalshabSchedulePage = () => {
         setSelectedDate={setSelectedDate}
         setIsLoading={setIsLoading}
         interviewers={interviewers}
-        selectFirst={false}
       />
-      {choosenNodeGroup ? (
-        <div className={classes.mainInner}>
-          <MalshabimCard events={events} handleMalshabsToSchedule={handleMalshabsToSchedule} />
-          <UsersCard users={interviewers} selectedDate={selectedDate} />
-        </div>
-      )
-        : (
-          <NodeGroups
-            unitNodesGroups={unitNodesGroups}
-            setChoosenNodeGroup={setChoosenNodeGroup}
-          />
-        )}
+      {isLoading ? <CustomBackDrop /> : (
+        <>
+          {choosenNodeGroup ? (
+            <div className={classes.mainInner}>
+              <MalshabimCard
+                events={events}
+                handleMalshabsToSchedule={handleMalshabsToSchedule}
+              />
+              <UsersCard
+                users={interviewers}
+                choosenNodeGroup={choosenNodeGroup}
+                selectedDate={selectedDate}
+              />
+            </div>
+          )
+            : (
+              <NodeGroups
+                unitNodesGroups={unitNodesGroups}
+                setChoosenNodeGroup={setChoosenNodeGroup}
+              />
+            )}
+        </>
+      )}
     </div>
   );
 };

@@ -3,10 +3,7 @@ import {
   Button,
   FormControl,
   InputLabel,
-  MenuItem,
   OutlinedInput,
-  Select,
-  TextField,
   Typography,
 } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
@@ -14,10 +11,8 @@ import DashboardCard from '../../../../common/DashboardCard/DashboardCard';
 import useStyles from './MalshabimCard.styles';
 import BasicTable from '../GenericTable';
 import SelectBox from '../SelectBox/SelectBox';
-import EventService from '../../../../services/event.service';
 
 const selectSchedulingOptions = ['11', '21', '13', '23', '22', '33', 'שיבוץ אוטומטי'];
-
 const hoursSelectOptions = ['07:00', '07:30', '08:00', '08:30', '09:00', '09:30'];
 const usersSelectOptions = ['#1', '#2', '#3', '#4'];
 
@@ -29,15 +24,13 @@ const MalshabimCard = ({ events, handleMalshabsToSchedule }) => {
   const [selectedHour, setSelectedHour] = useState('');
   const [selectedUser, setSelectedUser] = useState('');
   const [selectedStatus, setSelectedStatus] = useState('');
-  // const [events, setEvents] = useState([]);
   const [tableData, setTableData] = useState();
   const [tableDataToDisplay, setTableDataToDisplay] = useState();
 
   const [chosenMalshabs, setChosenMalshabs] = React.useState([]);
   const statusSelectOptions = [t('unitControlPage.isScheduled'), t('unitControlPage.notScheduled')];
 
-  const handleRecievedEvents = (eventsData) => {
-    // setEvents(eventsData);
+  const handleRecievedEvents = () => {
     const columnData = [
       { id: 5, name: t('malshabimTable.time') },
       { id: 4, name: t('malshabimTable.users') },
@@ -46,7 +39,7 @@ const MalshabimCard = ({ events, handleMalshabsToSchedule }) => {
       { id: 1, name: t('malshabimTable.name') },
     ];
 
-    const rowsData = eventsData.map((event) => (
+    const rowsData = events.map((event) => (
       {
         name: `${event.malshabShort.firstName} ${event.malshabShort.lastName}`,
         id: event.malshabShort.id,
@@ -75,7 +68,9 @@ const MalshabimCard = ({ events, handleMalshabsToSchedule }) => {
   }, [selectedStatus, selectedHour, selectedUser, nameOrId]);
 
   useEffect(() => {
-    handleRecievedEvents(events);
+    if (events) {
+      handleRecievedEvents();
+    }
   }, [events]);
 
   const handleChosenMalshabs = (selectedMalshabs) => {
@@ -111,10 +106,9 @@ const MalshabimCard = ({ events, handleMalshabsToSchedule }) => {
       <div className={classes.malshabimTopRow}>
         <Typography className={classes.malshabimText}>
           {t('unitControlPage.malshabimText')}
-          <span>{`${t('unitControlPage.totalText')} - ${events.length}`}</span>
+          <span>{`${t('unitControlPage.totalText')} - ${events?.length}`}</span>
         </Typography>
         <div className={classes.selectionBoxes}>
-
           <FormControl size='small' variant='outlined' className={classes.formControlNameOrId}>
             <InputLabel className={classes.formNameOrIdInputLabel}>{t('unitControlPage.nameOrIdText')}</InputLabel>
             <OutlinedInput className={classes.formNameOrIdInputText} value={nameOrId} onChange={(event) => setNameOrId(event.target.value)} label='nameOrId' />
@@ -144,14 +138,12 @@ const MalshabimCard = ({ events, handleMalshabsToSchedule }) => {
             setSelectedValue={setSelectedStatus}
           />
         </div>
-
       </div>
 
       <BasicTable
         tableData={tableDataToDisplay}
         handleChosenMalshabs={handleChosenMalshabs}
       />
-
       <div className={classes.bottomRow}>
         <div className={classes.selectionBox}>
           <span>
@@ -168,7 +160,7 @@ const MalshabimCard = ({ events, handleMalshabsToSchedule }) => {
           />
           )}
         </div>
-        <Button disabled={chosenMalshabs.length === 0} className={classes.confirmButton} onClick={handleScheduling}>{t('title.confirm')}</Button>
+        <Button disabled={!chosenMalshabs.length} className={classes.confirmButton} onClick={handleScheduling}>{t('title.confirm')}</Button>
       </div>
     </DashboardCard>
   );

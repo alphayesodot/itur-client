@@ -5,22 +5,28 @@ import { toast } from 'react-toastify';
 import DeleteOutlinedIcon from '@material-ui/icons/DeleteOutlined';
 import DashboardCard from '../../../../common/DashboardCard/DashboardCard';
 import useStyles from './UserCard.styles';
+import ScheduleStore from '../../../../stores/Schedule.store';
 import userIcon from '../../../../utils/images/unitControlPage/userpic-blue-small.svg';
-import EventService from '../../../../services/event.service';
 
-const UserCard = ({ user, selectedDate }) => {
+const UserCard = ({ user, selectedDate, choosenNodeGroup }) => {
   const classes = useStyles();
   const { t } = useTranslation();
 
   const [events, setEvents] = useState([]);
 
   useEffect(() => {
-    EventService.getEvents({ date: selectedDate, interviewerId: user.id }).then((res) => {
-      setEvents(res);
-    }).catch(() => {
-      toast(t('error.server'));
-    });
-  }, []);
+    if (choosenNodeGroup && selectedDate) {
+      ScheduleStore.getScheduleOfInterviewer(
+        selectedDate,
+        choosenNodeGroup.id,
+        user.id,
+      ).then((res) => {
+        setEvents(res);
+      }).catch(() => {
+        toast(t('error.server'));
+      });
+    }
+  }, [selectedDate, choosenNodeGroup]);
 
   // formats date and returns hour in 24hour format
   const formatDate = (date) => new Date(date).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
@@ -50,7 +56,7 @@ const UserCard = ({ user, selectedDate }) => {
                         <DeleteOutlinedIcon />
                       </IconButton>
                       <Typography className={`${classes.eventText}`}>
-                        {`${formatDate(event.time)} ${formatName(event.id)}`}
+                        {`${formatDate(event.time)} ${formatName(`${event.malshabShort?.firstName} ${event.malshabShort?.lastName}`)}`}
                       </Typography>
                     </div>
                   </li>

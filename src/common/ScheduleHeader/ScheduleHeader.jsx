@@ -44,7 +44,9 @@ const Header = ({
           inputClassName={`${commonInputClasses.root} ${classes.dateInput}`}
         />
         <NodeGroupSelect
-          selectedNodeGroup={selectedNodeGroup}
+          selectedNodeGroup={selectedNodeGroup
+            ? { ...selectedNodeGroup, label: selectedNodeGroup.name }
+            : selectedNodeGroup}
           setSelectedNodeGroup={setSelectedNodeGroup}
           selectFirst={selectFirst}
           selectClassName={commonInputClasses.root}

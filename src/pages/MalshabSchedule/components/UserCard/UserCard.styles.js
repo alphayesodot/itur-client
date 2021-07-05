@@ -60,7 +60,7 @@ const useStyles = makeStyles((theme) => ({
   },
   eventText: {
     fontSize: '0.875rem',
-    wordSpacing: '0.8rem',
+    wordSpacing: '0.1rem',
   },
   noEvents: {
     display: 'flex',

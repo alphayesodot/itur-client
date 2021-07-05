@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import React, { useEffect, useState } from 'react';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -10,9 +9,8 @@ import Paper from '@material-ui/core/Paper';
 import Checkbox from '@material-ui/core/Checkbox';
 import useStyles from './index.styles';
 
-export default function BasicTable({ tableData, handleChosenMalshabs }) {
+const BasicTable = ({ tableData, handleChosenMalshabs }) => {
   const classes = useStyles();
-
   const [rows, setRows] = useState([]);
   const [chooseAllRows, setChooseAllRows] = useState(false);
 
@@ -21,10 +19,10 @@ export default function BasicTable({ tableData, handleChosenMalshabs }) {
       prevState.map((rowData) => ({
         ...rowData,
         checked: rowData.id === row.id ? !rowData.checked : rowData.checked,
-
       }))
     ));
   };
+
   useEffect(() => {
     setRows(tableData?.rowsData.map((row) => ({ ...row, checked: false })));
   }, [tableData]);
@@ -39,13 +37,12 @@ export default function BasicTable({ tableData, handleChosenMalshabs }) {
     setRows((prevState) => (
       prevState.map((row) => ({ ...row, checked: event.target.checked }))
     ));
-
     setChooseAllRows(event.target.checked);
   };
 
   return (
     <TableContainer component={Paper} className={classes.root}>
-      <Table stickyHeader className={classes.table} aria-label='simple table'>
+      <Table stickyHeader aria-label='simple table'>
         <TableHead>
           <TableRow>
             {tableData?.columnData.map((column) => (
@@ -53,7 +50,12 @@ export default function BasicTable({ tableData, handleChosenMalshabs }) {
                 <TableCell>{column.name}</TableCell>
               </React.Fragment>
             ))}
-            <TableCell><Checkbox checked={chooseAllRows} onChange={(event) => handleChooseAll(event)} /></TableCell>
+            <TableCell>
+              <Checkbox
+                checked={chooseAllRows}
+                onChange={(event) => handleChooseAll(event)}
+              />
+            </TableCell>
           </TableRow>
         </TableHead>
 
@@ -66,7 +68,10 @@ export default function BasicTable({ tableData, handleChosenMalshabs }) {
               <TableCell>{row.id}</TableCell>
               <TableCell>{row.name}</TableCell>
               <TableCell>
-                <Checkbox checked={row.checked} onChange={() => handleChange(row)} />
+                <Checkbox
+                  checked={row.checked}
+                  onChange={() => handleChange(row)}
+                />
               </TableCell>
             </TableRow>
           ))}
@@ -74,4 +79,6 @@ export default function BasicTable({ tableData, handleChosenMalshabs }) {
       </Table>
     </TableContainer>
   );
-}
+};
+
+export default BasicTable;

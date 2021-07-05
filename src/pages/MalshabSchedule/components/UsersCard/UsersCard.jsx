@@ -5,7 +5,7 @@ import DashboardCard from '../../../../common/DashboardCard/DashboardCard';
 import UserCard from '../UserCard/UserCard';
 import useStyles from './UsersCard.styles';
 
-const UsersCard = ({ users, selectedDate }) => {
+const UsersCard = ({ users, selectedDate, choosenNodeGroup }) => {
   const classes = useStyles();
   const { t } = useTranslation();
   const [scheduleHasChanged, setScheduleHasChanged] = useState(false);
@@ -21,7 +21,11 @@ const UsersCard = ({ users, selectedDate }) => {
       </div>
       <div className={classes.usersList}>
         {users.map((user) => (
-          <UserCard user={user} selectedDate={selectedDate} />
+          <UserCard
+            user={user}
+            selectedDate={selectedDate}
+            choosenNodeGroup={choosenNodeGroup}
+          />
         ))}
       </div>
     </DashboardCard>

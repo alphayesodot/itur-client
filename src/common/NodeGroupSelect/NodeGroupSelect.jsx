@@ -16,6 +16,7 @@ const NodeGroupSelect = ({
   setSelectedNodeGroup,
   selectClassName,
   isMultiple,
+  selectFirst,
 }) => {
   const { t } = useTranslation();
   const [nodeGroups, setNodeGroups] = useState([]);
@@ -24,7 +25,9 @@ const NodeGroupSelect = ({
     nodeGroupService.getNodeGroups().then((res) => {
       const mappedRes = res.map((nodeGroup) => ({ ...nodeGroup, label: nodeGroup.name }));
       setNodeGroups(mappedRes);
-      setSelectedNodeGroup(isMultiple ? [] : mappedRes[0]);
+      if (selectFirst) {
+        setSelectedNodeGroup(isMultiple ? [] : mappedRes[0]);
+      }
     }).catch(() => {
       toast(t('error.server'));
     });
