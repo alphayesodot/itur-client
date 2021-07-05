@@ -24,7 +24,6 @@ const useStyles = makeStyles((theme) => ({
     color: 'rgb(141 148 160 / 0.31)',
     fontSize: '2rem',
     fontWeight: 'bold',
-
   },
 }));
 

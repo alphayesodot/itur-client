@@ -47,7 +47,7 @@ const UserCard = ({ user, selectedDate, choosenNodeGroup }) => {
       <div className={classes.cardBody}>
         {events.length
           ? (
-            <div className={classes.eventsBox}>
+            <div>
               <ul className={classes.eventsList}>
                 {events.map((event) => (
                   <li className={classes.eventItem}>

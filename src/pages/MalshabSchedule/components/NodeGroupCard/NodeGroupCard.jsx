@@ -64,7 +64,13 @@ const NodeGroupCard = ({ nodeGroup, setChoosenNodeGroup }) => {
       <Typography className={classes.malshabs}>
         <strong>{`${scheduledEvents.length}/${nodeGroupEvents.length}`}</strong>
       </Typography>
-      <img src={scheduledEvents.length === nodeGroupEvents.length ? `${POSITIVE}` : `${WARNING}`} alt='status' className={classes.iconImg} />
+      <img
+        src={scheduledEvents.length === nodeGroupEvents.length
+          ? `${POSITIVE}`
+          : `${WARNING}`}
+        alt='status'
+        className={classes.iconImg}
+      />
     </DashboardCard>
   );
 };

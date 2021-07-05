@@ -30,9 +30,12 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'left',
   },
   dateInput: {
-    margin: '0 1em',
+    marginLeft: '1em',
     paddingTop: '0.2rem',
     height: '2.3rem',
+    [theme.breakpoints.down('sm')]: {
+      width: 'calc(100% - 1em)',
+    },
   },
 }));
 

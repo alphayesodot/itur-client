@@ -37,8 +37,6 @@ const useStyles = makeStyles((theme) => ({
     boxSizing: 'border-box',
     overflowY: 'scroll',
   },
-  eventsBox: {
-  },
   innerRow: {
     display: 'flex',
     alignItems: 'center',

@@ -9,7 +9,7 @@ import {
 import { useTranslation } from 'react-i18next';
 import DashboardCard from '../../../../common/DashboardCard/DashboardCard';
 import useStyles from './MalshabimCard.styles';
-import BasicTable from '../GenericTable';
+import BasicTable from '../GenericTable/GenericTable';
 import SelectBox from '../SelectBox/SelectBox';
 
 const selectSchedulingOptions = ['11', '21', '13', '23', '22', '33', 'שיבוץ אוטומטי'];

@@ -12,6 +12,7 @@ const useStyles = makeStyles((theme) => ({
       marginBottom: '2rem',
       width: '100%',
       height: '65%',
+      minHeight: '30rem',
       padding: '0',
     },
   },
@@ -27,11 +28,11 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '1.1rem',
     fontWeight: 'bolder',
     lineHeight: '1.3rem',
+    marginRight: 'auto',
     '& span': {
       fontWeight: '200',
       paddingLeft: '0.5rem',
     },
-    marginRight: 'auto',
   },
   formControlNameOrId: {
     paddingLeft: '0.38rem',
@@ -96,9 +97,6 @@ const useStyles = makeStyles((theme) => ({
   selectedText: {
     color: 'white',
     paddingRight: '1em',
-    // fontSize: '14px',
-    // lineHeight: '16px',
-    // fontWeight: '200',
   },
 }));
 

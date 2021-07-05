@@ -7,7 +7,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Checkbox from '@material-ui/core/Checkbox';
-import useStyles from './index.styles';
+import useStyles from './GenericTable.styles';
 
 const BasicTable = ({ tableData, handleChosenMalshabs }) => {
   const classes = useStyles();
