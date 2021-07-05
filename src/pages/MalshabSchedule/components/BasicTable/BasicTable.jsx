@@ -7,7 +7,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Checkbox from '@material-ui/core/Checkbox';
-import useStyles from './GenericTable.styles';
+import useStyles from './BasicTable.styles';
 
 const BasicTable = ({ tableData, handleChosenMalshabs }) => {
   const classes = useStyles();
@@ -58,7 +58,6 @@ const BasicTable = ({ tableData, handleChosenMalshabs }) => {
             </TableCell>
           </TableRow>
         </TableHead>
-
         <TableBody>
           {rows?.map((row) => (
             <TableRow key={row.id}>

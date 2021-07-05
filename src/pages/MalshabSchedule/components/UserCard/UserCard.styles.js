@@ -31,11 +31,12 @@ const useStyles = makeStyles((theme) => ({
   },
   cardBody: {
     width: '100%',
-    height: '85%',
+    height: '75%',
     position: 'relative',
     padding: '0.6rem 0 0 0.4rem',
     boxSizing: 'border-box',
     overflowY: 'scroll',
+    display: 'flex',
   },
   innerRow: {
     display: 'flex',
@@ -44,6 +45,9 @@ const useStyles = makeStyles((theme) => ({
   },
   deleteIcon: {
     padding: '0.3rem',
+  },
+  eventsDiv: {
+    width: '100%',
   },
   eventsList: {
     direction: 'ltr',

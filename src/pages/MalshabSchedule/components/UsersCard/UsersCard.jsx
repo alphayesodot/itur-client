@@ -10,6 +10,10 @@ const UsersCard = ({ users, selectedDate, choosenNodeGroup }) => {
   const { t } = useTranslation();
   const [scheduleHasChanged, setScheduleHasChanged] = useState(false);
 
+  const handleOnSave = () => {
+
+  };
+
   return (
     <DashboardCard className={classes.root}>
       <div className={classes.topRow}>
@@ -17,7 +21,13 @@ const UsersCard = ({ users, selectedDate, choosenNodeGroup }) => {
           {t('unitControlPage.usersText')}
           <span>{`${t('unitControlPage.totalText')} - ${users.length}`}</span>
         </Typography>
-        <Button disabled={!scheduleHasChanged} className={`${classes.button} ${!scheduleHasChanged ? classes.disabled : ''}`}>{t('unitControlPage.saveSchedule')}</Button>
+        <Button
+          disabled={!scheduleHasChanged}
+          className={`${classes.button} ${!scheduleHasChanged ? classes.disabled : ''}`}
+          onClick={handleOnSave}
+        >
+          {t('unitControlPage.saveSchedule')}
+        </Button>
       </div>
       <div className={classes.usersList}>
         {users.map((user) => (
