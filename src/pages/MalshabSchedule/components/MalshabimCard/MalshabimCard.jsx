@@ -13,9 +13,8 @@ import BasicTable from '../BasicTable/BasicTable';
 import SelectBox from '../SelectBox/SelectBox';
 
 const selectSchedulingOptions = ['11', '21', '13', '23', '22', '33', 'שיבוץ אוטומטי'];
-const usersSelectOptions = ['#1', '#2', '#3', '#4'];
 
-const MalshabimCard = ({ events, handleMalshabsToSchedule }) => {
+const MalshabimCard = ({ interviewers, events, handleMalshabsToSchedule }) => {
   const classes = useStyles();
   const { t } = useTranslation();
   const [nameOrId, setNameOrId] = React.useState('');
@@ -27,7 +26,17 @@ const MalshabimCard = ({ events, handleMalshabsToSchedule }) => {
   const [tableDataToDisplay, setTableDataToDisplay] = useState();
   const [chosenMalshabs, setChosenMalshabs] = useState([]);
   const [hoursSelectOptions, setHoursSelectOptions] = useState([]);
+  const [usersSelectOptions, setUsersSelectOptions] = useState([]);
   const statusSelectOptions = [t('unitControlPage.isScheduled'), t('unitControlPage.notScheduled')];
+
+  const getInterviewersDisplay = (interviewersIds) => {
+    const interviewersObjects = interviewers.filter((interviewer) => (
+      interviewersIds.includes(interviewer.id)
+    ));
+    const interviewersSigns = interviewersObjects.map(({ name }) => name.slice(-4));
+    setUsersSelectOptions((prevValue) => [...prevValue, ...interviewersSigns]);
+    return interviewersSigns.join(',');
+  };
 
   const handleRecievedEvents = () => {
     const columnData = [
@@ -38,13 +47,14 @@ const MalshabimCard = ({ events, handleMalshabsToSchedule }) => {
       { id: 1, name: t('malshabimTable.name') },
     ];
 
+    setUsersSelectOptions([]);
     const rowsData = events.sort((a, b) => new Date(a.time).getTime() - new Date(b.time).getTime())
       .map((event) => (
         {
           name: `${event.malshabShort.firstName} ${event.malshabShort.lastName}`,
           id: event.malshabShort.id,
           status: `${event.interviewersIds.length === 0 ? t('unitControlPage.notScheduled') : t('unitControlPage.isScheduled')}`,
-          users: event.interviewersIds.map((interviewerId) => interviewerId.slice(-2)).join(', '),
+          users: getInterviewersDisplay(event.interviewersIds),
           time: new Date(event.time).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' }),
         }
       ));
