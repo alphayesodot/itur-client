@@ -11,7 +11,6 @@ import userIcon from '../../../../utils/images/unitControlPage/userpic-blue-smal
 const UserCard = ({ user, selectedDate, choosenNodeGroup }) => {
   const classes = useStyles();
   const { t } = useTranslation();
-
   const [events, setEvents] = useState([]);
 
   useEffect(() => {
@@ -26,7 +25,7 @@ const UserCard = ({ user, selectedDate, choosenNodeGroup }) => {
         toast(t('error.server'));
       });
     }
-  }, [selectedDate, choosenNodeGroup]);
+  }, [user, selectedDate, choosenNodeGroup]);
 
   // formats date and returns hour in 24hour format
   const formatDate = (date) => new Date(date).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });

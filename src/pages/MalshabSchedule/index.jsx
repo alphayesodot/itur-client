@@ -61,7 +61,6 @@ const MalshabSchedulePage = () => {
 
   useEffect(() => {
     if (choosenNodeGroup) {
-      setIsLoading(true);
       Promise.all(
         choosenNodeGroup?.usersIds?.map((userId) => UserService.getUserById(userId)),
       ).then(async (users) => {
@@ -76,8 +75,6 @@ const MalshabSchedulePage = () => {
         });
       }).catch(() => {
         toast(t('error.server'));
-      }).finally(() => {
-        setIsLoading(false);
       });
     }
   }, [choosenNodeGroup, selectedDate]);

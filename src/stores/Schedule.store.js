@@ -43,6 +43,7 @@ class ScheduleStore {
         }),
       })),
     );
+
     this.schedules.push({
       date: new Date(date),
       nodeGroupId: nodeGroup.id,
