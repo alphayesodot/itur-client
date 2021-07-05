@@ -18,7 +18,7 @@ const filterSearch = (prefix: string, allQuestionnaireRows: Array, setQuestionna
   setQuestionnaireToShow(searchResults);
 };
 
-const Header = ({ allQuestionnaireRows, setQuestionnaireToShow }) => {
+const Header = ({ allQuestionnaireRows, setQuestionnaireToShow, openDialog }) => {
   const classes = useStyles();
   const [inputValue, setInputValue] = useState('');
   const { t } = useTranslation();
@@ -31,7 +31,7 @@ const Header = ({ allQuestionnaireRows, setQuestionnaireToShow }) => {
         <div className={classes.main}>
           <Button
             className={`${classes.ceartionButton} ${classes.item}`}
-            onClick={() => { console.log('create....'); }}
+            onClick={openDialog}
           >
             {t('button.newQuestionnaire')}
           </Button>

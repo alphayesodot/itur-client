@@ -5,7 +5,8 @@ import useStyles from './OpetionButton.styles';
 
 /**
  *
- * @param {*} menuItems array of objects with the properties: onClick, content
+ * @param {*} menuItems array of objects with the properties: onClick, content(=the button tag)
+ * @param {*} popUps array of dialogs that may be called from this button
  * @returns This is a button with '3-dots-menu', which opens an options menue
  */
 const OptionsButton = ({ menuItems, popUps }) => {

@@ -98,6 +98,7 @@ const resources = {
         enter: 'כניסה',
         newQuestionnaire: 'שאלון חדש',
         createReport: 'יצירת דוח',
+        saveQuestionnaire: 'שמירת שאלון',
       },
       day: {
         1: 'ראשון',

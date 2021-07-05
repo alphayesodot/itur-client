@@ -4,7 +4,7 @@ const questionnaires = [
   {
     id: '507f1f77bcf86cd7994390555',
     name: 'שאלון 1',
-    targetRoles: Role.malshab,
+    targetRoles: [Role.malshab],
     questions: [],
     nodes: [],
     createdBy: '507f1f77bcf86cd799439031',
@@ -14,7 +14,7 @@ const questionnaires = [
   {
     id: '507f1f77bcf86cd7994390551',
     name: 'שאלון 2',
-    targetRoles: Role.malshab,
+    targetRoles: [Role.malshab],
     questions: [],
     nodes: [],
     createdBy: '507f1f77bcf86cd799439031',

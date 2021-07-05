@@ -44,7 +44,7 @@ const MultipleChoice = ({ options, setOptions, answer, setAnswer, multipleAnswer
           }
         }}
       />
-      {options.length
+      {options?.length
         ? (
           <FormControl className={classes.radioContainer} component='fieldset'>
             <FormLabel component='legend'>{t('question.answers')}</FormLabel>

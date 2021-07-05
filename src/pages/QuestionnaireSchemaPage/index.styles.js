@@ -50,6 +50,7 @@ const useStyles = makeStyles((theme) => ({
     margin: '0 2.5em',
   },
   tableContainer: {
+    maxHeight: 'calc(100vh - 25rem)',
     width: '43%',
     paddingLeft: '2.5em',
     marginRight: '5%',

@@ -33,7 +33,7 @@ const DataTable = ({ rowsData, columnNames }) => {
               {row.data.map((cell, cellIndex) => (
                 <TableCell
                   // eslint-disable-next-line react/no-array-index-key
-                  key={`${rowIndex}-${cellIndex}`}
+                  key={`${row.id}-${rowIndex}-${cellIndex}`}
                   className={classes.cell}
                   align='center'
                 >

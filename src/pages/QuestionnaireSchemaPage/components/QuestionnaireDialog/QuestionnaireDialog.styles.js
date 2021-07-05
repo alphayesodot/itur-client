@@ -167,6 +167,30 @@ const useStyles = makeStyles((theme) => ({
     width: '42px',
     textAlign: 'center',
   },
+  actions: {
+    margin: 'auto',
+    alignItems: 'right',
+    marginTop: '1rem',
+    width: '100%',
+    boxSizing: 'border-box',
+    padding: 0,
+  },
+  saveButton: {
+    backgroundColor: theme.palette.dialog.primary,
+    borderRadius: '25px',
+    padding: '0.5rem 1rem',
+    color: 'white',
+    border: '1px solid transparent',
+    '&:hover': {
+      backgroundColor: 'white',
+      color: theme.palette.dialog.primary,
+      border: `1px solid ${theme.palette.dialog.primary}`,
+    },
+  },
+  disabledButton: {
+    backgroundColor: theme.palette.dialog.secondaryMid,
+    border: '1px solid transparent',
+  },
 }));
 
 export default useStyles;

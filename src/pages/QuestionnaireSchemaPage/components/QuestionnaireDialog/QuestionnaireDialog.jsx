@@ -1,34 +1,42 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button, DialogActions, DialogContent, TextField, Zoom } from '@material-ui/core';
 import Tooltip from '@material-ui/core/Tooltip';
 import { toast } from 'react-toastify';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox, { CheckboxProps } from '@material-ui/core/Checkbox';
-import NodeGroupService from '../../../../services/nodeGroup.service';
-import NodeService from '../../../../services/node.service';
+import Checkbox from '@material-ui/core/Checkbox';
 import useStyles from './QuestionnaireDialog.styles';
 import CustomDialog from '../../../../common/CustomDialog/CustomDialog';
-import { UserService, Role } from '../../../../services/user.service';
-import UserStoreInstance from '../../../../stores/User.store';
+import { Role } from '../../../../services/user.service';
 import DashboardCard from '../../../../common/DashboardCard/DashboardCard';
 import GenericSelect from '../../../../common/GenericSelect/GenericSelect';
-import addImg from '../../../../utils/images/general/add-icon-blue.svg';
 import Question from '../Question/Question';
+import { QuestionnaireSchemaService, QuestionType } from '../../../../services/QuestionnaireSchema.service';
 
 const QuestionnaireDialog = ({
   open,
   onClose,
   allNodes,
-  updateQuestionnaire,
+  setQuestionnaireToAdd,
+  setQuestionnaireToEdit,
   currentQuestionnaire }) => {
+  const isCurrentQuestionnaire = currentQuestionnaire
+  && Object.keys(currentQuestionnaire).length > 0;
   const classes = useStyles();
   const { t } = useTranslation();
-  const [checkedNodes, setCheckedNodes] = useState([]);
-  const [checkedRoles, setCheckedRoles] = useState([]);
-  const [questionnaireNameInput, setQuestionnaireNameInput] = useState('');
-  const [questionsArr, setQuestionsArr] = useState([]);
+  const [checkedNodes, setCheckedNodes] = useState(
+    isCurrentQuestionnaire ? currentQuestionnaire.nodes : [],
+  );
+  const [checkedRoles, setCheckedRoles] = useState(
+    isCurrentQuestionnaire ? currentQuestionnaire.targetRoles : [],
+  );
+  const [questionnaireNameInput, setQuestionnaireNameInput] = useState(
+    isCurrentQuestionnaire ? currentQuestionnaire.name : '',
+  );
+  const [questionsArr, setQuestionsArr] = useState(
+    isCurrentQuestionnaire ? currentQuestionnaire.questions : [],
+  );
   const allRoles = [
     { id: Role.Interviewer,
       name: t('roles.interviewer'),
@@ -55,9 +63,12 @@ const QuestionnaireDialog = ({
       name: t('roles.malshab'),
     }];
 
-  useEffect(async () => {
-    if (!open) return;
-  }, [open]);
+  const reset = () => {
+    setCheckedNodes([]);
+    setCheckedRoles([]);
+    setQuestionnaireNameInput('');
+    setQuestionsArr([]);
+  };
 
   const updateCheckedNodes = (nodeId) => {
     const idx = checkedNodes.indexOf(nodeId);
@@ -75,10 +86,69 @@ const QuestionnaireDialog = ({
   };
 
   const deleteQuestion = (questionIdx) => {
-    console.log(questionIdx);
     const tmpQuestionsArr = [...questionsArr];
     tmpQuestionsArr.splice(questionIdx, 1);
     setQuestionsArr([...tmpQuestionsArr]);
+  };
+
+  const updateQuestion = (question, questionIdx) => {
+    const tmpQuestionsArr = [...questionsArr];
+    tmpQuestionsArr[questionIdx] = question;
+    setQuestionsArr([...tmpQuestionsArr]);
+  };
+
+  const prepareQuestionArr = (questions) => {
+    const preparedQuestions = questions.map((question) => {
+      const questionObject = {
+        title: question.title,
+        type: question.type,
+        required: question.required,
+        description: question.description,
+      };
+      switch (question.type) {
+        case QuestionType.open:
+          questionObject.isShort = question.isShort;
+          break;
+        case QuestionType.multipleChoice:
+        case QuestionType.checkbox:
+          questionObject.options = question.isShort;
+          questionObject.answer = question.answer;
+          questionObject.other = question.other;
+          break;
+        case QuestionType.linearScale:
+          questionObject.min = { tag: question.minTag, value: question.minVal };
+          questionObject.max = { tag: question.maxTag, value: question.maxVal };
+          break;
+        default:
+          break;
+      }
+      return questionObject;
+    });
+    return preparedQuestions;
+  };
+
+  const onSubmit = async () => {
+    try {
+      const questionnaireSchema = {
+        name: questionnaireNameInput,
+        targetRoles: [...checkedRoles],
+        nodes: [...checkedNodes],
+        questions: prepareQuestionArr(questionsArr),
+        updatedAt: new Date(),
+      };
+      if (Object.keys(currentQuestionnaire).length) {
+        questionnaireSchema.id = currentQuestionnaire.id;
+        const updatedQuestionnaire = await QuestionnaireSchemaService.update(questionnaireSchema);
+        setQuestionnaireToEdit(updatedQuestionnaire);
+      } else {
+        const createdQuestionnaire = await QuestionnaireSchemaService.create(questionnaireSchema);
+        setQuestionnaireToAdd(createdQuestionnaire);
+        reset();
+      }
+      onClose();
+    } catch (error) {
+      toast(error);
+    }
   };
 
   const content = (
@@ -101,7 +171,7 @@ const QuestionnaireDialog = ({
               onChange={(e) => { setQuestionnaireNameInput(e.target.value); }}
             />
           </div>
-          <div>
+          <>
             <div className={classes.label}>{t('label.intendedTo')}</div>
             <GenericSelect
               options={allRoles}
@@ -110,7 +180,7 @@ const QuestionnaireDialog = ({
               selectClassName={classes.select}
               isMultiple
             />
-          </div>
+          </>
         </div>
         <div className={classes.nodesContainer}>
           <div className={classes.label}>{t('title.nodes')}</div>
@@ -145,13 +215,9 @@ const QuestionnaireDialog = ({
             )}
         </div>
       </div>
-      <div claaName={classes.questions}>
+      <div className={classes.questions}>
         <div className={classes.questionsTitle}>
           {t('title.questions')}
-          <Button style={{ backgroundColor: 'transparent' }} className={classes.addButton}>
-            <img className={classes.iconImg} alt='+' src={addImg} />
-            {t('actions.addQuestion')}
-          </Button>
         </div>
         <DashboardCard className={classes.questionsDashBoard}>
           <div className={classes.questionnaireCreationTitle}>
@@ -170,19 +236,27 @@ const QuestionnaireDialog = ({
                     currentQuestion={question}
                     addQuestion={addQuestion}
                     deleteQuestion={() => { deleteQuestion(idx); }}
+                    updateQuestion={(q) => { updateQuestion(q, idx); }}
                   />
                 </div>
               ))}
               <div className={classes.questionLine}>
                 <span className={classes.number} />
-                <Question addQuestion={addQuestion} deleteQuestion={deleteQuestion} />
+                <Question addQuestion={addQuestion} deleteQuestion={() => {}} />
               </div>
             </div>
-
           </div>
         </DashboardCard>
-
       </div>
+      <DialogActions classes={{ spacing: classes.actions }}>
+        <Button
+          classes={{ disabled: classes.disabledButton }}
+          className={classes.saveButton}
+          onClick={onSubmit}
+        >
+          {t('button.saveQuestionnaire')}
+        </Button>
+      </DialogActions>
     </DialogContent>
   );
 

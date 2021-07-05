@@ -36,9 +36,13 @@ const useStyles = makeStyles((theme) => ({
     direction: 'ltr',
     border: '3px solid',
     margin: 0,
-    padding: '0.3rem',
-    paddingLeft: '1rem',
+    padding: '0.3rem 1rem',
     borderColor: theme.palette.dialog.secondaryMid,
+    '& .Mui-error': {
+      color: 'red',
+      fontSize: '1rem',
+      fontWeight: '800',
+    },
   },
   accordion: {
     direction: 'ltr',
