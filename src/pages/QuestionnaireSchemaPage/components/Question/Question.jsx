@@ -63,6 +63,8 @@ const Question = ({
       setOptions={setOptions}
       answer={answer}
       setAnswer={setAnswer}
+      other={other}
+      setOther={setOther}
     />
   );
   mapQuestionToComponent[QuestionType.checkbox] = (
@@ -71,6 +73,8 @@ const Question = ({
       setOptions={setOptions}
       answer={answer}
       setAnswer={setAnswer}
+      other={other}
+      setOther={setOther}
       multipleAnswers
     />
   );
@@ -80,6 +84,7 @@ const Question = ({
     setIsShort(false);
     setQuestionType(quesitonTypes[0]);
     setRequired(true);
+    setOther(false);
     setOptions([]);
     setExpand(false);
     setAnswer('');

@@ -44,6 +44,16 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     justifyContent: 'space-between',
   },
+  switch: {
+    '&$checked': {
+      color: theme.palette.dialog.primary,
+    },
+    '&$checked + $track': {
+      backgroundColor: theme.palette.dialog.primary,
+    },
+  },
+  track: {},
+
 }));
 
 export default useStyles;

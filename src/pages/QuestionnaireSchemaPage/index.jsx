@@ -8,11 +8,12 @@ import DashboardCard from '../../common/DashboardCard/DashboardCard';
 import Header from './components/Header/Header';
 import DataTable from '../../common/DataTable/DataTable';
 import { QuestionnaireSchemaService } from '../../services/QuestionnaireSchema.service';
-import { UserService } from '../../services/user.service';
+import { UserService, Role } from '../../services/user.service';
 import QuestionnaireOptionsButton from './components/QuestionnaireOptionsButton/QuestionnaireOptionsButton';
 import QuestionnaireDialog from './components/QuestionnaireDialog/QuestionnaireDialog';
 import NodeService from '../../services/node.service';
 import UserStoreInstance from '../../stores/User.store';
+import Preview from './components/Preview/Preview';
 
 const QuestionnaireSchemaPage = () => {
   const classes = useStyles();
@@ -26,19 +27,60 @@ const QuestionnaireSchemaPage = () => {
   const [questionnaireToEdit, setQuestionnaireToEdit] = useState({});
   const [openDialog, setOpenDialog] = useState(false);
   const colNames = [t('tableColumns.questionnaireName'), t('tableColumns.intended'), t('tableColumns.writer'), t('tableColumns.changeDate'), t('tableColumns.questionsNumber'), ''];
+  const [questionnaireToPreview, setQuestionnaireToPreview] = useState({});
 
-  const handeOnCloseDialog = () => {
-    setOpenDialog(false);
-  };
   const getIntendedRole = (rolesArr) => {
     if (!rolesArr.length) {
       return '-';
-    } if (rolesArr.includes('MALSHAB') && rolesArr.length === 1) {
+    } if (rolesArr.includes(Role.Malshab) && rolesArr.length === 1) {
       return t('roles.malshab');
     } if (!rolesArr.includes('MALSHAB')) {
       return t('permissions.appreciateor');
     }
     return t('permissions.malshabAppreciateor');
+  };
+
+  useEffect(() => { setQuestionnaireToPreview(questionnaireToEdit); }, [questionnaireToEdit]);
+
+  /**
+   * create a row table from a questionnaire
+   * @param {} questionnaire questionnaire object with params
+   */
+  const createRowTable = (questionnaire, questionnaireCreatorName, allNodesTmp?) => {
+    const intendedRole = getIntendedRole(questionnaire.targetRoles);
+    return {
+      id: questionnaire.id,
+      data: [
+        questionnaire.name,
+        intendedRole,
+        questionnaireCreatorName,
+        Moment(new Date(questionnaire.updatedAt)).format('DD/MM/YYYY'),
+        questionnaire.questions.length,
+        <QuestionnaireOptionsButton
+          questionnaire={questionnaire}
+          setIdToDelete={setIdToDelete}
+          allNodes={allNodesTmp || allNodes}
+          setQuestionnaireToEdit={setQuestionnaireToEdit}
+          setQuestionnaireToPreview={setQuestionnaireToPreview}
+        />,
+      ],
+      onClick: () => { setQuestionnaireToPreview(questionnaire); },
+    };
+  };
+
+  /**
+   *
+   * @param {*} id id to delete from array
+   * @param {*} arr array to delete from. all objects have an id property.
+   * @returns new array without the object with the noted #id
+   */
+  const deleteById = (id, arr) => {
+    const idx = arr.findIndex((value) => value.id === id);
+    if (idx > -1) {
+      const tmpCopy = [...arr];
+      tmpCopy.splice(idx, 1);
+      return tmpCopy;
+    }
   };
 
   /**
@@ -51,23 +93,7 @@ const QuestionnaireSchemaPage = () => {
       const allQuestionnaires = await QuestionnaireSchemaService.getQuestionnaires();
       const promises = allQuestionnaires.map(async (questionnaire) => {
         const questionnaireWriter = await UserService.getUserById(questionnaire.createdBy);
-        const intendedRole = getIntendedRole(questionnaire.targetRoles);
-        return {
-          id: questionnaire.id,
-          data: [
-            questionnaire.name,
-            intendedRole,
-            questionnaireWriter.name,
-            Moment(new Date(questionnaire.updatedAt)).format('DD/MM/YYYY'),
-            questionnaire.questions.length,
-            <QuestionnaireOptionsButton
-              questionnaire={questionnaire}
-              setIdToDelete={setIdToDelete}
-              allNodes={allNodesTmp}
-              setQuestionnaireToEdit={setQuestionnaireToEdit}
-            />,
-          ],
-        };
+        return createRowTable(questionnaire, questionnaireWriter.name, allNodesTmp);
       });
       const questionnaireRows = await Promise.all(promises);
       setAllQuestionnaireRows(questionnaireRows);
@@ -78,52 +104,27 @@ const QuestionnaireSchemaPage = () => {
   }, []);
 
   /**
-   * delete questionnaire from states
+   * delete questionnaire from states - delete a row table
    */
   useEffect(() => {
-    const allIdx = [...allQuestionnaireRows].findIndex(
-      (q) => q.id === idToDelete,
-    );
-    const showIdx = [...questionnaireRowsToShow].findIndex(
-      (q) => q.id === idToDelete,
-    );
-    if (allIdx > -1) {
-      const tmpCopy = [...allQuestionnaireRows];
-      tmpCopy.splice(allIdx, 1);
-      setAllQuestionnaireRows([...tmpCopy]);
-    }
-    if (showIdx > -1) {
-      const tmpCopy = [...questionnaireRowsToShow];
-      tmpCopy.splice(showIdx, 1);
-      setQuestionnaireToShow([...tmpCopy]);
-    }
+    const tmpAllQuestionnaireRows = deleteById(idToDelete, [...allQuestionnaireRows]);
+    const tmpShowQuestionnaireRows = deleteById(idToDelete, [...questionnaireRowsToShow]);
+    if (tmpAllQuestionnaireRows) setAllQuestionnaireRows([...tmpAllQuestionnaireRows]);
+    if (tmpShowQuestionnaireRows) setQuestionnaireToShow([...tmpShowQuestionnaireRows]);
+    setQuestionnaireToPreview({});
   }, [idToDelete]);
 
-  // add questionnaire to state
+  // add questionnaire to state - add a row-table
   useEffect(() => {
     if (Object.keys(questionnaireToAdd).length) {
-      const intendedRole = getIntendedRole(questionnaireToAdd.targetRoles);
-      const questionnaireRow = {
-        id: questionnaireToAdd.id,
-        data: [
-          questionnaireToAdd.name,
-          intendedRole,
-          userName,
-          Moment(new Date(questionnaireToAdd.updatedAt)).format('DD/MM/YYYY'),
-          questionnaireToAdd.questions.length,
-          <QuestionnaireOptionsButton
-            questionnaire={questionnaireToAdd}
-            setIdToDelete={setIdToDelete}
-            allNodes={allNodes}
-            setQuestionnaireToEdit={setQuestionnaireToEdit}
-          />,
-        ],
-      };
+      const questionnaireRow = createRowTable(questionnaireToAdd, userName);
       setAllQuestionnaireRows([...allQuestionnaireRows, questionnaireRow]);
       setQuestionnaireToShow([...allQuestionnaireRows, questionnaireRow]);
     }
+    setQuestionnaireToPreview(questionnaireToAdd);
   }, [questionnaireToAdd]);
 
+  // edit questionnaire - edit row-tables
   useEffect(() => {
     if (Object.keys(questionnaireToEdit).length) {
       const questionniareRowIdx = allQuestionnaireRows.findIndex(
@@ -134,31 +135,17 @@ const QuestionnaireSchemaPage = () => {
       );
       const tmpAllQuestionnaireRows = [...allQuestionnaireRows];
       const tmpQuestionnaireRowsShow = [...questionnaireRowsToShow];
-      const intendedRole = getIntendedRole(questionnaireToEdit.targetRoles);
       if (questionniareRowIdx > -1) {
-        const creator = tmpAllQuestionnaireRows[questionniareRowIdx]?.data[2];
-        tmpAllQuestionnaireRows[questionniareRowIdx] = {
-          id: questionnaireToEdit.id,
-          data: [
-            questionnaireToEdit.name,
-            intendedRole,
-            creator,
-            Moment(new Date(questionnaireToEdit.updatedAt)).format('DD/MM/YYYY'),
-            questionnaireToEdit.questions.length,
-            <QuestionnaireOptionsButton
-              questionnaire={questionnaireToEdit}
-              setIdToDelete={setIdToDelete}
-              allNodes={allNodes}
-              setQuestionnaireToEdit={setQuestionnaireToEdit}
-            />,
-          ],
-        };
+        const creatorName = tmpAllQuestionnaireRows[questionniareRowIdx]?.data[2];
+        tmpAllQuestionnaireRows[questionniareRowIdx] = createRowTable(
+          questionnaireToEdit, creatorName,
+        );
         if (questionniareRowShowIdx > -1) {
-          tmpQuestionnaireRowsShow[questionniareRowShowIdx] = tmpAllQuestionnaireRows[
-            questionniareRowIdx];
+          tmpQuestionnaireRowsShow[questionniareRowShowIdx] = createRowTable(
+            questionnaireToEdit, creatorName,
+          );
         }
       }
-
       setAllQuestionnaireRows([...tmpAllQuestionnaireRows]);
       setQuestionnaireToShow([...tmpQuestionnaireRowsShow]);
     }
@@ -170,28 +157,39 @@ const QuestionnaireSchemaPage = () => {
         allQuestionnaireRows={allQuestionnaireRows}
         setQuestionnaireToShow={setQuestionnaireToShow}
         openDialog={() => { setOpenDialog(true); }}
+        setQuestionnaireToPreview={setQuestionnaireToPreview}
       />
+
       <DashboardCard className={classes.dashbord}>
         <Typography className={classes.content}>
           <strong className={classes.title}>{t('title.questionnaires')}</strong>
           {' '}
           <span className={classes.countTitle}>{`(${[...questionnaireRowsToShow].length})`}</span>
         </Typography>
-        {questionnaireRowsToShow.length
-          ? (
-            <div className={`${classes.tableContainer}`}>
-              <DataTable rowsData={questionnaireRowsToShow} columnNames={colNames} />
-            </div>
-          )
-          : (
-            <div className={` ${classes.viewContainer} ${classes.emptyTable}`}>
-              {' '}
-              {t('title.noQuestionnaires')}
-            </div>
-          )}
+        <div className={classes.infoContainer}>
+          {questionnaireRowsToShow.length
+            ? (
+              <div className={`${classes.tableContainer}`}>
+                <DataTable
+                  rowsData={questionnaireRowsToShow}
+                  columnNames={colNames}
+                  widthVec={['20%', '20%', '20%', '20%', '20%', '1rem']}
+                />
+              </div>
+            )
+            : (
+              <div className={` ${classes.noQuestionnaire} ${classes.emptyTable}`}>
+                {' '}
+                {t('message.noQuestionnaires')}
+              </div>
+            )}
+          <div className={`${classes.previewContainer}`}>
+            <Preview questionnaire={questionnaireToPreview} />
+          </div>
+        </div>
         <QuestionnaireDialog
           open={openDialog}
-          onClose={handeOnCloseDialog}
+          onClose={() => { setOpenDialog(false); }}
           allNodes={allNodes}
           setQuestionnaireToAdd={setQuestionnaireToAdd}
           currentQuestionnaire={{}}

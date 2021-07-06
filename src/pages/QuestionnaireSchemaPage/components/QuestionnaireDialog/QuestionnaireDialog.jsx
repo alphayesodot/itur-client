@@ -1,18 +1,15 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Button, DialogActions, DialogContent, TextField, Zoom } from '@material-ui/core';
-import Tooltip from '@material-ui/core/Tooltip';
+import { Button, DialogActions, DialogContent, TextField } from '@material-ui/core';
 import { toast } from 'react-toastify';
-import FormGroup from '@material-ui/core/FormGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
 import useStyles from './QuestionnaireDialog.styles';
 import CustomDialog from '../../../../common/CustomDialog/CustomDialog';
 import { Role } from '../../../../services/user.service';
-import DashboardCard from '../../../../common/DashboardCard/DashboardCard';
 import GenericSelect from '../../../../common/GenericSelect/GenericSelect';
-import Question from '../Question/Question';
 import { QuestionnaireSchemaService, QuestionType } from '../../../../services/QuestionnaireSchema.service';
+import QuestionsDashboard from '../QuestionsDashboard/QuestionsDashboard';
+import NodesDashboard from '../NodesDashboard/NodesDashboard';
+import NoObjectsToShow from '../../../../common/NoObjectsToShow/NoObjectsToShow';
 
 const QuestionnaireDialog = ({
   open,
@@ -25,18 +22,6 @@ const QuestionnaireDialog = ({
   && Object.keys(currentQuestionnaire).length > 0;
   const classes = useStyles();
   const { t } = useTranslation();
-  const [checkedNodes, setCheckedNodes] = useState(
-    isCurrentQuestionnaire ? currentQuestionnaire.nodes : [],
-  );
-  const [checkedRoles, setCheckedRoles] = useState(
-    isCurrentQuestionnaire ? currentQuestionnaire.targetRoles : [],
-  );
-  const [questionnaireNameInput, setQuestionnaireNameInput] = useState(
-    isCurrentQuestionnaire ? currentQuestionnaire.name : '',
-  );
-  const [questionsArr, setQuestionsArr] = useState(
-    isCurrentQuestionnaire ? currentQuestionnaire.questions : [],
-  );
   const allRoles = [
     { id: Role.Interviewer,
       name: t('roles.interviewer'),
@@ -62,6 +47,24 @@ const QuestionnaireDialog = ({
     { id: Role.Malshab,
       name: t('roles.malshab'),
     }];
+  const roleToObject = (role) => {
+    const objectIdx = allRoles.findIndex(({ id }) => id === role);
+    return allRoles[objectIdx];
+  };
+  const [checkedNodes, setCheckedNodes] = useState(
+    isCurrentQuestionnaire ? currentQuestionnaire.nodes : [],
+  );
+  const [checkedRoles, setCheckedRoles] = useState(
+    isCurrentQuestionnaire
+      ? currentQuestionnaire.targetRoles.map((role) => roleToObject(role))
+      : [],
+  );
+  const [questionnaireNameInput, setQuestionnaireNameInput] = useState(
+    isCurrentQuestionnaire ? currentQuestionnaire.name : '',
+  );
+  const [questionsArr, setQuestionsArr] = useState(
+    isCurrentQuestionnaire ? currentQuestionnaire.questions : [],
+  );
 
   const reset = () => {
     setCheckedNodes([]);
@@ -69,7 +72,18 @@ const QuestionnaireDialog = ({
     setQuestionnaireNameInput('');
     setQuestionsArr([]);
   };
-
+  const hadleOnClose = () => {
+    if (isCurrentQuestionnaire) {
+      // return state to be unchanges
+      setCheckedNodes(currentQuestionnaire.nodes);
+      setCheckedRoles(currentQuestionnaire.targetRoles.map((role) => roleToObject(role)));
+      setQuestionnaireNameInput(currentQuestionnaire.name);
+      setQuestionsArr(currentQuestionnaire.questions);
+    } else {
+      reset();
+    }
+    onClose();
+  };
   const updateCheckedNodes = (nodeId) => {
     const idx = checkedNodes.indexOf(nodeId);
     if (idx > -1) {
@@ -79,22 +93,6 @@ const QuestionnaireDialog = ({
     } else {
       setCheckedNodes([...checkedNodes, nodeId]);
     }
-  };
-
-  const addQuestion = (questionObject) => {
-    setQuestionsArr([...questionsArr, questionObject]);
-  };
-
-  const deleteQuestion = (questionIdx) => {
-    const tmpQuestionsArr = [...questionsArr];
-    tmpQuestionsArr.splice(questionIdx, 1);
-    setQuestionsArr([...tmpQuestionsArr]);
-  };
-
-  const updateQuestion = (question, questionIdx) => {
-    const tmpQuestionsArr = [...questionsArr];
-    tmpQuestionsArr[questionIdx] = question;
-    setQuestionsArr([...tmpQuestionsArr]);
   };
 
   const prepareQuestionArr = (questions) => {
@@ -131,7 +129,7 @@ const QuestionnaireDialog = ({
     try {
       const questionnaireSchema = {
         name: questionnaireNameInput,
-        targetRoles: [...checkedRoles],
+        targetRoles: checkedRoles.map(({ id }) => id),
         nodes: [...checkedNodes],
         questions: prepareQuestionArr(questionsArr),
         updatedAt: new Date(),
@@ -186,32 +184,17 @@ const QuestionnaireDialog = ({
           <div className={classes.label}>{t('title.nodes')}</div>
           {allNodes?.length
             ? (
-              <DashboardCard className={classes.nodesDashBoard}>
-                <FormGroup row className={classes.internalNodeContainer}>
-                  {allNodes?.map((node) => (
-                    <Tooltip
-                      placement='top-end'
-                      title={node.name}
-                      TransitionComponent={Zoom}
-                      enterDelay={300}
-                    >
-                      <FormControlLabel
-                        classes={{ root: classes.checkboxContainer }}
-                        control={(
-                          <Checkbox
-                            checked={checkedNodes.includes(node.id)}
-                            onChange={() => { updateCheckedNodes(node.id); }}
-                          />
-)}
-                        label={node.name}
-                      />
-                    </Tooltip>
-                  )) }
-                </FormGroup>
-              </DashboardCard>
+              <NodesDashboard
+                allNodes={allNodes}
+                checkedNodes={checkedNodes}
+                updateCheckedNodes={updateCheckedNodes}
+              />
             )
             : (
-              <div className={classes.noNodeGroups}>{t('title.noNodes')}</div>
+
+              <div className={classes.noNodeGroups}>
+                <NoObjectsToShow title={t('message.noNodes')} />
+              </div>
             )}
         </div>
       </div>
@@ -219,34 +202,7 @@ const QuestionnaireDialog = ({
         <div className={classes.questionsTitle}>
           {t('title.questions')}
         </div>
-        <DashboardCard className={classes.questionsDashBoard}>
-          <div className={classes.questionnaireCreationTitle}>
-            <span className={classes.number}>#</span>
-            <span className={classes.titleMust}>{t('question.required')}</span>
-            <span className={classes.titleQuestionType}>{t('question.questionType')}</span>
-            <span className={classes.titleQuestion}>{t('question.question')}</span>
-            <span className={classes.titlePlaceholder} />
-          </div>
-          <div className={classes.internalQuestionContainer}>
-            <div className={classes.questionsLines}>
-              {questionsArr.map((question, idx) => (
-                <div className={classes.questionLine}>
-                  <span className={classes.number}>{idx + 1}</span>
-                  <Question
-                    currentQuestion={question}
-                    addQuestion={addQuestion}
-                    deleteQuestion={() => { deleteQuestion(idx); }}
-                    updateQuestion={(q) => { updateQuestion(q, idx); }}
-                  />
-                </div>
-              ))}
-              <div className={classes.questionLine}>
-                <span className={classes.number} />
-                <Question addQuestion={addQuestion} deleteQuestion={() => {}} />
-              </div>
-            </div>
-          </div>
-        </DashboardCard>
+        <QuestionsDashboard questionsArr={questionsArr} setQuestionsArr={setQuestionsArr} />
       </div>
       <DialogActions classes={{ spacing: classes.actions }}>
         <Button
@@ -264,7 +220,7 @@ const QuestionnaireDialog = ({
     <CustomDialog
       open={open}
       paperClassName={classes.root}
-      onClose={onClose}
+      onClose={hadleOnClose}
       title={currentQuestionnaire ? t('title.editQuestionnaire') : t('title.newQuestionnaire')}
       content={content}
     />

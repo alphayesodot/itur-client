@@ -1,10 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { Input, RadioGroup, Radio, FormControlLabel, FormControl, FormLabel, IconButton, Checkbox } from '@material-ui/core';
+import { Input, RadioGroup, Radio, FormControlLabel, FormControl, FormLabel, IconButton, Checkbox, Switch } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 import ClearIcon from '@material-ui/icons/Clear';
 import useStyles from './MultipleChoice.styles.js';
 
-const MultipleChoice = ({ options, setOptions, answer, setAnswer, multipleAnswers }) => {
+const MultipleChoice = ({
+  options,
+  setOptions,
+  answer,
+  setAnswer,
+  other,
+  setOther,
+  multipleAnswers }) => {
   const classes = useStyles();
   const { t } = useTranslation();
   const enterChar = 13;
@@ -29,6 +36,24 @@ const MultipleChoice = ({ options, setOptions, answer, setAnswer, multipleAnswer
   };
   return (
     <div className={classes.root}>
+      <FormControl component='fieldset'>
+        <FormControlLabel
+          value='end'
+          control={(
+            <Switch
+              classes={{
+                colorSecondary: classes.switch,
+                track: classes.track,
+                checked: classes.checked,
+              }}
+              value={other}
+              onChange={() => { setOther(!other); }}
+            />
+)}
+          label='Top'
+          labelPlacement='end'
+        />
+      </FormControl>
       <Input
         className={classes.input}
         disableUnderline

@@ -8,11 +8,13 @@ import TableContainer from '@material-ui/core/TableContainer';
 import useStyles from './DataTable.styles';
 
 /**
- * @param {*} rowsData: array of row-data arrays.
- * @param {*} columnNames: array of columns names (right to left).
+ * @param {
+ * [ {id: string, data: Array, onClick?: function} ]
+ * } rowsData: array of row-data arrays. must include id field and data array.
+ * @param {string[]} columnNames: array of columns names (right to left).
  * @returns design table
  */
-const DataTable = ({ rowsData, columnNames }) => {
+const DataTable = ({ rowsData, columnNames, align, widthVec }) => {
   const classes = useStyles();
   const tableHeaderClasses = (idx, length) => {
     if (idx === 0) return classes.roundBorderRight;
@@ -22,20 +24,29 @@ const DataTable = ({ rowsData, columnNames }) => {
   return (
     <TableContainer className={classes.root}>
       <Table stickyHeader aria-label='sticky table' className={classes.table}>
-        <TableHead className={classes.tableHeader}>
+        <TableHead>
           <TableRow key='title'>
-            {columnNames.map((colName, index) => <TableCell key={colName} className={`${classes.titleCell} ${tableHeaderClasses(index, columnNames.length)}`} align='center'>{colName}</TableCell>)}
+            {columnNames.map((colName, index) => (
+              <TableCell
+                key={colName}
+                className={`${classes.titleCell} ${tableHeaderClasses(index, columnNames.length)}`}
+                align={align || 'center'}
+              >
+                {colName}
+              </TableCell>
+            ))}
           </TableRow>
         </TableHead>
         <TableBody className={classes.tableContent}>
-          {rowsData.map((row, rowIndex) => (
-            <TableRow key={row.id} className={classes.row}>
+          {rowsData.map((row) => (
+            <TableRow key={row.id} className={classes.row} onClick={row.onClick}>
               {row.data.map((cell, cellIndex) => (
                 <TableCell
                   // eslint-disable-next-line react/no-array-index-key
-                  key={`${row.id}-${rowIndex}-${cellIndex}`}
+                  key={`${row.id}-${cellIndex}`}
                   className={classes.cell}
-                  align='center'
+                  align={align || 'center'}
+                  style={widthVec && { width: widthVec[cellIndex] }}
                 >
                   {cell}
                 </TableCell>

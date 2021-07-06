@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import useStyles from './QuestionnaireOptionsButton.styles';
 import deleteImg from '../../../../utils/images/general/trash.svg';
+import previewImg from '../../../../utils/images/files/eye_black.svg';
 import editImg from '../../../../utils/images/general/edit-regular.svg';
 import OptionsButton from '../../../../common/OpetionButton/OpetionButton';
 import { QuestionnaireSchemaService } from '../../../../services/QuestionnaireSchema.service';
@@ -11,7 +12,8 @@ const QuestionnaireOptionsButton = ({
   questionnaire,
   setIdToDelete,
   allNodes,
-  setQuestionnaireToEdit }) => {
+  setQuestionnaireToEdit,
+  setQuestionnaireToPreview }) => {
   const { t } = useTranslation();
   const classes = useStyles();
   const [duringDeletion, setDuringDeletion] = useState(false);
@@ -44,6 +46,15 @@ const QuestionnaireOptionsButton = ({
         <>
           <img className={classes.img} width='17rem' src={editImg} alt='see more' />
           {t('actions.edit')}
+        </>
+      ),
+    },
+    {
+      onClick: async () => { setQuestionnaireToPreview({ ...questionnaire }); },
+      content: (
+        <>
+          <img className={classes.img} width='19rem' src={previewImg} alt='see more' />
+          {t('actions.preview')}
         </>
       ),
     },

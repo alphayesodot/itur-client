@@ -189,7 +189,7 @@ const NodeGroupDialog = ({ open, onClose, createAllNodeGroupList, currentNodeGro
           checkedValuesIds={checkedNodes}
           updateCheckedValuesIds={setCheckedNodes}
           selectId='nodes-select'
-          emptyMessege={t('title.noNodes')}
+          emptyMessege={t('message.noNodes')}
         />
       </div>
       <DialogActions classes={{ spacing: classes.actions }}>

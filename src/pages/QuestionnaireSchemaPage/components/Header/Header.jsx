@@ -18,7 +18,11 @@ const filterSearch = (prefix: string, allQuestionnaireRows: Array, setQuestionna
   setQuestionnaireToShow(searchResults);
 };
 
-const Header = ({ allQuestionnaireRows, setQuestionnaireToShow, openDialog }) => {
+const Header = ({
+  allQuestionnaireRows,
+  setQuestionnaireToShow,
+  openDialog,
+  setQuestionnaireToPreview }) => {
   const classes = useStyles();
   const [inputValue, setInputValue] = useState('');
   const { t } = useTranslation();
@@ -54,8 +58,12 @@ const Header = ({ allQuestionnaireRows, setQuestionnaireToShow, openDialog }) =>
                   setQuestionnaireToShow(allQuestionnaireRows);
                 }
               }}
-              onKeyPress={(e) => e.charCode === 13
-                && filterSearch(inputValue, allQuestionnaireRows, setQuestionnaireToShow)}
+              onKeyPress={(e) => {
+                if (e.charCode === 13) {
+                  filterSearch(inputValue, allQuestionnaireRows, setQuestionnaireToShow);
+                  setQuestionnaireToPreview({});
+                }
+              }}
             />
             <Typography className={`${classes.questionnaire} ${classes.item}`}>
               <strong>{t('headerTitles.searchQuestionnaie')}</strong>

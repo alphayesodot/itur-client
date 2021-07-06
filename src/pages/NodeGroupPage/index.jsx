@@ -103,7 +103,7 @@ const NodeGroupPage = () => {
           : (
             <div className={` ${classes.viewContainer} ${classes.emptyTable}`}>
               {' '}
-              {t('title.noNodeGroups')}
+              {t('message.noNodeGroups')}
             </div>
           )}
         <NodeGroupDialog

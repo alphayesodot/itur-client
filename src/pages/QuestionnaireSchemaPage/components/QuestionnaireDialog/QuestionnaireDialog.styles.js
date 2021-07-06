@@ -106,67 +106,6 @@ const useStyles = makeStyles((theme) => ({
     padding: '0.6em 1rem',
     boxSizing: 'border-box',
   },
-  addButton: {
-    fontWeight: 'bold',
-    color: theme.palette.dialog.primary,
-    fontSize: '1rem',
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    borderRadius: '25px',
-  },
-  iconImg: {
-    margin: '0.3rem',
-  },
-  internalQuestionContainer: {
-    overflowY: 'scroll',
-    direction: 'rtl',
-    height: '18rem',
-    display: 'flex',
-    flexDirection: 'column',
-  },
-  questionnaireCreationTitle: {
-    width: '100%',
-    display: 'flex',
-    flexDirection: 'row-reverse',
-    textAlign: 'left',
-    direction: 'rtl',
-    marginBottom: '0.5rem',
-    marginLeft: '0.3em',
-  },
-  number: {
-    width: '2rem',
-    textAlign: 'center',
-  },
-  titleQuestionType: {
-    marginLeft: '0.6rem',
-    padding: '0 0.3rem',
-    paddingRight: '0',
-    width: '20%',
-  },
-  titleQuestion: {
-    width: '70%',
-  },
-  titlePlaceholder: {
-    margin: '0 0.5rem',
-    width: '1.2rem',
-  },
-  questionsLines: {
-    width: '100%',
-    display: 'flex',
-    flexDirection: 'column',
-  },
-  questionLine: {
-    width: '100%',
-    display: 'flex',
-    flexDirection: 'row-reverse',
-    alignItems: 'center',
-    marginBottom: '0.4rem',
-  },
-  titleMust: {
-    width: '42px',
-    textAlign: 'center',
-  },
   actions: {
     margin: 'auto',
     alignItems: 'right',
