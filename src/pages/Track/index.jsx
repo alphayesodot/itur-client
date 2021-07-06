@@ -58,7 +58,6 @@ const Track = observer(() => {
         selectedDate={selectedDate}
         setSelectedDate={setSelectedDate}
         setIsLoading={setIsLoading}
-        interviewers={interviewers}
         selectFirst
       />
       {isLoading

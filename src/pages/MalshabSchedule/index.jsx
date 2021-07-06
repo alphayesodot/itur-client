@@ -91,7 +91,6 @@ const MalshabSchedulePage = () => {
         selectedDate={selectedDate}
         setSelectedDate={setSelectedDate}
         setIsLoading={setIsLoading}
-        interviewers={interviewers}
       />
       {isLoading ? <CustomBackDrop /> : (
         <>

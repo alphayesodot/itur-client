@@ -39,13 +39,13 @@ const UserCard = ({ user, selectedDate, choosenNodeGroup }) => {
 
   const handleRemoveInterviewer = (eventId) => {
     EventService.removeInterviewer(eventId, user.id).then(() => {
-      setEvents((prevValue) => prevValue.filter((({ id }) => id !== eventId)));
-      ScheduleStore.removeInterviewFromSchedule(
-        choosenNodeGroup.id,
-        selectedDate,
-        user.id,
-        eventId,
-      );
+      // setEvents((prevValue) => prevValue.filter((({ id }) => id !== eventId)));
+      // ScheduleStore.removeInterviewFromSchedule(
+      //   choosenNodeGroup.id,
+      //   selectedDate,
+      //   user.id,
+      //   eventId,
+      // );
     }).catch(() => {
       toast(t('error.server'));
     });
