@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { useTranslation } from 'react-i18next';
+import { observer } from 'mobx-react-lite';
 import useStyles from './index.styles';
 import NodeGroups from './components/NodeGroups/NodeGroups';
 import NodeGroupService from '../../services/nodeGroup.service';
@@ -14,7 +15,7 @@ import EventService from '../../services/event.service';
 import CustomBackDrop from '../../common/CustomBackDrop/CustomBackDrop';
 import NodeService from '../../services/node.service';
 
-const MalshabSchedulePage = () => {
+const MalshabSchedulePage = observer(() => {
   const classes = useStyles();
   const { t } = useTranslation();
   const [choosenNodeGroup, setChoosenNodeGroup] = useState();
@@ -65,7 +66,6 @@ const MalshabSchedulePage = () => {
       Promise.all(
         choosenNodeGroup?.usersIds?.map((userId) => UserService.getUserById(userId)),
       ).then(async (users) => {
-        // TODO: BUG- ADD INTERVIEWERS INTO HEADER
         setInterviewers(users.filter((user) => user.role === Role.Interviewer));
         const nodesOfNodeGroup = await NodeService.getNodes({ nodeGroupId: choosenNodeGroup.id });
         Promise.all(
@@ -79,7 +79,6 @@ const MalshabSchedulePage = () => {
         toast(t('error.server'));
       });
     }
-    // TODO: update users when schedule store updates
   }, [choosenNodeGroup, selectedDate, ScheduleStore.schedules]);
 
   return (
@@ -119,6 +118,6 @@ const MalshabSchedulePage = () => {
       )}
     </div>
   );
-};
+});
 
 export default MalshabSchedulePage;

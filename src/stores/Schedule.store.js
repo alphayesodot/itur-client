@@ -1,11 +1,13 @@
-import { makeAutoObservable } from 'mobx';
+import { makeObservable, observable } from 'mobx';
 import EventService from '../services/event.service';
 
 class ScheduleStore {
-  schedules;
+  schedules = [];
 
   constructor() {
-    makeAutoObservable(this);
+    makeObservable(this, {
+      schedules: observable,
+    });
   }
 
   getScheduleOfNodeGroup(date, nodeGroupId) {
@@ -30,10 +32,6 @@ class ScheduleStore {
   }
 
   async addNewSchedule(date, nodeGroup, interviewers) {
-    if (!this.schedules) {
-      this.schedules = [];
-    }
-
     const schedule = await Promise.all(
       interviewers.map(async (interviewer) => ({
         interviewerId: interviewer.id,
