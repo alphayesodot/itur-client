@@ -22,7 +22,7 @@ const users = [
   {
     userID: 3,
     name: 'רמד איתור מקצועי ביחידה 0',
-    role: Role.RamadIturOfUnit,
+    role: Role.ProfessionalRamad,
     unitId: '507f191e810c19729de861ea',
   },
   {

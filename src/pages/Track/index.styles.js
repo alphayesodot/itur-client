@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
     flexDirection: 'column',
@@ -9,10 +9,17 @@ const useStyles = makeStyles(() => ({
     width: '100%',
   },
   message: {
-    fontSize: '1.25em',
-    textAlign: 'center',
+    fontSize: '2em',
+    minHeight: '25rem',
+    fontWeight: '600',
+    color: 'lightgrey',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '100%',
+    marginTop: '1rem',
     width: '100%',
-    marginTop: '3em',
+    fontFamily: theme.typography.fontFamily,
   },
 }));
 

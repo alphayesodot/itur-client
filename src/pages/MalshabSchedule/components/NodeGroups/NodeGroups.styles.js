@@ -4,6 +4,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     marginTop: '1em',
     height: '100%',
+    minHeight: '25rem',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
