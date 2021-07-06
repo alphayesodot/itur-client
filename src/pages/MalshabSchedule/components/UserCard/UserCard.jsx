@@ -1,5 +1,5 @@
-import { Typography, IconButton } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
+import { Typography, IconButton, Tooltip } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
 import DeleteOutlinedIcon from '@material-ui/icons/DeleteOutlined';
@@ -67,12 +67,14 @@ const UserCard = ({ user, selectedDate, choosenNodeGroup }) => {
                 {events.map((event) => (
                   <li key={event.id} className={classes.eventItem}>
                     <div className={classes.innerRow}>
-                      <IconButton
-                        onClick={() => handleRemoveInterviewer(event.id)}
-                        className={classes.deleteIcon}
-                      >
-                        <DeleteOutlinedIcon />
-                      </IconButton>
+                      <Tooltip title={t('toolTip.removeInterview')}>
+                        <IconButton
+                          onClick={() => handleRemoveInterviewer(event.id)}
+                          className={classes.deleteIcon}
+                        >
+                          <DeleteOutlinedIcon />
+                        </IconButton>
+                      </Tooltip>
                       <Typography component='span' className={classes.eventText}>
                         {formatDate(event.time)}
                         <Typography className={classes.nameText}>

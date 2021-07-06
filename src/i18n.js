@@ -195,6 +195,7 @@ const resources = {
         restart: 'התחל מחדש',
         invalidId: 'ת"ז לא תקין',
         uploadAttachment: 'העלאת מסמך',
+        removeInterview: 'הסרת ראיון',
       },
       warnings: {
         oneTimePassword:
