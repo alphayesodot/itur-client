@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -11,6 +12,7 @@ import useStyles from './BasicTable.styles';
 
 const BasicTable = ({ tableData, handleChosenMalshabs }) => {
   const classes = useStyles();
+  const { t } = useTranslation();
   const [rows, setRows] = useState([]);
   const [chooseAllRows, setChooseAllRows] = useState(false);
 
@@ -59,7 +61,7 @@ const BasicTable = ({ tableData, handleChosenMalshabs }) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows?.map((row) => (
+          {rows?.length ? rows.map((row) => (
             <TableRow key={row.id}>
               <TableCell>{row.time}</TableCell>
               <TableCell>{row.node}</TableCell>
@@ -74,7 +76,13 @@ const BasicTable = ({ tableData, handleChosenMalshabs }) => {
                 />
               </TableCell>
             </TableRow>
-          ))}
+          )) : (
+            <TableRow>
+              <TableCell colSpan={7} className={classes.message}>
+                {t('message.noEvents')}
+              </TableCell>
+            </TableRow>
+          )}
         </TableBody>
       </Table>
     </TableContainer>
