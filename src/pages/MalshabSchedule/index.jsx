@@ -111,6 +111,7 @@ const MalshabSchedulePage = () => {
           )
             : (
               <NodeGroups
+                selectedDate={selectedDate}
                 unitNodesGroups={unitNodesGroups}
                 setChoosenNodeGroup={setChoosenNodeGroup}
               />

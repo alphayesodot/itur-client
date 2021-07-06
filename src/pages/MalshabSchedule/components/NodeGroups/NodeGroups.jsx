@@ -3,7 +3,7 @@ import NodeGroupCard from '../NodeGroupCard/NodeGroupCard';
 import DashboardCard from '../../../../common/DashboardCard/DashboardCard';
 import useStyles from './NodeGroups.styles';
 
-const NodeGroups = ({ unitNodesGroups, setChoosenNodeGroup }) => {
+const NodeGroups = ({ unitNodesGroups, setChoosenNodeGroup, selectedDate }) => {
   const classes = useStyles();
   const { t } = useTranslation();
 
@@ -14,6 +14,7 @@ const NodeGroups = ({ unitNodesGroups, setChoosenNodeGroup }) => {
           {unitNodesGroups.map((nodeGroup) => (
             <NodeGroupCard
               nodeGroup={nodeGroup}
+              selectedDate={selectedDate}
               key={nodeGroup.id}
               setChoosenNodeGroup={setChoosenNodeGroup}
             />

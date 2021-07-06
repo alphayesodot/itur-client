@@ -9,7 +9,7 @@ import WARNING from '../../../../utils/images/schedule/warning.svg';
 import EventService from '../../../../services/event.service.js';
 import NodeService from '../../../../services/node.service.js';
 
-const NodeGroupCard = ({ nodeGroup, setChoosenNodeGroup }) => {
+const NodeGroupCard = ({ nodeGroup, setChoosenNodeGroup, selectedDate }) => {
   const classes = useStyles();
   const { t } = useTranslation();
 
@@ -20,7 +20,7 @@ const NodeGroupCard = ({ nodeGroup, setChoosenNodeGroup }) => {
     setNodeGroupEvents([]);
     NodeService.getNodes({ nodeGroupId: nodeGroup.id }).then((nodes) => {
       nodes.forEach((node) => {
-        EventService.getEvents({ nodeId: node.id }).then((events) => {
+        EventService.getEvents({ nodeId: node.id, date: selectedDate }).then((events) => {
           setNodeGroupEvents((prevValue) => [...prevValue, ...events]);
         }).catch(() => {
           toast(t('error.server'));
@@ -29,7 +29,7 @@ const NodeGroupCard = ({ nodeGroup, setChoosenNodeGroup }) => {
     }).catch(() => {
       toast(t('error.server'));
     });
-  }, []);
+  }, [nodeGroup, selectedDate]);
 
   useEffect(() => {
     setScheduledEvents([]);
