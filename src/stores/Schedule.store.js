@@ -52,7 +52,6 @@ class ScheduleStore {
   }
 
   removeInterviewFromSchedule = (searchedNodeGroupId, searchedDate, userId, eventId) => {
-    // TODO: fix bug
     this.schedules = this.schedules.map((schedule) => {
       if (searchedNodeGroupId === schedule.nodeGroupId
         && new Date(searchedDate).toDateString() === new Date(schedule.date).toDateString()) {

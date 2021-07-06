@@ -30,6 +30,7 @@ const UserCard = ({ user, selectedDate, choosenNodeGroup }) => {
     }
   }, [user, selectedDate, choosenNodeGroup]);
 
+
   // formats date and returns hour in 24hour format
   const formatDate = (date) => new Date(date).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
   // replace last chars from string with ... if exceeds maximum allowed chars
@@ -39,13 +40,13 @@ const UserCard = ({ user, selectedDate, choosenNodeGroup }) => {
 
   const handleRemoveInterviewer = (eventId) => {
     EventService.removeInterviewer(eventId, user.id).then(() => {
-      // setEvents((prevValue) => prevValue.filter((({ id }) => id !== eventId)));
-      // ScheduleStore.removeInterviewFromSchedule(
-      //   choosenNodeGroup.id,
-      //   selectedDate,
-      //   user.id,
-      //   eventId,
-      // );
+      setEvents((prevValue) => prevValue.filter((({ id }) => id !== eventId)));
+      ScheduleStore.removeInterviewFromSchedule(
+        choosenNodeGroup.id,
+        selectedDate,
+        user.id,
+        eventId,
+      );
     }).catch(() => {
       toast(t('error.server'));
     });
