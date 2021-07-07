@@ -10,12 +10,16 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     alignItems: 'stretch',
     boxSizing: 'border-box',
+    [theme.breakpoints.down('sm')]: {
+      margin: '0',
+      padding: '0',
+      backgroundColor: 'transparent',
+    },
   },
   title: {
     marginBottom: '1rem',
     display: 'flex',
     alignItems: 'center',
-    // justifyContent: 'space-between',
   },
   titleProp: {
     margin: '0 0.5rem',

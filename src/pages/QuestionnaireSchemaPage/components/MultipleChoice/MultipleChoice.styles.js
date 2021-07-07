@@ -20,9 +20,6 @@ const useStyles = makeStyles((theme) => ({
     padding: '0.1rem 1rem',
     marginBottom: '0.3rem',
   },
-  radioContainer: {
-    margin: '0.5rem',
-  },
   deleteButton: {
     padding: 0,
   },
@@ -32,14 +29,7 @@ const useStyles = makeStyles((theme) => ({
       color: theme.palette.dialog.primary,
     },
   },
-  radio: {
-    '&$checked': {
-      color: theme.palette.dialog.primary,
-    },
-  },
-  // This object is needed although it's empty. It is needed for override the default color.
-  checked: {},
-  radioOption: {
+  option: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -53,7 +43,15 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   track: {},
-
+  switchLabel: {
+    direction: 'rtl',
+    margin: 0,
+  },
+  // This object is needed although it's empty. It is needed for override the default color.
+  checked: {},
+  answers: {
+    color: theme.palette.dialog.secondary,
+  },
 }));
 
 export default useStyles;

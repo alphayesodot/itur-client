@@ -245,6 +245,7 @@ const resources = {
         label: 'כותרת',
         shortQuestion: 'שאלה קצרה',
         answers: 'תשובות',
+        otherOption: 'אפשרות לתשובה אחרת',
       },
     },
   },

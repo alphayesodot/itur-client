@@ -42,6 +42,9 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     justifyContent: 'space-between',
     height: '90%',
+    [theme.breakpoints.down('sm')]: {
+      flexDirection: 'column',
+    },
   },
   emptyTable: {
     fontFamily: theme.typography.fontFamily,
@@ -61,11 +64,22 @@ const useStyles = makeStyles((theme) => ({
     width: '48%',
     paddingLeft: '2.5em',
     marginRight: '1.5rem',
+    [theme.breakpoints.down('sm')]: {
+      width: '90%',
+      marginLeft: '1.5rem',
+      paddingLeft: '0',
+      maxHeight: '25vh',
+    },
   },
   previewContainer: {
     maxHeight: 'calc(100vh - 25rem)',
     width: '43%',
     paddingRight: '2.5em',
+    [theme.breakpoints.down('sm')]: {
+      width: '90%',
+      margin: '1.5rem',
+      maxHeight: '25vh',
+    },
   },
 
 }));

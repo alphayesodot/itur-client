@@ -22,6 +22,9 @@ const useStyles = makeStyles((theme) => ({
     textOverflow: 'ellipsis',
     overflow: 'hidden',
     whiteSpace: 'nowrap',
+    [theme.breakpoints.down('md')]: {
+      width: '100%',
+    },
   },
 }));
 

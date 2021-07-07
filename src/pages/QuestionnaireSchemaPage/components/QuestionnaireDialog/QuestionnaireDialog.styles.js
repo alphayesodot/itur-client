@@ -28,6 +28,9 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     justifyContent: 'space-between',
     alignItems: 'stretch',
+    [theme.breakpoints.down('md')]: {
+      width: '48%',
+    },
   },
   marginBottom: {
     marginBottom: '1rem',
@@ -36,28 +39,9 @@ const useStyles = makeStyles((theme) => ({
     width: '65%',
     display: 'flex',
     flexDirection: 'column',
-  },
-  nodesDashBoard: {
-    backgroundColor: theme.palette.dialog.secondaryLight,
-    padding: '1rem',
-    height: '100%',
-    maxHeight: '7.2rem',
-    marginTop: '0.5rem',
-  },
-  internalNodeContainer: {
-    overflowY: 'auto',
-    direction: 'rtl',
-    height: '100%',
-    display: 'flex',
-    flexDirection: 'row-reverse',
-  },
-  checkboxContainer: {
-    marginLeft: '1rem',
-    direction: 'ltr',
-    width: '25%',
-    textOverflow: 'ellipsis',
-    overflow: 'hidden',
-    whiteSpace: 'nowrap',
+    [theme.breakpoints.down('md')]: {
+      width: '50%',
+    },
   },
   questions: {
     marginBottom: '1.5rem',

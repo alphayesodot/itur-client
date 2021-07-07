@@ -28,6 +28,10 @@ const useStyles = makeStyles((theme) => ({
     padding: '0.3rem',
     paddingLeft: '1rem',
     borderColor: theme.palette.dialog.secondaryMid,
+    [theme.breakpoints.down('sm')]: {
+      width: '20%',
+      minWidth: '4rem',
+    },
   },
   input: {
     width: '70%',
@@ -43,30 +47,28 @@ const useStyles = makeStyles((theme) => ({
       fontSize: '1rem',
       fontWeight: '800',
     },
-  },
-  accordion: {
-    direction: 'ltr',
-    width: '100%',
-    backgroundColor: 'transparent',
-    boxShadow: 'none',
-    minHeight: 0,
-  },
-  accordionUnchange: {
-    padding: 0,
-    minHeight: 0,
-    margin: 0,
-    backgroundColor: 'transparent !important',
-    boxShadow: 'none',
-  },
-  accordionSummary: {
-    padding: 0,
-    margin: 0,
-    backgroundColor: 'transparent',
+    [theme.breakpoints.down('sm')]: {
+      width: '80%',
+    },
   },
   deleteIcon: {
     marginRight: '0.5rem',
-    marginLeft: 0,
+    marginLeft: '0.5rem',
     width: '1.2rem',
+    [theme.breakpoints.down('sm')]: {
+      width: '0.8rem',
+      margin: 0,
+    },
+  },
+  expandButton: {
+    marginLeft: '0.5rem',
+    marginRight: '0.5rem',
+  },
+  expandIcon: {
+    width: '1.4rem',
+    [theme.breakpoints.down('sm')]: {
+      width: '1.2rem',
+    },
   },
   hidden: {
     visibility: 'hidden',
@@ -74,6 +76,9 @@ const useStyles = makeStyles((theme) => ({
   checkbox: {
     '&$checkedCheckbox': {
       color: theme.palette.dialog.primary,
+    },
+    [theme.breakpoints.down('sm')]: {
+      padding: '0',
     },
   },
   // This object is needed although it's empty. It is needed for override the default color.

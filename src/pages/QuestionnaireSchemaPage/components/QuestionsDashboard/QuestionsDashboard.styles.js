@@ -24,6 +24,9 @@ const useStyles = makeStyles((theme) => ({
   number: {
     width: '2rem',
     textAlign: 'center',
+    [theme.breakpoints.down('sm')]: {
+      width: '1rem',
+    },
   },
   titleQuestionType: {
     marginLeft: '0.6rem',
@@ -51,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: '0.4rem',
   },
   titleMust: {
-    width: '42px',
+    width: '2.625rem',
     textAlign: 'center',
   },
 }));

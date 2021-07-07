@@ -190,19 +190,22 @@ const Question = ({
           }}
         />
         <IconButton
-          style={{ backgroundColor: 'transparent', visibility: currentQuestion ? 'unset' : 'hidden' }}
+          style={{ backgroundColor: 'transparent', padding: 0, visibility: currentQuestion ? 'unset' : 'hidden' }}
+          className={classes.expandButton}
           disabled={!currentQuestion}
           onClick={() => { setExpand(!expand); }}
         >
-          {expand ? <ExpandLess /> : <ExpandMore />}
+          {expand
+            ? <ExpandLess className={classes.expandIcon} />
+            : <ExpandMore className={classes.expandIcon} />}
         </IconButton>
 
         <IconButton
-          style={{ backgroundColor: 'transparent', visibility: currentQuestion ? 'unset' : 'hidden' }}
+          style={{ backgroundColor: 'transparent', padding: 0, visibility: currentQuestion ? 'unset' : 'hidden' }}
           disabled={!currentQuestion}
           onClick={deleteQuestion}
         >
-          <img className={classes.deleteIcon} alt='+' src={deleteIcon} />
+          <img className={classes.deleteIcon} alt='delete' src={deleteIcon} />
         </IconButton>
       </div>
       {expand
