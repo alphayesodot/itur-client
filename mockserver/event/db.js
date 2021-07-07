@@ -2,11 +2,11 @@ const events = [
   {
     id: '1',
     node: {
-      id: '123',
+      id: '234abc1e810c19729de862ea',
       name: 'ראיון',
     },
     malshabShort: {
-      id: '22222222',
+      id: '222222222',
       firstName: 'נועה',
       lastName: 'קירל',
     },
@@ -19,11 +19,11 @@ const events = [
   {
     id: '2',
     node: {
-      id: '123',
+      id: '234abc1e810c19729de862ea',
       name: 'ראיון',
     },
     malshabShort: {
-      id: '9999999',
+      id: '999999999',
       firstName: 'דנה',
       lastName: 'זרמון',
     },
@@ -36,11 +36,11 @@ const events = [
   {
     id: '507f1f77bcf86cd799439021',
     node: {
-      id: '666',
+      id: '234abc1e810c19729de862eb',
       name: 'ראיון',
     },
     malshabShort: {
-      id: '9999999',
+      id: '999999999',
       firstName: 'דנה',
       lastName: 'זרמון',
     },
@@ -53,11 +53,11 @@ const events = [
   {
     id: '4',
     node: {
-      id: '123',
+      id: '234abc1e810c19729de862ea',
       name: 'ראיון',
     },
     malshabShort: {
-      id: '55555555',
+      id: '555555555',
       firstName: 'ישראל',
       lastName: 'ישראלי',
     },
@@ -68,26 +68,9 @@ const events = [
     results: { notes: [''] },
   },
   {
-    id: '5',
-    node: {
-      id: '123',
-      name: 'ראיון',
-    },
-    malshabShort: {
-      id: '3333333',
-      firstName: 'עדי',
-      lastName: 'ביטי',
-    },
-    time: `${new Date().toISOString().slice(0, 10)}T10:30:07.996+00:00`,
-    location: 'place',
-    interviewersIds: ['507f1f77bcf86cd799439012', '507f1f77bcf86cd799439022', '507f1f77bcf86cd799439023'],
-    url: 'http://',
-    results: { notes: [] },
-  },
-  {
     id: '507f1f77bcf86ca7994390555',
     node: {
-      id: '666',
+      id: '234abc1e810c19729de862eb',
       name: 'ראיון',
     },
     malshabShort: {

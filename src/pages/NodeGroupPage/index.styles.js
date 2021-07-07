@@ -7,12 +7,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     direction: 'rtl',
     height: '100%',
-    width: 'calc(100% - 5.5vw)',
-    minWidth: 'calc(100% - 5.5vw)',
-    [theme.breakpoints.down('sm')]: {
-      minWidth: '100%',
-      width: '100%',
-    },
+    width: '100%',
   },
   title: {
     marginRight: '0.5rem',

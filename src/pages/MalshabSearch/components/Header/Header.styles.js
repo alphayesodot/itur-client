@@ -3,49 +3,42 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
-    flexWrap: 'wrap',
+    justifyContent: 'flex-end',
     alignItems: 'center',
-    justifyContent: 'space-around',
+    padding: '1% auto',
+    marginBottom: '1%',
     background: theme.palette.primary.main,
+    width: '100%',
+    minHeight: '5rem',
     [theme.breakpoints.down('sm')]: {
-      padding: '1%',
+      flexDirection: 'column-reverse',
+      padding: '2% auto',
+      minHeight: '8rem',
       justifyContent: 'center',
-    },
-  },
-  inputsDiv: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    alignItems: 'center',
-    width: '80%',
-    marginBottom: '0.5%',
-    [theme.breakpoints.down('sm')]: {
-      justifyContent: 'center',
+      alignItems: 'stretch',
     },
   },
   input: {
     border: '0.2px solid lightgrey',
-    borderRadius: '0.5rem',
+    borderRadius: 30,
     fontWeight: 500,
     background: 'white',
     width: '12rem',
-    height: '2.2rem',
-  },
-  select: {
-    height: '2.5rem',
-    width: '13.25em',
-  },
-  textField: {
+    height: '2.3rem',
     paddingLeft: '1rem',
-    paddingTop: '0.1rem',
-    paddingBottom: '0.1rem',
-  },
-  date: {
-    paddingTop: '0.1rem',
-    paddingBottom: '0.1rem',
+    marginLeft: '3%',
+    direction: 'ltr',
+    margin: '1%',
+    display: 'flex',
+    justifyContent: 'center',
+    [theme.breakpoints.down('sm')]: {
+      width: 'calc(98% - 1rem)',
+    },
   },
   button: {
     background: theme.palette.primary.secondary,
     height: '2.5rem',
+    margin: '1%',
     padding: '1rem 2rem',
     borderRadius: 30,
     fontWeight: '600',
@@ -53,10 +46,6 @@ const useStyles = makeStyles((theme) => ({
       background: 'white',
       color: theme.palette.primary.secondary,
     },
-  },
-  undo: {
-    width: '1.25rem',
-    height: '1.25rem',
   },
 }));
 

@@ -35,12 +35,13 @@ const resources = {
         questionnaires: 'שאלונים',
         view: 'תצוגה',
         attachments: 'מסמכים',
-        generalInfo: 'פרטים כללים',
         newQuestionnaire: 'שאלון חדש',
         editQuestionnaire: 'ערוך שאלון',
         questions: 'שאלות',
         questionnaireName: 'שם שאלון',
         chooseQuestionnairePreview: 'בחר שאלון להצגה',
+        generalInfo: 'פרטים כלליים',
+        interviewsHistory: 'היסטוריית ראיונות',
       },
       actions: {
         delete: 'מחיקה',
@@ -62,6 +63,8 @@ const resources = {
         noQuestionnaires: 'אין שאלונים',
         noNodeGroups: 'אין מסלולים',
         noNodes: 'אין שלבי מיון',
+        noMalshab: 'אין מלש"ב להצגה',
+        noEvents: 'אין ראיונות',
       },
       headerTitles: {
         addUsers: 'הוספת משתמשים',
@@ -71,6 +74,7 @@ const resources = {
       },
       placeholders: {
         searchUnit: 'חיפוש יחידה',
+        searchMalshab: 'חיפוש לפי ת"ז',
         nodeGroup: 'מסלול',
         questionnaire: 'שאלון',
         enterAnswer: 'הכנס תשובה...',
@@ -95,6 +99,7 @@ const resources = {
         addUnit: '+ הוספת יחידה',
         addUsers: '+ הוספת משתמשים',
         newSchedule: 'לוז חדש',
+        searchMalshab: 'חיפוש מלש"ב',
         newNodeGroup: 'מסלול חדש',
         add: 'הוספה',
         view: 'הצג',
@@ -187,6 +192,8 @@ const resources = {
         information: 'מידע נוסף',
         playInterview: 'צפייה בראיון',
         restart: 'התחל מחדש',
+        invalidId: 'ת"ז לא תקין',
+        uploadAttachment: 'העלאת מסמך',
       },
       warnings: {
         oneTimePassword: 'שים לב, לאחר סגירת החלונית לא יהיה ניתן לצפות בסיסמה בשנית. יש לשמור את הסיסמה במקום מאובטח.',
