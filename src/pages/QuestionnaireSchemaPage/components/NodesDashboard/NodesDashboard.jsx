@@ -8,6 +8,7 @@ import useStyles from './NodesDashboard.styles';
 
 const NodesDashboard = ({ allNodes, checkedNodes, updateCheckedNodes }) => {
   const classes = useStyles();
+
   return (
     <DashboardCard className={classes.root}>
       <FormGroup row className={classes.internalNodeContainer}>
@@ -25,7 +26,7 @@ const NodesDashboard = ({ allNodes, checkedNodes, updateCheckedNodes }) => {
                   checked={checkedNodes.includes(node.id)}
                   onChange={() => { updateCheckedNodes(node.id); }}
                 />
-)}
+              )}
               label={node.name}
             />
           </Tooltip>

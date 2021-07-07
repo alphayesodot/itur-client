@@ -19,6 +19,7 @@ export class QuestionnaireSchemaService {
     const { data } = await axios.get(`${config.apiUri}/api/questionnaire-schema/${nodeId}`, { headers });
     return data;
   }
+
   static async deleteQuestionnaireById(id) {
     const { data } = await axios.delete(`${config.apiUri}/api/questionnaire-schema/${id}`, { headers });
     return data;

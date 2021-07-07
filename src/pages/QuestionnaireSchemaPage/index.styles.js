@@ -81,7 +81,6 @@ const useStyles = makeStyles((theme) => ({
       maxHeight: '25vh',
     },
   },
-
 }));
 
 export default useStyles;

@@ -13,11 +13,13 @@ const MultipleChoice = ({
   const { t } = useTranslation();
   const enterChar = 13;
   const [optionToAdd, setOptionToAdd] = useState();
+
   const deleteFromOptions = (idx) => {
     const tmpOptions = [...options];
     tmpOptions.splice(idx, 1);
     setOptions(tmpOptions);
   };
+
   return (
     <div className={classes.root}>
       <FormControl component='fieldset'>
@@ -34,7 +36,7 @@ const MultipleChoice = ({
               value={other}
               onChange={() => { setOther(!other); }}
             />
-)}
+          )}
           label={t('question.otherOption')}
           labelPlacement='start'
         />
@@ -71,9 +73,7 @@ const MultipleChoice = ({
             ))}
           </div>
         ) : <></>}
-
     </div>
-
   );
 };
 

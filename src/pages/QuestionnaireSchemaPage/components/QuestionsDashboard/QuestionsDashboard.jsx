@@ -22,6 +22,7 @@ const QuestionsDashboard = ({ questionsArr, setQuestionsArr }) => {
     tmpQuestionsArr[questionIdx] = question;
     setQuestionsArr([...tmpQuestionsArr]);
   };
+
   return (
     <DashboardCard className={classes.root}>
       <div className={classes.questionnaireCreationTitle}>

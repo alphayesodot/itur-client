@@ -26,9 +26,11 @@ const Header = ({
   const classes = useStyles();
   const [inputValue, setInputValue] = useState('');
   const { t } = useTranslation();
+
   useEffect(() => {
     if (inputValue) filterSearch(inputValue, allQuestionnaireRows, setQuestionnaireToShow);
   }, [allQuestionnaireRows]);
+
   return (
     <DashboardCard className={classes.root}>
       <div className={classes.content}>

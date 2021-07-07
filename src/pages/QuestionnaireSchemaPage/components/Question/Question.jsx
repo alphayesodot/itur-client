@@ -199,7 +199,6 @@ const Question = ({
             ? <ExpandLess className={classes.expandIcon} />
             : <ExpandMore className={classes.expandIcon} />}
         </IconButton>
-
         <IconButton
           style={{ backgroundColor: 'transparent', padding: 0, visibility: currentQuestion ? 'unset' : 'hidden' }}
           disabled={!currentQuestion}
@@ -214,7 +213,6 @@ const Question = ({
           {mapQuestionToComponent[questionType.id]}
         </div>
         )}
-
     </div>
   );
 };

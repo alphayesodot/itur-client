@@ -73,6 +73,7 @@ const QuestionnaireDialog = ({
     setQuestionnaireNameInput('');
     setQuestionsArr([]);
   };
+
   const hadleOnClose = () => {
     if (isCurrentQuestionnaire) {
       // return state to be unchanges
@@ -85,6 +86,7 @@ const QuestionnaireDialog = ({
     }
     onClose();
   };
+
   const updateCheckedNodes = (nodeId) => {
     const idx = checkedNodes.indexOf(nodeId);
     if (idx > -1) {
@@ -192,7 +194,6 @@ const QuestionnaireDialog = ({
               />
             )
             : (
-
               <div className={classes.noNodeGroups}>
                 <NoObjectsToShow title={t('message.noNodes')} />
               </div>
