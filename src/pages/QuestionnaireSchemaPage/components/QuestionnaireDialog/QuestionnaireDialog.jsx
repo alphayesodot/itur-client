@@ -47,6 +47,7 @@ const QuestionnaireDialog = ({
     { id: Role.Malshab,
       name: t('roles.malshab'),
     }];
+
   const roleToObject = (role) => {
     const objectIdx = allRoles.findIndex(({ id }) => id === role);
     return allRoles[objectIdx];

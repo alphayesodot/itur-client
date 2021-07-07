@@ -16,21 +16,21 @@ export const QuestionType = {
 
 export class QuestionnaireSchemaService {
   static async getQuestionnaires(nodeId) {
-    const { data } = await axios.get(`${config.uri.api}/api/questionnaire-schema/${nodeId}`, { headers });
+    const { data } = await axios.get(`${config.apiUri}/api/questionnaire-schema/${nodeId}`, { headers });
     return data;
   }
   static async deleteQuestionnaireById(id) {
-    const { data } = await axios.delete(`${config.uri.api}/api/questionnaire-schema/${id}`, { headers });
+    const { data } = await axios.delete(`${config.apiUri}/api/questionnaire-schema/${id}`, { headers });
     return data;
   }
 
   static async create(questionnaireSchema) {
-    const { data } = await axios.post(`${config.uri.api}/api/questionnaire-schema`, questionnaireSchema, { headers });
+    const { data } = await axios.post(`${config.apiUri}/api/questionnaire-schema`, questionnaireSchema, { headers });
     return data;
   }
 
   static async update(questionnaireSchema) {
-    const { data } = await axios.put(`${config.uri.api}/api/questionnaire-schema/${questionnaireSchema.id}`, questionnaireSchema, { headers });
+    const { data } = await axios.put(`${config.apiUri}/api/questionnaire-schema/${questionnaireSchema.id}`, questionnaireSchema, { headers });
     return data;
   }
 }

@@ -10,7 +10,8 @@ const sitesPostfixes = {
   nodeGroupCreation: '/node-group-creation',
   fileUpload: '/file-upload',
   userManagement: '/user-management',
-  editQuestionnaire: '/edit-questionnaire',
+  unitCreation: '/unit-creation',
+  questionnaires: '/questionnaires',
 };
 
 const config = {
@@ -95,7 +96,7 @@ const config = {
         sideBar: true,
       },
       {
-        route: sitesPostfixes.editQuestionnaire,
+        route: sitesPostfixes.questionnaires,
         sideBar: true,
       },
       {

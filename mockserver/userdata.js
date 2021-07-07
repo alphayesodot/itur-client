@@ -27,7 +27,7 @@ const users = [
   },
   {
     userID: 4,
-    name: 'יוזר מדא',
+    name: 'יוזר מדה',
     role: Role.Mada,
   },
   {
