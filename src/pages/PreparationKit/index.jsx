@@ -1,14 +1,14 @@
-import React, { useState, useLayoutEffect as useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { Document, Page } from 'react-pdf/dist/esm/entry.webpack';
 import ReactPlayer from 'react-player/file';
 import interviewerPDF from './pdf/1.pdf';
 import interviewerVideo from './pdf/video.mp4';
+import DashboardCard from '../../common/DashboardCard/DashboardCard';
 import useStyles from './index.styles';
 
-const PreparationKit = ({ sidebarRef }) => {
+const PreparationKit = () => {
   const [pageNumber, setPageNumber] = useState(1);
   const [pageAmount, setPageAmount] = useState(1);
-  const [pageHeight, setPageHeight] = useState(0);
   const canvasRef = useRef(null);
 
   const classes = useStyles();
@@ -20,13 +20,9 @@ const PreparationKit = ({ sidebarRef }) => {
     setPageAmount(numPages);
   };
 
-  useEffect(() => {
-    setPageHeight(sidebarRef.current.getBoundingClientRect().height);
-  }, [sidebarRef.current?.getBoundingClientRect().height]);
-
   return (
-    <div className={classes.root}>
-      <div className={classes.PDFContainer}>
+    <DashboardCard className={classes.root}>
+      <div className={classes.documentContainer}>
         <Document
           file={interviewerPDF}
           noData={<p>No File Chosen</p>}
@@ -34,7 +30,6 @@ const PreparationKit = ({ sidebarRef }) => {
         >
           <Page
             pageNumber={pageNumber}
-            height={pageHeight}
             canvasRef={canvasRef}
             className={classes.document}
           />
@@ -72,7 +67,7 @@ const PreparationKit = ({ sidebarRef }) => {
           controls
         />
       </div>
-    </div>
+    </DashboardCard>
   );
 };
 

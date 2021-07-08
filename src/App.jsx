@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect, useRef } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import Home from './pages/Home/index';
@@ -22,7 +22,6 @@ const App = () => {
   const classes = useStyles();
   const [isLoading, setIsLoading] = useState(true);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const sidebarRef = useRef(null);
 
   const initAuthUser = useCallback(() => {
     AuthService.getAuthUser()
@@ -93,7 +92,7 @@ const App = () => {
     },
     {
       path: configApp.sitesPostfixes.preparationKit,
-      component: <PreparationKit sidebarRef={sidebarRef} />,
+      component: <PreparationKit />,
     },
     {
       path: configApp.sitesPostfixes.nodeGroupCreation,
@@ -117,7 +116,7 @@ const App = () => {
     <Router classes={classes.root}>
       <Header />
       <div className={classes.bodyContainer}>
-        <Sidebar ref={sidebarRef} />
+        <Sidebar />
         <Switch>
           <Route path='/' exact>
             <Home />
