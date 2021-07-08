@@ -58,15 +58,19 @@ const useStyles = makeStyles(() => ({
   },
   malshabDataContainer: {
     paddingTop: '20px',
-    paddingRight: '32px',
+    // paddingRight: '50px',
     alignItems: 'stretch',
     direction: 'rtl',
+  },
+  malshabParametersContainer: {
+    direction: 'ltr',
+    marginLeft: '2rem',
   },
   flexOne: {
     flex: 1,
   },
   dataParameter: {
-    marginRight: '0.5rem',
+    marginLeft: '0.5rem',
   },
   miniParameter: {
     fontSize: '0.8rem',

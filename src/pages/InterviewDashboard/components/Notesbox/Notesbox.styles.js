@@ -28,12 +28,9 @@ const useStyles = makeStyles((theme) => ({
   },
   toolbar: {
     display: 'flex',
-    direction: 'rtl',
     padding: 0,
   },
-  rtl: {
-    direction: 'rtl',
-  },
+
 }));
 
 export const StyledTextField = styled(TextField)({

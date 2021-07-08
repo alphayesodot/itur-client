@@ -68,7 +68,7 @@ const App = () => {
     },
     {
       path: configApp.sitesPostfixes.interview,
-      component: <InterviewDashboard eventId={0} />,
+      component: <InterviewDashboard eventId={1} />,
     },
     {
       path: configApp.sitesPostfixes.luz,

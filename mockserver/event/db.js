@@ -10,7 +10,7 @@ const events = [
       firstName: 'נועה',
       lastName: 'קירל',
     },
-    time: `${new Date().toISOString().slice(0, 10)}T06:00:07.996+00:00`,
+    time: `${new Date().toISOString().slice(0, 10)}T12:40:07.996+00:00`,
     location: 'place',
     interviewersIds: ['507f1f77bcf86cd799439021', '507f1f77bcf86cd799439013', '507f1f77bcf86cd799439012'],
     url: 'http://',

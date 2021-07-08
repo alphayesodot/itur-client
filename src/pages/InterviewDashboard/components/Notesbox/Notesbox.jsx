@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import DashboardCard from '../../../../common/DashboardCard/DashboardCard';
 import useStyles, { StyledTextField } from './Notesbox.styles';
 
-const Notesbox = () => {
+const Notesbox = ({ setNote }) => {
   const classes = useStyles();
   const { t } = useTranslation();
   return (
@@ -20,7 +20,7 @@ const Notesbox = () => {
           rows={5}
           fullWidth
           placeholder={t('interviewDashboard.notesBox.hereYouCanWriteSomeNotes')}
-          className={classes.rtl}
+          onBlur={(event) => setNote(event.target.value)}
         />
       </DashboardCard>
     </DashboardCard>

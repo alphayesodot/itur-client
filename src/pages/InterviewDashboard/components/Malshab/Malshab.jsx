@@ -3,12 +3,13 @@ import useStyles from './Malshab.styles';
 import MalshabDetails from './MalshabDetails/MalshabDetails';
 import MalshabToolbar from './MalshabToolbar/MalshabToolbar';
 
-const Malshab = ({ malshab, event }) => {
+const Malshab = ({ malshab, event, finishInterview }) => {
   const classes = useStyles();
   navigator.mediaDevices.getUserMedia({ audio: true, video: true });
+
   return (
     <DashboardCard className={classes.root}>
-      {event && <MalshabToolbar event={event} recording />}
+      {event && <MalshabToolbar event={event} recording finishInterview={finishInterview} />}
       <div style={{ display: 'flex', justifyContent: 'center', height: '25rem' }}>
         <iframe title='videochat' src='https://radar-interviews.azurewebsites.net/?groupId=c5dcdd10-cfad-11eb-a100-cd76ace8e181' width='100%' allow='camera;microphone' style={{ border: 'none' }} />
       </div>

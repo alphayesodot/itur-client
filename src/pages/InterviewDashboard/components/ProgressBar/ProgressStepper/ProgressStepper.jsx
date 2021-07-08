@@ -19,6 +19,9 @@ const ProgressStepper = ({ date }) => {
 
   useEffect(() => {
     setActiveStep(getStepByMinutesPassed(date));
+    setInterval(() => {
+      setActiveStep(getStepByMinutesPassed(date));
+    }, 60000);
   }, [date]);
 
   return (
