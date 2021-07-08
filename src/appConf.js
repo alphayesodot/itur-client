@@ -11,6 +11,7 @@ const sitesPostfixes = {
   fileUpload: '/file-upload',
   userManagement: '/user-management',
   editQuestionnaire: '/edit-questionnaire',
+  questionnaireComponent: '/questionnaire',
 };
 
 const config = {
@@ -29,6 +30,10 @@ const config = {
       },
       {
         route: sitesPostfixes.preparationKit,
+        sideBar: true,
+      },
+      {
+        route: sitesPostfixes.questionnaireComponent,
         sideBar: true,
       },
     ],
