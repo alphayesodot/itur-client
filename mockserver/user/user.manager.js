@@ -22,7 +22,7 @@ class UserManager {
       unitId,
     };
     users.push(newUser);
-    newUser = { mail: newUser.name, password: 'DFGJKL123456' };
+    newUser = { mail: `${newUser.name}@iturradardev.onmicrosoft.com`, password: 'DFGJKL123456' };
     res.send(newUser || 404);
   }
 
