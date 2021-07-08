@@ -27,7 +27,7 @@ const NewUsersDialog = ({
   const copyUsers = () => {
     const usernamesList = [];
     users.forEach((user) => {
-      usernamesList.push(JSON.stringify({ name: user.name, password: user.password }));
+      usernamesList.push(JSON.stringify({ mail: user.mail, password: user.password }));
     });
     navigator.clipboard.writeText(usernamesList);
   };
