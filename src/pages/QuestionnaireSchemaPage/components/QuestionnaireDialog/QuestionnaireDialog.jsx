@@ -63,6 +63,7 @@ const QuestionnaireDialog = ({
     setQuestionnaireNameInput('');
     setQuestionsArr([]);
   };
+
   const hadleOnClose = () => {
     if (isCurrentQuestionnaire) {
       // return state to be unchanged
@@ -75,6 +76,7 @@ const QuestionnaireDialog = ({
     }
     onClose();
   };
+
   const updateCheckedNodes = (nodeId) => {
     const idx = checkedNodes.indexOf(nodeId);
     if (idx > -1) {

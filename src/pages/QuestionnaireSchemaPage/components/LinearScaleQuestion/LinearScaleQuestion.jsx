@@ -6,26 +6,31 @@ import useStyles from './LinearScaleQuestion.styles.js';
 const LinearScaleQuestion = ({ linearScale, setLinearScale }) => {
   const classes = useStyles();
   const { t } = useTranslation();
+
   const setMinVal = (val) => {
     const tmpScale = { ...linearScale };
     tmpScale.minVal = val;
     setLinearScale(tmpScale);
   };
+
   const setMaxVal = (val) => {
     const tmpScale = { ...linearScale };
     tmpScale.maxVal = val;
     setLinearScale(tmpScale);
   };
+
   const setMinTitle = (title) => {
     const tmpScale = { ...linearScale };
     tmpScale.minTitle = title;
     setLinearScale(tmpScale);
   };
+
   const setMaxTitle = (title) => {
     const tmpScale = { ...linearScale };
     tmpScale.maxTitle = title;
     setLinearScale(tmpScale);
   };
+
   const dataToMap = [
     {
       title: linearScale.minTitle,
@@ -38,8 +43,8 @@ const LinearScaleQuestion = ({ linearScale, setLinearScale }) => {
       value: linearScale.maxVal,
       seValue: setMaxVal,
     },
-
   ];
+
   return (
     <div className={classes.root}>
       {dataToMap.map((data) => (

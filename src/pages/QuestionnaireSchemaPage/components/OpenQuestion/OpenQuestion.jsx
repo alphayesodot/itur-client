@@ -6,6 +6,7 @@ import useStyles from './OpenQuestion.styles.js';
 const OpenQuestion = ({ isShort, setIsShort }) => {
   const classes = useStyles();
   const { t } = useTranslation();
+
   return (
     <div className={classes.root}>
       <Checkbox
@@ -15,7 +16,6 @@ const OpenQuestion = ({ isShort, setIsShort }) => {
       />
       <span className={classes.label}>{t('question.shortQuestion')}</span>
     </div>
-
   );
 };
 

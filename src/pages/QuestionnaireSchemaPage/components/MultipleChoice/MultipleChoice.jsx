@@ -18,6 +18,7 @@ const MultipleChoice = ({
     tmpOptions.splice(idx, 1);
     setOptions(tmpOptions);
   };
+
   return (
     <div className={classes.root}>
       <FormControl component='fieldset'>
@@ -34,7 +35,7 @@ const MultipleChoice = ({
               value={hasOther}
               onChange={() => { setHasOther(!hasOther); }}
             />
-)}
+          )}
           label={t('question.otherOption')}
           labelPlacement='start'
         />
@@ -71,9 +72,7 @@ const MultipleChoice = ({
             ))}
           </div>
         ) : <></>}
-
     </div>
-
   );
 };
 

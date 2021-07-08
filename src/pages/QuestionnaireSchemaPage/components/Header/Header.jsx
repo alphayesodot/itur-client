@@ -30,6 +30,7 @@ const Header = ({
   useEffect(() => {
     if (inputValue) filterSearch(inputValue, allQuestionnaireRows, setQuestionnaireToShow);
   }, [allQuestionnaireRows]);
+
   return (
     <DashboardCard className={classes.root}>
       <div className={classes.content}>

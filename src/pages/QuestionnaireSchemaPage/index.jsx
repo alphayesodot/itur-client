@@ -69,7 +69,6 @@ const QuestionnaireSchemaPage = () => {
   };
 
   /**
-   *
    * @param {*} id id to delete from array
    * @param {*} arr array to delete from. all objects have an id property.
    * @returns new array without the object with the noted #id
@@ -103,9 +102,7 @@ const QuestionnaireSchemaPage = () => {
     }
   }, []);
 
-  /**
-   * delete questionnaire from states - delete a row table
-   */
+  // delete questionnaire from states - delete a row table
   useEffect(() => {
     const tmpAllQuestionnaireRows = deleteById(idToDelete, [...allQuestionnaireRows]);
     const tmpShowQuestionnaireRows = deleteById(idToDelete, [...questionnaireRowsToShow]);
@@ -159,7 +156,6 @@ const QuestionnaireSchemaPage = () => {
         openDialog={() => { setOpenDialog(true); }}
         setQuestionnaireToPreview={setQuestionnaireToPreview}
       />
-
       <DashboardCard className={classes.dashbord}>
         <Typography className={classes.content}>
           <strong className={classes.title}>{t('title.questionnaires')}</strong>

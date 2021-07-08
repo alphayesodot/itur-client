@@ -30,6 +30,7 @@ const Preview = ({ questionnaire }) => {
   };
   const columnNames = ['#', t('question.question'), t('question.questionType')];
   const columnWidth = ['1rem', '80%', '20%'];
+
   return (
     (
       <DashboardCard className={classes.root}>
@@ -66,9 +67,7 @@ const Preview = ({ questionnaire }) => {
                     <NoObjectsToShow title={t('message.noQuestions')} />
                   </div>
                 )}
-
             </>
-
           )}
       </DashboardCard>
     )

@@ -84,7 +84,6 @@ const useStyles = makeStyles((theme) => ({
   // This object is needed although it's empty. It is needed for override the default color.
   checkedCheckbox: {
   },
-
 }));
 
 export default useStyles;
