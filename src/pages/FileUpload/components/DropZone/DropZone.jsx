@@ -89,7 +89,7 @@ const DropZone = ({ files, setFiles }) => {
         const formData = new FormData();
         formData.append('file', acceptedFile);
         axios
-          .post(`${configApp.uri.api}/api/upload`, formData, {
+          .post(`${configApp.apiUri}/api/data-upload`, formData, {
             params: {
               filename: acceptedFile.name,
             },

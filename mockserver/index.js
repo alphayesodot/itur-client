@@ -6,9 +6,11 @@ import config from './config.js';
 import eventRouter from './event/event.router.js';
 import uploadRouter from './upload/upload.router.js';
 import userRouter from './user/user.router.js';
+import nodeRouter from './node/node.router.js';
 import nodeGroupRouter from './nodeGroup/nodeGroup.router.js';
 import unitRouter from './unit/unit.router.js';
 import malshabRouter from './malshab/malshab.router.js';
+import reportRouter from './report/report.router.js';
 
 const app = express();
 app.use(cors({ origin: '*', credentials: true }));
@@ -17,7 +19,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 // Auth server
-app.get('/auth/login/:userId', (req, res) => {
+app.get('/login/:userId', (req, res) => {
   const accessToken = buildJwt(req.params.userId);
   const nextYear = new Date();
   nextYear.setFullYear(nextYear.getFullYear() + 1);
@@ -28,15 +30,10 @@ app.get('/auth/login/:userId', (req, res) => {
 // Config server
 app.get('/config', (req, res) => {
   res.send({
-    uri: {
-      auth: `http://localhost:${config.port}`,
-      api: `http://localhost:${config.port}`,
-    },
+    apiUri: `http://localhost:${config.port}`,
     tokenName: config.tokenName,
-    secret: config.secret,
     fileUpload: config.fileUpload,
-    sitesPostfixes: config.sitesPostfixes,
-    allowedUrlPostfixesOfRole: config.allowedUrlPostfixesOfRole,
+    attachments: config.attachments,
   });
 });
 
@@ -46,5 +43,7 @@ app.use('/api/user', userRouter);
 app.use('/api/unit', unitRouter);
 app.use('/api/upload', uploadRouter);
 app.use('/api/malshab', malshabRouter);
+app.use('/api/node', nodeRouter);
+app.use('/api/report', reportRouter);
 
 app.listen(config.port, () => console.log(`Mock server listening on ${config.port}`));

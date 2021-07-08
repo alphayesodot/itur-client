@@ -5,6 +5,7 @@ import { Typography } from '@material-ui/core';
 import DashboardCard from '../../../../common/DashboardCard/DashboardCard';
 import ScheduleStore from '../../../../stores/Schedule.store';
 import useStyles from './Header.styles';
+import commonInputUseStyles from '../../../../common/CommonInput/CommonInput.styles';
 import NodeGroupSelect from '../../../../common/NodeGroupSelect/NodeGroupSelect';
 import DateInput from '../../../../common/DateInput/DateInput';
 
@@ -18,6 +19,7 @@ const Header = ({
   interviewers,
 }) => {
   const classes = useStyles();
+  const commonInputClasses = commonInputUseStyles();
   const { t } = useTranslation();
 
   useEffect(() => {
@@ -35,10 +37,15 @@ const Header = ({
   return (
     <DashboardCard className={classes.root}>
       <div className={classes.content}>
-        <DateInput selectedDate={selectedDate} setSelectedDate={setSelectedDate} />
+        <DateInput
+          selectedDate={selectedDate}
+          setSelectedDate={setSelectedDate}
+          inputClassName={`${commonInputClasses.root} ${classes.dateInput}`}
+        />
         <NodeGroupSelect
           selectedNodeGroup={selectedNodeGroup}
           setSelectedNodeGroup={setSelectedNodeGroup}
+          selectClassName={commonInputClasses.root}
         />
         <Typography className={`${classes.unit} ${classes.item}`}>
           :

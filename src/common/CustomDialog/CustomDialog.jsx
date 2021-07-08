@@ -22,13 +22,13 @@ const CustomDialog = ({ open, onClose, title, content, dividers, paperClassName 
       classes={{
         paper: `${classes.paper} ${paperClassName}`,
       }}
-      onClose={() => onClose()}
+      onClose={onClose}
       open={open}
     >
       <DialogTitle classes={{ root: classes.titleDiv }} disableTypography>
         <Typography component='span' className={classes.title}>{title}</Typography>
         <IconButton
-          onClick={() => onClose()}
+          onClick={onClose}
           style={{ backgroundColor: 'transparent' }}
           className={classes.closeButton}
         >

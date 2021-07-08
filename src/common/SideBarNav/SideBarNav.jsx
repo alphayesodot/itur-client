@@ -9,8 +9,6 @@ import malshabSearchIcon from '../../utils/images/aside/aside-malshab-search-but
 import malshabSearchIconActive from '../../utils/images/aside/aside-malshab-search-button-active.svg';
 import malshabScheduleIcon from '../../utils/images/aside/aside-malshab-schedule-button.svg';
 import malshabScheduleIconActive from '../../utils/images/aside/aside-malshab-schedule-button-active.svg';
-import settingsIcon from '../../utils/images/aside/aside-settings-button.svg';
-import settingsIconActive from '../../utils/images/aside/aside-settings-button-active.svg';
 import preparationKitIcon from '../../utils/images/aside/aside-preparation-kit-button.svg';
 import preparationKitIconActive from '../../utils/images/aside/aside-preparation-kit-button-active.svg';
 import nodeGroupIcon from '../../utils/images/aside/aside-node-group-button.svg';
@@ -50,7 +48,6 @@ const Sidebar = React.forwardRef((props, ref) => {
     fileUpload: { urlPostfix: configApp.sitesPostfixes.fileUpload, imgDef: uploadIcon, imgActive: uploadIconActive, title: t('sideBar.fileUpload') },
     userManagement: { urlPostfix: configApp.sitesPostfixes.userManagement, imgDef: userManagementIcon, imgActive: userManagementIconActive, title: t('sideBar.userManagement') },
     editQuestionnaire: { urlPostfix: configApp.sitesPostfixes.editQuestionnaire, imgDef: questionnairesIcon, imgActive: questionnairesIconActive, title: t('sideBar.editQuestionnaire') },
-    settings: { urlPostfix: '/settings', imgDef: settingsIcon, imgActive: settingsIconActive, title: t('sideBar.settings') },
   };
   const createIcon = (iconDetailsObject) => {
     const src = iconDetailsObject.urlPostfix === window.location.pathname
@@ -89,7 +86,6 @@ const Sidebar = React.forwardRef((props, ref) => {
       <div className={classes.iconGroup}>
         {iconsToShow.map((iconDetail) => createIcon(iconDetail))}
       </div>
-      {createIcon(iconDetails.settings)}
     </DashboardCard>
   );
 });
