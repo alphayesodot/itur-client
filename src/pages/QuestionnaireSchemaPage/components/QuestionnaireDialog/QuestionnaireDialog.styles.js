@@ -114,6 +114,13 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.dialog.secondaryMid,
     border: '1px solid transparent',
   },
+  selectRoleCheckbox: {
+    '&$checkedCheckbox': {
+      color: theme.palette.dialog.primary,
+    },
+  },
+  checkedCheckbox: {
+  },
 }));
 
 export default useStyles;

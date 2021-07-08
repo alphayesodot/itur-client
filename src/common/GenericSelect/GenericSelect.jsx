@@ -8,7 +8,7 @@ import useStyles from './GenericSelect.styles';
  *                     (if multiple- [{ id: string, label: string, ...additionalFields }])
  * @param {*} selectedValue: the selected value of the select.
  *                           (if multiple- { id: string, label: string, ...additionalFields })
- * @param {*} setSelectedValue: set state function of the sleected value.
+ * @param {*} setSelectedValue: set state function of the slected value.
  * @param {*} selectClassName: class name for the select- optional.
  *                             for describing input's width, height, border radius etc.
  * @param {*} checkboxClasses: classes for checkbox- optional.
@@ -98,9 +98,9 @@ const GenericSelect = ({
           <MenuItem key={id} value={id}>
             {isMultiple && (
             <Checkbox
+              classes={checkboxClasses}
               key={id}
               checked={isChecked[optionId]}
-              classes={checkboxClasses}
             />
             )}
             {label}

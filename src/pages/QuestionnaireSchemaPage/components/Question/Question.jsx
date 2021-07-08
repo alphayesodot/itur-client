@@ -19,19 +19,19 @@ const Question = ({
   const classes = useStyles();
   const { t } = useTranslation();
   const quesitonTypes = [
-    { id: '0', name: t('question.choose') },
-    { id: QuestionType.open, name: t('question.open') },
-    { id: QuestionType.multipleChoice, name: t('question.multiple') },
-    { id: QuestionType.checkbox, name: t('question.checkbox') },
-    { id: QuestionType.linearScale, name: t('question.linearScale') },
-    { id: QuestionType.date, name: t('question.date') }];
+    { id: '0', label: t('question.choose') },
+    { id: QuestionType.open, label: t('question.open') },
+    { id: QuestionType.multipleChoice, label: t('question.multiple') },
+    { id: QuestionType.checkbox, label: t('question.checkbox') },
+    { id: QuestionType.linearScale, label: t('question.linearScale') },
+    { id: QuestionType.date, label: t('question.date') }];
 
   const currentQuestionExist = currentQuestion && Object.keys(currentQuestion).length > 0;
   const [questionTitle, setQuestionTitle] = useState(currentQuestionExist ? currentQuestion.title : '');
-  const [options, setOptions] = useState(currentQuestion?.options || []);
-  const [isShort, setIsShort] = useState(currentQuestion?.isShort || false);
+  const [options, setOptions] = useState(currentQuestionExist ? currentQuestion.options : []);
+  const [isShort, setIsShort] = useState(currentQuestionExist ? currentQuestion.isShort : false);
   const [required, setRequired] = useState(currentQuestionExist ? currentQuestion.required : true);
-  const [other, setOther] = useState(currentQuestionExist ? currentQuestion.other : false);
+  const [hasOther, setHasOther] = useState(currentQuestionExist ? currentQuestion.hasOther : false);
   const [expand, setExpand] = useState(false);
   const [answer, setAnswer] = useState('');
   const [error, setError] = useState(false);
@@ -63,8 +63,8 @@ const Question = ({
       setOptions={setOptions}
       answer={answer}
       setAnswer={setAnswer}
-      other={other}
-      setOther={setOther}
+      hasOther={hasOther}
+      setHasOther={setHasOther}
     />
   );
   mapQuestionToComponent[QuestionType.checkbox] = (
@@ -73,8 +73,8 @@ const Question = ({
       setOptions={setOptions}
       answer={answer}
       setAnswer={setAnswer}
-      other={other}
-      setOther={setOther}
+      hasOther={hasOther}
+      setHasOther={setHasOther}
       multipleAnswers
     />
   );
@@ -84,7 +84,7 @@ const Question = ({
     setIsShort(false);
     setQuestionType(quesitonTypes[0]);
     setRequired(true);
-    setOther(false);
+    setHasOther(false);
     setOptions([]);
     setExpand(false);
     setAnswer('');
@@ -100,7 +100,7 @@ const Question = ({
     }
   };
 
-  // set requried fields
+  // set required fields
   useEffect(() => {
     if (currentQuestionExist) {
       requriedError(questionTitle);
@@ -116,11 +116,11 @@ const Question = ({
         break;
       case QuestionType.multipleChoice:
         updatedQuestion.options = options;
-        updatedQuestion.other = other;
+        updatedQuestion.hasOther = hasOther;
         break;
       case QuestionType.checkbox:
         updatedQuestion.options = options;
-        updatedQuestion.other = other;
+        updatedQuestion.hasOther = hasOther;
         break;
       case QuestionType.linearScale:
         updatedQuestion.min = { tag: linearScale.minTitle, value: linearScale.minVal };
@@ -139,7 +139,7 @@ const Question = ({
         title: questionTitle,
         type: questionType.id,
         required: true,
-        description: '',
+        // description: '', // not allowed to be empty
       };
       addQuestion(addFieldsToQuestion(newQuestion));
       reset();
@@ -151,11 +151,11 @@ const Question = ({
     const updatedQuestion = {
       title: questionTitle,
       type: questionType.id,
-      required: true,
-      description: '',
+      required,
+      // description: '', // not allowed to be empty
     };
     updateQuestion(addFieldsToQuestion(updatedQuestion));
-  }, [questionTitle, options, isShort, required, other, questionType]);
+  }, [questionTitle, options, isShort, required, hasOther, questionType, linearScale]);
 
   return (
     <div className={classes.root}>

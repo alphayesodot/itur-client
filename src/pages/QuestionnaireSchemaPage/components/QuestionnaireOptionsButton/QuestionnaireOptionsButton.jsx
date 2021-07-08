@@ -4,7 +4,7 @@ import useStyles from './QuestionnaireOptionsButton.styles';
 import deleteImg from '../../../../utils/images/general/trash.svg';
 import previewImg from '../../../../utils/images/files/eye_black.svg';
 import editImg from '../../../../utils/images/general/edit-regular.svg';
-import OptionsButton from '../../../../common/OpetionButton/OpetionButton';
+import OptionsButton from '../../../../common/OptionButton/OptionButton';
 import { QuestionnaireSchemaService } from '../../../../services/QuestionnaireSchema.service';
 import QuestionnaireDialog from '../QuestionnaireDialog/QuestionnaireDialog';
 

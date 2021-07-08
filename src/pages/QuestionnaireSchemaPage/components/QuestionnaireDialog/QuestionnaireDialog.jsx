@@ -22,42 +22,32 @@ const QuestionnaireDialog = ({
   && Object.keys(currentQuestionnaire).length > 0;
   const classes = useStyles();
   const { t } = useTranslation();
-  const allRoles = [
+  const targetTypes = [
     { id: Role.Interviewer,
-      name: t('roles.interviewer'),
-    },
-    { id: Role.RamadIturOfUnit,
-      name: t('roles.ramadIturOfUnit'),
-    },
-    { id: Role.RamadIturAssistant,
-      name: t('roles.ramadIturAssistant'),
-    },
-    { id: Role.ProfessionalRamad,
-      name: t('roles.professionalRamad'),
+      label: t('roles.interviewer'),
     },
     { id: Role.Mada,
-      name: t('roles.mada'),
+      label: t('roles.mada'),
     },
     { id: Role.Psychologist,
-      name: t('roles.psychologist'),
+      label: t('roles.psychologist'),
     },
     { id: Role.Diagnoser,
-      name: t('roles.diagnoser'),
+      label: t('roles.diagnoser'),
     },
     { id: Role.Malshab,
-      name: t('roles.malshab'),
+      label: t('roles.malshab'),
     }];
-
   const roleToObject = (role) => {
-    const objectIdx = allRoles.findIndex(({ id }) => id === role);
-    return allRoles[objectIdx];
+    const objectIdx = targetTypes.findIndex(({ id }) => id === role);
+    return targetTypes[objectIdx];
   };
   const [checkedNodes, setCheckedNodes] = useState(
     isCurrentQuestionnaire ? currentQuestionnaire.nodes : [],
   );
   const [checkedRoles, setCheckedRoles] = useState(
     isCurrentQuestionnaire
-      ? currentQuestionnaire.targetRoles.map((role) => roleToObject(role))
+      ? currentQuestionnaire.targetTypes.map((role) => roleToObject(role))
       : [],
   );
   const [questionnaireNameInput, setQuestionnaireNameInput] = useState(
@@ -75,9 +65,9 @@ const QuestionnaireDialog = ({
   };
   const hadleOnClose = () => {
     if (isCurrentQuestionnaire) {
-      // return state to be unchanges
+      // return state to be unchanged
       setCheckedNodes(currentQuestionnaire.nodes);
-      setCheckedRoles(currentQuestionnaire.targetRoles.map((role) => roleToObject(role)));
+      setCheckedRoles(currentQuestionnaire.targetTypes.map((role) => roleToObject(role)));
       setQuestionnaireNameInput(currentQuestionnaire.name);
       setQuestionsArr(currentQuestionnaire.questions);
     } else {
@@ -110,13 +100,13 @@ const QuestionnaireDialog = ({
           break;
         case QuestionType.multipleChoice:
         case QuestionType.checkbox:
-          questionObject.options = question.isShort;
+          questionObject.options = question.options;
           questionObject.answer = question.answer;
-          questionObject.other = question.other;
+          questionObject.hasOther = question.hasOther;
           break;
         case QuestionType.linearScale:
-          questionObject.min = { tag: question.minTag, value: question.minVal };
-          questionObject.max = { tag: question.maxTag, value: question.maxVal };
+          questionObject.min = { ...(question.min) };
+          questionObject.max = { ...(question.max) };
           break;
         default:
           break;
@@ -130,14 +120,21 @@ const QuestionnaireDialog = ({
     try {
       const questionnaireSchema = {
         name: questionnaireNameInput,
-        targetRoles: checkedRoles.map(({ id }) => id),
+        targetTypes: checkedRoles.map(({ id }) => id),
         nodes: [...checkedNodes],
         questions: prepareQuestionArr(questionsArr),
-        updatedAt: new Date(),
       };
       if (Object.keys(currentQuestionnaire).length) {
         questionnaireSchema.id = currentQuestionnaire.id;
-        const updatedQuestionnaire = await QuestionnaireSchemaService.update(questionnaireSchema);
+        const nodeToRemove = currentQuestionnaire.nodes.filter(
+          (nodeId) => !questionnaireSchema.nodes.includes(nodeId),
+        );
+        const nodeToAdd = questionnaireSchema.nodes.filter(
+          (nodeId) => !currentQuestionnaire.nodes.includes(nodeId),
+        );
+        const updatedQuestionnaire = await QuestionnaireSchemaService.update(
+          questionnaireSchema, nodeToAdd, nodeToRemove,
+        );
         setQuestionnaireToEdit(updatedQuestionnaire);
       } else {
         const createdQuestionnaire = await QuestionnaireSchemaService.create(questionnaireSchema);
@@ -150,6 +147,7 @@ const QuestionnaireDialog = ({
     }
   };
 
+  console.log(checkedRoles);
   const content = (
     <DialogContent className={classes.content}>
       <div className={classes.delatils}>
@@ -173,10 +171,13 @@ const QuestionnaireDialog = ({
           <>
             <div className={classes.label}>{t('label.intendedTo')}</div>
             <GenericSelect
-              options={allRoles}
+              options={targetTypes}
               selectedValue={checkedRoles}
               setSelectedValue={setCheckedRoles}
               selectClassName={classes.select}
+              checkboxClasses={{
+                root: classes.selectRoleCheckbox,
+                checked: classes.checkedCheckbox }}
               isMultiple
             />
           </>

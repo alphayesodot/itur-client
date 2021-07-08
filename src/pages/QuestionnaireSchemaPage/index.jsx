@@ -35,9 +35,9 @@ const QuestionnaireSchemaPage = () => {
     } if (rolesArr.includes(Role.Malshab) && rolesArr.length === 1) {
       return t('roles.malshab');
     } if (!rolesArr.includes('MALSHAB')) {
-      return t('permissions.appreciateor');
+      return t('permissions.appreciator');
     }
-    return t('permissions.malshabAppreciateor');
+    return t('permissions.malshabAppreciator');
   };
 
   useEffect(() => { setQuestionnaireToPreview(questionnaireToEdit); }, [questionnaireToEdit]);
@@ -47,7 +47,7 @@ const QuestionnaireSchemaPage = () => {
    * @param {} questionnaire questionnaire object with params
    */
   const createRowTable = (questionnaire, questionnaireCreatorName, allNodesTmp?) => {
-    const intendedRole = getIntendedRole(questionnaire.targetRoles);
+    const intendedRole = getIntendedRole(questionnaire.targetTypes);
     return {
       id: questionnaire.id,
       data: [
@@ -84,7 +84,7 @@ const QuestionnaireSchemaPage = () => {
   };
 
   /**
-   * import all questionnaires - at the beeging only
+   * import all questionnaires - at the beginning only
    */
   useEffect(async () => {
     try {

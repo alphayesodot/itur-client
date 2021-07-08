@@ -16,7 +16,9 @@ export const QuestionType = {
 
 export class QuestionnaireSchemaService {
   static async getQuestionnaires(nodeId) {
-    const { data } = await axios.get(`${config.apiUri}/api/questionnaire-schema/${nodeId}`, { headers });
+    const { data } = nodeId
+      ? await axios.get(`${config.apiUri}/api/questionnaire-schema/${nodeId}`, { headers })
+      : await axios.get(`${config.apiUri}/api/questionnaire-schema`, { headers });
     return data;
   }
   static async deleteQuestionnaireById(id) {
@@ -29,8 +31,19 @@ export class QuestionnaireSchemaService {
     return data;
   }
 
-  static async update(questionnaireSchema) {
-    const { data } = await axios.put(`${config.apiUri}/api/questionnaire-schema/${questionnaireSchema.id}`, questionnaireSchema, { headers });
+  static async update(questionnaireSchema, nodeToAdd, nodeToRemove) {
+    const updateReq = {
+      name: questionnaireSchema.name,
+      targetType: questionnaireSchema.targetType,
+      questions: questionnaireSchema.questions,
+    };
+    nodeToAdd.forEach(async (nodeId) => {
+      await axios.post(`${config.apiUri}/api/questionnaire-schema/${questionnaireSchema.id}/node/${nodeId}`, updateReq, { headers });
+    });
+    nodeToRemove.forEach(async (nodeId) => {
+      await axios.delete(`${config.apiUri}/api/questionnaire-schema/${questionnaireSchema.id}/node/${nodeId}`, updateReq, { headers });
+    });
+    const { data } = await axios.put(`${config.apiUri}/api/questionnaire-schema/${questionnaireSchema.id}`, updateReq, { headers });
     return data;
   }
 }

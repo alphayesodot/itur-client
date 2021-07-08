@@ -7,12 +7,12 @@ import useStyles from './MultipleChoice.styles.js';
 const MultipleChoice = ({
   options,
   setOptions,
-  other,
-  setOther }) => {
+  hasOther,
+  setHasOther }) => {
   const classes = useStyles();
   const { t } = useTranslation();
   const enterChar = 13;
-  const [optionToAdd, setOptionToAdd] = useState();
+  const [optionToAdd, setOptionToAdd] = useState('');
   const deleteFromOptions = (idx) => {
     const tmpOptions = [...options];
     tmpOptions.splice(idx, 1);
@@ -31,8 +31,8 @@ const MultipleChoice = ({
                 track: classes.track,
                 checked: classes.checked,
               }}
-              value={other}
-              onChange={() => { setOther(!other); }}
+              value={hasOther}
+              onChange={() => { setHasOther(!hasOther); }}
             />
 )}
           label={t('question.otherOption')}

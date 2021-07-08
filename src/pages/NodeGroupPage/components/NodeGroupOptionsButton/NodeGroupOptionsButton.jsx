@@ -7,7 +7,7 @@ import NodeGroupService from '../../../../services/nodeGroup.service';
 import NodeGroupDialog from '../NodeGroupDialog/NodeGroupDialog';
 import UserStoreInstance from '../../../../stores/User.store';
 import { Role } from '../../../../services/user.service';
-import OptionsButton from '../../../../common/OpetionButton/OpetionButton';
+import OptionsButton from '../../../../common/OptionButton/OptionButton';
 
 const NodeGroupOptionsButton = ({ nodeGroup, createAllNodeGroupList, setIdToDelete }) => {
   const { t } = useTranslation();
