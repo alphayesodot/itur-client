@@ -16,6 +16,7 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: theme.typography.fontFamily,
     marginRight: '0.5rem',
     marginLeft: '0.8rem',
+    userSelect: 'none',
   },
   notForMobile: {
     [theme.breakpoints.down('sm')]: {

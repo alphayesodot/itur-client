@@ -11,9 +11,7 @@ class AuthService {
       this.redirect();
     } else {
       this.setAuthHeaders();
-      if (jwt.verify(cookie, config.secret)) {
-        return jwt.decode(cookie);
-      }
+      return jwt.decode(cookie);
     }
   }
 
@@ -24,15 +22,19 @@ class AuthService {
       if (!token) {
         this.redirect();
       } else {
-        requestsConfig.headers.authorization = `Bearer ${token}`;
+        requestsConfig.headers.Authorization = `Bearer ${token}`;
+        // TODO: In case the malshab using this client,
+        // send a different header depends on the authorized user
+        requestsConfig.headers['Requester-Type'] = 'USER';
         return requestsConfig;
       }
     });
   }
 
   static async redirect() {
-    // TODO: Remove user id
-    window.location.replace(`${config.uri.auth}/auth/login/1`);
+    window.location.replace('/login');
+    // TODO: Comment on push
+    // window.location.replace('http://localhost:8080/login/4');
   }
 }
 

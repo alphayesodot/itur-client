@@ -5,12 +5,15 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import theme from './theme';
 import './index.css';
 import App from './App';
+import RTL from './utils/rtl';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <App />
-    </ThemeProvider>
-  </React.StrictMode>,
+  <ThemeProvider theme={theme}>
+    <RTL>
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    </RTL>
+  </ThemeProvider>,
   document.getElementById('root'),
 );

@@ -7,7 +7,7 @@
     src: local('Assistant-Semibold.ttf')
 }
 body, html {
-  background-color: rgb(242,244,247);
+  background-color: #ecf4f6;
   margin: 0;
   font-family: Assistant;
 }

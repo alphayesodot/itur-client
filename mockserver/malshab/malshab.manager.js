@@ -1,10 +1,19 @@
-import malshabs from './malshabs.js';
+import malshabs from './db.js';
 
 class MalshabManager {
-  static async getMalshabByIdentityNumber(req, res) {
-    const [malshab] = malshabs.filter(malshabObj => malshabObj.identityNumber === req.params.identityNumber);
-    console.log(malshab || 404);
-    res.send(malshab || 404);
+  static async getMalshabById(req, res) {
+    res.send(malshabs.find((malshab) => malshab.identityNumber === req.params.id));
+  }
+  static async getAttachmentByKey(req, res) {
+    res.send(Buffer.from('Hi!'));
+  }
+  static async uploadAttachment(req, res) {
+    const fileKey = 'newfile.txt';
+    const searchMalshab = malshabs.find((malshab) => malshab.identityNumber === req.params.id);
+    if (searchMalshab) {
+      searchMalshab.attachments.push('newfile.txt');
+    }
+    res.send({ fileKey });
   }
 }
 

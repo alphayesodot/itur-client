@@ -15,9 +15,6 @@ const useStyles = makeStyles((theme) => ({
       'border-radius': '50em',
     },
   },
-  toastContainer: {
-    top: '6rem',
-  },
   loading: {
     position: 'fixed',
     top: 0,
@@ -64,11 +61,19 @@ const useStyles = makeStyles((theme) => ({
     paddingRight: '2.5%',
     height: 'calc(100vh - 9rem)',
     [theme.breakpoints.down('sm')]: {
-      flexDirection: 'column-reverse',
-      alignItems: 'stretch',
-      justifyContent: 'flex-end',
-      height: 'calc(100vh - 3rem)',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'flex-start',
     },
+  },
+  toastRoot: {
+    background: theme.palette.primary.main,
+    color: 'white',
+    fontFamily: theme.typography.fontFamily,
+    borderRadius: 10,
+  },
+  toastProgress: {
+    background: theme.palette.secondary.main,
   },
 }));
 

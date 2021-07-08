@@ -1,16 +1,30 @@
-import events from './events.js';
+import events from './db.js';
 
 class EventManager {
   static async getEvents(req, res) {
-    if (req.query.malshabId) {
-      const [event] = events.filter((eventObj) => eventObj.malshab.id === req.query.malshabId);
-      return res.send(event || 404);
-    }
-    return res.send(events);
+    const { date, interviewerId, malshabId } = req.query;
+    res.send(events.filter((event) => {
+      if (date) {
+        const eventDate = new Date(event.time);
+        const filterDate = new Date(date);
+        eventDate.setHours(0, 0, 0, 0);
+        filterDate.setHours(0, 0, 0, 0);
+        if (eventDate.getTime() !== filterDate.getTime()) {
+          return false;
+        }
+      }
+      if (interviewerId && !event.interviewersIds.includes(interviewerId)) {
+        return false;
+      }
+      if (malshabId && event.malshabShort.id !== malshabId) {
+        return false;
+      }
+      return true;
+    }));
   }
 
-  static async getEventById(req, res) {
-    res.send(events[req.params.id] || 404);
+  static getEventById(req, res) {
+    res.send(events.find((event) => event.id === req.params.id));
   }
 }
 

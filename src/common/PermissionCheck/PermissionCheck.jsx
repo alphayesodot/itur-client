@@ -7,7 +7,7 @@ const PermissionCheck = ({ path }) => {
   const userRole = UserStoreInstance.userProfile.role;
 
   const isAuthorized = () => (
-    configApp.allowedUrlPostfixesOfRole[userRole].some((allowedUrl) => allowedUrl.route === path)
+    configApp.allowedUrlPostfixesOfRole[userRole]?.some((allowedUrl) => allowedUrl.route === path)
   );
 
   return (

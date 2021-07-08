@@ -1,11 +1,16 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
-import Home from './pages/Home';
-import Sidebar from './common/SideBarNav/SideBarNav';
+import Home from './pages/Home/index';
+import Track from './pages/Track/index';
+import MalshabSearch from './pages/MalshabSearch/index';
+import NodeGroupPage from './pages/NodeGroupPage/index';
+import Luz from './pages/Luz/index';
 import AuthService from './services/auth.service';
-import UploadXmlPage from './pages/XmlUpload/index';
+import UploadPage from './pages/FileUpload/index';
+import Report from './pages/Reports/index';
 import ConfigService from './services/config.service';
+import Sidebar from './common/SideBarNav/SideBarNav';
 import Header from './common/Header/Header';
 import useStyles from './App.styles';
 import logo from './utils/images/logo.svg';
@@ -13,6 +18,7 @@ import UserStoreInstance from './stores/User.store';
 import InterviewDashboard from './pages/InterviewDashboard';
 import configApp from './appConf';
 import 'react-toastify/dist/ReactToastify.css';
+import UserManagement from './pages/UserManagement/index';
 import PermissionCheck from './common/PermissionCheck/PermissionCheck';
 
 const App = () => {
@@ -25,6 +31,7 @@ const App = () => {
       .then((res) => {
         if (res) {
           UserStoreInstance.setUserProfile(res);
+          console.log(res);
           setIsAuthenticated(true);
         } else {
           setIsAuthenticated(false);
@@ -57,7 +64,7 @@ const App = () => {
   const getRoutes = () => [
     {
       path: configApp.sitesPostfixes.fileUpload,
-      component: <UploadXmlPage />,
+      component: <UploadPage />,
     },
     {
       path: configApp.sitesPostfixes.interview,
@@ -65,11 +72,11 @@ const App = () => {
     },
     {
       path: configApp.sitesPostfixes.luz,
-      component: <h1>luz</h1>,
+      component: <Luz />,
     },
     {
       path: configApp.sitesPostfixes.track,
-      component: <h1>track</h1>,
+      component: <Track />,
     },
     {
       path: configApp.sitesPostfixes.malshabSchedule,
@@ -77,11 +84,11 @@ const App = () => {
     },
     {
       path: configApp.sitesPostfixes.malshabSearch,
-      component: <h1>malshabSearch</h1>,
+      component: <MalshabSearch />,
     },
     {
       path: configApp.sitesPostfixes.reports,
-      component: <h1>reports</h1>,
+      component: <Report />,
     },
     {
       path: configApp.sitesPostfixes.posh,
@@ -93,15 +100,11 @@ const App = () => {
     },
     {
       path: configApp.sitesPostfixes.nodeGroupCreation,
-      component: <h1>nodeGroupCreation</h1>,
+      component: <NodeGroupPage />,
     },
     {
       path: configApp.sitesPostfixes.userManagement,
-      component: <h1>userManagement</h1>,
-    },
-    {
-      path: configApp.sitesPostfixes.unitCreation,
-      component: <h1>unitCreation</h1>,
+      component: <UserManagement />,
     },
     {
       path: configApp.sitesPostfixes.editQuestionnaire,
@@ -113,6 +116,7 @@ const App = () => {
     <Router classes={classes.root}>
       <Header />
       <div className={classes.bodyContainer}>
+        <Sidebar />
         <Switch>
           <Route path='/' exact>
             <Home />
@@ -124,9 +128,12 @@ const App = () => {
             </Route>
           ))}
         </Switch>
-        <Sidebar />
       </div>
-      <ToastContainer />
+      <ToastContainer
+        toastClassName={classes.toastRoot}
+        progressClassName={classes.toastProgress}
+        position='bottom-left'
+      />
     </Router>
   ) : (
     renderUnauthorized()
