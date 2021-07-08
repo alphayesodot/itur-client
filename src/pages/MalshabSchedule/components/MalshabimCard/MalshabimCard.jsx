@@ -33,9 +33,7 @@ const MalshabimCard = ({ interviewers, events, handleMalshabsToSchedule }) => {
     const interviewersObjects = interviewers.filter((interviewer) => (
       interviewersIds.includes(interviewer.id)
     ));
-    const interviewersSigns = interviewersObjects.map(({ name }) => name.slice(-4));
-    setUsersSelectOptions((prevValue) => [...new Set([...prevValue, ...interviewersSigns])]);
-    return interviewersSigns.join(',');
+    return interviewersObjects.map(({ name }) => name.slice(-4)).join(',');
   };
 
   const handleRecievedEvents = () => {
@@ -81,7 +79,7 @@ const MalshabimCard = ({ interviewers, events, handleMalshabsToSchedule }) => {
   useEffect(() => {
     if (events) {
       setSelectedScheduling([autoSchedulingValue]);
-      setUsersSelectOptions([]);
+      setUsersSelectOptions(interviewers.map(({ name }) => name.slice(-4)));
       setSelectedUser('');
       setNameOrId('');
       setSelectedHour('');
@@ -93,7 +91,7 @@ const MalshabimCard = ({ interviewers, events, handleMalshabsToSchedule }) => {
       ));
       setHoursSelectOptions([...new Set(eventsHours)]);
     }
-  }, [events]);
+  }, [events, interviewers]);
 
   useEffect(() => {
     setSelectSchedulingOptions([...usersSelectOptions, autoSchedulingValue]);
