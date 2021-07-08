@@ -170,7 +170,7 @@ const resources = {
         malshab: 'מלש"ב',
       },
       permissions: {
-        malshabAppreciator: 'מעריך ומשל"ב',
+        malshabAppreciator: 'מעריך ומלש"ב',
         appreciator: 'מעריך',
       },
       sideBar: {

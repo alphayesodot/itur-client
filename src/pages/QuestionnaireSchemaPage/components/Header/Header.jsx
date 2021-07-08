@@ -26,6 +26,7 @@ const Header = ({
   const classes = useStyles();
   const [inputValue, setInputValue] = useState('');
   const { t } = useTranslation();
+  const enterAsciiCode = 13;
   useEffect(() => {
     if (inputValue) filterSearch(inputValue, allQuestionnaireRows, setQuestionnaireToShow);
   }, [allQuestionnaireRows]);
@@ -59,7 +60,7 @@ const Header = ({
                 }
               }}
               onKeyPress={(e) => {
-                if (e.charCode === 13) {
+                if (e.charCode === enterAsciiCode) {
                   filterSearch(inputValue, allQuestionnaireRows, setQuestionnaireToShow);
                   setQuestionnaireToPreview({});
                 }

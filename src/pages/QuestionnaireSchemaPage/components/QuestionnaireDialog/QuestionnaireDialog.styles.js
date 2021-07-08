@@ -16,7 +16,6 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     margin: 'auto 0',
     display: 'flex',
-    flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'stretch',
     marginBottom: '1.5rem',
@@ -59,7 +58,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.dialog.secondaryLight,
     padding: '1rem',
   },
-  noNodeGroups: {
+  noNodes: {
     fontSize: '1.5rem',
     fontWeight: 'bold',
     color: theme.palette.dialog.secondary,

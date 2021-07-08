@@ -6,7 +6,7 @@ import useStyles from './QuestionnaireDialog.styles';
 import CustomDialog from '../../../../common/CustomDialog/CustomDialog';
 import { Role } from '../../../../services/user.service';
 import GenericSelect from '../../../../common/GenericSelect/GenericSelect';
-import { QuestionnaireSchemaService, QuestionType } from '../../../../services/QuestionnaireSchema.service';
+import QuestionnaireSchemaService, { QuestionType } from '../../../../services/questionnaireSchema.service';
 import QuestionsDashboard from '../QuestionsDashboard/QuestionsDashboard';
 import NodesDashboard from '../NodesDashboard/NodesDashboard';
 import NoObjectsToShow from '../../../../common/NoObjectsToShow/NoObjectsToShow';
@@ -142,12 +142,11 @@ const QuestionnaireDialog = ({
         reset();
       }
       onClose();
-    } catch (error) {
-      toast(error);
+    } catch {
+      toast(t('error.server'));
     }
   };
 
-  console.log(checkedRoles);
   const content = (
     <DialogContent className={classes.content}>
       <div className={classes.delatils}>
@@ -194,7 +193,7 @@ const QuestionnaireDialog = ({
             )
             : (
 
-              <div className={classes.noNodeGroups}>
+              <div className={classes.noNodes}>
                 <NoObjectsToShow title={t('message.noNodes')} />
               </div>
             )}

@@ -5,7 +5,7 @@ import DashboardCard from '../../../../common/DashboardCard/DashboardCard';
 import useStyles from './Preview.styles';
 import NoObjectsToShow from '../../../../common/NoObjectsToShow/NoObjectsToShow';
 import DataTable from '../../../../common/DataTable/DataTable';
-import { QuestionType } from '../../../../services/QuestionnaireSchema.service';
+import { QuestionType } from '../../../../services/questionnaireSchema.service';
 
 const Preview = ({ questionnaire }) => {
   const classes = useStyles();
@@ -13,13 +13,13 @@ const Preview = ({ questionnaire }) => {
   const separationString = '//';
   const isQuestionnaire = Object.keys(questionnaire).length > 0;
   const mapQuestionToType = new Map();
-  const quesitonTypes = [
+  const questionTypes = [
     { id: QuestionType.open, name: t('question.open') },
     { id: QuestionType.multipleChoice, name: t('question.multiple') },
     { id: QuestionType.checkbox, name: t('question.checkbox') },
     { id: QuestionType.linearScale, name: t('question.linearScale') },
     { id: QuestionType.date, name: t('question.date') }];
-  quesitonTypes.forEach(({ id, name }) => { mapQuestionToType[id] = name; });
+  questionTypes.forEach(({ id, name }) => { mapQuestionToType[id] = name; });
 
   const createRowData = () => {
     const rows = questionnaire.questions.map((question, idx) => ({

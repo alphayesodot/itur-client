@@ -14,7 +14,7 @@ export const QuestionType = {
   date: 'DATE',
 };
 
-export class QuestionnaireSchemaService {
+class QuestionnaireSchemaService {
   static async getQuestionnaires(nodeId) {
     const { data } = nodeId
       ? await axios.get(`${config.apiUri}/api/questionnaire-schema/${nodeId}`, { headers })
@@ -47,3 +47,5 @@ export class QuestionnaireSchemaService {
     return data;
   }
 }
+
+export default QuestionnaireSchemaService;

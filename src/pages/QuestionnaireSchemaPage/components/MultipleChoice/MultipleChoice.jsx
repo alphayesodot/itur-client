@@ -65,7 +65,7 @@ const MultipleChoice = ({
                   className={classes.deleteButton}
                   onClick={() => deleteFromOptions(idx)}
                 >
-                  <ClearIcon size='s' className={classes.deleteIcon} />
+                  <ClearIcon className={classes.deleteIcon} />
                 </IconButton>
               </div>
             ))}

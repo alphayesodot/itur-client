@@ -25,7 +25,7 @@ const GenericSelect = ({
   isMultiple,
 }) => {
   const classes = useStyles();
-  const [isChecked, setIsChecked] = useState([]);
+  const [isChecked, setIsChecked] = useState(options.slice().fill(false));
   const { t } = useTranslation();
   const menuItemHeight = 48;
   const menuItemPaddingTop = 15;
@@ -41,10 +41,6 @@ const GenericSelect = ({
       },
     },
   };
-
-  useEffect(() => {
-    setIsChecked(options.slice().fill(false));
-  }, [options]);
 
   useEffect(() => {
     if (isMultiple) {

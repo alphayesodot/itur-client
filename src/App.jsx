@@ -106,10 +106,6 @@ const App = () => {
       component: <UserManagement />,
     },
     {
-      path: configApp.sitesPostfixes.unitCreation,
-      component: <h1>unitCreation</h1>,
-    },
-    {
       path: configApp.sitesPostfixes.questionnaires,
       component: <QuestionnaireSchemaPage />,
     },

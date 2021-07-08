@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { toast } from 'react-toastify';
 import useStyles from './NodeGroupOptionsButton.styles';
 import deleteImg from '../../../../utils/images/general/trash.svg';
 import editImg from '../../../../utils/images/general/edit-regular.svg';
@@ -17,12 +18,16 @@ const NodeGroupOptionsButton = ({ nodeGroup, createAllNodeGroupList, setIdToDele
   const userRole = UserStoreInstance.userProfile.role;
 
   const handleDelete = () => {
-    if (!duringDeletion) {
-      setDuringDeletion(true);
-      NodeGroupService.deleteNodeGroup(nodeGroup.id).then(async () => {
-        setIdToDelete(nodeGroup.id);
-        setDuringDeletion(false);
-      });
+    try {
+      if (!duringDeletion) {
+        setDuringDeletion(true);
+        NodeGroupService.deleteNodeGroup(nodeGroup.id).then(async () => {
+          setIdToDelete(nodeGroup.id);
+          setDuringDeletion(false);
+        });
+      }
+    } catch {
+      toast('error.server');
     }
   };
   const menuItems = [

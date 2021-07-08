@@ -8,7 +8,7 @@ import deleteIcon from '../../../../utils/images/general/delete-grey.svg';
 import LinearScale from '../LinearScaleQuestion/LinearScaleQuestion';
 import OpenQuestion from '../OpenQuestion/OpenQuestion';
 import MultipleChoice from '../MultipleChoice/MultipleChoice';
-import { QuestionType } from '../../../../services/QuestionnaireSchema.service';
+import { QuestionType } from '../../../../services/questionnaireSchema.service';
 
 const Question = ({
   currentQuestion,
@@ -18,8 +18,9 @@ const Question = ({
 }) => {
   const classes = useStyles();
   const { t } = useTranslation();
+  const chooseOptionId = '0';
   const quesitonTypes = [
-    { id: '0', label: t('question.choose') },
+    { id: chooseOptionId, label: t('question.choose') },
     { id: QuestionType.open, label: t('question.open') },
     { id: QuestionType.multipleChoice, label: t('question.multiple') },
     { id: QuestionType.checkbox, label: t('question.checkbox') },
@@ -93,7 +94,7 @@ const Question = ({
   };
   // assign Error for a required field
   const requriedError = (input) => {
-    if (questionType?.id !== '0' && !input.length) {
+    if (questionType?.id !== chooseOptionId && !input.length) {
       setError(true);
     } else {
       setError(false);
@@ -134,7 +135,7 @@ const Question = ({
 
   // to add an option for a new question
   useEffect(() => {
-    if (questionType && !currentQuestion && questionType.id !== '0') {
+    if (questionType && !currentQuestion && questionType.id !== chooseOptionId) {
       const newQuestion = {
         title: questionTitle,
         type: questionType.id,

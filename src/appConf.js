@@ -10,7 +10,6 @@ const sitesPostfixes = {
   nodeGroupCreation: '/node-group-creation',
   fileUpload: '/file-upload',
   userManagement: '/user-management',
-  unitCreation: '/unit-creation',
   questionnaires: '/questionnaires',
 };
 

@@ -8,7 +8,7 @@ const Role = {
   Psychologist: 'PSYCHOLOGIST',
   Diagnoser: 'DIAGNOSER',
   Technical: 'TECHNICAL',
-  malshab: 'MALSHAB',
+  Malshab: 'MALSHAB',
 };
 
 export default Role;
