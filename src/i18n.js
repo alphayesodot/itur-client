@@ -55,6 +55,8 @@ const resources = {
         unitNotAddWarning: 'יחידה לא נוספה',
         unitAdded: 'היחידה התווספה',
         userNotAddWarning: 'יוזר לא נוסף',
+        page: 'עמוד',
+        of: 'מתוך',
       },
       headerBlessings: {
         morning: 'בוקר טוב',
@@ -69,6 +71,8 @@ const resources = {
         add: 'הוספה',
         view: 'הצג',
         enter: 'כניסה',
+        next: 'הבא',
+        previous: 'הקודם',
       },
       day: {
         1: 'ראשון',

@@ -1,23 +1,45 @@
 import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
     display: 'flex',
     justifyContent: 'space-around',
+    overflow: 'auto',
+
+    [theme.breakpoints.down('md')]: {
+      flexDirection: 'column',
+      alignItems: 'stretch',
+      justifyContent: 'flex-start',
+    },
   },
 
   document: {
     '& > canvas': { borderRadius: '15px' },
   },
 
+  documentContainer: {
+    marginLeft: '10%',
+  },
+
+  pageInfo: {
+    display: 'flex',
+    justifyContent: 'center',
+    textAlign: 'center',
+    alignItems: 'center',
+  },
+
   playerWrapper: {
     position: 'relative',
     padding: '2%',
-    background: 'white',
+    background: theme.palette.secondary.light,
     borderRadius: '15px',
-    height: '47%',
-    marginLeft: '1%',
+    marginTop: '1%',
+    alignSelf: 'center',
+
+    [theme.breakpoints.down('md')]: {
+      alignSelf: 'flex-start',
+    },
   },
 
   player: {
