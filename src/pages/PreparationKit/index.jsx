@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { Document, Page } from 'react-pdf/dist/esm/entry.webpack';
 import ReactPlayer from 'react-player/file';
 import interviewerPDF from './pdf/1.pdf';
@@ -9,7 +9,6 @@ import useStyles from './index.styles';
 const PreparationKit = () => {
   const [pageNumber, setPageNumber] = useState(1);
   const [pageAmount, setPageAmount] = useState(1);
-  const canvasRef = useRef(null);
 
   const classes = useStyles();
 
@@ -30,7 +29,6 @@ const PreparationKit = () => {
         >
           <Page
             pageNumber={pageNumber}
-            canvasRef={canvasRef}
             className={classes.document}
           />
         </Document>
