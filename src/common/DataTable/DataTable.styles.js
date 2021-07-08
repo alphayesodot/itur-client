@@ -35,6 +35,7 @@ const useStyles = makeStyles((theme) => ({
   },
   cell: {
     borderBottom: 'none',
+    paddingLeft: '0.5rem',
   },
 }));
 

@@ -9,7 +9,6 @@ const PermissionCheck = ({ path }) => {
   const isAuthorized = () => (
     configApp.allowedUrlPostfixesOfRole[userRole]?.some((allowedUrl) => allowedUrl.route === path)
   );
-
   return (
     isAuthorized() ? <></> : <Redirect to='/' />
   );

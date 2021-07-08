@@ -139,6 +139,11 @@ const users = [
     role: Role.Diagnoser,
     unitId: '507f191e810c19729de861ea',
   },
+  {
+    id: '507f1f77bcf86cd799439031',
+    name: 'MADA1ea1',
+    role: Role.MADA,
+  },
 ];
 
 export default users;

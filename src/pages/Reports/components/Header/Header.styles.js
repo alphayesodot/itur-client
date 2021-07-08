@@ -33,6 +33,7 @@ const useStyles = makeStyles((theme) => ({
   select: {
     height: '2.5rem',
     width: '13.25em',
+    padding: '1em',
   },
   textField: {
     paddingLeft: '1rem',

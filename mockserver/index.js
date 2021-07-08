@@ -10,6 +10,7 @@ import nodeRouter from './node/node.router.js';
 import nodeGroupRouter from './nodeGroup/nodeGroup.router.js';
 import unitRouter from './unit/unit.router.js';
 import malshabRouter from './malshab/malshab.router.js';
+import questionnaireSchemaRouter from './questionnaireSchema/questionnaireSchema.router.js';
 import reportRouter from './report/report.router.js';
 
 const app = express();
@@ -30,7 +31,7 @@ app.get('/login/:userId', (req, res) => {
 // Config server
 app.get('/config', (req, res) => {
   res.send({
-    apiUri: `http://localhost:${config.port}`,
+    apiUri: `http://localhost:7071`,
     tokenName: config.tokenName,
     fileUpload: config.fileUpload,
     attachments: config.attachments,
@@ -44,6 +45,7 @@ app.use('/api/unit', unitRouter);
 app.use('/api/upload', uploadRouter);
 app.use('/api/malshab', malshabRouter);
 app.use('/api/node', nodeRouter);
+app.use('/api/questionnaire-schema', questionnaireSchemaRouter);
 app.use('/api/report', reportRouter);
 
 app.listen(config.port, () => console.log(`Mock server listening on ${config.port}`));

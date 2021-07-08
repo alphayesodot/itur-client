@@ -19,6 +19,7 @@ import configApp from './appConf';
 import 'react-toastify/dist/ReactToastify.css';
 import UserManagement from './pages/UserManagement/index';
 import PermissionCheck from './common/PermissionCheck/PermissionCheck';
+import QuestionnaireSchemaPage from './pages/QuestionnaireSchemaPage/index';
 
 const App = () => {
   const classes = useStyles();
@@ -105,8 +106,8 @@ const App = () => {
       component: <UserManagement />,
     },
     {
-      path: configApp.sitesPostfixes.editQuestionnaire,
-      component: <h1>editQuestionnaire</h1>,
+      path: configApp.sitesPostfixes.questionnaires,
+      component: <QuestionnaireSchemaPage />,
     },
   ];
 
