@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { useTranslation } from 'react-i18next';
@@ -24,30 +25,58 @@ const MalshabSchedulePage = observer(() => {
   const [events, setEvents] = useState([]);
   const [unit, setUnit] = useState();
   const [isLoading, setIsLoading] = useState(false);
-  const [selectedDate, setSelectedDate] = useState(new Date().toLocaleDateString('fr-CA', {
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-  }));
+  const [selectedDate, setSelectedDate] = useState(
+    new Date().toLocaleDateString('fr-CA', {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+    }),
+  );
 
   useEffect(() => {
-    NodeGroupService.getNodeGroups().then((res) => {
-      setUnitNodesGroups(res);
-    }).catch(() => {
-      toast(t('error.server'));
-    });
-    UnitService.getMyUnit().then((res) => {
-      setUnit(res);
-    }).catch(() => {
-      toast(t('error.server'));
-    });
+    NodeGroupService.getNodeGroups()
+      .then((res) => {
+        setUnitNodesGroups(res);
+      })
+      .catch(() => {
+        toast(t('error.server'));
+      });
+    UnitService.getMyUnit()
+      .then((res) => {
+        setUnit(res);
+      })
+      .catch(() => {
+        toast(t('error.server'));
+      });
   }, []);
 
-  const handleMalshabsToSchedule = () => {
-    // const handleMalshabsToSchedule = (chosenMalshabs, selectedScheduling) => {
+  const addMalshabToInterviewerSchedule = async (malshab, selectedInterviewerName) => {
+    const malshabEvent = events.find(
+      (event) => event.malshabShort.id === malshab.id,
+    );
+    const selectedInterviewer = interviewers.find((interviewer) => interviewer.name.includes(selectedInterviewerName));
+    const eventsOfSelectedInterviewer = events.filter((event) => (event.interviewersIds.includes(selectedInterviewer.id)));
+
+    // check that interviewer doesn't have events in the same time
+    if (eventsOfSelectedInterviewer.find((event) => event.time === malshabEvent.time)) {
+      return toast(t('error.scheduleConflict'));
+    }
+
+    const updatedEvent = await EventService.addInterviewer(malshabEvent.id, selectedInterviewer.id);
+    if (!updatedEvent) {
+      return toast(t('error.server'));
+    }
+
+    setEvents(events.map((event) => (event.id === updatedEvent.id
+      ? { ...event, interviewersIds: updatedEvent.interviewersIds }
+      : event)));
+  };
+
+  // const handleMalshabsToSchedule = () => {
+  const handleMalshabsToSchedule = (chosenMalshabs, selectedScheduling) => {
     // console.log('malshabs', chosenMalshabs);
     // console.log('slectedScheduling', selectedScheduling);
-
+    addMalshabToInterviewerSchedule(chosenMalshabs[0], selectedScheduling[0]);
     // if (selectedScheduling === t('unitControlPage.automaticScheduling')) {
     //   // TODO: automatic selected malshabs to interviewers
     // } else {
@@ -57,27 +86,32 @@ const MalshabSchedulePage = observer(() => {
     // }
   };
 
-  // const scheduleMalshabToInterviewers = (malshab, selectedScheduling) => {
-  //   const updatedInterviewers = interviewers.map((interviewer) => interviewer);
-  // };
-
   useEffect(() => {
     if (choosenNodeGroup) {
       Promise.all(
         choosenNodeGroup?.usersIds?.map((userId) => UserService.getUserById(userId)),
-      ).then(async (users) => {
-        setInterviewers(users.filter((user) => user.role === Role.Interviewer));
-        const nodesOfNodeGroup = await NodeService.getNodes({ nodeGroupId: choosenNodeGroup.id });
-        Promise.all(
-          nodesOfNodeGroup.map(({ id }) => (
-            EventService.getEvents({ nodeId: id, date: selectedDate })
-          )),
-        ).then((eventsArrays) => {
-          setEvents(eventsArrays.reduce((acc, eventsArray) => [...acc, ...eventsArray], []));
+      )
+        .then(async (users) => {
+          setInterviewers(
+            users.filter((user) => user.role === Role.Interviewer),
+          );
+          const nodesOfNodeGroup = await NodeService.getNodes({
+            nodeGroupId: choosenNodeGroup.id,
+          });
+          Promise.all(
+            nodesOfNodeGroup.map(({ id }) => EventService.getEvents({ nodeId: id, date: selectedDate })),
+          ).then((eventsArrays) => {
+            setEvents(
+              eventsArrays.reduce(
+                (acc, eventsArray) => [...acc, ...eventsArray],
+                [],
+              ),
+            );
+          });
+        })
+        .catch(() => {
+          toast(t('error.server'));
         });
-      }).catch(() => {
-        toast(t('error.server'));
-      });
     }
   }, [choosenNodeGroup, selectedDate, ScheduleStore.schedules]);
 
@@ -91,7 +125,9 @@ const MalshabSchedulePage = observer(() => {
         setSelectedDate={setSelectedDate}
         setIsLoading={setIsLoading}
       />
-      {isLoading ? <CustomBackDrop /> : (
+      {isLoading ? (
+        <CustomBackDrop />
+      ) : (
         <>
           {choosenNodeGroup ? (
             <div className={classes.mainInner}>
@@ -106,14 +142,13 @@ const MalshabSchedulePage = observer(() => {
                 selectedDate={selectedDate}
               />
             </div>
-          )
-            : (
-              <NodeGroups
-                selectedDate={selectedDate}
-                unitNodesGroups={unitNodesGroups}
-                setChoosenNodeGroup={setChoosenNodeGroup}
-              />
-            )}
+          ) : (
+            <NodeGroups
+              selectedDate={selectedDate}
+              unitNodesGroups={unitNodesGroups}
+              setChoosenNodeGroup={setChoosenNodeGroup}
+            />
+          )}
         </>
       )}
     </div>

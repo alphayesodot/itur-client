@@ -6,6 +6,7 @@ const resources = {
     translation: {
       error: {
         server: 'קרתה תקלה. נסו שוב מאוחר יותר',
+        scheduleConflict: 'לא ניתן לשבץ למראיין ראיונות לאותם השעות',
       },
       title: {
         break: 'הפסקה',
