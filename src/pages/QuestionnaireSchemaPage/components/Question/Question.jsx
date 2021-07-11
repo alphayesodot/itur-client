@@ -33,9 +33,12 @@ const Question = ({
   const [isShort, setIsShort] = useState(currentQuestionExist ? currentQuestion.isShort : false);
   const [required, setRequired] = useState(currentQuestionExist ? currentQuestion.required : true);
   const [hasOther, setHasOther] = useState(currentQuestionExist ? currentQuestion.hasOther : false);
+  const [description, setDescription] = useState(currentQuestionExist ? currentQuestion.description : '');
+
   const [expand, setExpand] = useState(false);
   const [answer, setAnswer] = useState('');
   const [error, setError] = useState(false);
+
   const [questionType, setQuestionType] = useState(
     currentQuestionExist
       ? quesitonTypes.filter((type) => type.id === currentQuestion.type)[0]
@@ -133,15 +136,21 @@ const Question = ({
     return updatedQuestion;
   };
 
+  const initBasicQuestion = () => {
+    const initQuestion = {
+      title: questionTitle,
+      type: questionType.id,
+      required: true,
+    };
+    // if (description.length) {
+    //   initQuestion.description = description;
+    // }
+    return initQuestion;
+  };
   // to add an option for a new question
   useEffect(() => {
     if (questionType && !currentQuestion && questionType.id !== chooseOptionId) {
-      const newQuestion = {
-        title: questionTitle,
-        type: questionType.id,
-        required: true,
-        // description: '', // not allowed to be empty
-      };
+      const newQuestion = initBasicQuestion();
       addQuestion(addFieldsToQuestion(newQuestion));
       reset();
     }
@@ -152,9 +161,12 @@ const Question = ({
     const updatedQuestion = {
       title: questionTitle,
       type: questionType.id,
-      required,
-      // description: '', // not allowed to be empty
+      required: true,
     };
+    // if (description?.length) {
+    //   updatedQuestion.description = description;
+    // }
+    console.log(updatedQuestion);
     updateQuestion(addFieldsToQuestion(updatedQuestion));
   }, [questionTitle, options, isShort, required, hasOther, questionType, linearScale]);
 
@@ -211,6 +223,19 @@ const Question = ({
       {expand
         && (
         <div className={classes.answers}>
+          {/* <TextField
+            classes={{ root: classes.inputDescription }}
+            InputProps={{ disableUnderline: true }}
+            margin='dense'
+            id='question-description'
+            type='text'
+            variant='standard'
+            placeholder={t('question.description')}
+            value={description}
+            onChange={(e) => {
+              setDescription(e.target.value);
+            }}
+          /> */}
           {mapQuestionToComponent[questionType.id]}
         </div>
         )}

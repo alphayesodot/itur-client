@@ -3,7 +3,6 @@ import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
 import useStyles from './QuestionnaireOptionsButton.styles';
 import deleteImg from '../../../../utils/images/general/trash.svg';
-import previewImg from '../../../../utils/images/files/eye_black.svg';
 import editImg from '../../../../utils/images/general/edit-regular.svg';
 import OptionsButton from '../../../../common/OptionButton/OptionButton';
 import QuestionnaireSchemaService from '../../../../services/questionnaireSchema.service';
@@ -13,8 +12,7 @@ const QuestionnaireOptionsButton = ({
   questionnaire,
   setIdToDelete,
   allNodes,
-  setQuestionnaireToEdit,
-  setQuestionnaireToPreview }) => {
+  setQuestionnaireToEdit }) => {
   const { t } = useTranslation();
   const classes = useStyles();
   const [duringDeletion, setDuringDeletion] = useState(false);
@@ -35,15 +33,6 @@ const QuestionnaireOptionsButton = ({
   };
   const menuItems = [
     {
-      onClick: async () => { await handleDelete(); },
-      content: (
-        <>
-          <img className={classes.img} width='15rem' src={deleteImg} alt='see more' />
-          {t('actions.delete')}
-        </>
-      ),
-    },
-    {
       onClick: () => {
         setOpenEditDialog(true);
       },
@@ -55,11 +44,11 @@ const QuestionnaireOptionsButton = ({
       ),
     },
     {
-      onClick: async () => { setQuestionnaireToPreview({ ...questionnaire }); },
+      onClick: async () => { await handleDelete(); },
       content: (
         <>
-          <img className={classes.img} width='19rem' src={previewImg} alt='see more' />
-          {t('actions.preview')}
+          <img className={classes.img} width='15rem' src={deleteImg} alt='see more' />
+          {t('actions.delete')}
         </>
       ),
     },

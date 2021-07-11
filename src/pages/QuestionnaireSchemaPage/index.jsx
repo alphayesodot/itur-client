@@ -63,7 +63,6 @@ const QuestionnaireSchemaPage = () => {
           setIdToDelete={setIdToDelete}
           allNodes={allNodesTmp || allNodes}
           setQuestionnaireToEdit={setQuestionnaireToEdit}
-          setQuestionnaireToPreview={setQuestionnaireToPreview}
         />,
       ],
       onClick: () => { setQuestionnaireToPreview(questionnaire); },

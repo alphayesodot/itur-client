@@ -12,6 +12,7 @@ import UnitService from '../../services/unit.service';
 import { UserService, Role } from '../../services/user.service';
 import UserStoreInstance from '../../stores/User.store';
 import NodeGroupOptionsButton from './components/NodeGroupOptionsButton/NodeGroupOptionsButton';
+import CustomBackDrop from '../../common/CustomBackDrop/CustomBackDrop';
 
 const NodeGroupPage = () => {
   const classes = useStyles();
@@ -22,6 +23,7 @@ const NodeGroupPage = () => {
   const [idToDelete, setIdToDelete] = useState(0);
   const [openDialog, setOpenDialog] = useState(false);
   const colNames = [t('tableColumns.nodeGroupName'), t('tableColumns.unit'), t('tableColumns.users'), t('tableColumns.ramadOfUnit'), ''];
+  const [isLoading, setIsLoading] = useState(false);
 
   const createAllNodeGroupList = async () => {
     try {
@@ -51,7 +53,9 @@ const NodeGroupPage = () => {
   };
 
   useEffect(async () => {
+    setIsLoading(true);
     await createAllNodeGroupList();
+    setIsLoading(false);
   }, []);
 
   /**
@@ -78,6 +82,18 @@ const NodeGroupPage = () => {
   const handeOnCloseDialog = () => {
     setOpenDialog(false);
   };
+  const infoContent = nodeGroupRowsToShow.length
+    ? (
+      <div className={classes.tableContainer}>
+        <DataTable rowsData={nodeGroupRowsToShow} columnNames={colNames} />
+      </div>
+    )
+    : (
+      <div className={` ${classes.viewContainer} ${classes.emptyTable}`}>
+        {' '}
+        {t('message.noNodeGroups')}
+      </div>
+    );
 
   return (
     <div className={classes.root}>
@@ -93,19 +109,7 @@ const NodeGroupPage = () => {
           {' '}
           <span className={classes.countTitle}>{`(${nodeGroupRowsToShow.length})`}</span>
         </Typography>
-
-        {nodeGroupRowsToShow.length
-          ? (
-            <div className={classes.tableContainer}>
-              <DataTable rowsData={nodeGroupRowsToShow} columnNames={colNames} />
-            </div>
-          )
-          : (
-            <div className={` ${classes.viewContainer} ${classes.emptyTable}`}>
-              {' '}
-              {t('message.noNodeGroups')}
-            </div>
-          )}
+        {isLoading ? <CustomBackDrop /> : infoContent}
         <NodeGroupDialog
           open={openDialog}
           onClose={handeOnCloseDialog}

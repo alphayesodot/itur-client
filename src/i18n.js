@@ -253,6 +253,7 @@ const resources = {
         shortQuestion: 'שאלה קצרה',
         answers: 'תשובות',
         otherOption: 'אפשרות לתשובה אחרת',
+        description: 'תיאור',
       },
     },
   },
