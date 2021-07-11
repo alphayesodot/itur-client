@@ -9,6 +9,8 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import useStyles from './Question.styles';
 import AmericanAnswer from './AmericanAnswer/AmericanAnswer';
 import CheckboxAnswer from './CheckboxAnswer/CheckboxAnswer';
+import ScaleAnswer from './ScaleAnswer/ScaleAnswer';
+import TextAnswer from './TextAnswer/TextAnswer';
 import DateInput from '../../../../common/DateInput/DateInput';
 
 const Question = ({ question, answer, setAnswer }) => {
@@ -29,9 +31,15 @@ const Question = ({ question, answer, setAnswer }) => {
           />
         );
       case 'linearScale':
-        return '';
+        return <ScaleAnswer min={question.min} max={question.max} />;
       case 'open':
-        return '';
+        return (
+          <TextAnswer
+            isShort={question.isShort}
+            answer={answer}
+            setAnswer={setAnswer}
+          />
+        );
       case 'date':
         return (
           <DateInput
@@ -50,7 +58,11 @@ const Question = ({ question, answer, setAnswer }) => {
   };
 
   return (
-    <Accordion className={classes.li}>
+    <Accordion
+      className={classes.li}
+      // expanded={answer.expanded}
+      onClick={() => {}} // TODO: Save accordion expand state
+    >
       <AccordionSummary
         className={classes.liCollapsed}
         expandIcon={<ExpandMoreIcon htmlColor='rgb(255 255 255 / 60%)' />}
@@ -60,7 +72,7 @@ const Question = ({ question, answer, setAnswer }) => {
         <Typography className={classes.question}>{question.title}</Typography>
       </AccordionSummary>
       <AccordionDetails>
-        <div>{renderQuestionInputsForType(question.type)}</div>
+        {renderQuestionInputsForType(question.type)}
       </AccordionDetails>
     </Accordion>
   );
