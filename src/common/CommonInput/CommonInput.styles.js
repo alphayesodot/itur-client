@@ -6,6 +6,7 @@ const useStyles = makeStyles((theme) => ({
     height: '2.5rem',
     background: 'white',
     borderRadius: 30,
+    margin: 'auto 0.25rem',
     [theme.breakpoints.down('sm')]: {
       width: '100%',
     },
