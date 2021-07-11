@@ -159,7 +159,6 @@ const QuestionnaireDialog = ({
               classes={{ root: classes.input }}
               InputProps={{ disableUnderline: true }}
               autoFocus
-              disableUnderline
               margin='dense'
               id='name'
               type='text'
