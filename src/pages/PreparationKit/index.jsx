@@ -1,15 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Document, Page } from 'react-pdf/dist/esm/entry.webpack';
-import ReactPlayer from 'react-player/file';
+import ReactPlayer from 'react-player/lazy';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import { useTranslation } from 'react-i18next';
-import interviewerPDF from './pdf/1.pdf';
-import interviewerVideo from './pdf/video.mp4';
 import DashboardCard from '../../common/DashboardCard/DashboardCard';
 import useStyles from './index.styles';
+import configApp from '../../appConf';
 
 const PreparationKit = () => {
   const [pageNumber, setPageNumber] = useState(1);
@@ -56,7 +55,7 @@ const PreparationKit = () => {
           </div>
         )}
         <Document
-          file={interviewerPDF}
+          file={`${configApp.apiUri}/api/preparation-kit/pdf`}
           noData={<p>No File Chosen</p>}
           loading={<Typography>{t('text.loading')}</Typography>}
           onLoadSuccess={onDocumentLoadSuccess}
@@ -65,11 +64,7 @@ const PreparationKit = () => {
         </Document>
       </div>
       <div className={classes.playerWrapper}>
-        <ReactPlayer
-          url={interviewerVideo}
-          className={classes.player}
-          controls
-        />
+        <ReactPlayer url={`${configApp.apiUri}/api/preparation-kit/video`} className={classes.player} controls />
       </div>
     </DashboardCard>
   );

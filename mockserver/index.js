@@ -12,6 +12,7 @@ import unitRouter from './unit/unit.router.js';
 import malshabRouter from './malshab/malshab.router.js';
 import questionnaireSchemaRouter from './questionnaireSchema/questionnaireSchema.router.js';
 import reportRouter from './report/report.router.js';
+import preparationKitRouter from './preparation-kit/preparation-kit.router.js';
 
 const app = express();
 app.use(cors({ origin: '*', credentials: true }));
@@ -47,5 +48,6 @@ app.use('/api/malshab', malshabRouter);
 app.use('/api/node', nodeRouter);
 app.use('/api/questionnaire-schema', questionnaireSchemaRouter);
 app.use('/api/report', reportRouter);
+app.use('/api/preparation-kit', preparationKitRouter);
 
 app.listen(config.port, () => console.log(`Mock server listening on ${config.port}`));
