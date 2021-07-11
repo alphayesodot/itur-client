@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Document, Page } from 'react-pdf/dist/esm/entry.webpack';
 import ReactPlayer from 'react-player/lazy';
 import IconButton from '@material-ui/core/IconButton';
