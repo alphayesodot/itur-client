@@ -9,7 +9,7 @@ import NodeGroupDialog from './components/NodeGroupDialog/NodeGroupDialog';
 import DataTable from '../../common/DataTable/DataTable';
 import NodeGroupService from '../../services/nodeGroup.service';
 import UnitService from '../../services/unit.service';
-import { UserService, Role } from '../../services/user.service';
+import UserService, { Role } from '../../services/user.service';
 import UserStoreInstance from '../../stores/User.store';
 import NodeGroupOptionsButton from './components/NodeGroupOptionsButton/NodeGroupOptionsButton';
 import CustomBackDrop from '../../common/CustomBackDrop/CustomBackDrop';
@@ -29,9 +29,13 @@ const NodeGroupPage = () => {
     try {
       const nodeGroups = await NodeGroupService.getNodeGroups();
       const promises = nodeGroups.map(async (nodeGroup) => {
-        const unit = await UnitService.getUnitById(nodeGroup.unitId);
-        const ramad = (await UserService.getUsersByUnitId(nodeGroup.unitId))
-          .find((user) => user.role === Role.RamadIturOfUnit);
+        const unit = userRole === Role.RamadIturOfUnit
+          ? await UnitService.getMyUnit()
+          : await UnitService.getUnitById(nodeGroup.unitId);
+        const users = userRole === Role.RamadIturOfUnit
+          ? await UserService.getUsersByUnitId()
+          : await UserService.getUsersByUnitId({ unitId: nodeGroup.unitId });
+        const ramad = users.find((user) => user.role === Role.RamadIturOfUnit);
         return {
           id: nodeGroup.id,
           data: [nodeGroup.name,
@@ -58,9 +62,7 @@ const NodeGroupPage = () => {
     setIsLoading(false);
   }, []);
 
-  /**
-   * delete from state
-   */
+  // delete from state
   useEffect(async () => {
     const allIdx = [...allNodeGroupRows].findIndex(
       (q) => q.id === idToDelete,

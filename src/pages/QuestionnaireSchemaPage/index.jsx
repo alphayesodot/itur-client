@@ -8,7 +8,7 @@ import DashboardCard from '../../common/DashboardCard/DashboardCard';
 import Header from './components/Header/Header';
 import DataTable from '../../common/DataTable/DataTable';
 import QuestionnaireSchemaService from '../../services/questionnaireSchema.service';
-import { UserService, Role } from '../../services/user.service';
+import UserService, { Role } from '../../services/user.service';
 import QuestionnaireOptionsButton from './components/QuestionnaireOptionsButton/QuestionnaireOptionsButton';
 import QuestionnaireDialog from './components/QuestionnaireDialog/QuestionnaireDialog';
 import NodeService from '../../services/node.service';
