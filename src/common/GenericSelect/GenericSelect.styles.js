@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => ({
   select: {
     direction: 'ltr',
+    paddingLeft: '1em',
     '&:hover,&:focus': {
       background: 'transparent',
     },

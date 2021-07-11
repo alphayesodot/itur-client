@@ -7,7 +7,7 @@ import NodeService from '../../../../services/node.service';
 import useStyles from './NodeGroupDialog.styles';
 import CustomDialog from '../../../../common/CustomDialog/CustomDialog';
 import SelectCheckboxItem from '../SelectCheckboxItem/SelectCheckboxItem';
-import { UserService, Role } from '../../../../services/user.service';
+import UserService, { Role } from '../../../../services/user.service';
 import UserStoreInstance from '../../../../stores/User.store';
 
 const NodeGroupDialog = ({ open, onClose, createAllNodeGroupList, currentNodeGroup }) => {

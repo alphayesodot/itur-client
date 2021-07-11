@@ -19,13 +19,13 @@ export const Role = {
   Malshab: 'MALSHAB',
 };
 
-export class UserService {
+export default class UserService {
   static async getUserById(id) {
     const { data } = await axios.get(`${config.apiUri}/api/user/${id}`, { headers });
     return data;
   }
-  static async getUsersByUnitId(unitId) {
-    const res = await axios.get(`${await config.apiUri}/api/user/`, { headers, params: { unitId } });
+  static async getUsersByUnitId(params) {
+    const res = await axios.get(`${await config.apiUri}/api/user/`, { headers, params });
     return res?.data;
   }
   static async createUser(unitId, role, name) {
