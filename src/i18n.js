@@ -90,6 +90,7 @@ const resources = {
         userNotAddWarning: 'יוזר לא נוסף',
         page: 'עמוד',
         of: 'מתוך',
+        loading: 'טוען מסמך...',
       },
       headerBlessings: {
         morning: 'בוקר טוב',

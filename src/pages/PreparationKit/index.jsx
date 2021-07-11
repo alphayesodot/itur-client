@@ -14,6 +14,7 @@ import useStyles from './index.styles';
 const PreparationKit = () => {
   const [pageNumber, setPageNumber] = useState(1);
   const [pageAmount, setPageAmount] = useState(1);
+  const [showControls, setShowControls] = useState(false);
 
   const classes = useStyles();
   const { t } = useTranslation();
@@ -23,40 +24,45 @@ const PreparationKit = () => {
   const onDocumentLoadSuccess = ({ numPages }) => {
     setPageNumber(1);
     setPageAmount(numPages);
+    setShowControls(true);
   };
 
   return (
     <DashboardCard className={classes.root}>
       <div className={classes.documentContainer}>
+        {showControls && (
+          <div className={classes.pageInfo}>
+            <IconButton
+              disabled={pageNumber <= 1}
+              onClick={() => changePage(-1)}
+            >
+              <ArrowForwardIcon />
+            </IconButton>
+            <Typography>
+              {t('text.page')}
+              {' '}
+              {pageNumber}
+              {' '}
+              {t('text.of')}
+              {' '}
+              {pageAmount}
+            </Typography>
+            <IconButton
+              disabled={pageNumber >= pageAmount}
+              onClick={() => changePage(1)}
+            >
+              <ArrowBackIcon />
+            </IconButton>
+          </div>
+        )}
         <Document
           file={interviewerPDF}
           noData={<p>No File Chosen</p>}
+          loading={<Typography>{t('text.loading')}</Typography>}
           onLoadSuccess={onDocumentLoadSuccess}
         >
           <Page pageNumber={pageNumber} className={classes.document} />
         </Document>
-        <div className={classes.pageInfo}>
-          <IconButton
-            type='button'
-            disabled={pageNumber >= pageAmount}
-            onClick={() => changePage(1)}
-          >
-            <ArrowForwardIcon />
-          </IconButton>
-
-          <Typography>
-            {t('text.page')}
-            {' '}
-            {pageNumber}
-            {' '}
-            {t('text.of')}
-            {' '}
-            {pageAmount}
-          </Typography>
-          <IconButton disabled={pageNumber <= 1} onClick={() => changePage(-1)}>
-            <ArrowBackIcon />
-          </IconButton>
-        </div>
       </div>
       <div className={classes.playerWrapper}>
         <ReactPlayer
