@@ -37,7 +37,7 @@ const Luz = () => {
       ScheduleStore.getScheduleOfInterviewer(
         new Date(),
         nodeGroup.id,
-        currentUser.userID,
+        currentUser._id,
       ).then((res) => {
         setInterviews(res);
       }).catch(() => {

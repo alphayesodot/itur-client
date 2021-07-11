@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
   },
   checkbox: {
     '&$checkedCheckbox': {
-      color: theme.palette.dialogs.primary,
+      color: theme.palette.dialog.primary,
     },
   },
   // This object is needed although it's empty. It is needed for override the default color.

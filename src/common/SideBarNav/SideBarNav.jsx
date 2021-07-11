@@ -47,7 +47,7 @@ const Sidebar = React.forwardRef((props, ref) => {
     nodeGroupCreation: { urlPostfix: configApp.sitesPostfixes.nodeGroupCreation, imgDef: nodeGroupIcon, imgActive: nodeGroupIconActive, title: t('sideBar.nodeGroupCreation') },
     fileUpload: { urlPostfix: configApp.sitesPostfixes.fileUpload, imgDef: uploadIcon, imgActive: uploadIconActive, title: t('sideBar.fileUpload') },
     userManagement: { urlPostfix: configApp.sitesPostfixes.userManagement, imgDef: userManagementIcon, imgActive: userManagementIconActive, title: t('sideBar.userManagement') },
-    editQuestionnaire: { urlPostfix: configApp.sitesPostfixes.editQuestionnaire, imgDef: questionnairesIcon, imgActive: questionnairesIconActive, title: t('sideBar.editQuestionnaire') },
+    questionnaires: { urlPostfix: configApp.sitesPostfixes.questionnaires, imgDef: questionnairesIcon, imgActive: questionnairesIconActive, title: t('sideBar.questionnaires') },
   };
   const createIcon = (iconDetailsObject) => {
     const src = iconDetailsObject.urlPostfix === window.location.pathname

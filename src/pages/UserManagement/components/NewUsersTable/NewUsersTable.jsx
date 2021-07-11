@@ -30,7 +30,7 @@ const NewUsersTable = ({ users }) => {
         <TableBody>
           {users.map((user) => (
             <TableRow key={user.id}>
-              <TableCell align='center'>{user.mail}</TableCell>
+              <TableCell className={classes.mail} align='center'>{user.mail}</TableCell>
               <TableCell align='center'>{user.password}</TableCell>
             </TableRow>
           ))}

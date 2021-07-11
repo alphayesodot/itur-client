@@ -16,6 +16,7 @@ export const Role = {
   Psychologist: 'PSYCHOLOGIST',
   Diagnoser: 'DIAGNOSER',
   Technical: 'TECHNICAL',
+  Malshab: 'MALSHAB',
 };
 
 export class UserService {
