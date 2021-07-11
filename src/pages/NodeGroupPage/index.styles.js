@@ -45,10 +45,10 @@ const useStyles = makeStyles((theme) => ({
     color: 'lightGray',
   },
   viewContainer: {
+    margin: 'auto',
     maxHeight: '80%',
     direction: 'rtl',
     width: '50%',
-    margin: '0 2.5em',
   },
 }));
 
