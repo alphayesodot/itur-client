@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '12rem',
-    height: '2.5em',
+    height: '2.5rem',
     background: 'white',
     borderRadius: 30,
     [theme.breakpoints.down('sm')]: {
