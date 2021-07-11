@@ -15,10 +15,9 @@ export const QuestionType = {
 };
 
 class QuestionnaireSchemaService {
-  static async getQuestionnaires(nodeId) {
-    const { data } = nodeId
-      ? await axios.get(`${config.apiUri}/api/questionnaire-schema/${nodeId}`, { headers })
-      : await axios.get(`${config.apiUri}/api/questionnaire-schema`, { headers });
+  // TODO: Add params with nodeId
+  static async getQuestionnaires() {
+    const { data } = await axios.get(`${config.apiUri}/api/questionnaire-schema`, { headers });
     return data;
   }
 
