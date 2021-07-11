@@ -31,14 +31,14 @@ const NodeGroupDialog = ({ open, onClose, createAllNodeGroupList, currentNodeGro
       const checkedUser = allUsers.find((user) => user.id === userId) || {};
       switch (checkedUser.role) {
         case Role.ProfessionalRamad:
-          tempPr.push(checkedUser.id);
+          tempPr.push(checkedUser._id);
           break;
 
         case Role.RamadIturAssistant:
-          tempRuiA.push(checkedUser.id);
+          tempRuiA.push(checkedUser._id);
           break;
         default:
-          tempEvaluators.push(checkedUser.id);
+          tempEvaluators.push(checkedUser._id);
       }
     });
     setCheckedPrUsers(tempPr);
