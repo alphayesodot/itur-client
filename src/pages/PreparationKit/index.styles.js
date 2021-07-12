@@ -5,12 +5,16 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     display: 'flex',
     justifyContent: 'space-around',
+    alignItems: 'center',
     overflow: 'auto',
 
     [theme.breakpoints.down('md')]: {
       flexDirection: 'column',
-      alignItems: 'stretch',
       justifyContent: 'flex-start',
+    },
+
+    [theme.breakpoints.down('xs')]: {
+      alignItems: 'stretch',
     },
   },
 
@@ -20,6 +24,9 @@ const useStyles = makeStyles((theme) => ({
 
   documentContainer: {
     marginLeft: '10%',
+    [theme.breakpoints.down('sm')]: {
+      marginLeft: '0',
+    },
   },
 
   pageInfo: {
@@ -37,8 +44,8 @@ const useStyles = makeStyles((theme) => ({
     marginTop: '1%',
     alignSelf: 'center',
 
-    [theme.breakpoints.down('md')]: {
-      alignSelf: 'flex-start',
+    [theme.breakpoints.down('xs')]: {
+      alignSelf: 'inherit',
     },
   },
 
