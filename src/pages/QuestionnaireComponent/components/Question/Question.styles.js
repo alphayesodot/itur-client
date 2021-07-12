@@ -4,7 +4,6 @@ const useStyles = makeStyles(() => ({
   li: {
     backgroundColor: 'rgb(255 255 255 / 5%)',
     borderRadius: '10px',
-    // height: '2.5rem',
     marginBottom: '0.4rem',
     '&:hover': {
       backgroundColor: 'rgb(255 255 255 / 20%)',
@@ -12,6 +11,8 @@ const useStyles = makeStyles(() => ({
     justifyContent: 'space-around',
     color: 'white',
     direction: 'ltr',
+    padding: '5px',
+    height: '2.2rem',
   },
   liCollapsed: {
     height: '2.5rem',
@@ -22,7 +23,7 @@ const useStyles = makeStyles(() => ({
     justifyContent: 'space-between',
   },
   question: {
-    fontSize: '0.8rem',
+    fontSize: '1rem',
     marginLeft: '1rem',
     cursor: 'inherit',
     textAlign: 'left',
@@ -33,10 +34,12 @@ const useStyles = makeStyles(() => ({
   },
   dateInput: {
     backgroundColor: 'transparent',
-    color: 'white',
     fontSize: '12.8px',
-    '& > input': { textAlign: 'right' },
+    '& > input': { textAlign: 'right', width: '60px' },
     '& > div > button': { color: '#02aecd' },
+  },
+  expandButton: {
+    float: 'right',
   },
 }));
 

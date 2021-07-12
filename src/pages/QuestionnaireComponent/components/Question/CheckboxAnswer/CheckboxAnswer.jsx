@@ -39,7 +39,7 @@ const CheckboxAnswer = ({ options, selectedValues, setSelectedValues }) => {
                 style={{ color: '#02aecd' }}
               />
             }
-            label={<span style={{ fontSize: '0.7rem' }}>{option}</span>}
+            label={<span style={{ fontSize: '1rem' }}>{option}</span>}
             labelPlacement='start'
           />
         ))}
