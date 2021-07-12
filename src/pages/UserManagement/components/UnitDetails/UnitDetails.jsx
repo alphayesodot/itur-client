@@ -12,7 +12,7 @@ const UnitDetails = ({ unit, users, setUsers }) => {
   const { t } = useTranslation();
 
   useEffect(() => {
-    UserService.getUsersByUnitId(unit.id).then((res) => {
+    UserService.getUsers({ unitId: unit.id }).then((res) => {
       setUsers(res);
     }).catch(() => {
       toast(t('error.server'));

@@ -47,7 +47,7 @@ const NodeGroupDialog = ({ open, onClose, createAllNodeGroupList, currentNodeGro
   };
 
   useEffect(() => {
-    UserService.getUsersByUnitId(UserStoreInstance.userProfile.unitId).then((users) => {
+    UserService.getUsers({ unitId: UserStoreInstance.userProfile.unitId }).then((users) => {
       setPrUsers(users.filter((user) => user.role === Role.ProfessionalRamad));
       setRiuAUsers(users.filter((user) => user.role === Role.RamadIturAssistant));
       setEvaluators(users.filter((user) => user.role !== Role.RamadIturAssistant
@@ -80,7 +80,7 @@ const NodeGroupDialog = ({ open, onClose, createAllNodeGroupList, currentNodeGro
       setNodes(allNodes.filter((node) => !node.nodeGroupId || node.nodeGroupId === ''));
     } else {
       setNameValue(currentNodeGroup.name);
-      UserService.getUsersByUnitId(UserStoreInstance.userProfile.unitId).then((users) => {
+      UserService.getUsers({ unitId: UserStoreInstance.userProfile.unitId }).then((users) => {
         setCheckedUsers(users);
       });
       setNodes(allNodes.filter((node) => !node.nodeGroupId || node.nodeGroupId === '' || node.nodeGroupId === currentNodeGroup.id));

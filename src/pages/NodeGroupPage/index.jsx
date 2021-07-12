@@ -31,8 +31,8 @@ const NodeGroupPage = () => {
           ? await UnitService.getMyUnit()
           : await UnitService.getUnitById(nodeGroup.unitId);
         const users = userRole === Role.RamadIturOfUnit
-          ? await UserService.getUsersByUnitId()
-          : await UserService.getUsersByUnitId({ unitId: nodeGroup.unitId });
+          ? await UserService.getUsers()
+          : await UserService.getUsers({ unitId: nodeGroup.unitId });
         const ramad = users.find((user) => user.role === Role.RamadIturOfUnit);
         return {
           id: nodeGroup.id,
