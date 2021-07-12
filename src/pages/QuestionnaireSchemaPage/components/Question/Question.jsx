@@ -53,7 +53,7 @@ const Question = ({
   const [titleError, setTitleError] = useState(questionTitle.length > 0);
   const [minMaxError, setMinMaxError] = useState(linearScale.maxVal <= linearScale.minVal);
   const [minMaxTitleError, setMinMaxTitleError] = useState(
-    linearScale.minTitle.length === 0 || linearScale.maxTitle.length === 0,
+    !linearScale.minTitle.length || !linearScale.maxTitle.length,
   );
   const [emptyOptionsError, setEmptyOptionsError] = useState(!(options && options.length));
   const calcQuestionError = () => titleError
