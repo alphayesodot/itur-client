@@ -8,7 +8,10 @@ const MultipleChoice = ({
   options,
   setOptions,
   hasOther,
-  setHasOther }) => {
+  setHasOther,
+  emptyOptionsError,
+  setEmptyOptionsError,
+  showErrors }) => {
   const classes = useStyles();
   const { t } = useTranslation();
   const enterChar = 13;
@@ -17,6 +20,9 @@ const MultipleChoice = ({
     const tmpOptions = [...options];
     tmpOptions.splice(idx, 1);
     setOptions(tmpOptions);
+    if (!tmpOptions.length) {
+      setEmptyOptionsError(true);
+    }
   };
 
   return (
@@ -41,16 +47,18 @@ const MultipleChoice = ({
         />
       </FormControl>
       <Input
-        className={classes.input}
+        classes={{ root: classes.input, error: classes.inputError }}
         disableUnderline
         placeholder={t('placeholders.enterAnswer')}
         value={optionToAdd}
+        error={showErrors && emptyOptionsError}
         onChange={(e) => {
           setOptionToAdd(e.target.value);
         }}
         onKeyPress={(e) => {
           if (e.charCode === enterChar) {
-            setOptions([...options, optionToAdd]);
+            setOptions(options ? [...options, optionToAdd] : [optionToAdd]);
+            setEmptyOptionsError(false);
             setOptionToAdd('');
           }
         }}
@@ -60,11 +68,13 @@ const MultipleChoice = ({
           <div className={classes.answers}>
             <span>{t('question.answers')}</span>
             {options.map((option, idx) => (
-              <div className={classes.option}>
+              <div className={classes.option} key={option}>
                 <span className={classes.label}>{`${idx + 1}. ${option}`}</span>
                 <IconButton
                   className={classes.deleteButton}
-                  onClick={() => deleteFromOptions(idx)}
+                  onClick={() => {
+                    deleteFromOptions(idx);
+                  }}
                 >
                   <ClearIcon className={classes.deleteIcon} />
                 </IconButton>
