@@ -55,6 +55,7 @@ const PreparationKit = () => {
           </div>
         )}
         <Document
+          file={`${configApp.apiUri}/api/preparation-kit/interviewer_instructions_document.pdf`}
           noData={<p>{t('text.noFile')}</p>}
           loading={<Typography>{t('text.loading')}</Typography>}
           onLoadSuccess={onDocumentLoadSuccess}
@@ -63,7 +64,7 @@ const PreparationKit = () => {
         </Document>
       </div>
       <div className={classes.playerWrapper}>
-        <ReactPlayer url={`${configApp.apiUri}/api/preparation-kit/video`} className={classes.player} controls />
+        <ReactPlayer url={`${configApp.apiUri}/api/preparation-kit/interviewer_instructions_video.mp4`} className={classes.player} controls />
       </div>
     </DashboardCard>
   );
