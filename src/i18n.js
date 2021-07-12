@@ -116,6 +116,32 @@ const resources = {
         fileUpload: 'העלאת קבצים',
         userManagement: 'ניהול משתמשים',
         editQuestionnaire: 'שאלונים',
+        malshab: {
+          fullName: 'שם מלא',
+          firstName: 'שם פרטי',
+          lastName: 'שם משפחה',
+          interviewTime: 'זמן ראיון',
+          recording: 'בהקלטה',
+          malshabDetails: "פרטי מלש''ב",
+          moreDetails: 'פרטים נוספים',
+          finishInterview: 'סיום ראיון',
+          language: 'שפה',
+          languages: 'שפות',
+          identityNumber: 'ת.ז',
+          birthDate: 'ת.לידה',
+          school: 'ביה"ס',
+          gender: 'מין',
+          birthCountry: 'ארץ לידה',
+          degree: 'מגמה',
+          address: 'כתובת',
+          addresses: 'כתובות',
+          citizenship: 'אזרחות',
+          kaba: 'קב"א',
+          dapar: 'דפ"ר',
+          major: 'מגמה',
+          attachmentDownloadErrorMessage:
+            'אירעה שגיאה בהורדת הקובץ. יש ליצור קשר עם צוות טכני',
+        },
       },
       button: {
         addUnit: '+ הוספת יחידה',
@@ -192,7 +218,8 @@ const resources = {
         uploadAttachment: 'העלאת מסמך',
       },
       warnings: {
-        oneTimePassword: 'שים לב, לאחר סגירת החלונית לא יהיה ניתן לצפות בסיסמה בשנית. יש לשמור את הסיסמה במקום מאובטח.',
+        oneTimePassword:
+          'שים לב, לאחר סגירת החלונית לא יהיה ניתן לצפות בסיסמה בשנית. יש לשמור את הסיסמה במקום מאובטח.',
       },
       formTitle: {
         name: 'שם',
@@ -240,6 +267,10 @@ const resources = {
         addresses: 'כתובות',
         citizenship: 'אזרחות',
         major: 'מגמה',
+      },
+      questionnaire: {
+        submit: 'שלח',
+        viewExtended: 'שאלון מורחב',
       },
     },
   },

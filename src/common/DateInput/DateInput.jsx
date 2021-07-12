@@ -13,30 +13,32 @@ import useStyles from './DateInput.styles';
  * @param {*} inputClassName: optional, additional input's class name defined by makestyles
  * @returns date select
  */
-const DateInput = observer(({ selectedDate, setSelectedDate, inputClassName }) => {
-  const classes = useStyles();
+const DateInput = observer(
+  ({ selectedDate, setSelectedDate, inputClassName, inputProps }) => {
+    const classes = useStyles();
 
-  const getMaxDate = () => (
-    new Date().setDate(new Date().getDate() + 1)
-  );
+    const getMaxDate = () => new Date().setDate(new Date().getDate() + 1);
 
-  return (
-    <MuiPickersUtilsProvider utils={DateFnsUtils}>
-      <KeyboardDatePicker
-        disableToolbar
-        format='dd/MM/yyyy'
-        className={`${classes.date} ${inputClassName}`}
-        value={selectedDate}
-        onChange={setSelectedDate}
-        autoOk
-        variant='inline'
-        maxDate={getMaxDate()}
-        InputProps={{
-          disableUnderline: true,
-        }}
-      />
-    </MuiPickersUtilsProvider>
-  );
-});
+    return (
+      <MuiPickersUtilsProvider utils={DateFnsUtils}>
+        <KeyboardDatePicker
+          disableToolbar
+          format='dd/MM/yyyy'
+          className={`${classes.date} ${inputClassName}`}
+          value={selectedDate}
+          onChange={setSelectedDate}
+          autoOk
+          variant='inline'
+          maxDate={getMaxDate()}
+          InputProps={
+            inputProps ?? {
+              disableUnderline: true,
+            }
+          }
+        />
+      </MuiPickersUtilsProvider>
+    );
+  },
+);
 
 export default DateInput;

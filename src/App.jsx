@@ -9,6 +9,7 @@ import Luz from './pages/Luz/index';
 import AuthService from './services/auth.service';
 import UploadPage from './pages/FileUpload/index';
 import Report from './pages/Reports/index';
+import QuestionnaireComponent from './pages/QuestionnaireComponent/index';
 import ConfigService from './services/config.service';
 import Sidebar from './common/SideBarNav/SideBarNav';
 import Header from './common/Header/Header';
@@ -109,6 +110,10 @@ const App = () => {
     {
       path: configApp.sitesPostfixes.editQuestionnaire,
       component: <h1>editQuestionnaire</h1>,
+    },
+    {
+      path: configApp.sitesPostfixes.questionnaireComponent,
+      component: <QuestionnaireComponent />,
     },
   ];
 
