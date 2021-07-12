@@ -1,15 +1,22 @@
 import React, { useState } from 'react';
 import Radio from '@material-ui/core/Radio';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormGroup from '@material-ui/core/FormGroup';
+import Typography from '@material-ui/core/Typography';
 import { v4 as uuid } from 'uuid';
+import useStyles from './ScaleAnswer.styles';
 
-const AmericanAnswer = ({ options }) => {
+const ScaleAnswer = ({ min, max }) => {
+  const classes = useStyles();
   const [selectedValue, setSelectedValue] = useState('');
 
   const handleChange = (event) => {
     setSelectedValue(event.target.value);
   };
+
+  // eslint-disable-next-line prefer-spread
+  const rangeArr = Array.apply(null, { length: max.value + 1 })
+    .map(Number.call, Number)
+    .slice(min.value);
 
   return (
     <div
@@ -17,30 +24,31 @@ const AmericanAnswer = ({ options }) => {
         display: 'flex',
         flexFlow: 'space-between',
         textOverflow: 'ellipsis',
+        direction: 'rtl',
       }}
     >
-      <FormGroup style={{ direction: 'ltr' }}>
-        {options.map((option) => (
+      <Typography className={classes.label}>{min.tag}</Typography>
+      <div>
+        {rangeArr.map((val) => (
           <FormControlLabel
             value='start'
             key={uuid()}
             control={
               <Radio
-                checked={selectedValue === option}
+                checked={+selectedValue === val}
                 onChange={handleChange}
-                value={option}
+                value={val}
                 size='small'
-                name='a'
+                name='radio'
                 style={{ color: '#02aecd' }}
               />
             }
-            label={<span style={{ fontSize: '1rem' }}>{option}</span>}
-            labelPlacement='start'
           />
         ))}
-      </FormGroup>
+      </div>
+      <Typography className={classes.label}>{max.tag}</Typography>
     </div>
   );
 };
 
-export default AmericanAnswer;
+export default ScaleAnswer;
