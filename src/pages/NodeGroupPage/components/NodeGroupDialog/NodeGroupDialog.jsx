@@ -28,17 +28,17 @@ const NodeGroupDialog = ({ open, onClose, createAllNodeGroupList, currentNodeGro
     const tempRuiA = [];
     const tempEvaluators = [];
     currentNodeGroup.usersIds.forEach((userId) => {
-      const checkedUser = allUsers.find((user) => user.id === userId) || {};
+      const checkedUser = allUsers.find((user) => user._id === userId) || {};
       switch (checkedUser.role) {
         case Role.ProfessionalRamad:
-          tempPr.push(checkedUser.id);
+          tempPr.push(checkedUser._id);
           break;
 
         case Role.RamadIturAssistant:
-          tempRuiA.push(checkedUser.id);
+          tempRuiA.push(checkedUser._id);
           break;
         default:
-          tempEvaluators.push(checkedUser.id);
+          tempEvaluators.push(checkedUser._id);
       }
     });
     setCheckedPrUsers(tempPr);
@@ -47,7 +47,7 @@ const NodeGroupDialog = ({ open, onClose, createAllNodeGroupList, currentNodeGro
   };
 
   useEffect(() => {
-    UserService.getUsersByUnitId(UserStoreInstance.userProfile.unitId).then((users) => {
+    UserService.getUsers({ unitId: UserStoreInstance.userProfile.unitId }).then((users) => {
       setPrUsers(users.filter((user) => user.role === Role.ProfessionalRamad));
       setRiuAUsers(users.filter((user) => user.role === Role.RamadIturAssistant));
       setEvaluators(users.filter((user) => user.role !== Role.RamadIturAssistant
@@ -80,7 +80,7 @@ const NodeGroupDialog = ({ open, onClose, createAllNodeGroupList, currentNodeGro
       setNodes(allNodes.filter((node) => !node.nodeGroupId || node.nodeGroupId === ''));
     } else {
       setNameValue(currentNodeGroup.name);
-      UserService.getUsersByUnitId(UserStoreInstance.userProfile.unitId).then((users) => {
+      UserService.getUsers({ unitId: UserStoreInstance.userProfile.unitId }).then((users) => {
         setCheckedUsers(users);
       });
       setNodes(allNodes.filter((node) => !node.nodeGroupId || node.nodeGroupId === '' || node.nodeGroupId === currentNodeGroup.id));

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { observer } from 'mobx-react-lite';
 import { toast } from 'react-toastify';
-import { Typography } from '@material-ui/core';
 import UnitService from '../../services/unit.service';
 import UserService, { Role } from '../../services/user.service';
 import Header from './components/Header/Header';
@@ -63,17 +62,11 @@ const Track = observer(() => {
       {isLoading
         ? <CustomBackDrop />
         : (
-          <>
-            {selectedNodeGroup
-              ? (
-                <TrackBoard
-                  nodeGroup={selectedNodeGroup}
-                  date={new Date(selectedDate)}
-                  interviewers={interviewers}
-                />
-              )
-              : <Typography className={classes.message}>{t('message.chooseNodeGroup')}</Typography>}
-          </>
+          <TrackBoard
+            nodeGroup={selectedNodeGroup}
+            date={new Date(selectedDate)}
+            interviewers={interviewers}
+          />
         )}
     </div>
   );

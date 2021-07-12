@@ -30,7 +30,7 @@ const TrackBoard = ({ nodeGroup, date, interviewers }) => {
         {interviewers.length === 0
           ? (
             <Typography className={classes.message}>
-              {t('message.noInterviewersInNodeGroup')}
+              {nodeGroup ? t('message.noInterviewersInNodeGroup') : t('message.chooseNodeGroup')}
             </Typography>
           )
           : interviewers.map((interviewer) => (

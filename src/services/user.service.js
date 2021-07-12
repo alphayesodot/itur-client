@@ -24,7 +24,7 @@ export default class UserService {
     const { data } = await axios.get(`${config.apiUri}/api/user/${id}`, { headers });
     return data;
   }
-  static async getUsersByUnitId(params) {
+  static async getUsers(params) {
     const res = await axios.get(`${await config.apiUri}/api/user/`, { headers, params });
     return res?.data;
   }

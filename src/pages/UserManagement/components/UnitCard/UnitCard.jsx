@@ -13,7 +13,7 @@ const UnitCard = ({ unit, isSelected, setSelectedUnit, users }) => {
   const [unitUsers, setUnitusers] = useState([]);
 
   useEffect(() => {
-    UserService.getUsersByUnitId(unit.id).then((res) => {
+    UserService.getUsers({ unitId: unit.id }).then((res) => {
       setUnitusers(res);
     }).catch(() => {
       toast(t('error.server'));

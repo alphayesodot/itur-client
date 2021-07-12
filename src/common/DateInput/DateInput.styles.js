@@ -2,13 +2,13 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   date: {
-    height: '2em',
-    maxHeight: '2em',
-    minHeight: '2em',
+    minHeight: '100%',
     width: '12.5em',
     background: 'white',
     direction: 'ltr',
     paddingLeft: '1rem',
+    display: 'flex',
+    justifyContent: 'center',
     [theme.breakpoints.down('sm')]: {
       width: 'auto',
       margin: '0.5em 0',
