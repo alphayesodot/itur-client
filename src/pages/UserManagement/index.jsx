@@ -11,18 +11,25 @@ const UserManagement = () => {
   const classes = useStyles();
   const { t } = useTranslation();
 
+  const superAdminsUnit = { id: '123456789', name: 'מנהלי מערכת' };
+  const [isUserAdmin, setIsUserAdmin] = useState([]);
   const [openAddUnit, setOpenAddUnit] = useState(false);
-  const [units, setUnits] = useState([]);
+  const [units, setUnits] = useState([superAdminsUnit]);
   const [selectedUnit, setSelectedUnit] = useState('');
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
+    setIsUserAdmin(selectedUnit.id === '123456789');
     UnitService.getUnits().then((res) => {
-      setUnits(res);
+      setUnits((prevValue) => [...prevValue, ...res]);
     }).catch(() => {
       toast(t('error.server'));
     });
   }, []);
+
+  useEffect(() => {
+    setIsUserAdmin(selectedUnit.id === '123456789');
+  }, [selectedUnit]);
 
   return (
     <div className={classes.root}>
@@ -33,12 +40,15 @@ const UserManagement = () => {
           selectedUnit={selectedUnit}
           setSelectedUnit={setSelectedUnit}
           users={users}
+          isUserAdmin={isUserAdmin}
           setUsers={setUsers}
         />
         <UnitDetails
           unit={selectedUnit}
           users={users}
           setUsers={setUsers}
+          isUserAdmin={isUserAdmin}
+
         />
       </div>
       <AddUnit
