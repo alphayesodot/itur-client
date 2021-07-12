@@ -55,8 +55,7 @@ const PreparationKit = () => {
           </div>
         )}
         <Document
-          file={`${configApp.apiUri}/api/preparation-kit/pdf`}
-          noData={<p>No File Chosen</p>}
+          noData={<p>{t('text.noFile')}</p>}
           loading={<Typography>{t('text.loading')}</Typography>}
           onLoadSuccess={onDocumentLoadSuccess}
         >

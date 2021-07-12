@@ -91,6 +91,7 @@ const resources = {
         page: 'עמוד',
         of: 'מתוך',
         loading: 'טוען מסמך...',
+        noFile: 'המסמך לא קיים',
       },
       headerBlessings: {
         morning: 'בוקר טוב',
