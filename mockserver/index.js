@@ -12,7 +12,7 @@ import unitRouter from './unit/unit.router.js';
 import malshabRouter from './malshab/malshab.router.js';
 import questionnaireSchemaRouter from './questionnaireSchema/questionnaireSchema.router.js';
 import reportRouter from './report/report.router.js';
-import preparationKitRouter from './preparation-kit/preparation-kit.router.js';
+import preparationKitRouter from './preparationKit/preparationKit.router.js';
 
 const app = express();
 app.use(cors({ origin: '*', credentials: true }));
