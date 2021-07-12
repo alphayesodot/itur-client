@@ -28,18 +28,15 @@ const DeletionDialog = ({ open, onClose, onDeletion, deletedObjectName }) => {
     </div>
   );
   return (
-    open
-      ? (
-        <CustomDialog
-          open={open}
-          paperClassName={classes.root}
-          onClose={onClose}
-          title=''
-          content={content}
-        />
-      )
-      : <></>
-
+    (
+      <CustomDialog
+        open={open}
+        paperClassName={classes.root}
+        onClose={onClose}
+        title=''
+        content={content}
+      />
+    )
   );
 };
 

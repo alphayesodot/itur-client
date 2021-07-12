@@ -62,6 +62,7 @@ const Question = ({
     || (questionType.id === QuestionType.multipleChoice && emptyOptionsError);
 
   const [error, setError] = useState(calcQuestionError());
+
   // set Error when changing
   useEffect(() => {
     setError(calcQuestionError());
@@ -113,8 +114,6 @@ const Question = ({
     setOptions([]);
     setExpand(false);
     setQuestionTitle('');
-    setError(false);
-    setTitleError(false);
   };
   // assign Error if input is empty
   const requriedError = (input, setSomeError) => {
@@ -161,7 +160,7 @@ const Question = ({
     const initQuestion = {
       title: questionTitle,
       type: questionType.id,
-      required: true,
+      required,
       error: error || titleError,
     };
     if (description.length) {
@@ -199,7 +198,7 @@ const Question = ({
           classes={{ root: classes.checkbox, checked: classes.checkedCheckbox }}
           disabled={!currentQuestion}
           disableRipple
-          checked={currentQuestion && required}
+          checked={currentQuestionExist && required}
           onChange={() => { setRequired(!required); }}
         />
         <GenericSelect
@@ -215,7 +214,6 @@ const Question = ({
           type='text'
           variant='standard'
           error={showErrors && titleError}
-          // placeholder={(showErrors && titleError) ? '*' : ''}
           fullWidth
           value={questionTitle}
           onChange={(e) => {

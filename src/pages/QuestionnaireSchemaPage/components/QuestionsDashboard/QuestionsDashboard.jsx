@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Question from '../Question/Question';
 import DashboardCard from '../../../../common/DashboardCard/DashboardCard';
@@ -7,6 +7,7 @@ import useStyles from './QuestionsDashboard.styles';
 const QuestionsDashboard = ({ questionsArr, setQuestionsArr, showErrors }) => {
   const classes = useStyles();
   const { t } = useTranslation();
+  const [forceRender, setForceRender] = useState(false);
   const addQuestion = (questionObject) => {
     setQuestionsArr([...questionsArr, questionObject]);
   };
@@ -15,6 +16,7 @@ const QuestionsDashboard = ({ questionsArr, setQuestionsArr, showErrors }) => {
     const tmpQuestionsArr = [...questionsArr];
     tmpQuestionsArr.splice(questionIdx, 1);
     setQuestionsArr([...tmpQuestionsArr]);
+    setForceRender(!forceRender);
   };
 
   const updateQuestion = (question, questionIdx) => {
@@ -33,7 +35,7 @@ const QuestionsDashboard = ({ questionsArr, setQuestionsArr, showErrors }) => {
         <span className={classes.titlePlaceholder} />
       </div>
       <div className={classes.internalQuestionContainer}>
-        <div className={classes.questionsLines}>
+        <div className={classes.questionsLines} key={forceRender}>
           {questionsArr.map((question, idx) => (
             // eslint-disable-next-line react/no-array-index-key
             <div className={classes.questionLine} key={idx}>

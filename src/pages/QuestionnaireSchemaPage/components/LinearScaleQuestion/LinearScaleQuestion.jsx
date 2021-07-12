@@ -38,7 +38,7 @@ const LinearScaleQuestion = ({
   };
 
   useEffect(() => {
-    setMinMaxTitleError(linearScale.minTitle.length === 0 || linearScale.maxTitle.length === 0);
+    setMinMaxTitleError(!linearScale.minTitle.length || !linearScale.maxTitle.length);
   }, [linearScale]);
 
   const dataToMap = [
