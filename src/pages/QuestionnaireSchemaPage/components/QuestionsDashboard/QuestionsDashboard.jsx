@@ -4,7 +4,7 @@ import Question from '../Question/Question';
 import DashboardCard from '../../../../common/DashboardCard/DashboardCard';
 import useStyles from './QuestionsDashboard.styles';
 
-const QuestionsDashboard = ({ questionsArr, setQuestionsArr }) => {
+const QuestionsDashboard = ({ questionsArr, setQuestionsArr, showErrors }) => {
   const classes = useStyles();
   const { t } = useTranslation();
   const addQuestion = (questionObject) => {
@@ -35,13 +35,15 @@ const QuestionsDashboard = ({ questionsArr, setQuestionsArr }) => {
       <div className={classes.internalQuestionContainer}>
         <div className={classes.questionsLines}>
           {questionsArr.map((question, idx) => (
-            <div className={classes.questionLine}>
+            // eslint-disable-next-line react/no-array-index-key
+            <div className={classes.questionLine} key={idx}>
               <span className={classes.number}>{idx + 1}</span>
               <Question
                 currentQuestion={question}
                 addQuestion={addQuestion}
                 deleteQuestion={() => { deleteQuestion(idx); }}
                 updateQuestion={(q) => { updateQuestion(q, idx); }}
+                showErrors={showErrors}
               />
             </div>
           ))}

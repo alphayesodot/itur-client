@@ -20,7 +20,12 @@ const useStyles = makeStyles((theme) => ({
     padding: '0.1rem 1rem',
     marginBottom: '0.3rem',
     boxSizing: 'border-box',
+    '&$inputError': {
+      color: 'red',
+      borderColor: 'red',
+    },
   },
+  inputError: {},
   deleteButton: {
     padding: 0,
   },

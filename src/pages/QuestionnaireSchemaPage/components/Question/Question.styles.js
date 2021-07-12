@@ -49,14 +49,16 @@ const useStyles = makeStyles((theme) => ({
     margin: 0,
     padding: '0.3rem 1rem',
     borderColor: theme.palette.dialog.secondaryMid,
-    '& .Mui-error': {
+    '&$erroredInput': {
       color: 'red',
-      fontSize: '1rem',
-      fontWeight: '800',
+      borderColor: 'red',
     },
     [theme.breakpoints.down('sm')]: {
       width: '80%',
     },
+  },
+  erroredInput: {
+
   },
   inputDescription: {
     width: '100%',

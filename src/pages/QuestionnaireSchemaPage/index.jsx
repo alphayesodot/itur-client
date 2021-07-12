@@ -15,6 +15,7 @@ import NodeService from '../../services/node.service';
 import UserStoreInstance from '../../stores/User.store';
 import Preview from './components/Preview/Preview';
 import CustomBackDrop from '../../common/CustomBackDrop/CustomBackDrop';
+import DeletionDialog from '../../common/DeletionDialog/DeletionDialog';
 
 const QuestionnaireSchemaPage = () => {
   const classes = useStyles();
@@ -23,13 +24,15 @@ const QuestionnaireSchemaPage = () => {
   const [allNodes, setAllNodes] = useState([]);
   const [allQuestionnaireRows, setAllQuestionnaireRows] = useState([]);
   const [questionnaireRowsToShow, setQuestionnaireToShow] = useState([]);
-  const [idToDelete, setIdToDelete] = useState(0);
+  const [questionnaireToDelete, setQuestionnaireToDelete] = useState({});
   const [questionnaireToAdd, setQuestionnaireToAdd] = useState({});
   const [questionnaireToEdit, setQuestionnaireToEdit] = useState({});
   const [openDialog, setOpenDialog] = useState(false);
   const colNames = [t('tableColumns.questionnaireName'), t('tableColumns.intended'), t('tableColumns.writer'), t('tableColumns.changeDate'), t('tableColumns.questionsNumber'), ''];
   const [questionnaireToPreview, setQuestionnaireToPreview] = useState({});
   const [isLoading, setIsLoading] = useState(false);
+  const [openDeletionDialog, setOpenDeletionDialog] = useState(false);
+  const [duringDeletion, setDuringDeletion] = useState(false);
 
   const getIntendedRole = (rolesArr) => {
     if (!rolesArr.length) {
@@ -60,7 +63,7 @@ const QuestionnaireSchemaPage = () => {
         questionnaire.questions.length,
         <QuestionnaireOptionsButton
           questionnaire={questionnaire}
-          setIdToDelete={setIdToDelete}
+          setQuestionnaireToDelete={setQuestionnaireToDelete}
           allNodes={allNodesTmp || allNodes}
           setQuestionnaireToEdit={setQuestionnaireToEdit}
         />,
@@ -108,12 +111,31 @@ const QuestionnaireSchemaPage = () => {
 
   // delete questionnaire from states - delete a row table
   useEffect(() => {
-    const tmpAllQuestionnaireRows = deleteById(idToDelete, [...allQuestionnaireRows]);
-    const tmpShowQuestionnaireRows = deleteById(idToDelete, [...questionnaireRowsToShow]);
-    if (tmpAllQuestionnaireRows) setAllQuestionnaireRows([...tmpAllQuestionnaireRows]);
-    if (tmpShowQuestionnaireRows) setQuestionnaireToShow([...tmpShowQuestionnaireRows]);
-    setQuestionnaireToPreview({});
-  }, [idToDelete]);
+    if (questionnaireToDelete && Object.keys(questionnaireToDelete).length > 0) {
+      setOpenDeletionDialog(true);
+    }
+  }, [questionnaireToDelete]);
+
+  const deleteQuestionnaire = async () => {
+    try {
+      if (!duringDeletion) {
+        setDuringDeletion(true);
+        await QuestionnaireSchemaService.deleteQuestionnaireById(questionnaireToDelete.id);
+        const tmpAllQuestionnaireRows = deleteById(
+          questionnaireToDelete.id, [...allQuestionnaireRows],
+        );
+        const tmpShowQuestionnaireRows = deleteById(
+          questionnaireToDelete.id, [...questionnaireRowsToShow],
+        );
+        if (tmpAllQuestionnaireRows) setAllQuestionnaireRows([...tmpAllQuestionnaireRows]);
+        if (tmpShowQuestionnaireRows) setQuestionnaireToShow([...tmpShowQuestionnaireRows]);
+        setQuestionnaireToPreview({});
+        setDuringDeletion(false);
+      }
+    } catch {
+      toast(t('error.server'));
+    }
+  };
 
   // add questionnaire to state - add a row-table
   useEffect(() => {
@@ -200,6 +222,13 @@ const QuestionnaireSchemaPage = () => {
           allNodes={allNodes}
           setQuestionnaireToAdd={setQuestionnaireToAdd}
           currentQuestionnaire={{}}
+        />
+
+        <DeletionDialog
+          open={openDeletionDialog}
+          onClose={() => { setOpenDeletionDialog(false); }}
+          onDeletion={deleteQuestionnaire}
+          deletedObjectName={questionnaireToDelete.name}
         />
       </DashboardCard>
     </div>

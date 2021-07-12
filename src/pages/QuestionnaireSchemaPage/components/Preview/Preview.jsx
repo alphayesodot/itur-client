@@ -39,16 +39,16 @@ const Preview = ({ questionnaire }) => {
           : (
             <>
               <Typography className={classes.title}>
-                <div className={classes.titleProp}>
+                <span className={classes.titleProp}>
                   <strong>{t('title.questionnaireName')}</strong>
                   <span className={classes.titleProp}>{`${questionnaire.name}`}</span>
                   <span className={classes.titleProp}>{`${separationString}`}</span>
-                </div>
-                <div className={classes.titleProp}>
+                </span>
+                <span className={classes.titleProp}>
                   <strong>{t('title.questions')}</strong>
                   <span className={classes.titleProp}>{`${questionnaire.questions.length}`}</span>
                   <span className={classes.titleProp}>{`${separationString}`}</span>
-                </div>
+                </span>
                 {' '}
               </Typography>
               {questionnaire.questions.length

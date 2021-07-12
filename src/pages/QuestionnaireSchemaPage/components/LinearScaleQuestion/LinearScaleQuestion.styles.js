@@ -20,7 +20,12 @@ const useStyles = makeStyles((theme) => ({
     boxSizing: 'border-box',
     marginTop: '0.1rem',
     maxWidth: '7rem',
+    '&$inputError': {
+      color: 'red',
+      borderColor: 'red',
+    },
   },
+  inputError: {},
   minMax: {
     marginRight: '1rem',
   },
