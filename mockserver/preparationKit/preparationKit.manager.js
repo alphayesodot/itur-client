@@ -11,4 +11,8 @@ export default class PreparationKitManager {
   static getVideo(req, res) {
     res.sendFile(`${__dirname}/files/sampleVideo.mp4`);
   }
+
+  static getFile(req, res) {
+    res.sendFile(`${__dirname}/files/${req.params.fileName}`);
+  }
 }
