@@ -1,7 +1,6 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
-import Home from './pages/Home/index';
 import Track from './pages/Track/index';
 import MalshabSearch from './pages/MalshabSearch/index';
 import NodeGroupPage from './pages/NodeGroupPage/index';
@@ -118,15 +117,12 @@ const App = () => {
       <div className={classes.bodyContainer}>
         <Sidebar />
         <Switch>
-          <Route path='/' exact>
-            <Home />
-          </Route>
           {getRoutes().map(({ path, component }) => (
             <Route key={path} path={path}>
               {component}
-              <PermissionCheck path={path} />
             </Route>
           ))}
+          <PermissionCheck />
         </Switch>
       </div>
       <ToastContainer

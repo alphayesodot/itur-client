@@ -14,6 +14,7 @@ const NodesDashboard = ({ allNodes, checkedNodes, updateCheckedNodes }) => {
       <FormGroup row className={classes.internalNodeContainer}>
         {allNodes?.map((node) => (
           <Tooltip
+            key={node.id}
             placement='top-end'
             title={node.name}
             TransitionComponent={Zoom}

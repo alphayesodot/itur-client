@@ -5,12 +5,14 @@ import { generateId } from '../utils.js';
 
 class UserManager {
   static async getUsers(req, res) {
-    const unitUsers = users.filter((user) => user.unitId === req.query.unitId);
+    const requester = jwt.decode(req.headers.authorization.split(' ')[1]);
+    const unitId = req.query.unitId || requester.unitId;
+    const unitUsers = users.filter((user) => user.unitId === unitId);
     res.send(unitUsers || 404);
   }
 
   static async getUserById(req, res) {
-    res.send(users.find((user) => user.id === req.params.id));
+    res.send(users.find((user) => user._id === req.params.id));
   }
 
   static async createUser(req, res) {

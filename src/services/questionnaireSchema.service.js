@@ -15,6 +15,7 @@ export const QuestionType = {
 };
 
 class QuestionnaireSchemaService {
+  // TODO: Add params with nodeId
   static async getQuestionnaires() {
     const { data } = await axios.get(`${config.apiUri}/api/questionnaire-schema`, { headers });
     return data;

@@ -5,14 +5,14 @@ import useStyles from './UnitDetails.styles';
 import DashboardCard from '../../../../common/DashboardCard/DashboardCard.jsx';
 import UnitDetailsHeadLine from '../UnitDetailsHeadLine/UnitDetailsHeadLine';
 import UnitDetailsUsersTable from '../UnitDetailsUsersTable/UnitDetailsUsersTable';
-import { UserService } from '../../../../services/user.service.js';
+import UserService from '../../../../services/user.service.js';
 
 const UnitDetails = ({ unit, users, setUsers }) => {
   const classes = useStyles();
   const { t } = useTranslation();
 
   useEffect(() => {
-    UserService.getUsersByUnitId(unit.id).then((res) => {
+    UserService.getUsers({ unitId: unit.id }).then((res) => {
       setUsers(res);
     }).catch(() => {
       toast(t('error.server'));
