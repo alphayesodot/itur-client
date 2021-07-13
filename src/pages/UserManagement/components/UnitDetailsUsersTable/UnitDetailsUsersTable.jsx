@@ -12,8 +12,9 @@ import { useTranslation } from 'react-i18next';
 import useStyles from './UnitDetailsUsersTable.styles';
 import UnitDetailsTableRow from '../UnitDetailsTableRow/UnitDetailsTableRow';
 import { Role } from '../../../../services/user.service';
+import config from '../../config';
 
-const UnitDetailsUsersTable = ({ users, setUsers, unit, isUserAdmin }) => {
+const UnitDetailsUsersTable = ({ users, setUsers, unit }) => {
   const { t } = useTranslation();
   const [interviewers, setInterviewers] = useState([]);
   const [unitRamadsItur, setUnitRamadsItur] = useState([]);
@@ -25,7 +26,7 @@ const UnitDetailsUsersTable = ({ users, setUsers, unit, isUserAdmin }) => {
   const [techUsers, setTechUsers] = useState([]);
   const [iturUsers, setIturUsers] = useState([]);
   const headlines = [t('title.role'), t('title.amount'), t('title.permissions')];
-  const roleObjects = isUserAdmin
+  const roleObjects = unit.id === config.superUnitId
     ? [
       {
         roleToDisplay: t('roles.mada'),
@@ -122,8 +123,6 @@ const UnitDetailsUsersTable = ({ users, setUsers, unit, isUserAdmin }) => {
   };
 
   useEffect(() => {
-    console.log('unit', unit);
-    console.log('users.length', users.length);
     setMadaUsers([]);
     setTechUsers([]);
     setIturUsers([]);

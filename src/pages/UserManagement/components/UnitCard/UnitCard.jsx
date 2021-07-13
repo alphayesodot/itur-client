@@ -27,11 +27,6 @@ const UnitCard = ({ unit, isSelected, setSelectedUnit, users }) => {
         toast(t('error.server'));
       });
     }
-    UserService.getUsers({ unitId: unit.id }).then((res) => {
-      setUnitusers(res);
-    }).catch(() => {
-      toast(t('error.server'));
-    });
   }, [users]);
 
   return (
