@@ -19,21 +19,23 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
 
+const getExpireDate = () => {
+  const nextYear = new Date();
+  nextYear.setFullYear(nextYear.getFullYear() + 1);
+  return nextYear;
+};
+
 // Auth server
 app.get('/login/:userId', (req, res) => {
   const accessToken = buildJwtById(req.params.userId);
-  const nextYear = new Date();
-  nextYear.setFullYear(nextYear.getFullYear() + 1);
-  res.cookie(config.tokenName, accessToken, { expires: nextYear });
+  res.cookie(config.tokenName, accessToken, { expires: getExpireDate() });
   res.redirect(config.clientHost);
 });
 
 // Login by role
 app.get('/login/role/:role', (req, res) => {
   const accessToken = buildJwtByRole(req.params.role);
-  const nextYear = new Date();
-  nextYear.setFullYear(nextYear.getFullYear() + 1);
-  res.cookie(config.tokenName, accessToken, { expires: nextYear });
+  res.cookie(config.tokenName, accessToken, { expires: getExpireDate() });
   res.redirect(config.clientHost);
 });
 
