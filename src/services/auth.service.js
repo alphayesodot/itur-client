@@ -34,7 +34,8 @@ class AuthService {
   }
 
   static async redirect() {
-    window.location.replace(process.env.NODE_ENV === 'development' ? 'http://localhost:8080/login/1' : '/login');
+    const userId = 1;
+    window.location.replace(process.env.NODE_ENV === 'development' ? `http://localhost:8080/login/${userId}` : '/login');
   }
 }
 
