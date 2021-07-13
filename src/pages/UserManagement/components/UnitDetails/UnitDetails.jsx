@@ -6,6 +6,7 @@ import DashboardCard from '../../../../common/DashboardCard/DashboardCard.jsx';
 import UnitDetailsHeadLine from '../UnitDetailsHeadLine/UnitDetailsHeadLine';
 import UnitDetailsUsersTable from '../UnitDetailsUsersTable/UnitDetailsUsersTable';
 import UserService from '../../../../services/user.service.js';
+import NoObjectsToShow from '../../../../common/NoObjectsToShow/NoObjectsToShow';
 
 const UnitDetails = ({ unit, users, setUsers }) => {
   const classes = useStyles();
@@ -27,7 +28,7 @@ const UnitDetails = ({ unit, users, setUsers }) => {
             <UnitDetailsHeadLine unitName={unit.name} numberOfUnitUsers={users.length} />
             <UnitDetailsUsersTable users={users} setUsers={setUsers} unit={unit} />
           </>
-        ) : <div className={classes.noUnitSelectedDiv}><h1 className={classes.noUnitSelected}>{ t('title.noSelectedUnit') }</h1></div> }
+        ) : <NoObjectsToShow title={t('title.noSelectedUnit')} /> }
       </DashboardCard>
     </div>
 
