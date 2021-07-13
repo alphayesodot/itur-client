@@ -12,7 +12,7 @@ class UserManager {
   }
 
   static async getUserById(req, res) {
-    res.send(users.find((user) => user._id === req.params.id));
+    res.send(users.find((user) => user.id === req.params.id));
   }
 
   static async createUser(req, res) {
