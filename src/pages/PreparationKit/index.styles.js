@@ -5,11 +5,12 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     display: 'flex',
     justifyContent: 'space-around',
-    alignItems: 'center',
+    alignItems: 'stretch',
     overflow: 'auto',
 
     [theme.breakpoints.down('md')]: {
       flexDirection: 'column',
+      alignItems: 'center',
       justifyContent: 'flex-start',
     },
 
