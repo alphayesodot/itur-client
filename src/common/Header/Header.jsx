@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import dotenv from 'dotenv';
 import { useTranslation } from 'react-i18next';
 import NotificationsNoneIcon from '@material-ui/icons/NotificationsNone';
@@ -9,6 +9,7 @@ import GenericSelect from '../GenericSelect/GenericSelect';
 import logo from '../../utils/images/logo.svg';
 import UserStore from '../../stores/User.store';
 import { Role } from '../../services/user.service';
+import AuthService from '../../services/auth.service';
 import useStyles from './Header.styles';
 
 dotenv.config();
@@ -36,6 +37,12 @@ const Header = () => {
     return t('headerBlessings.night');
   };
 
+  useEffect(() => {
+    if (selectedRole.id !== UserStore.userProfile.role) {
+      AuthService.reconnect(selectedRole.id);
+    }
+  }, [selectedRole]);
+
   return (
     <AppBar position='static' className={classes.root}>
       <Toolbar className={classes.toolbar}>
@@ -60,7 +67,10 @@ const Header = () => {
           {process.env.NODE_ENV === 'development' && (
             <GenericSelect
               selectClassName={classes.select}
-              options={Object.values(Role).map((role) => ({ id: role, label: role }))}
+              // For now, malshab is filtered from the roles options
+              options={Object.values(Role)
+                .filter((role) => role !== Role.Malshab)
+                .map((role) => ({ id: role, label: role }))}
               selectedValue={selectedRole}
               setSelectedValue={setSelectedRole}
             />

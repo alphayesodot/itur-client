@@ -52,6 +52,11 @@ const users = [
     name: 'יוזר טכני',
     role: Role.Technical,
   },
+  {
+    id: 9,
+    name: 'יוזר רמד מקצועי',
+    role: Role.ProfessionalRamad,
+  },
 ];
 
 export default users;

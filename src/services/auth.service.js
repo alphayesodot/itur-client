@@ -37,6 +37,10 @@ class AuthService {
     const userId = 1;
     window.location.replace(process.env.NODE_ENV === 'development' ? `http://localhost:8080/login/${userId}` : '/login');
   }
+
+  static reconnect(newRole) {
+    window.location.replace(`http://localhost:8080/login/role/${newRole}`);
+  }
 }
 
 export default AuthService;
