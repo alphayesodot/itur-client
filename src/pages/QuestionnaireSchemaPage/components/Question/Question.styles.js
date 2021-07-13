@@ -13,11 +13,18 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'row-reverse',
   },
   answers: {
+    width: '82%',
     direction: 'ltr',
     margin: '0.5rem auto',
-    marginLeft: '3.4rem',
-    marginRight: '6.4rem',
+    marginLeft: '3.2rem',
+    marginRight: '4.8rem',
     display: 'flex',
+    flexDirection: 'column',
+    [theme.breakpoints.down('sm')]: {
+      width: '82%',
+      marginRight: '3.1rem',
+      marginLeft: '3rem',
+    },
   },
   select: {
     backgroundColor: 'white',
@@ -42,14 +49,27 @@ const useStyles = makeStyles((theme) => ({
     margin: 0,
     padding: '0.3rem 1rem',
     borderColor: theme.palette.dialog.secondaryMid,
-    '& .Mui-error': {
+    '&$erroredInput': {
       color: 'red',
-      fontSize: '1rem',
-      fontWeight: '800',
+      borderColor: 'red',
     },
     [theme.breakpoints.down('sm')]: {
       width: '80%',
     },
+  },
+  erroredInput: {
+
+  },
+  inputDescription: {
+    width: '100%',
+    boxSizing: 'border-box',
+    backgroundColor: 'white',
+    borderRadius: '15px',
+    direction: 'ltr',
+    border: '3px solid',
+    margin: 0,
+    padding: '0.3rem 1rem',
+    borderColor: theme.palette.dialog.secondaryMid,
   },
   deleteIcon: {
     marginRight: '0.5rem',

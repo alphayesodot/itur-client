@@ -36,9 +36,9 @@ class ScheduleStore {
 
     const schedule = await Promise.all(
       interviewers.map(async (interviewer) => ({
-        interviewerId: interviewer._id,
+        interviewerId: interviewer.id,
         interviews: await EventService.getEvents({
-          interviewerId: interviewer._id,
+          interviewerId: interviewer.id,
           date: new Date(date),
         }),
       })),

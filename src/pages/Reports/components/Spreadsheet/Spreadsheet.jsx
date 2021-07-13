@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Input, Typography } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
-import Spreadsheet from 'react-spreadsheet';
 import csv from 'csvtojson';
+import Spreadsheet from 'react-spreadsheet';
+import NoObjectsToShow from '../../../../common/NoObjectsToShow/NoObjectsToShow';
 import useStyles from './Spreadsheet.styles';
 
 const SpreadsheetComponent = ({ data }) => {
@@ -46,11 +47,7 @@ const SpreadsheetComponent = ({ data }) => {
             <Spreadsheet data={spreadsheetData} />
           </div>
         )
-        : (
-          <Typography className={classes.message}>
-            {t('message.noReport')}
-          </Typography>
-        )}
+        : <NoObjectsToShow title={t('message.noReport')} />}
     </div>
   );
 };

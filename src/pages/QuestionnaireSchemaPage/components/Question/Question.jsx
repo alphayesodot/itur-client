@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { TextField, IconButton, Checkbox } from '@material-ui/core';
+import { TextField, IconButton, Checkbox, Input } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 import { ExpandMore, ExpandLess } from '@material-ui/icons/';
 import useStyles from './Question.styles.js';
@@ -15,6 +15,7 @@ const Question = ({
   updateQuestion,
   addQuestion,
   deleteQuestion,
+  showErrors,
 }) => {
   const classes = useStyles();
   const { t } = useTranslation();
@@ -33,9 +34,7 @@ const Question = ({
   const [isShort, setIsShort] = useState(currentQuestionExist ? currentQuestion.isShort : false);
   const [required, setRequired] = useState(currentQuestionExist ? currentQuestion.required : true);
   const [hasOther, setHasOther] = useState(currentQuestionExist ? currentQuestion.hasOther : false);
-  const [expand, setExpand] = useState(false);
-  const [answer, setAnswer] = useState('');
-  const [error, setError] = useState(false);
+  const [description, setDescription] = useState(currentQuestionExist ? currentQuestion.description || '' : '');
   const [questionType, setQuestionType] = useState(
     currentQuestionExist
       ? quesitonTypes.filter((type) => type.id === currentQuestion.type)[0]
@@ -50,33 +49,59 @@ const Question = ({
       : { minVal: 0, maxVal: 5, minTitle: '', maxTitle: '' },
   );
 
+  const [expand, setExpand] = useState(false);
+  const [titleError, setTitleError] = useState(questionTitle.length > 0);
+  const [minMaxError, setMinMaxError] = useState(linearScale.maxVal <= linearScale.minVal);
+  const [minMaxTitleError, setMinMaxTitleError] = useState(
+    !linearScale.minTitle.length || !linearScale.maxTitle.length,
+  );
+  const [emptyOptionsError, setEmptyOptionsError] = useState(!(options && options.length));
+  const calcQuestionError = () => titleError
+    || (questionType.id === QuestionType.linearScale && (minMaxError || minMaxTitleError))
+    || (questionType.id === QuestionType.checkbox && emptyOptionsError)
+    || (questionType.id === QuestionType.multipleChoice && emptyOptionsError);
+
+  const [error, setError] = useState(calcQuestionError());
+
+  // set Error when changing
+  useEffect(() => {
+    setError(calcQuestionError());
+  }, [minMaxError, emptyOptionsError, titleError, minMaxTitleError]);
   // map QuestionType to the right component
   const mapQuestionToComponent = new Map();
   mapQuestionToComponent[QuestionType.open] = (
     <OpenQuestion isShort={isShort} setIsShort={setIsShort} />
   );
   mapQuestionToComponent[QuestionType.linearScale] = (
-    <LinearScale linearScale={linearScale} setLinearScale={setLinearScale} />
+    <LinearScale
+      linearScale={linearScale}
+      setLinearScale={setLinearScale}
+      minMaxError={minMaxError}
+      setMinMaxError={setMinMaxError}
+      setMinMaxTitleError={setMinMaxTitleError}
+      showErrors={showErrors}
+    />
   );
   mapQuestionToComponent[QuestionType.multipleChoice] = (
     <MultipleChoice
       options={options}
       setOptions={setOptions}
-      answer={answer}
-      setAnswer={setAnswer}
       hasOther={hasOther}
       setHasOther={setHasOther}
+      emptyOptionsError={emptyOptionsError}
+      setEmptyOptionsError={setEmptyOptionsError}
+      showErrors={showErrors}
     />
   );
   mapQuestionToComponent[QuestionType.checkbox] = (
     <MultipleChoice
       options={options}
       setOptions={setOptions}
-      answer={answer}
-      setAnswer={setAnswer}
       hasOther={hasOther}
       setHasOther={setHasOther}
-      multipleAnswers
+      emptyOptionsError={emptyOptionsError}
+      setEmptyOptionsError={setEmptyOptionsError}
+      showErrors={showErrors}
     />
   );
 
@@ -88,23 +113,21 @@ const Question = ({
     setHasOther(false);
     setOptions([]);
     setExpand(false);
-    setAnswer('');
     setQuestionTitle('');
-    setError(false);
   };
-  // assign Error for a required field
-  const requriedError = (input) => {
+  // assign Error if input is empty
+  const requriedError = (input, setSomeError) => {
     if (questionType?.id !== chooseOptionId && !input.length) {
-      setError(true);
+      setSomeError(true);
     } else {
-      setError(false);
+      setSomeError(false);
     }
   };
 
   // set required fields
   useEffect(() => {
     if (currentQuestionExist) {
-      requriedError(questionTitle);
+      requriedError(questionTitle, setTitleError);
     }
   }, []);
 
@@ -133,15 +156,22 @@ const Question = ({
     return updatedQuestion;
   };
 
+  const initBasicQuestion = () => {
+    const initQuestion = {
+      title: questionTitle,
+      type: questionType.id,
+      required,
+      error: error || titleError,
+    };
+    if (description.length) {
+      initQuestion.description = description;
+    }
+    return initQuestion;
+  };
   // to add an option for a new question
   useEffect(() => {
     if (questionType && !currentQuestion && questionType.id !== chooseOptionId) {
-      const newQuestion = {
-        title: questionTitle,
-        type: questionType.id,
-        required: true,
-        // description: '', // not allowed to be empty
-      };
+      const newQuestion = initBasicQuestion();
       addQuestion(addFieldsToQuestion(newQuestion));
       reset();
     }
@@ -149,14 +179,17 @@ const Question = ({
 
   useEffect(() => {
     if (!currentQuestionExist) return;
-    const updatedQuestion = {
-      title: questionTitle,
-      type: questionType.id,
-      required,
-      // description: '', // not allowed to be empty
-    };
+    const updatedQuestion = initBasicQuestion();
     updateQuestion(addFieldsToQuestion(updatedQuestion));
-  }, [questionTitle, options, isShort, required, hasOther, questionType, linearScale]);
+  }, [questionTitle,
+    options,
+    isShort,
+    required,
+    hasOther,
+    questionType,
+    linearScale,
+    description,
+    error]);
 
   return (
     <div className={classes.root}>
@@ -165,7 +198,7 @@ const Question = ({
           classes={{ root: classes.checkbox, checked: classes.checkedCheckbox }}
           disabled={!currentQuestion}
           disableRipple
-          checked={currentQuestion && required}
+          checked={currentQuestionExist && required}
           onChange={() => { setRequired(!required); }}
         />
         <GenericSelect
@@ -174,19 +207,17 @@ const Question = ({
           selectClassName={classes.select}
           selectedValue={questionType}
         />
-        <TextField
-          classes={{ root: classes.input }}
-          InputProps={{ disableUnderline: true }}
+        <Input
+          classes={{ root: classes.input, error: classes.erroredInput }}
+          disableUnderline
           margin='dense'
-          id='question-title'
           type='text'
           variant='standard'
-          error={error}
-          placeholder={error ? '*' : ''}
+          error={showErrors && titleError}
           fullWidth
           value={questionTitle}
           onChange={(e) => {
-            requriedError(e.target.value);
+            requriedError(e.target.value, setTitleError);
             setQuestionTitle(e.target.value);
           }}
         />
@@ -211,6 +242,18 @@ const Question = ({
       {expand
         && (
         <div className={classes.answers}>
+          <TextField
+            classes={{ root: classes.inputDescription }}
+            InputProps={{ disableUnderline: true }}
+            margin='dense'
+            type='text'
+            variant='standard'
+            placeholder={t('question.description')}
+            value={description}
+            onChange={(e) => {
+              setDescription(e.target.value);
+            }}
+          />
           {mapQuestionToComponent[questionType.id]}
         </div>
         )}

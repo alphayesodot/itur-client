@@ -34,7 +34,7 @@ class AuthService {
   static async redirect() {
     window.location.replace('/login');
     // TODO: Comment on push
-    // window.location.replace('http://localhost:8080/login/8');
+    // window.location.replace('http://localhost:8080/login/4');
   }
 }
 
