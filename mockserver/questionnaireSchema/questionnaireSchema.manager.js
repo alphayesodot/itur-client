@@ -29,7 +29,7 @@ class QuestionnaireManager {
     const requester = jwt.decode(req.headers.authorization.split(' ')[1]);
     const updatedAt = new Date();
     const createdAt = new Date();
-    const createdBy = requester._id;
+    const createdBy = requester.id;
     const id = generateId();
     questionnaires.push({ ...req.body, createdBy, updatedAt, createdAt, id });
     res.send({ ...req.body, createdBy, updatedAt, createdAt, id });

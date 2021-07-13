@@ -28,17 +28,17 @@ const NodeGroupDialog = ({ open, onClose, createAllNodeGroupList, currentNodeGro
     const tempRuiA = [];
     const tempEvaluators = [];
     currentNodeGroup.usersIds.forEach((userId) => {
-      const checkedUser = allUsers.find((user) => user._id === userId) || {};
+      const checkedUser = allUsers.find((user) => user.id === userId) || {};
       switch (checkedUser.role) {
         case Role.ProfessionalRamad:
-          tempPr.push(checkedUser._id);
+          tempPr.push(checkedUser.id);
           break;
 
         case Role.RamadIturAssistant:
-          tempRuiA.push(checkedUser._id);
+          tempRuiA.push(checkedUser.id);
           break;
         default:
-          tempEvaluators.push(checkedUser._id);
+          tempEvaluators.push(checkedUser.id);
       }
     });
     setCheckedPrUsers(tempPr);

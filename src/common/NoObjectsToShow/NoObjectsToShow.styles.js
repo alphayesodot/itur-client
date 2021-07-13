@@ -7,6 +7,9 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '1.7rem',
     fontWeight: 'bold',
     color: 'lightGray',
+    width: '100%',
+    height: '100%',
+    padding: '25% 0',
   },
 }));
 
