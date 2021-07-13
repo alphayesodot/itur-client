@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { useTranslation } from 'react-i18next';
-import { Typography } from '@material-ui/core';
+import NoObjectsToShow from '../../common/NoObjectsToShow/NoObjectsToShow';
 import DashboardCard from '../../common/DashboardCard/DashboardCard';
 import UserStore from '../../stores/User.store';
 import ScheduleStore from '../../stores/Schedule.store';
@@ -37,7 +37,7 @@ const Luz = () => {
       ScheduleStore.getScheduleOfInterviewer(
         new Date(),
         nodeGroup.id,
-        currentUser._id,
+        currentUser.id,
       ).then((res) => {
         setInterviews(res);
       }).catch(() => {
@@ -60,7 +60,7 @@ const Luz = () => {
           <div className={classes.list}>
             {interviews?.length
               ? <InterviewsList interviews={interviews} InterviewItem={InterviewRaw} />
-              : <Typography className={classes.message}>{t('message.noInterviews')}</Typography>}
+              : <NoObjectsToShow title={t('message.noInterviews')} />}
           </div>
         )}
     </DashboardCard>

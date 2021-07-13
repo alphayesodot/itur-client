@@ -12,10 +12,6 @@ const useStyles = makeStyles((theme) => ({
       height: 'calc(100vh - 15rem)',
     },
   },
-  message: {
-    textAlign: 'center',
-    fontSize: '1.5rem',
-  },
   list: {
     width: '80%',
     height: '80%',

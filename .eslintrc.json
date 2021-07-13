@@ -22,7 +22,6 @@
     }
   },
   "rules": {
-    "no-underscore-dangle": "off",
     "linebreak-style": 0,
     "import/no-extraneous-dependencies": 0,
     "import/extensions": 0,

@@ -14,6 +14,8 @@ import QuestionnaireDialog from './components/QuestionnaireDialog/QuestionnaireD
 import NodeService from '../../services/node.service';
 import UserStoreInstance from '../../stores/User.store';
 import Preview from './components/Preview/Preview';
+import CustomBackDrop from '../../common/CustomBackDrop/CustomBackDrop';
+import DeletionDialog from '../../common/DeletionDialog/DeletionDialog';
 
 const QuestionnaireSchemaPage = () => {
   const classes = useStyles();
@@ -22,12 +24,15 @@ const QuestionnaireSchemaPage = () => {
   const [allNodes, setAllNodes] = useState([]);
   const [allQuestionnaireRows, setAllQuestionnaireRows] = useState([]);
   const [questionnaireRowsToShow, setQuestionnaireToShow] = useState([]);
-  const [idToDelete, setIdToDelete] = useState(0);
+  const [questionnaireToDelete, setQuestionnaireToDelete] = useState({});
   const [questionnaireToAdd, setQuestionnaireToAdd] = useState({});
   const [questionnaireToEdit, setQuestionnaireToEdit] = useState({});
   const [openDialog, setOpenDialog] = useState(false);
   const colNames = [t('tableColumns.questionnaireName'), t('tableColumns.intended'), t('tableColumns.writer'), t('tableColumns.changeDate'), t('tableColumns.questionsNumber'), ''];
   const [questionnaireToPreview, setQuestionnaireToPreview] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
+  const [openDeletionDialog, setOpenDeletionDialog] = useState(false);
+  const [duringDeletion, setDuringDeletion] = useState(false);
 
   const getIntendedRole = (rolesArr) => {
     if (!rolesArr.length) {
@@ -58,10 +63,9 @@ const QuestionnaireSchemaPage = () => {
         questionnaire.questions.length,
         <QuestionnaireOptionsButton
           questionnaire={questionnaire}
-          setIdToDelete={setIdToDelete}
+          setQuestionnaireToDelete={setQuestionnaireToDelete}
           allNodes={allNodesTmp || allNodes}
           setQuestionnaireToEdit={setQuestionnaireToEdit}
-          setQuestionnaireToPreview={setQuestionnaireToPreview}
         />,
       ],
       onClick: () => { setQuestionnaireToPreview(questionnaire); },
@@ -87,6 +91,7 @@ const QuestionnaireSchemaPage = () => {
    */
   useEffect(async () => {
     try {
+      setIsLoading(true);
       const allNodesTmp = await NodeService.getNodes();
       setAllNodes(allNodesTmp);
       const allQuestionnaires = await QuestionnaireSchemaService.getQuestionnaires();
@@ -97,19 +102,40 @@ const QuestionnaireSchemaPage = () => {
       const questionnaireRows = await Promise.all(promises);
       setAllQuestionnaireRows(questionnaireRows);
       setQuestionnaireToShow(questionnaireRows);
+      setIsLoading(false);
     } catch {
+      setIsLoading(false);
       toast(t('error.server'));
     }
   }, []);
 
   // delete questionnaire from states - delete a row table
   useEffect(() => {
-    const tmpAllQuestionnaireRows = deleteById(idToDelete, [...allQuestionnaireRows]);
-    const tmpShowQuestionnaireRows = deleteById(idToDelete, [...questionnaireRowsToShow]);
-    if (tmpAllQuestionnaireRows) setAllQuestionnaireRows([...tmpAllQuestionnaireRows]);
-    if (tmpShowQuestionnaireRows) setQuestionnaireToShow([...tmpShowQuestionnaireRows]);
-    setQuestionnaireToPreview({});
-  }, [idToDelete]);
+    if (questionnaireToDelete && Object.keys(questionnaireToDelete).length > 0) {
+      setOpenDeletionDialog(true);
+    }
+  }, [questionnaireToDelete]);
+
+  const deleteQuestionnaire = async () => {
+    try {
+      if (!duringDeletion) {
+        setDuringDeletion(true);
+        await QuestionnaireSchemaService.deleteQuestionnaireById(questionnaireToDelete.id);
+        const tmpAllQuestionnaireRows = deleteById(
+          questionnaireToDelete.id, [...allQuestionnaireRows],
+        );
+        const tmpShowQuestionnaireRows = deleteById(
+          questionnaireToDelete.id, [...questionnaireRowsToShow],
+        );
+        if (tmpAllQuestionnaireRows) setAllQuestionnaireRows([...tmpAllQuestionnaireRows]);
+        if (tmpShowQuestionnaireRows) setQuestionnaireToShow([...tmpShowQuestionnaireRows]);
+        setQuestionnaireToPreview({});
+        setDuringDeletion(false);
+      }
+    } catch {
+      toast(t('error.server'));
+    }
+  };
 
   // add questionnaire to state - add a row-table
   useEffect(() => {
@@ -148,6 +174,30 @@ const QuestionnaireSchemaPage = () => {
     }
   }, [questionnaireToEdit]);
 
+  const infoContent = (
+    <div className={classes.infoContainer}>
+      {questionnaireRowsToShow.length
+        ? (
+          <div className={`${classes.tableContainer}`}>
+            <DataTable
+              rowsData={questionnaireRowsToShow}
+              columnNames={colNames}
+              widthVec={['20%', '20%', '20%', '20%', '20%', '1rem']}
+            />
+          </div>
+        )
+        : (
+          <div className={` ${classes.noQuestionnaire} ${classes.emptyTable}`}>
+            {' '}
+            {t('message.noQuestionnaires')}
+          </div>
+        )}
+      <div className={`${classes.previewContainer}`}>
+        <Preview questionnaire={questionnaireToPreview} />
+      </div>
+    </div>
+  );
+
   return (
     <div className={classes.root}>
       <Header
@@ -162,33 +212,23 @@ const QuestionnaireSchemaPage = () => {
           {' '}
           <span className={classes.countTitle}>{`(${[...questionnaireRowsToShow].length})`}</span>
         </Typography>
-        <div className={classes.infoContainer}>
-          {questionnaireRowsToShow.length
-            ? (
-              <div className={`${classes.tableContainer}`}>
-                <DataTable
-                  rowsData={questionnaireRowsToShow}
-                  columnNames={colNames}
-                  widthVec={['20%', '20%', '20%', '20%', '20%', '1rem']}
-                />
-              </div>
-            )
-            : (
-              <div className={` ${classes.noQuestionnaire} ${classes.emptyTable}`}>
-                {' '}
-                {t('message.noQuestionnaires')}
-              </div>
-            )}
-          <div className={`${classes.previewContainer}`}>
-            <Preview questionnaire={questionnaireToPreview} />
-          </div>
-        </div>
+        {isLoading
+          ? <CustomBackDrop />
+          : infoContent}
+
         <QuestionnaireDialog
           open={openDialog}
           onClose={() => { setOpenDialog(false); }}
           allNodes={allNodes}
           setQuestionnaireToAdd={setQuestionnaireToAdd}
           currentQuestionnaire={{}}
+        />
+
+        <DeletionDialog
+          open={openDeletionDialog}
+          onClose={() => { setOpenDeletionDialog(false); }}
+          onDeletion={deleteQuestionnaire}
+          deletedObjectName={questionnaireToDelete.name}
         />
       </DashboardCard>
     </div>

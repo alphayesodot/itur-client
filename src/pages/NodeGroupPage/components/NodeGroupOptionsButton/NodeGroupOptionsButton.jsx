@@ -31,15 +31,6 @@ const NodeGroupOptionsButton = ({ nodeGroup, createAllNodeGroupList, setIdToDele
     }
   };
   const menuItems = [
-    {
-      onClick: async () => { await handleDelete(); },
-      content: (
-        <>
-          <img className={classes.img} width='15rem' src={deleteImg} alt='see more' />
-          {t('actions.delete')}
-        </>
-      ),
-    },
     userRole === Role.RamadIturOfUnit
     && {
       onClick: () => {
@@ -49,6 +40,15 @@ const NodeGroupOptionsButton = ({ nodeGroup, createAllNodeGroupList, setIdToDele
         <>
           <img className={classes.img} width='17rem' src={editImg} alt='see more' />
           {t('actions.edit')}
+        </>
+      ),
+    },
+    {
+      onClick: async () => { await handleDelete(); },
+      content: (
+        <>
+          <img className={classes.img} width='15rem' src={deleteImg} alt='see more' />
+          {t('actions.delete')}
         </>
       ),
     },

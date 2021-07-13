@@ -88,6 +88,13 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: '15px',
     padding: '0.6em 1rem',
     boxSizing: 'border-box',
+    '&$erroredInput': {
+      color: 'red',
+      borderColor: 'red',
+    },
+  },
+  erroredInput: {
+
   },
   actions: {
     margin: 'auto',
