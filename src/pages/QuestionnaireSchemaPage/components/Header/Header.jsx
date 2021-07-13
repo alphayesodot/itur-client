@@ -14,7 +14,7 @@ import useStyles from './Header.styles';
  */
 const filterSearch = (prefix: string, allQuestionnaireRows: Array, setQuestionnaireToShow) => {
   const searchResults = allQuestionnaireRows
-    .filter((nodeGroupRow) => nodeGroupRow.data[0].startsWith(prefix));
+    .filter((nodeGroupRow) => nodeGroupRow.data[0].includes(prefix));
   setQuestionnaireToShow(searchResults);
 };
 

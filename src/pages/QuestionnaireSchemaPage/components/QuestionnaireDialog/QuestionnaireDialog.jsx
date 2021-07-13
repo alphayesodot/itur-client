@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Button, DialogActions, DialogContent, TextField } from '@material-ui/core';
+import { Button, DialogActions, DialogContent, Input } from '@material-ui/core';
 import { toast } from 'react-toastify';
 import useStyles from './QuestionnaireDialog.styles';
 import CustomDialog from '../../../../common/CustomDialog/CustomDialog';
@@ -38,6 +38,7 @@ const QuestionnaireDialog = ({
     { id: Role.Malshab,
       label: t('roles.malshab'),
     }];
+
   const roleToObject = (role) => {
     const objectIdx = targetTypes.findIndex(({ id }) => id === role);
     return targetTypes[objectIdx];
@@ -56,25 +57,12 @@ const QuestionnaireDialog = ({
   const [questionsArr, setQuestionsArr] = useState(
     isCurrentQuestionnaire ? currentQuestionnaire.questions : [],
   );
-
+  const [showErrors, setShowErrors] = useState(false);
   const reset = () => {
     setCheckedNodes([]);
     setCheckedRoles([]);
     setQuestionnaireNameInput('');
     setQuestionsArr([]);
-  };
-
-  const hadleOnClose = () => {
-    if (isCurrentQuestionnaire) {
-      // return state to be unchanged
-      setCheckedNodes(currentQuestionnaire.nodes);
-      setCheckedRoles(currentQuestionnaire.targetTypes.map((role) => roleToObject(role)));
-      setQuestionnaireNameInput(currentQuestionnaire.name);
-      setQuestionsArr(currentQuestionnaire.questions);
-    } else {
-      reset();
-    }
-    onClose();
   };
 
   const updateCheckedNodes = (nodeId) => {
@@ -89,6 +77,9 @@ const QuestionnaireDialog = ({
   };
 
   const prepareQuestionArr = (questions) => {
+    if (questions.some((question) => (question.error === true))) {
+      return undefined;
+    }
     const preparedQuestions = questions.map((question) => {
       const questionObject = {
         title: question.title,
@@ -120,30 +111,36 @@ const QuestionnaireDialog = ({
 
   const onSubmit = async () => {
     try {
+      setShowErrors(true);
       const questionnaireSchema = {
         name: questionnaireNameInput,
         targetTypes: checkedRoles.map(({ id }) => id),
         nodes: [...checkedNodes],
         questions: prepareQuestionArr(questionsArr),
       };
-      if (Object.keys(currentQuestionnaire).length) {
-        questionnaireSchema.id = currentQuestionnaire.id;
-        const nodeToRemove = currentQuestionnaire.nodes.filter(
-          (nodeId) => !questionnaireSchema.nodes.includes(nodeId),
-        );
-        const nodeToAdd = questionnaireSchema.nodes.filter(
-          (nodeId) => !currentQuestionnaire.nodes.includes(nodeId),
-        );
-        const updatedQuestionnaire = await QuestionnaireSchemaService.update(
-          questionnaireSchema, nodeToAdd, nodeToRemove,
-        );
-        setQuestionnaireToEdit(updatedQuestionnaire);
+      if (questionnaireSchema.questions === undefined || !questionnaireNameInput.length) {
+        toast(t('error.invalidQuestionnaire'));
       } else {
-        const createdQuestionnaire = await QuestionnaireSchemaService.create(questionnaireSchema);
-        setQuestionnaireToAdd(createdQuestionnaire);
-        reset();
+        setShowErrors(false);
+        if (Object.keys(currentQuestionnaire).length) {
+          questionnaireSchema.id = currentQuestionnaire.id;
+          const nodeToRemove = currentQuestionnaire.nodes.filter(
+            (nodeId) => !questionnaireSchema.nodes.includes(nodeId),
+          );
+          const nodeToAdd = questionnaireSchema.nodes.filter(
+            (nodeId) => !currentQuestionnaire.nodes.includes(nodeId),
+          );
+          const updatedQuestionnaire = await QuestionnaireSchemaService.update(
+            questionnaireSchema, nodeToAdd, nodeToRemove,
+          );
+          setQuestionnaireToEdit(updatedQuestionnaire);
+        } else {
+          const createdQuestionnaire = await QuestionnaireSchemaService.create(questionnaireSchema);
+          setQuestionnaireToAdd(createdQuestionnaire);
+          reset();
+        }
+        onClose();
       }
-      onClose();
     } catch {
       toast(t('error.server'));
     }
@@ -155,11 +152,11 @@ const QuestionnaireDialog = ({
         <div className={classes.inputContainer}>
           <div className={classes.marginBottom}>
             <div className={classes.label}>{t('label.questionnaireName')}</div>
-            <TextField
-              classes={{ root: classes.input }}
-              InputProps={{ disableUnderline: true }}
-              autoFocus
+            <Input
+              classes={{ root: classes.input, error: classes.erroredInput }}
               disableUnderline
+              autoFocus
+              error={showErrors && !questionnaireNameInput.length}
               margin='dense'
               id='name'
               type='text'
@@ -205,7 +202,11 @@ const QuestionnaireDialog = ({
         <div className={classes.questionsTitle}>
           {t('title.questions')}
         </div>
-        <QuestionsDashboard questionsArr={questionsArr} setQuestionsArr={setQuestionsArr} />
+        <QuestionsDashboard
+          questionsArr={questionsArr}
+          setQuestionsArr={setQuestionsArr}
+          showErrors={showErrors}
+        />
       </div>
       <DialogActions classes={{ spacing: classes.actions }}>
         <Button
@@ -223,7 +224,7 @@ const QuestionnaireDialog = ({
     <CustomDialog
       open={open}
       paperClassName={classes.root}
-      onClose={hadleOnClose}
+      onClose={() => { onSubmit(); }}
       title={currentQuestionnaire ? t('title.editQuestionnaire') : t('title.newQuestionnaire')}
       content={content}
     />

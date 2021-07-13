@@ -7,7 +7,7 @@ const NoObjectsToShow = ({ title }) => {
   return (
     (
       <Typography className={classes.root}>
-        <strong className={classes.title}>{title}</strong>
+        {title}
       </Typography>
     )
   );

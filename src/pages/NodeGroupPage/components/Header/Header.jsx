@@ -14,7 +14,7 @@ import useStyles from './Header.styles';
  */
 const filterSearch = (prefix: string, allNodeGroupRows: Array, setNodeGroupRowsToShow) => {
   const searchResults = allNodeGroupRows
-    .filter((nodeGroupRow) => nodeGroupRow.data[0].startsWith(prefix));
+    .filter((nodeGroupRow) => nodeGroupRow.data[0].includes(prefix));
   setNodeGroupRowsToShow(searchResults);
 };
 

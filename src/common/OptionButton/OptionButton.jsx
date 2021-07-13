@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 import React, { useState, MouseEvent } from 'react';
 import { Menu, MenuItem, Button } from '@material-ui/core';
 import moreImg from '../../utils/images/general/more.svg';
@@ -40,10 +41,11 @@ const OptionsButton = ({ menuItems, popUps }) => {
         anchorEl={anchorEl}
         className={classes.menu}
       >
-        {menuItems.map((menuItem) => (
+        {menuItems.map((menuItem, i) => (
           menuItem
           && (
           <MenuItem
+            key={i}
             onClick={() => {
               menuItem.onClick();
               handleOnCloseMenu();
@@ -56,7 +58,7 @@ const OptionsButton = ({ menuItems, popUps }) => {
           )
         ))}
       </Menu>
-      {popUps?.map((popUp) => popUp)}
+      {popUps?.map((popUp, i) => <div key={i}>{popUp}</div>)}
     </>
   );
 };

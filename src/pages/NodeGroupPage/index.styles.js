@@ -34,6 +34,7 @@ const useStyles = makeStyles((theme) => ({
   },
   tableContainer: {
     maxHeight: 'calc(100vh - 25rem)',
+    height: '100%',
     width: '60%',
     margin: 'auto',
   },
@@ -45,10 +46,10 @@ const useStyles = makeStyles((theme) => ({
     color: 'lightGray',
   },
   viewContainer: {
+    margin: 'auto',
     maxHeight: '80%',
     direction: 'rtl',
     width: '50%',
-    margin: '0 2.5em',
   },
 }));
 

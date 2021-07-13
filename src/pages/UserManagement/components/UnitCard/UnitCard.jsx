@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { Button } from '@material-ui/core';
 import { toast } from 'react-toastify';
 import { useEffect, useState } from 'react';
-import { UserService } from '../../../../services/user.service';
+import UserService from '../../../../services/user.service';
 import DashboardCard from '../../../../common/DashboardCard/DashboardCard';
 import useStyles from './UnitCard.styles';
 import arrowImg from '../../../../utils/images/userManagement/thin-arrow-icon.svg';
@@ -13,7 +13,7 @@ const UnitCard = ({ unit, isSelected, setSelectedUnit, users }) => {
   const [unitUsers, setUnitusers] = useState([]);
 
   useEffect(() => {
-    UserService.getUsersByUnitId(unit.id).then((res) => {
+    UserService.getUsers({ unitId: unit.id }).then((res) => {
       setUnitusers(res);
     }).catch(() => {
       toast(t('error.server'));

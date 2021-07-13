@@ -6,6 +6,7 @@ const resources = {
     translation: {
       error: {
         server: 'קרתה תקלה. נסו שוב מאוחר יותר',
+        invalidQuestionnaire: 'שאלון לא תקין',
       },
       title: {
         break: 'הפסקה',
@@ -259,6 +260,12 @@ const resources = {
         shortQuestion: 'שאלה קצרה',
         answers: 'תשובות',
         otherOption: 'אפשרות לתשובה אחרת',
+        description: 'תיאור',
+      },
+      dialogs: {
+        deletion: 'האם אתה בטוח שברצונך למחוק',
+        yes: 'כן',
+        no: 'לא',
       },
     },
   },
