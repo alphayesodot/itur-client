@@ -6,6 +6,7 @@ COPY . .
 RUN npm run build --prod
 
 FROM nginx:alpine
+ENV NODE_ENV=production
 COPY --from=build /usr/src/app/build /usr/share/nginx/html
 COPY ./nginx.conf /etc/nginx/conf.d/default.conf
 
