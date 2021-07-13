@@ -32,4 +32,8 @@ export default class UserService {
     const res = await axios.post(`${await config.apiUri}/api/user/`, { unitId, role, name }, { headers });
     return res?.data;
   }
+  static async getUsersByRoles(roles) {
+    const res = await axios.post(`${await config.apiUri}/api/user/role`, { roles }, { headers });
+    return res?.data;
+  }
 }

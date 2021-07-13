@@ -13,7 +13,7 @@ import useStyles from './UnitDetailsUsersTable.styles';
 import UnitDetailsTableRow from '../UnitDetailsTableRow/UnitDetailsTableRow';
 import { Role } from '../../../../services/user.service';
 
-const UnitDetailsUsersTable = ({ users, setUsers, unit, isUserAdmin}) => {
+const UnitDetailsUsersTable = ({ users, setUsers, unit, isUserAdmin }) => {
   const { t } = useTranslation();
   const [interviewers, setInterviewers] = useState([]);
   const [unitRamadsItur, setUnitRamadsItur] = useState([]);
@@ -46,7 +46,6 @@ const UnitDetailsUsersTable = ({ users, setUsers, unit, isUserAdmin}) => {
         setList: setIturUsers,
       },
     ]
-
     : [
       {
         roleToDisplay: t('roles.interviewer'),
@@ -123,6 +122,11 @@ const UnitDetailsUsersTable = ({ users, setUsers, unit, isUserAdmin}) => {
   };
 
   useEffect(() => {
+    console.log('unit', unit);
+    console.log('users.length', users.length);
+    setMadaUsers([]);
+    setTechUsers([]);
+    setIturUsers([]);
     setInterviewers([]);
     setUnitRamadsItur([]);
     setUnitRamadIturAssistants([]);
