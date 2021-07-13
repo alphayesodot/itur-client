@@ -116,13 +116,13 @@ const App = () => {
       <Header />
       <div className={classes.bodyContainer}>
         <Sidebar />
+        <PermissionCheck />
         <Switch>
           {getRoutes().map(({ path, component }) => (
             <Route key={path} path={path}>
               {component}
             </Route>
           ))}
-          <PermissionCheck />
         </Switch>
       </div>
       <ToastContainer
