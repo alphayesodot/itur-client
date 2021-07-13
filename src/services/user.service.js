@@ -28,8 +28,8 @@ export default class UserService {
     const res = await axios.get(`${await config.apiUri}/api/user/`, { headers, params });
     return res?.data;
   }
-  static async createUser(unitId, role, name) {
-    const res = await axios.post(`${await config.apiUri}/api/user/`, { unitId, role, name }, { headers });
+  static async createUser(userToAdd) {
+    const res = await axios.post(`${await config.apiUri}/api/user/`, userToAdd, { headers });
     return res?.data;
   }
   static async getUsersByRoles(roles) {
