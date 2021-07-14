@@ -2,7 +2,7 @@ import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import useStyles from './TextAnswer.styles';
 
-const TextAnswer = ({ isShort, answer, setAnswer }) => {
+const TextAnswer = ({ isShort, setAnswer }) => {
   const classes = useStyles();
 
   return (
@@ -10,6 +10,7 @@ const TextAnswer = ({ isShort, answer, setAnswer }) => {
       multiline={!isShort}
       className={classes.root}
       InputProps={{ className: classes.multilineColor }}
+      onChange={(e) => setAnswer(e.target.value)}
     />
   );
 };

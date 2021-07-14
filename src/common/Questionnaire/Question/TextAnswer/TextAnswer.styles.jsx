@@ -8,8 +8,9 @@ const useStyles = makeStyles(() => ({
   },
 
   multilineColor: {
-    color: 'white',
-    fontSize: '12.8px',
+    color: 'black',
+    padding: '15px',
+    fontSize: '15px',
     width: '100%',
     '&:before': {
       borderBottom: '2px solid #02aecd',
