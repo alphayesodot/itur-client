@@ -180,7 +180,7 @@ const NodeGroupDialog = ({ open,
             checkedValuesIds={checkedRiuAUsers}
             updateCheckedValuesIds={setCheckedRiuAUsers}
             selectId='riua-select'
-            emptyMessege={t('message.noUsers')}
+            emptyMessage={t('message.noUsers')}
           />
         </div>
         <div className={classes.labeledInput}>
@@ -190,7 +190,7 @@ const NodeGroupDialog = ({ open,
             checkedValuesIds={checkedPrUsers}
             updateCheckedValuesIds={setCheckedPrUsers}
             selectId='riu-select'
-            emptyMessege={t('message.noUsers')}
+            emptyMessage={t('message.noUsers')}
           />
         </div>
       </div>
@@ -201,7 +201,7 @@ const NodeGroupDialog = ({ open,
           checkedValuesIds={checkedEvaluators}
           updateCheckedValuesIds={setCheckedEvaluators}
           selectId='evaluators-select'
-          emptyMessege={t('message.noUsers')}
+          emptyMessage={t('message.noUsers')}
         />
       </div>
       <div className={classes.labeledInput}>
@@ -211,7 +211,7 @@ const NodeGroupDialog = ({ open,
           checkedValuesIds={checkedNodes}
           updateCheckedValuesIds={setCheckedNodes}
           selectId='nodes-select'
-          emptyMessege={t('message.noNodes')}
+          emptyMessage={t('message.noNodes')}
         />
       </div>
       <DialogActions classes={{ spacing: classes.actions }}>
