@@ -45,13 +45,7 @@ const Question = ({ question, answer, setAnswer }) => {
       case 'linearScale':
         return <ScaleAnswer min={question.min} max={question.max} />;
       case 'open':
-        return (
-          <TextAnswer
-            isShort={question.isShort}
-            answer={answer}
-            setAnswer={setAnswer}
-          />
-        );
+        return <TextAnswer isShort={question.isShort} setAnswer={setAnswer} />;
       case 'date':
         return (
           <DateInput
