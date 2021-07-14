@@ -15,6 +15,10 @@ class UserManager {
     res.send(users.find((user) => user.id === req.params.id));
   }
 
+  static async getUsersByRoles(req, res) {
+    res.send(users.filter((user) => req.body.roles.includes(user.role)));
+  }
+
   static async createUser(req, res) {
     const { unitId, role, name } = req.body;
     let newUser = {

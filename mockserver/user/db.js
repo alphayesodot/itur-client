@@ -142,7 +142,27 @@ const users = [
   {
     id: '507f1f77bcf86cd799439031',
     name: 'MADA1ea1',
-    role: Role.MADA,
+    role: Role.Mada,
+  },
+  {
+    id: '507f1f77bcf86cd799439072',
+    name: 'TECH1ea1',
+    role: Role.Technical,
+  },
+  {
+    id: '507f1f77bcf86cd799439073',
+    name: 'TECH1ea2',
+    role: Role.Technical,
+  },
+  {
+    id: '507f1f77bcf86cd799439075',
+    name: 'TECH1ea3',
+    role: Role.Technical,
+  },
+  {
+    id: '507f1f77bcf86cd799439083',
+    name: 'ITUR1ea1',
+    role: Role.Itur,
   },
 ];
 
