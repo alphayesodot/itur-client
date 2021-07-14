@@ -1,10 +1,8 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable indent */
-import React, { useState, useEffect } from 'react';
-import { Toolbar, IconButton, Container, Typography } from '@material-ui/core';
+/* eslint-disable react/no-array-index-key */
+import React, { useState } from 'react';
+import { Toolbar, Container, Typography } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 import List from '@material-ui/core/List';
-import { v4 as uuid } from 'uuid';
 import DashboardCard from '../DashboardCard/DashboardCard';
 import useStyles from './Questionnaire.styles';
 import Question from './Question/Question';
@@ -33,7 +31,7 @@ const Questionnaire = ({ questions }) => {
           {questions.map((question, index) => (
             <Question
               question={question}
-              key={question.title}
+              key={index}
               answer={answers[index]}
               setAnswer={(answer) => {
                 const newAnswers = answers.slice();
