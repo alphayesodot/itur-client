@@ -21,6 +21,7 @@ const QuestionnaireDialog = ({
   const isCurrentQuestionnaire = currentQuestionnaire
   && Object.keys(currentQuestionnaire).length > 0;
   const classes = useStyles();
+  const [duringSending, setDuringSending] = useState(false);
   const { t } = useTranslation();
   const targetTypes = [
     { id: Role.Interviewer,
@@ -111,6 +112,8 @@ const QuestionnaireDialog = ({
 
   const onSubmit = async () => {
     try {
+      if (duringSending) return;
+      setDuringSending(true);
       setShowErrors(true);
       const questionnaireSchema = {
         name: questionnaireNameInput,
@@ -141,6 +144,7 @@ const QuestionnaireDialog = ({
         }
         onClose();
       }
+      setDuringSending(false);
     } catch {
       toast(t('error.server'));
     }
@@ -191,7 +195,6 @@ const QuestionnaireDialog = ({
               />
             )
             : (
-
               <div className={classes.noNodes}>
                 <NoObjectsToShow title={t('message.noNodes')} />
               </div>
