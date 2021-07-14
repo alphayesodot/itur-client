@@ -17,6 +17,10 @@ const questionDb = [
     type: 'checkbox',
     options: ['נכון', 'לא נכון', 'אולי'],
   },
+  {
+    title: 'עוד שאלה',
+    type: 'open',
+  },
 ];
 
 const QuestionnaireComponent = () => <Questionnaire questions={questionDb} />;
