@@ -14,7 +14,7 @@ import AmericanAnswer from './AmericanAnswer/AmericanAnswer';
 import CheckboxAnswer from './CheckboxAnswer/CheckboxAnswer';
 import ScaleAnswer from './ScaleAnswer/ScaleAnswer';
 import TextAnswer from './TextAnswer/TextAnswer';
-import DateInput from '../../../../common/DateInput/DateInput';
+import DateInput from '../../DateInput/DateInput';
 
 const Question = ({ question, answer, setAnswer }) => {
   const classes = useStyles();

@@ -5,7 +5,7 @@ import { Toolbar, IconButton, Container, Typography } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 import List from '@material-ui/core/List';
 import { v4 as uuid } from 'uuid';
-import DashboardCard from '../../../common/DashboardCard/DashboardCard';
+import DashboardCard from '../DashboardCard/DashboardCard';
 import useStyles from './Questionnaire.styles';
 import Question from './Question/Question';
 
@@ -33,7 +33,7 @@ const Questionnaire = ({ questions }) => {
           {questions.map((question, index) => (
             <Question
               question={question}
-              key={uuid()}
+              key={question.title}
               answer={answers[index]}
               setAnswer={(answer) => {
                 const newAnswers = answers.slice();
