@@ -42,11 +42,11 @@ class ScheduleStore {
       })),
     );
 
-    this.schedules.push({
+    this.schedules = [...this.schedules, {
       date: new Date(date),
       nodeGroupId: nodeGroup.id,
       schedule,
-    });
+    }];
   }
 
   removeInterviewFromSchedule = (searchedNodeGroupId, searchedDate, userId, eventId) => {
@@ -58,6 +58,20 @@ class ScheduleStore {
         if (searchedSchedule) {
           searchedSchedule.interviews = searchedSchedule.interviews
             .filter((({ id }) => id !== eventId));
+        }
+      }
+      return schedule;
+    });
+  };
+
+  addInterviewerToSchedule = (searchedNodeGroupId, searchedDate, userId, newEvent) => {
+    this.schedules = this.schedules.map((schedule) => {
+      if (searchedNodeGroupId === schedule.nodeGroupId
+        && new Date(searchedDate).toDateString() === new Date(schedule.date).toDateString()) {
+        const searchedSchedule = schedule.schedule
+          .find(({ interviewerId }) => interviewerId === userId);
+        if (searchedSchedule) {
+          searchedSchedule.interviews.push(newEvent);
         }
       }
       return schedule;
