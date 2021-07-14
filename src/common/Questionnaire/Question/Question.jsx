@@ -56,6 +56,7 @@ const Question = ({ question, answer, setAnswer }) => {
         return (
           <DateInput
             inputClassName={classes.dateInput}
+            style={{ paddingRight: '0' }}
             inputProps={{
               disableUnderline: true,
               className: classes.dateInput,
