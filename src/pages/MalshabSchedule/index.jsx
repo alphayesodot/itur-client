@@ -63,7 +63,7 @@ const MalshabSchedulePage = observer(() => {
 
     // check that interviewer doesn't have events in the same time
     if (eventsOfSelectedInterviewer.find((event) => event.time === malshabEvent.time)) {
-      return toast(t('error.scheduleConflict'));
+      return toast(t('error.scheduleConflictMalshab', { malshabFullName: malshab.name }));
     }
 
     EventService.addInterviewer(malshabEvent.id, selectedInterviewer.id).then(() => {
@@ -82,24 +82,43 @@ const MalshabSchedulePage = observer(() => {
     const malshabEvent = events.find(
       (event) => event.malshabShort.id === malshab.id,
     );
-    const addedSchedule = false;
+    let isScheduled = false;
     for (const interviewer of interviewers) {
-      console.log(interviewers);
       const eventsOfInterviewer = events.filter(
         (event) => (event.interviewersIds.includes(interviewer.id)),
       );
-      for (const event of eventsOfInterviewer) {
-        // check if event has free time for malshab event
-        
+
+      const eventAtTheSameTime = eventsOfInterviewer.find(
+        (event) => event.time === malshabEvent.time,
+      );
+
+      if (!eventAtTheSameTime) {
+        EventService.addInterviewer(malshabEvent.id, interviewer.id).then(() => {
+          ScheduleStore.addInterviewerToSchedule(
+            choosenNodeGroup.id,
+            selectedDate,
+            interviewer.id,
+            malshabEvent,
+          );
+        }).catch(() => {
+          toast(t('error.server'));
+        });
+        isScheduled = true;
+        break;
       }
     }
+    return isScheduled;
   };
 
   const handleMalshabsToSchedule = (chosenMalshabs, selectedInterviewers) => {
     if (selectedInterviewers.includes(t('unitControlPage.automaticScheduling'))) {
-      chosenMalshabs.forEach((malshab) => handleAutoScheduling(malshab));
+      return chosenMalshabs.forEach((malshab) => {
+        const isScheduled = handleAutoScheduling(malshab);
+        if (!isScheduled) {
+          toast(t('error.scheduleConflictMalshab', { malshabFullName: malshab.name }));
+        }
+      });
     }
-    return;
     chosenMalshabs.forEach((chosenMalshab) => {
       selectedInterviewers.forEach((selectedInterviewer) => {
         addMalshabToInterviewerSchedule(chosenMalshab, selectedInterviewer);

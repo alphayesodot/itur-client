@@ -7,6 +7,8 @@ const resources = {
       error: {
         server: 'קרתה תקלה. נסו שוב מאוחר יותר',
         scheduleConflict: 'לא ניתן לשבץ למראיין ראיונות לאותם השעות',
+        scheduleConflictMalshab:
+          'לא ניתן לשבץ את המלשב/ית: {{malshabFullName}}',
       },
       title: {
         break: 'הפסקה',
