@@ -69,6 +69,7 @@ const nodeGroups = [{
   name: 'מסלול11',
   unitId: '507f191e810c19729de861ea',
   usersIds: ['507f1f77bcf86cd799439011', '507f1f77bcf86cd799439032', '507f1f77bcf86cd799439033', '507f1f77bcf86cd799439021', '507f1f77bcf86cd799439022', '507f1f77bcf86cd799439023', '507f1f77bcf86cd799439031'],
-}];
+},
+];
 
 export default nodeGroups;

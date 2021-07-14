@@ -13,20 +13,34 @@ import UserService, { Role } from '../../services/user.service';
 import UserStoreInstance from '../../stores/User.store';
 import NodeGroupOptionsButton from './components/NodeGroupOptionsButton/NodeGroupOptionsButton';
 import CustomBackDrop from '../../common/CustomBackDrop/CustomBackDrop';
+import NoObjectsToShow from '../../common/NoObjectsToShow/NoObjectsToShow';
+import DeletionDialog from '../../common/DeletionDialog/DeletionDialog';
 
 const NodeGroupPage = () => {
   const classes = useStyles();
   const { t } = useTranslation();
   const userRole = UserStoreInstance.userProfile.role;
+  const [userUnitName, setUserUnitName] = useState('');
   const [allNodeGroupRows, setAllNodeGroupRows] = useState([]);
   const [nodeGroupRowsToShow, setNodeGroupRowsToShow] = useState([]);
-  const [idToDelete, setIdToDelete] = useState(0);
+  const [nodeGroupToDelete, setNodeGroupToDelete] = useState(0);
+  const [nodeGroupToAdd, setNodeGroupToAdd] = useState({});
+  const [nodeGroupToEdit, setNodeGroupToEdit] = useState({});
   const [openDialog, setOpenDialog] = useState(false);
   const colNames = [t('tableColumns.nodeGroupName'), t('tableColumns.unit'), t('tableColumns.users'), t('tableColumns.ramadOfUnit'), ''];
   const [isLoading, setIsLoading] = useState(false);
+  const [openDeletionDialog, setOpenDeletionDialog] = useState(false);
+  const [duringDeletion, setDuringDeletion] = useState(false);
 
-  const createAllNodeGroupList = async () => {
+  const handeOnCloseDialog = () => {
+    setOpenDialog(false);
+  };
+
+  useEffect(async () => {
+    setIsLoading(true);
     try {
+      const unitOfRamad = userRole === Role.RamadIturOfUnit && await UnitService.getMyUnit();
+      setUserUnitName(unitOfRamad.name);
       const nodeGroups = await NodeGroupService.getNodeGroups();
       const promises = nodeGroups.map(async (nodeGroup) => {
         const unit = userRole === Role.RamadIturOfUnit
@@ -43,8 +57,11 @@ const NodeGroupPage = () => {
             nodeGroup.usersIds ? nodeGroup.usersIds.length : 0, ramad?.name || '',
             <NodeGroupOptionsButton
               nodeGroup={nodeGroup}
-              createAllNodeGroupList={createAllNodeGroupList}
-              setIdToDelete={setIdToDelete}
+              setNodeGroupToDelete={setNodeGroupToDelete}
+              setNodeGroupToAdd={setNodeGroupToAdd}
+              setNodeGroupToEdit={setNodeGroupToEdit}
+              duringDeletion={duringDeletion}
+              setDuringDeletion={setDuringDeletion}
             />],
         };
       });
@@ -54,36 +71,93 @@ const NodeGroupPage = () => {
     } catch {
       toast(t('error.server'));
     }
-  };
-
-  useEffect(async () => {
-    setIsLoading(true);
-    await createAllNodeGroupList();
     setIsLoading(false);
   }, []);
 
+  // add nodeGroup to state - only ramad may do that
+  useEffect(() => {
+    if (Object.keys(nodeGroupToAdd).length) {
+      const nodeGroupRow = {
+        id: nodeGroupToAdd.id,
+        data: [nodeGroupToAdd.name,
+          userUnitName,
+          nodeGroupToAdd.usersIds ? nodeGroupToAdd.usersIds.length : 0,
+          UserStoreInstance.userProfile.name,
+          <NodeGroupOptionsButton
+            nodeGroup={nodeGroupToAdd}
+            setNodeGroupToDelete={setNodeGroupToDelete}
+            setNodeGroupToAdd={setNodeGroupToAdd}
+            setNodeGroupToEdit={setNodeGroupToEdit}
+            duringDeletion={duringDeletion}
+            setDuringDeletion={setDuringDeletion}
+          />],
+      };
+      setAllNodeGroupRows([...allNodeGroupRows, nodeGroupRow]);
+      setNodeGroupRowsToShow([...allNodeGroupRows, nodeGroupRow]);
+    }
+  }, [nodeGroupToAdd]);
+
+  // update nodeGroup in state - only ramad may do that
+  useEffect(() => {
+    if (Object.keys(nodeGroupToEdit).length) {
+      const rowAllIdx = allNodeGroupRows.findIndex((row) => row.id === nodeGroupToEdit.id);
+      const rowShowIdx = nodeGroupRowsToShow.findIndex((row) => row.id === nodeGroupToEdit.id);
+      const tmpRow = { ...allNodeGroupRows[rowAllIdx] };
+      tmpRow.data = [
+        nodeGroupToEdit.name,
+        tmpRow.data[1],
+        nodeGroupToEdit.usersIds ? nodeGroupToEdit.usersIds.length : 0,
+        tmpRow.data[3],
+        <NodeGroupOptionsButton
+          nodeGroup={nodeGroupToEdit}
+          setNodeGroupToDelete={setNodeGroupToDelete}
+          setNodeGroupToAdd={setNodeGroupToAdd}
+          setNodeGroupToEdit={setNodeGroupToEdit}
+          duringDeletion={duringDeletion}
+          setDuringDeletion={setDuringDeletion}
+        />,
+      ];
+      if (rowAllIdx > -1) {
+        const tmpAllRows = [...allNodeGroupRows];
+        tmpAllRows[rowAllIdx] = tmpRow;
+        setAllNodeGroupRows(tmpAllRows);
+      }
+      if (rowShowIdx > -1) {
+        const tmpShowRows = [...nodeGroupRowsToShow];
+        tmpShowRows[rowShowIdx] = tmpRow;
+        setNodeGroupRowsToShow(tmpShowRows);
+      }
+    }
+  }, [nodeGroupToEdit]);
+
   // delete from state
   useEffect(async () => {
-    const allIdx = [...allNodeGroupRows].findIndex(
-      (q) => q.id === idToDelete,
-    );
-    const showIdx = [...nodeGroupRowsToShow].findIndex(
-      (q) => q.id === idToDelete,
-    );
-    if (allIdx > -1) {
-      const tmpCopy = [...allNodeGroupRows];
-      tmpCopy.splice(allIdx, 1);
-      setAllNodeGroupRows([...tmpCopy]);
+    if (Object.keys(nodeGroupToDelete).length) setOpenDeletionDialog(true);
+  }, [nodeGroupToDelete]);
+
+  const deleteNodeGroup = () => {
+    try {
+      NodeGroupService.deleteNodeGroup(nodeGroupToDelete.id).then(async () => {
+        setNodeGroupToDelete(nodeGroupToDelete);
+        setDuringDeletion(false);
+      });
+      const allIdx = [...allNodeGroupRows].findIndex((q) => q.id === nodeGroupToDelete.id);
+      const showIdx = [...nodeGroupRowsToShow].findIndex((q) => q.id === nodeGroupToDelete.id);
+      if (allIdx > -1) {
+        const tmpCopy = [...allNodeGroupRows];
+        tmpCopy.splice(allIdx, 1);
+        setAllNodeGroupRows([...tmpCopy]);
+      }
+      if (showIdx > -1) {
+        const tmpCopy = [...nodeGroupRowsToShow];
+        tmpCopy.splice(showIdx, 1);
+        setNodeGroupRowsToShow([...tmpCopy]);
+      }
+    } catch {
+      toast('error.server');
     }
-    if (showIdx > -1) {
-      const tmpCopy = [...nodeGroupRowsToShow];
-      tmpCopy.splice(showIdx, 1);
-      setNodeGroupRowsToShow([...tmpCopy]);
-    }
-  }, [idToDelete]);
-  const handeOnCloseDialog = () => {
-    setOpenDialog(false);
   };
+
   const infoContent = nodeGroupRowsToShow.length
     ? (
       <div className={classes.tableContainer}>
@@ -91,10 +165,7 @@ const NodeGroupPage = () => {
       </div>
     )
     : (
-      <div className={` ${classes.viewContainer} ${classes.emptyTable}`}>
-        {' '}
-        {t('message.noNodeGroups')}
-      </div>
+      <NoObjectsToShow title={t('message.noNodeGroups')} />
     );
 
   return (
@@ -115,9 +186,16 @@ const NodeGroupPage = () => {
         <NodeGroupDialog
           open={openDialog}
           onClose={handeOnCloseDialog}
-          createAllNodeGroupList={createAllNodeGroupList}
+          setNodeGroupToAdd={setNodeGroupToAdd}
+          setNodeGroupToEdit={setNodeGroupToEdit}
         />
       </DashboardCard>
+      <DeletionDialog
+        open={openDeletionDialog}
+        onClose={() => { setOpenDeletionDialog(false); }}
+        onDeletion={deleteNodeGroup}
+        deletedObjectName={nodeGroupToDelete.name}
+      />
     </div>
   );
 };
