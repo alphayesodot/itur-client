@@ -2,8 +2,10 @@
 import jwt from 'jsonwebtoken';
 import Cookies from 'js-cookie';
 import axios from 'axios';
+import dotenv from 'dotenv';
 import config from '../appConf';
 
+dotenv.config();
 class AuthService {
   static async getAuthUser() {
     const cookie = Cookies.get(config.tokenName);
@@ -32,9 +34,8 @@ class AuthService {
   }
 
   static async redirect() {
-    window.location.replace('/login');
-    // TODO: Comment on push
-    // window.location.replace('http://localhost:8080/login/4');
+    const userId = 1;
+    window.location.replace(process.env.NODE_ENV === 'development' ? `http://localhost:8080/login/${userId}` : '/login');
   }
 }
 
