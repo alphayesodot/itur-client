@@ -55,6 +55,19 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     height: '100%',
   },
+
+  pageControls: {
+    display: 'flex',
+    justifyContent: 'space-between',
+  },
+
+  fixPosition: {
+    opacity: 0,
+  },
+
+  dialog: {
+    width: '100%',
+  },
 }));
 
 export default useStyles;

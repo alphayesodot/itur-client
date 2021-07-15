@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback, useEffect, useRef } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import Track from './pages/Track/index';
@@ -25,6 +25,7 @@ const App = () => {
   const classes = useStyles();
   const [isLoading, setIsLoading] = useState(true);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const sidebarRef = useRef(null);
 
   const initAuthUser = useCallback(() => {
     AuthService.getAuthUser()
@@ -95,7 +96,7 @@ const App = () => {
     },
     {
       path: configApp.sitesPostfixes.preparationKit,
-      component: <PreparationKit />,
+      component: <PreparationKit sidebarRef={sidebarRef} />,
     },
     {
       path: configApp.sitesPostfixes.nodeGroupCreation,
@@ -115,7 +116,7 @@ const App = () => {
     <Router classes={classes.root}>
       <Header />
       <div className={classes.bodyContainer}>
-        <Sidebar />
+        <Sidebar ref={sidebarRef} />
         <PermissionCheck />
         <Switch>
           {getRoutes().map(({ path, component }) => (
