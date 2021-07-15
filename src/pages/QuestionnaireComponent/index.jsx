@@ -20,6 +20,7 @@ const questionDb = [
   {
     title: 'עוד שאלה',
     type: 'open',
+    isShort: true,
   },
 ];
 

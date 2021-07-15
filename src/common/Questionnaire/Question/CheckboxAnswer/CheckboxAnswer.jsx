@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Checkbox from '@material-ui/core/Checkbox';
+import TextField from '@material-ui/core/TextField';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { v4 as uuid } from 'uuid';
 
 const CheckboxAnswer = ({ options, selectedValues, setSelectedValues }) => {
+  const [customAnswer, setCustomAnswer] = useState('');
   const handleChange = (event) => {
     const { value } = event.target;
 
@@ -43,6 +45,27 @@ const CheckboxAnswer = ({ options, selectedValues, setSelectedValues }) => {
             labelPlacement='start'
           />
         ))}
+        <FormControlLabel
+          value='start'
+          key={uuid()}
+          control={
+            <Checkbox
+              checked={selectedValues.includes(customAnswer)}
+              onChange={handleChange}
+              value={customAnswer}
+              size='small'
+              style={{ color: '#02aecd' }}
+            />
+          }
+          label={
+            <TextField
+              value={customAnswer}
+              onChange={(e) => setCustomAnswer(e.target.value)}
+              style={{ direction: 'rtl' }}
+            />
+          }
+          labelPlacement='start'
+        />
       </FormGroup>
     </div>
   );
