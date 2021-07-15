@@ -27,8 +27,6 @@ const nodes = [
     unitId: '507f191e810c19729de862ea',
     nodeGroupId: '',
   },
-
-
   {
     id: '134abc1e810c19729de862eb',
     name: 'node-2',
