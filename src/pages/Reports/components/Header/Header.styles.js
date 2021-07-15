@@ -6,7 +6,11 @@ const useStyles = makeStyles((theme) => ({
     flexWrap: 'wrap',
     alignItems: 'center',
     justifyContent: 'space-around',
+    minHeight: '5rem',
     background: theme.palette.primary.main,
+    [theme.breakpoints.down('lg')]: {
+      minHeight: 'auto',
+    },
     [theme.breakpoints.down('sm')]: {
       padding: '1%',
       justifyContent: 'center',
@@ -17,7 +21,6 @@ const useStyles = makeStyles((theme) => ({
     flexWrap: 'wrap',
     alignItems: 'center',
     width: '80%',
-    marginBottom: '0.5%',
     [theme.breakpoints.down('md')]: {
       justifyContent: 'center',
     },
@@ -28,10 +31,10 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 500,
     background: 'white',
     width: '12rem',
-    height: '2.2rem',
+    height: '2rem',
   },
   select: {
-    height: '2.5rem',
+    height: '2.3rem',
     width: '13.25em',
     padding: '1em',
   },

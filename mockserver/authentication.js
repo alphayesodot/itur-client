@@ -2,12 +2,16 @@ import jwt from 'jsonwebtoken';
 import config from './config.js';
 import users from './userdata.js';
 
-const buildJwt = (userId) => {
-  const payload = users[userId];
-  return jwt.sign(payload, config.secret, {
+const getSignedJwt = (payload) => (
+  jwt.sign(payload, config.secret, {
     algorithm: 'HS256',
     expiresIn: '1y',
-  });
-};
+  })
+);
 
-export default buildJwt;
+export const buildJwtById = (userId) => getSignedJwt(users[userId]);
+
+export const buildJwtByRole = (role) => {
+  const payload = users.find((user) => user.role === role);
+  return getSignedJwt(payload);
+};
