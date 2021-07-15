@@ -11,7 +11,7 @@ import config from './config';
 const UserManagement = () => {
   const classes = useStyles();
   const { t } = useTranslation();
-  const superAdminsUnit = { id: config.superUnitId, name: 'מנהלי מערכת' };
+  const superAdminsUnit = { id: config.superUnitId, name: t('title.defaultUnitName') };
   const [openAddUnit, setOpenAddUnit] = useState(false);
   const [units, setUnits] = useState([]);
   const [selectedUnit, setSelectedUnit] = useState('');

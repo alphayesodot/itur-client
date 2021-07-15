@@ -9,7 +9,7 @@ import UserService from '../../../../services/user.service.js';
 import config from '../../config';
 import NoObjectsToShow from '../../../../common/NoObjectsToShow/NoObjectsToShow';
 
-const UnitDetails = ({ unit, users, setUsers, isUserAdmin }) => {
+const UnitDetails = ({ unit, users, setUsers }) => {
   const classes = useStyles();
   const { t } = useTranslation();
 
@@ -39,7 +39,6 @@ const UnitDetails = ({ unit, users, setUsers, isUserAdmin }) => {
               users={users}
               setUsers={setUsers}
               unit={unit}
-              isUserAdmin={isUserAdmin}
             />
           </>
         ) : <NoObjectsToShow title={t('title.noSelectedUnit')} /> }

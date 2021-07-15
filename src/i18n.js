@@ -43,6 +43,7 @@ const resources = {
         chooseQuestionnairePreview: 'בחר שאלון להצגה',
         generalInfo: 'פרטים כלליים',
         interviewsHistory: 'היסטוריית ראיונות',
+        defaultUnitName: 'מנהלי מערכת',
       },
       actions: {
         delete: 'מחיקה',
