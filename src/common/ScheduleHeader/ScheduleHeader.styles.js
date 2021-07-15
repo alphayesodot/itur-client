@@ -29,14 +29,6 @@ const useStyles = makeStyles((theme) => ({
     whiteSpace: 'nowrap',
     textAlign: 'left',
   },
-  dateInput: {
-    marginLeft: '1em',
-    paddingTop: '0.3rem',
-    height: '2.2rem',
-    [theme.breakpoints.down('sm')]: {
-      maxWidth: 'calc(100% - 1em)',
-    },
-  },
 }));
 
 export default useStyles;

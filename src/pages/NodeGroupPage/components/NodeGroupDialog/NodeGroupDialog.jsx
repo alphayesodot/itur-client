@@ -10,7 +10,7 @@ import SelectCheckboxItem from '../SelectCheckboxItem/SelectCheckboxItem';
 import UserService, { Role } from '../../../../services/user.service';
 import UserStoreInstance from '../../../../stores/User.store';
 
-const NodeGroupDialog = ({ open, onClose, updateAllNodeGroupList, currentNodeGroup }) => {
+const NodeGroupDialog = ({ open, onClose, createAllNodeGroupList, currentNodeGroup }) => {
   const classes = useStyles();
   const { t } = useTranslation();
   const [nameValue, setNameValue] = useState('');
@@ -47,7 +47,7 @@ const NodeGroupDialog = ({ open, onClose, updateAllNodeGroupList, currentNodeGro
   };
 
   useEffect(() => {
-    UserService.getUsersByUnitId(UserStoreInstance.userProfile.unitId).then((users) => {
+    UserService.getUsers({ unitId: UserStoreInstance.userProfile.unitId }).then((users) => {
       setPrUsers(users.filter((user) => user.role === Role.ProfessionalRamad));
       setRiuAUsers(users.filter((user) => user.role === Role.RamadIturAssistant));
       setEvaluators(users.filter((user) => user.role !== Role.RamadIturAssistant
@@ -80,7 +80,7 @@ const NodeGroupDialog = ({ open, onClose, updateAllNodeGroupList, currentNodeGro
       setNodes(allNodes.filter((node) => !node.nodeGroupId || node.nodeGroupId === ''));
     } else {
       setNameValue(currentNodeGroup.name);
-      UserService.getUsersByUnitId(UserStoreInstance.userProfile.unitId).then((users) => {
+      UserService.getUsers({ unitId: UserStoreInstance.userProfile.unitId }).then((users) => {
         setCheckedUsers(users);
       });
       setNodes(allNodes.filter((node) => !node.nodeGroupId || node.nodeGroupId === '' || node.nodeGroupId === currentNodeGroup.id));
@@ -97,7 +97,7 @@ const NodeGroupDialog = ({ open, onClose, updateAllNodeGroupList, currentNodeGro
       checkedNodes.forEach(async (checkedNode) => {
         await NodeGroupService.updateNode(nodeGroup.id, checkedNode);
       });
-      await updateAllNodeGroupList();
+      await createAllNodeGroupList();
       onClose();
     } catch {
       toast(t('error.server'));
@@ -128,7 +128,7 @@ const NodeGroupDialog = ({ open, onClose, updateAllNodeGroupList, currentNodeGro
       nodesToRemove.forEach(async (node) => {
         await NodeGroupService.updateNode('', node.id);
       });
-      await updateAllNodeGroupList();
+      await createAllNodeGroupList();
       onClose();
     } catch {
       toast(t('error.server'));
@@ -158,7 +158,7 @@ const NodeGroupDialog = ({ open, onClose, updateAllNodeGroupList, currentNodeGro
             checkedValuesIds={checkedRiuAUsers}
             updateCheckedValuesIds={setCheckedRiuAUsers}
             selectId='riua-select'
-            emptyMessege={t('message.noUsers')}
+            emptyMessage={t('message.noUsers')}
           />
         </div>
         <div className={classes.labeledInput}>
@@ -168,7 +168,7 @@ const NodeGroupDialog = ({ open, onClose, updateAllNodeGroupList, currentNodeGro
             checkedValuesIds={checkedPrUsers}
             updateCheckedValuesIds={setCheckedPrUsers}
             selectId='riu-select'
-            emptyMessege={t('message.noUsers')}
+            emptyMessage={t('message.noUsers')}
           />
         </div>
       </div>
@@ -179,7 +179,7 @@ const NodeGroupDialog = ({ open, onClose, updateAllNodeGroupList, currentNodeGro
           checkedValuesIds={checkedEvaluators}
           updateCheckedValuesIds={setCheckedEvaluators}
           selectId='evaluators-select'
-          emptyMessege={t('message.noUsers')}
+          emptyMessage={t('message.noUsers')}
         />
       </div>
       <div className={classes.labeledInput}>
@@ -189,7 +189,7 @@ const NodeGroupDialog = ({ open, onClose, updateAllNodeGroupList, currentNodeGro
           checkedValuesIds={checkedNodes}
           updateCheckedValuesIds={setCheckedNodes}
           selectId='nodes-select'
-          emptyMessege={t('title.noNodes')}
+          emptyMessage={t('message.noNodes')}
         />
       </div>
       <DialogActions classes={{ spacing: classes.actions }}>

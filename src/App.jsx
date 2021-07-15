@@ -1,11 +1,10 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
-import Home from './pages/Home/index';
-import Track from './pages/Track/index';
 import MalshabSearch from './pages/MalshabSearch/index';
 import NodeGroupPage from './pages/NodeGroupPage/index';
 import Luz from './pages/Luz/index';
+import Track from './pages/Track/index';
 import AuthService from './services/auth.service';
 import UploadPage from './pages/FileUpload/index';
 import Report from './pages/Reports/index';
@@ -20,6 +19,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import UserManagement from './pages/UserManagement/index';
 import PermissionCheck from './common/PermissionCheck/PermissionCheck';
 import MalshabSchedulePage from './pages/MalshabSchedule';
+import QuestionnaireSchemaPage from './pages/QuestionnaireSchemaPage/index';
 
 const App = () => {
   const classes = useStyles();
@@ -106,8 +106,8 @@ const App = () => {
       component: <UserManagement />,
     },
     {
-      path: configApp.sitesPostfixes.editQuestionnaire,
-      component: <h1>editQuestionnaire</h1>,
+      path: configApp.sitesPostfixes.questionnaires,
+      component: <QuestionnaireSchemaPage />,
     },
   ];
 
@@ -117,15 +117,12 @@ const App = () => {
       <div className={classes.bodyContainer}>
         <Sidebar />
         <Switch>
-          <Route path='/' exact>
-            <Home />
-          </Route>
           {getRoutes().map(({ path, component }) => (
             <Route key={path} path={path}>
               {component}
-              <PermissionCheck path={path} />
             </Route>
           ))}
+          <PermissionCheck />
         </Switch>
       </div>
       <ToastContainer

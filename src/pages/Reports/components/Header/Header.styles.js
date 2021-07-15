@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     width: '80%',
     marginBottom: '0.5%',
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       justifyContent: 'center',
     },
   },
@@ -33,6 +33,7 @@ const useStyles = makeStyles((theme) => ({
   select: {
     height: '2.5rem',
     width: '13.25em',
+    padding: '1em',
   },
   textField: {
     paddingLeft: '1rem',
