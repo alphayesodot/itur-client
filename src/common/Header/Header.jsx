@@ -16,6 +16,7 @@ dotenv.config();
 
 const Header = () => {
   const classes = useStyles();
+  const isDevMode = process.env.NODE_ENV === 'development';
   const [selectedRole, setSelectedRole] = useState({
     id: UserStore.userProfile.role,
     label: UserStore.userProfile.role,
@@ -38,7 +39,7 @@ const Header = () => {
   };
 
   useEffect(() => {
-    if (selectedRole.id !== UserStore.userProfile.role) {
+    if (isDevMode && selectedRole.id !== UserStore.userProfile.role) {
       AuthService.reconnect(selectedRole.id);
     }
   }, [selectedRole]);
@@ -64,7 +65,7 @@ const Header = () => {
           >
             <AccountCircleIcon className={classes.secondary} />
           </IconButton>
-          {process.env.NODE_ENV === 'development' && (
+          {isDevMode && (
             <GenericSelect
               selectClassName={classes.select}
               // For now, malshab is filtered from the roles options

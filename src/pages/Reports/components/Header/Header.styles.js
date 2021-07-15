@@ -31,10 +31,10 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 500,
     background: 'white',
     width: '12rem',
-    height: '2.2rem',
+    height: '2rem',
   },
   select: {
-    height: '2.5rem',
+    height: '2.3rem',
     width: '13.25em',
     padding: '1em',
   },
