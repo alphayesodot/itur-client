@@ -1,26 +1,21 @@
 import React, { useMemo } from 'react';
-import { Redirect, withRouter } from 'react-router-dom';
+import { Redirect, useLocation } from 'react-router-dom';
 import configApp from '../../appConf';
 import UserStoreInstance from '../../stores/User.store';
 
 const PermissionCheck = () => {
   const userRole = UserStoreInstance.userProfile.role;
+  const location = useLocation();
 
-  const isAuthorized = useMemo(() => (
-    configApp.allowedUrlPostfixesOfRole[userRole]?.some(
-      (allowedUrl) => allowedUrl.route === window.location.pathname,
-    )
-  ), [window.location.pathname]);
+  const isAuthorized = useMemo(() => (configApp.allowedUrlPostfixesOfRole[userRole]?.some(
+    (allowedUrl) => allowedUrl.route === location.pathname,
+  )), [location.pathname]);
 
-  const getHomePage = () => (
-    configApp.allowedUrlPostfixesOfRole[userRole].find(
-      (allowedUrl) => allowedUrl.homePage,
-    ).route
-  );
+  const getHomePage = () => configApp.allowedUrlPostfixesOfRole[userRole].find(
+    (allowedUrl) => allowedUrl.homePage,
+  ).route;
 
-  return (
-    isAuthorized ? <></> : <Redirect to={getHomePage()} />
-  );
+  return isAuthorized ? <></> : <Redirect to={getHomePage()} />;
 };
 
-export default withRouter(PermissionCheck);
+export default PermissionCheck;
