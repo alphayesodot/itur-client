@@ -40,6 +40,7 @@ const Question = ({ question, answer, setAnswer }) => {
             options={question.options}
             selectedValues={answer ?? []}
             setSelectedValues={setAnswer}
+            hasOther={question.hasOther}
           />
         );
       case 'linearScale':

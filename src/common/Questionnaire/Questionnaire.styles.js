@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
   list: {
     overflowY: 'scroll',
     margin: 0,
-    padding: '0 1rem 0 1rem',
+    padding: 0,
     height: '26rem',
     paddingLeft: '1rem',
     '&::-webkit-scrollbar': {

@@ -2,6 +2,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(() => ({
   li: {
+    display: 'flex',
     backgroundColor: 'rgb(255 255 255 / 5%)',
     borderRadius: '10px',
     marginBottom: '0.4rem',
@@ -23,14 +24,13 @@ const useStyles = makeStyles(() => ({
     justifyContent: 'space-between',
   },
   question: {
+    flex: '1',
     fontSize: '1rem',
     marginLeft: '1rem',
     cursor: 'inherit',
     textAlign: 'left',
     direction: 'rtl',
     textOverflow: 'ellipsis',
-    display: 'inline-block',
-    alignSelf: 'center',
   },
   dateInput: {
     backgroundColor: 'transparent',
