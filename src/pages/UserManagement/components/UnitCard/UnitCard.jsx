@@ -22,7 +22,10 @@ const UnitCard = ({ unit, isSelected, setSelectedUnit, users }) => {
 
   return (
     <div className={classes.root}>
-      <DashboardCard className={isSelected ? classes.selectedCard : classes.card}>
+      <DashboardCard
+        onClick={() => { setSelectedUnit(unit); }}
+        className={isSelected ? classes.selectedCard : classes.card}
+      >
         <div className={classes.mainDiv}>
           <div>
             <h1 className={classes.unitName}>{unit.name}</h1>
