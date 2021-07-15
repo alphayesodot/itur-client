@@ -1,7 +1,7 @@
 import express from 'express';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
-import buildJwt from './authentication.js';
+import { buildJwtById, buildJwtByRole } from './authentication.js';
 import config from './config.js';
 import eventRouter from './event/event.router.js';
 import uploadRouter from './upload/upload.router.js';
@@ -20,12 +20,23 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
 
-// Auth server
-app.get('/login/:userId', (req, res) => {
-  const accessToken = buildJwt(req.params.userId);
+const getExpireDate = () => {
   const nextYear = new Date();
   nextYear.setFullYear(nextYear.getFullYear() + 1);
-  res.cookie(config.tokenName, accessToken, { expires: nextYear });
+  return nextYear;
+};
+
+// Auth server
+app.get('/login/:userId', (req, res) => {
+  const accessToken = buildJwtById(req.params.userId);
+  res.cookie(config.tokenName, accessToken, { expires: getExpireDate() });
+  res.redirect(config.clientHost);
+});
+
+// Login by role
+app.get('/login/role/:role', (req, res) => {
+  const accessToken = buildJwtByRole(req.params.role);
+  res.cookie(config.tokenName, accessToken, { expires: getExpireDate() });
   res.redirect(config.clientHost);
 });
 
