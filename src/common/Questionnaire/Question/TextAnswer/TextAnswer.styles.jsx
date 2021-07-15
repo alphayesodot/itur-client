@@ -16,6 +16,10 @@ const useStyles = makeStyles(() => ({
       borderBottom: '2px solid #02aecd',
     },
   },
+
+  short: {
+    width: '45%',
+  },
 }));
 
 export default useStyles;

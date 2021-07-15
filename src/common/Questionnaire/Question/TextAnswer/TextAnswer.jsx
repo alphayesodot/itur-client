@@ -9,7 +9,7 @@ const TextAnswer = ({ isShort, answer, setAnswer }) => {
     <TextField
       multiline={!isShort}
       value={answer}
-      className={classes.root}
+      className={`${classes.root} ${isShort ? classes.short : ''}`}
       InputProps={{ className: classes.multilineColor }}
       onChange={(e) => setAnswer(e.target.value)}
     />
