@@ -12,7 +12,6 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('sm')]: {
       width: 'auto',
       margin: '0.5em 0',
-      alignSelf: 'stretch',
     },
   },
 }));
