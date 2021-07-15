@@ -6,9 +6,8 @@ import UnitService from '../../services/unit.service';
 import UserService, { Role } from '../../services/user.service';
 import ScheduleHeader from '../../common/ScheduleHeader/ScheduleHeader';
 import TrackBoard from './components/TrackBoard/TrackBoard';
-import useStyles from './index.styles';
 import CustomBackDrop from '../../common/CustomBackDrop/CustomBackDrop';
-import DashboardCard from '../../common/DashboardCard/DashboardCard';
+import useStyles from './index.styles';
 
 const Track = observer(() => {
   const classes = useStyles();
@@ -63,21 +62,11 @@ const Track = observer(() => {
       {isLoading
         ? <CustomBackDrop />
         : (
-          <>
-            {selectedNodeGroup
-              ? (
-                <TrackBoard
-                  nodeGroup={selectedNodeGroup}
-                  date={new Date(selectedDate)}
-                  interviewers={interviewers}
-                />
-              )
-              : (
-                <DashboardCard className={classes.message}>
-                  {t('message.chooseNodeGroup')}
-                </DashboardCard>
-              )}
-          </>
+          <TrackBoard
+            nodeGroup={selectedNodeGroup}
+            date={new Date(selectedDate)}
+            interviewers={interviewers}
+          />
         )}
     </div>
   );

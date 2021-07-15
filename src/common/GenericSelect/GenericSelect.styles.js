@@ -3,7 +3,10 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => ({
   select: {
     direction: 'ltr',
-    padding: '1em',
+    paddingLeft: '1em',
+    '&:hover,&:focus': {
+      background: 'transparent',
+    },
   },
   icon: {
     fill: '#9aa3aa',

@@ -8,7 +8,7 @@ import useStyles from './GenericSelect.styles';
  *                     (if multiple- [{ id: string, label: string, ...additionalFields }])
  * @param {*} selectedValue: the selected value of the select.
  *                           (if multiple- { id: string, label: string, ...additionalFields })
- * @param {*} setSelectedValue: set state function of the sleected value.
+ * @param {*} setSelectedValue: set state function of the selected value.
  * @param {*} selectClassName: class name for the select- optional.
  *                             for describing input's width, height, border radius etc.
  * @param {*} checkboxClasses: classes for checkbox- optional.
@@ -25,7 +25,7 @@ const GenericSelect = ({
   isMultiple,
 }) => {
   const classes = useStyles();
-  const [isChecked, setIsChecked] = useState([]);
+  const [isChecked, setIsChecked] = useState(options.slice().fill(false));
   const { t } = useTranslation();
   const menuItemHeight = 48;
   const menuItemPaddingTop = 15;
@@ -41,10 +41,6 @@ const GenericSelect = ({
       },
     },
   };
-
-  useEffect(() => {
-    setIsChecked(options.slice().fill(false));
-  }, [options]);
 
   useEffect(() => {
     if (isMultiple) {
@@ -98,9 +94,9 @@ const GenericSelect = ({
           <MenuItem key={id} value={id}>
             {isMultiple && (
             <Checkbox
+              classes={checkboxClasses}
               key={id}
               checked={isChecked[optionId]}
-              classes={checkboxClasses}
             />
             )}
             {label}

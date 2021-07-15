@@ -6,23 +6,32 @@ class NodeManager {
   static async getNodes(req, res) {
     const requester = jwt.decode(req.headers.authorization.split(' ')[1]);
     const { nodeGroupId, unitId } = req.query;
-    let requestedNodes = nodes;
     if ([
       Role.Interviewer,
-      Role.RamadIturAssistant,
-      Role.ProfessionalRamad,
-      Role.RamadIturOfUnit].includes(requester.role)) {
-      requestedNodes = nodes.filter((node) => node.unitId === requester.unitId);
+      Role.Technical,
+      Role.Mada].includes(requester.role)) {
+      res.send(nodes.filter((node) => {
+        if (nodeGroupId && node.nodeGroupId !== nodeGroupId) {
+          return false;
+        }
+        if (unitId && node.unitId !== unitId) {
+          return false;
+        }
+        return true;
+      }));
+    } else if (
+      [Role.RamadIturOfUnit, Role.ProfessionalRamad, Role.RamadIturAssistant]
+        .includes(requester.role)) {
+      const nodesOfUnit = nodes.filter((node) => {
+        if (nodeGroupId && node.nodeGroupId !== nodeGroupId) {
+          return false;
+        }
+        return node.unitId === requester.unitId;
+      });
+      res.send(nodesOfUnit);
+    } else {
+      res.status(400).send('BROKEN');
     }
-    res.send(requestedNodes.filter((node) => {
-      if (nodeGroupId && node.nodeGroupId !== nodeGroupId) {
-        return false;
-      }
-      if (unitId && node.unitId !== unitId) {
-        return false;
-      }
-      return true;
-    }));
   }
 
   static async updateNode(req, res) {

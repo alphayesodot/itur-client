@@ -49,7 +49,7 @@ class NodeGroupManager {
       const nodeGroupIdx = nodeGroups.findIndex(
         (nodeGroup) => nodeGroup.id === req.params.id.toString(),
       );
-      const deletedNodeGroup = nodeGroups[nodeGroupIdx];
+      const deletedNodeGroup = nodeGroupIdx > -1 && nodeGroups[nodeGroupIdx];
       if (nodeGroupIdx > -1) {
         nodeGroups.splice(nodeGroupIdx, 1);
       }

@@ -46,7 +46,7 @@ const Header = ({
         <DateInput
           selectedDate={selectedDate}
           setSelectedDate={setSelectedDate}
-          inputClassName={`${commonInputClasses.root} ${classes.dateInput}`}
+          inputClassName={commonInputClasses.root}
         />
         <NodeGroupSelect
           selectedNodeGroup={selectedNodeGroup
