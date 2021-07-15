@@ -12,7 +12,7 @@ import useStyles from './MalshabimCard.styles';
 import BasicTable from '../BasicTable/BasicTable';
 import SelectBox from '../SelectBox/SelectBox';
 
-const MalshabimCard = ({ interviewers, events, handleMalshabsToSchedule }) => {
+const MalshabimCard = ({ interviewers, events, handleMalshabsToSchedule, isLoadingSchedule }) => {
   const classes = useStyles();
   const { t } = useTranslation();
   const autoSchedulingValue = t('unitControlPage.automaticScheduling');
@@ -182,7 +182,7 @@ const MalshabimCard = ({ interviewers, events, handleMalshabsToSchedule }) => {
           />
           )}
         </div>
-        <Button disabled={!chosenMalshabs.length} className={classes.confirmButton} onClick={handleScheduling}>{t('title.confirm')}</Button>
+        <Button disabled={!chosenMalshabs.length || isLoadingSchedule} className={classes.confirmButton} onClick={handleScheduling}>{t('title.confirm')}</Button>
       </div>
     </DashboardCard>
   );

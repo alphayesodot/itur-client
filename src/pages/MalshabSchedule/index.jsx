@@ -25,6 +25,7 @@ const MalshabSchedulePage = observer(() => {
   const [events, setEvents] = useState([]);
   const [unit, setUnit] = useState();
   const [isLoading, setIsLoading] = useState(false);
+  const [isLoadingSchedule, setIsLoadingSchedule] = useState(false);
   const [selectedDate, setSelectedDate] = useState(
     new Date().toLocaleDateString('fr-CA', {
       year: 'numeric',
@@ -51,6 +52,7 @@ const MalshabSchedulePage = observer(() => {
   }, []);
 
   const addMalshabToInterviewerSchedule = async (malshab, selectedInterviewerName) => {
+    let isScheduled = false;
     const malshabEvent = events.find(
       (event) => event.malshabShort.id === malshab.id,
     );
@@ -62,23 +64,25 @@ const MalshabSchedulePage = observer(() => {
     );
 
     // check that interviewer doesn't have events in the same time
-    if (eventsOfSelectedInterviewer.find((event) => event.time === malshabEvent.time)) {
-      return toast(t('error.scheduleConflictMalshab', { malshabFullName: malshab.name }));
+    if (!eventsOfSelectedInterviewer.find((event) => event.time === malshabEvent.time)) {
+      const addedInterviewer = await EventService.addInterviewer(malshabEvent.id,
+        selectedInterviewer.id);
+
+      if (addedInterviewer) {
+        ScheduleStore.addInterviewerToSchedule(
+          choosenNodeGroup.id,
+          selectedDate,
+          selectedInterviewer.id,
+          malshabEvent,
+        );
+        isScheduled = true;
+      }
     }
 
-    EventService.addInterviewer(malshabEvent.id, selectedInterviewer.id).then(() => {
-      ScheduleStore.addInterviewerToSchedule(
-        choosenNodeGroup.id,
-        selectedDate,
-        selectedInterviewer.id,
-        malshabEvent,
-      );
-    }).catch(() => {
-      toast(t('error.server'));
-    });
+    return { isScheduled, malshab };
   };
 
-  const handleAutoScheduling = (malshab) => {
+  const handleAutoScheduling = async (malshab) => {
     const malshabEvent = events.find(
       (event) => event.malshabShort.id === malshab.id,
     );
@@ -93,37 +97,53 @@ const MalshabSchedulePage = observer(() => {
       );
 
       if (!eventAtTheSameTime) {
-        EventService.addInterviewer(malshabEvent.id, interviewer.id).then(() => {
+        // eslint-disable-next-line no-await-in-loop
+        const addedInterviewer = await EventService.addInterviewer(malshabEvent.id, interviewer.id);
+        if (addedInterviewer) {
           ScheduleStore.addInterviewerToSchedule(
             choosenNodeGroup.id,
             selectedDate,
             interviewer.id,
             malshabEvent,
           );
-        }).catch(() => {
-          toast(t('error.server'));
-        });
+        }
         isScheduled = true;
         break;
       }
     }
-    return isScheduled;
+    return { isScheduled, malshab };
   };
 
   const handleMalshabsToSchedule = (chosenMalshabs, selectedInterviewers) => {
+    setIsLoadingSchedule(true);
     if (selectedInterviewers.includes(t('unitControlPage.automaticScheduling'))) {
-      return chosenMalshabs.forEach((malshab) => {
-        const isScheduled = handleAutoScheduling(malshab);
-        if (!isScheduled) {
-          toast(t('error.scheduleConflictMalshab', { malshabFullName: malshab.name }));
-        }
-      });
+      Promise.all(chosenMalshabs.map((malshab) => handleAutoScheduling(malshab)))
+        .then((res) => {
+          res.forEach((resObject) => {
+            if (!resObject.isScheduled) {
+              toast(t('error.scheduleConflictMalshab', { malshabFullName: resObject.malshab.name }));
+            }
+          });
+        })
+        .catch(() => {
+          toast(t('error.server'));
+        })
+        .finally(() => setIsLoadingSchedule(false));
+    } else {
+      Promise.all(chosenMalshabs.map((malshab) => Promise.all(selectedInterviewers
+        .map((interviewer) => addMalshabToInterviewerSchedule(malshab, interviewer)))
+        .then((res) => {
+          res.forEach((resObject) => {
+            if (!resObject.isScheduled) {
+              toast(t('error.scheduleConflictMalshab', { malshabFullName: resObject.malshab.name }));
+            }
+          });
+        })))
+        .catch(() => {
+          toast(t('error.server'));
+        })
+        .finally(() => setIsLoadingSchedule(false));
     }
-    chosenMalshabs.forEach((chosenMalshab) => {
-      selectedInterviewers.forEach((selectedInterviewer) => {
-        addMalshabToInterviewerSchedule(chosenMalshab, selectedInterviewer);
-      });
-    });
   };
 
   useEffect(() => {
@@ -141,7 +161,7 @@ const MalshabSchedulePage = observer(() => {
           Promise.all(
             nodesOfNodeGroup.map(({ id }) => EventService.getEvents({
               nodeId: id,
-              date: selectedDate,
+              date: new Date(selectedDate),
             })),
           ).then((eventsArrays) => {
             setEvents(
@@ -178,6 +198,7 @@ const MalshabSchedulePage = observer(() => {
                 interviewers={interviewers}
                 events={events}
                 handleMalshabsToSchedule={handleMalshabsToSchedule}
+                isLoadingSchedule={isLoadingSchedule}
               />
               <UsersCard
                 users={interviewers}
