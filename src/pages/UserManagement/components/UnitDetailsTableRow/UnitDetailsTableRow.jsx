@@ -75,7 +75,8 @@ const UnitDetailsTableRow = ({ roleToDisplay, role, users, setRoleUsers, setUser
               <>
                 <TextField
                   type='number'
-                  InputProps={{ inputProps: { min: 0 }, classes: { underline: classes.underline } }}
+                  InputProps={{ inputProps: { min: 0, max: 10 },
+                    classes: { underline: classes.underline } }}
                   className={classes.numberOfRoleUsers}
                   value={numberOfUsersToAdd}
                   onChange={(event) => setNumberOfUsersToAdd(Number(event.target.value))}
