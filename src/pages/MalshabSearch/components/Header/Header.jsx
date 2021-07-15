@@ -1,19 +1,11 @@
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
-import { withStyles } from '@material-ui/core/styles';
-import { Button as MuiButton, TextField, Tooltip } from '@material-ui/core';
+import { TextField, Tooltip } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 import MalshabService from '../../../../services/malshab.service';
 import DashboardCard from '../../../../common/DashboardCard/DashboardCard';
+import TooltipButton from '../../../../common/TooltipButton/TooltipButton';
 import useStyles from './Header.styles';
-
-const Button = withStyles({
-  root: {
-    '&.Mui-disabled': {
-      pointerEvents: 'auto',
-    },
-  },
-})(MuiButton);
 
 const Header = ({ setMalshab }) => {
   const classes = useStyles();
@@ -40,14 +32,14 @@ const Header = ({ setMalshab }) => {
   return (
     <DashboardCard className={classes.root}>
       <Tooltip title={canSearch() ? '' : t('toolTip.invalidId')}>
-        <Button
+        <TooltipButton
           disabled={!canSearch()}
           onClick={handleOnSearch}
           className={classes.button}
           component={canSearch() ? undefined : 'div'}
         >
           {t('button.searchMalshab')}
-        </Button>
+        </TooltipButton>
       </Tooltip>
       <TextField
         className={classes.input}
