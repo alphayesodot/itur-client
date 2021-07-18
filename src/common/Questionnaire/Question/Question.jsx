@@ -32,7 +32,12 @@ const Question = ({ question, answer, setAnswer }) => {
     switch (type) {
       case 'multipleChoice':
         return (
-          <AmericanAnswer options={question.options} setAnswer={setAnswer} />
+          <AmericanAnswer
+            options={question.options}
+            selectedValue={answer}
+            setSelectedValue={setAnswer}
+            hasOther={question.hasOther}
+          />
         );
       case 'checkbox':
         return (
