@@ -106,7 +106,7 @@ const UnitDetailsTableRow = ({ roleToDisplay, role, users, setRoleUsers, setUser
                     variant='contained'
                     className={classes.addUsersButton}
                     disabled={numberOfUsersToAdd <= 0
-                      || users.length + numberOfUsersToAdd > limitAmountOfTotalUsers 
+                      || users.length + numberOfUsersToAdd > limitAmountOfTotalUsers
                       || isCreatingUser}
                     onClick={() => createUsers()}
                   >
