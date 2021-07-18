@@ -1,13 +1,14 @@
 import React, { useState, useCallback, useEffect, useRef } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
-import Track from './pages/Track/index';
 import MalshabSearch from './pages/MalshabSearch/index';
 import NodeGroupPage from './pages/NodeGroupPage/index';
 import Luz from './pages/Luz/index';
+import Track from './pages/Track/index';
 import AuthService from './services/auth.service';
 import UploadPage from './pages/FileUpload/index';
 import Report from './pages/Reports/index';
+import NodeGroupSelection from './pages/NodeGroupSelection/index';
 import ConfigService from './services/config.service';
 import Sidebar from './common/SideBarNav/SideBarNav';
 import Header from './common/Header/Header';
@@ -18,6 +19,7 @@ import configApp from './appConf';
 import 'react-toastify/dist/ReactToastify.css';
 import UserManagement from './pages/UserManagement/index';
 import PermissionCheck from './common/PermissionCheck/PermissionCheck';
+import MalshabSchedulePage from './pages/MalshabSchedule';
 import PreparationKit from './pages/PreparationKit/index';
 import QuestionnaireSchemaPage from './pages/QuestionnaireSchemaPage/index';
 
@@ -80,7 +82,11 @@ const App = () => {
     },
     {
       path: configApp.sitesPostfixes.malshabSchedule,
-      component: <h1>malshabSchedule</h1>,
+      component: <MalshabSchedulePage />,
+    },
+    {
+      path: configApp.sitesPostfixes.nodeGroupSelection,
+      component: <NodeGroupSelection />,
     },
     {
       path: configApp.sitesPostfixes.malshabSearch,

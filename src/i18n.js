@@ -6,6 +6,8 @@ const resources = {
     translation: {
       error: {
         server: 'קרתה תקלה. נסו שוב מאוחר יותר',
+        scheduleConflict: 'לא ניתן לשבץ למראיין ראיונות לאותם השעות',
+        scheduleConflictMalshab: 'לא ניתן לשבץ את המלשב/ית: {{malshabFullName}}',
         invalidQuestionnaire: 'שאלון לא תקין',
       },
       title: {
@@ -33,6 +35,7 @@ const resources = {
         editNodeGroup: 'ערוך מסלול',
         moreDetails: 'פרטים נוספים',
         interviewsSchedule: 'לוז ראיונות',
+        confirm: 'אישור',
         questionnaires: 'שאלונים',
         view: 'תצוגה',
         attachments: 'מסמכים',
@@ -90,6 +93,8 @@ const resources = {
         unitNotAddWarning: 'יחידה לא נוספה',
         unitAdded: 'היחידה התווספה',
         userNotAddWarning: 'יוזר לא נוסף',
+        malshabsToSchedule: 'מלש"בים לשיבוץ',
+        noNodesGroups: 'אין מסלולים',
         page: 'עמוד',
         of: 'מתוך',
         loading: 'טוען מסמך...',
@@ -195,6 +200,30 @@ const resources = {
         questionnaires: 'שאלונים',
         settings: 'הגדרות',
       },
+      unitControlPage: {
+        malshabimText: 'מלש"בים',
+        usersText: 'יוזרים',
+        totalText: 'סה"כ',
+        nameOrIdText: 'שם / תז',
+        hour: 'שעה',
+        users: 'יוזרים',
+        isScheduled: 'עם שיבוץ',
+        noEvents: 'ללא שיבוץ',
+        automaticScheduling: 'שיבוץ אוטומטי',
+        noUsers: 'אין יוזרים',
+        selected: 'נבחרו',
+        noChoice: 'ללא בחירה',
+        notScheduled: 'לא שובץ',
+        status: 'סטטוס',
+      },
+      malshabimTable: {
+        name: 'שם',
+        id: 'ת"ז',
+        status: 'סטטוס',
+        users: 'יוזרים',
+        node: 'שלב מיון',
+        time: 'שעה',
+      },
       toolTip: {
         copyUsers: 'העתקת יוזרים',
         information: 'מידע נוסף',
@@ -202,11 +231,13 @@ const resources = {
         restart: 'התחל מחדש',
         invalidId: 'ת"ז לא תקין',
         uploadAttachment: 'העלאת מסמך',
+        removeInterview: 'הסרת ראיון',
         limitUsers: 'עד {{usersLimit}} יוזרים',
         totalLimitUsers: 'לא ניתן להוסיף יותר מ{{usersLimit}} יוזרים',
       },
       warnings: {
-        oneTimePassword: 'שים לב, לאחר סגירת החלונית לא יהיה ניתן לצפות בסיסמה בשנית. יש לשמור את הסיסמה במקום מאובטח.',
+        oneTimePassword:
+          'שים לב, לאחר סגירת החלונית לא יהיה ניתן לצפות בסיסמה בשנית. יש לשמור את הסיסמה במקום מאובטח.',
       },
       formTitle: {
         name: 'שם',
