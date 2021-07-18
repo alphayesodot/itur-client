@@ -29,7 +29,7 @@ const NewUsersTable = ({ users }) => {
         </TableHead>
         <TableBody>
           {users.map((user) => (
-            <TableRow key={user.id}>
+            <TableRow key={user.mail}>
               <TableCell className={classes.mail} align='center'>{user.mail}</TableCell>
               <TableCell align='center'>{user.password}</TableCell>
             </TableRow>

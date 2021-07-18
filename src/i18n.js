@@ -46,6 +46,7 @@ const resources = {
         chooseQuestionnairePreview: 'בחר שאלון להצגה',
         generalInfo: 'פרטים כלליים',
         interviewsHistory: 'היסטוריית ראיונות',
+        defaultUnitName: 'מנהלי מערכת',
       },
       actions: {
         delete: 'מחיקה',
@@ -94,6 +95,10 @@ const resources = {
         userNotAddWarning: 'יוזר לא נוסף',
         malshabsToSchedule: 'מלש"בים לשיבוץ',
         noNodesGroups: 'אין מסלולים',
+        page: 'עמוד',
+        of: 'מתוך',
+        loading: 'טוען מסמך...',
+        noFile: 'המסמך לא קיים',
       },
       headerBlessings: {
         morning: 'בוקר טוב',
@@ -111,6 +116,8 @@ const resources = {
         view: 'הצג',
         saveNodeGroup: 'שמירת מסלול',
         enter: 'כניסה',
+        next: 'הבא',
+        previous: 'הקודם',
         newQuestionnaire: 'שאלון חדש',
         createReport: 'יצירת דוח',
         saveQuestionnaire: 'שמירת שאלון',
@@ -225,6 +232,8 @@ const resources = {
         invalidId: 'ת"ז לא תקין',
         uploadAttachment: 'העלאת מסמך',
         removeInterview: 'הסרת ראיון',
+        limitUsers: 'עד {{usersLimit}} יוזרים',
+        totalLimitUsers: 'לא ניתן להוסיף יותר מ{{usersLimit}} יוזרים',
       },
       warnings: {
         oneTimePassword:
