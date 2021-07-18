@@ -22,6 +22,7 @@ const useStyles = makeStyles((theme) => ({
     paddingBottom: '1rem',
     flexWrap: 'wrap',
     height: '12.5%',
+    margin: 'auto 2%',
   },
   malshabimText: {
     fontSize: '1.1rem',

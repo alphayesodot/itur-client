@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     [theme.breakpoints.down('sm')]: {
-      width: 'auto !important',
+      width: 'calc(100% - 1rem) !important',
       marginTop: '0.5rem !important',
     },
   },

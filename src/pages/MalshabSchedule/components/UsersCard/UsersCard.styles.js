@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
       marginLeft: '0',
       marginBottom: '2rem',
       width: '100%',
-      height: '65%',
+      height: '30rem',
       padding: '0',
     },
   },
