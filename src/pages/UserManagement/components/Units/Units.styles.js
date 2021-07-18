@@ -117,7 +117,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   isLoadingRootDiv: {
-    height: '50%',
+    height: '63%',
   },
   idLoadingDiv: {
     display: 'flex',
