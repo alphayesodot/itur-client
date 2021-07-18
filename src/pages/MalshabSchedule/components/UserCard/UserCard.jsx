@@ -1,24 +1,26 @@
 import React, { useEffect, useState } from 'react';
 import { Typography, IconButton, Tooltip } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
+import { observer } from 'mobx-react-lite';
 import { toast } from 'react-toastify';
 import DeleteOutlinedIcon from '@material-ui/icons/DeleteOutlined';
+import MalshabScheduleStore from '../../../../stores/MalshabSchedule.store.js';
 import DashboardCard from '../../../../common/DashboardCard/DashboardCard';
 import useStyles from './UserCard.styles';
 import ScheduleStore from '../../../../stores/Schedule.store';
 import userIcon from '../../../../utils/images/unitControlPage/userpic-blue-small.svg';
 import EventService from '../../../../services/event.service';
 
-const UserCard = ({ user, selectedDate, choosenNodeGroup }) => {
+const UserCard = observer(({ user }) => {
   const classes = useStyles();
   const { t } = useTranslation();
   const [events, setEvents] = useState([]);
 
   useEffect(() => {
-    if (choosenNodeGroup && selectedDate) {
+    if (MalshabScheduleStore.selectedNodeGroup && MalshabScheduleStore.selectedDate) {
       ScheduleStore.getScheduleOfInterviewer(
-        selectedDate,
-        choosenNodeGroup.id,
+        MalshabScheduleStore.selectedDate,
+        MalshabScheduleStore.selectedNodeGroup.id,
         user.id,
       ).then((res) => {
         setEvents(res.sort((firstEvent, secondEvent) => (
@@ -28,7 +30,12 @@ const UserCard = ({ user, selectedDate, choosenNodeGroup }) => {
         toast(t('error.server'));
       });
     }
-  }, [user, selectedDate, choosenNodeGroup, ScheduleStore.schedules]);
+  }, [
+    user,
+    MalshabScheduleStore.selectedDate,
+    MalshabScheduleStore.selectedNodeGroup,
+    ScheduleStore.schedules,
+  ]);
 
   // formats date and returns hour in 24hour format
   const formatDate = (date) => new Date(date).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
@@ -40,8 +47,8 @@ const UserCard = ({ user, selectedDate, choosenNodeGroup }) => {
   const handleRemoveInterviewer = (eventId) => {
     EventService.removeInterviewer(eventId, user.id).then(() => {
       ScheduleStore.removeInterviewFromSchedule(
-        choosenNodeGroup.id,
-        selectedDate,
+        MalshabScheduleStore.selectedNodeGroup.id,
+        MalshabScheduleStore.selectedDate,
         user.id,
         eventId,
       );
@@ -98,6 +105,6 @@ const UserCard = ({ user, selectedDate, choosenNodeGroup }) => {
       </div>
     </DashboardCard>
   );
-};
+});
 
 export default UserCard;

@@ -2,12 +2,13 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    marginTop: '1em',
     height: '100%',
-    minHeight: '25rem',
+    marginTop: '1em',
     display: 'flex',
+    minHeight: '30rem',
     justifyContent: 'center',
     alignItems: 'center',
+    width: '100%',
   },
   mainDiv: {
     height: '90%',

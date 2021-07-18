@@ -39,7 +39,7 @@ const Sidebar = React.forwardRef((props, ref) => {
   const iconDetails = {
     luz: { urlPostfix: configApp.sitesPostfixes.luz, imgDef: luzIcon, imgActive: luzIconActive, title: t('sideBar.luz') },
     track: { urlPostfix: configApp.sitesPostfixes.track, imgDef: trackIcon, imgActive: trackIconActive, title: t('sideBar.track') },
-    malshabSchedule: { urlPostfix: configApp.sitesPostfixes.malshabSchedule, imgDef: malshabScheduleIcon, imgActive: malshabScheduleIconActive, title: t('sideBar.malshabSchedule') },
+    malshabSchedule: { urlPostfix: configApp.sitesPostfixes.nodeGroupSelection, imgDef: malshabScheduleIcon, imgActive: malshabScheduleIconActive, title: t('sideBar.malshabSchedule') },
     malshabSearch: { urlPostfix: configApp.sitesPostfixes.malshabSearch, imgDef: malshabSearchIcon, imgActive: malshabSearchIconActive, title: t('sideBar.malshabSearch') },
     reports: { urlPostfix: configApp.sitesPostfixes.reports, imgDef: reportsIcon, imgActive: reportsIconActive, title: t('sideBar.reports') },
     posh: { urlPostfix: configApp.sitesPostfixes.posh, imgDef: poshIcon, imgActive: poshIconActive, title: t('sideBar.posh') },

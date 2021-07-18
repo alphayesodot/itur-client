@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
 import { Typography } from '@material-ui/core';
+import { observer } from 'mobx-react-lite';
 import DashboardCard from '../DashboardCard/DashboardCard';
 import DateInput from '../DateInput/DateInput';
 import ScheduleStore from '../../stores/Schedule.store';
@@ -10,13 +11,13 @@ import useStyles from './ScheduleHeader.styles';
 import NodeGroupSelect from '../NodeGroupSelect/NodeGroupSelect';
 import commonInputUseStyles from '../CommonInput/CommonInput.styles';
 
-const Header = ({
+const Header = observer(({
   unitName,
   selectedNodeGroup,
   setSelectedNodeGroup,
   selectedDate,
   setSelectedDate,
-  setIsLoading,
+  setIsLoading = () => {},
   selectFirst,
 }) => {
   const classes = useStyles();
@@ -65,6 +66,6 @@ const Header = ({
       </div>
     </DashboardCard>
   );
-};
+});
 
 export default Header;

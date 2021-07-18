@@ -1,16 +1,21 @@
 import { Typography } from '@material-ui/core';
 import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
+import { useHistory } from 'react-router-dom';
+import { observer } from 'mobx-react-lite';
 import { useTranslation } from 'react-i18next';
 import DashboardCard from '../../../../common/DashboardCard/DashboardCard';
+import MalshabScheduleStore from '../../../../stores/MalshabSchedule.store.js';
 import useStyles from './NodeGroupCard.styles';
+import configApp from '../../../../appConf.js';
 import POSITIVE from '../../../../utils/images/schedule/passed-positive.svg';
 import WARNING from '../../../../utils/images/schedule/warning.svg';
 import EventService from '../../../../services/event.service.js';
 import NodeService from '../../../../services/node.service.js';
 
-const NodeGroupCard = ({ nodeGroup, setChoosenNodeGroup, selectedDate }) => {
+const NodeGroupCard = observer(({ nodeGroup }) => {
   const classes = useStyles();
+  const history = useHistory();
   const { t } = useTranslation();
 
   const [nodeGroupEvents, setNodeGroupEvents] = useState([]);
@@ -20,7 +25,10 @@ const NodeGroupCard = ({ nodeGroup, setChoosenNodeGroup, selectedDate }) => {
     setNodeGroupEvents([]);
     NodeService.getNodes({ nodeGroupId: nodeGroup.id }).then((nodes) => {
       nodes.forEach((node) => {
-        EventService.getEvents({ nodeId: node.id, date: selectedDate }).then((events) => {
+        EventService.getEvents({
+          nodeId: node.id,
+          date: MalshabScheduleStore.selectedDate,
+        }).then((events) => {
           setNodeGroupEvents((prevValue) => [...prevValue, ...events]);
         }).catch(() => {
           toast(t('error.server'));
@@ -29,7 +37,7 @@ const NodeGroupCard = ({ nodeGroup, setChoosenNodeGroup, selectedDate }) => {
     }).catch(() => {
       toast(t('error.server'));
     });
-  }, [nodeGroup, selectedDate]);
+  }, [nodeGroup, MalshabScheduleStore.selectedDate]);
 
   useEffect(() => {
     setScheduledEvents([]);
@@ -42,7 +50,10 @@ const NodeGroupCard = ({ nodeGroup, setChoosenNodeGroup, selectedDate }) => {
 
   return (
     <DashboardCard
-      onClick={() => { setChoosenNodeGroup(nodeGroup); }}
+      onClick={() => {
+        MalshabScheduleStore.setSelectedNodeGroup(nodeGroup);
+        history.push(configApp.sitesPostfixes.malshabSchedule);
+      }}
       className={
         `${classes.root} 
         ${scheduledEvents.length === nodeGroupEvents.length
@@ -73,6 +84,6 @@ const NodeGroupCard = ({ nodeGroup, setChoosenNodeGroup, selectedDate }) => {
       />
     </DashboardCard>
   );
-};
+});
 
 export default NodeGroupCard;

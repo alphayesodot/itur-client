@@ -8,6 +8,7 @@ import Track from './pages/Track/index';
 import AuthService from './services/auth.service';
 import UploadPage from './pages/FileUpload/index';
 import Report from './pages/Reports/index';
+import NodeGroupSelection from './pages/NodeGroupSelection/index';
 import ConfigService from './services/config.service';
 import Sidebar from './common/SideBarNav/SideBarNav';
 import Header from './common/Header/Header';
@@ -82,6 +83,10 @@ const App = () => {
     {
       path: configApp.sitesPostfixes.malshabSchedule,
       component: <MalshabSchedulePage />,
+    },
+    {
+      path: configApp.sitesPostfixes.nodeGroupSelection,
+      component: <NodeGroupSelection />,
     },
     {
       path: configApp.sitesPostfixes.malshabSearch,

@@ -3,9 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { useTranslation } from 'react-i18next';
 import { observer } from 'mobx-react-lite';
+import { useHistory } from 'react-router-dom';
 import useStyles from './index.styles';
-import NodeGroups from './components/NodeGroups/NodeGroups';
-import NodeGroupService from '../../services/nodeGroup.service';
 import UsersCard from './components/UsersCard/UsersCard';
 import ScheduleHeader from '../../common/ScheduleHeader/ScheduleHeader';
 import MalshabimCard from './components/MalshabimCard/MalshabimCard';
@@ -13,35 +12,23 @@ import UserService, { Role } from '../../services/user.service';
 import UnitService from '../../services/unit.service';
 import ScheduleStore from '../../stores/Schedule.store';
 import EventService from '../../services/event.service';
-import CustomBackDrop from '../../common/CustomBackDrop/CustomBackDrop';
 import NodeService from '../../services/node.service';
+import MalshabScheduleStore from '../../stores/MalshabSchedule.store';
+import config from '../../appConf.js';
 
 const MalshabSchedulePage = observer(() => {
   const classes = useStyles();
   const { t } = useTranslation();
-  const [choosenNodeGroup, setChoosenNodeGroup] = useState();
-  const [unitNodesGroups, setUnitNodesGroups] = useState([]);
+  const history = useHistory();
   const [interviewers, setInterviewers] = useState([]);
   const [events, setEvents] = useState([]);
   const [unit, setUnit] = useState();
-  const [isLoading, setIsLoading] = useState(false);
   const [isLoadingSchedule, setIsLoadingSchedule] = useState(false);
-  const [selectedDate, setSelectedDate] = useState(
-    new Date().toLocaleDateString('fr-CA', {
-      year: 'numeric',
-      month: '2-digit',
-      day: '2-digit',
-    }),
-  );
 
   useEffect(() => {
-    NodeGroupService.getNodeGroups()
-      .then((res) => {
-        setUnitNodesGroups(res);
-      })
-      .catch(() => {
-        toast(t('error.server'));
-      });
+    if (!MalshabScheduleStore.selectedNodeGroup) {
+      history.push(config.sitesPostfixes.nodeGroupSelection);
+    }
     UnitService.getMyUnit()
       .then((res) => {
         setUnit(res);
@@ -70,8 +57,8 @@ const MalshabSchedulePage = observer(() => {
 
       if (addedInterviewer) {
         ScheduleStore.addInterviewerToSchedule(
-          choosenNodeGroup.id,
-          selectedDate,
+          MalshabScheduleStore.selectedNodeGroup.id,
+          MalshabScheduleStore.selectedDate,
           selectedInterviewer.id,
           malshabEvent,
         );
@@ -101,8 +88,8 @@ const MalshabSchedulePage = observer(() => {
         const addedInterviewer = await EventService.addInterviewer(malshabEvent.id, interviewer.id);
         if (addedInterviewer) {
           ScheduleStore.addInterviewerToSchedule(
-            choosenNodeGroup.id,
-            selectedDate,
+            MalshabScheduleStore.selectedNodeGroup.id,
+            MalshabScheduleStore.selectedDate,
             interviewer.id,
             malshabEvent,
           );
@@ -147,21 +134,23 @@ const MalshabSchedulePage = observer(() => {
   };
 
   useEffect(() => {
-    if (choosenNodeGroup) {
+    if (MalshabScheduleStore.selectedNodeGroup) {
       Promise.all(
-        choosenNodeGroup?.usersIds?.map((userId) => UserService.getUserById(userId)),
+        MalshabScheduleStore.selectedNodeGroup?.usersIds?.map(
+          (userId) => UserService.getUserById(userId),
+        ),
       )
         .then(async (users) => {
           setInterviewers(
             users.filter((user) => user.role === Role.Interviewer),
           );
           const nodesOfNodeGroup = await NodeService.getNodes({
-            nodeGroupId: choosenNodeGroup.id,
+            nodeGroupId: MalshabScheduleStore.selectedNodeGroup.id,
           });
           Promise.all(
             nodesOfNodeGroup.map(({ id }) => EventService.getEvents({
               nodeId: id,
-              date: new Date(selectedDate),
+              date: new Date(MalshabScheduleStore.selectedDate),
             })),
           ).then((eventsArrays) => {
             setEvents(
@@ -176,45 +165,30 @@ const MalshabSchedulePage = observer(() => {
           toast(t('error.server'));
         });
     }
-  }, [choosenNodeGroup, selectedDate, ScheduleStore.schedules]);
+  }, [
+    MalshabScheduleStore.selectedNodeGroup,
+    MalshabScheduleStore.selectedDate,
+    ScheduleStore.schedules,
+  ]);
 
   return (
     <div className={classes.root}>
       <ScheduleHeader
         unitName={unit?.name}
-        selectedNodeGroup={choosenNodeGroup}
-        setSelectedNodeGroup={setChoosenNodeGroup}
-        selectedDate={selectedDate}
-        setSelectedDate={setSelectedDate}
-        setIsLoading={setIsLoading}
+        selectedNodeGroup={MalshabScheduleStore.selectedNodeGroup}
+        setSelectedNodeGroup={(value) => MalshabScheduleStore.setSelectedNodeGroup(value)}
+        selectedDate={MalshabScheduleStore.selectedDate}
+        setSelectedDate={(value) => MalshabScheduleStore.setSelectedDate(value)}
       />
-      {isLoading ? (
-        <CustomBackDrop />
-      ) : (
-        <>
-          {choosenNodeGroup ? (
-            <div className={classes.mainInner}>
-              <MalshabimCard
-                interviewers={interviewers}
-                events={events}
-                handleMalshabsToSchedule={handleMalshabsToSchedule}
-                isLoadingSchedule={isLoadingSchedule}
-              />
-              <UsersCard
-                users={interviewers}
-                choosenNodeGroup={choosenNodeGroup}
-                selectedDate={selectedDate}
-              />
-            </div>
-          ) : (
-            <NodeGroups
-              selectedDate={selectedDate}
-              unitNodesGroups={unitNodesGroups}
-              setChoosenNodeGroup={setChoosenNodeGroup}
-            />
-          )}
-        </>
-      )}
+      <div className={classes.mainInner}>
+        <MalshabimCard
+          interviewers={interviewers}
+          events={events}
+          handleMalshabsToSchedule={handleMalshabsToSchedule}
+          isLoadingSchedule={isLoadingSchedule}
+        />
+        <UsersCard users={interviewers} />
+      </div>
     </div>
   );
 });

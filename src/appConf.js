@@ -2,6 +2,7 @@ const sitesPostfixes = {
   interview: '/interview',
   luz: '/luz',
   track: '/track',
+  nodeGroupSelection: '/node-group-selection',
   malshabSchedule: '/malshab-scheduling',
   malshabSearch: '/search-malshab',
   reports: '/reports',
@@ -44,6 +45,10 @@ const config = {
       },
       {
         route: sitesPostfixes.malshabSchedule,
+        sideBar: false,
+      },
+      {
+        route: sitesPostfixes.nodeGroupSelection,
         sideBar: true,
       },
       {
@@ -63,6 +68,10 @@ const config = {
       },
       {
         route: sitesPostfixes.malshabSchedule,
+        sideBar: false,
+      },
+      {
+        route: sitesPostfixes.nodeGroupSelection,
         sideBar: true,
       },
       {
