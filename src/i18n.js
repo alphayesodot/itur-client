@@ -202,6 +202,8 @@ const resources = {
         restart: 'התחל מחדש',
         invalidId: 'ת"ז לא תקין',
         uploadAttachment: 'העלאת מסמך',
+        limitUsers: 'עד {{usersLimit}} יוזרים',
+        totalLimitUsers: 'לא ניתן להוסיף יותר מ{{usersLimit}} יוזרים',
       },
       warnings: {
         oneTimePassword: 'שים לב, לאחר סגירת החלונית לא יהיה ניתן לצפות בסיסמה בשנית. יש לשמור את הסיסמה במקום מאובטח.',
