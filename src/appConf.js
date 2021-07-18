@@ -103,6 +103,10 @@ const config = {
         route: sitesPostfixes.reports,
         sideBar: true,
       },
+      {
+        route: sitesPostfixes.preparationKit,
+        sideBar: true,
+      },
     ],
     ITUR: [
       // {

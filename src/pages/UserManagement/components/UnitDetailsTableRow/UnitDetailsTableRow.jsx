@@ -15,6 +15,7 @@ import UserService from '../../../../services/user.service';
 import RoleUsersDialog from '../RoleUsersDialog/RoleUsersDialog';
 import NewUsersDialog from '../NewUsersDialog/NewUsersDialog';
 import TooltipButton from '../../../../common/TooltipButton/TooltipButton.jsx';
+import config from '../../config';
 
 const UnitDetailsTableRow = ({ roleToDisplay, role, users, setRoleUsers, setUsers, unit }) => {
   const { t } = useTranslation();
@@ -38,8 +39,11 @@ const UnitDetailsTableRow = ({ roleToDisplay, role, users, setRoleUsers, setUser
 
     for (let userIndex = 1; userIndex <= numberOfUsersToAdd; userIndex += 1) {
       const userName = `${role}${unitShortId}${users.length + userIndex}`;
-      UserService.createUser(unit.id, role, userName).then((res) => {
-        const newUser = { ...res, role };
+      UserService.createUser(
+        unit.id === config.superUnitId
+          ? { role, name: userName }
+          : { unitId: unit.id, role, name: userName },
+      ).then((newUser) => {
         setRoleUsers((prevUsersList) => [...prevUsersList, newUser]);
         setUsers((prevUsersList) => [...prevUsersList, newUser]);
         setUsersToAdd((prevUsersRoleList) => [...prevUsersRoleList, newUser]);
