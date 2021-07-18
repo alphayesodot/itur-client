@@ -43,7 +43,8 @@ const UnitDetailsTableRow = ({ roleToDisplay, role, users, setRoleUsers, setUser
         unit.id === config.superUnitId
           ? { role, name: userName }
           : { unitId: unit.id, role, name: userName },
-      ).then((newUser) => {
+      ).then((res) => {
+        const newUser = { ...res, role };
         setRoleUsers((prevUsersList) => [...prevUsersList, newUser]);
         setUsers((prevUsersList) => [...prevUsersList, newUser]);
         setUsersToAdd((prevUsersRoleList) => [...prevUsersRoleList, newUser]);
