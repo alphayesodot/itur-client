@@ -9,8 +9,8 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     [theme.breakpoints.down('sm')]: {
-      width: 'auto',
-      marginTop: '0.5rem',
+      width: 'auto !important',
+      marginTop: '0.5rem !important',
     },
   },
 }));

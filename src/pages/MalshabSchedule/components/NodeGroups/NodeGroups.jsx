@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import NodeGroupCard from '../NodeGroupCard/NodeGroupCard';
 import DashboardCard from '../../../../common/DashboardCard/DashboardCard';
+import NoObjectsToShow from '../../../../common/NoObjectsToShow/NoObjectsToShow';
 import useStyles from './NodeGroups.styles';
 
 const NodeGroups = ({ unitNodesGroups, setChoosenNodeGroup, selectedDate }) => {
@@ -9,19 +10,20 @@ const NodeGroups = ({ unitNodesGroups, setChoosenNodeGroup, selectedDate }) => {
 
   return (
     <DashboardCard className={classes.root}>
-      {unitNodesGroups.length ? (
-        <div className={classes.mainDiv}>
-          {unitNodesGroups.map((nodeGroup) => (
-            <NodeGroupCard
-              nodeGroup={nodeGroup}
-              selectedDate={selectedDate}
-              key={nodeGroup.id}
-              setChoosenNodeGroup={setChoosenNodeGroup}
-            />
-          ))}
-        </div>
-      ) : <div className={classes.noNodesGroups}>{t('text.noNodesGroups')}</div>}
-
+      <div className={classes.mainDiv}>
+        {unitNodesGroups.length ? (
+          <>
+            {unitNodesGroups.map((nodeGroup) => (
+              <NodeGroupCard
+                nodeGroup={nodeGroup}
+                selectedDate={selectedDate}
+                key={nodeGroup.id}
+                setChoosenNodeGroup={setChoosenNodeGroup}
+              />
+            ))}
+          </>
+        ) : <NoObjectsToShow title={t('text.noNodesGroups')} />}
+      </div>
     </DashboardCard>
   );
 };

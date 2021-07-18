@@ -8,7 +8,6 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: 'white',
     padding: '1.5rem 1.9rem 1.5rem 1.9rem',
     [theme.breakpoints.down('sm')]: {
-      marginLeft: '0',
       marginBottom: '2rem',
       width: '100%',
       height: '65%',
@@ -46,6 +45,9 @@ const useStyles = makeStyles((theme) => ({
     '&.Mui-focused': {
       color: theme.palette.textField.focused,
     },
+  },
+  input: {
+    borderRadius: '9px',
   },
   selectUsers: {
     marginRight: '0.5em',

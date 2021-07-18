@@ -133,12 +133,19 @@ const MalshabimCard = ({ interviewers, events, handleMalshabsToSchedule, isLoadi
         </Typography>
         <div className={classes.selectionBoxes}>
           <FormControl size='small' variant='outlined' className={classes.formControlNameOrId}>
-            <InputLabel className={classes.formNameOrIdInputLabel}>{t('unitControlPage.nameOrIdText')}</InputLabel>
-            <OutlinedInput className={classes.formNameOrIdInputText} value={nameOrId} onChange={(event) => setNameOrId(event.target.value)} label='nameOrId' />
+            <InputLabel className={`${classes.formNameOrIdInputLabel} ${classes.input}`}>
+              {t('unitControlPage.nameOrIdText')}
+            </InputLabel>
+            <OutlinedInput
+              className={`${classes.formNameOrIdInputText} ${classes.input}`}
+              value={nameOrId}
+              onChange={(event) => setNameOrId(event.target.value)}
+              label='nameOrId'
+            />
           </FormControl>
 
           <SelectBox
-            className={classes.selectHour}
+            className={`${classes.selectHour} ${classes.input}`}
             label={t('unitControlPage.hour')}
             values={hoursSelectOptions}
             selectedValue={selectedHour}
@@ -146,7 +153,7 @@ const MalshabimCard = ({ interviewers, events, handleMalshabsToSchedule, isLoadi
           />
 
           <SelectBox
-            className={classes.selectUsers}
+            className={`${classes.selectUsers} ${classes.input}`}
             label={t('unitControlPage.users')}
             values={usersSelectOptions}
             selectedValue={selectedUser}
@@ -154,7 +161,7 @@ const MalshabimCard = ({ interviewers, events, handleMalshabsToSchedule, isLoadi
           />
 
           <SelectBox
-            className={classes.selectScheduled}
+            className={`${classes.selectScheduled} ${classes.input}`}
             label={t('unitControlPage.status')}
             values={statusSelectOptions}
             selectedValue={selectedStatus}
