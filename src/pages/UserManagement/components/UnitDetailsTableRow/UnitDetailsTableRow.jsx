@@ -38,11 +38,12 @@ const UnitDetailsTableRow = ({ roleToDisplay, role, users, setRoleUsers, setUser
     setUsersToAdd([]);
 
     for (let userIndex = 1; userIndex <= numberOfUsersToAdd; userIndex += 1) {
-      const userName = `${role}${unitShortId}${users.length + userIndex}`;
+      const displayUserName = `${role}${unitShortId}${users.length + userIndex}`;
+      const name = `${roleToDisplay} ${users.length + userIndex}`;
       UserService.createUser(
         unit.id === config.superUnitId
-          ? { role, name: userName }
-          : { unitId: unit.id, role, name: userName },
+          ? { role, name, displayUserName }
+          : { unitId: unit.id, role, name, displayUserName },
       ).then((res) => {
         const newUser = { ...res, role };
         setRoleUsers((prevUsersList) => [...prevUsersList, newUser]);

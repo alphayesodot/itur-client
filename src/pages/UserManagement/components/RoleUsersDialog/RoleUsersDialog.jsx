@@ -13,7 +13,7 @@ const RoleUsersDialog = ({ users, role, unit, openDialog, setOpenUsersDialog }) 
   const copyUsers = () => {
     const usernamesList = [];
     users.forEach((user) => {
-      usernamesList.push(user.name);
+      usernamesList.push(user.mail);
     });
     navigator.clipboard.writeText(usernamesList);
   };
