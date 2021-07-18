@@ -26,6 +26,14 @@ const theme = createTheme({
     font: {
       secondary: '#8698ad',
     },
+    card: {
+      header: '#d0e1e3',
+      body: '#ecf4f6',
+      warning: '#ecd8d8',
+    },
+    textField: {
+      focused: '#27b9d1',
+    },
     table: {
       main: 'rgb(207,225,227)',
       secondary: 'rgb(244,245,247)',

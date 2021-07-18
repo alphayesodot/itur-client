@@ -2,21 +2,23 @@ import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
 import { Typography } from '@material-ui/core';
-import DashboardCard from '../../../../common/DashboardCard/DashboardCard';
-import ScheduleStore from '../../../../stores/Schedule.store';
-import useStyles from './Header.styles';
-import commonInputUseStyles from '../../../../common/CommonInput/CommonInput.styles';
-import NodeGroupSelect from '../../../../common/NodeGroupSelect/NodeGroupSelect';
-import DateInput from '../../../../common/DateInput/DateInput';
+import { observer } from 'mobx-react-lite';
+import DashboardCard from '../DashboardCard/DashboardCard';
+import DateInput from '../DateInput/DateInput';
+import ScheduleStore from '../../stores/Schedule.store';
+import UserService, { Role } from '../../services/user.service';
+import useStyles from './ScheduleHeader.styles';
+import NodeGroupSelect from '../NodeGroupSelect/NodeGroupSelect';
+import commonInputUseStyles from '../CommonInput/CommonInput.styles';
 
-const Header = ({
+const Header = observer(({
   unitName,
   selectedNodeGroup,
   setSelectedNodeGroup,
   selectedDate,
   setSelectedDate,
-  setIsLoading,
-  interviewers,
+  setIsLoading = () => {},
+  selectFirst,
 }) => {
   const classes = useStyles();
   const commonInputClasses = commonInputUseStyles();
@@ -26,7 +28,12 @@ const Header = ({
     if (selectedDate && selectedNodeGroup
       && !ScheduleStore.getScheduleOfNodeGroup(selectedDate, selectedNodeGroup.id)) {
       setIsLoading(true);
-      ScheduleStore.addNewSchedule(selectedDate, selectedNodeGroup, interviewers).catch(() => {
+      Promise.all(
+        selectedNodeGroup?.usersIds?.map((userId) => UserService.getUserById(userId)),
+      ).then((users) => {
+        const interviewers = users.filter((user) => user.role === Role.Interviewer);
+        ScheduleStore.addNewSchedule(selectedDate, selectedNodeGroup, interviewers);
+      }).catch(() => {
         toast(t('error.server'));
       }).finally(() => {
         setIsLoading(false);
@@ -43,19 +50,24 @@ const Header = ({
           inputClassName={commonInputClasses.root}
         />
         <NodeGroupSelect
-          selectedNodeGroup={selectedNodeGroup}
+          selectedNodeGroup={selectedNodeGroup
+            ? { ...selectedNodeGroup, label: selectedNodeGroup.name }
+            : selectedNodeGroup}
           setSelectedNodeGroup={setSelectedNodeGroup}
+          selectFirst={selectFirst}
           selectClassName={commonInputClasses.root}
         />
+        {unitName && (
         <Typography className={`${classes.unit} ${classes.item}`}>
           :
           {t('title.unit')}
           {' '}
           <strong>{unitName}</strong>
         </Typography>
+        )}
       </div>
     </DashboardCard>
   );
-};
+});
 
 export default Header;

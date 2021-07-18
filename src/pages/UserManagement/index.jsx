@@ -16,12 +16,17 @@ const UserManagement = () => {
   const [units, setUnits] = useState([]);
   const [selectedUnit, setSelectedUnit] = useState('');
   const [users, setUsers] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true);
     UnitService.getUnits().then((res) => {
       setUnits((prevValue) => [...prevValue, superAdminsUnit, ...res]);
+      setIsLoading(false);
     }).catch(() => {
       toast(t('error.server'));
+    }).finally(() => {
+      setIsLoading(false);
     });
   }, []);
 
@@ -35,6 +40,7 @@ const UserManagement = () => {
           setSelectedUnit={setSelectedUnit}
           users={users}
           setUsers={setUsers}
+          isLoading={isLoading}
         />
         <UnitDetails
           unit={selectedUnit}

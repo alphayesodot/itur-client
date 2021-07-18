@@ -26,13 +26,13 @@ const RoleUsersDialog = ({ users, role, unit, openDialog, setOpenUsersDialog }) 
       content={(
         <div className={classes.content}>
           <RolesDialogsHeadLine users={users} role={role} unit={unit} />
+          <Tooltip title={t('toolTip.copyUsers')}>
+            <IconButton className={classes.button} onClick={() => { copyUsers(); }}>
+              <img src={copyImg} alt='copy' />
+            </IconButton>
+          </Tooltip>
           <div className={classes.mainDiv}>
             <RoleUsersTable users={users} />
-            <Tooltip title={t('toolTip.copyUsers')}>
-              <IconButton onClick={() => { copyUsers(); }}>
-                <img src={copyImg} alt='copy' />
-              </IconButton>
-            </Tooltip>
           </div>
         </div>
         )}
