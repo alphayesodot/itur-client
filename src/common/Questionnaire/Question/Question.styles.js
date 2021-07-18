@@ -29,8 +29,10 @@ const useStyles = makeStyles(() => ({
     marginLeft: '1rem',
     cursor: 'inherit',
     textAlign: 'left',
-    direction: 'rtl',
+    direction: 'ltr',
     textOverflow: 'ellipsis',
+    whiteSpace: 'nowrap',
+    overflow: 'hidden',
   },
   dateInput: {
     backgroundColor: 'transparent',
