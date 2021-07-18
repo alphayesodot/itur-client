@@ -23,6 +23,7 @@ const UnitDetailsTableRow = ({ roleToDisplay, role, users, setRoleUsers, setUser
   const [openDialog, setOpenDialog] = useState(false);
   const [openNewUsersDialog, setOpenNewUsersDialog] = useState(false);
   const [usersToAdd, setUsersToAdd] = useState([]);
+  const [isCreatingUser, setIsCreatingUser] = useState(false);
 
   useEffect(async () => {
     setUsersToAdd([]);
@@ -30,6 +31,7 @@ const UnitDetailsTableRow = ({ roleToDisplay, role, users, setRoleUsers, setUser
   }, [unit]);
 
   const createUsers = async () => {
+    setIsCreatingUser(true);
     const unitShortId = unit.id.substring(unit.id.length - 3);
     setUsersToAdd([]);
 
@@ -48,6 +50,8 @@ const UnitDetailsTableRow = ({ roleToDisplay, role, users, setRoleUsers, setUser
         }
       }).catch(() => {
         toast(t('text.userNotAddWarning'));
+      }).finally(() => {
+        setIsCreatingUser(false);
       });
     }
   };

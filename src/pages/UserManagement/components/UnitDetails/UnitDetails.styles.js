@@ -11,6 +11,12 @@ const useStyles = makeStyles((theme) => ({
       height: '100%',
     },
   },
+  isLoadingDiv: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '100%',
+  },
 }));
 
 export default useStyles;

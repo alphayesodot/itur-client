@@ -116,6 +116,16 @@ const useStyles = makeStyles((theme) => ({
       marginLeft: '1.2rem',
     },
   },
+  isLoadingRootDiv: {
+    height: '50%',
+  },
+  idLoadingDiv: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '100%',
+
+  },
 }));
 
 export default useStyles;
