@@ -6,6 +6,7 @@ import UserService from '../../../../services/user.service';
 import DashboardCard from '../../../../common/DashboardCard/DashboardCard';
 import useStyles from './UnitCard.styles';
 import arrowImg from '../../../../utils/images/userManagement/thin-arrow-icon.svg';
+import config from '../../config';
 
 const UnitCard = ({ unit, isSelected, setSelectedUnit, users }) => {
   const { t } = useTranslation();
@@ -13,11 +14,19 @@ const UnitCard = ({ unit, isSelected, setSelectedUnit, users }) => {
   const [unitUsers, setUnitusers] = useState([]);
 
   useEffect(() => {
-    UserService.getUsers({ unitId: unit.id }).then((res) => {
-      setUnitusers(res);
-    }).catch(() => {
-      toast(t('error.server'));
-    });
+    if (unit.id === config.superUnitId) {
+      UserService.getUsersByRoles(config.adminRoles).then((res) => {
+        setUnitusers(res);
+      }).catch(() => {
+        toast(t('error.server'));
+      });
+    } else {
+      UserService.getUsers({ unitId: unit.id }).then((res) => {
+        setUnitusers(res);
+      }).catch(() => {
+        toast(t('error.server'));
+      });
+    }
   }, [users]);
 
   return (
