@@ -57,12 +57,14 @@ const Header = observer(({
           selectFirst={selectFirst}
           selectClassName={commonInputClasses.root}
         />
+        {unitName && (
         <Typography className={`${classes.unit} ${classes.item}`}>
           :
           {t('title.unit')}
           {' '}
           <strong>{unitName}</strong>
         </Typography>
+        )}
       </div>
     </DashboardCard>
   );
