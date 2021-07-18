@@ -5,8 +5,12 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormGroup from '@material-ui/core/FormGroup';
 import TextField from '@material-ui/core/TextField';
 
-const AmericanAnswer = ({ options, hasOther }) => {
-  const [selectedValue, setSelectedValue] = useState('');
+const AmericanAnswer = ({
+  options,
+  selectedValue,
+  setSelectedValue,
+  hasOther,
+}) => {
   const [customAnswer, setCustomAnswer] = useState('');
 
   const handleChange = (event) => {

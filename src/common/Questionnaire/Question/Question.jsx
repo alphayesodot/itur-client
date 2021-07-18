@@ -30,7 +30,7 @@ const Question = ({ question, answer, setAnswer }) => {
 
   const renderQuestionInputsForType = (type) => {
     switch (type) {
-      case 'multipleChoice':
+      case 'MULTIPLE_CHOICE':
         return (
           <AmericanAnswer
             options={question.options}
@@ -39,7 +39,7 @@ const Question = ({ question, answer, setAnswer }) => {
             hasOther={question.hasOther}
           />
         );
-      case 'checkbox':
+      case 'CHECKBOX':
         return (
           <CheckboxAnswer
             options={question.options}
@@ -48,9 +48,9 @@ const Question = ({ question, answer, setAnswer }) => {
             hasOther={question.hasOther}
           />
         );
-      case 'linearScale':
+      case 'LINEARSCALE':
         return <ScaleAnswer min={question.min} max={question.max} />;
-      case 'open':
+      case 'OPEN':
         return (
           <TextAnswer
             isShort={question.isShort}
@@ -58,7 +58,7 @@ const Question = ({ question, answer, setAnswer }) => {
             setAnswer={setAnswer}
           />
         );
-      case 'date':
+      case 'DATE':
         return (
           <DateInput
             inputClassName={classes.dateInput}
