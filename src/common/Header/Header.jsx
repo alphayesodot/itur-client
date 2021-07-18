@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import dotenv from 'dotenv';
 import { useTranslation } from 'react-i18next';
-import NotificationsNoneIcon from '@material-ui/icons/NotificationsNone';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import { Link } from 'react-router-dom';
 import { Toolbar, AppBar, IconButton, Button } from '@material-ui/core';
@@ -48,13 +47,6 @@ const Header = () => {
     <AppBar position='static' className={classes.root}>
       <Toolbar className={classes.toolbar}>
         <div>
-          <IconButton
-            className={`${classes.menuButton} ${classes.notForMobile}`}
-            color='inherit'
-            aria-label='menu'
-          >
-            <NotificationsNoneIcon className={classes.secondary} />
-          </IconButton>
           <span className={`${classes.blessing} ${classes.notForMobile}`}>
             {getBlessing(date.getHours())}
           </span>

@@ -54,7 +54,7 @@ app.use('/api/event', eventRouter);
 app.use('/api/nodeGroup', nodeGroupRouter);
 app.use('/api/user', userRouter);
 app.use('/api/unit', unitRouter);
-app.use('/api/upload', uploadRouter);
+app.use('/api/data-upload', uploadRouter);
 app.use('/api/node', nodeRouter);
 app.use('/api/malshab', malshabRouter);
 app.use('/api/node', nodeRouter);
