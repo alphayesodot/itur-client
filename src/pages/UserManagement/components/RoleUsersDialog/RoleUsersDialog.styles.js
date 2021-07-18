@@ -11,6 +11,11 @@ const useStyles = makeStyles(() => ({
     alignItems: 'flex-start',
     marginTop: '8%',
   },
+  button: {
+    position: 'absolute',
+    right: '5rem',
+    top: '9rem',
+  },
 }));
 
 export default useStyles;
