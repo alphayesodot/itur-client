@@ -22,6 +22,12 @@ const useStyles = makeStyles(() => ({
   },
   unitTitle: {
     wordSpacing: '1rem',
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+  },
+  section: {
+    marginRight: '0.5rem',
   },
 }));
 

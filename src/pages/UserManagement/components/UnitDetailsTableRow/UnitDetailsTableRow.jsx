@@ -27,6 +27,7 @@ const UnitDetailsTableRow = ({ roleToDisplay, role, users, setRoleUsers, setUser
   const [usersToAdd, setUsersToAdd] = useState([]);
   const limitAmountOfUsersToAdd = 10;
   const limitAmountOfTotalUsers = 200;
+  const [isCreatingUser, setIsCreatingUser] = useState(false);
 
   useEffect(async () => {
     setUsersToAdd([]);
@@ -34,6 +35,7 @@ const UnitDetailsTableRow = ({ roleToDisplay, role, users, setRoleUsers, setUser
   }, [unit]);
 
   const createUsers = async () => {
+    setIsCreatingUser(true);
     const unitShortId = unit.id.substring(unit.id.length - 3);
     setUsersToAdd([]);
 
@@ -53,6 +55,8 @@ const UnitDetailsTableRow = ({ roleToDisplay, role, users, setRoleUsers, setUser
         }
       }).catch(() => {
         toast(t('text.userNotAddWarning'));
+      }).finally(() => {
+        setIsCreatingUser(false);
       });
     }
   };
@@ -101,7 +105,8 @@ const UnitDetailsTableRow = ({ roleToDisplay, role, users, setRoleUsers, setUser
                     variant='contained'
                     className={classes.addUsersButton}
                     disabled={numberOfUsersToAdd <= 0
-                      || users.length + numberOfUsersToAdd > limitAmountOfTotalUsers}
+                      || users.length + numberOfUsersToAdd > limitAmountOfTotalUsers 
+                      || isCreatingUser}
                     onClick={() => createUsers()}
                   >
                     {t('button.addUsers')}

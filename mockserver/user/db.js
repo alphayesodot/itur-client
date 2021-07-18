@@ -142,6 +142,7 @@ const users = [
   {
     id: '507f1f77bcf86cd799439031',
     name: 'MADA1ea1',
+    mail: 'MADA0ea2@iturradardev.onmicrosoft.com',
     role: Role.Mada,
   },
   {
