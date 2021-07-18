@@ -89,8 +89,11 @@ const Question = ({ question, answer, setAnswer }) => {
         <LaunchIcon />
       </Button>
       <Dialog open={open} onClose={handleClose} fullWidth maxWidth='sm'>
-        <DialogTitle>{question.title}</DialogTitle>
+        <DialogTitle style={{ padding: '24px 24px 0px 24px' }}>
+          {question.title}
+        </DialogTitle>
         <DialogContent>
+          <DialogContentText>{question.description}</DialogContentText>
           <DialogContentText>
             {renderQuestionInputsForType(question.type)}
           </DialogContentText>
