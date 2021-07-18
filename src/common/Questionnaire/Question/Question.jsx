@@ -34,7 +34,7 @@ const Question = ({ question, answer, setAnswer }) => {
         return (
           <AmericanAnswer
             options={question.options}
-            selectedValue={answer}
+            selectedValue={answer ?? ''}
             setSelectedValue={setAnswer}
             hasOther={question.hasOther}
           />

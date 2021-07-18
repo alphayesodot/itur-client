@@ -1,5 +1,5 @@
 /* eslint-disable react/no-array-index-key */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Radio from '@material-ui/core/Radio';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormGroup from '@material-ui/core/FormGroup';
@@ -12,6 +12,12 @@ const AmericanAnswer = ({
   hasOther,
 }) => {
   const [customAnswer, setCustomAnswer] = useState('');
+
+  useEffect(() => {
+    if (!options.includes(selectedValue) && selectedValue !== '') {
+      setCustomAnswer(selectedValue);
+    } else setCustomAnswer(' ');
+  }, [customAnswer]);
 
   const handleChange = (event) => {
     setSelectedValue(event.target.value);
