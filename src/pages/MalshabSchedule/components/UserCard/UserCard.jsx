@@ -76,7 +76,9 @@ const UserCard = ({ user, selectedDate, choosenNodeGroup }) => {
                         </IconButton>
                       </Tooltip>
                       <Typography component='span' className={classes.eventText}>
-                        {formatDate(event.time)}
+                        <Typography className={classes.timeText}>
+                          {formatDate(event.time)}
+                        </Typography>
                         <Typography className={classes.nameText}>
                           {formatName(`${event.malshabShort?.firstName} ${event.malshabShort?.lastName}`)}
                         </Typography>

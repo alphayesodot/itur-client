@@ -64,7 +64,11 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '0.875rem',
     wordSpacing: '0.1rem',
     display: 'flex',
+    alignItems: 'center',
     justifyContent: 'space-around',
+  },
+  timeText: {
+    minWidth: '2.75rem',
   },
   nameText: {
     fontSize: '0.875rem',
