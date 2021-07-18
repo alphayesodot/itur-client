@@ -14,7 +14,7 @@ class EventService {
   }
 
   static async getEventById(id) {
-    const { data } = await axios.get(`${config.apiUri}/api/event/${id}`, { headers });
+    const { data } = await axios.get(`${config.apiUri}/api/event/${id}`);
     return data;
   }
 

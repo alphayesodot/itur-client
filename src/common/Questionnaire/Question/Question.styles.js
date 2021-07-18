@@ -27,7 +27,6 @@ const useStyles = makeStyles(() => ({
     marginLeft: '1rem',
     cursor: 'inherit',
     textAlign: 'left',
-    direction: 'rtl',
     textOverflow: 'ellipsis',
     display: 'inline-block',
     alignSelf: 'center',
@@ -35,6 +34,8 @@ const useStyles = makeStyles(() => ({
   dateInput: {
     backgroundColor: 'transparent',
     fontSize: '12.8px',
+    direction: 'ltr',
+    width: 'fit-content',
     '& > input': { textAlign: 'right', width: '60px' },
     '& > div > button': { color: '#02aecd' },
   },

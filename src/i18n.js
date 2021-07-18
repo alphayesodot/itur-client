@@ -103,6 +103,13 @@ const resources = {
         finishInterview: 'סיום ראיון',
         attachmentDownloadErrorMessage: 'אירעה שגיאה בהורדת הקובץ. יש ליצור קשר עם צוות טכני',
         finishInterviewError: 'אירעה שגיאה בסיום הראיון. אנא נסו שנית או צרו קשר עם צוות טכני',
+        highlightsTexts: {
+          routeMotivation: 'מוטיבציה למסלול',
+          personalConnection: 'יצירת קשר בין-אישי',
+          respectfulBehaviorForAuthority: 'התנהגות מכבדת לסמכות',
+          calmUnderPressure: 'נינוחות/לחץ',
+          seriousness: 'רצינות',
+        },
       },
       sideBar: {
         luz: 'לו"ז',
@@ -139,8 +146,7 @@ const resources = {
           kaba: 'קב"א',
           dapar: 'דפ"ר',
           major: 'מגמה',
-          attachmentDownloadErrorMessage:
-            'אירעה שגיאה בהורדת הקובץ. יש ליצור קשר עם צוות טכני',
+          attachmentDownloadErrorMessage: 'אירעה שגיאה בהורדת הקובץ. יש ליצור קשר עם צוות טכני',
         },
       },
       button: {
@@ -218,8 +224,7 @@ const resources = {
         uploadAttachment: 'העלאת מסמך',
       },
       warnings: {
-        oneTimePassword:
-          'שים לב, לאחר סגירת החלונית לא יהיה ניתן לצפות בסיסמה בשנית. יש לשמור את הסיסמה במקום מאובטח.',
+        oneTimePassword: 'שים לב, לאחר סגירת החלונית לא יהיה ניתן לצפות בסיסמה בשנית. יש לשמור את הסיסמה במקום מאובטח.',
       },
       formTitle: {
         name: 'שם',

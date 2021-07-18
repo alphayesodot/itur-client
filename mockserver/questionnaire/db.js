@@ -11,7 +11,7 @@ const schemas = [
       },
     ],
     targetTypes: {},
-    nodes: [],
+    nodes: ['234abc1e810c19729de862ea'],
     createdBy: {},
     updatedBy: {},
   },

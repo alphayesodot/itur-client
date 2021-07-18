@@ -6,6 +6,7 @@ import moment from 'moment';
 import useStyles from './MalshabDetails.styles';
 import AttachmentService from '../../../../../services/attachment.service';
 import AlertSnackbar from './ErrorSnackbar';
+import MalshabInfoDialog from '../../../../../common/MalshabInfoDialog/MalshabInfoDialog';
 
 const enumTogender = (e) => (e === 1 ? 'זכר' : 'נקבה');
 
@@ -24,17 +25,19 @@ const getDataParameterListItem = (malshab, parameterName, classes, translation) 
         <li key={malshab[parameterName].length} className={classes.listItem}>
           {translation(`malshabInfo.${parameterName}`)}
           {malshab[parameterName].map((parameter) => (
-            <span key={parameter} className={`${classes.dataParameter} ${classes.miniParameter}`}>{parameter}</span>
+            <span key={parameter} className={`${classes.dataParameter} ${classes.miniParameter}`}>
+              {parameter}
+            </span>
           ))}
         </li>
       );
     }
-    return (
+    return malshab[parameterName].length > 0 ? (
       <li key={malshab[parameterName]} className={classes.listItem}>
         {translation(`malshabInfo.${getSingle(parameterName)}`)}
-        <span className={classes.dataParameter}>{malshab[parameterName]}</span>
+        <span className={classes.dataParameter}>{JSON.stringify(malshab[parameterName])}</span>
       </li>
-    );
+    ) : '';
   }
   return (
     <li key={malshab[parameterName]} className={classes.listItem}>
@@ -66,6 +69,7 @@ const MalshabDetails = ({ malshab }) => {
   const { t } = useTranslation();
   const [open, setOpen] = useState(false);
   const [displayedMalshab, setDisplayedMalshab] = useState();
+  const [openDialog, setOpenDialog] = useState();
 
   useEffect(() => {
     setDisplayedMalshab({
@@ -107,9 +111,19 @@ const MalshabDetails = ({ malshab }) => {
       <div className={`${classes.detailsContainer} ${classes.flex}`}>
         <div>
           <img src='more-details-card.svg' alt='' />
-          <Button disableRipple disableFocusRipple className={classes.moreDetailsBtn}>
+          <Button
+            disableRipple
+            disableFocusRipple
+            className={classes.moreDetailsBtn}
+            onClick={() => setOpenDialog(true)}
+          >
             {t('malshabInfo.moreDetails')}
           </Button>
+          <MalshabInfoDialog
+            malshab={malshab}
+            open={openDialog}
+            onClose={() => setOpenDialog(false)}
+          />
         </div>
         <span className={classes.moreDetails}>{t('malshabInfo.malshabDetails')}</span>
       </div>
@@ -117,25 +131,24 @@ const MalshabDetails = ({ malshab }) => {
         <div className={classes.fileSection}>
           <div className={classes.fileContainer}>
             <div>
-              {displayedMalshab?.attachments && displayedMalshab.attachments.map((attachment) => (
-                <Button
-                  disableRipple
-                  key={shortid.generate()}
-                  disableFocusRipple
-                  className={classes.relevantFiles}
-                  onClick={
-                    () => downloadAttachment(
+              {displayedMalshab?.attachments
+                && displayedMalshab.attachments.map((attachment) => (
+                  <Button
+                    disableRipple
+                    key={shortid.generate()}
+                    disableFocusRipple
+                    className={classes.relevantFiles}
+                    onClick={() => downloadAttachment(
                       displayedMalshab.identityNumber,
                       attachment,
                       getFilenameByKey(attachment),
                       () => openErrorSnackbar(),
-                    )
-                  }
-                >
-                  <img src='relevant-documents.svg' alt='' className={classes.fileImg} />
-                  {getFilenameByKey(attachment)}
-                </Button>
-              ))}
+                    )}
+                  >
+                    <img src='relevant-documents.svg' alt='' className={classes.fileImg} />
+                    {getFilenameByKey(attachment)}
+                  </Button>
+                ))}
             </div>
           </div>
         </div>
@@ -143,11 +156,9 @@ const MalshabDetails = ({ malshab }) => {
           {[...Array(Math.ceil(displayedMalshabParams.length / 3))].map(() => (
             <div key={shortid.generate()} className={classes.detailsRowItem}>
               <ul className={classes.ul}>
-                {
-                  displayedMalshabParams
-                    .splice(0, 3)
-                    .map((param) => getDataParameterListItem(displayedMalshab, param, classes, t))
-                }
+                {displayedMalshabParams
+                  .splice(0, 3)
+                  .map((param) => getDataParameterListItem(displayedMalshab, param, classes, t))}
               </ul>
             </div>
           ))}

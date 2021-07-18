@@ -17,5 +17,4 @@ const events = [
     occured: false,
   },
 ];
-console.log(events[0].time);
 export default events;

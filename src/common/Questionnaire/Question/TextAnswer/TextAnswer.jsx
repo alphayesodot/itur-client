@@ -8,8 +8,10 @@ const TextAnswer = ({ isShort, answer, setAnswer }) => {
   return (
     <TextField
       multiline={!isShort}
+      value={answer}
       className={classes.root}
       InputProps={{ className: classes.multilineColor }}
+      onChange={(e) => setAnswer(e.target.value)}
     />
   );
 };

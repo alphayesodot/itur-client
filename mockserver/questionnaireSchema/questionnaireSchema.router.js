@@ -5,4 +5,6 @@ const questionnaireSchemaRouter = express.Router();
 
 questionnaireSchemaRouter.get('/:id', QuestionnaireSchemaManager.getSchemaById);
 
+questionnaireSchemaRouter.get('/', QuestionnaireSchemaManager.getSchemaByNodeId);
+
 export default questionnaireSchemaRouter;

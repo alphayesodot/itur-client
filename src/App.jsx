@@ -9,7 +9,6 @@ import Luz from './pages/Luz/index';
 import AuthService from './services/auth.service';
 import UploadPage from './pages/FileUpload/index';
 import Report from './pages/Reports/index';
-import QuestionnaireComponent from './pages/QuestionnaireComponent/index';
 import ConfigService from './services/config.service';
 import Sidebar from './common/SideBarNav/SideBarNav';
 import Header from './common/Header/Header';
@@ -32,7 +31,6 @@ const App = () => {
       .then((res) => {
         if (res) {
           UserStoreInstance.setUserProfile(res);
-          console.log(res);
           setIsAuthenticated(true);
         } else {
           setIsAuthenticated(false);
@@ -69,7 +67,7 @@ const App = () => {
     },
     {
       path: configApp.sitesPostfixes.interview,
-      component: <InterviewDashboard eventId={1} />,
+      component: <InterviewDashboard eventId='60dc87e2d5b56536cc2313f4' />,
     },
     {
       path: configApp.sitesPostfixes.luz,
@@ -110,10 +108,6 @@ const App = () => {
     {
       path: configApp.sitesPostfixes.editQuestionnaire,
       component: <h1>editQuestionnaire</h1>,
-    },
-    {
-      path: configApp.sitesPostfixes.questionnaireComponent,
-      component: <QuestionnaireComponent />,
     },
   ];
 

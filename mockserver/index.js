@@ -31,7 +31,7 @@ app.get('/login/:userId', (req, res) => {
 // Config server
 app.get('/config', (req, res) => {
   res.send({
-    apiUri: `http://localhost:${config.port}`,
+    apiUri: 'http://localhost:7071',
     tokenName: config.tokenName,
     fileUpload: config.fileUpload,
     attachments: config.attachments,
@@ -48,6 +48,4 @@ app.use('/api/node', nodeRouter);
 app.use('/api/report', reportRouter);
 app.use('/api/questionnaire-schema', questionnaireSchemaRouter);
 
-app.listen(config.port, () =>
-  console.log(`Mock server listening on ${config.port}`)
-);
+app.listen(config.port, () => console.log(`Mock server listening on ${config.port}`));
