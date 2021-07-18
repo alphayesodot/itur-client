@@ -36,6 +36,18 @@ const SelectBox = ({
         multiple={multiSelect}
         onChange={handleChange}
         label={label}
+        MenuProps={{
+          anchorOrigin: {
+            vertical: 'bottom',
+            horizontal: 'right',
+          },
+          getContentAnchorEl: null,
+          PaperProps: {
+            style: {
+              maxHeight: 345,
+            },
+          },
+        }}
         renderValue={(selected) => (multiSelect ? selected.join(', ') : selected)}
       >
         {values.map((value) => (

@@ -180,7 +180,7 @@ const MalshabimCard = ({ interviewers, events, handleMalshabsToSchedule, isLoadi
           </span>
           {selectedScheduling && (
           <SelectBox
-            className={classes.selectScheduling}
+            className={`${classes.selectScheduling} ${classes.input}`}
             values={selectSchedulingOptions}
             selectedValues={selectedScheduling}
             setSelectedValues={handleSetSelectedValues}

@@ -7,7 +7,7 @@ const useStyles = makeStyles((theme) => ({
     width: '9rem',
     height: '9rem',
     borderRadius: '14px',
-    padding: '27px 29px 27px 29px',
+    padding: '1.7rem 1.8rem',
     position: 'relative',
     margin: '1rem',
     direction: 'ltr',

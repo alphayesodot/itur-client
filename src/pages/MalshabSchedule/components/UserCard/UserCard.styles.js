@@ -6,6 +6,9 @@ const useStyles = makeStyles((theme) => ({
     height: '21rem',
     backgroundColor: theme.palette.card.body,
     margin: '0.5% 0.25% 1% 1%',
+    [theme.breakpoints.between('sm', 'md')]: {
+      marginBottom: '0.5rem',
+    },
   },
   topRow: {
     display: 'flex',
