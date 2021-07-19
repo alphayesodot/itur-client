@@ -43,7 +43,8 @@ app.get('/login/role/:role', (req, res) => {
 // Config server
 app.get('/config', (req, res) => {
   res.send({
-    apiUri: `http://localhost:${config.port}`,
+    // apiUri: `http://localhost:${config.port}`,
+    apiUri: `http://localhost:${7071}`,
     tokenName: config.tokenName,
     fileUpload: config.fileUpload,
     attachments: config.attachments,
