@@ -8,6 +8,6 @@ questionnaireSchemaRouter.delete('/:id', QuestionnaireManager.deleteQuestionnair
 questionnaireSchemaRouter.post('/', QuestionnaireManager.create);
 questionnaireSchemaRouter.put('/:id', QuestionnaireManager.update);
 
-questionnaireSchemaRouter.get('/', QuestionnaireSchemaManager.getSchemaByNodeId);
+questionnaireSchemaRouter.get('/', QuestionnaireManager.getSchemaByNodeId);
 
 export default questionnaireSchemaRouter;

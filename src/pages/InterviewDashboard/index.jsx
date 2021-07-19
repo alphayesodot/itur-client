@@ -42,7 +42,6 @@ const InterviewDashboard = ({ eventId }) => {
 
   useEffect(async () => {
     if (questionnaireSchema && !questions) setQuestions(questionnaireSchema.questions);
-    console.log('questionnaire', questionnaireSchema);
   }, [questionnaireSchema]);
 
   useEffect(() => {
