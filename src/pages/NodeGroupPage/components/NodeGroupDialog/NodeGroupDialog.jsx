@@ -62,11 +62,12 @@ const NodeGroupDialog = ({ open,
          && user.role !== Role.ProfessionalRamad));
         NodeService.getNodes().then((nodesRes) => {
           if (currentNodeGroup) {
-            setNodes(nodesRes.filter((node) => !node.nodeGroupId || node.nodeGroupId === '' || node.nodeGroupId === currentNodeGroup.id));
+            setNodes(nodesRes.filter((node) => !node.nodeGroupId
+            || node.nodeGroupId === currentNodeGroup.id));
             setCheckedNodes(nodesRes.filter((node) => node.nodeGroupId === currentNodeGroup.id)
               .map((node) => node.id));
           } else {
-            setNodes(nodesRes.filter((node) => !node.nodeGroupId || node.nodeGroupId === ''));
+            setNodes(nodesRes.filter((node) => !node.nodeGroupId));
           }
         });
         if (currentNodeGroup) {
@@ -94,7 +95,8 @@ const NodeGroupDialog = ({ open,
         UserService.getUsers({ unitId: UserStoreInstance.userProfile.unitId }).then((users) => {
           setCheckedUsers(users);
         });
-        setNodes(allNodes.filter((node) => !node.nodeGroupId || node.nodeGroupId === '' || node.nodeGroupId === currentNodeGroup.id));
+        setNodes(allNodes.filter((node) => !node.nodeGroupId
+        || node.nodeGroupId === currentNodeGroup.id));
         setCheckedNodes(allNodes.filter((node) => node.nodeGroupId === currentNodeGroup.id)
           .map((node) => node.id));
       }
