@@ -35,15 +35,6 @@ const useStyles = makeStyles((theme) => ({
     height: 'calc(100vh - 23em)',
     minHeight: '20em',
   },
-  message: {
-    width: '100%',
-    fontSize: '2rem',
-    textAlign: 'center',
-    fontWeight: 700,
-    color: 'lightgrey',
-    userSelect: 'none',
-    margin: 'auto',
-  },
 }));
 
 export default useStyles;

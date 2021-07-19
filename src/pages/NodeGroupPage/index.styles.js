@@ -34,6 +34,7 @@ const useStyles = makeStyles((theme) => ({
   },
   tableContainer: {
     maxHeight: 'calc(100vh - 25rem)',
+    height: '100%',
     width: '60%',
     margin: 'auto',
   },

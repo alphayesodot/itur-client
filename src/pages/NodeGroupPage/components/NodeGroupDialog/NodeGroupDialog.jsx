@@ -7,10 +7,14 @@ import NodeService from '../../../../services/node.service';
 import useStyles from './NodeGroupDialog.styles';
 import CustomDialog from '../../../../common/CustomDialog/CustomDialog';
 import SelectCheckboxItem from '../SelectCheckboxItem/SelectCheckboxItem';
-import { UserService, Role } from '../../../../services/user.service';
+import UserService, { Role } from '../../../../services/user.service';
 import UserStoreInstance from '../../../../stores/User.store';
 
-const NodeGroupDialog = ({ open, onClose, updateAllNodeGroupList, currentNodeGroup }) => {
+const NodeGroupDialog = ({ open,
+  onClose,
+  currentNodeGroup,
+  setNodeGroupToAdd,
+  setNodeGroupToEdit }) => {
   const classes = useStyles();
   const { t } = useTranslation();
   const [nameValue, setNameValue] = useState('');
@@ -22,6 +26,7 @@ const NodeGroupDialog = ({ open, onClose, updateAllNodeGroupList, currentNodeGro
   const [checkedRiuAUsers, setCheckedRiuAUsers] = useState([]);
   const [checkedEvaluators, setCheckedEvaluators] = useState([]);
   const [checkedNodes, setCheckedNodes] = useState([]);
+  const [duringSending, setDuringSending] = useState(false);
 
   const setCheckedUsers = (allUsers) => {
     const tempPr = [];
@@ -47,57 +52,71 @@ const NodeGroupDialog = ({ open, onClose, updateAllNodeGroupList, currentNodeGro
   };
 
   useEffect(() => {
-    UserService.getUsersByUnitId(UserStoreInstance.userProfile.unitId).then((users) => {
-      setPrUsers(users.filter((user) => user.role === Role.ProfessionalRamad));
-      setRiuAUsers(users.filter((user) => user.role === Role.RamadIturAssistant));
-      setEvaluators(users.filter((user) => user.role !== Role.RamadIturAssistant
-       && user.role !== Role.ProfessionalRamad));
-      NodeService.getNodes().then((nodesRes) => {
+    try {
+      UserService.getUsers({ unitId: UserStoreInstance.userProfile.unitId }).then((users) => {
+        setPrUsers(users.filter((user) => user.role === Role.ProfessionalRamad));
+        setRiuAUsers(users.filter((user) => user.role === Role.RamadIturAssistant).map(
+          ((riu) => ({ id: riu.id, label: riu.name })),
+        ));
+        setEvaluators(users.filter((user) => user.role !== Role.RamadIturAssistant
+         && user.role !== Role.ProfessionalRamad));
+        NodeService.getNodes().then((nodesRes) => {
+          if (currentNodeGroup) {
+            setNodes(nodesRes.filter((node) => !node.nodeGroupId
+            || node.nodeGroupId === currentNodeGroup.id));
+            setCheckedNodes(nodesRes.filter((node) => node.nodeGroupId === currentNodeGroup.id)
+              .map((node) => node.id));
+          } else {
+            setNodes(nodesRes.filter((node) => !node.nodeGroupId));
+          }
+        });
         if (currentNodeGroup) {
-          setNodes(nodesRes.filter((node) => !node.nodeGroupId || node.nodeGroupId === '' || node.nodeGroupId === currentNodeGroup.id));
-          setCheckedNodes(nodesRes.filter((node) => node.nodeGroupId === currentNodeGroup.id)
-            .map((node) => node.id));
-        } else {
-          setNodes(nodesRes.filter((node) => !node.nodeGroupId || node.nodeGroupId === ''));
+          setCheckedUsers(users);
         }
       });
-      if (currentNodeGroup) {
-        setCheckedUsers(users);
-      }
-    });
+    } catch {
+      toast(t('error.server'));
+    }
   }, []);
 
   useEffect(async () => {
     if (!open) return;
-
-    const allNodes = await NodeService.getNodes();
-    if (!currentNodeGroup) {
-      setNameValue('');
-      setCheckedPrUsers([]);
-      setCheckedEvaluators([]);
-      setCheckedRiuAUsers([]);
-      setCheckedNodes([]);
-      setNodes(allNodes.filter((node) => !node.nodeGroupId || node.nodeGroupId === ''));
-    } else {
-      setNameValue(currentNodeGroup.name);
-      UserService.getUsersByUnitId(UserStoreInstance.userProfile.unitId).then((users) => {
-        setCheckedUsers(users);
-      });
-      setNodes(allNodes.filter((node) => !node.nodeGroupId || node.nodeGroupId === '' || node.nodeGroupId === currentNodeGroup.id));
-      setCheckedNodes(allNodes.filter((node) => node.nodeGroupId === currentNodeGroup.id)
-        .map((node) => node.id));
+    try {
+      const allNodes = await NodeService.getNodes();
+      if (!currentNodeGroup) {
+        setNameValue('');
+        setCheckedPrUsers([]);
+        setCheckedEvaluators([]);
+        setCheckedRiuAUsers([]);
+        setCheckedNodes([]);
+        setNodes(allNodes.filter((node) => !node.nodeGroupId || node.nodeGroupId === ''));
+      } else {
+        setNameValue(currentNodeGroup.name);
+        UserService.getUsers({ unitId: UserStoreInstance.userProfile.unitId }).then((users) => {
+          setCheckedUsers(users);
+        });
+        setNodes(allNodes.filter((node) => !node.nodeGroupId
+        || node.nodeGroupId === currentNodeGroup.id));
+        setCheckedNodes(allNodes.filter((node) => node.nodeGroupId === currentNodeGroup.id)
+          .map((node) => node.id));
+      }
+    } catch {
+      toast(t('error.server'));
     }
   }, [open]);
 
   const onCreationSubmit = async () => {
     try {
-      const nodeGroup = await NodeGroupService.createNodeGroup(nameValue);
-      nodeGroup.usersIds = [...checkedPrUsers, ...checkedRiuAUsers, ...checkedEvaluators];
-      await NodeGroupService.updateNodeGroup(nodeGroup.id, nodeGroup);
+      if (duringSending) return;
+      setDuringSending(true);
+      const createdNodeGroup = await NodeGroupService.createNodeGroup(nameValue);
+      createdNodeGroup.usersIds = [...checkedPrUsers, ...checkedRiuAUsers, ...checkedEvaluators];
+      await NodeGroupService.updateNodeGroup(createdNodeGroup.id, createdNodeGroup);
       checkedNodes.forEach(async (checkedNode) => {
-        await NodeGroupService.updateNode(nodeGroup.id, checkedNode);
+        await NodeGroupService.updateNode(createdNodeGroup.id, checkedNode);
       });
-      await updateAllNodeGroupList();
+      setNodeGroupToAdd({ ...createdNodeGroup });
+      setDuringSending(false);
       onClose();
     } catch {
       toast(t('error.server'));
@@ -106,6 +125,8 @@ const NodeGroupDialog = ({ open, onClose, updateAllNodeGroupList, currentNodeGro
 
   const onEditSubmit = async () => {
     try {
+      if (duringSending) return;
+      setDuringSending(true);
       const checkedUsersIds = [...checkedPrUsers, ...checkedRiuAUsers, ...checkedEvaluators];
       const usersToRemove = currentNodeGroup.usersIds.filter((id) => !checkedUsersIds.includes(id));
       const usersToAdd = checkedUsersIds.filter((id) => !currentNodeGroup.usersIds.includes(id));
@@ -115,7 +136,6 @@ const NodeGroupDialog = ({ open, onClose, updateAllNodeGroupList, currentNodeGro
         (node) => node.nodeGroupId === currentNodeGroup.id
         && !checkedNodes.some((checkedNode) => checkedNode === node.id),
       );
-      await NodeGroupService.updateNodeGroup(currentNodeGroup.id, { name: nameValue });
       usersToAdd.forEach(async (userId) => {
         await NodeGroupService.addUserToNodeGroup(currentNodeGroup.id, userId);
       });
@@ -128,7 +148,11 @@ const NodeGroupDialog = ({ open, onClose, updateAllNodeGroupList, currentNodeGro
       nodesToRemove.forEach(async (node) => {
         await NodeGroupService.updateNode('', node.id);
       });
-      await updateAllNodeGroupList();
+      const updatedNodeGroup = await NodeGroupService.updateNodeGroup(
+        currentNodeGroup.id, { name: nameValue },
+      );
+      setNodeGroupToEdit(updatedNodeGroup);
+      setDuringSending(false);
       onClose();
     } catch {
       toast(t('error.server'));
@@ -158,7 +182,7 @@ const NodeGroupDialog = ({ open, onClose, updateAllNodeGroupList, currentNodeGro
             checkedValuesIds={checkedRiuAUsers}
             updateCheckedValuesIds={setCheckedRiuAUsers}
             selectId='riua-select'
-            emptyMessege={t('message.noUsers')}
+            emptyMessage={t('message.noUsers')}
           />
         </div>
         <div className={classes.labeledInput}>
@@ -168,7 +192,7 @@ const NodeGroupDialog = ({ open, onClose, updateAllNodeGroupList, currentNodeGro
             checkedValuesIds={checkedPrUsers}
             updateCheckedValuesIds={setCheckedPrUsers}
             selectId='riu-select'
-            emptyMessege={t('message.noUsers')}
+            emptyMessage={t('message.noUsers')}
           />
         </div>
       </div>
@@ -179,7 +203,7 @@ const NodeGroupDialog = ({ open, onClose, updateAllNodeGroupList, currentNodeGro
           checkedValuesIds={checkedEvaluators}
           updateCheckedValuesIds={setCheckedEvaluators}
           selectId='evaluators-select'
-          emptyMessege={t('message.noUsers')}
+          emptyMessage={t('message.noUsers')}
         />
       </div>
       <div className={classes.labeledInput}>
@@ -189,7 +213,7 @@ const NodeGroupDialog = ({ open, onClose, updateAllNodeGroupList, currentNodeGro
           checkedValuesIds={checkedNodes}
           updateCheckedValuesIds={setCheckedNodes}
           selectId='nodes-select'
-          emptyMessege={t('title.noNodes')}
+          emptyMessage={t('message.noNodes')}
         />
       </div>
       <DialogActions classes={{ spacing: classes.actions }}>

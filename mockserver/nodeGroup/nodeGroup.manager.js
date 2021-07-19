@@ -6,10 +6,11 @@ import Role from '../user/enum.js';
 class NodeGroupManager {
   static async getNodeGroups(req, res) {
     const requester = jwt.decode(req.headers.authorization.split(' ')[1]);
+    const unitNodesGroup = nodeGroups.filter((nodeGroup) => nodeGroup.unitId === requester.unitId);
     if (requester.role === Role.Interviewer) {
-      res.send(nodeGroups[0]);
+      res.send(unitNodesGroup[0]);
     } else {
-      res.send(nodeGroups);
+      res.send(unitNodesGroup || 404);
     }
   }
   static async createNodeGroup(req, res) {
@@ -48,7 +49,7 @@ class NodeGroupManager {
       const nodeGroupIdx = nodeGroups.findIndex(
         (nodeGroup) => nodeGroup.id === req.params.id.toString(),
       );
-      const deletedNodeGroup = nodeGroups[nodeGroupIdx];
+      const deletedNodeGroup = nodeGroupIdx > -1 && nodeGroups[nodeGroupIdx];
       if (nodeGroupIdx > -1) {
         nodeGroups.splice(nodeGroupIdx, 1);
       }

@@ -2,10 +2,11 @@ import { useTranslation } from 'react-i18next';
 import { Button } from '@material-ui/core';
 import { toast } from 'react-toastify';
 import { useEffect, useState } from 'react';
-import { UserService } from '../../../../services/user.service';
+import UserService from '../../../../services/user.service';
 import DashboardCard from '../../../../common/DashboardCard/DashboardCard';
 import useStyles from './UnitCard.styles';
 import arrowImg from '../../../../utils/images/userManagement/thin-arrow-icon.svg';
+import config from '../../config';
 
 const UnitCard = ({ unit, isSelected, setSelectedUnit, users }) => {
   const { t } = useTranslation();
@@ -13,16 +14,27 @@ const UnitCard = ({ unit, isSelected, setSelectedUnit, users }) => {
   const [unitUsers, setUnitusers] = useState([]);
 
   useEffect(() => {
-    UserService.getUsersByUnitId(unit.id).then((res) => {
-      setUnitusers(res);
-    }).catch(() => {
-      toast(t('error.server'));
-    });
+    if (unit.id === config.superUnitId) {
+      UserService.getUsersByRoles(config.adminRoles).then((res) => {
+        setUnitusers(res);
+      }).catch(() => {
+        toast(t('error.server'));
+      });
+    } else {
+      UserService.getUsers({ unitId: unit.id }).then((res) => {
+        setUnitusers(res);
+      }).catch(() => {
+        toast(t('error.server'));
+      });
+    }
   }, [users]);
 
   return (
     <div className={classes.root}>
-      <DashboardCard className={isSelected ? classes.selectedCard : classes.card}>
+      <DashboardCard
+        onClick={() => { setSelectedUnit(unit); }}
+        className={isSelected ? classes.selectedCard : classes.card}
+      >
         <div className={classes.mainDiv}>
           <div>
             <h1 className={classes.unitName}>{unit.name}</h1>

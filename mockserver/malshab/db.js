@@ -28,8 +28,8 @@ const malshabs = [
   {
     identityNumber: '333333333',
     personalNumber: '0',
-    firstName: 'עדי',
-    lastName: 'ביטי',
+    firstName: 'חיים',
+    lastName: 'כהן',
     gender: 2,
     birthDate: '2003-05-09T00:00:07.996+00:00',
     medicalProfile: 82,

@@ -1,5 +1,8 @@
 import axios from 'axios';
+import dotenv from 'dotenv';
 import config from '../appConf';
+
+dotenv.config();
 
 const headers = {
   Accept: 'application/json',
@@ -7,11 +10,14 @@ const headers = {
 
 class ConfigService {
   static async setConfigVariables() {
-    // TODO: Change to /config
-    const { data } = await axios.get(config.configServerUri, { ...headers });
+    const { data } = await axios.get(
+      process.env.NODE_ENV === 'development'
+        ? 'http://localhost:8080/config'
+        : '/config',
+      { ...headers },
+    );
     config.apiUri = data.apiUri;
     config.tokenName = data.tokenName;
-    config.secret = data.secret;
     config.fileUpload = data.fileUpload;
     config.attachments = data.attachments;
   }

@@ -1,6 +1,6 @@
-import { createMuiTheme } from '@material-ui/core/styles';
+import { createTheme } from '@material-ui/core/styles';
 
-const theme = createMuiTheme({
+const theme = createTheme({
   direction: 'rtl',
   typography: {
     fontFamily: 'Assistant',
@@ -26,12 +26,23 @@ const theme = createMuiTheme({
     font: {
       secondary: '#8698ad',
     },
+    card: {
+      header: '#d0e1e3',
+      body: '#ecf4f6',
+      warning: '#ecd8d8',
+    },
+    textField: {
+      focused: '#27b9d1',
+    },
     table: {
       main: 'rgb(207,225,227)',
       secondary: 'rgb(244,245,247)',
     },
-    dialogs: {
+    dialog: {
       primary: 'rgb(0,175,204)',
+      secondary: 'rgb(138,138,138)',
+      secondaryMid: 'rgb(236,237,238)',
+      secondaryLight: 'rgb(244,245,247)',
     },
   },
 });

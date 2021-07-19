@@ -35,6 +35,13 @@ const useStyles = makeStyles((theme) => ({
   secondary: {
     color: theme.palette.primary.secondary,
   },
+  select: {
+    backgroundColor: 'white',
+    width: '15rem',
+    margin: '0 0.5rem',
+    borderRadius: '15px',
+    padding: '0.2rem 0',
+  },
 }));
 
 export default useStyles;

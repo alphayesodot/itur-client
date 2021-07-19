@@ -1,0 +1,8 @@
+{
+    "editor.codeActionsOnSave": { "source.fixAll.eslint": true }, 
+    "editor.formatOnSave": true, 
+    "eslint.alwaysShowStatus": true, 
+    "files.autoSave": "afterDelay",
+    "zenMode.hideStatusBar": false,
+    "editor.quickSuggestions": null
+}

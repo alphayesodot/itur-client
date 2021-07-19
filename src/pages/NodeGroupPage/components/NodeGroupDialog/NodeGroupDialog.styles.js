@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
   },
   saveButton: {
-    backgroundColor: theme.palette.dialogs.primary,
+    backgroundColor: theme.palette.dialog.primary,
     borderRadius: '25px',
     padding: '0.5rem 1rem',
     color: 'white',
@@ -42,8 +42,8 @@ const useStyles = makeStyles((theme) => ({
     border: '1px solid transparent',
     '&:hover': {
       backgroundColor: 'white',
-      color: theme.palette.dialogs.primary,
-      border: `1px solid ${theme.palette.dialogs.primary}`,
+      color: theme.palette.dialog.primary,
+      border: `1px solid ${theme.palette.dialog.primary}`,
     },
   },
 }));

@@ -5,12 +5,18 @@ import { generateId } from '../utils.js';
 
 class UserManager {
   static async getUsers(req, res) {
-    const unitUsers = users.filter((user) => user.unitId === req.query.unitId);
+    const requester = jwt.decode(req.headers.authorization.split(' ')[1]);
+    const unitId = req.query.unitId || requester.unitId;
+    const unitUsers = users.filter((user) => user.unitId === unitId);
     res.send(unitUsers || 404);
   }
 
   static async getUserById(req, res) {
     res.send(users.find((user) => user.id === req.params.id));
+  }
+
+  static async getUsersByRoles(req, res) {
+    res.send(users.filter((user) => req.body.roles.includes(user.role)));
   }
 
   static async createUser(req, res) {
@@ -22,7 +28,7 @@ class UserManager {
       unitId,
     };
     users.push(newUser);
-    newUser = { ...newUser, password: 'DFGJKL123456' };
+    newUser = { mail: `${newUser.name}@iturradardev.onmicrosoft.com`, password: 'DFGJKL123456' };
     res.send(newUser || 404);
   }
 

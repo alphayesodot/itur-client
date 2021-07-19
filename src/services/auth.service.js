@@ -2,14 +2,16 @@
 import jwt from 'jsonwebtoken';
 import Cookies from 'js-cookie';
 import axios from 'axios';
+import dotenv from 'dotenv';
 import config from '../appConf';
 
+dotenv.config();
 class AuthService {
   static async getAuthUser() {
     const cookie = Cookies.get(config.tokenName);
     if (!cookie) {
       this.redirect();
-    } else if (jwt.verify(cookie, config.secret)) {
+    } else {
       this.setAuthHeaders();
       return jwt.decode(cookie);
     }
@@ -32,9 +34,16 @@ class AuthService {
   }
 
   static async redirect() {
-    // window.location.replace('/login');
-    // TODO: Comment on push
-    window.location.replace('http://localhost:8080/login/0');
+    const userId = 1;
+    window.location.replace(
+      process.env.NODE_ENV === 'development'
+        ? `http://localhost:8080/login/${userId}`
+        : '/login',
+    );
+  }
+
+  static reconnect(newRole) {
+    window.location.replace(`http://localhost:8080/login/role/${newRole}`);
   }
 }
 

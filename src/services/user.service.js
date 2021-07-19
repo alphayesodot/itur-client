@@ -16,19 +16,24 @@ export const Role = {
   Psychologist: 'PSYCHOLOGIST',
   Diagnoser: 'DIAGNOSER',
   Technical: 'TECHNICAL',
+  Malshab: 'MALSHAB',
 };
 
-export class UserService {
+export default class UserService {
   static async getUserById(id) {
     const { data } = await axios.get(`${config.apiUri}/api/user/${id}`, { headers });
     return data;
   }
-  static async getUsersByUnitId(unitId) {
-    const res = await axios.get(`${await config.apiUri}/api/user/`, { headers, params: { unitId } });
-    return res?.data;
+  static async getUsers(params) {
+    const { data } = await axios.get(`${await config.apiUri}/api/user/`, { headers, params });
+    return data;
   }
-  static async createUser(unitId, role, name) {
-    const res = await axios.post(`${await config.apiUri}/api/user/`, { unitId, role, name }, { headers });
-    return res?.data;
+  static async createUser(userToAdd) {
+    const { data } = await axios.post(`${await config.apiUri}/api/user/`, userToAdd, { headers });
+    return data;
+  }
+  static async getUsersByRoles(roles) {
+    const { data } = await axios.post(`${await config.apiUri}/api/user/role`, { roles }, { headers });
+    return data;
   }
 }
