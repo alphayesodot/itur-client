@@ -20,7 +20,7 @@ class EventService {
 
   static async addEventNote(eventId, note) {
     const { data } = await axios.post(`${config.apiUri}/api/event/${eventId}/results`, {
-      results: { notes: [{ wroteBy: userStoreInstance.userProfile.userID, note }] },
+      result: note ? { notes: [{ wroteBy: userStoreInstance.userProfile.id, note }] } : {},
     });
     return data;
   }

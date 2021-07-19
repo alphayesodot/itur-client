@@ -27,26 +27,22 @@ const InterviewDashboard = ({ eventId }) => {
   const [answers, setAnswers] = useState([]);
 
   useEffect(async () => {
-    console.log('xxx answers', answers);
-  }, [answers]);
-
-  useEffect(async () => {
-    console.log('xxx note', note);
-  }, [note]);
-
-  useEffect(async () => {
     setEvent(await EventService.getEventById(eventId));
   }, []);
 
   useEffect(async () => {
     if (event) {
       if (!malshab) setMalshab(await MalshabService.getMalshabById(event.malshabShort.id));
-      if (!questionnaireSchema) setQuestionnaireSchema(await questionnaireService.getQuestionnaireByNodeId(event.node.id));
+      if (!questionnaireSchema) {
+        const questionnaireSchemas = await questionnaireService.getQuestionnaireByNodeId(event.node.id);
+        setQuestionnaireSchema(questionnaireSchemas[0]);
+      }
     }
   }, [event]);
 
   useEffect(async () => {
-    if (questionnaireSchema && !questions) setQuestions(questionnaireSchema[0].questions);
+    if (questionnaireSchema && !questions) setQuestions(questionnaireSchema.questions);
+    console.log('questionnaire', questionnaireSchema);
   }, [questionnaireSchema]);
 
   useEffect(() => {
@@ -64,6 +60,7 @@ const InterviewDashboard = ({ eventId }) => {
 
   const finishInterview = async () => {
     await EventService.addEventNote(eventId, note)
+      .then(() => questionnaireService.createQuestionnaireInstance({ schemaId: questionnaireSchema }))
       .then(() => history.push('/luz'))
       .catch(() => openErrorSnackbar());
   };

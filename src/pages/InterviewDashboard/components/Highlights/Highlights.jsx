@@ -18,7 +18,7 @@ const Highlights = () => {
       <div style={{ alignItems: 'center', display: 'flex', justifyContent: 'space-between', margin: '0 2rem 0 2rem' }}>
         <span style={{ color: '#FCB333', fontWeight: 500, minWeight: '6rem', fontSize: '1.2rem' }}>נקודות ודגשים</span>
       </div>
-      <div style={{ display: 'flex', marginRight: '4rem' }}>
+      <div style={{ display: 'flex', marginRight: '4rem', overflowX: 'auto' }}>
         {highlightsTexts.map((highlight) => (
           <div
             style={{
