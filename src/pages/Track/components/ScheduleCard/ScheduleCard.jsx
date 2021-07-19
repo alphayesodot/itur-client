@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Avatar, Typography } from '@material-ui/core';
+import { Avatar, Typography, Tooltip } from '@material-ui/core';
 import { toast } from 'react-toastify';
 import { useTranslation } from 'react-i18next';
 import DashboardCard from '../../../../common/DashboardCard/DashboardCard';
@@ -29,10 +29,19 @@ const ScheduleCard = ({ interviewer, date, nodeGroupId }) => {
   return (
     <DashboardCard className={classes.root}>
       <div className={classes.title}>
-        <Typography className={classes.name}>
-          {interviewer.name}
-        </Typography>
-        <Avatar alt={interviewer.name} src={avatar} className={classes.avatar} />
+        <div className={classes.info}>
+          <Typography className={classes.name}>
+            {interviewer.name}
+          </Typography>
+          <Tooltip title={interviewer.mail}>
+            <Typography className={classes.mail}>
+              {interviewer.mail}
+            </Typography>
+          </Tooltip>
+        </div>
+        <div className={classes.iconDiv}>
+          <Avatar alt={interviewer.name} src={avatar} />
+        </div>
       </div>
       <InterviewsList interviews={interviews} InterviewItem={InterviewItem} />
       <div className={classes.interviewsCount}>
