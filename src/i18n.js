@@ -113,6 +113,7 @@ const resources = {
           questions: 'שאלות',
           openQuestion: 'פתח',
           saveQuestion: 'שמור',
+          otherAnswer: 'אחר',
         },
         notesBox: {
           dontForgetNotesForMyself: 'לא לשכוח // הערות לעצמי בזמן הראיון',

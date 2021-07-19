@@ -1,5 +1,6 @@
 /* eslint-disable react/no-array-index-key */
 import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import Radio from '@material-ui/core/Radio';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormGroup from '@material-ui/core/FormGroup';
@@ -11,6 +12,7 @@ const AmericanAnswer = ({
   setSelectedValue,
   hasOther,
 }) => {
+  const { t } = useTranslation();
   const [customAnswer, setCustomAnswer] = useState('');
 
   useEffect(() => {
@@ -73,6 +75,7 @@ const AmericanAnswer = ({
                   setCustomAnswer(event.target.value);
                 }}
                 style={{ direction: 'rtl' }}
+                placeholder={t('interviewDashboard.questionnaire.otherAnswer')}
                 onFocus={(event) => setSelectedValue(event.target.value)}
                 onSelect={(event) => setSelectedValue(event.target.value)}
               />

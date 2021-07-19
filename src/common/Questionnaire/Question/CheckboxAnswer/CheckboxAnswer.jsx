@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import Checkbox from '@material-ui/core/Checkbox';
 import TextField from '@material-ui/core/TextField';
 import FormGroup from '@material-ui/core/FormGroup';
@@ -11,6 +12,7 @@ const CheckboxAnswer = ({
   setSelectedValues,
   hasOther,
 }) => {
+  const { t } = useTranslation();
   const [customAnswer, setCustomAnswer] = useState('');
   const handleChange = (event) => {
     const { value } = event.target;
@@ -66,8 +68,9 @@ const CheckboxAnswer = ({
             label={
               <TextField
                 value={customAnswer}
-                onChange={(e) => {
-                  setCustomAnswer(e.target.value);
+                placeholder={t('interviewDashboard.questionnaire.otherAnswer')}
+                onChange={(event) => {
+                  setCustomAnswer(event.target.value);
                 }}
                 style={{ direction: 'rtl' }}
               />
