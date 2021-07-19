@@ -66,13 +66,15 @@ const AmericanAnswer = ({
             label={
               <TextField
                 value={customAnswer}
-                onChange={(e) => {
+                onChange={(event) => {
                   if (selectedValue === customAnswer) {
-                    setSelectedValue(e.target.value);
+                    setSelectedValue(event.target.value);
                   }
-                  setCustomAnswer(e.target.value);
+                  setCustomAnswer(event.target.value);
                 }}
                 style={{ direction: 'rtl' }}
+                onFocus={(event) => setSelectedValue(event.target.value)}
+                onSelect={(event) => setSelectedValue(event.target.value)}
               />
             }
             labelPlacement='start'
