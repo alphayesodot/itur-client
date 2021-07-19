@@ -4,6 +4,11 @@ const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.primary.main,
     width: '100%',
+    direction: 'rtl',
+    minHeight: '5rem',
+    [theme.breakpoints.down('sm')]: {
+      minHeight: 'auto ',
+    },
   },
   content: {
     padding: '1.25em',
