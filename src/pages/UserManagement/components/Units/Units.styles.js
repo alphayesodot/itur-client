@@ -109,17 +109,22 @@ const useStyles = makeStyles((theme) => ({
       width: '100%',
     },
   },
-  noUnits: {
-    paddingTop: '3rem',
-    fontWeight: '2rem',
-    fontSize: 20,
-  },
   unitsCountDiv: {
     [theme.breakpoints.down('md')]: {
       justifyContent: 'flex-start',
       width: '100%',
       marginLeft: '1.2rem',
     },
+  },
+  isLoadingRootDiv: {
+    height: '63%',
+  },
+  idLoadingDiv: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '100%',
+
   },
 }));
 

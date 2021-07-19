@@ -7,7 +7,7 @@ const SelectCheckboxItem = ({
   checkedValuesIds,
   updateCheckedValuesIds,
   selectId,
-  emptyMessege }) => {
+  emptyMessage }) => {
   const { t } = useTranslation();
   const classes = useStyles();
   const menuItemHeight = 48;
@@ -42,7 +42,7 @@ const SelectCheckboxItem = ({
         onChange={handleOnChange}
         input={<Input classes={{ root: classes.input }} />}
         MenuProps={MenuProps}
-        renderValue={!data.length ? () => emptyMessege : () => t('message.chosen')}
+        renderValue={!data.length ? () => emptyMessage : () => t('message.chosen')}
         disabled={!data.length}
         displayEmpty={!data.length}
       >

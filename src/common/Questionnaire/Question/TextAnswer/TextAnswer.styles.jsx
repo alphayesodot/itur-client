@@ -9,7 +9,7 @@ const useStyles = makeStyles(() => ({
 
   multilineColor: {
     color: 'black',
-    padding: '15px',
+    padding: '10px',
     fontSize: '15px',
     width: '100%',
     '&:before': {

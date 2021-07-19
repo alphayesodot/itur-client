@@ -1,9 +1,9 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { Typography } from '@material-ui/core';
 import UserStore from '../../../../stores/User.store';
 import { Role } from '../../../../services/user.service';
 import DashboardCard from '../../../../common/DashboardCard/DashboardCard';
+import NoObjectsToShow from '../../../../common/NoObjectsToShow/NoObjectsToShow';
 import MalshabInfo from '../../../../common/MalshabInfo/MalshabInfo';
 import EventsSection from '../EventsSection/EventsSection';
 import Attachments from '../../../../common/Attachments/Attachments';
@@ -33,11 +33,7 @@ const MalshabData = ({ malshab }) => {
             </div>
           </div>
         )
-        : (
-          <Typography className={classes.message}>
-            {t('message.noMalshab')}
-          </Typography>
-        )}
+        : <NoObjectsToShow title={t('message.noMalshab')} />}
     </DashboardCard>
   );
 };

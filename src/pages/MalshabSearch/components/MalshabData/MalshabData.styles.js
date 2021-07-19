@@ -43,14 +43,6 @@ const useStyles = makeStyles((theme) => ({
       paddingRight: '0',
     },
   },
-  message: {
-    fontSize: '2rem',
-    textAlign: 'center',
-    fontWeight: 700,
-    color: 'lightgrey',
-    userSelect: 'none',
-    margin: 'auto',
-  },
 }));
 
 export default useStyles;

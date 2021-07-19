@@ -4,8 +4,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.primary.main,
     width: '100%',
-    height: '10%',
-    minHeight: '5rem',
+    height: '5rem',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'flex-end',
@@ -13,6 +12,7 @@ const useStyles = makeStyles((theme) => ({
   content: {
     padding: '1.25em',
     display: 'flex',
+    width: '100%',
     alignItems: 'center',
     justifyContent: 'flex-end',
   },

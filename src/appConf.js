@@ -2,6 +2,7 @@ const sitesPostfixes = {
   interview: '/interview',
   luz: '/luz',
   track: '/track',
+  nodeGroupSelection: '/node-group-selection',
   malshabSchedule: '/malshab-scheduling',
   malshabSearch: '/search-malshab',
   reports: '/reports',
@@ -11,7 +12,7 @@ const sitesPostfixes = {
   fileUpload: '/file-upload',
   userManagement: '/user-management',
   editQuestionnaire: '/edit-questionnaire',
-  questionnaireComponent: '/questionnaire',
+  questionnaires: '/questionnaires',
 };
 
 const config = {
@@ -22,6 +23,7 @@ const config = {
       {
         route: sitesPostfixes.luz,
         sideBar: true,
+        homePage: true,
       },
       {
         route: sitesPostfixes.interview,
@@ -40,6 +42,7 @@ const config = {
       {
         route: sitesPostfixes.nodeGroupCreation,
         sideBar: true,
+        homePage: true,
       },
       {
         route: sitesPostfixes.track,
@@ -47,6 +50,10 @@ const config = {
       },
       {
         route: sitesPostfixes.malshabSchedule,
+        sideBar: false,
+      },
+      {
+        route: sitesPostfixes.nodeGroupSelection,
         sideBar: true,
       },
       {
@@ -62,9 +69,14 @@ const config = {
       {
         route: sitesPostfixes.track,
         sideBar: true,
+        homePage: true,
       },
       {
         route: sitesPostfixes.malshabSchedule,
+        sideBar: false,
+      },
+      {
+        route: sitesPostfixes.nodeGroupSelection,
         sideBar: true,
       },
       {
@@ -80,6 +92,7 @@ const config = {
       {
         route: sitesPostfixes.track,
         sideBar: true,
+        homePage: true,
       },
       {
         route: sitesPostfixes.malshabSearch,
@@ -87,9 +100,14 @@ const config = {
       },
     ],
     MADA: [
+      // {
+      //   route: sitesPostfixes.posh,
+      //   sideBar: true,
+      // },
       {
-        route: sitesPostfixes.posh,
+        route: sitesPostfixes.questionnaires,
         sideBar: true,
+        homePage: true,
       },
       {
         route: sitesPostfixes.malshabSearch,
@@ -97,46 +115,40 @@ const config = {
       },
       {
         route: sitesPostfixes.reports,
-        sideBar: true,
-      },
-      {
-        route: sitesPostfixes.editQuestionnaire,
         sideBar: true,
       },
       {
         route: sitesPostfixes.preparationKit,
         sideBar: true,
       },
-      {
-        route: sitesPostfixes.nodeGroupCreation,
-        sideBar: true,
-      },
     ],
     ITUR: [
+      // {
+      //   route: sitesPostfixes.posh,
+      //   sideBar: true,
+      // },
       {
-        route: sitesPostfixes.posh,
+        route: sitesPostfixes.reports,
         sideBar: true,
+        homePage: true,
       },
       {
         route: sitesPostfixes.malshabSearch,
-        sideBar: true,
-      },
-      {
-        route: sitesPostfixes.reports,
         sideBar: true,
       },
     ],
     TECHNICAL: [
       {
+        route: sitesPostfixes.fileUpload,
+        sideBar: true,
+        homePage: true,
+      },
+      {
         route: sitesPostfixes.malshabSearch,
         sideBar: true,
       },
       {
         route: sitesPostfixes.reports,
-        sideBar: true,
-      },
-      {
-        route: sitesPostfixes.fileUpload,
         sideBar: true,
       },
       {
@@ -144,8 +156,18 @@ const config = {
         sideBar: true,
       },
     ],
-    PSYCHOLOGIST: [],
-    DIAGNOSER: [],
+    PSYCHOLOGIST: [{
+      route: sitesPostfixes.luz,
+      sideBar: true,
+      homePage: true,
+    },
+    ],
+    DIAGNOSER: [{
+      route: sitesPostfixes.luz,
+      sideBar: true,
+      homePage: true,
+    },
+    ],
   },
 };
 

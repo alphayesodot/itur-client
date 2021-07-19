@@ -1,11 +1,23 @@
-import React, { useState } from 'react';
+/* eslint-disable react/no-array-index-key */
+import React, { useState, useEffect } from 'react';
 import Radio from '@material-ui/core/Radio';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormGroup from '@material-ui/core/FormGroup';
-import { v4 as uuid } from 'uuid';
+import TextField from '@material-ui/core/TextField';
 
-const AmericanAnswer = ({ options }) => {
-  const [selectedValue, setSelectedValue] = useState('');
+const AmericanAnswer = ({
+  options,
+  selectedValue,
+  setSelectedValue,
+  hasOther,
+}) => {
+  const [customAnswer, setCustomAnswer] = useState('');
+
+  useEffect(() => {
+    if (!options.includes(selectedValue) && selectedValue !== '') {
+      setCustomAnswer(selectedValue);
+    } else setCustomAnswer(' ');
+  }, [customAnswer]);
 
   const handleChange = (event) => {
     setSelectedValue(event.target.value);
@@ -20,10 +32,10 @@ const AmericanAnswer = ({ options }) => {
       }}
     >
       <FormGroup style={{ direction: 'ltr' }}>
-        {options.map((option) => (
+        {options.map((option, index) => (
           <FormControlLabel
             value='start'
-            key={uuid()}
+            key={index}
             control={
               <Radio
                 checked={selectedValue === option}
@@ -38,6 +50,34 @@ const AmericanAnswer = ({ options }) => {
             labelPlacement='start'
           />
         ))}
+        {hasOther ?? (
+          <FormControlLabel
+            value='start'
+            key={options.length}
+            control={
+              <Radio
+                checked={selectedValue === customAnswer}
+                onChange={handleChange}
+                value={customAnswer}
+                size='small'
+                style={{ color: '#02aecd' }}
+              />
+            }
+            label={
+              <TextField
+                value={customAnswer}
+                onChange={(e) => {
+                  if (selectedValue === customAnswer) {
+                    setSelectedValue(e.target.value);
+                  }
+                  setCustomAnswer(e.target.value);
+                }}
+                style={{ direction: 'rtl' }}
+              />
+            }
+            labelPlacement='start'
+          />
+        )}
       </FormGroup>
     </div>
   );

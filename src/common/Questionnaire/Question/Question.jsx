@@ -31,13 +31,33 @@ const Question = ({ question, answer, setAnswer }) => {
   const renderQuestionInputsForType = (type) => {
     switch (type) {
       case 'MULTIPLE_CHOICE':
-        return <AmericanAnswer options={question.options} setAnswer={setAnswer} />;
+        return (
+          <AmericanAnswer
+            options={question.options}
+            selectedValue={answer ?? ''}
+            setSelectedValue={setAnswer}
+            hasOther={question.hasOther}
+          />
+        );
       case 'CHECKBOX':
-        return <CheckboxAnswer options={question.options} selectedValues={answer ?? []} setSelectedValues={setAnswer} />;
+        return (
+          <CheckboxAnswer
+            options={question.options}
+            selectedValues={answer ?? []}
+            setSelectedValues={setAnswer}
+            hasOther={question.hasOther}
+          />
+        );
       case 'LINEARSCALE':
         return <ScaleAnswer min={question.min} max={question.max} />;
       case 'OPEN':
-        return <TextAnswer isShort={question.isShort} answer={answer} setAnswer={setAnswer} />;
+        return (
+          <TextAnswer
+            isShort={question.isShort}
+            answer={answer}
+            setAnswer={setAnswer}
+          />
+        );
       case 'DATE':
         return (
           <DateInput
@@ -64,9 +84,14 @@ const Question = ({ question, answer, setAnswer }) => {
         <LaunchIcon />
       </Button>
       <Dialog open={open} onClose={handleClose} fullWidth maxWidth='sm'>
-        <DialogTitle>{question.title}</DialogTitle>
+        <DialogTitle style={{ padding: '24px 24px 0px 24px' }}>
+          {question.title}
+        </DialogTitle>
         <DialogContent>
-          <DialogContentText>{renderQuestionInputsForType(question.type)}</DialogContentText>
+          <DialogContentText>{question.description}</DialogContentText>
+          <DialogContentText>
+            {renderQuestionInputsForType(question.type)}
+          </DialogContentText>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color='primary'>

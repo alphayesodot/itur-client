@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Button, Typography } from '@material-ui/core';
+import { Button, CircularProgress } from '@material-ui/core';
 import DashboardCard from '../../../../common/DashboardCard/DashboardCard';
 import useStyles from './Units.styles';
 import SearchBar from '../SearchBar/SearchBar';
 import UnitCard from '../UnitCard/UnitCard';
+import NoObjectsToShow from '../../../../common/NoObjectsToShow/NoObjectsToShow';
 
-const units = ({ unitsArray, setOpenAddUnit, selectedUnit, setSelectedUnit, users }) => {
+const units = ({ unitsArray, setOpenAddUnit, selectedUnit, setSelectedUnit, users, isLoading }) => {
   const classes = useStyles();
   const { t } = useTranslation();
   const [displayedArray, setDisplayedArray] = useState(unitsArray);
@@ -32,19 +33,28 @@ const units = ({ unitsArray, setOpenAddUnit, selectedUnit, setSelectedUnit, user
           )
         </p>
       </div>
-      <div className={classes.unitsList}>
-        { displayedArray.length > 0 ? (
-          displayedArray.map((unit) => (
-            <UnitCard
-              unit={unit}
-              key={unit.id}
-              setSelectedUnit={setSelectedUnit}
-              isSelected={unit.id === selectedUnit.id}
-              users={users}
-            />
-          ))
-        ) : <Typography className={classes.noUnits}>{t('text.noUnits')}</Typography> }
-      </div>
+      {
+      isLoading ? (
+        <div className={classes.isLoadingRootDiv}>
+          <div className={classes.idLoadingDiv}><CircularProgress color='secondary' /></div>
+        </div>
+      )
+        : (
+          <div className={classes.unitsList}>
+            { displayedArray.length ? (
+              displayedArray.map((unit) => (
+                <UnitCard
+                  unit={unit}
+                  key={unit.id}
+                  setSelectedUnit={setSelectedUnit}
+                  isSelected={unit.id === selectedUnit.id}
+                  users={users}
+                />
+              ))
+            ) : <NoObjectsToShow title={t('text.noUnits')} />}
+          </div>
+        )
+}
       <div className={classes.addUnitDiv}>
         <Button variant='contained' className={classes.addUnitButton} onClick={() => setOpenAddUnit(true)}>
           {t('button.addUnit')}

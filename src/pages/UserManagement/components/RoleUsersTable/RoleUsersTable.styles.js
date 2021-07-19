@@ -11,6 +11,9 @@ const useStyles = makeStyles(() => ({
   cell: {
     fontWeight: 'bold',
   },
+  mail: {
+    wordBreak: 'break-all',
+  },
 }));
 
 export default useStyles;
