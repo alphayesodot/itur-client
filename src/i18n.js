@@ -70,6 +70,7 @@ const resources = {
         noNodes: 'אין שלבי מיון',
         noMalshab: 'אין מלש"ב להצגה',
         noEvents: 'אין ראיונות',
+        noEventsInDate: 'אין ראיונות בתאריך הנבחר',
       },
       headerTitles: {
         addUsers: 'הוספת משתמשים',

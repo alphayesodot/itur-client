@@ -96,7 +96,7 @@ const EventsSection = ({ malshabId }) => {
             ))
           ) : (
             <Typography className={classes.message}>
-              {t('message.noEvents')}
+              {t('message.noEventsInDate')}
             </Typography>
           )}
         </DashboardCard>
