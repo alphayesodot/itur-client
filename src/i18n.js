@@ -122,6 +122,7 @@ const resources = {
         newQuestionnaire: 'שאלון חדש',
         createReport: 'יצירת דוח',
         saveQuestionnaire: 'שמירת שאלון',
+        showAll: 'הצג הכל',
       },
       day: {
         1: 'ראשון',

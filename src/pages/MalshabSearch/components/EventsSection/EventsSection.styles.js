@@ -69,6 +69,28 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: '600',
     color: theme.palette.primary.main,
   },
+  showAllButton: {
+    height: '1.5rem',
+    transitionProperty: 'color, background-color, opacity',
+    transitionDuration: '.4s',
+    transitionTimingFunction: 'ease',
+    color: theme.palette.primary.main,
+
+    '&.Mui-selected': {
+      backgroundColor: theme.palette.secondary.light,
+      color: theme.palette.primary.main,
+
+      '&:hover': {
+        backgroundColor: theme.palette.secondary.light,
+        opacity: 0.8,
+      },
+    },
+  },
+  sectionMenu: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'baseline',
+  },
 }));
 
 export default useStyles;

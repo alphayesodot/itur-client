@@ -2,24 +2,22 @@ import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
 import { useHistory } from 'react-router-dom';
-import {
-  Typography,
-  Divider,
-  Button,
-  Tooltip,
-  IconButton,
-} from '@material-ui/core';
+import Divider from '@material-ui/core/Divider';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+import ToggleButton from '@material-ui/lab/ToggleButton';
+import Tooltip from '@material-ui/core/Tooltip';
+
 import Calender from '../Calender/Calender';
 import play from '../../../../utils/images/schedule/play-button.svg';
 import DashboardCard from '../../../../common/DashboardCard/DashboardCard';
 import EventService from '../../../../services/event.service';
 import useStyles from './EventsSection.styles';
 
-const getSortedEvents = (events) =>
-  events.sort(
-    (first, second) =>
-      new Date(second.time).getTime() - new Date(first.time).getTime(),
-  );
+const getSortedEvents = (events) => events.sort(
+  (first, second) => new Date(second.time).getTime() - new Date(first.time).getTime(),
+);
 
 const EventsSection = ({ malshabId }) => {
   const classes = useStyles();
@@ -27,6 +25,7 @@ const EventsSection = ({ malshabId }) => {
   const [events, setEvents] = useState([]);
   const [showedEvents, setShowedEvents] = useState([]);
   const [selectedDate, setSelectedDate] = useState(new Date());
+  const [showAll, setShowAll] = useState(false);
   const { t } = useTranslation();
 
   useEffect(() => {
@@ -40,13 +39,15 @@ const EventsSection = ({ malshabId }) => {
   }, [malshabId]);
 
   useEffect(() => {
-    setShowedEvents(
-      events.filter(
-        (event) =>
-          new Date(event.time).toDateString() === selectedDate.toDateString(),
-      ),
-    );
-  }, [events, selectedDate]);
+    if (showAll) setShowedEvents(events);
+    else {
+      setShowedEvents(
+        events.filter(
+          (event) => new Date(event.time).toDateString() === selectedDate.toDateString(),
+        ),
+      );
+    }
+  }, [events, selectedDate, showAll]);
 
   return (
     <div className={classes.root}>
@@ -60,9 +61,19 @@ const EventsSection = ({ malshabId }) => {
         </div>
       )}
       <div className={classes.mainDiv}>
-        <Typography className={classes.sectionTitle}>
-          {t('title.interviewsHistory')}
-        </Typography>
+        <div className={classes.sectionMenu}>
+          <Typography className={classes.sectionTitle}>
+            {t('title.interviewsHistory')}
+          </Typography>
+          <ToggleButton
+            size='small'
+            className={classes.showAllButton}
+            selected={showAll}
+            onChange={() => setShowAll((oldShowAll) => !oldShowAll)}
+          >
+            <Typography>{t('button.showAll')}</Typography>
+          </ToggleButton>
+        </div>
         <DashboardCard className={classes.card}>
           {showedEvents.length ? (
             showedEvents.map((event) => (
