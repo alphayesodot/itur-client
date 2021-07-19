@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('lg')]: {
       minHeight: 'auto',
     },
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       padding: '1%',
       justifyContent: 'center',
     },
