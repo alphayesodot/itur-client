@@ -5,6 +5,7 @@ import {
   TextField,
   IconButton,
   Button,
+  Tooltip,
 } from '@material-ui/core';
 import { toast } from 'react-toastify';
 import { useState, useEffect } from 'react';
@@ -13,6 +14,8 @@ import useStyles from './UnitDetailsTableRow.styles.js';
 import UserService from '../../../../services/user.service';
 import RoleUsersDialog from '../RoleUsersDialog/RoleUsersDialog';
 import NewUsersDialog from '../NewUsersDialog/NewUsersDialog';
+import TooltipButton from '../../../../common/TooltipButton/TooltipButton.jsx';
+import config from '../../config';
 
 const UnitDetailsTableRow = ({ roleToDisplay, role, users, setRoleUsers, setUsers, unit }) => {
   const { t } = useTranslation();
@@ -22,6 +25,9 @@ const UnitDetailsTableRow = ({ roleToDisplay, role, users, setRoleUsers, setUser
   const [openDialog, setOpenDialog] = useState(false);
   const [openNewUsersDialog, setOpenNewUsersDialog] = useState(false);
   const [usersToAdd, setUsersToAdd] = useState([]);
+  const limitAmountOfUsersToAdd = 10;
+  const limitAmountOfTotalUsers = 200;
+  const [isCreatingUser, setIsCreatingUser] = useState(false);
 
   useEffect(async () => {
     setUsersToAdd([]);
@@ -29,12 +35,18 @@ const UnitDetailsTableRow = ({ roleToDisplay, role, users, setRoleUsers, setUser
   }, [unit]);
 
   const createUsers = async () => {
+    setIsCreatingUser(true);
     const unitShortId = unit.id.substring(unit.id.length - 3);
     setUsersToAdd([]);
 
     for (let userIndex = 1; userIndex <= numberOfUsersToAdd; userIndex += 1) {
       const userName = `${role}${unitShortId}${users.length + userIndex}`;
-      UserService.createUser(unit.id, role, userName).then((newUser) => {
+      UserService.createUser(
+        unit.id === config.superUnitId
+          ? { role, name: userName }
+          : { unitId: unit.id, role, name: userName },
+      ).then((res) => {
+        const newUser = { ...res, role };
         setRoleUsers((prevUsersList) => [...prevUsersList, newUser]);
         setUsers((prevUsersList) => [...prevUsersList, newUser]);
         setUsersToAdd((prevUsersRoleList) => [...prevUsersRoleList, newUser]);
@@ -43,6 +55,8 @@ const UnitDetailsTableRow = ({ roleToDisplay, role, users, setRoleUsers, setUser
         }
       }).catch(() => {
         toast(t('text.userNotAddWarning'));
+      }).finally(() => {
+        setIsCreatingUser(false);
       });
     }
   };
@@ -73,21 +87,31 @@ const UnitDetailsTableRow = ({ roleToDisplay, role, users, setRoleUsers, setUser
           <div className={classes.hiddenElements}>
             {openAdd && (
               <>
-                <TextField
-                  type='number'
-                  InputProps={{ inputProps: { min: 0 }, classes: { underline: classes.underline } }}
-                  className={classes.numberOfRoleUsers}
-                  value={numberOfUsersToAdd}
-                  onChange={(event) => setNumberOfUsersToAdd(Number(event.target.value))}
-                />
-                <Button
-                  variant='contained'
-                  className={classes.addUsersButton}
-                  disabled={numberOfUsersToAdd <= 0}
-                  onClick={() => createUsers()}
-                >
-                  {t('button.addUsers')}
-                </Button>
+                <Tooltip title={t('toolTip.limitUsers', { usersLimit: limitAmountOfUsersToAdd })}>
+                  <TextField
+                    type='number'
+                    InputProps={{ inputProps: { min: 0, max: limitAmountOfUsersToAdd },
+                      classes: { underline: classes.underline } }}
+                    className={classes.numberOfRoleUsers}
+                    value={numberOfUsersToAdd}
+                    onKeyDown={(event) => {
+                      event.preventDefault();
+                    }}
+                    onChange={(event) => setNumberOfUsersToAdd(Number(event.target.value))}
+                  />
+                </Tooltip>
+                <Tooltip title={users.length + numberOfUsersToAdd > limitAmountOfTotalUsers ? t('toolTip.totalLimitUsers', { usersLimit: limitAmountOfTotalUsers }) : ''}>
+                  <TooltipButton
+                    variant='contained'
+                    className={classes.addUsersButton}
+                    disabled={numberOfUsersToAdd <= 0
+                      || users.length + numberOfUsersToAdd > limitAmountOfTotalUsers
+                      || isCreatingUser}
+                    onClick={() => createUsers()}
+                  >
+                    {t('button.addUsers')}
+                  </TooltipButton>
+                </Tooltip>
               </>
             )}
           </div>

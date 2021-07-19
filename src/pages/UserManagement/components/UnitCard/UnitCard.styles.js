@@ -50,6 +50,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: '#203141',
     height: '5rem',
     width: '14rem',
+    cursor: 'pointer',
   },
   chooseIcon: {
     height: '1rem',
@@ -59,6 +60,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.section.primary,
     height: '5rem',
     width: '14rem',
+    cursor: 'pointer',
   },
   chooseButton: {
     '&:hover': {

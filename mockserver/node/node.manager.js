@@ -5,15 +5,29 @@ import Role from '../user/enum.js';
 class NodeManager {
   static async getNodes(req, res) {
     const requester = jwt.decode(req.headers.authorization.split(' ')[1]);
+    const { nodeGroupId, unitId } = req.query;
     if ([
       Role.Interviewer,
       Role.Technical,
       Role.Mada].includes(requester.role)) {
-      res.send(nodes);
+      res.send(nodes.filter((node) => {
+        if (nodeGroupId && node.nodeGroupId !== nodeGroupId) {
+          return false;
+        }
+        if (unitId && node.unitId !== unitId) {
+          return false;
+        }
+        return true;
+      }));
     } else if (
       [Role.RamadIturOfUnit, Role.ProfessionalRamad, Role.RamadIturAssistant]
         .includes(requester.role)) {
-      const nodesOfUnit = nodes.filter((node) => node.unitId === requester.unitId);
+      const nodesOfUnit = nodes.filter((node) => {
+        if (nodeGroupId && node.nodeGroupId !== nodeGroupId) {
+          return false;
+        }
+        return node.unitId === requester.unitId;
+      });
       res.send(nodesOfUnit);
     } else {
       res.status(400).send('BROKEN');

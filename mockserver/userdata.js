@@ -11,7 +11,7 @@ const users = [
     id: 1,
     name: 'רמד איתור ביחידה 0',
     role: Role.RamadIturOfUnit,
-    unitId: '507f191e810c19729de862ea',
+    unitId: '507f191e810c19729de861ea',
   },
   {
     id: 2,
@@ -22,7 +22,7 @@ const users = [
   {
     id: 3,
     name: 'רמד איתור מקצועי ביחידה 0',
-    role: Role.RamadIturOfUnit,
+    role: Role.ProfessionalRamad,
     unitId: '507f191e810c19729de861ea',
   },
   {
@@ -51,6 +51,11 @@ const users = [
     id: 8,
     name: 'יוזר טכני',
     role: Role.Technical,
+  },
+  {
+    id: 9,
+    name: 'יוזר רמד מקצועי',
+    role: Role.ProfessionalRamad,
   },
 ];
 

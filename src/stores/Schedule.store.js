@@ -1,11 +1,13 @@
-import { makeAutoObservable } from 'mobx';
+import { makeObservable, observable } from 'mobx';
 import EventService from '../services/event.service';
 
 class ScheduleStore {
-  schedules;
+  schedules = [];
 
   constructor() {
-    makeAutoObservable(this);
+    makeObservable(this, {
+      schedules: observable,
+    });
   }
 
   getScheduleOfNodeGroup(date, nodeGroupId) {
@@ -30,10 +32,6 @@ class ScheduleStore {
   }
 
   async addNewSchedule(date, nodeGroup, interviewers) {
-    if (!this.schedules) {
-      this.schedules = [];
-    }
-
     const schedule = await Promise.all(
       interviewers.map(async (interviewer) => ({
         interviewerId: interviewer.id,
@@ -43,12 +41,42 @@ class ScheduleStore {
         }),
       })),
     );
-    this.schedules.push({
+
+    this.schedules = [...this.schedules, {
       date: new Date(date),
       nodeGroupId: nodeGroup.id,
       schedule,
-    });
+    }];
   }
+
+  removeInterviewFromSchedule = (searchedNodeGroupId, searchedDate, userId, eventId) => {
+    this.schedules = this.schedules.map((schedule) => {
+      if (searchedNodeGroupId === schedule.nodeGroupId
+        && new Date(searchedDate).toDateString() === new Date(schedule.date).toDateString()) {
+        const searchedSchedule = schedule.schedule
+          .find(({ interviewerId }) => interviewerId === userId);
+        if (searchedSchedule) {
+          searchedSchedule.interviews = searchedSchedule.interviews
+            .filter((({ id }) => id !== eventId));
+        }
+      }
+      return schedule;
+    });
+  };
+
+  addInterviewerToSchedule = (searchedNodeGroupId, searchedDate, userId, newEvent) => {
+    this.schedules = this.schedules.map((schedule) => {
+      if (searchedNodeGroupId === schedule.nodeGroupId
+        && new Date(searchedDate).toDateString() === new Date(schedule.date).toDateString()) {
+        const searchedSchedule = schedule.schedule
+          .find(({ interviewerId }) => interviewerId === userId);
+        if (searchedSchedule) {
+          searchedSchedule.interviews.push(newEvent);
+        }
+      }
+      return schedule;
+    });
+  };
 }
 
 const ScheduleStoreInstance = new ScheduleStore();

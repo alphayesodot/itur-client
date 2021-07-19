@@ -25,11 +25,15 @@ export default class UserService {
     return data;
   }
   static async getUsers(params) {
-    const res = await axios.get(`${await config.apiUri}/api/user/`, { headers, params });
-    return res?.data;
+    const { data } = await axios.get(`${await config.apiUri}/api/user/`, { headers, params });
+    return data;
   }
-  static async createUser(unitId, role, name) {
-    const res = await axios.post(`${await config.apiUri}/api/user/`, { unitId, role, name }, { headers });
-    return res?.data;
+  static async createUser(userToAdd) {
+    const { data } = await axios.post(`${await config.apiUri}/api/user/`, userToAdd, { headers });
+    return data;
+  }
+  static async getUsersByRoles(roles) {
+    const { data } = await axios.post(`${await config.apiUri}/api/user/role`, { roles }, { headers });
+    return data;
   }
 }
