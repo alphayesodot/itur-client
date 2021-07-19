@@ -49,7 +49,14 @@ const Question = ({ question, answer, setAnswer }) => {
           />
         );
       case 'LINEARSCALE':
-        return <ScaleAnswer min={question.min} max={question.max} />;
+        return (
+          <ScaleAnswer
+            min={question.min}
+            max={question.max}
+            selectedValue={answer ?? ''}
+            setSelectedValue={setAnswer}
+          />
+        );
       case 'OPEN':
         return (
           <TextAnswer

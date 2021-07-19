@@ -1,19 +1,18 @@
-import React, { useState } from 'react';
+/* eslint-disable prefer-spread */
+import React from 'react';
 import Radio from '@material-ui/core/Radio';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Typography from '@material-ui/core/Typography';
 import { v4 as uuid } from 'uuid';
 import useStyles from './ScaleAnswer.styles';
 
-const ScaleAnswer = ({ min, max }) => {
+const ScaleAnswer = ({ selectedValue, setSelectedValue, min, max }) => {
   const classes = useStyles();
-  const [selectedValue, setSelectedValue] = useState('');
 
   const handleChange = (event) => {
     setSelectedValue(event.target.value);
   };
 
-  // eslint-disable-next-line prefer-spread
   const rangeArr = Array.apply(null, { length: max.value + 1 })
     .map(Number.call, Number)
     .slice(min.value);
@@ -28,7 +27,7 @@ const ScaleAnswer = ({ min, max }) => {
       }}
     >
       <Typography className={classes.label}>{min.tag}</Typography>
-      <div>
+      <div className={classes.scale}>
         {rangeArr.map((val) => (
           <FormControlLabel
             value='start'
