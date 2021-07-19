@@ -21,15 +21,16 @@ class UserManager {
 
   static async createUser(req, res) {
     const { unitId, role, name, displayUserName } = req.body;
+    const mail = `${displayUserName}@iturradardev.onmicrosoft.com`;
     let newUser = {
       id: generateId(),
       name,
       role,
       unitId,
-      displayUserName,
+      mail,
     };
     users.push(newUser);
-    newUser = { mail: `${newUser.name}@iturradardev.onmicrosoft.com`, password: 'DFGJKL123456', displayUserName };
+    newUser = { mail, password: 'DFGJKL123456' };
     res.send(newUser || 404);
   }
 
