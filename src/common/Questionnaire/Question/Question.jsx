@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
-import ListItem from '@material-ui/core/ListItem';
+import { useTranslation } from 'react-i18next';
 import { Typography } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
@@ -18,6 +18,7 @@ import DateInput from '../../DateInput/DateInput';
 
 const Question = ({ question, answer, setAnswer }) => {
   const classes = useStyles();
+  const { t } = useTranslation();
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -92,7 +93,7 @@ const Question = ({ question, answer, setAnswer }) => {
         color='secondary'
         onClick={handleClickOpen}
       >
-        פתח
+        {t('interviewDashboard.questionnaire.openQuestion')}
         <LaunchIcon />
       </Button>
       <Dialog open={open} onClose={handleClose} fullWidth maxWidth='sm'>
@@ -107,7 +108,7 @@ const Question = ({ question, answer, setAnswer }) => {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color='primary'>
-            Submit
+          {t('interviewDashboard.questionnaire.saveQuestion')}
           </Button>
         </DialogActions>
       </Dialog>

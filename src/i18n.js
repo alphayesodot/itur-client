@@ -7,7 +7,8 @@ const resources = {
       error: {
         server: 'קרתה תקלה. נסו שוב מאוחר יותר',
         scheduleConflict: 'לא ניתן לשבץ למראיין ראיונות לאותם השעות',
-        scheduleConflictMalshab: 'לא ניתן לשבץ את המלשב/ית: {{malshabFullName}}',
+        scheduleConflictMalshab:
+          'לא ניתן לשבץ את המלשב/ית: {{malshabFullName}}',
         invalidQuestionnaire: 'שאלון לא תקין',
       },
       title: {
@@ -110,6 +111,8 @@ const resources = {
         questionnaire: {
           expandedQuestionnaire: 'שאלון מורחב',
           questions: 'שאלות',
+          openQuestion: 'פתח',
+          saveQuestion: 'שמור',
         },
         notesBox: {
           dontForgetNotesForMyself: 'לא לשכוח // הערות לעצמי בזמן הראיון',
