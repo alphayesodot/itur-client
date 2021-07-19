@@ -4,16 +4,20 @@ import { toast } from 'react-toastify';
 import useStyles from './NodeGroupOptionsButton.styles';
 import deleteImg from '../../../../utils/images/general/trash.svg';
 import editImg from '../../../../utils/images/general/edit-regular.svg';
-import NodeGroupService from '../../../../services/nodeGroup.service';
 import NodeGroupDialog from '../NodeGroupDialog/NodeGroupDialog';
 import UserStoreInstance from '../../../../stores/User.store';
 import { Role } from '../../../../services/user.service';
 import OptionsButton from '../../../../common/OptionButton/OptionButton';
 
-const NodeGroupOptionsButton = ({ nodeGroup, createAllNodeGroupList, setIdToDelete }) => {
+const NodeGroupOptionsButton = ({
+  nodeGroup,
+  setNodeGroupToDelete,
+  setNodeGroupToAdd,
+  setNodeGroupToEdit,
+  duringDeletion,
+  setDuringDeletion }) => {
   const { t } = useTranslation();
   const classes = useStyles();
-  const [duringDeletion, setDuringDeletion] = useState(false);
   const [openEditDialog, setOpenEditDialog] = useState(false);
   const userRole = UserStoreInstance.userProfile.role;
 
@@ -21,10 +25,7 @@ const NodeGroupOptionsButton = ({ nodeGroup, createAllNodeGroupList, setIdToDele
     try {
       if (!duringDeletion) {
         setDuringDeletion(true);
-        NodeGroupService.deleteNodeGroup(nodeGroup.id).then(async () => {
-          setIdToDelete(nodeGroup.id);
-          setDuringDeletion(false);
-        });
+        setNodeGroupToDelete({ ...nodeGroup });
       }
     } catch {
       toast('error.server');
@@ -57,8 +58,9 @@ const NodeGroupOptionsButton = ({ nodeGroup, createAllNodeGroupList, setIdToDele
     <NodeGroupDialog
       open={openEditDialog}
       onClose={() => { setOpenEditDialog(false); }}
-      createAllNodeGroupList={createAllNodeGroupList}
       currentNodeGroup={nodeGroup}
+      setNodeGroupToAdd={setNodeGroupToAdd}
+      setNodeGroupToEdit={setNodeGroupToEdit}
     />
   );
 
