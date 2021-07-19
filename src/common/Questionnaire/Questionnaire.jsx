@@ -1,5 +1,5 @@
 /* eslint-disable react/no-array-index-key */
-import React, { useState } from 'react';
+import React from 'react';
 import { Toolbar, Container, Typography } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 import List from '@material-ui/core/List';
@@ -7,10 +7,9 @@ import DashboardCard from '../DashboardCard/DashboardCard';
 import useStyles from './Questionnaire.styles';
 import Question from './Question/Question';
 
-const Questionnaire = ({ questions }) => {
+const Questionnaire = ({ questions, setQuestions }) => {
   const classes = useStyles();
   const { t } = useTranslation();
-  const [answers, setAnswers] = useState([]);
 
   return (
     <DashboardCard className={classes.mainContainer}>
@@ -32,11 +31,11 @@ const Questionnaire = ({ questions }) => {
             <Question
               question={question}
               key={index}
-              answer={answers[index]}
+              answer={questions[index].answer}
               setAnswer={(answer) => {
-                const newAnswers = answers.slice();
-                newAnswers[index] = answer;
-                setAnswers(newAnswers);
+                const newQuestions = questions.slice();
+                newQuestions[index].answer = answer;
+                setQuestions(newQuestions);
               }}
             />
           ))}
