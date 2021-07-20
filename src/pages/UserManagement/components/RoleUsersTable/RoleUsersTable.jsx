@@ -26,7 +26,7 @@ const RoleUsersTable = ({ users }) => {
         </TableHead>
         <TableBody>
           {users.map((user) => (
-            <TableRow key={user.id}>
+            <TableRow key={user.mail}>
               <TableCell align='center' className={classes.mail}>{user.mail}</TableCell>
             </TableRow>
           ))}

@@ -25,6 +25,17 @@ const useStyles = makeStyles((theme) => ({
       fontWeight: '200',
     },
   },
+  info: {
+    width: '55%',
+    fontSize: '0.875rem',
+    textAlign: 'left',
+  },
+  mail: {
+    fontSize: '0.7rem',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    whiteSpace: 'nowrap',
+  },
   sum: {
     fontSize: '0.875rem',
   },

@@ -8,16 +8,22 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    padding: '1em 1em',
+    padding: '1em 0.2em',
     paddingBottom: '0',
   },
+  iconDiv: {
+    width: '15%',
+  },
   title: {
-    alignSelf: 'flex-end',
+    width: '100%',
     display: 'flex',
+    justifyContent: 'space-around',
     alignItems: 'center',
   },
-  avatar: {
-    paddingRight: '0.5em',
+  info: {
+    width: '70%',
+    display: 'flex',
+    flexDirection: 'column',
   },
   name: {
     fontWeight: '700',
@@ -27,6 +33,13 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 15,
     padding: '0.2em 1.2em',
     marginBottom: '0.5em',
+  },
+  mail: {
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    whiteSpace: 'nowrap',
+    fontSize: '0.8rem',
+    width: '100%',
   },
 }));
 

@@ -63,7 +63,14 @@ const UserCard = observer(({ user }) => {
         <span className={classes.sum}>
           {getTotalNumberOfEvents()}
         </span>
-        {user.name}
+        <div className={classes.info}>
+          {user.name}
+          <Tooltip title={user.mail}>
+            <Typography className={classes.mail}>
+              {user.mail}
+            </Typography>
+          </Tooltip>
+        </div>
         <img alt='icon' src={userIcon} className={classes.icon} />
       </Typography>
       <div className={classes.cardBody}>
