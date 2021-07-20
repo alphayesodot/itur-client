@@ -36,13 +36,13 @@ const ProgressBoxes = ({ files, setFiles }) => {
                 component='span'
               >
                 <CloseIcon className={classes.closeIcon} />
-                <CheckCircleIcon className={classes.doneIcon} />
+                {file.progress === 100 && <CheckCircleIcon className={classes.doneIcon} />}
               </IconButton>
             </Tooltip>
           )}
           <span className={classes.fileName}>{file.name}</span>
         </Box>
-        <Typography className={classes.size}>
+        <span className={classes.size}>
           <Typography className={classes.typography}>
             {`${Math.round(
               file.size / 1000,
@@ -51,7 +51,7 @@ const ProgressBoxes = ({ files, setFiles }) => {
           <Typography className={classes.typography}>
             KB
           </Typography>
-        </Typography>
+        </span>
         <ThemeProvider theme={(outerTheme) => ({ ...outerTheme, direction: 'ltr' })}>
           <LinearProgress
             classes={{ root: classes.progressBar, barColorPrimary: classes.progressBarColor }}
