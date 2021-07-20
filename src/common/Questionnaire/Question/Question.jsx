@@ -7,6 +7,7 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
+import FormControl from '@material-ui/core/FormControl';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import LaunchIcon from '@material-ui/icons/Launch';
 import useStyles from './Question.styles';
@@ -38,6 +39,7 @@ const Question = ({ question, answer, setAnswer }) => {
             selectedValue={answer ?? ''}
             setSelectedValue={setAnswer}
             hasOther={question.hasOther}
+            required={question.required}
           />
         );
       case 'CHECKBOX':
@@ -47,6 +49,7 @@ const Question = ({ question, answer, setAnswer }) => {
             selectedValues={answer ?? []}
             setSelectedValues={setAnswer}
             hasOther={question.hasOther}
+            required={question.required}
           />
         );
       case 'LINEARSCALE':
@@ -56,6 +59,7 @@ const Question = ({ question, answer, setAnswer }) => {
             max={question.max}
             selectedValue={answer ?? ''}
             setSelectedValue={setAnswer}
+            required={question.required}
           />
         );
       case 'OPEN':
@@ -64,20 +68,23 @@ const Question = ({ question, answer, setAnswer }) => {
             isShort={question.isShort}
             answer={answer}
             setAnswer={setAnswer}
+            required={question.required}
           />
         );
       case 'DATE':
         return (
-          <DateInput
-            inputClassName={classes.dateInput}
-            style={{ paddingRight: '0' }}
-            inputProps={{
-              disableUnderline: true,
-              className: classes.dateInput,
-            }}
-            selectedDate={answer ?? null}
-            setSelectedDate={setAnswer}
-          />
+          <FormControl required={question.required}>
+            <DateInput
+              inputClassName={classes.dateInput}
+              style={{ paddingRight: '0' }}
+              inputProps={{
+                disableUnderline: true,
+                className: classes.dateInput,
+              }}
+              selectedDate={answer ?? null}
+              setSelectedDate={setAnswer}
+            />
+          </FormControl>
         );
       default:
         return '';
@@ -108,7 +115,7 @@ const Question = ({ question, answer, setAnswer }) => {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color='primary'>
-          {t('interviewDashboard.questionnaire.saveQuestion')}
+            {t('interviewDashboard.questionnaire.saveQuestion')}
           </Button>
         </DialogActions>
       </Dialog>

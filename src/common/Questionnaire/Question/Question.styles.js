@@ -37,8 +37,9 @@ const useStyles = makeStyles(() => ({
   dateInput: {
     backgroundColor: 'transparent',
     fontSize: '12.8px',
-    direction: 'ltr',
+    direction: 'rtl',
     width: 'fit-content',
+    paddingLeft: '0px',
     '& > input': { textAlign: 'right', width: '60px' },
     '& > div > button': { color: '#02aecd' },
   },

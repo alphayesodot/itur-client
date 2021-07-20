@@ -1,12 +1,19 @@
 /* eslint-disable prefer-spread */
 import React from 'react';
 import Radio from '@material-ui/core/Radio';
+import FormControl from '@material-ui/core/FormControl';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Typography from '@material-ui/core/Typography';
 import { v4 as uuid } from 'uuid';
 import useStyles from './ScaleAnswer.styles';
 
-const ScaleAnswer = ({ selectedValue, setSelectedValue, min, max }) => {
+const ScaleAnswer = ({
+  selectedValue,
+  setSelectedValue,
+  min,
+  max,
+  required,
+}) => {
   const classes = useStyles();
 
   const handleChange = (event) => {
@@ -18,14 +25,7 @@ const ScaleAnswer = ({ selectedValue, setSelectedValue, min, max }) => {
     .slice(min.value);
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexFlow: 'space-between',
-        textOverflow: 'ellipsis',
-        direction: 'rtl',
-      }}
-    >
+    <FormControl className={classes.root} required={required}>
       <Typography className={classes.label}>{min.tag}</Typography>
       <div className={classes.scale}>
         {rangeArr.map((val) => (
@@ -46,7 +46,7 @@ const ScaleAnswer = ({ selectedValue, setSelectedValue, min, max }) => {
         ))}
       </div>
       <Typography className={classes.label}>{max.tag}</Typography>
-    </div>
+    </FormControl>
   );
 };
 

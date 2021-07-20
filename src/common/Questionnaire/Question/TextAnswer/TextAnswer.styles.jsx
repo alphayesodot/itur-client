@@ -3,6 +3,9 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles(() => ({
   root: {
     width: '100%',
+  },
+  textField: {
+    width: '100%',
     background: 'rgb(2 174 205 / 10%)',
     borderRadius: '5px',
   },

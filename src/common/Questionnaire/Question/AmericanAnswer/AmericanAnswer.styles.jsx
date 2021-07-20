@@ -6,16 +6,6 @@ const useStyles = makeStyles(() => ({
     flexFlow: 'space-between',
     textOverflow: 'ellipsis',
     direction: 'rtl',
-    justifyContent: 'center',
-    flexDirection: 'row',
-  },
-  scale: {
-    paddingLeft: '15px',
-  },
-  label: {
-    fontSize: '1rem',
-    paddingTop: '8px',
-    marginRight: '5px',
   },
 }));
 

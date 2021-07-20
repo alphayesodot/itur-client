@@ -3,6 +3,7 @@ import React from 'react';
 import { Toolbar, Container, Typography } from '@material-ui/core';
 import { useTranslation } from 'react-i18next';
 import List from '@material-ui/core/List';
+import FormGroup from '@material-ui/core/FormGroup';
 import DashboardCard from '../DashboardCard/DashboardCard';
 import useStyles from './Questionnaire.styles';
 import Question from './Question/Question';
@@ -27,18 +28,20 @@ const Questionnaire = ({ questions, setQuestions }) => {
           style={{ color: '#fff', height: '22.8rem' }}
           className={classes.list}
         >
-          {questions.map((question, index) => (
-            <Question
-              question={question}
-              key={index}
-              answer={questions[index].answer}
-              setAnswer={(answer) => {
-                const newQuestions = questions.slice();
-                newQuestions[index].answer = answer;
-                setQuestions(newQuestions);
-              }}
-            />
-          ))}
+          <FormGroup>
+            {questions.map((question, index) => (
+              <Question
+                question={question}
+                key={index}
+                answer={questions[index].answer}
+                setAnswer={(answer) => {
+                  const newQuestions = questions.slice();
+                  newQuestions[index].answer = answer;
+                  setQuestions(newQuestions);
+                }}
+              />
+            ))}
+          </FormGroup>
         </List>
       </Container>
     </DashboardCard>
