@@ -33,6 +33,7 @@ const useStyles = makeStyles(() => ({
     textOverflow: 'ellipsis',
     whiteSpace: 'nowrap',
     overflow: 'hidden',
+    maxWidth: '160px',
   },
   dateInput: {
     backgroundColor: 'transparent',
