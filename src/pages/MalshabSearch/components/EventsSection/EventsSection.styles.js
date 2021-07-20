@@ -16,6 +16,10 @@ const useStyles = makeStyles((theme) => ({
   },
   mainDiv: {
     width: '100%',
+    minHeight: '18rem',
+    [theme.breakpoints.down('sm')]: {
+      minHeight: 'auto',
+    },
   },
   calenderDiv: {
     minWidth: '16rem',
@@ -28,6 +32,7 @@ const useStyles = makeStyles((theme) => ({
     },
     [theme.breakpoints.down('sm')]: {
       width: '50%',
+      paddingLeft: '0',
     },
   },
   card: {
@@ -87,6 +92,9 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'space-between',
     paddingBottom: '1rem',
+  },
+  progress: {
+    margin: 'auto',
   },
 }));
 

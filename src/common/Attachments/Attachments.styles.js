@@ -7,7 +7,7 @@ const useStyles = makeStyles((theme) => ({
   sectionTitle: {
     fontWeight: '900',
     paddingLeft: '1%',
-    paddingBottom: '2%',
+    paddingBottom: '1rem',
   },
   iconButton: {
     position: 'absolute',

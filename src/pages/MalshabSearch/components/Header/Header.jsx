@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-duplicate-props */
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import { TextField, Tooltip } from '@material-ui/core';
@@ -7,7 +8,7 @@ import DashboardCard from '../../../../common/DashboardCard/DashboardCard';
 import TooltipButton from '../../../../common/TooltipButton/TooltipButton';
 import useStyles from './Header.styles';
 
-const Header = ({ setMalshab }) => {
+const Header = ({ setMalshab, setIsLoading }) => {
   const classes = useStyles();
   const [input, setInput] = useState('');
   const identityNumberLength = 9;
@@ -20,11 +21,14 @@ const Header = ({ setMalshab }) => {
 
   const handleOnSearch = () => {
     if (canSearch()) {
+      setIsLoading(true);
       MalshabService.getMalshabById(input).then((res) => {
         setMalshab(res);
         setInput('');
       }).catch(() => {
         toast(t('error.server'));
+      }).finally(() => {
+        setIsLoading(false);
       });
     }
   };
@@ -50,6 +54,9 @@ const Header = ({ setMalshab }) => {
         placeholder={t('placeholders.searchMalshab')}
         InputProps={{
           disableUnderline: true,
+        }}
+        inputProps={{
+          maxLength: identityNumberLength,
         }}
       />
     </DashboardCard>
