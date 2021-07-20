@@ -115,6 +115,7 @@ const users = [
     role: Role.ProfessionalRamad,
     unitId: '507f191e810c19729de862ea',
     mail: 'PROFESSIONAL_RAMAD1ea4@iturradardev.onmicrosoft.com',
+
   },
   {
     id: '507f1f77bcf86cd799439024',
