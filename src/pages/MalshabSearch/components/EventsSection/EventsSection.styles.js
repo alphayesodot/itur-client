@@ -6,6 +6,9 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     minHeight: '100%',
     display: 'flex',
+    [theme.breakpoints.down('md')]: {
+      marginTop: '1rem',
+    },
     [theme.breakpoints.down('sm')]: {
       flexDirection: 'column-reverse',
       alignItems: 'center',
@@ -13,6 +16,10 @@ const useStyles = makeStyles((theme) => ({
   },
   mainDiv: {
     width: '100%',
+    minHeight: '18rem',
+    [theme.breakpoints.down('sm')]: {
+      minHeight: 'auto',
+    },
   },
   calenderDiv: {
     minWidth: '16rem',
@@ -25,13 +32,8 @@ const useStyles = makeStyles((theme) => ({
     },
     [theme.breakpoints.down('sm')]: {
       width: '50%',
+      paddingLeft: '0',
     },
-  },
-  sectionTitle: {
-    userSelect: 'none',
-    fontWeight: '900',
-    paddingLeft: '1%',
-    paddingBottom: '1rem',
   },
   card: {
     display: 'flex',
@@ -68,6 +70,31 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 20,
     fontWeight: '600',
     color: theme.palette.primary.main,
+  },
+  sectionTitle: {
+    userSelect: 'none',
+    fontWeight: '900',
+    paddingLeft: '1%',
+  },
+  checkboxSection: {
+    display: 'flex',
+    alignItems: 'center',
+    minWidth: '20%',
+  },
+  checkbox: {
+    height: '0.2rem',
+  },
+  showAllText: {
+    fontWeight: '600',
+    fontSize: '0.9rem',
+  },
+  sectionMenu: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    paddingBottom: '1rem',
+  },
+  progress: {
+    margin: 'auto',
   },
 }));
 

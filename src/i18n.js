@@ -70,6 +70,7 @@ const resources = {
         noNodes: 'אין שלבי מיון',
         noMalshab: 'אין מלש"ב להצגה',
         noEvents: 'אין ראיונות',
+        noEventsInDate: 'אין ראיונות בתאריך הנבחר',
       },
       headerTitles: {
         addUsers: 'הוספת משתמשים',
@@ -121,6 +122,7 @@ const resources = {
         newQuestionnaire: 'שאלון חדש',
         createReport: 'יצירת דוח',
         saveQuestionnaire: 'שמירת שאלון',
+        showAll: 'הצג הכל',
       },
       day: {
         1: 'ראשון',

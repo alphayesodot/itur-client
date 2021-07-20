@@ -6,11 +6,12 @@ import useStyles from './index.styles';
 const MalshabSearch = () => {
   const classes = useStyles();
   const [malshab, setMalshab] = useState();
+  const [isLoading, setIsLoading] = useState(false);
 
   return (
     <div className={classes.root}>
-      <Header malshab={malshab} setMalshab={setMalshab} />
-      <MalshabData malshab={malshab} />
+      <Header malshab={malshab} setMalshab={setMalshab} setIsLoading={setIsLoading} />
+      <MalshabData isLoading={isLoading} malshab={malshab} />
     </div>
   );
 };

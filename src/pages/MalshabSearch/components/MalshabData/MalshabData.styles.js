@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'stretch',
-    justifyContent: 'space-around',
+    justifyContent: 'flex-start',
     [theme.breakpoints.down('md')]: {
       height: 'auto',
       minHeight: '95%',
@@ -38,9 +38,10 @@ const useStyles = makeStyles((theme) => ({
   rootAttachments: {
     width: '100%',
     paddingRight: '3%',
-    maxHeight: '15.75rem',
+    height: '15.75rem',
     [theme.breakpoints.down('md')]: {
       paddingRight: '0',
+      height: 'auto',
     },
   },
 }));
