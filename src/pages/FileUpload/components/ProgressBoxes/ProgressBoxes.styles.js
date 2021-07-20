@@ -39,13 +39,30 @@ const useStyles = makeStyles((theme) => ({
   cancelButton: {
     backgroundColor: 'rgb(234,243,246)',
     color: theme.palette.section.primary,
-    padding: '0.03rem',
+    padding: '0',
+    '&:hover': {
+      '& $doneIcon': {
+        display: 'none !important',
+      },
+      '& $closeIcon': {
+        display: 'inline-block',
+      },
+    },
+    height: '1.2rem',
+    width: '1.2rem',
+  },
+  doneIcon: {
+    fontSize: '1.2rem',
+    fontWeight: 'bold',
+    fontFamily: theme.typography.fontFamily,
+    margin: '0',
   },
   closeIcon: {
     fontSize: '0.8rem',
     fontWeight: 'bold',
     fontFamily: theme.typography.fontFamily,
     margin: '0.15rem',
+    display: 'none',
   },
   size: {
     display: 'flex',

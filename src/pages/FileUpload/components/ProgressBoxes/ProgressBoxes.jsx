@@ -8,6 +8,7 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import { useTranslation } from 'react-i18next';
+import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import useStyles from './ProgressBoxes.styles';
 import fileImg from '../../../../utils/images/uploadPage/upload-progress.svg';
 
@@ -35,6 +36,7 @@ const ProgressBoxes = ({ files, setFiles }) => {
                 component='span'
               >
                 <CloseIcon className={classes.closeIcon} />
+                <CheckCircleIcon className={classes.doneIcon} />
               </IconButton>
             </Tooltip>
           )}
