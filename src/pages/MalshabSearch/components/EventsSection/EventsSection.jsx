@@ -6,9 +6,8 @@ import Divider from '@material-ui/core/Divider';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
-import ToggleButton from '@material-ui/lab/ToggleButton';
 import Tooltip from '@material-ui/core/Tooltip';
-
+import Checkbox from '@material-ui/core/Checkbox';
 import Calender from '../Calender/Calender';
 import play from '../../../../utils/images/schedule/play-button.svg';
 import DashboardCard from '../../../../common/DashboardCard/DashboardCard';
@@ -56,7 +55,10 @@ const EventsSection = ({ malshabId }) => {
           <Calender
             events={events}
             selectedDate={selectedDate}
-            setSelectedDate={setSelectedDate}
+            setSelectedDate={(newDate) => {
+              setSelectedDate(newDate);
+              setShowAll(false);
+            }}
           />
         </div>
       )}
@@ -65,14 +67,18 @@ const EventsSection = ({ malshabId }) => {
           <Typography className={classes.sectionTitle}>
             {t('title.interviewsHistory')}
           </Typography>
-          <ToggleButton
-            size='small'
-            className={classes.showAllButton}
-            selected={showAll}
-            onChange={() => setShowAll((oldShowAll) => !oldShowAll)}
-          >
-            <Typography>{t('button.showAll')}</Typography>
-          </ToggleButton>
+          <div className={classes.checkboxSection}>
+            <Checkbox
+              size='small'
+              checked={showAll}
+              onChange={() => setShowAll((oldShowAll) => !oldShowAll)}
+              className={classes.checkbox}
+              color='secondary'
+            />
+            <Typography className={classes.showAllText}>
+              {t('button.showAll')}
+            </Typography>
+          </div>
         </div>
         <DashboardCard className={classes.card}>
           {showedEvents.length ? (
