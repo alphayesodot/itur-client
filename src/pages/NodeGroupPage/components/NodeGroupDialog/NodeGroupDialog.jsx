@@ -27,7 +27,9 @@ const NodeGroupDialog = ({ open,
   const [checkedEvaluators, setCheckedEvaluators] = useState([]);
   const [checkedNodes, setCheckedNodes] = useState([]);
   const [duringSending, setDuringSending] = useState(false);
-
+  const evaluetorsRoles = [Role.Interviewer,
+    Role.Diagnoser, Role.Mada, Role.Psychologist, Role.RamadIturOfUnit, Role.Itur];
+  let busyInterviewers;
   const setCheckedUsers = (allUsers) => {
     const tempPr = [];
     const tempRuiA = [];
@@ -53,26 +55,47 @@ const NodeGroupDialog = ({ open,
 
   useEffect(() => {
     try {
-      UserService.getUsers({ unitId: UserStoreInstance.userProfile.unitId }).then((users) => {
-        setPrUsers(users.filter((user) => user.role === Role.ProfessionalRamad));
-        setRiuAUsers(users.filter((user) => user.role === Role.RamadIturAssistant).map(
-          ((riu) => ({ id: riu.id, label: riu.name })),
-        ));
-        setEvaluators(users.filter((user) => user.role !== Role.RamadIturAssistant
-         && user.role !== Role.ProfessionalRamad));
-        NodeService.getNodes().then((nodesRes) => {
+      NodeGroupService.getNodeGroups().then((nodeGroups) => {
+        UserService.getUsers({ unitId: UserStoreInstance.userProfile.unitId }).then((users) => {
+          setPrUsers(users.filter((user) => user.role === Role.ProfessionalRamad));
+          setRiuAUsers(users.filter((user) => user.role === Role.RamadIturAssistant).map(
+            ((riu) => ({ id: riu.id, label: riu.name })),
+          ));
+          const interviwers = users.filter((user) => user.role === Role.Interviewer);
+          const evaluetors = users.filter(({ role }) => evaluetorsRoles.includes(role));
+
+          setEvaluators(users.filter((user) => user.role !== Role.RamadIturAssistant
+           && user.role !== Role.ProfessionalRamad));
+          NodeService.getNodes().then((nodesRes) => {
+            if (currentNodeGroup) {
+              busyInterviewers = interviwers.filter(
+                ({ id }) => nodeGroups.some(
+                  (nodeGroup) => nodeGroup.usersIds.includes(id)
+                  && nodeGroup.id !== currentNodeGroup.id,
+                ),
+              );
+              setNodes(nodesRes.filter((node) => !node.nodeGroupId
+              || node.nodeGroupId === currentNodeGroup.id));
+              setCheckedNodes(nodesRes.filter((node) => node.nodeGroupId === currentNodeGroup.id)
+                .map((node) => node.id));
+            } else {
+              setNodes(nodesRes.filter((node) => !node.nodeGroupId));
+              busyInterviewers = interviwers.filter(
+                ({ id }) => nodeGroups.some(
+                  (nodeGroup) => nodeGroup.usersIds.includes(id),
+                ),
+              );
+            }
+            setEvaluators(evaluetors.filter(
+              (evaluetor) => !busyInterviewers.some(
+                (busyInterviewer) => busyInterviewer.id === evaluetor.id,
+              ),
+            ));
+          });
           if (currentNodeGroup) {
-            setNodes(nodesRes.filter((node) => !node.nodeGroupId
-            || node.nodeGroupId === currentNodeGroup.id));
-            setCheckedNodes(nodesRes.filter((node) => node.nodeGroupId === currentNodeGroup.id)
-              .map((node) => node.id));
-          } else {
-            setNodes(nodesRes.filter((node) => !node.nodeGroupId));
+            setCheckedUsers(users);
           }
         });
-        if (currentNodeGroup) {
-          setCheckedUsers(users);
-        }
       });
     } catch {
       toast(t('error.server'));
@@ -83,7 +106,16 @@ const NodeGroupDialog = ({ open,
     if (!open) return;
     try {
       const allNodes = await NodeService.getNodes();
+      const allNodeGroups = await NodeGroupService.getNodeGroups();
+      const users = await UserService.getUsers({ unitId: UserStoreInstance.userProfile.unitId });
+      const interviwers = users.filter((user) => user.role === Role.Interviewer);
+      const evaluetors = users.filter(({ role }) => evaluetorsRoles.includes(role));
       if (!currentNodeGroup) {
+        busyInterviewers = interviwers.filter(
+          ({ id }) => allNodeGroups.some(
+            (nodeGroup) => nodeGroup.usersIds.includes(id),
+          ),
+        );
         setNameValue('');
         setCheckedPrUsers([]);
         setCheckedEvaluators([]);
@@ -92,14 +124,23 @@ const NodeGroupDialog = ({ open,
         setNodes(allNodes.filter((node) => !node.nodeGroupId || node.nodeGroupId === ''));
       } else {
         setNameValue(currentNodeGroup.name);
-        UserService.getUsers({ unitId: UserStoreInstance.userProfile.unitId }).then((users) => {
-          setCheckedUsers(users);
-        });
+        setCheckedUsers(users);
         setNodes(allNodes.filter((node) => !node.nodeGroupId
         || node.nodeGroupId === currentNodeGroup.id));
         setCheckedNodes(allNodes.filter((node) => node.nodeGroupId === currentNodeGroup.id)
           .map((node) => node.id));
+        busyInterviewers = interviwers.filter(
+          ({ id }) => allNodeGroups.some(
+            (nodeGroup) => nodeGroup.usersIds.includes(id)
+              && nodeGroup.id !== currentNodeGroup.id,
+          ),
+        );
       }
+      setEvaluators(evaluetors.filter(
+        (evaluetor) => !busyInterviewers.some(
+          (busyInterviewer) => busyInterviewer.id === evaluetor.id,
+        ),
+      ));
     } catch {
       toast(t('error.server'));
     }
